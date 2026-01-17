@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-void: #030712;
+}
+
+/* 
+  In Tailwind v4, we can write standard CSS. 
+  @layer directives work if 'tailwindcss' is imported.
+*/
+
+@layer base {
+  body {
+    /* Using @apply for utility composition */
+    @apply bg-[#030712] text-slate-200 antialiased selection:bg-indigo-500/30 selection:text-indigo-200;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+}
+
+/* Aurora Animation */
+@keyframes aurora {
+  0% {
+    background-position: 50% 50%, 50% 50%;
+  }
+
+  100% {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+.aurora-bg {
+  background-image:
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+  animation: aurora 60s linear infinite;
+}
