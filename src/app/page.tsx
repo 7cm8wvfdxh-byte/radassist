@@ -12,8 +12,9 @@ import { spinePathologies } from "@/data/spine-pathologies";
 import { liverPathologies } from "@/data/liver-pathologies";
 import { kidneyPathologies } from "@/data/kidney-pathologies";
 import { lungPathologies } from "@/data/lung-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Heart, Droplets, Wind } from "lucide-react";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Heart, Droplets, Wind, Trophy } from "lucide-react";
 import { DiagnosisWizard } from "@/components/diagnosis-wizard";
+import { DailyCaseModal } from "@/components/daily-case-modal";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils"; // Ensure cn is imported
 
@@ -24,6 +25,7 @@ export default function Home() {
   const [viewMode, setViewMode] = useState<"grid" | "list" | "quiz" | "case" | "wizard" | "ai">("grid");
   const [activeModule, setActiveModule] = useState<"brain" | "spine" | "liver" | "kidney" | "lung">("brain");
   const [selectedPathology, setSelectedPathology] = useState<Pathology | null>(null);
+  const [showDailyModal, setShowDailyModal] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Load favorites from local storage on mount
@@ -102,6 +104,17 @@ export default function Home() {
         <h1 className="text-6xl sm:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
           RadAssist
         </h1>
+
+        {/* Daily Challenge Button */}
+        <button
+          onClick={() => setShowDailyModal(true)}
+          className="mb-8 group relative inline-flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 hover:border-amber-500/40 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-150"
+        >
+          <div className="absolute inset-0 bg-amber-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-full" />
+          <Trophy className="w-4 h-4 text-amber-500 group-hover:animate-bounce" />
+          <span className="text-sm font-bold text-amber-200 group-hover:text-amber-100">Günün Kartı</span>
+          <span className="bg-amber-500 text-black text-[10px] font-bold px-1.5 py-0.5 rounded ml-1 animate-pulse">YENİ</span>
+        </button>
 
         <div className="w-full max-w-3xl relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
 
@@ -385,6 +398,8 @@ export default function Home() {
         </div>
       )}
 
+      {/* Daily Case Modal */}
+      <DailyCaseModal isOpen={showDailyModal} onClose={() => setShowDailyModal(false)} />
     </div>
   );
 }
