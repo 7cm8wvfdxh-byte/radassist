@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // PWA temporarily removed due to Serwist version compatibility issues
+  // Will re-add after successful deployment
 };
 
 export default nextConfig;

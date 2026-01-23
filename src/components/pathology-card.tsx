@@ -124,31 +124,69 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite }: Pa
                     </div>
 
                     <div className="flex space-x-1 p-1 bg-black/40 backdrop-blur-md rounded-xl w-full sm:w-auto self-start border border-white/10 shadow-lg relative z-10">
-                        <button onClick={() => setActiveTab('summary')} className={cn("flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs font-semibold transition-all mb-0", activeTab === 'summary' ? "bg-white text-black shadow-lg" : "text-slate-400 hover:text-white")}>
+                        <button onClick={() => setActiveTab('summary')} className={cn("flex-1 sm:flex-none h-10 sm:h-auto px-4 py-2 rounded-lg text-sm sm:text-xs font-semibold transition-all mb-0 flex items-center justify-center", activeTab === 'summary' ? "bg-white text-black shadow-lg" : "text-slate-400 hover:text-white")}>
                             Özet
                         </button>
                         {hasCT && (
-                            <button onClick={() => setActiveTab('ct')} className={cn("flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs font-semibold transition-all mb-0", activeTab === 'ct' ? "bg-white text-black shadow-lg" : "text-slate-400 hover:text-white")}>
+                            <button onClick={() => setActiveTab('ct')} className={cn("flex-1 sm:flex-none h-10 sm:h-auto px-4 py-2 rounded-lg text-sm sm:text-xs font-semibold transition-all mb-0 flex items-center justify-center", activeTab === 'ct' ? "bg-white text-black shadow-lg" : "text-slate-400 hover:text-white")}>
                                 BT
                             </button>
                         )}
                         {hasMRI && (
-                            <button onClick={() => setActiveTab('mri')} className={cn("flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs font-semibold transition-all mb-0", activeTab === 'mri' ? "bg-white text-black shadow-lg" : "text-slate-400 hover:text-white")}>
+                            <button onClick={() => setActiveTab('mri')} className={cn("flex-1 sm:flex-none h-10 sm:h-auto px-4 py-2 rounded-lg text-sm sm:text-xs font-semibold transition-all mb-0 flex items-center justify-center", activeTab === 'mri' ? "bg-white text-black shadow-lg" : "text-slate-400 hover:text-white")}>
                                 MR
                             </button>
                         )}
                         {hasUSG && (
-                            <button onClick={() => setActiveTab('usg')} className={cn("flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs font-semibold transition-all mb-0", activeTab === 'usg' ? "bg-white text-black shadow-lg" : "text-slate-400 hover:text-white")}>
+                            <button onClick={() => setActiveTab('usg')} className={cn("flex-1 sm:flex-none h-10 sm:h-auto px-4 py-2 rounded-lg text-sm sm:text-xs font-semibold transition-all mb-0 flex items-center justify-center", activeTab === 'usg' ? "bg-white text-black shadow-lg" : "text-slate-400 hover:text-white")}>
                                 USG
                             </button>
                         )}
                     </div>
 
                     {/* Gallery Container (Top Right) - MOVED TO BOTTOM of this container to sit on TOP visually */}
+                    {/* Gallery Container (Top Right) */}
                     {data.gallery && data.gallery.length > 0 && (
                         <div className="absolute top-3 right-3 flex -space-x-4 pointer-events-auto transition-all duration-300 isolate z-50">
                             {data.gallery.map((img, idx) => {
                                 const isZoomed = activeImage === idx;
+
+                                // Swipe Handlers
+                                const handleTouchStart = (e: React.TouchEvent) => {
+                                    if (!isZoomed) return;
+                                    const touch = e.touches[0];
+                                    // Store initial touch in a data attribute or temp variable via refs
+                                    // Using simple direct logic for now or refs. 
+                                    // Better to use refs if inside a mapped component, but here we can use a closure if carefully done.
+                                    // Let's use a simple coordinate approach.
+                                    (e.currentTarget as any)._touchStartX = touch.clientX;
+                                };
+
+                                const handleTouchEnd = (e: React.TouchEvent) => {
+                                    if (!isZoomed) return;
+                                    const touchEnd = e.changedTouches[0].clientX;
+                                    const touchStart = (e.currentTarget as any)._touchStartX;
+
+                                    if (!touchStart) return;
+
+                                    const diff = touchStart - touchEnd;
+                                    const SWIPE_THRESHOLD = 50;
+
+                                    if (Math.abs(diff) > SWIPE_THRESHOLD) {
+                                        if (diff > 0) {
+                                            // Swipe Left -> Next Image
+                                            if (activeImage !== null && activeImage < (data.gallery?.length || 0) - 1) {
+                                                setActiveImage(activeImage + 1);
+                                            }
+                                        } else {
+                                            // Swipe Right -> Prev Image
+                                            if (activeImage !== null && activeImage > 0) {
+                                                setActiveImage(activeImage - 1);
+                                            }
+                                        }
+                                    }
+                                };
+
                                 return (
                                     <div
                                         key={idx}
@@ -156,10 +194,12 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite }: Pa
                                             e.stopPropagation(); // Prevent card clicks
                                             setActiveImage(isZoomed ? null : idx);
                                         }}
+                                        onTouchStart={handleTouchStart}
+                                        onTouchEnd={handleTouchEnd}
                                         className={cn(
                                             "relative w-12 h-12 rounded-lg border border-slate-700 bg-black overflow-hidden transition-all duration-300 ease-out origin-top-right shadow-lg cursor-zoom-in brightness-75 hover:brightness-100",
                                             isZoomed
-                                                ? "!scale-[6.5] !z-[100] border-blue-500 brightness-100 cursor-zoom-out shadow-2xl"
+                                                ? "!scale-[6.5] !z-[100] border-blue-500 brightness-100 cursor-zoom-out shadow-2xl touch-none" // touch-none prevents scrolling while swiping
                                                 : "hover:scale-[1.75] hover:z-50 hover:border-slate-500", // Hover Peek (1.75x)
                                             !isZoomed && activeImage !== null ? "opacity-30 blur-[1px]" : "opacity-100" // Dim others when one is zoomed
                                         )}
@@ -173,6 +213,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite }: Pa
                                             alt={img.caption}
                                             fill
                                             className="object-cover"
+                                            draggable={false} // Prevent image drag interfering with swipe
                                         />
                                         {/* Caption Overlay on Zoom */}
                                         <div className={cn(
@@ -180,6 +221,8 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite }: Pa
                                             isZoomed ? "opacity-100" : "opacity-0"
                                         )}>
                                             {img.caption}
+                                            {/* Swipe Hint (Mobile Only) */}
+                                            <span className="hidden sm:hidden md:hidden lg:hidden active:inline-block ml-1 opacity-50">↔</span>
                                         </div>
                                         {/* Modality Tag */}
                                         <div className={cn(

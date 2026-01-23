@@ -1,0 +1,173 @@
+'use client';
+
+import { useChat } from '@ai-sdk/react';
+import { useState, useRef, useEffect } from 'react';
+import { MessageSquare, X, Send, Bot, User, Loader2, Sparkles } from 'lucide-react';
+import { clsx } from 'clsx';
+
+export function AIChatWidget() {
+    const [isOpen, setIsOpen] = useState(false);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    const { messages, setMessages, append, status, error } = useChat({
+        api: '/api/chat',
+    });
+
+    const [inputValue, setInputValue] = useState('');
+    const isLoading = status === 'streaming' || status === 'submitted';
+
+    // Auto-scroll to bottom when new messages arrive
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!inputValue.trim() || isLoading) return;
+
+        const userMessage = inputValue.trim();
+        setInputValue('');
+
+        await append({
+            role: 'user',
+            content: userMessage,
+        });
+    };
+
+    // Extract text content from message parts
+    const getMessageContent = (message: typeof messages[0]): string => {
+        if (typeof message.content === 'string') {
+            return message.content;
+        }
+        // For parts-based content
+        if (message.parts) {
+            return message.parts
+                .filter((part): part is { type: 'text'; text: string } => part.type === 'text')
+                .map(part => part.text)
+                .join('');
+        }
+        return '';
+    };
+
+    return (
+        <>
+            {/* Floating Action Button */}
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={clsx(
+                    "fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-2xl transition-all duration-300 group",
+                    isOpen
+                        ? "bg-zinc-800 hover:bg-zinc-700 rotate-90"
+                        : "bg-gradient-to-br from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 animate-pulse hover:animate-none"
+                )}
+            >
+                {isOpen ? (
+                    <X className="w-6 h-6 text-white" />
+                ) : (
+                    <div className="relative">
+                        <MessageSquare className="w-6 h-6 text-white" />
+                        <Sparkles className="w-3 h-3 text-yellow-300 absolute -top-1 -right-1 animate-bounce" />
+                    </div>
+                )}
+            </button>
+
+            {/* Chat Panel */}
+            {isOpen && (
+                <div className="fixed bottom-24 right-6 z-50 w-[380px] h-[520px] bg-zinc-900/95 backdrop-blur-xl rounded-2xl border border-zinc-700 shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 fade-in duration-300">
+                    {/* Header */}
+                    <div className="bg-gradient-to-r from-cyan-600 to-blue-600 px-4 py-3 flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                            <Bot className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                            <h3 className="font-bold text-white">RadAssist AI</h3>
+                            <p className="text-xs text-cyan-100 opacity-80">Radyoloji Asistanı</p>
+                        </div>
+                    </div>
+
+                    {/* Messages */}
+                    <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-zinc-700">
+                        {messages.length === 0 && (
+                            <div className="text-center text-zinc-500 py-8">
+                                <Bot className="w-12 h-12 mx-auto mb-3 opacity-30" />
+                                <p className="text-sm">Merhaba! Ben RadAssist AI.</p>
+                                <p className="text-xs mt-1 opacity-70">Radyolojik bulgular hakkında sorularınızı yanıtlayabilirim.</p>
+                            </div>
+                        )}
+
+                        {messages.map((message) => (
+                            <div
+                                key={message.id}
+                                className={clsx(
+                                    "flex gap-2",
+                                    message.role === 'user' ? "justify-end" : "justify-start"
+                                )}
+                            >
+                                {message.role === 'assistant' && (
+                                    <div className="w-7 h-7 rounded-full bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                                        <Bot className="w-4 h-4 text-cyan-400" />
+                                    </div>
+                                )}
+                                <div
+                                    className={clsx(
+                                        "max-w-[85%] px-3 py-2 rounded-xl text-sm",
+                                        message.role === 'user'
+                                            ? "bg-cyan-600 text-white rounded-br-sm"
+                                            : "bg-zinc-800 text-zinc-200 rounded-bl-sm border border-zinc-700"
+                                    )}
+                                >
+                                    <div className="whitespace-pre-wrap">{getMessageContent(message)}</div>
+                                </div>
+                                {message.role === 'user' && (
+                                    <div className="w-7 h-7 rounded-full bg-zinc-700 flex items-center justify-center flex-shrink-0">
+                                        <User className="w-4 h-4 text-zinc-300" />
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+
+                        {isLoading && (
+                            <div className="flex gap-2 items-center">
+                                <div className="w-7 h-7 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                                    <Loader2 className="w-4 h-4 text-cyan-400 animate-spin" />
+                                </div>
+                                <div className="bg-zinc-800 text-zinc-400 px-3 py-2 rounded-xl text-sm border border-zinc-700">
+                                    Düşünüyor...
+                                </div>
+                            </div>
+                        )}
+
+                        {error && (
+                            <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-3 py-2 rounded-lg text-xs">
+                                Hata: {error.message}
+                            </div>
+                        )}
+
+                        <div ref={messagesEndRef} />
+                    </div>
+
+                    {/* Input */}
+                    <form onSubmit={handleSubmit} className="p-3 border-t border-zinc-800 bg-zinc-900">
+                        <div className="flex gap-2">
+                            <input
+                                type="text"
+                                value={inputValue}
+                                onChange={(e) => setInputValue(e.target.value)}
+                                placeholder="Bir soru sorun..."
+                                className="flex-1 bg-zinc-800 text-white text-sm px-4 py-2.5 rounded-xl border border-zinc-700 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/50 placeholder-zinc-500"
+                                disabled={isLoading}
+                            />
+                            <button
+                                type="submit"
+                                disabled={isLoading || !inputValue.trim()}
+                                className="p-2.5 bg-cyan-600 text-white rounded-xl hover:bg-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            >
+                                <Send className="w-5 h-5" />
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            )}
+        </>
+    );
+}

@@ -10,6 +10,9 @@ export interface ModalityFindings {
         ct_venogram?: string;
         ct_perfusion?: string;
         bone_window?: string;
+        sagittal?: string;
+        coronal?: string;
+        axial?: string;
     };
     mri?: {
         t1?: string;
@@ -23,6 +26,10 @@ export interface ModalityFindings {
         mrv?: string;
         perfusion?: string;
         spectroscopy?: string;
+        stir?: string;
+        sagittal?: string;
+        coronal?: string;
+        axial?: string;
         other_sequences?: string;
     };
 }
@@ -39,4 +46,49 @@ export interface Pathology {
         caption: string; // e.g., "T2 FLAIR", "DWI"
         modality: "CT" | "MRI" | "USG";
     }[];
+}
+
+export interface CaseStep {
+    id: string;
+    order: number;
+    title: string;
+    description: string;
+    imageUrl: string; // URL to the image (local or remote)
+    imageCaption?: string;
+    question: string;
+    options: string[];
+    correctOptionIndex: number;
+    explanation: string;
+}
+
+export interface CaseStudy {
+    id: string;
+    title: string;
+    difficulty: "Kolay" | "Orta" | "Zor";
+    patientHistory: string;
+    finalDiagnosis: string;
+    keyLearningPoint: string;
+    steps: CaseStep[];
+}
+
+export interface DiagnosticRule {
+    pathologyId: string;
+    pathologyName: string;
+    organ: "Brain" | "Spine"; // Added organ field
+    modality: "USG" | "CT" | "MRI";
+    requiredFindings?: string[]; // IDs from lexicon that MUST be present
+    strongFindings: string[]; // IDs that strongly suggest this pathology (high weight)
+    weakFindings?: string[]; // IDs that correspond but with lower specificity
+    excludedFindings?: string[]; // IDs that if present, rule out (or strongly lower) chance
+    baseProbability?: number; // 0-100 initial likelihood based on prevalence
+}
+
+
+export interface ScoredPathology {
+    pathologyId: string;
+    pathologyName: string;
+    score: number; // Calculated score
+    matchedFindings: string[]; // IDs of matched findings
+    missingFindings: string[]; // IDs of strong findings that were not present
+    probabilityLabel: "Yüksek Olasılık" | "Orta Olasılık" | "Düşük Olasılık";
 }

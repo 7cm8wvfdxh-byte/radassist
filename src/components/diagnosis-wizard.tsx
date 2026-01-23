@@ -1,0 +1,285 @@
+import React, { useState } from 'react';
+import { Modality } from '@/data/lexicon';
+import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from '@/data/lexicon';
+import { useDiagnosticEngine } from '@/hooks/use-diagnostic-engine';
+import { clsx } from 'clsx';
+import { Check, ChevronRight, Stethoscope, AlertTriangle, FileText, X, Brain, Bone } from 'lucide-react';
+
+interface DiagnosisWizardProps {
+    activeModule: 'brain' | 'spine';
+}
+
+export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
+    const [organ, setOrgan] = useState<"Brain" | "Spine">(activeModule === 'brain' ? "Brain" : "Spine");
+    const [modality, setModality] = useState<Modality | null>(null);
+    const [selectedFindings, setSelectedFindings] = useState<string[]>([]);
+    const [isReportOpen, setIsReportOpen] = useState(false);
+
+    // Update internal organ state if prop changes (optional sync)
+    // useEffect(() => setOrgan(activeModule === 'brain' ? "Brain" : "Spine"), [activeModule]);
+
+    // Hook handles the heavy lifting
+    const results = useDiagnosticEngine(selectedFindings, organ);
+
+    const activeFindingsList = modality === 'USG' ? USG_FINDINGS
+        : modality === 'CT' ? CT_FINDINGS
+            : modality === 'MRI' ? MRI_FINDINGS
+                : [];
+
+    // Group findings by category
+    const groupedFindings = activeFindingsList.reduce((acc, finding) => {
+        if (!acc[finding.category]) acc[finding.category] = [];
+        acc[finding.category].push(finding);
+        return acc;
+    }, {} as Record<string, typeof activeFindingsList>);
+
+    const toggleFinding = (id: string) => {
+        setSelectedFindings(prev =>
+            prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
+        );
+    };
+
+    return (
+        <div className="flex flex-col md:flex-row h-full gap-6 p-4 md:p-6 animate-in fade-in duration-500">
+            {/* LEFT PANEL: INPUTS */}
+            <div className="flex-1 overflow-y-auto space-y-6">
+                <div>
+                    <h2 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center gap-2">
+                        <Stethoscope className="w-6 h-6 text-cyan-400" />
+                        Tanı Sihirbazı
+                    </h2>
+                    <p className="text-sm text-zinc-400 mt-1">
+                        Bulguları seçerek olası tanıları ve rapor taslağını görüntüleyin.
+                    </p>
+                </div>
+
+                {/* Step 0: Organ Selection */}
+                <div className="space-y-3">
+                    <label className="text-sm font-medium text-zinc-300">Organ Sistemi</label>
+                    <div className="flex gap-4">
+                        <button
+                            onClick={() => { setOrgan("Brain"); setSelectedFindings([]); }}
+                            className={clsx(
+                                "flex-1 p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
+                                organ === "Brain"
+                                    ? "bg-indigo-500/20 border-indigo-500 text-indigo-50 shadow-lg shadow-indigo-500/10"
+                                    : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
+                            )}
+                        >
+                            <Brain className="w-5 h-5" />
+                            <span className="font-semibold">Beyin</span>
+                        </button>
+                        <button
+                            onClick={() => { setOrgan("Spine"); setSelectedFindings([]); }}
+                            className={clsx(
+                                "flex-1 p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
+                                organ === "Spine"
+                                    ? "bg-emerald-500/20 border-emerald-500 text-emerald-50 shadow-lg shadow-emerald-500/10"
+                                    : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
+                            )}
+                        >
+                            <Bone className="w-5 h-5" />
+                            <span className="font-semibold">Omurga</span>
+                        </button>
+                    </div>
+                </div>
+
+                {/* Step 1: Modality */}
+                <div className="space-y-3">
+                    <label className="text-sm font-medium text-zinc-300">İnceleme Yöntemi (Modality)</label>
+                    <div className="flex gap-2">
+                        {(['USG', 'CT', 'MRI'] as Modality[]).map(m => (
+                            <button
+                                key={m}
+                                onClick={() => { setModality(m); setSelectedFindings([]); }}
+                                className={clsx(
+                                    "px-4 py-2 rounded-lg text-sm font-medium transition-all border",
+                                    modality === m
+                                        ? "bg-cyan-500/20 border-cyan-500 text-cyan-50 shadow-[0_0_15px_rgba(6,182,212,0.3)]"
+                                        : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200"
+                                )}
+                            >
+                                {m}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Step 2: Findings */}
+                {modality && (
+                    <div className="space-y-4 animate-in slide-in-from-left-4 duration-300">
+                        <label className="text-sm font-medium text-zinc-300">Saptanan Bulgular</label>
+                        <div className="space-y-4">
+                            {Object.entries(groupedFindings).map(([category, findings]) => (
+                                <div key={category} className="bg-zinc-900/50 rounded-xl border border-zinc-800 p-3">
+                                    <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2 px-1">
+                                        {category}
+                                    </h3>
+                                    <div className="grid grid-cols-1 gap-2">
+                                        {findings.map(finding => (
+                                            <button
+                                                key={finding.id}
+                                                onClick={() => toggleFinding(finding.id)}
+                                                className={clsx(
+                                                    "flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors text-left",
+                                                    selectedFindings.includes(finding.id)
+                                                        ? "bg-cyan-900/30 text-cyan-100 border border-cyan-500/30"
+                                                        : "bg-zinc-800/30 text-zinc-400 hover:bg-zinc-800 border border-transparent"
+                                                )}
+                                            >
+                                                <span>{finding.label}</span>
+                                                {selectedFindings.includes(finding.id) && (
+                                                    <Check className="w-4 h-4 text-cyan-400" />
+                                                )}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            {/* RIGHT PANEL: RESULTS */}
+            <div className="flex-1 bg-zinc-900/80 rounded-2xl border border-zinc-800 p-5 overflow-hidden flex flex-col min-h-[400px]">
+                <div className="mb-4 flex items-center justify-between">
+                    <h3 className="text-lg font-semibold text-zinc-100">Analiz Sonuçları</h3>
+                    {results.length > 0 && (
+                        <span className="text-xs px-2 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                            {results.length} Eşleşme
+                        </span>
+                    )}
+                </div>
+
+                <div className="flex-1 overflow-y-auto space-y-3 pr-2 scrollbar-thin scrollbar-thumb-zinc-700">
+                    {selectedFindings.length === 0 ? (
+                        <div className="h-full flex flex-col items-center justify-center text-zinc-600 space-y-3 opacity-60">
+                            <Stethoscope className="w-12 h-12" />
+                            <p className="text-center text-sm">Bulguları seçmeye başladığınızda<br />olası tanılar burada listelenecektir.</p>
+                        </div>
+                    ) : results.length === 0 ? (
+                        <div className="h-full flex flex-col items-center justify-center text-zinc-500 space-y-3">
+                            <AlertTriangle className="w-10 h-10 text-orange-500/50" />
+                            <p className="text-center text-sm">Seçilen kriterlere uygun<br />tanı bulunamadı.</p>
+                        </div>
+                    ) : (
+                        results.map((result, idx) => (
+                            <div
+                                key={result.pathologyId}
+                                className={clsx(
+                                    "p-4 rounded-xl border transition-all animate-in slide-in-from-bottom-4 duration-500",
+                                    idx === 0
+                                        ? "bg-gradient-to-br from-cyan-900/20 to-zinc-900 border-cyan-500/50 shadow-lg shadow-cyan-900/10"
+                                        : "bg-zinc-800/40 border-zinc-800"
+                                )}
+                                style={{ animationDelay: `${idx * 100}ms` }}
+                            >
+                                <div className="flex justify-between items-start mb-2">
+                                    <div>
+                                        <h4 className={clsx("font-bold", idx === 0 ? "text-cyan-50 text-lg" : "text-zinc-200")}>
+                                            {result.pathologyName}
+                                        </h4>
+                                        <span className={clsx(
+                                            "text-xs px-1.5 py-0.5 rounded ml-0 mt-1 inline-block",
+                                            result.probabilityLabel === 'Yüksek Olasılık' ? "bg-green-500/20 text-green-400" :
+                                                result.probabilityLabel === 'Orta Olasılık' ? "bg-yellow-500/20 text-yellow-400" :
+                                                    "bg-zinc-700 text-zinc-400"
+                                        )}>
+                                            %{Math.min(result.score, 99)} Güven
+                                        </span>
+                                    </div>
+                                    <div className="text-right">
+                                        <span className="text-2xl font-black text-white/10">#{idx + 1}</span>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-1">
+                                    <p className="text-xs text-zinc-500">Eşleşen Bulgular:</p>
+                                    <div className="flex flex-wrap gap-1">
+                                        {result.matchedFindings.map(fid => {
+                                            const finding = groupedFindings[Object.keys(groupedFindings).find(cat => groupedFindings[cat].find(f => f.id === fid)) || ""]?.find(f => f.id === fid)
+                                                || activeFindingsList.find(f => f.id === fid); // Fallback search
+                                            return (
+                                                <span key={fid} className="text-[10px] px-1.5 py-0.5 rounded bg-zinc-700/50 text-zinc-300 border border-zinc-700">
+                                                    {finding?.label || fid}
+                                                </span>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    )}
+                </div>
+
+                {/* Result Footer: Report Generation Button */}
+                {results.length > 0 && (
+                    <div className="mt-4 pt-4 border-t border-zinc-800">
+                        <button
+                            onClick={() => setIsReportOpen(true)}
+                            className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold shadow-lg shadow-cyan-900/20 hover:from-cyan-500 hover:to-blue-500 transition-all flex items-center justify-center gap-2">
+                            <FileText className="w-5 h-5" />
+                            Rapor Taslağı Oluştur
+                        </button>
+                    </div>
+                )}
+            </div>
+
+            {/* Report Modal */}
+            {isReportOpen && results.length > 0 && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
+                    <div className="bg-white text-zinc-900 w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
+                        <div className="bg-zinc-100 px-6 py-4 border-b flex justify-between items-center">
+                            <h3 className="font-bold text-lg text-zinc-800 flex items-center gap-2">
+                                <FileText className="w-5 h-5 text-zinc-600" />
+                                Radyoloji Rapor Taslağı
+                            </h3>
+                            <button onClick={() => setIsReportOpen(false)} className="p-2 hover:bg-zinc-200 rounded-full transition-colors">
+                                <X className="w-5 h-5 text-zinc-500" />
+                            </button>
+                        </div>
+                        <div className="p-8 font-mono text-sm leading-relaxed overflow-y-auto max-h-[60vh]">
+                            <p className="font-bold mb-2">KLİNİK BİLGİ:</p>
+                            <p className="mb-4 text-zinc-600">[Klinik bilgi giriniz...]</p>
+
+                            <p className="font-bold mb-2">İNCELEME:</p>
+                            <p className="mb-4 text-zinc-600 font-semibold uppercase">{organ === 'Brain' ? 'Kranial' : 'Spinal'} {modality} incelemesi</p>
+
+                            <p className="font-bold mb-2">TEKNİK:</p>
+                            <p className="mb-4 text-zinc-600">{modality} sekansları alınmıştır.</p>
+
+                            <p className="font-bold mb-2">BULGULAR:</p>
+                            <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700">
+                                {selectedFindings.map(id => {
+                                    const label = activeFindingsList.find(f => f.id === id)?.label || id;
+                                    return <li key={id}>{label} izlenmiştir.</li>
+                                })}
+                            </ul>
+
+                            <p className="font-bold mb-2">SONUÇ & ÖNERİLER:</p>
+                            <div className="space-y-2 text-zinc-700">
+                                <p>Tanımlanan bulgular ışığında olası tanılar:</p>
+                                <ol className="list-decimal pl-5">
+                                    {results.slice(0, 3).map((res, idx) => (
+                                        <li key={res.pathologyId}>
+                                            <span className="font-semibold">{res.pathologyName}</span>
+                                            <span className="text-zinc-500 text-xs ml-2">({res.probabilityLabel})</span>
+                                        </li>
+                                    ))}
+                                </ol>
+                                <p className="mt-4 italic text-zinc-500 text-xs border-t pt-2">
+                                    * Bu rapor yapay zeka destekli taslak niteliğindedir. Uzman radyolog onayı gerektirir.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="bg-zinc-50 px-6 py-4 border-t flex justify-end gap-3">
+                            <button onClick={() => setIsReportOpen(false)} className="px-4 py-2 text-zinc-600 font-medium hover:text-zinc-900">Kapat</button>
+                            <button className="px-4 py-2 bg-zinc-900 text-white rounded-lg hover:bg-zinc-800 font-medium">Kopyala</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
