@@ -130,5 +130,116 @@ export const spinePathologies: Pathology[] = [
             "Nörolojik defisit riski yüksektir.",
             "Kompresyon kırığından farkı: Arka duvar ve arka kolon tutulumudur."
         ]
+    },
+    {
+        "id": "cervical_disc_herniation",
+        "name": "Servikal Disk Hernisi (Boyun Fıtığı)",
+        "category": "Dejeneratif",
+        "findings": {
+            "mri": {
+                "t2": "Disk T2 sinyalinde azalma (dejenerasyon). Posterior/posterolateral disk çıkıntısı. Kord basısı varsa: Miyelopati bulguları (T2'de kord içi hiperintensite - 'Snake eye' veya 'Pencil-like' görünüm).",
+                "t1": "Epidural yağ mesafesinin silinmesi. Disk-osteofil kompleksi anterior veya posterior.",
+                "sagittal": "C5-C6 ve C6-C7 en sık etkilenen seviyeler. Disk yükseklik kaybı. Retrolistezis eşlik edebilir.",
+                "axial": "Foraminal daralma, sinir kökü basısı. Kord kompresyonu değerlendirmesi.",
+                "t2_flair": "Miyelopati değerlendirmesi için STIR veya T2 tercih edilir."
+            },
+            "ct": {
+                "non_contrast": "Kalsifiye disk (sert disk). Osteofitler (spondiloz). Foraminal daralma.",
+                "bone_window": "Uncovertebral artropati, faset dejenerasyonu."
+            }
+        },
+        "keyPoints": [
+            "Miyelopatik bulgular (El beceriksizliği, yürüme bozukluğu, hiperrefleksi): Cerrahi endikasyon.",
+            "Radikülopati: Dermatomal ağrı ve güçsüzlük (C6: Başparmak, C7: Orta parmak).",
+            "MRI'da kord sinyal değişikliği: Miyelomalaziyi gösterir (kötü prognoz).",
+            "Ayırıcı tanı: OPLL (Posterior Longitudinal Ligaman Ossifikasyonu), Servikal stenoz."
+        ]
+    },
+    {
+        "id": "schmorl_nodule",
+        "name": "Schmorl Nodülü",
+        "category": "Dejeneratif",
+        "findings": {
+            "mri": {
+                "t1": "Vertebra end-plate'e doğru fokal disk hernisi. Akut: Çevre ödem (hipointens). Kronik: Sklerotik halka.",
+                "t2": "Akut: End-plate ödem (hiperintens). Kronik: Reaktif skleroz (hipointens). Disk materyali değişken sinyal.",
+                "stir": "Akut evrede belirgin ödem. Kronik evrede ödem kaybolur.",
+                "sagittal": "End-plate'te fokal defekt ve disk hernisi visualizasyonu."
+            },
+            "ct": {
+                "bone_window": "End-plate irregülaritesi. Sklerotik halka (kronik). Multipl lezyonlar olabilir."
+            }
+        },
+        "keyPoints": [
+            "Genellikle insidental bulgu. Ağrı ile ilişki tartışmalı.",
+            "Modic değişiklikleri eşlik edebilir: Tip 1 (ödem), Tip 2 (yağ), Tip 3 (skleroz).",
+            "Akut Schmorl nodülü: Ağrı kaynağı olabilir.",
+            "Scheuermann hastalığı: Multipl Schmorl nodülleri + kifoz."
+        ]
+    },
+    {
+        "id": "facet_arthropathy",
+        "name": "Faset Artropatisi (Faset Sendromu)",
+        "category": "Dejeneratif",
+        "findings": {
+            "mri": {
+                "t2": "Faset eklem hipertrofisi. Eklem effüzyonu (hiperintens). Sinovyal kist oluşumu (lateral resess basısı yapabilir).",
+                "t1": "Faset sklerozisi (hipointens). Yağlı dejenerasyon.",
+                "axial": "Faset genişlemesi ve açılanma değişikliği. Ligamentum flavum hipertrofisi eşlik eder.",
+                "stir": "Aktif inflamasyon varsa ödem."
+            },
+            "ct": {
+                "bone_window": "Faset hipertrofisi. Osteofit formasyonu. Vakum fenomeni (gaz birikimi - ileri dejenerasyon).",
+                "axial": "Faset subluksasyonu. Kanal ve foramen daralması."
+            }
+        },
+        "keyPoints": [
+            "Klinik: Bel ağrısı, ekstansiyonda artan, fleksiyonda azalan.",
+            "Lomber lordoz artışı riski: Posterior element yükü artar.",
+            "Sinovyal kist: Lateral resess stenozu ve radikülopati yapabilir.",
+            "Faset bloğu ve ablasyon: Tanı ve tedavi amaçlı kullanılır."
+        ]
+    },
+    {
+        "id": "spinal_ependymoma",
+        "name": "Spinal Ependimom (İntrameduller)",
+        "category": "Neoplastik",
+        "findings": {
+            "mri": {
+                "t1": "Korda ekspansiyon yapan izointens/hipointens kitle. Polar kistler (tümör üst/altında siringomiyeli benzeri).",
+                "t2": "Santral yerleşimli, iyi sınırlı, homojen HİPERİNTENS kitle. 'Cap sign': Kranyal ve kaudal hemosiderin (hipointens) - Patognomonik.",
+                "t1_c": "Yoğun, HOMOJEn kontrastlanma. Sınırlar net, cerrahi için elverişli.",
+                "stir": "Tümör ve çevre ödem değerlendirmesi.",
+                "location": "En sık: Konus medullaris, Filum terminale (Miksopapiller tip). Servikal > Torakal."
+            }
+        },
+        "keyPoints": [
+            "Erişkinlerde en sık intrameduller spinal tümör.",
+            "'Cap sign' (hemosiderin) ependimom için patognomonik.",
+            "Miksopapiller ependimom: Filum terminale, BOS yoluyla yayılım riski.",
+            "Cerrahi: Tam rezeksiyon mümkün (iyi sınırlı)."
+        ]
+    },
+    {
+        "id": "spinal_schwannoma",
+        "name": "Spinal Schwannom (Nörilemmoma)",
+        "category": "Neoplastik",
+        "findings": {
+            "mri": {
+                "t1": "İzointens veya hafif hipointens kitle. Foraminal genişleme.",
+                "t2": "HETEROJEn hiperintens (Antoni A/B alanları). 'Target sign': Santral hipointens, periferal hiperintens.",
+                "t1_c": "Yoğun kontrastlanma. Kistik/nekrotik alanlar kontrastlanmaz.",
+                "axial": "Foraminal genişleme (kemik remodeling). 'Dumbbell' konfigürasyonu: Hem intradural hem ekstradural uzanım."
+            },
+            "ct": {
+                "bone_window": "Neural foramen genişlemesi. Kemik erozyonu (yavaş büyüyen)."
+            }
+        },
+        "keyPoints": [
+            "En sık intradural-ekstramedüller spinal tümör.",
+            "Nörofibromdan farkı: Eksentrik yerleşim, fokal, tek sinir kökü.",
+            "NF2'de bilateral vestibüler schwannom + multipl spinal schwannom.",
+            "'Dumbbell' tümör: Foramenı genişleterek hem kanal içi hem dışına uzanır."
+        ]
     }
 ];

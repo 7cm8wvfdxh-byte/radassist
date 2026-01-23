@@ -10,6 +10,8 @@ export interface ModalityFindings {
         ct_venogram?: string;
         ct_perfusion?: string;
         bone_window?: string;
+        bone_subtraction?: string;
+        evolution?: string;
         sagittal?: string;
         coronal?: string;
         axial?: string;
@@ -20,17 +22,26 @@ export interface ModalityFindings {
         t2_flair?: string;
         t1_c?: string;
         t1_c_dynamic?: string;
+        t1_c_coronal?: string;
         dwi?: string;
         adc?: string;
         swi?: string;
         mrv?: string;
+        mra?: string;
+        tof_mra?: string;
+        t1_t2?: string;
         perfusion?: string;
         spectroscopy?: string;
         stir?: string;
         sagittal?: string;
         coronal?: string;
         axial?: string;
+        location?: string;
+        invasion?: string;
         other_sequences?: string;
+    };
+    dsa?: {
+        description?: string;
     };
 }
 

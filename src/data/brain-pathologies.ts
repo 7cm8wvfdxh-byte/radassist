@@ -487,5 +487,130 @@ export const brainPathologies: Pathology[] = [
             "Genellikle B-hücreli lenfomadır.",
             "İmmün sistemi baskılanmış hastalarda (EBV ilişkili) görünüm çok farklıdır (nekrotik, halkasal)."
         ]
+    },
+    {
+        "id": "intracerebral_hemorrhage",
+        "name": "İntraserebral Kanama (Hemorajik İnme)",
+        "category": "Vasküler",
+        "findings": {
+            "ct": {
+                "non_contrast": "Hiperakut/Akut dönem: Hiperdens (60-80 HU) parankimal hematom. Çevre hipodansite (ödem). Kitle etkisi ve ventriküler şift. 'Spot sign' (aktif kanama odağı) BT anjiyoda görülebilir.",
+                "contrast": "Aktif ekstravazasyon alanları (kötü prognoz). Altta yatan lezyon (AVM, tümör) araştırması.",
+                "evolution": "Subakut (3-14 gün): İzodansite. Kronik (>14 gün): Hipodansite, kavite oluşumu."
+            },
+            "mri": {
+                "t1": "Hiperakut (<6s): İzointens (Oksihemoglobin). Akut (6s-3gün): İzointens-hipointens (Deoksihemoglobin). Erken subakut: Hiperintens periferal halka (intraselüler Met-Hb). Geç subakut: Homojen hiperintens (ekstraselüler Met-Hb).",
+                "t2": "Hiperakut: Hiperintens. Akut: Hipointens halka (Deoksihemoglobin). Subakut: Hiperintens merkez, hipointens rim. Kronik: Belirgin hipointens hemosiderin halkası.",
+                "swi": "Tüm evrelerde belirgin 'blooming' artefaktı. En duyarlı sekans. Mikrokanama tespiti.",
+                "t2_flair": "Çevresel vazojenik ödem değerlendirmesi. Subaraknoid kanama eşlik ediyor mu?",
+                "dwi": "Akut hematomda periferal difüzyon kısıtlılığı (sitotoksik ödem)."
+            }
+        },
+        "keyPoints": [
+            "En sık neden: Hipertansiyon (bazal ganglia, talamus, pons, serebellum).",
+            "Genç hastada lobar kanama: Amiloid anjiyopati, AVM, kavernom düşün.",
+            "BT anjiyoda 'Spot sign': Hematom genişlemesi riski yüksek.",
+            "Kanama kronolojisi MRI'da T1/T2 sinyal değişimleriyle takip edilir."
+        ]
+    },
+    {
+        "id": "cerebral_aneurysm",
+        "name": "Serebral Anevrizma (Berry Anevrizması)",
+        "category": "Vasküler",
+        "findings": {
+            "ct": {
+                "non_contrast": "Rüptüre: Subaraknoid kanama (sisternalarda hiperdansite). İntrüptüre: Genellikle insidental.",
+                "cta": "Anevrizma lokasyonu (Willis poligonu), boyut ölçümü, dome/neck oranı, ana damarla ilişki. Dev anevrizma (>25mm) trombüs ve kalsifikasyon içerebilir.",
+                "bone_subtraction": "Kemik artefaktlarını elimine eder, özellikle kafa tabanındaki anevrizmalarda."
+            },
+            "mri": {
+                "tof_mra": "Akım bağımlı parlak sinyal. Küçük anevrizmaları (>3mm) tespit eder. Türbülan akım nedeniyle sinyal kaybı olabilir.",
+                "t1_t2": "Dev anevrizma: Akım boşluğu (flow void), periferal trombüs (T1 hiperintens).",
+                "t1_c": "Duvar kontrastlanması (inflamasyon veya instabilite belirtisi olabilir).",
+                "swi": "Rüptür geçmişi: Hemosiderin birikimi."
+            },
+            "dsa": {
+                "description": "Altın standart. 3D rotasyonel anjiyo. Tedavi planlaması (koil vs klip). Kollateral akım değerlendirmesi."
+            }
+        },
+        "keyPoints": [
+            "En sık yerleşim: Anterior kominikan arter (%30), Posterior kominikan arter (%25), MCA bifurkasyonu (%20).",
+            "Rüptür riski: Boyut >7mm, posterior sirkülasyon, irregüler şekil, 'daughter sac'.",
+            "PHASES skoru rüptür riskini tahmin eder.",
+            "Polikistik böbrek hastalığı, Ehlers-Danlos, aile öyküsü: Tarama endikasyonu."
+        ]
+    },
+    {
+        "id": "low_grade_glioma",
+        "name": "Düşük Dereceli Gliom (WHO Grade 2)",
+        "category": "Neoplastik",
+        "findings": {
+            "ct": {
+                "non_contrast": "Homojen hipodens kitle. Kalsifikasyon (%20-40, özellikle oligodendrogliomda). Minimal kitle etkisi. Kontrastlanma genellikle YOK.",
+                "contrast": "Kontrastlanma varsa: Grade artışı düşünülmeli (anaplastik transformasyon)."
+            },
+            "mri": {
+                "t1": "Homojen hipointens, iyi sınırlı kitle. Kortikal tutulum sık (gri-beyaz cevher ayrımının silinmesi).",
+                "t2_flair": "Homojen HİPERİNTENS. Keskin sınırlı. FLAIR'de çevre ödem minimal veya yok.",
+                "dwi": "Difüzyon kısıtlılığı YOK (GBM'den fark - sellülarite düşük).",
+                "t1_c": "Kontrastlanma YOK veya minimal. Kontrastlanma: Yüksek grade düşündürür.",
+                "perfusion": "rCBV DÜŞÜK veya normal (<1.75). GBM'de yüksektir (>1.75).",
+                "spectroscopy": "Kolin/NAA oranı hafif artmış (GBM'den daha az). myo-Inozitol artışı (Grade 2 belirtisi)."
+            }
+        },
+        "keyPoints": [
+            "WHO 2021: IDH-mutant astrositom, Oligodendrogliom (1p/19q ko-delesyon).",
+            "Genellikle genç erişkinlerde (30-40 yaş), epilepsi ile prezentasyon.",
+            "Frontal ve temporal loblar en sık yerleşim.",
+            "'T2-FLAIR mismatch': Astrositom için spesifik (T2'de hiperintens, FLAIR'de santral hipointens)."
+        ]
+    },
+    {
+        "id": "pituitary_macroadenoma",
+        "name": "Hipofiz Makroadenomu (>10mm)",
+        "category": "Neoplastik",
+        "findings": {
+            "ct": {
+                "non_contrast": "Sellar genişleme, klinoid erozyonu. Suprasellar uzanım. Heterojen (kanama, kist, nekroz).",
+                "contrast": "Homojen veya heterojen kontrastlanma. Normal hipofiz dokusu ayırt edilemeyebilir."
+            },
+            "mri": {
+                "t1": "İzointens veya hafif hipointens. Kanama varsa (Apopleksi): Hiperintens alanlar.",
+                "t2": "Değişken. Solid: İzointens. Kistik/Nekrotik: Hiperintens.",
+                "t1_c": "Yoğun kontrastlanma. Dinamik çekimde normal hipofizden GEÇ kontrastlanır.",
+                "t1_c_coronal": "'Figure-of-8' (Kardan adam) görünümü: Suprasellar uzanım, diyafragma sella tarafından sıkıştırılma.",
+                "invasion": "Kavernöz sinüs invazyonu: Internal karotid arter %50'den fazla sarılmışsa invazyon olasılığı yüksek."
+            }
+        },
+        "keyPoints": [
+            "Fonksiyonel: Prolaktinoma (en sık), GH salgılayan (Akromegali), ACTH (Cushing).",
+            "Non-fonksiyonel: Kitle etkisi ile semptom (Bitemporal hemianopsi - optik kiazma basısı).",
+            "Hipofizer apopleksi: Ani kanama/nekroz - Acil nöroşirürji konsültasyonu.",
+            "Prolaktinoma tedavisi: Önce medikal (Dopamin agonisti), cerrahi ikinci seçenek."
+        ]
+    },
+    {
+        "id": "craniopharyngioma",
+        "name": "Kraniyofarenjiom",
+        "category": "Neoplastik",
+        "findings": {
+            "ct": {
+                "non_contrast": "Suprasellar kalsifiye (>%90) kistik/solid kitle. Kalsifikasyon PATOGNOMONIK. Çocuklarda %90, erişkinlerde %50 kalsifiye.",
+                "contrast": "Solid komponent ve kist duvarı kontrastlanır."
+            },
+            "mri": {
+                "t1": "KİST: T1 HİPERİNTENS (kolesterol kristalleri, protein içeriği) - AYIRT EDİCİ ÖZELLİK. Solid: İzointens.",
+                "t2": "Kist: Hiperintens (değişken). Solid: Heterojen.",
+                "t2_flair": "Kistik komponent belirgin. Çevre gliozis/ödem.",
+                "t1_c": "Solid komponent ve kist duvarı belirgin kontrastlanma. İnce veya nodüler rim.",
+                "location": "Suprasellar (%75), Intrasellar+Suprasellar (%20), Sadece intrasellar (%5)."
+            }
+        },
+        "keyPoints": [
+            "Bimodal yaş dağılımı: Çocukluk (5-15 yaş) ve erişkinler (50-75 yaş).",
+            "Adamantinomatöz tip (çocuk): Kalsifiye, kistik. Papiller tip (erişkin): Daha solid.",
+            "Ayırıcı tanı: Rathke yarığı kisti (kalsifikasyon yok, daha küçük), Dermoid kist, Hipofiz adenomu.",
+            "Tedavi zorluğu: Hipotalamus yapışıklığı nedeniyle subtotal rezeksiyon."
+        ]
     }
 ];
