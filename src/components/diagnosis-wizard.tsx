@@ -156,32 +156,57 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                     <div className="space-y-4 animate-in slide-in-from-left-4 duration-300">
                         <label className="text-sm font-medium text-zinc-300">Saptanan Bulgular</label>
                         <div className="space-y-4">
-                            {Object.entries(groupedFindings).map(([category, findings]) => (
-                                <div key={category} className="bg-zinc-900/50 rounded-xl border border-zinc-800 p-3">
-                                    <h3 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2 px-1">
-                                        {category}
-                                    </h3>
-                                    <div className="grid grid-cols-1 gap-2">
-                                        {findings.map(finding => (
-                                            <button
-                                                key={finding.id}
-                                                onClick={() => toggleFinding(finding.id)}
-                                                className={clsx(
-                                                    "flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors text-left",
-                                                    selectedFindings.includes(finding.id)
-                                                        ? "bg-cyan-900/30 text-cyan-100 border border-cyan-500/30"
-                                                        : "bg-zinc-800/30 text-zinc-400 hover:bg-zinc-800 border border-transparent"
-                                                )}
-                                            >
-                                                <span>{finding.label}</span>
-                                                {selectedFindings.includes(finding.id) && (
-                                                    <Check className="w-4 h-4 text-cyan-400" />
-                                                )}
-                                            </button>
-                                        ))}
+                            {Object.entries(groupedFindings).map(([category, findings]) => {
+                                // Dynamic Category Icon
+                                let CatIcon = FileText;
+                                if (category.includes("Eko") || category.includes("Dansite")) CatIcon = Activity;
+                                if (category.includes("Kontrast")) CatIcon = Droplets;
+                                if (category.includes("Şekil")) CatIcon = Brain; // Placeholder shape icon
+                                if (category.includes("Diğer")) CatIcon = Check;
+
+                                return (
+                                    <div key={category} className="bg-zinc-900/50 rounded-xl border border-zinc-800 p-3 relative overflow-hidden group">
+                                        {/* Category Header */}
+                                        <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/5">
+                                            <div className="p-1.5 rounded-lg bg-zinc-800 text-zinc-400 group-hover:text-cyan-400 group-hover:bg-cyan-950/30 transition-colors">
+                                                <CatIcon className="w-4 h-4" />
+                                            </div>
+                                            <h3 className="text-xs font-bold text-zinc-400 uppercase tracking-widest">
+                                                {category}
+                                            </h3>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 gap-2 relative z-10">
+                                            {findings.map(finding => (
+                                                <button
+                                                    key={finding.id}
+                                                    onClick={() => toggleFinding(finding.id)}
+                                                    className={clsx(
+                                                        "flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-all text-left border relative overflow-hidden group/btn",
+                                                        selectedFindings.includes(finding.id)
+                                                            ? "bg-cyan-950/40 text-cyan-100 border-cyan-500/30 shadow-[0_0_10px_rgba(8,145,178,0.1)]"
+                                                            : "bg-zinc-800/20 text-zinc-400 hover:bg-zinc-800/60 border-transparent hover:border-zinc-700"
+                                                    )}
+                                                >
+                                                    {/* Selection Indicator Bar */}
+                                                    {selectedFindings.includes(finding.id) && (
+                                                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-cyan-500"></div>
+                                                    )}
+
+                                                    <span className="pl-1">{finding.label}</span>
+                                                    {selectedFindings.includes(finding.id) ? (
+                                                        <div className="bg-cyan-500 rounded-full p-0.5 animate-in zoom-in spin-in-90 duration-300">
+                                                            <Check className="w-3 h-3 text-black font-bold" />
+                                                        </div>
+                                                    ) : (
+                                                        <div className="w-4 h-4 rounded-full border border-zinc-700 group-hover/btn:border-zinc-500 transition-colors" />
+                                                    )}
+                                                </button>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 )}

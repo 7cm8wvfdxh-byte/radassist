@@ -1,5 +1,5 @@
 import { expandQueryTokens } from "@/lib/search-utils"; // Import smart tokenizer
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
@@ -47,6 +47,42 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     // ... hooks ...
     const [activeTab, setActiveTab] = useState<TabType>("summary");
     const [activeImage, setActiveImage] = useState<number | null>(null);
+
+    // SMART COVER IMAGE LOGIC:
+    // If a highlight query exists (search), try to find a matching image in the gallery
+    // and set it as the active (cover) image automatically.
+    React.useEffect(() => {
+        if (!highlightQuery || !data.gallery) return;
+
+        const query = highlightQuery.toLowerCase();
+        // Check for modality keywords in query
+        const targetIndex = data.gallery.findIndex(img => {
+            const mod = img.modality.toLowerCase();
+            const caption = img.caption.toLowerCase();
+
+            // Priority 1: Modality match (e.g. user typed "t2")
+            if (query.includes(mod)) return true;
+
+            // Priority 2: Simple mapping
+            if (query.includes("t2") && mod.includes("t2")) return true;
+            if (query.includes("t1") && mod.includes("t1")) return true;
+            if (query.includes("dwi") && mod.includes("dwi")) return true;
+            if (query.includes("swi") && mod.includes("swi")) return true;
+            if (query.includes("bt") && (mod.includes("ct") || mod.includes("bt"))) return true;
+            if (query.includes("ct") && (mod.includes("ct") || mod.includes("bt"))) return true;
+
+            // Priority 3: Caption match
+            if (caption.includes(query)) return true;
+
+            return false;
+        });
+
+        if (targetIndex !== -1) {
+            setActiveImage(targetIndex);
+        } else {
+            setActiveImage(null); // Reset if no match
+        }
+    }, [highlightQuery, data.gallery]);
     const divRef = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [opacity, setOpacity] = useState(0);
