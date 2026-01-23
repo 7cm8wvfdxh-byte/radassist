@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
-import { X, RefreshCw, ChevronRight, ChevronLeft, ChevronUp, ChevronDown, Trophy, Sparkles, Brain, Stethoscope, Microscope, Search, Lightbulb, ScanEye, Hand } from "lucide-react";
+import { X, RefreshCw, ChevronRight, ChevronLeft, Trophy, Flag, Brain, Stethoscope, Microscope, Search, Lightbulb, ScanEye, ArrowRight, Layers } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { brainPathologies } from "@/data/brain-pathologies";
 import { spinePathologies } from "@/data/spine-pathologies";
@@ -18,10 +18,8 @@ interface DailyCaseModalProps {
 
 export function DailyCaseModal({ isOpen, onClose }: DailyCaseModalProps) {
     const [currentCase, setCurrentCase] = useState<Pathology | null>(null);
-    const [rotation, setRotation] = useState({ x: 0, y: 0 });
-    const [isDragging, setIsDragging] = useState(false);
-    const lastMousePos = useRef({ x: 0, y: 0 });
-    const containerRef = useRef<HTMLDivElement>(null);
+    const [step, setStep] = useState(0); // 0: Intro/Image, 1: Etiology, 2: DDx, 3: Findings, 4: Diagnosis
+    const totalSteps = 5;
 
     // Combine all pathologies
     const allPathologies = [
@@ -33,7 +31,7 @@ export function DailyCaseModal({ isOpen, onClose }: DailyCaseModalProps) {
     ];
 
     const pickRandomCase = () => {
-        setRotation({ x: 0, y: 0 });
+        setStep(0);
         setTimeout(() => {
             const randomIndex = Math.floor(Math.random() * allPathologies.length);
             setCurrentCase(allPathologies[randomIndex]);
@@ -46,38 +44,13 @@ export function DailyCaseModal({ isOpen, onClose }: DailyCaseModalProps) {
         }
     }, [isOpen]);
 
-    // Drag Handlers
-    const handleStart = (clientX: number, clientY: number) => {
-        setIsDragging(true);
-        lastMousePos.current = { x: clientX, y: clientY };
+    const handleNext = () => {
+        if (step < totalSteps - 1) setStep(step + 1);
     };
 
-    const handleMove = (clientX: number, clientY: number) => {
-        if (!isDragging) return;
-        const deltaX = clientX - lastMousePos.current.x;
-        const deltaY = clientY - lastMousePos.current.y;
-
-        setRotation(prev => ({
-            x: prev.x - deltaY * 0.5, // Invert Y axis for natural feel
-            y: prev.y + deltaX * 0.5
-        }));
-
-        lastMousePos.current = { x: clientX, y: clientY };
+    const handlePrev = () => {
+        if (step > 0) setStep(step - 1);
     };
-
-    const handleEnd = () => setIsDragging(false);
-
-    // Mouse Events
-    const onMouseDown = (e: React.MouseEvent) => handleStart(e.clientX, e.clientY);
-    const onMouseMove = (e: React.MouseEvent) => handleMove(e.clientX, e.clientY);
-    const onMouseUp = () => handleEnd();
-    const onMouseLeave = () => handleEnd();
-
-    // Touch Events
-    const onTouchStart = (e: React.TouchEvent) => handleStart(e.touches[0].clientX, e.touches[0].clientY);
-    const onTouchMove = (e: React.TouchEvent) => handleMove(e.touches[0].clientX, e.touches[0].clientY);
-    const onTouchEnd = () => handleEnd();
-
 
     if (!isOpen || !currentCase) return null;
 
@@ -85,204 +58,209 @@ export function DailyCaseModal({ isOpen, onClose }: DailyCaseModalProps) {
     const coverImage = hasImage ? currentCase.gallery![0].url : "/placeholder_source.png";
     const modality = hasImage ? currentCase.gallery![0].modality : "Bilinmiyor";
 
-    // Style for the cube transform
-    const cubeStyle = {
-        transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
-        transition: isDragging ? 'none' : 'transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+    // Card Content Renderer
+    const renderCardContent = (cardIndex: number) => {
+        switch (cardIndex) {
+            case 0: // IMAGE / QUESTION
+                return (
+                    <div className="flex flex-col h-full relative">
+                        <div className="absolute inset-0 z-0">
+                            <Image
+                                src={coverImage}
+                                alt="Case"
+                                fill
+                                className="object-cover opacity-60 group-hover:opacity-70 transition-opacity"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent" />
+                        </div>
+                        <div className="relative z-10 p-6 flex flex-col h-full justify-end">
+                            <div className="mb-auto pt-4">
+                                <span className="bg-indigo-500/90 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg border border-white/10">
+                                    Adım 1/5: Görüntü
+                                </span>
+                            </div>
+                            <h2 className="text-3xl font-bold text-white mb-2 leading-tight">Tanı Nedir?</h2>
+                            <p className="text-slate-300 text-sm mb-4">
+                                Görüntüyü inceleyin. {currentCase.category} kategorisinden bir vaka.
+                            </p>
+                            <div className="flex gap-2">
+                                <span className="text-xs bg-slate-800 border border-slate-700 px-2 py-1 rounded text-slate-400">{modality}</span>
+                            </div>
+                        </div>
+                    </div>
+                );
+            case 1: // ETIOLOGY
+                return (
+                    <div className="flex flex-col h-full p-8 bg-slate-900 border border-indigo-500/20 rounded-3xl relative overflow-hidden">
+                        <div className="absolute right-[-20px] top-[-20px] opacity-5">
+                            <Microscope className="w-48 h-48 text-indigo-500" />
+                        </div>
+                        <div className="mb-6">
+                            <span className="text-indigo-400 text-xs font-bold tracking-wider uppercase mb-2 block">Adım 2/5</span>
+                            <h3 className="text-2xl font-bold text-white">Etiyoloji</h3>
+                        </div>
+                        <div className="flex-1 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-indigo-900">
+                            <p className="text-slate-300 leading-relaxed text-lg">
+                                {currentCase.etiology || "Bu patolojinin etiyolojik kökeni hakkında spesifik veri veritabanında henüz güncellenmemiştir."}
+                            </p>
+                        </div>
+                    </div>
+                );
+            case 2: // DDx
+                return (
+                    <div className="flex flex-col h-full p-8 bg-slate-900 border border-rose-500/20 rounded-3xl relative overflow-hidden">
+                        <div className="absolute right-[-20px] top-[-20px] opacity-5">
+                            <Search className="w-48 h-48 text-rose-500" />
+                        </div>
+                        <div className="mb-6">
+                            <span className="text-rose-400 text-xs font-bold tracking-wider uppercase mb-2 block">Adım 3/5</span>
+                            <h3 className="text-2xl font-bold text-white">Ayırıcı Tanı</h3>
+                        </div>
+                        <ul className="space-y-3">
+                            {currentCase.differentialDiagnosis ? currentCase.differentialDiagnosis.map((dx, i) => (
+                                <li key={i} className="flex items-start gap-3 bg-white/5 p-3 rounded-xl border border-white/5">
+                                    <span className="bg-rose-500/20 text-rose-400 font-bold w-6 h-6 flex items-center justify-center rounded text-xs shrink-0">{i + 1}</span>
+                                    <span className="text-slate-200">{dx}</span>
+                                </li>
+                            )) : <p className="text-slate-500">DDx listesi hazırlanıyor...</p>}
+                        </ul>
+                    </div>
+                );
+            case 3: // FINDINGS
+                return (
+                    <div className="flex flex-col h-full p-8 bg-slate-900 border border-emerald-500/20 rounded-3xl relative overflow-hidden">
+                        <div className="mb-6">
+                            <span className="text-emerald-400 text-xs font-bold tracking-wider uppercase mb-2 block">Adım 4/5</span>
+                            <h3 className="text-2xl font-bold text-white">Radyolojik Bulgular</h3>
+                        </div>
+                        <div className="flex-1 overflow-y-auto pr-2 space-y-4 scrollbar-thin scrollbar-thumb-emerald-900">
+                            {currentCase.goldStandard && (
+                                <div className="bg-emerald-900/20 p-3 rounded-xl border border-emerald-500/20">
+                                    <span className="text-[10px] text-emerald-500 font-bold uppercase block mb-1">Altın Standart</span>
+                                    <p className="text-sm text-emerald-100">{currentCase.goldStandard}</p>
+                                </div>
+                            )}
+                            <div className="space-y-3">
+                                {Object.entries(currentCase.findings.ct || {}).map(([key, val]) => val && (
+                                    <div key={key} className="pl-3 border-l-2 border-slate-700">
+                                        <span className="text-xs text-slate-500 uppercase font-bold block mb-1">BT {key}</span>
+                                        <p className="text-sm text-slate-300">{val as string}</p>
+                                    </div>
+                                ))}
+                                {Object.entries(currentCase.findings.mri || {}).slice(0, 3).map(([key, val]) => val && (
+                                    <div key={key} className="pl-3 border-l-2 border-blue-900">
+                                        <span className="text-xs text-slate-500 uppercase font-bold block mb-1">MRI {key}</span>
+                                        <p className="text-sm text-slate-300">{val as string}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                );
+            case 4: // DIAGNOSIS
+                return (
+                    <div className="flex flex-col h-full p-8 bg-gradient-to-br from-indigo-900 to-slate-900 border border-indigo-500 rounded-3xl relative overflow-hidden text-center justify-center">
+                        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 pointer-events-none" />
+
+                        <div className="relative z-10 flex flex-col items-center">
+                            <Trophy className="w-20 h-20 text-yellow-400 mb-6 drop-shadow-[0_0_15px_rgba(250,204,21,0.5)] animate-bounce" />
+                            <span className="text-indigo-300 text-sm font-bold tracking-[0.2em] uppercase mb-4">DOĞRU TANI</span>
+                            <h2 className="text-4xl font-black text-white mb-6 leading-tight drop-shadow-xl">{currentCase.name}</h2>
+
+                            <p className="text-slate-300 italic mb-8 max-w-xs mx-auto">
+                                &ldquo;{currentCase.clinicalPearl || currentCase.keyPoints[0]}&rdquo;
+                            </p>
+
+                            <button
+                                onClick={pickRandomCase}
+                                className="group relative px-8 py-3 bg-white text-indigo-950 rounded-full font-bold text-sm shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 overflow-hidden"
+                            >
+                                <span className="relative z-10 flex items-center gap-2">
+                                    <RefreshCw className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" />
+                                    Yeni Vaka
+                                </span>
+                                <div className="absolute inset-0 bg-indigo-50 group-hover:bg-indigo-100 transition-colors" />
+                            </button>
+                        </div>
+                    </div>
+                );
+            default: return null;
+        }
     };
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-in fade-in duration-300">
 
-            {/* Close */}
             <button
                 onClick={onClose}
-                className="absolute top-6 right-6 p-2 text-white/50 hover:text-white transition-colors z-50 pointer-events-auto cursor-pointer"
+                className="absolute top-6 right-6 p-2 text-white/50 hover:text-white transition-colors z-50 hover:bg-white/10 rounded-full"
             >
                 <X className="w-8 h-8" />
             </button>
 
-            {/* Interaction Hint */}
-            <div className="absolute top-24 left-0 right-0 text-center pointer-events-none z-10 animate-pulse">
-                <div className="inline-flex items-center gap-2 bg-black/50 px-4 py-2 rounded-full border border-white/10 backdrop-blur">
-                    <Hand className="w-4 h-4 text-white/70" />
-                    <span className="text-xs text-white/70">Küpü çevirmek için sürükleyin</span>
+            {/* Main Content Area */}
+            <div className="w-full max-w-sm relative aspect-[4/5]"> {/* aspect ratio vertical card */}
+
+                {/* Cards Stack */}
+                <div className="relative w-full h-full">
+                    {/* Render current step card */}
+                    <div className="absolute inset-0 z-20 transition-all duration-500 ease-out transform" key={step}>
+                        <div className="w-full h-full bg-slate-900 rounded-3xl shadow-2xl overflow-hidden ring-1 ring-white/10">
+                            {renderCardContent(step)}
+                        </div>
+                    </div>
+
+                    {/* Hint of next card underneath */}
+                    {step < totalSteps - 1 && (
+                        <div className="absolute inset-0 z-10 scale-95 translate-y-3 opacity-50 blur-[1px]">
+                            <div className="w-full h-full bg-slate-800 rounded-3xl border border-white/5" />
+                        </div>
+                    )}
+                    {step < totalSteps - 2 && (
+                        <div className="absolute inset-0 z-0 scale-90 translate-y-6 opacity-30 blur-[2px]">
+                            <div className="w-full h-full bg-slate-800 rounded-3xl border border-white/5" />
+                        </div>
+                    )}
                 </div>
-            </div>
 
-            <div
-                className="relative w-full max-w-[320px] aspect-square cube-scene cursor-grab active:cursor-grabbing"
-                ref={containerRef}
-                onMouseDown={onMouseDown}
-                onMouseMove={onMouseMove}
-                onMouseUp={onMouseUp}
-                onMouseLeave={onMouseLeave}
-                onTouchStart={onTouchStart}
-                onTouchMove={onTouchMove}
-                onTouchEnd={onTouchEnd}
-            >
-
-                <div className="cube" style={cubeStyle}>
-
-                    {/* 1. FRONT: Question / Visual */}
-                    <div className="cube-face face-front bg-[#0a0a0a] rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] pointer-events-none select-none">
-                        <Image
-                            src={coverImage}
-                            alt="Case"
-                            fill
-                            className="object-cover opacity-80 pointer-events-none"
-                            draggable={false}
+                {/* Progress Bar */}
+                <div className="absolute -top-8 left-0 right-0 flex justify-center gap-1">
+                    {[...Array(totalSteps)].map((_, i) => (
+                        <div
+                            key={i}
+                            className={cn(
+                                "h-1 rounded-full transition-all duration-300",
+                                i === step ? "w-8 bg-indigo-500" : i < step ? "w-2 bg-indigo-900" : "w-2 bg-slate-800"
+                            )}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40" />
-                        <div className="absolute inset-0 p-6 flex flex-col justify-between select-none">
-                            <div className="flex justify-between">
-                                <span className="bg-indigo-500/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg border border-white/10">
-                                    Soru
-                                </span>
-                                <span className="bg-slate-800/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-slate-300">
-                                    {modality}
-                                </span>
-                            </div>
-                            <div className="text-center">
-                                <h3 className="text-xl font-bold text-white mb-2 drop-shadow-lg">Tanı Nedir?</h3>
-                                <p className="text-xs text-slate-300 drop-shadow-md">
-                                    Çevirin →
-                                </p>
-                            </div>
-                            <div className="text-xs text-center text-white/40 font-mono">
-                                {currentCase.category}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* 2. RIGHT: Etiology */}
-                    <div className="cube-face face-right bg-slate-950 rounded-3xl overflow-hidden border border-indigo-500/20 p-6 flex flex-col pointer-events-none select-none">
-                        <div className="flex items-center gap-2 mb-4 text-indigo-400 border-b border-indigo-500/10 pb-2">
-                            <Microscope className="w-5 h-5" />
-                            <h3 className="font-bold text-sm tracking-wider uppercase">Etiyoloji</h3>
-                        </div>
-                        <div className="flex-1 overflow-y-auto text-sm text-slate-300 leading-relaxed scrollbar-thin scrollbar-thumb-indigo-900 pr-2">
-                            {currentCase.etiology || (
-                                <div className="space-y-4">
-                                    <p className="text-xs text-slate-400">Genel Bilgi:</p>
-                                    <p>{currentCase.category} kategorisinde değerlendirilir.</p>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* 3. BACK: DDx */}
-                    <div className="cube-face face-back bg-slate-950 rounded-3xl overflow-hidden border border-rose-500/20 p-6 flex flex-col pointer-events-none select-none">
-                        <div className="flex items-center gap-2 mb-4 text-rose-400 border-b border-rose-500/10 pb-2">
-                            <Search className="w-5 h-5" />
-                            <h3 className="font-bold text-sm tracking-wider uppercase">Ayırıcı Tanı</h3>
-                        </div>
-                        <div className="flex-1 overflow-y-auto pr-2">
-                            {currentCase.differentialDiagnosis ? (
-                                <ul className="space-y-2">
-                                    {currentCase.differentialDiagnosis.map((dx, i) => (
-                                        <li key={i} className="bg-white/5 p-2 rounded border border-white/5 text-xs text-slate-300">
-                                            {dx}
-                                        </li>
-                                    ))}
-                                </ul>
-                            ) : (
-                                <div className="text-slate-500 text-xs text-center mt-10">
-                                    DDx verisi hazırlanıyor...
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* 4. LEFT: DETAILED IMAGING (ENHANCED) */}
-                    <div className="cube-face face-left bg-slate-950 rounded-3xl overflow-hidden border border-emerald-500/20 p-5 flex flex-col pointer-events-none select-none">
-                        <div className="flex items-center gap-2 mb-3 text-emerald-400 border-b border-emerald-500/10 pb-2">
-                            <ScanEye className="w-5 h-5" />
-                            <h3 className="font-bold text-sm tracking-wider uppercase">Radyolojik Bulgular</h3>
-                        </div>
-                        <div className="flex-1 overflow-y-auto pr-2 text-xs text-slate-300 space-y-3 scrollbar-thin scrollbar-thumb-emerald-900">
-
-                            {/* Gold Standard Badge */}
-                            {currentCase.goldStandard && (
-                                <div className="bg-emerald-900/20 p-2 rounded border border-emerald-500/20 mb-2">
-                                    <span className="text-[10px] text-emerald-500 font-bold uppercase block mb-1">Altın Standart</span>
-                                    <p className="leading-tight">{currentCase.goldStandard}</p>
-                                </div>
-                            )}
-
-                            {/* Findings Details */}
-                            {currentCase.findings.ct && (
-                                <div className="space-y-1">
-                                    <span className="text-emerald-300 font-bold flex items-center gap-1 text-[10px]">
-                                        <div className="w-1 h-1 bg-emerald-500 rounded-full" />
-                                        BT Bulguları
-                                    </span>
-                                    {Object.entries(currentCase.findings.ct).map(([key, val]) => (
-                                        val && typeof val === 'string' && (
-                                            <div key={key} className="pl-2 border-l border-emerald-500/20 ml-1">
-                                                <span className="text-[10px] text-slate-500 uppercase block">{key.replace(/_/g, ' ')}</span>
-                                                <p className="leading-tight text-white/80">{val.substring(0, 100)}{val.length > 100 && "..."}</p>
-                                            </div>
-                                        )
-                                    ))}
-                                </div>
-                            )}
-
-                            {currentCase.findings.mri && (
-                                <div className="space-y-1">
-                                    <span className="text-blue-300 font-bold flex items-center gap-1 text-[10px]">
-                                        <div className="w-1 h-1 bg-blue-500 rounded-full" />
-                                        MRI Bulguları
-                                    </span>
-                                    {Object.entries(currentCase.findings.mri).slice(0, 3).map(([key, val]) => (
-                                        val && typeof val === 'string' && (
-                                            <div key={key} className="pl-2 border-l border-blue-500/20 ml-1">
-                                                <span className="text-[10px] text-slate-500 uppercase block">{key.replace(/_/g, ' ')}</span>
-                                                <p className="leading-tight text-white/80">{val.substring(0, 100)}{val.length > 100 && "..."}</p>
-                                            </div>
-                                        )
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* 5. TOP: Clinical */}
-                    <div className="cube-face face-top bg-slate-950 rounded-3xl overflow-hidden border border-amber-500/20 p-6 flex flex-col pointer-events-none select-none">
-                        <div className="flex items-center gap-2 mb-4 text-amber-400 border-b border-amber-500/10 pb-2">
-                            <Lightbulb className="w-5 h-5" />
-                            <h3 className="font-bold text-sm tracking-wider uppercase">Klinik İpucu</h3>
-                        </div>
-                        <div className="flex-1 flex items-center justify-center text-center">
-                            <p className="text-base font-medium text-amber-100/90 leading-relaxed italic">
-                                &ldquo;{currentCase.clinicalPearl || currentCase.keyPoints[1] || "Klinik korelasyon önerilir."}&rdquo;
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* 6. BOTTOM: DIAGNOSIS */}
-                    <div className="cube-face face-bottom bg-indigo-950 rounded-3xl overflow-hidden border border-indigo-500 p-6 flex flex-col relative justify-center items-center text-center">
-                        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 pointer-events-none" />
-                        <Trophy className="w-12 h-12 text-yellow-400 mb-4 animate-bounce" />
-                        <span className="text-indigo-300 text-xs font-bold tracking-widest uppercase mb-2">DOĞRU TANI</span>
-                        <h2 className="text-2xl font-black text-white mb-6 leading-tight select-none">
-                            {currentCase.name}
-                        </h2>
-                        <button
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                pickRandomCase();
-                            }}
-                            className="px-6 py-2 bg-white text-indigo-900 rounded-full font-bold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-xl cursor-pointer pointer-events-auto z-50 relative"
-                        // Use pointer-events-auto to ensure click works even if container captures drag
-                        >
-                            <RefreshCw className="w-4 h-4" />
-                            Sıradaki Vaka
-                        </button>
-                    </div>
-
+                    ))}
                 </div>
 
+                {/* Navigation Controls */}
+                <div className="absolute -bottom-20 left-0 right-0 flex items-center justify-between px-4">
+                    <button
+                        onClick={handlePrev}
+                        disabled={step === 0}
+                        className="p-4 rounded-full bg-slate-800 text-white hover:bg-slate-700 disabled:opacity-30 disabled:hover:bg-slate-800 transition-colors shadow-lg"
+                    >
+                        <ChevronLeft className="w-6 h-6" />
+                    </button>
+
+                    <div className="text-xs font-mono text-slate-500">
+                        {step + 1} / {totalSteps}
+                    </div>
+
+                    <button
+                        onClick={handleNext}
+                        disabled={step === totalSteps - 1} // Can't go past diagnosis unless reset
+                        className={cn(
+                            "p-4 rounded-full text-white shadow-lg transition-all hover:scale-110 active:scale-95",
+                            step === totalSteps - 1 ? "bg-emerald-600 hover:bg-emerald-500 opacity-0 pointer-events-none" : "bg-indigo-600 hover:bg-indigo-500"
+                        )}
+                    >
+                        <ArrowRight className="w-6 h-6" />
+                    </button>
+                </div>
             </div>
         </div>
     );

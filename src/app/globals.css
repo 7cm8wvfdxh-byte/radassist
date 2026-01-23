@@ -42,52 +42,8 @@
     transform: rotateY(180deg);
   }
 
-  /* 3D Cube Classes */
-  .cube-scene {
-    perspective: 1200px;
-  }
 
-  .cube {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    /* Bouncy */
-  }
-
-  .cube-face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    /* translateZ defined inline or via variable */
-  }
-
-  .face-front {
-    transform: rotateY(0deg) translateZ(var(--cube-z, 160px));
-  }
-
-  .face-right {
-    transform: rotateY(90deg) translateZ(var(--cube-z, 160px));
-  }
-
-  .face-back {
-    transform: rotateY(180deg) translateZ(var(--cube-z, 160px));
-  }
-
-  .face-left {
-    transform: rotateY(-90deg) translateZ(var(--cube-z, 160px));
-  }
-
-  /* Adjusted Top/Bottom to be readable when rotated to */
-  .face-top {
-    transform: rotateX(90deg) translateZ(var(--cube-z, 160px));
-  }
-
-  .face-bottom {
-    transform: rotateX(-90deg) translateZ(var(--cube-z, 160px));
-  }
+  /* 3D Cube Classes Removed */
 }
 
 /* Aurora Animation */
