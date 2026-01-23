@@ -612,5 +612,195 @@ export const brainPathologies: Pathology[] = [
             "Ayırıcı tanı: Rathke yarığı kisti (kalsifikasyon yok, daha küçük), Dermoid kist, Hipofiz adenomu.",
             "Tedavi zorluğu: Hipotalamus yapışıklığı nedeniyle subtotal rezeksiyon."
         ]
+    },
+    {
+        "id": "toxoplasmosis_cns",
+        "name": "Toksoplazmoz (Serebral - AIDS)",
+        "category": "Enfeksiyon",
+        "findings": {
+            "ct": {
+                "non_contrast": "Multipl hipodens lezyonlar, bazal ganglia ve kortikomedüller bileşke. Kitle etkisi ve ödem.",
+                "contrast": "Halka şeklinde (ring) kontrastlanma. 'Eksantrik hedef işareti' (eccentric target sign) görülebilir."
+            },
+            "mri": {
+                "t1": "Hipointens lezyonlar. Subakut kanama varsa hiperintens alanlar.",
+                "t2": "Merkez: Hafif hiperintens. Çevre: Belirgin hiperintens vazojenik ödem.",
+                "t2_flair": "Ödem çok belirgin. Multipl lezyonlar tipik.",
+                "t1_c": "Halka kontrastlanma. 'Eksantrik hedef işareti': Halkanın bir tarafında nodüler kontrastlanma - PATOGNOMONIK.",
+                "dwi": "Genellikle difüzyon kısıtlılığı YOK (Lenfomadan FARK). Merkez kolaylaşmış veya hafif kısıtlı.",
+                "perfusion": "rCBV DÜŞÜK (Lenfomada yüksek olabilir)."
+            }
+        },
+        "keyPoints": [
+            "AIDS tanımlayan hastalık. CD4 <100 hücre/μL.",
+            "Lenfoma vs Toksoplazmoz: DWI (Lenfoma = kısıtlanma), Perfüzyon, Thal skalası.",
+            "Eksantrik hedef işareti toksoplazmoz için yüksek spesifik.",
+            "Empirik tedavi (2 hafta): Yanıt varsa tanı doğrulanır, yoksa biyopsi."
+        ]
+    },
+    {
+        "id": "neurocysticercosis",
+        "name": "Nörosistiserkoz",
+        "category": "Enfeksiyon",
+        "findings": {
+            "ct": {
+                "non_contrast": "Evre bağımlı: VEZİKÜLER: İnce duvarlı kist, içinde hiperdans skoleks ('nokta'). KOLLOİDAL: Çevre ödem, kist bulanıklaşması. GRANÜLER: Kalsifiye nodül. KALSİFİYE: Tamamen kalsifiye.",
+                "contrast": "Kolloidal ve granüler evrelerde halka kontrastlanma. Veziküler ve kalsifiye evrelerde kontrastlanma yok."
+            },
+            "mri": {
+                "t1": "Veziküler: Hipointens kist. Skoleks izointens ('baş döndüren nokta'). Kolloidal: Hiperintens kist içeriği (protein).",
+                "t2": "Veziküler: Hiperintens kist, skoleks hipointens. Kolloidal: 'Hole with dot' - Hiperintens çevre ödem, santral kist.",
+                "t2_flair": "Çevre ödem değerlendirmesi. Intraventricular kistler için kritik.",
+                "t1_c": "Kolloidal ve granüler: Halka kontrastlanma (inflamatuar yanıt). Veziküler ve kalsifiye: Kontrastlanma yok.",
+                "dwi": "Kist içeriği: Difüzyon kolaylaşmış. Apse'den farkı.",
+                "swi": "Kalsifikasyon tespiti. Kronik lezyonlar."
+            }
+        },
+        "keyPoints": [
+            "Dünyada en sık kazanılmış epilepsi nedeni.",
+            "4 evre: Veziküler → Kolloidal → Granüler → Kalsifiye.",
+            "Skoleks görülmesi patognomonik ('solucan başı').",
+            "Racemoz form: Bazal sisternalarda üzüm salkımı şeklinde kistler."
+        ]
+    },
+    {
+        "id": "chiari_i_malformation",
+        "name": "Chiari Tip I Malformasyonu",
+        "category": "Konjenital",
+        "findings": {
+            "mri": {
+                "t1": "Sagittal: Serebellar tonsillerin foramen magnum altına >5mm herniasyonu. Tonsil sivri (peg-like) şekil.",
+                "t2": "Foramen magnum düzeyinde BOS akım alanı daralması. Siringomiyeli eşlik ediyor mu?",
+                "t2_flair": "Siringomiyeli: Servikal kordda santral kavite (BOS sinyali).",
+                "other_sequences": "BOS akım çalışması (Phase Contrast - Cine MRI): Foramen magnum düz. anterior ve posterior akım bozukluğu.",
+                "sagittal": "Kritik ölçüm: Tonsil pozisyonu (McRae hattına göre). Kranioservikal bileşke anomalileri (baziler invaginasyon)."
+            },
+            "ct": {
+                "bone_window": "Platibazi, baziler invaginasyon, küçük posterior fossa."
+            }
+        },
+        "keyPoints": [
+            "Semptomlar: Öksürükle tetiklenen oksipital baş ağrısı, el uyuşması.",
+            "Siringomiyeli %25-70 eşlik eder.",
+            "Chiari 0: Tonsil herniasyonu yok ama BOS akım bozukluğu var.",
+            "Cerrahi: Posterior fossa dekompresyonu (BOS akımını düzeltmek için)."
+        ]
+    },
+    {
+        "id": "dandy_walker_malformation",
+        "name": "Dandy-Walker Malformasyonu",
+        "category": "Konjenital",
+        "findings": {
+            "mri": {
+                "t1": "Sagittal: Vermis HİPOPLAZİSİ veya agenezisi. 4. ventrikül dilatasyonu ve posterior fossaya balonlaşması.",
+                "t2": "Posterior fossa kisti (4. ventrikül ile devamlılık). Tentoryum elevasyonu. Torkular-lambdoid inversiyonu.",
+                "t2_flair": "Kist BOS ile izointens (baskılanır). Hidrosefali değerlendirmesi.",
+                "sagittal": "Klasik triad: 1) Vermis hipoplazisi, 2) 4. ventrikül kistik dilatasyonu, 3) Posterior fossa genişlemesi.",
+                "coronal": "Lateral ventriküler dilatasyon (hidrosefali sık)."
+            },
+            "ct": {
+                "non_contrast": "Büyük posterior fossa, tentoryum yüksek yerleşimli, 4. ventrikül genişlemiş."
+            }
+        },
+        "keyPoints": [
+            "Dandy-Walker varyantı: Daha hafif vermis hipoplazisi, posterior fossa normal boyutta.",
+            "Mega cisterna magna: Vermis normal, sadece büyük sisterna - Ayırıcı tanı.",
+            "%70-90 hidrosefali eşliği.",
+            "Diğer anomaliler eşlik edebilir: Korpus kallozum agenezisi, heterotopiler."
+        ]
+    },
+    {
+        "id": "corpus_callosum_agenesis",
+        "name": "Korpus Kallozum Agenezisi",
+        "category": "Konjenital",
+        "findings": {
+            "mri": {
+                "t1": "Sagittal: Korpus kallozum YOK. Radial sulkuslar (3. ventrikül çevresinde güneş ışını paterni).",
+                "t2": "Aksiyel: Lateral ventriküller paralel ('yarış arabası boynuzları' - racing car sign). Kolposfali (oksipital hornlar disproportionally genişlemiş).",
+                "t2_flair": "Probst demeti: Korpus kallozum yerine oluşan longitudinal lifler (ventrikül medial duvarında).",
+                "coronal": "'Viking kaskı' görünümü: Lateral ventriküller yukarı ve dışa açılı.",
+                "sagittal": "İnterhemisferik kist (lipom) eşlik edebilir."
+            },
+            "ct": {
+                "non_contrast": "Paralel ventriküller, kolposfali, yüksek 3. ventrikül."
+            }
+        },
+        "keyPoints": [
+            "Parsiyel agenezi: Posterior kısım (splenium) en sık eksik.",
+            "Lipom (interhemisferik) %50 eşlik eder.",
+            "Sendromik: Aicardi sendromu (kızlarda), ACC+Koriyoretinal lakünler+İnfantil spazm.",
+            "Asemptomatik olabilir veya gelişimsel gecikme ile prezente."
+        ]
+    },
+    {
+        "id": "adem",
+        "name": "Akut Dissemine Ensefalomiyelit (ADEM)",
+        "category": "Demiyelinizan",
+        "findings": {
+            "mri": {
+                "t1": "Hafif hipointens lezyonlar. Akut evrede kitle etkisi ve ödem olabilir.",
+                "t2_flair": "Multipl, asimetrik, kötü sınırlı (fluffy) beyaz cevher lezyonları. DEEP gray matter tutulumu (Talamus, bazal ganglia) - MS'den FARK!",
+                "dwi": "Akut lezyonlarda değişken difüzyon kısıtlılığı.",
+                "t1_c": "Değişken kontrastlanma paterni: Halka, nodüler veya kontrastlanma yok. 'Open ring' paterni (MS benzeri) görülebilir.",
+                "other_sequences": "Spinal kord tutulumu: Longitudinal uzun segment miyelit (>3 vertebra) - NMO'ya benzer ama monofazik."
+            },
+            "ct": {
+                "non_contrast": "Duyarlılık düşük. Multifokal hipodansiteler beyaz cevherde."
+            }
+        },
+        "keyPoints": [
+            "Post-enfeksiyöz veya post-aşı. Çocuklarda daha sık (ortalama 5-8 yaş).",
+            "Monofazik seyir (MS'den fark). Relaps: MS veya MDEM düşündürür.",
+            "Deep gray matter tutulumu (talamus, bazal ganglia) ADEM için tipik, MS'de nadir.",
+            "Difüz, kötü sınırlı lezyonlar - MS'de oval, iyi sınırlı Dawson parmakları."
+        ]
+    },
+    {
+        "id": "medulloblastoma",
+        "name": "Medulloblastom (Posterior Fossa Tümörü)",
+        "category": "Neoplastik",
+        "findings": {
+            "ct": {
+                "non_contrast": "Vermis/4. ventrikül yerleşimli HİPERDENS kitle (yüksek sellülarite). Kalsifikasyon %20. Obstrüktif hidrosefali sık.",
+                "contrast": "Heterojen kontrastlanma."
+            },
+            "mri": {
+                "t1": "Hipointens kitle. Nekroz veya kist alanları içerebilir.",
+                "t2": "İzo-Hipointens (Yüksek sellülarite nedeniyle) - Ependimom ve pilositik astrositomdan FARK!",
+                "dwi": "Belirgin DİFÜZYON KISITLAMASI (parlak) - Yüksek N/C oranı ve sellülarite. AYIRT EDİCİ ÖZELLİK!",
+                "t1_c": "Heterojen kontrastlanma. Leptomeningeal yayılım ('drop metastaz') için tüm spinal aks taranmalı.",
+                "spectroscopy": "Yüksek Kolin, Düşük NAA. Taurin piki - Embriyonal tümörlerde görülür."
+            }
+        },
+        "keyPoints": [
+            "Çocuklarda en sık malign beyin tümörü. Ortalama 5-7 yaş.",
+            "Lokasyon: Çocukta VERMIS (midline), Erişkinde HEMİSFER (lateral).",
+            "DWI kısıtlaması: Pilocytic astrositom ve ependimomdan ayırıcı (onlarda kısıtlanma yok).",
+            "Staging: Tüm nöroaksis MR + LP (leptomeningeal yayılım)."
+        ]
+    },
+    {
+        "id": "pilocytic_astrocytoma",
+        "name": "Pilositik Astrositom (WHO Grade 1)",
+        "category": "Neoplastik",
+        "findings": {
+            "ct": {
+                "non_contrast": "Kistik kitle + kontrastlanan mural nodül. Serebellumda en sık. Kalsifikasyon nadir.",
+                "contrast": "Solid komponent (mural nodül) yoğun kontrastlanır. Kist duvarı kontrastlanmayabilir."
+            },
+            "mri": {
+                "t1": "Kist: Hipointens. Mural nodül: İzointens.",
+                "t2": "Kist: BOS benzeri hiperintens veya proteinöz içerik nedeniyle BOS'tan hafif farklı. Nodül: Hiperintens.",
+                "dwi": "Difüzyon kısıtlılığı YOK (Medulloblastomdan FARK). ADC değerleri yüksek.",
+                "t1_c": "Mural nodül: Yoğun, HOMOJEn kontrastlanma. Kist duvarı kontrastlanırsa rezeksiyon gerektirir.",
+                "perfusion": "rCBV normal veya hafif artmış. Malign tümörlerden düşük."
+            }
+        },
+        "keyPoints": [
+            "Çocuk ve genç erişkinlerde en sık düşük dereceli beyin tümörü.",
+            "WHO Grade 1 - Excellent prognoz, cerrahi küratif.",
+            "Lokasyonlar: Serebellum > Optik yolak (NF1) > Hipotalamus.",
+            "'Kist + mural nodül' paterni klasik ama %50 solid olabilir."
+        ]
     }
 ];

@@ -241,5 +241,78 @@ export const spinePathologies: Pathology[] = [
             "NF2'de bilateral vestibüler schwannom + multipl spinal schwannom.",
             "'Dumbbell' tümör: Foramenı genişleterek hem kanal içi hem dışına uzanır."
         ]
+    },
+    {
+        "id": "vertebral_osteomyelitis",
+        "name": "Vertebral Osteomiyelit (Spondilodiskit)",
+        "category": "Enfeksiyon",
+        "findings": {
+            "mri": {
+                "t1": "Vertebra korpusunda ve END-PLATE'lerde HİPO İNTENSİTE (normal yağ sinyali kaybı). İki komşu vertebra tutulumu tipik.",
+                "t2": "Vertebra ve disk: HİPERİNTENS sinyal (ödem). Disk yüksekliğinde azalma ve sinyal artışı.",
+                "stir": "End-plate ve paraspinal ödem çok belirgin. En duyarlı sekans.",
+                "t1_c": "End-plate'lerde, diskte ve paraspinal yumuşak dokuda KONTRASTLANMA. Apse: Halka kontrastlanma.",
+                "dwi": "Apse: Merkezi difüzyon KISITLAMASI. Dejeneratif Modic'den FARK.",
+                "sagittal": "Karakteristik: İki komşu vertebra + aralarındaki disk tutulumu."
+            },
+            "ct": {
+                "bone_window": "End-plate erozyonu ve destrüksiyon. Disk mesafesi daralması. Sekonder kemik sklerozisi (kronik)."
+            }
+        },
+        "keyPoints": [
+            "En sık etken: Staph. aureus. TB bölgelerde M. tuberculosis.",
+            "Modic Tip 1'den farkı: DWI kısıtlanma, kontrastlanma paterni, disk tutulumu.",
+            "Lomber bölge en sık. Hematojen yayılım (üriner, IV ilaç).",
+            "Komplikasyonlar: Epidural apse, paraspinal apse, patolojik kırık."
+        ]
+    },
+    {
+        "id": "epidural_abscess_spine",
+        "name": "Spinal Epidural Apse",
+        "category": "Enfeksiyon",
+        "findings": {
+            "mri": {
+                "t1": "Epidural mesafede İZOİNTENS veya hafif hipointens sıvı koleksiyonu. Kord basısı.",
+                "t2": "HİPERİNTENS epidural koleksiyon. Kord ödemi/miyelopati bulguları (T2 hiperintensite).",
+                "t1_c": "Periferal HALKA şeklinde kontrastlanma. Merkez kontrastlanmaz (pürülan içerik).",
+                "dwi": "Merkezi KISITLANMA (Parlak) - PÜ içeriği. AYIRT EDİCİ ÖZELLİK!",
+                "stir": "Çevre ödem ve inflamasyon.",
+                "axial": "Teka basısı, kord kompresyonu derecesi. Cerrahi planlama için kritik."
+            },
+            "ct": {
+                "non_contrast": "Epidural yumuşak doku dansitesi. Kemik destrüksiyon (osteomiyelit eşliği).",
+                "contrast": "Halka kontrastlanma."
+            }
+        },
+        "keyPoints": [
+            "NÖROŞİRÜRJİK ACİL! Kord basısı = Acil dekompresyon.",
+            "Triad: Ateş + Bel/Sırt ağrısı + Nörolojik defisit.",
+            "DWI en önemli sekans: Kısıtlanma = pü konfirme.",
+            "Risk faktörleri: IV ilaç kullanımı, DM, immunosupresyon, yakın spinal girişim."
+        ]
+    },
+    {
+        "id": "pott_disease",
+        "name": "Tüberküloz Spondiliti (Pott Hastalığı)",
+        "category": "Enfeksiyon",
+        "findings": {
+            "mri": {
+                "t1": "Vertebra tutulumu: T1 hipointens. Multipl vertebra tutulumu (atlayıcı lezyonlar). Anterior vertebra tutulumu ön planda.",
+                "t2": "Paraspinal apse (kum saati şeklinde). 'Cold abscess' - düşük inflamasyon. Disk KORUNMUŞ olabilir (Piyojenik'ten FARK).",
+                "t1_c": "İnce, düzgün duvar kontrastlanması. Heterojen iç yapı.",
+                "stir": "Vertebra ödemi. Paraspinal ve psoas apsesi yayılımı.",
+                "sagittal": "Gibbus deformitesi (kifoz). Subligamentöz yayılım (multipl vertebra tutulumu)."
+            },
+            "ct": {
+                "bone_window": "İnce trabeküler destrüksiyon. Paraspinal kalsifikasyon (kronik TB için tipik).",
+                "contrast": "Kalın apse duvarı. Çevre rim kontrastlanması."
+            }
+        },
+        "keyPoints": [
+            "Piyojenik enfeksiyondan farkı: Disk korunmuş, paraspinal apse, yavaş seyir, subligamentöz yayılım.",
+            "Torakal ve lomber vertebra en sık. Posterior elementler korunur (piyojenikte tutulabilir).",
+            "'Cold abscess': Klasik inflamasyon bulguları olmayan apse.",
+            "Gibbus (açısal kifoz) kronik Pott hastalığı için patognomonik."
+        ]
     }
 ];
