@@ -80,6 +80,7 @@
     transform: rotateY(-90deg) translateZ(var(--cube-z, 160px));
   }
 
+  /* Adjusted Top/Bottom to be readable when rotated to */
   .face-top {
     transform: rotateX(90deg) translateZ(var(--cube-z, 160px));
   }

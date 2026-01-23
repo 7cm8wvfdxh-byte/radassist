@@ -105,16 +105,32 @@ export default function Home() {
           RadAssist
         </h1>
 
-        {/* Daily Challenge Button */}
-        <button
-          onClick={() => setShowDailyModal(true)}
-          className="mb-8 group relative inline-flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 hover:border-amber-500/40 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-150"
-        >
-          <div className="absolute inset-0 bg-amber-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-full" />
-          <Trophy className="w-4 h-4 text-amber-500 group-hover:animate-bounce" />
-          <span className="text-sm font-bold text-amber-200 group-hover:text-amber-100">Günün Kartı</span>
-          <span className="bg-amber-500 text-black text-[10px] font-bold px-1.5 py-0.5 rounded ml-1 animate-pulse">YENİ</span>
-        </button>
+        {/* Hero Actions Container */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
+          {/* Daily Challenge Button */}
+          <button
+            onClick={() => setShowDailyModal(true)}
+            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 hover:border-amber-500/40 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-150"
+          >
+            <div className="absolute inset-0 bg-amber-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
+            <Trophy className="w-5 h-5 text-amber-500 group-hover:animate-bounce" />
+            <span className="text-sm font-bold text-amber-200 group-hover:text-amber-100">Günün Kartı</span>
+            <span className="bg-amber-500 text-black text-[10px] font-bold px-1.5 py-0.5 rounded ml-1 animate-pulse">YENİ</span>
+          </button>
+
+          {/* Diagnosis Wizard Button */}
+          <button
+            onClick={() => {
+              setViewMode("wizard");
+              localStorage.setItem("radassist-view-mode", "wizard");
+            }}
+            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 border border-purple-500/20 hover:border-purple-500/40 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-200"
+          >
+            <div className="absolute inset-0 bg-purple-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
+            <Wand2 className="w-5 h-5 text-purple-400 group-hover:rotate-12 transition-transform" />
+            <span className="text-sm font-bold text-purple-200 group-hover:text-purple-100">Tanı Sihirbazı</span>
+          </button>
+        </div>
 
         <div className="w-full max-w-3xl relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
 
