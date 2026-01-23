@@ -42,6 +42,10 @@ export interface ModalityFindings {
         invasion?: string;
         other_sequences?: string;
     };
+    usg?: {
+        description?: string;
+        [key: string]: any;
+    };
     dsa?: {
         description?: string;
     };
@@ -57,6 +61,7 @@ export interface ModalityFindings {
 export interface Pathology {
     id: string;
     name: string;
+    organ?: string; // Added for global search identification
     category: string;
     findings: ModalityFindings;
     keyPoints: string[];
@@ -99,7 +104,7 @@ export interface CaseStudy {
 export interface DiagnosticRule {
     pathologyId: string;
     pathologyName: string;
-    organ: "Brain" | "Spine"; // Added organ field
+    organ: "Brain" | "Spine" | "Liver" | "Kidney" | "Lung"; // Added organ field
     modality: ModalityType;
     requiredFindings?: string[]; // IDs from lexicon that MUST be present
     strongFindings: string[]; // IDs that strongly suggest this pathology (high weight)

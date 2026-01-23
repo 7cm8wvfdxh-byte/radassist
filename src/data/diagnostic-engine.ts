@@ -106,5 +106,102 @@ export const DIAGNOSTIC_RULES: DiagnosticRule[] = [
             "ct_hyperdense" // Kemik fragmanı
         ],
         baseProbability: 5
+    },
+
+    // --- LIVER ---
+    {
+        pathologyId: "hcc",
+        pathologyName: "Hepatosellüler Karsinom (HCC)",
+        organ: "Liver",
+        modality: "CT",
+        strongFindings: [
+            "ct_contrast_washout",
+            "ct_enhance_hetero" // Arteriyel hipervaskülariteyi temsilen
+        ],
+        weakFindings: [
+            "usg_liver_coarse" // Zemin sirotik
+        ],
+        baseProbability: 10
+    },
+    {
+        pathologyId: "liver_cyst",
+        pathologyName: "Basit Karaciğer Kisti",
+        organ: "Liver",
+        modality: "USG",
+        strongFindings: [
+            "usg_anechoic",
+            "usg_posterior_enhancement"
+        ],
+        baseProbability: 30
+    },
+    {
+        pathologyId: "liver_hemangioma",
+        pathologyName: "Hemanjiyom",
+        organ: "Liver",
+        modality: "CT",
+        strongFindings: [
+            "ct_enhance_nodular", // Periferal
+            "usg_hyperechoic" // USG'de
+        ],
+        baseProbability: 25
+    },
+
+    // --- KIDNEY ---
+    {
+        pathologyId: "kidney_stone",
+        pathologyName: "Böbrek Taşı (Nefrolitiyazis)",
+        organ: "Kidney",
+        modality: "USG",
+        strongFindings: [
+            "usg_posterior_shadowing",
+            "ct_calcification"
+        ],
+        weakFindings: [
+            "usg_hyperechoic",
+            "usg_kidney_hydronephrosis"
+        ],
+        baseProbability: 35
+    },
+    {
+        pathologyId: "rcc",
+        pathologyName: "Renal Hücreli Karsinom (RCC)",
+        organ: "Kidney",
+        modality: "CT",
+        strongFindings: [
+            "ct_enhance_hetero"
+        ],
+        weakFindings: [
+            "ct_calcification"
+        ],
+        baseProbability: 10
+    },
+
+    // --- LUNG ---
+    {
+        pathologyId: "lung_cancer",
+        pathologyName: "Akciğer Kanseri (Primer)",
+        organ: "Lung",
+        modality: "CT",
+        strongFindings: [
+            "ct_lung_nodule_spiculated",
+            "ct_enhance_hetero"
+        ],
+        weakFindings: [
+            "ct_pleural_effusion"
+        ],
+        baseProbability: 15
+    },
+    {
+        pathologyId: "pneumonia",
+        pathologyName: "Pnömoni",
+        organ: "Lung",
+        modality: "CT",
+        strongFindings: [
+            "ct_lung_consolidation"
+        ],
+        weakFindings: [
+            "ct_lung_ground_glass"
+        ],
+        baseProbability: 40
     }
 ];

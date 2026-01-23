@@ -17,6 +17,8 @@ export const USG_FINDINGS: FindingOption[] = [
     { id: "usg_posterior_enhancement", label: "Posterior Akustik Güçlenme", category: "Diğer", weight: 6 }, // Kist lehine
     { id: "usg_posterior_shadowing", label: "Posterior Akustik Gölgeleme", category: "Diğer", weight: 7 }, // Taş/Kalsifikasyon
     { id: "usg_doppler_vascular", label: "Doppler: Vaskülarite Artışı", category: "Diğer", weight: 5 },
+    { id: "usg_liver_coarse", label: "Kaba Granüler Eko Yapısı", category: "Eko/Dansite/Sinyal", weight: 6 }, // Siroz/Hepatit
+    { id: "usg_kidney_hydronephrosis", label: "Hidronefroz (Pelvikalisesiyel Genişleme)", category: "Şekil/Kenar", weight: 8 },
 ];
 
 // --- CT (Bilgisayarlı Tomografi) ---
@@ -32,6 +34,13 @@ export const CT_FINDINGS: FindingOption[] = [
     { id: "ct_enhance_ring", label: "Ring (Halka) Tarzı Tutulum", category: "Kontrastlanma", weight: 8 },
     { id: "ct_enhance_hetero", label: "Heterojen Tutulum", category: "Kontrastlanma", weight: 5 },
     { id: "ct_enhance_nodular", label: "Nodüler Tutulum", category: "Kontrastlanma", weight: 6 },
+    { id: "ct_contrast_washout", label: "Washout (Geç Fazda Yıkanma)", category: "Kontrastlanma", weight: 9 }, // HCC
+    // Akciğer
+    { id: "ct_lung_ground_glass", label: "Buzlu Cam (Ground Glass)", category: "Eko/Dansite/Sinyal", weight: 6 },
+    { id: "ct_lung_consolidation", label: "Konsolidasyon / Hava Bronkogramı", category: "Eko/Dansite/Sinyal", weight: 7 },
+    { id: "ct_lung_nodule_spiculated", label: "Spiküle (Düzensiz) Nodül", category: "Şekil/Kenar", weight: 9 }, // Malignite
+    { id: "ct_lung_emphysema", label: "Amfizem / Kist", category: "Eko/Dansite/Sinyal", weight: 6 },
+    { id: "ct_pleural_effusion", label: "Plevral Efüzyon (Sıvı)", category: "Diğer", weight: 5 },
 ];
 
 // --- MRI (Manyetik Rezonans) ---
@@ -52,6 +61,7 @@ export const MRI_FINDINGS: FindingOption[] = [
     // Diğer
     { id: "mri_edema_vasogenic", label: "Ödem: Vazojenik (Parmaksı)", category: "Diğer", weight: 7 },
     { id: "mri_swi_bloom", label: "SWI: Blooming (Kanama/Kalsifikasyon)", category: "Diğer", weight: 8 },
+    { id: "mri_fat_intracellular", label: "İntrasellüler Yağ (OOP Sinyal Kaybı)", category: "Eko/Dansite/Sinyal", weight: 9 }, // Adenom/Yağlanma
     // Lokasyon / Patern (MRI)
     { id: "mri_loc_extra_axial", label: "Yerleşim: Ekstra-aksiyal (Beyin dışı)", category: "Diğer", weight: 8 },
     { id: "mri_loc_intra_axial", label: "Yerleşim: İntra-aksiyal (Beyin parankimi)", category: "Diğer", weight: 5 },

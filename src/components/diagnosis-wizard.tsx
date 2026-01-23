@@ -3,14 +3,24 @@ import { Modality } from '@/data/lexicon';
 import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from '@/data/lexicon';
 import { useDiagnosticEngine } from '@/hooks/use-diagnostic-engine';
 import { clsx } from 'clsx';
-import { Check, ChevronRight, Stethoscope, AlertTriangle, FileText, X, Brain, Bone } from 'lucide-react';
+import { Check, ChevronRight, Stethoscope, AlertTriangle, FileText, X, Brain, Bone, Activity, Droplets, Wind } from 'lucide-react';
 
 interface DiagnosisWizardProps {
-    activeModule: 'brain' | 'spine';
+    activeModule: 'brain' | 'spine' | 'liver' | 'kidney' | 'lung';
 }
 
 export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
-    const [organ, setOrgan] = useState<"Brain" | "Spine">(activeModule === 'brain' ? "Brain" : "Spine");
+    const getInitialOrgan = () => {
+        switch (activeModule) {
+            case 'brain': return "Brain";
+            case 'spine': return "Spine";
+            case 'liver': return "Liver";
+            case 'kidney': return "Kidney";
+            case 'lung': return "Lung";
+            default: return "Brain";
+        }
+    };
+    const [organ, setOrgan] = useState<"Brain" | "Spine" | "Liver" | "Kidney" | "Lung">(getInitialOrgan());
     const [modality, setModality] = useState<Modality | null>(null);
     const [selectedFindings, setSelectedFindings] = useState<string[]>([]);
     const [isReportOpen, setIsReportOpen] = useState(false);
@@ -56,11 +66,11 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                 {/* Step 0: Organ Selection */}
                 <div className="space-y-3">
                     <label className="text-sm font-medium text-zinc-300">Organ Sistemi</label>
-                    <div className="flex gap-4">
+                    <div className="flex flex-wrap gap-2">
                         <button
                             onClick={() => { setOrgan("Brain"); setSelectedFindings([]); }}
                             className={clsx(
-                                "flex-1 p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
+                                "flex-1 min-w-[100px] p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
                                 organ === "Brain"
                                     ? "bg-indigo-500/20 border-indigo-500 text-indigo-50 shadow-lg shadow-indigo-500/10"
                                     : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
@@ -72,7 +82,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                         <button
                             onClick={() => { setOrgan("Spine"); setSelectedFindings([]); }}
                             className={clsx(
-                                "flex-1 p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
+                                "flex-1 min-w-[100px] p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
                                 organ === "Spine"
                                     ? "bg-emerald-500/20 border-emerald-500 text-emerald-50 shadow-lg shadow-emerald-500/10"
                                     : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
@@ -80,6 +90,42 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                         >
                             <Bone className="w-5 h-5" />
                             <span className="font-semibold">Omurga</span>
+                        </button>
+                        <button
+                            onClick={() => { setOrgan("Liver"); setSelectedFindings([]); }}
+                            className={clsx(
+                                "flex-1 min-w-[100px] p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
+                                organ === "Liver"
+                                    ? "bg-amber-500/20 border-amber-500 text-amber-50 shadow-lg shadow-amber-500/10"
+                                    : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
+                            )}
+                        >
+                            <Activity className="w-5 h-5" />
+                            <span className="font-semibold">Karaciğer</span>
+                        </button>
+                        <button
+                            onClick={() => { setOrgan("Kidney"); setSelectedFindings([]); }}
+                            className={clsx(
+                                "flex-1 min-w-[100px] p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
+                                organ === "Kidney"
+                                    ? "bg-blue-500/20 border-blue-500 text-blue-50 shadow-lg shadow-blue-500/10"
+                                    : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
+                            )}
+                        >
+                            <Droplets className="w-5 h-5" />
+                            <span className="font-semibold">Böbrek</span>
+                        </button>
+                        <button
+                            onClick={() => { setOrgan("Lung"); setSelectedFindings([]); }}
+                            className={clsx(
+                                "flex-1 min-w-[100px] p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
+                                organ === "Lung"
+                                    ? "bg-sky-500/20 border-sky-500 text-sky-50 shadow-lg shadow-sky-500/10"
+                                    : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
+                            )}
+                        >
+                            <Wind className="w-5 h-5" />
+                            <span className="font-semibold">Akciğer</span>
                         </button>
                     </div>
                 </div>
@@ -244,7 +290,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                             <p className="mb-4 text-zinc-600">[Klinik bilgi giriniz...]</p>
 
                             <p className="font-bold mb-2">İNCELEME:</p>
-                            <p className="mb-4 text-zinc-600 font-semibold uppercase">{organ === 'Brain' ? 'Kranial' : 'Spinal'} {modality} incelemesi</p>
+                            <p className="mb-4 text-zinc-600 font-semibold uppercase">{organ === 'Brain' ? 'Kranial' : organ === 'Spine' ? 'Spinal' : organ === 'Liver' ? 'Abdominal (Karaciğer)' : organ === 'Kidney' ? 'Üriner sistem' : 'Toraks'} {modality} incelemesi</p>
 
                             <p className="font-bold mb-2">TEKNİK:</p>
                             <p className="mb-4 text-zinc-600">{modality} sekansları alınmıştır.</p>

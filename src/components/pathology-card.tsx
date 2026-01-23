@@ -1,22 +1,50 @@
-"use client";
-
+import { expandQueryTokens } from "@/lib/search-utils"; // Import smart tokenizer
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Copy, Check, ChevronDown, ChevronUp, Maximize2, X, Star } from 'lucide-react';
 
 interface PathologyCardProps {
     data: Pathology;
     isFavorite?: boolean;
     onToggleFavorite?: () => void;
+    highlightQuery?: string; // Search query for highlighting
 }
 
 type TabType = "summary" | "ct" | "mri" | "usg";
 
-export function PathologyCard({ data, isFavorite = false, onToggleFavorite }: PathologyCardProps) {
-    const [isExpanded, setIsExpanded] = useState(false);
+// Helper component for highlighting text
+const HighlightedText = ({ text, query }: { text: string, query?: string }) => {
+    if (!query || !query.trim()) return <>{text}</>;
+
+    // Use smart token expansion to catch synonyms
+    const tokens = expandQueryTokens(query);
+    if (tokens.length === 0) return <>{text}</>;
+
+    // Create regex from unique tokens, sorted by length (longest first) to match "yer kaplayan" before "yer"
+    const uniqueTokens = Array.from(new Set(tokens)).sort((a, b) => b.length - a.length);
+    const regex = new RegExp(`(${uniqueTokens.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi');
+
+    const parts = text.split(regex);
+
+    return (
+        <>
+            {parts.map((part, i) =>
+                regex.test(part) ? (
+                    <mark key={i} className="bg-yellow-500/40 text-yellow-100 rounded-sm px-0.5 mx-0.5 font-semibold decoration-clone box-decoration-clone">
+                        {part}
+                    </mark>
+                ) : (
+                    part
+                )
+            )}
+        </>
+    );
+};
+
+export function PathologyCard({ data, isFavorite = false, onToggleFavorite, highlightQuery }: PathologyCardProps) {
+    // ... hooks ...
     const [activeTab, setActiveTab] = useState<TabType>("summary");
     const [activeImage, setActiveImage] = useState<number | null>(null);
     const divRef = useRef<HTMLDivElement>(null);
@@ -100,6 +128,11 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite }: Pa
                     <div className="flex items-start justify-between mb-4 pr-32">
                         <div className="flex-1 mr-4">
                             <div className="flex items-center gap-2">
+                                {data.organ && (
+                                    <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold border backdrop-blur-sm shadow-sm transition-colors text-slate-300 bg-slate-800/50 border-slate-700">
+                                        {data.organ}
+                                    </span>
+                                )}
                                 <span className={cn("px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold border backdrop-blur-sm shadow-sm transition-colors", styles.badge)}>
                                     {data.category}
                                 </span>
@@ -247,7 +280,9 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite }: Pa
                                 {data.keyPoints.map((kp, idx) => (
                                     <div key={idx} className="flex gap-3 text-slate-300 group/point">
                                         <span className={cn("mt-2 w-1.5 h-1.5 rounded-full shrink-0 transition-colors", styles.point.split(" ")[0])} />
-                                        <p className="group-hover/point:text-white transition-colors">{kp}</p>
+                                        <p className="group-hover/point:text-white transition-colors">
+                                            <HighlightedText text={kp} query={highlightQuery} />
+                                        </p>
                                     </div>
                                 ))}
                             </div>
@@ -261,7 +296,9 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite }: Pa
                                     return (
                                         <div key={key} className="bg-white/5 rounded-xl p-3 border border-white/5 hover:border-white/10 transition-colors">
                                             <span className="text-[10px] font-bold text-slate-500 block mb-1 uppercase tracking-wider">{label}</span>
-                                            <span className="text-slate-200 font-medium block">{value as string}</span>
+                                            <span className="text-slate-200 font-medium block">
+                                                <HighlightedText text={value as string} query={highlightQuery} />
+                                            </span>
                                         </div>
                                     )
                                 })}

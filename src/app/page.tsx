@@ -17,6 +17,7 @@ import { DiagnosisWizard } from "@/components/diagnosis-wizard";
 import { DailyCaseModal } from "@/components/daily-case-modal";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils"; // Ensure cn is imported
+import { performSmartSearch } from "@/lib/search-utils";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -55,15 +56,29 @@ export default function Home() {
     localStorage.setItem("radassist-favorites", JSON.stringify(newFavorites));
   };
 
+  const [searchGlobal, setSearchGlobal] = useState(false); // Global search toggle
+
   const filteredPathologies = useMemo(() => {
-    // Select data source based on active module
     let result: Pathology[] = [];
-    switch (activeModule) {
-      case "brain": result = brainPathologies; break;
-      case "spine": result = spinePathologies; break;
-      case "liver": result = liverPathologies; break;
-      case "kidney": result = kidneyPathologies; break;
-      case "lung": result = lungPathologies; break;
+
+    if (searchGlobal) {
+      // Combine ALL modules if global search is on
+      result = [
+        ...brainPathologies.map(p => ({ ...p, organ: 'Beyin' })),
+        ...spinePathologies.map(p => ({ ...p, organ: 'Omurga' })),
+        ...liverPathologies.map(p => ({ ...p, organ: 'Karaciğer' })),
+        ...kidneyPathologies.map(p => ({ ...p, organ: 'Böbrek' })),
+        ...lungPathologies.map(p => ({ ...p, organ: 'Akciğer' }))
+      ];
+    } else {
+      // Select data source based on active module
+      switch (activeModule) {
+        case "brain": result = brainPathologies; break;
+        case "spine": result = spinePathologies; break;
+        case "liver": result = liverPathologies; break;
+        case "kidney": result = kidneyPathologies; break;
+        case "lung": result = lungPathologies; break;
+      }
     }
 
     // Filter by Favorites if toggle is active
@@ -72,17 +87,13 @@ export default function Home() {
     }
 
     if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
-      result = result.filter((p) =>
-        p.name.toLowerCase().includes(query) ||
-        p.category.toLowerCase().includes(query) ||
-        p.keyPoints.some(k => k.toLowerCase().includes(query))
-      );
+      // Use the new Smart Search utility
+      result = performSmartSearch(result, searchQuery);
     }
 
     // Always Group by Category (Sort)
     return [...result].sort((a, b) => a.category.localeCompare(b.category));
-  }, [searchQuery, favorites, showFavoritesOnly, activeModule]);
+  }, [searchQuery, favorites, showFavoritesOnly, activeModule, searchGlobal]);
 
   // Prevent hydration mismatch by processing only after load
   if (!isLoaded) return null;
@@ -226,8 +237,59 @@ export default function Home() {
           {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && (
             <div className="relative group mb-4">
               <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl ring-1 ring-white/10 shadow-2xl">
-                <SearchBar value={searchQuery} onChange={setSearchQuery} placeholder={`${activeModule === 'brain' ? "Beyin" : "Omurga"} patolojisi ara...`} />
+              <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl ring-1 ring-white/10 shadow-2xl flex flex-col">
+                <SearchBar
+                  value={searchQuery}
+                  onChange={setSearchQuery}
+                  placeholder={
+                    searchGlobal
+                      ? "Tüm modüllerde (Beyin, Omurga, Karaciğer...) ara..."
+                      : `${activeModule === 'brain' ? "Beyin" : activeModule === 'spine' ? "Omurga" : activeModule === 'liver' ? "Karaciğer" : activeModule === 'kidney' ? "Böbrek" : "Akciğer"} patolojisi ara...`
+                  }
+                />
+
+                {/* Global Search Toggle */}
+                <div className="px-4 pb-3 flex items-center justify-end gap-2">
+                  <label className="flex items-center gap-2 cursor-pointer group/toggle select-none">
+                    <div className={`w-3 h-3 rounded-full border ${searchGlobal ? "bg-indigo-500 border-indigo-500" : "border-slate-500 group-hover/toggle:border-indigo-400"} transition-all`} />
+                    <input type="checkbox" checked={searchGlobal} onChange={(e) => setSearchGlobal(e.target.checked)} className="hidden" />
+                    <span className={`text-xs font-medium transition-colors ${searchGlobal ? "text-indigo-400" : "text-slate-500 group-hover/toggle:text-slate-300"}`}>
+                      Tüm Modüllerde Ara
+                    </span>
+                  </label>
+                </div>
+
+                {/* Smart Filter Chips */}
+                <div className="px-4 pb-4 flex gap-2 overflow-x-auto no-scrollbar mask-gradient-r">
+                  {[
+                    { label: "Acil", query: "acil" },
+                    { label: "Kitle", query: "kitle" },
+                    { label: "T2 Hiper", query: "t2 hiper" },
+                    { label: "Kontrast+", query: "kontrast" },
+                    { label: "Kalsifikasyon", query: "kalsifikasyon" },
+                    { label: "Kist", query: "kist" },
+                  ].map(chip => (
+                    <button
+                      key={chip.label}
+                      onClick={() => {
+                        // Toggle logic: If already in query, remove it. Else append.
+                        if (searchQuery.toLowerCase().includes(chip.query)) {
+                          setSearchQuery(prev => prev.replace(chip.query, "").trim());
+                        } else {
+                          setSearchQuery(prev => (prev + " " + chip.query).trim());
+                        }
+                      }}
+                      className={cn(
+                        "px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-all border",
+                        searchQuery.toLowerCase().includes(chip.query)
+                          ? "bg-indigo-500/20 text-indigo-300 border-indigo-500/50"
+                          : "bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:text-slate-200"
+                      )}
+                    >
+                      {chip.label}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           )}
@@ -370,6 +432,7 @@ export default function Home() {
                   data={pathology}
                   isFavorite={favorites.includes(pathology.id)}
                   onToggleFavorite={() => toggleFavorite(pathology.id)}
+                  highlightQuery={searchQuery} // Pass highlight query
                 />
               ))}
             </div>
@@ -409,6 +472,7 @@ export default function Home() {
               data={selectedPathology}
               isFavorite={favorites.includes(selectedPathology.id)}
               onToggleFavorite={() => toggleFavorite(selectedPathology.id)}
+              highlightQuery={searchQuery} // Pass highlight query
             />
           </div>
         </div>
