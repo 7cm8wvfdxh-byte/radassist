@@ -61,6 +61,11 @@ export interface Pathology {
     findings: ModalityFindings;
     keyPoints: string[];
     references?: string[];
+    // Flashcard / Cube Data
+    etiology?: string; // Pathophysiology
+    differentialDiagnosis?: string[]; // DDx list
+    goldStandard?: string; // Best imaging modality/sequence
+    clinicalPearl?: string; // "Classic triad", specific sign etc.
     gallery?: {
         url: string;
         caption: string; // e.g., "T2 FLAIR", "DWI"
