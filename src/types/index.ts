@@ -1,3 +1,5 @@
+export type ModalityType = "CT" | "MRI" | "USG" | "X-Ray" | "PET";
+
 export interface ModalityFindings {
     ultrasound?: {
         description: string;
@@ -43,6 +45,13 @@ export interface ModalityFindings {
     dsa?: {
         description?: string;
     };
+    xray?: {
+        description?: string;
+    };
+    pet?: {
+        description?: string;
+        suv_max?: string;
+    };
 }
 
 export interface Pathology {
@@ -55,7 +64,7 @@ export interface Pathology {
     gallery?: {
         url: string;
         caption: string; // e.g., "T2 FLAIR", "DWI"
-        modality: "CT" | "MRI" | "USG";
+        modality: ModalityType;
     }[];
 }
 
@@ -86,7 +95,7 @@ export interface DiagnosticRule {
     pathologyId: string;
     pathologyName: string;
     organ: "Brain" | "Spine"; // Added organ field
-    modality: "USG" | "CT" | "MRI";
+    modality: ModalityType;
     requiredFindings?: string[]; // IDs from lexicon that MUST be present
     strongFindings: string[]; // IDs that strongly suggest this pathology (high weight)
     weakFindings?: string[]; // IDs that correspond but with lower specificity

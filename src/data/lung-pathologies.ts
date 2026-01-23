@@ -5,6 +5,10 @@ export const lungPathologies: Pathology[] = [
         "id": "lung_cancer",
         "name": "Akciğer Kanseri (NSCLC/SCLC)",
         "category": "Neoplastik",
+        "gallery": [
+            { "url": "/images/lung/lung_cancer_ct.png", "caption": "BT - Spiküle Kitle", "modality": "CT" },
+            { "url": "/images/lung/pancoast_mri.png", "caption": "MRI - Pancoast Tümörü", "modality": "MRI" }
+        ],
         "findings": {
             "ct": {
                 "non_contrast": "Santral (SCLC, Skuamöz): Hiler/peribronşial kitle, atelektazi. Periferik (Adenokarsinom): Solid nodül/kitle, spiküle kontur, pleural tail.",
@@ -28,6 +32,10 @@ export const lungPathologies: Pathology[] = [
         "id": "pulmonary_embolism",
         "name": "Pulmoner Emboli",
         "category": "Vasküler",
+        "gallery": [
+            { "url": "/images/lung/pe_ct_angio.png", "caption": "BT Anjiyo - Dolum Defekti", "modality": "CT" },
+            { "url": "/images/lung/hampton_hump_cxr.png", "caption": "CXR - Hampton's Hump", "modality": "X-Ray" }
+        ],
         "findings": {
             "ct": {
                 "cta": "PULMONER ARTERİYEL FAZ: İntravasküler dolum defekti. 'Polo mint sign' (Aksiyal): Damar içinde santral hipodansite. 'Railway track sign' (Koronal): Paralel hipodens trombus.",
@@ -51,6 +59,10 @@ export const lungPathologies: Pathology[] = [
         "id": "pneumonia",
         "name": "Pnömoni (Bakteriyel/Viral/COVID-19)",
         "category": "Enfeksiyon",
+        "gallery": [
+            { "url": "/images/lung/pneumonia_lobar.png", "caption": "BT - Lober Konsolidasyon", "modality": "CT" },
+            { "url": "/images/lung/covid_ground_glass.png", "caption": "BT - Buzlu Cam (COVID-19)", "modality": "CT" }
+        ],
         "findings": {
             "ct": {
                 "non_contrast": "BAKTERİYEL: Lober konsolidasyon, air-bronchograms, plevral efüzyon. VİRAL/ATİPİK: Bilateral yamalı ground-glass, peribronşiyal dağılım. COVID-19: Bilateral, periferal ağırlıklı ground-glass, crazy-paving paterni, subplevral bantlar.",
@@ -72,6 +84,10 @@ export const lungPathologies: Pathology[] = [
         "id": "lung_nodule",
         "name": "Akciğer Nodülü (Fleischner Kriterleri)",
         "category": "Belirsiz",
+        "gallery": [
+            { "url": "/images/lung/nodule_spiculated.png", "caption": "BT - Spiküle Solita Nodül", "modality": "CT" },
+            { "url": "/images/lung/nodule_ground_glass.png", "caption": "BT - Subsolid Nodül", "modality": "CT" }
+        ],
         "findings": {
             "ct": {
                 "non_contrast": "SOLİD NODÜL: Homojen yumuşak doku dansitesi. SUBSOLID: Part-solid (solid + ground-glass) veya Pure ground-glass. Morfoloji: Spiküle, lobüle, düzgün kenarlı.",
@@ -94,6 +110,10 @@ export const lungPathologies: Pathology[] = [
         "id": "pneumothorax",
         "name": "Pnömotoraks",
         "category": "Travma/İyatrojenik",
+        "gallery": [
+            { "url": "/images/lung/pneumothorax_cxr.png", "caption": "CXR - Plevral Hat", "modality": "X-Ray" },
+            { "url": "/images/lung/pneumothorax_ct.png", "caption": "BT - Serbest Hava", "modality": "CT" }
+        ],
         "findings": {
             "ct": {
                 "non_contrast": "Plevral boşlukta SERBEST HAVA. Visseral plevra çizgisi görülür. Akciğer kollapsı derecesi. Tansiyon pneumotoraks: Mediastinal şift, kontralateral tarafa itilme.",
@@ -115,6 +135,10 @@ export const lungPathologies: Pathology[] = [
         "id": "interstitial_lung_disease",
         "name": "İnterstisyel Akciğer Hastalığı (ILD/UIP)",
         "category": "Fibrotik",
+        "gallery": [
+            { "url": "/images/lung/ild_honeycombing.png", "caption": "HRCT - Bal Peteği (Honeycombing)", "modality": "CT" },
+            { "url": "/images/lung/ild_traction.png", "caption": "HRCT - Traksiyon Bronşektazi", "modality": "CT" }
+        ],
         "findings": {
             "ct": {
                 "non_contrast": "UIP (İdiyopatik Pulmoner Fibrozis): BAZİLER, SUBPLEVRAL ağırlıklı. 'Honeycombing' (bal peteği): Kistik hava boşlukları, kalın duvarlar - PATOGNOMONIK. Traksiyon bronşektazi. Minimal veya yok ground-glass.",
@@ -128,7 +152,7 @@ export const lungPathologies: Pathology[] = [
         },
         "keyPoints": [
             "UIP paterni = IPF tanısı için yeterli (biyopsi gerekmez).",
-            "'Honeycombing' + Traksiyon bronşektazi + Baziler/subplevral = UIP kesin.",
+            "Honeycombing + Traksiyon bronşektazi + Baziler/subplevral = UIP kesin.",
             "NSIP vs UIP: NSIP'te ground-glass fazla, honeycombing yok/az.",
             "HRCT: 1-2mm kesit kalınlığı, yüksek çözünürlük gerekli."
         ]

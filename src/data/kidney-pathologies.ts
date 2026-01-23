@@ -5,6 +5,10 @@ export const kidneyPathologies: Pathology[] = [
         "id": "renal_cell_carcinoma",
         "name": "Renal Hücreli Karsinom (RCC)",
         "category": "Neoplastik",
+        "gallery": [
+            { "url": "/images/kidney/rcc_ct_corticomedullary.png", "caption": "BT Kortikomedüller - Heterojen", "modality": "CT" },
+            { "url": "/images/kidney/rcc_mri_t2.png", "caption": "MRI T2 - Clear Cell Hiperintens", "modality": "MRI" }
+        ],
         "findings": {
             "ultrasound": {
                 "description": "Solid renal kitle. Değişken ekojenite (hipo, izo, hiperekoik). Kortikal bulging. Renin venine uzanım kontrol edilmeli.",
@@ -33,6 +37,10 @@ export const kidneyPathologies: Pathology[] = [
         "id": "angiomyolipoma",
         "name": "Anjiyomiyolipom (AML)",
         "category": "Benign",
+        "gallery": [
+            { "url": "/images/kidney/aml_ct_fat.png", "caption": "BT - Makroskopik Yağ (-40 HU)", "modality": "CT" },
+            { "url": "/images/kidney/aml_usg.png", "caption": "USG - Hiperekoik", "modality": "USG" }
+        ],
         "findings": {
             "ultrasound": {
                 "description": "Tipik: Küçük, homojen, belirgin HİPEREKOİK kitle (yağ içeriği nedeniyle). Akustik gölge minimal.",
@@ -59,6 +67,10 @@ export const kidneyPathologies: Pathology[] = [
         "id": "simple_renal_cyst",
         "name": "Basit Renal Kist",
         "category": "Benign",
+        "gallery": [
+            { "url": "/images/kidney/cyst_usg_anechoic.png", "caption": "USG - Anekoik, Posterior Güçlenme", "modality": "USG" },
+            { "url": "/images/kidney/cyst_ct.png", "caption": "BT - Su Dansitesi", "modality": "CT" }
+        ],
         "findings": {
             "ultrasound": {
                 "description": "ANEKOİK sıvı. İnce, pürüzsüz duvar. Posterior akustik güçlenme. İnternal eko veya septasyon YOK.",
@@ -85,6 +97,10 @@ export const kidneyPathologies: Pathology[] = [
         "id": "bosniak_classification",
         "name": "Bosniak Sınıflaması (Kompleks Kist)",
         "category": "Benign/Malign",
+        "gallery": [
+            { "url": "/images/kidney/bosniak_types.png", "caption": "Bosniak Sınıflaması Şeması", "modality": "CT" },
+            { "url": "/images/kidney/bosniak_3_ct.png", "caption": "Bosniak III - Kalın Duvar/Septum", "modality": "CT" }
+        ],
         "findings": {
             "ct": {
                 "non_contrast": "Kist dansitesi ve homojenitesi değerlendirilir.",
@@ -106,6 +122,10 @@ export const kidneyPathologies: Pathology[] = [
         "id": "acute_pyelonephritis",
         "name": "Akut Piyelonefrit",
         "category": "Enfeksiyon",
+        "gallery": [
+            { "url": "/images/kidney/pyelonephritis_ct.png", "caption": "BT - Striated Nefrogram", "modality": "CT" },
+            { "url": "/images/kidney/pyelonephritis_dwi.png", "caption": "MRI DWI - Kısıtlanma", "modality": "MRI" }
+        ],
         "findings": {
             "ultrasound": {
                 "description": "Genellikle NORMAL görünüm (%70). Böbrek boyutunda artış. Kortikal ekojenite azalması veya artışı.",
@@ -132,6 +152,10 @@ export const kidneyPathologies: Pathology[] = [
         "id": "nephrolithiasis",
         "name": "Renal Taş (Nefrolitiyazis)",
         "category": "Obstrüksiyon",
+        "gallery": [
+            { "url": "/images/kidney/stone_ct.png", "caption": "BT Non-Kontrast - Hiperdens Taş", "modality": "CT" },
+            { "url": "/images/kidney/stone_usg_shadow.png", "caption": "USG - Akustik Gölge", "modality": "USG" }
+        ],
         "findings": {
             "ultrasound": {
                 "description": "HİPEREKOİK odak + AKUSTIK GÖLGELEME (posterior). 'Twinkle artifact': Doppler'da taş arkasında renkli artefakt.",

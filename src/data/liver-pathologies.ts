@@ -5,6 +5,11 @@ export const liverPathologies: Pathology[] = [
         "id": "hepatocellular_carcinoma",
         "name": "Hepatoselüler Karsinom (HCC)",
         "category": "Neoplastik",
+        "gallery": [
+            { "url": "/images/liver/hcc_ct_arterial.png", "caption": "BT Arteriyel Faz (Wash-in)", "modality": "CT" },
+            { "url": "/images/liver/hcc_ct_portal.png", "caption": "BT Portal Faz (Wash-out)", "modality": "CT" },
+            { "url": "/images/liver/hcc_mri_t2.png", "caption": "MRI T2 Hiperintens", "modality": "MRI" }
+        ],
         "findings": {
             "ultrasound": {
                 "description": "Değişken ekojenite (hipo/hiper/mikst). Mozaik patern (heterojen). Tümör trombusu portal vende görülebilir.",
@@ -34,6 +39,10 @@ export const liverPathologies: Pathology[] = [
         "id": "liver_metastasis",
         "name": "Karaciğer Metastazı",
         "category": "Neoplastik",
+        "gallery": [
+            { "url": "/images/liver/metastasis_mri_t2.png", "caption": "MRI T2 - Target Sign", "modality": "MRI" },
+            { "url": "/images/liver/metastasis_ct_portal.png", "caption": "BT Portal Faz - Hipodens", "modality": "CT" }
+        ],
         "findings": {
             "ct": {
                 "non_contrast": "Multipl hipodens lezyonlar. Kalsifikasyon: Müsinöz tümörler (kolon, over).",
@@ -58,6 +67,11 @@ export const liverPathologies: Pathology[] = [
         "id": "hepatic_hemangioma",
         "name": "Karaciğer Hemanjiomu",
         "category": "Benign",
+        "gallery": [
+            { "url": "/images/liver/hemangioma_usg.png", "caption": "USG - Hiperekoik", "modality": "USG" },
+            { "url": "/images/liver/hemangioma_mri_t2.png", "caption": "MRI T2 - Ampul İşareti", "modality": "MRI" },
+            { "url": "/images/liver/hemangioma_ct_delayed.png", "caption": "BT Geç Faz - Dolum", "modality": "CT" }
+        ],
         "findings": {
             "ultrasound": {
                 "description": "Tipik: Homojen HİPEREKOİK kitle, keskin sınırlı, posterior akustik güçlenme. Atipik: Heterojen, büyük, kompleks.",
@@ -85,6 +99,10 @@ export const liverPathologies: Pathology[] = [
         "id": "focal_nodular_hyperplasia",
         "name": "Fokal Nodüler Hiperplazi (FNH)",
         "category": "Benign",
+        "gallery": [
+            { "url": "/images/liver/fnh_ct_arterial.png", "caption": "BT Arteriyel - Yoğun Kontrast", "modality": "CT" },
+            { "url": "/images/liver/fnh_mri_hepatobiliary.png", "caption": "MRI Hepatobilier - İzointens", "modality": "MRI" }
+        ],
         "findings": {
             "ct": {
                 "non_contrast": "İzo veya hafif hipodens. %30 santral SKAR görülür.",
@@ -108,6 +126,10 @@ export const liverPathologies: Pathology[] = [
         "id": "hepatic_adenoma",
         "name": "Hepatik Adenom",
         "category": "Benign",
+        "gallery": [
+            { "url": "/images/liver/adenoma_mri_t1_outphase.png", "caption": "MRI T1 Out-Phase (Yağ)", "modality": "MRI" },
+            { "url": "/images/liver/adenoma_mri_hepatobiliary.png", "caption": "MRI Hepatobilier - Hipointens", "modality": "MRI" }
+        ],
         "findings": {
             "ct": {
                 "non_contrast": "İzo veya hiperdans (yağ veya glikojen). İNTRATÜMÖRAL KANAMA sık.",
@@ -131,6 +153,10 @@ export const liverPathologies: Pathology[] = [
         "id": "liver_abscess",
         "name": "Karaciğer Apsesi (Piyojenik)",
         "category": "Enfeksiyon",
+        "gallery": [
+            { "url": "/images/liver/abscess_ct_contrast.png", "caption": "BT - Double Target Sign", "modality": "CT" },
+            { "url": "/images/liver/abscess_mri_dwi.png", "caption": "MRI DWI - Kısıtlanma", "modality": "MRI" }
+        ],
         "findings": {
             "ultrasound": {
                 "description": "Kompleks kistik kitle. İnternal debri, septasyonlar. Kalın irregüler duvar. 'Cluster sign': Multipl küçük apseler birleşerek tek büyük apse.",
@@ -158,6 +184,10 @@ export const liverPathologies: Pathology[] = [
         "id": "liver_cirrhosis",
         "name": "Siroz ve Portal Hipertansiyon",
         "category": "Dejeneratif",
+        "gallery": [
+            { "url": "/images/liver/cirrhosis_ct.png", "caption": "BT - Nodüler Karaciğer", "modality": "CT" },
+            { "url": "/images/liver/varices_ct.png", "caption": "BT - Özofageal Varisler", "modality": "CT" }
+        ],
         "findings": {
             "ultrasound": {
                 "description": "Nodüler karaciğer yüzeyi. Heterojen parankimal ekojenite. Küçük sağ lob, büyümüş kaudat ve sol lateral segment.",
@@ -185,6 +215,10 @@ export const liverPathologies: Pathology[] = [
         "id": "hydatid_cyst",
         "name": "Hidatik Kist (Ekinokok)",
         "category": "Enfeksiyon",
+        "gallery": [
+            { "url": "/images/liver/hydatid_usg_lilly.png", "caption": "USG - Water Lily Sign", "modality": "USG" },
+            { "url": "/images/liver/hydatid_ct_calcified.png", "caption": "BT - Kalsifiye Kist", "modality": "CT" }
+        ],
         "findings": {
             "ultrasound": {
                 "description": "Tip I: Basit kist (uniloküler). Tip II: Yavru kistler (daughter cysts) + 'Su zambağı işareti' (membrane detachment). Tip III: Kalsifiye kist (inaktif).",
