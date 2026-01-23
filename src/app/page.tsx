@@ -9,7 +9,10 @@ import { CaseStudyMode } from "@/components/case-study-mode";
 import { AIAssistant } from "@/components/ai-assistant";
 import { brainPathologies } from "@/data/brain-pathologies";
 import { spinePathologies } from "@/data/spine-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot } from "lucide-react";
+import { liverPathologies } from "@/data/liver-pathologies";
+import { kidneyPathologies } from "@/data/kidney-pathologies";
+import { lungPathologies } from "@/data/lung-pathologies";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Heart, Droplets, Wind } from "lucide-react";
 import { DiagnosisWizard } from "@/components/diagnosis-wizard";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils"; // Ensure cn is imported
@@ -19,7 +22,7 @@ export default function Home() {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const [viewMode, setViewMode] = useState<"grid" | "list" | "quiz" | "case" | "wizard" | "ai">("grid");
-  const [activeModule, setActiveModule] = useState<"brain" | "spine">("brain");
+  const [activeModule, setActiveModule] = useState<"brain" | "spine" | "liver" | "kidney" | "lung">("brain");
   const [selectedPathology, setSelectedPathology] = useState<Pathology | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -35,7 +38,7 @@ export default function Home() {
     }
     const savedModule = localStorage.getItem("radassist-module");
     if (savedModule) {
-      setActiveModule(savedModule as "brain" | "spine");
+      setActiveModule(savedModule as "brain" | "spine" | "liver" | "kidney" | "lung");
     }
     setIsLoaded(true);
   }, []);
@@ -52,7 +55,14 @@ export default function Home() {
 
   const filteredPathologies = useMemo(() => {
     // Select data source based on active module
-    let result = activeModule === "brain" ? brainPathologies : spinePathologies;
+    let result: Pathology[] = [];
+    switch (activeModule) {
+      case "brain": result = brainPathologies; break;
+      case "spine": result = spinePathologies; break;
+      case "liver": result = liverPathologies; break;
+      case "kidney": result = kidneyPathologies; break;
+      case "lung": result = lungPathologies; break;
+    }
 
     // Filter by Favorites if toggle is active
     if (showFavoritesOnly) {
@@ -88,24 +98,25 @@ export default function Home() {
           <span>Yapay Zeka Destekli Radyoloji</span>
         </div>
 
+
         <h1 className="text-6xl sm:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
           RadAssist
         </h1>
 
-        <div className="w-full max-w-2xl relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+        <div className="w-full max-w-3xl relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
 
-          {/* Module Selector (Brain / Spine) - NEW */}
+          {/* Module Selector - 5 Organs */}
           {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && (
             <div className="flex justify-center mb-8">
-              <div className="flex p-1 bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-2xl relative">
+              <div className="flex flex-wrap justify-center gap-1 p-1 bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-2xl relative">
                 <button
                   onClick={() => {
                     setActiveModule("brain");
                     localStorage.setItem("radassist-module", "brain");
-                    setShowFavoritesOnly(false); // Reset filter on switch
+                    setShowFavoritesOnly(false);
                   }}
                   className={cn(
-                    "flex items-center gap-2 px-6 py-2 rounded-xl text-sm font-bold transition-all duration-300 relative z-10",
+                    "flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 relative z-10",
                     activeModule === "brain"
                       ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/25"
                       : "text-slate-400 hover:text-white hover:bg-white/5"
@@ -118,10 +129,10 @@ export default function Home() {
                   onClick={() => {
                     setActiveModule("spine");
                     localStorage.setItem("radassist-module", "spine");
-                    setShowFavoritesOnly(false); // Reset filter on switch
+                    setShowFavoritesOnly(false);
                   }}
                   className={cn(
-                    "flex items-center gap-2 px-6 py-2 rounded-xl text-sm font-bold transition-all duration-300 relative z-10",
+                    "flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 relative z-10",
                     activeModule === "spine"
                       ? "bg-emerald-600 text-white shadow-lg shadow-emerald-500/25"
                       : "text-slate-400 hover:text-white hover:bg-white/5"
@@ -130,8 +141,54 @@ export default function Home() {
                   <Bone className="w-4 h-4" />
                   <span>Omurga</span>
                 </button>
-
-                {/* Animated Glint or Border? Maybe simpler is better for now */}
+                <button
+                  onClick={() => {
+                    setActiveModule("liver");
+                    localStorage.setItem("radassist-module", "liver");
+                    setShowFavoritesOnly(false);
+                  }}
+                  className={cn(
+                    "flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 relative z-10",
+                    activeModule === "liver"
+                      ? "bg-rose-600 text-white shadow-lg shadow-rose-500/25"
+                      : "text-slate-400 hover:text-white hover:bg-white/5"
+                  )}
+                >
+                  <Heart className="w-4 h-4" />
+                  <span>Karaciğer</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setActiveModule("kidney");
+                    localStorage.setItem("radassist-module", "kidney");
+                    setShowFavoritesOnly(false);
+                  }}
+                  className={cn(
+                    "flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 relative z-10",
+                    activeModule === "kidney"
+                      ? "bg-amber-600 text-white shadow-lg shadow-amber-500/25"
+                      : "text-slate-400 hover:text-white hover:bg-white/5"
+                  )}
+                >
+                  <Droplets className="w-4 h-4" />
+                  <span>Böbrek</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setActiveModule("lung");
+                    localStorage.setItem("radassist-module", "lung");
+                    setShowFavoritesOnly(false);
+                  }}
+                  className={cn(
+                    "flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 relative z-10",
+                    activeModule === "lung"
+                      ? "bg-cyan-600 text-white shadow-lg shadow-cyan-500/25"
+                      : "text-slate-400 hover:text-white hover:bg-white/5"
+                  )}
+                >
+                  <Wind className="w-4 h-4" />
+                  <span>Akciğer</span>
+                </button>
               </div>
             </div>
           )}
@@ -257,7 +314,7 @@ export default function Home() {
         ) : viewMode === "case" ? (
           <CaseStudyMode />
         ) : viewMode === "wizard" ? (
-          <DiagnosisWizard activeModule={activeModule} />
+          <DiagnosisWizard activeModule={activeModule === "spine" ? "spine" : "brain"} />
         ) : viewMode === "ai" ? (
           <AIAssistant />
         ) : filteredPathologies.length === 0 ? (
