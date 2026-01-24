@@ -3,7 +3,10 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
-import { Copy, Check, ChevronDown, ChevronUp, Maximize2, X, Star, RotateCw, Sparkles, Brain, Stethoscope, Lightbulb } from 'lucide-react';
+import {
+    Copy, Check, ChevronDown, ChevronUp, Maximize2, X, Star, RotateCw,
+    Sparkles, Brain, Stethoscope, Lightbulb, Activity, Layers, Scan, Radiation, Zap, FileText, ShieldCheck
+} from 'lucide-react';
 
 interface PathologyCardProps {
     data: Pathology;
@@ -12,7 +15,18 @@ interface PathologyCardProps {
     highlightQuery?: string;
 }
 
-type TabType = "summary" | "ct" | "mri" | "usg";
+type TabType = "summary" | string;
+
+const MODALITY_CONFIG: Record<string, { label: string, icon: any, color: string, bg: string }> = {
+    ultrasound: { label: "USG", icon: Activity, color: "text-emerald-400", bg: "bg-emerald-500/10 border-emerald-500/20" },
+    usg: { label: "USG", icon: Activity, color: "text-emerald-400", bg: "bg-emerald-500/10 border-emerald-500/20" },
+    ct: { label: "BT", icon: Layers, color: "text-amber-400", bg: "bg-amber-500/10 border-amber-500/20" },
+    mri: { label: "MR", icon: Brain, color: "text-indigo-400", bg: "bg-indigo-500/10 border-indigo-500/20" },
+    mammography: { label: "MG", icon: Scan, color: "text-pink-400", bg: "bg-pink-500/10 border-pink-500/20" },
+    xray: { label: "XR", icon: Radiation, color: "text-slate-400", bg: "bg-slate-500/10 border-slate-500/20" },
+    pet: { label: "PET", icon: Zap, color: "text-rose-400", bg: "bg-rose-500/10 border-rose-500/20" },
+    dsa: { label: "DSA", icon: Activity, color: "text-red-400", bg: "bg-red-500/10 border-red-500/20" },
+};
 
 const HighlightedText = ({ text, query }: { text: string, query?: string }) => {
     if (!query || !query.trim()) return <>{text}</>;
@@ -30,6 +44,9 @@ const HighlightedText = ({ text, query }: { text: string, query?: string }) => {
 
 export function PathologyCard({ data, isFavorite = false, onToggleFavorite, highlightQuery }: PathologyCardProps) {
     const [isFlipped, setIsFlipped] = useState(false);
+
+    // Default active tab: first available modality
+    const firstModality = Object.keys(data.findings)[0];
     const [activeTab, setActiveTab] = useState<TabType>("summary");
     const [activeImage, setActiveImage] = useState<number | null>(null);
 
@@ -60,9 +77,9 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     };
 
     return (
-        <div className="relative w-full h-[500px] perspective-1000 group/card">
+        <div className="relative w-full h-[550px] perspective-1000 group/card">
 
-            {/* CARD CONTAINER (Preserves space) */}
+            {/* CARD CONTAINER */}
             <div
                 className={cn(
                     "relative w-full h-full transition-all duration-700 transform-style-3d",
@@ -81,7 +98,9 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                 className="object-cover opacity-80 group-hover/card:opacity-100 transition-opacity"
                             />
                         ) : (
-                            <div className="flex items-center justify-center h-full text-zinc-600 bg-zinc-800">No Image</div>
+                            <div className="flex items-center justify-center h-full text-zinc-600 bg-zinc-800">
+                                <Activity className="w-10 h-10 opacity-20" />
+                            </div>
                         )}
 
                         {/* Overlay Gradient */}
@@ -118,40 +137,58 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Front Content */}
-                    <div className="p-5 flex-1 flex flex-col">
+                    <div className="p-5 flex-1 flex flex-col min-h-0">
                         <div className="flex justify-between items-start mb-2">
                             <h3 className="text-xl font-bold text-white leading-tight pr-4">{data.name}</h3>
-                            <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider">
+                            <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider shrink-0">
                                 <RotateCw className="w-3 h-3 group-hover/flip:rotate-180 transition-transform duration-500" />
                                 Detay
                             </button>
                         </div>
 
                         {/* Tabs */}
-                        <div className="flex gap-2 mb-4 border-b border-white/5 pb-2">
-                            {(['summary', 'ct', 'mri'] as TabType[]).map(t => {
-                                const hasData = t === 'summary' || (t === 'ct' && data.findings.ct) || (t === 'mri' && data.findings.mri);
-                                if (!hasData) return null;
+                        <div className="flex flex-wrap gap-2 mb-4 border-b border-white/5 pb-2">
+                            <button
+                                onClick={(e) => { e.stopPropagation(); setActiveTab('summary'); }}
+                                className={cn(
+                                    "flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg transition-all",
+                                    activeTab === 'summary'
+                                        ? "bg-white/10 text-white border border-white/10"
+                                        : "text-zinc-500 hover:text-zinc-300 bg-transparent border border-transparent"
+                                )}
+                            >
+                                <FileText className="w-3.5 h-3.5" />
+                                ÖZET
+                            </button>
+
+                            {Object.keys(data.findings).map(modality => {
+                                const config = MODALITY_CONFIG[modality] || { label: modality.toUpperCase(), icon: Activity, color: "text-zinc-400", bg: "bg-zinc-500/10 border-zinc-500/20" };
+                                const Icon = config.icon;
+                                const isActive = activeTab === modality;
+
                                 return (
                                     <button
-                                        key={t}
-                                        onClick={(e) => { e.stopPropagation(); setActiveTab(t); }}
+                                        key={modality}
+                                        onClick={(e) => { e.stopPropagation(); setActiveTab(modality); }}
                                         className={cn(
-                                            "text-xs font-medium px-2 py-1 rounded transition-colors",
-                                            activeTab === t ? "bg-white/10 text-white" : "text-zinc-500 hover:text-zinc-300"
+                                            "flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg transition-all border",
+                                            isActive
+                                                ? `${config.bg} ${config.color} shadow-sm`
+                                                : "border-transparent text-zinc-500 hover:text-zinc-300 bg-transparent"
                                         )}
                                     >
-                                        {t.toUpperCase()}
+                                        <Icon className="w-3.5 h-3.5" />
+                                        {config.label}
                                     </button>
                                 );
                             })}
                         </div>
 
                         {/* Scrollable Content Area */}
-                        <div className="flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-700">
+                        <div className="flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-700 min-h-0">
                             {activeTab === 'summary' ? (
                                 <ul className="space-y-2">
-                                    {data.keyPoints.slice(0, 3).map((kp, i) => (
+                                    {data.keyPoints.slice(0, 4).map((kp, i) => ( // Show up to 4 key points
                                         <li key={i} className="flex gap-2 text-sm text-zinc-400">
                                             <span className="text-cyan-500 font-bold mt-1">•</span>
                                             <span className="leading-snug"><HighlightedText text={kp} query={highlightQuery} /></span>
@@ -159,13 +196,27 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                     ))}
                                 </ul>
                             ) : (
-                                <div className="space-y-2 text-sm text-zinc-400">
-                                    {Object.entries((data.findings as any)[activeTab] || {}).slice(0, 3).map(([k, v]) => (
-                                        <div key={k} className="border-l-2 border-zinc-700 pl-2">
-                                            <span className="text-[10px] text-zinc-500 uppercase block">{k}</span>
-                                            <span className="text-zinc-300"><HighlightedText text={v as string} query={highlightQuery} /></span>
-                                        </div>
-                                    ))}
+                                <div className="space-y-3 text-sm text-zinc-400 animate-in fade-in duration-300">
+                                    {/* Handle Object content (e.g. CT phases) or String content */}
+                                    {(() => {
+                                        const content = (data.findings as any)[activeTab];
+                                        if (typeof content === 'string') {
+                                            return <p className="leading-relaxed"><HighlightedText text={content} query={highlightQuery} /></p>;
+                                        }
+                                        if (typeof content === 'object' && content !== null) {
+                                            return Object.entries(content).map(([k, v]) => (
+                                                <div key={k} className="border-l-2 border-zinc-700 pl-3">
+                                                    <span className="text-[10px] text-zinc-500 uppercase font-bold tracking-widest block mb-0.5">
+                                                        {k.replace(/_/g, ' ')}
+                                                    </span>
+                                                    <span className="text-zinc-300 leading-relaxed block">
+                                                        <HighlightedText text={v as string} query={highlightQuery} />
+                                                    </span>
+                                                </div>
+                                            ));
+                                        }
+                                        return null;
+                                    })()}
                                 </div>
                             )}
                         </div>
@@ -173,7 +224,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
 
                     {/* Bottom Action Hint */}
                     <div className="p-3 bg-zinc-950/30 border-t border-white/5 text-[10px] text-center text-zinc-500">
-                        Detaylı patofizyoloji için kartı çevirin ↻
+                        Detaylı patofizyoloji ve mekanizma için kartı çevirin ↻
                     </div>
                 </div>
 

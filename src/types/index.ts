@@ -1,4 +1,4 @@
-export type ModalityType = "CT" | "MRI" | "USG" | "X-Ray" | "PET";
+export type ModalityType = "CT" | "MRI" | "USG" | "X-Ray" | "PET" | "Mammography";
 
 export interface ModalityFindings {
     ultrasound?: {
@@ -55,6 +55,12 @@ export interface ModalityFindings {
     pet?: {
         description?: string;
         suv_max?: string;
+    };
+    mammography?: {
+        description?: string;
+        cc_view?: string;
+        mlo_view?: string;
+        tomosynthesis?: string;
     };
 }
 
