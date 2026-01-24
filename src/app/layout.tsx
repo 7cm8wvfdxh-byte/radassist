@@ -28,6 +28,7 @@ export const viewport = {
 };
 
 import { AuthProvider } from "@/context/auth-context";
+import { ForumProvider } from "@/context/forum-context";
 
 export default function RootLayout({
   children,
@@ -40,7 +41,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          {children}
+          <ForumProvider>
+            {children}
+          </ForumProvider>
         </AuthProvider>
       </body>
     </html>
