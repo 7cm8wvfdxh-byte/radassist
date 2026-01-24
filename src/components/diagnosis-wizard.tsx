@@ -4,6 +4,7 @@ import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from '@/data/lexicon';
 import { useDiagnosticEngine } from '@/hooks/use-diagnostic-engine';
 import { clsx } from 'clsx';
 import { Check, ChevronRight, Stethoscope, AlertTriangle, FileText, X, Brain, Bone, Activity, Droplets, Wind, Sparkles } from 'lucide-react';
+import { REPORT_TEMPLATES, GENERIC_TEMPLATE } from '@/data/report-templates';
 
 interface DiagnosisWizardProps {
     activeModule: 'brain' | 'spine' | 'liver' | 'kidney' | 'lung';
@@ -362,8 +363,8 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
             {/* Report Modal */}
             {isReportOpen && results.length > 0 && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-                    <div className="bg-white text-zinc-900 w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300">
-                        <div className="bg-zinc-100 px-6 py-4 border-b flex justify-between items-center">
+                    <div className="bg-white text-zinc-900 w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col max-h-[90vh]">
+                        <div className="bg-zinc-100 px-6 py-4 border-b flex justify-between items-center shrink-0">
                             <h3 className="font-bold text-lg text-zinc-800 flex items-center gap-2">
                                 <FileText className="w-5 h-5 text-zinc-600" />
                                 Radyoloji Rapor Taslağı
@@ -372,41 +373,66 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                                 <X className="w-5 h-5 text-zinc-500" />
                             </button>
                         </div>
-                        <div className="p-8 font-mono text-sm leading-relaxed overflow-y-auto max-h-[60vh]">
-                            <p className="font-bold mb-2">KLİNİK BİLGİ:</p>
-                            <p className="mb-4 text-zinc-600">[Klinik bilgi giriniz...]</p>
 
-                            <p className="font-bold mb-2">İNCELEME:</p>
-                            <p className="mb-4 text-zinc-600 font-semibold uppercase">{organ === 'Brain' ? 'Kranial' : organ === 'Spine' ? 'Spinal' : organ === 'Liver' ? 'Abdominal (Karaciğer)' : organ === 'Kidney' ? 'Üriner sistem' : 'Toraks'} {modality} incelemesi</p>
+                        <div className="p-8 font-mono text-sm leading-relaxed overflow-y-auto">
+                            {(() => {
+                                // Select the best matching template based on the top result
+                                const topResult = results[0];
+                                const template = REPORT_TEMPLATES[topResult.pathologyId] || GENERIC_TEMPLATE;
 
-                            <p className="font-bold mb-2">TEKNİK:</p>
-                            <p className="mb-4 text-zinc-600">{modality} sekansları alınmıştır.</p>
+                                return (
+                                    <>
+                                        <p className="font-bold mb-2">KLİNİK BİLGİ:</p>
+                                        <p className="mb-4 text-zinc-600">[Klinik bilgi giriniz...]</p>
 
-                            <p className="font-bold mb-2">BULGULAR:</p>
-                            <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700">
-                                {selectedFindings.map(id => {
-                                    const label = activeFindingsList.find(f => f.id === id)?.label || id;
-                                    return <li key={id}>{label} izlenmiştir.</li>
-                                })}
-                            </ul>
+                                        <p className="font-bold mb-2">İNCELEME:</p>
+                                        <p className="mb-4 text-zinc-600 font-semibold uppercase">
+                                            {organ === 'Brain' ? 'Kranial' : organ === 'Spine' ? 'Spinal' : organ === 'Liver' ? 'Abdominal (Karaciğer)' : organ === 'Kidney' ? 'Üriner sistem' : 'Toraks'} {modality} incelemesi
+                                        </p>
 
-                            <p className="font-bold mb-2">SONUÇ & ÖNERİLER:</p>
-                            <div className="space-y-2 text-zinc-700">
-                                <p>Tanımlanan bulgular ışığında olası tanılar:</p>
-                                <ol className="list-decimal pl-5">
-                                    {results.slice(0, 3).map((res, idx) => (
-                                        <li key={res.pathologyId}>
-                                            <span className="font-semibold">{res.pathologyName}</span>
-                                            <span className="text-zinc-500 text-xs ml-2">({res.probabilityLabel})</span>
-                                        </li>
-                                    ))}
-                                </ol>
-                                <p className="mt-4 italic text-zinc-500 text-xs border-t pt-2">
-                                    * Bu rapor yapay zeka destekli taslak niteliğindedir. Uzman radyolog onayı gerektirir.
-                                </p>
-                            </div>
+                                        <p className="font-bold mb-2">TEKNİK:</p>
+                                        <p className="mb-4 text-zinc-600">{template.technique}</p>
+
+                                        <p className="font-bold mb-2">BULGULAR:</p>
+                                        <p className="mb-4 text-zinc-700 whitespace-pre-line">
+                                            {template.findingsTemplate}
+                                        </p>
+
+                                        {/* List specific selected findings as well to ensure nothing is missed */}
+                                        <p className="font-bold mb-1 text-xs text-zinc-500">EK İŞARETLENEN BULGULAR:</p>
+                                        <ul className="list-disc pl-5 mb-6 space-y-1 text-zinc-600 text-xs">
+                                            {selectedFindings.map(id => {
+                                                const label = activeFindingsList.find(f => f.id === id)?.label || id;
+                                                return <li key={id}>{label}</li>
+                                            })}
+                                        </ul>
+
+                                        <p className="font-bold mb-2">SONUÇ & ÖNERİLER:</p>
+                                        <div className="space-y-4 text-zinc-900 font-semibold bg-zinc-100 p-4 rounded-lg border border-zinc-200">
+                                            <p className="uppercase">{template.impressionTemplate.replace("[Olası Tanı]", topResult.pathologyName)}</p>
+                                        </div>
+
+                                        <div className="mt-6 pt-4 border-t border-zinc-200">
+                                            <p className="text-zinc-500 text-xs mb-2">Olası Ayırıcı Tanılar (Alternatifler):</p>
+                                            <ol className="list-decimal pl-5 text-zinc-600 text-xs">
+                                                {results.slice(1, 4).map((res) => (
+                                                    <li key={res.pathologyId}>
+                                                        <span className="font-medium">{res.pathologyName}</span>
+                                                        <span className="text-zinc-400 ml-1">({res.probabilityLabel})</span>
+                                                    </li>
+                                                ))}
+                                            </ol>
+                                        </div>
+
+                                        <p className="mt-4 italic text-zinc-400 text-[10px] text-center">
+                                            * Bu rapor yapay zeka destekli taslak niteliğindedir. Uzman radyolog onayı gerektirir.
+                                        </p>
+                                    </>
+                                );
+                            })()}
                         </div>
-                        <div className="bg-zinc-50 px-6 py-4 border-t flex justify-end gap-3">
+
+                        <div className="bg-zinc-50 px-6 py-4 border-t flex justify-end gap-3 shrink-0">
                             <button onClick={() => setIsReportOpen(false)} className="px-4 py-2 text-zinc-600 font-medium hover:text-zinc-900">Kapat</button>
                             <button className="px-4 py-2 bg-zinc-900 text-white rounded-lg hover:bg-zinc-800 font-medium">Kopyala</button>
                         </div>
