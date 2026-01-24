@@ -8,12 +8,13 @@ import { QuizMode } from "@/components/quiz-mode";
 import { CaseStudyMode } from "@/components/case-study-mode";
 import { AIAssistant } from "@/components/ai-assistant";
 import { SwipeMode } from "@/components/swipe-mode";
+import { ToolboxMode } from "@/components/toolbox-mode";
 import { brainPathologies } from "@/data/brain-pathologies";
 import { spinePathologies } from "@/data/spine-pathologies";
 import { liverPathologies } from "@/data/liver-pathologies";
 import { kidneyPathologies } from "@/data/kidney-pathologies";
 import { lungPathologies } from "@/data/lung-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Heart, Droplets, Wind, Trophy, Library } from "lucide-react";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Heart, Droplets, Wind, Trophy, Library, Wrench } from "lucide-react";
 import { DiagnosisWizard } from "@/components/diagnosis-wizard";
 import { DailyCaseModal } from "@/components/daily-case-modal";
 import { Pathology } from "@/types";
@@ -24,7 +25,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-  const [viewMode, setViewMode] = useState<"grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe">("grid");
+  const [viewMode, setViewMode] = useState<"grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox">("grid");
   const [activeModule, setActiveModule] = useState<"brain" | "spine" | "liver" | "kidney" | "lung">("brain");
   const [selectedPathology, setSelectedPathology] = useState<Pathology | null>(null);
   const [showDailyModal, setShowDailyModal] = useState(false);
@@ -155,12 +156,25 @@ export default function Home() {
             <Library className="w-5 h-5 text-pink-400 group-hover:scale-110 transition-transform" />
             <span className="text-sm font-bold text-pink-200 group-hover:text-pink-100">Kart Modu</span>
           </button>
+
+          {/* Toolbox Mode Button */}
+          <button
+            onClick={() => {
+              setViewMode("toolbox");
+              localStorage.setItem("radassist-view-mode", "toolbox");
+            }}
+            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500/10 to-emerald-500/10 border border-teal-500/20 hover:border-teal-500/40 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-300"
+          >
+            <div className="absolute inset-0 bg-teal-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
+            <Wrench className="w-5 h-5 text-teal-400 group-hover:rotate-12 transition-transform" />
+            <span className="text-sm font-bold text-teal-200 group-hover:text-teal-100">Alet Çantası</span>
+          </button>
         </div>
 
         <div className="w-full max-w-3xl relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
 
           {/* Module Selector - 5 Organs */}
-          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && (
+          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && (
             <div className="flex justify-center mb-8">
               <div className="flex flex-wrap justify-center gap-1 p-1 bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-2xl relative">
                 <button
@@ -248,13 +262,14 @@ export default function Home() {
           )}
 
           {/* Hide Search Bar in Quiz Mode */}
-          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && (
+          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && (
             <div className="relative group mb-4">
               <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
               <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl ring-1 ring-white/10 shadow-2xl flex flex-col">
                 <SearchBar
                   value={searchQuery}
                   onChange={setSearchQuery}
+
                   placeholder={
                     searchGlobal
                       ? "Tüm modüllerde (Beyin, Omurga, Karaciğer...) ara..."
@@ -371,10 +386,21 @@ export default function Home() {
               >
                 <Bot className="w-4 h-4" />
               </button>
+
+              <button
+                onClick={() => {
+                  setViewMode("toolbox");
+                  localStorage.setItem("radassist-view-mode", "toolbox");
+                }}
+                className={`p-1.5 rounded-full transition-all ${viewMode === "toolbox" ? "bg-teal-500 text-white shadow-lg ring-2 ring-teal-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
+                title="Alet Çantası"
+              >
+                <Wrench className="w-4 h-4" />
+              </button>
             </div>
 
             {/* Favorites Toggle (Hide in Quiz) */}
-            {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && (
+            {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && (
               <button
                 onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${showFavoritesOnly
@@ -393,7 +419,7 @@ export default function Home() {
             )}
           </div>
 
-          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && (
+          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && (
             <p className="mt-4 text-slate-500 text-xs">
               {activeModule === 'brain' ? (
                 <>Örn: <span className="text-slate-400 border-b border-indigo-500/30 mx-1">Glioblastom</span>, <span className="text-slate-400 border-b border-cyan-500/30 mx-1">İnme</span></>
@@ -428,6 +454,8 @@ export default function Home() {
             onToggleFavorite={toggleFavorite}
             onExit={() => setViewMode("grid")}
           />
+        ) : viewMode === "toolbox" ? (
+          <ToolboxMode />
         ) : filteredPathologies.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-32 text-slate-600 animate-in fade-in zoom-in duration-500">
             <Search className="w-16 h-16 mb-4 opacity-20" />
