@@ -192,17 +192,17 @@ export default function Home() {
         {/* User Profile / Auth */}
         {/* User Profile / Auth */}
         <div className="absolute top-6 right-6 z-50 flex items-center gap-3">
-          <Link href="/community" className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group">
+          <Link href="/community" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">RadRoom</span>
+            <span className="hidden md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">RadRoom</span>
           </Link>
 
-          <Link href="/announcements" className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group relative">
+          <Link href="/announcements" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group relative">
             <div className="relative">
               <Bell className="w-4 h-4 text-zinc-400 group-hover:text-white transition-colors" />
               <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-red-500 rounded-full border border-black" />
             </div>
-            <span className="text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">Duyurular</span>
+            <span className="hidden md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">Duyurular</span>
           </Link>
           {user ? (
             <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md rounded-full pl-4 pr-2 py-1.5 border border-white/10 shadow-lg">
