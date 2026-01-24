@@ -329,5 +329,35 @@ export const RADIOLOGY_CALCULATORS: Calculator[] = [
         name: "Prostat Volüm Hesaplayıcı",
         organ: "Prostate",
         description: "L x W x H x 0.52 formülü ile prostat hacmi.",
+    },
+    {
+        id: "ich_score",
+        name: "ICH Score (Beyin Kanaması)",
+        organ: "Brain",
+        description: " intraserebral hemorajide 30 günlük mortalite riskini tahmin eder. (Hemphill Score)",
+    },
+    {
+        id: "ti_rads",
+        name: "ACR TI-RADS (Tiroid Nodül)",
+        organ: "Thyroid",
+        description: "Tiroid nodüllerinin malignite riskini ve ince iğne aspirasyon (İİAB) gerekliliğini belirler.",
+    },
+    {
+        id: "egfr_ckd_epi",
+        name: "eGFR (Böbrek Fonksiyonu)",
+        organ: "Kidney",
+        description: "Kontrast madde güvenliği için CKD-EPI formülü ile glomerüler filtrasyon hızını hesaplar.",
+    },
+    {
+        id: "nascet_stenosis",
+        name: "NASCET (Karotis Darlığı)",
+        organ: "Vascular",
+        description: "Distal normal lümen ve darlık çapına göre stenoz yüzdesini hesaplar.",
+    },
+    {
+        id: "recist",
+        name: "RECIST 1.1 (Tümör Yanıtı)",
+        organ: "Oncology",
+        description: "Bazal ve takip ölçümlerine göre tümörün tedaviye yanıtını (CR, PR, SD, PD) belirler.",
     }
 ];
