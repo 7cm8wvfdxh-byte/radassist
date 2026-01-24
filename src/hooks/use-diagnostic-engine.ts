@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
-import { DIAGNOSTIC_RULES } from '@/data/diagnostic-engine';
-import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS, FindingOption } from '@/data/lexicon';
+import { DISEASE_SIGNATURES } from '@/data/disease-signatures';
+import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS, FindingOption, Modality } from '@/data/lexicon';
 import { ScoredPathology } from '@/types';
 
 // Combine all findings for lookup
@@ -12,37 +12,43 @@ export function useDiagnosticEngine(selectedFindingIds: string[], selectedOrgan:
     const results = useMemo(() => {
         if (selectedFindingIds.length === 0) return [];
 
-        // Filter rules by Organ FIRST
-        const activeRules = DIAGNOSTIC_RULES.filter(rule => rule.organ === selectedOrgan);
+        // Filter rules by Organ
+        const activeDiseases = DISEASE_SIGNATURES.filter(d => d.organ === selectedOrgan);
 
-        const scoredPathologies: ScoredPathology[] = activeRules.map(rule => {
-            let score = rule.baseProbability || 0;
+        const scoredPathologies: ScoredPathology[] = activeDiseases.map(disease => {
+            let score = disease.baseProbability || 0;
             const matchedFindings: string[] = [];
-            const missingFindings: string[] = [];
 
-            // Check Strong Findings
-            rule.strongFindings.forEach(fId => {
-                if (selectedFindingIds.includes(fId)) {
-                    const findingDef = FINDING_MAP.get(fId);
-                    const weight = findingDef?.weight || 5;
-                    score += weight * 3; // 3x multiplier for strong matches
-                    matchedFindings.push(fId);
-                } else {
-                    missingFindings.push(fId);
-                }
-            });
+            // Iterate over all modalities defined for this disease
+            // We sum up scores from all modalities since user might have selected findings from mixed modalities
+            const modalities = Object.keys(disease.signatures) as Modality[];
 
-            // Check Weak Findings
-            if (rule.weakFindings) {
-                rule.weakFindings.forEach(fId => {
+            modalities.forEach(mod => {
+                const signature = disease.signatures[mod];
+                if (!signature) return;
+
+                // Check Strong Findings
+                signature.strongFindings.forEach(fId => {
                     if (selectedFindingIds.includes(fId)) {
                         const findingDef = FINDING_MAP.get(fId);
                         const weight = findingDef?.weight || 5;
-                        score += weight * 1; // 1x multiplier for weak matches
-                        matchedFindings.push(fId);
+                        score += weight * 3;
+                        if (!matchedFindings.includes(fId)) matchedFindings.push(fId);
                     }
                 });
-            }
+
+                // Check Weak Findings
+                if (signature.weakFindings) {
+                    signature.weakFindings.forEach(fId => {
+                        if (selectedFindingIds.includes(fId)) {
+                            const findingDef = FINDING_MAP.get(fId);
+                            const weight = findingDef?.weight || 5;
+                            score += weight * 1;
+                            if (!matchedFindings.includes(fId)) matchedFindings.push(fId);
+                        }
+                    });
+                }
+            });
 
             // Determine Probability Label
             let probabilityLabel: "Yüksek Olasılık" | "Orta Olasılık" | "Düşük Olasılık" = "Düşük Olasılık";
@@ -50,24 +56,20 @@ export function useDiagnosticEngine(selectedFindingIds: string[], selectedOrgan:
             else if (score > 20) probabilityLabel = "Orta Olasılık";
 
             return {
-                pathologyId: rule.pathologyId,
-                pathologyName: rule.pathologyName,
+                pathologyId: disease.id,
+                pathologyName: disease.name,
                 score,
                 matchedFindings,
-                missingFindings,
+                missingFindings: [], // Deprecated in this new logic or needs complex calculation per modality
                 probabilityLabel
             };
         });
 
-        // Filter out zero matching results? 
-        // Or at least those with VERY low scores compared to top?
-        // Let's filter those with score > 15 (Base probabilities start around 5-15)
-        // And sort descending
         return scoredPathologies
-            .filter(p => p.score > 10 && p.matchedFindings.length > 0) // Must match at least one finding
+            .filter(p => p.score > 10 && p.matchedFindings.length > 0)
             .sort((a, b) => b.score - a.score);
 
-    }, [selectedFindingIds]);
+    }, [selectedFindingIds, selectedOrgan]); // Re-run when findings or organ change
 
     return results;
 }

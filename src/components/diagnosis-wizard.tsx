@@ -63,6 +63,43 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                     </p>
                 </div>
 
+                {/* --- SELECTED FINDINGS DASHBOARD --- */}
+                {selectedFindings.length > 0 && (
+                    <div className="bg-gradient-to-r from-zinc-900 to-zinc-800/80 rounded-xl p-4 border border-cyan-500/20 shadow-lg shadow-cyan-900/10 animate-in fade-in slide-in-from-top-4">
+                        <div className="flex items-center justify-between mb-3">
+                            <h3 className="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2">
+                                <Activity className="w-4 h-4" />
+                                Seçili Bulgular ({selectedFindings.length})
+                            </h3>
+                            <button
+                                onClick={() => setSelectedFindings([])}
+                                className="text-[10px] text-zinc-500 hover:text-red-400 transition-colors"
+                            >
+                                Temizle
+                            </button>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                            {selectedFindings.map(id => {
+                                // Find label from ALL potential findings
+                                const allFindings = [...USG_FINDINGS, ...CT_FINDINGS, ...MRI_FINDINGS];
+                                const finding = allFindings.find(f => f.id === id);
+                                const label = finding?.label || id;
+
+                                return (
+                                    <button
+                                        key={id}
+                                        onClick={() => toggleFinding(id)}
+                                        className="group flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cyan-950/40 text-cyan-200 border border-cyan-500/30 text-xs hover:bg-red-950/40 hover:text-red-300 hover:border-red-500/30 transition-all"
+                                    >
+                                        <span>{label}</span>
+                                        <X className="w-3 h-3 opacity-60 group-hover:opacity-100" />
+                                    </button>
+                                )
+                            })}
+                        </div>
+                    </div>
+                )}
+
                 {/* Step 0: Organ Selection */}
                 <div className="space-y-3">
                     <label className="text-sm font-medium text-zinc-300">Organ Sistemi</label>
