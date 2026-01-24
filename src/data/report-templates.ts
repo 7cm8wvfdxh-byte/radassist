@@ -27,6 +27,38 @@ export const REPORT_TEMPLATES: Record<string, ReportTemplate> = {
         impressionTemplate: "Akut dönem iskemik enfarkt ile uyumlu bulgular."
     },
 
+
+    "meningioma": {
+        pathologyId: "meningioma",
+        technique: "Multiplanar kranial MR (T1, T2, FLAIR) ve IVKM sonrası sekanslar.",
+        findingsTemplate: "Ekstra-aksiyal yerleşimli, T1'de izointens, T2'de izo-hiperintens, IVKM sonrası yoğun ve homojen kontrastlanan kitle lezyonu izlenmiştir. Lezyonun dural tabanı geniş olup, komşu durada 'kuyruk' tarzında kontrastlanma (dural tail) dikkati çekmiştir. Beyin parankimi ile arasında BOS mesafesi (CSF cleft) korunmuştur.",
+        impressionTemplate: "Tipik MR bulguları Meningiom ile uyumludur."
+    },
+    "subdural_hematoma": {
+        pathologyId: "subdural_hematoma",
+        technique: "Non-kontrast Kranial BT.",
+        findingsTemplate: "Frontoparietal konveksitede, kalvarium ile beyin parankimi arasında, orağı (falks) geçmeyen ancak sütürleri geçen, hilal (yarım ay) şeklinde hiperdens ekstra-aksiyal koleksiyon izlenmiştir. Alttaki parankime bası ve sulkal silinme mevcuttur. Orta hat şifti değerlendirilmelidir.",
+        impressionTemplate: "Akut Subdural Hematom (SDH) ile uyumlu BT bulguları."
+    },
+    "epidural_hematoma": {
+        pathologyId: "epidural_hematoma",
+        technique: "Non-kontrast Kranial BT.",
+        findingsTemplate: "Temporoparietal bölgede, bikonveks (lens) şeklinde, sütür hatlarını geçmeyen ancak dural refleksiyonları geçebilen hiperdens koleksiyon izlenmiştir. Komşu kemikte lineer fraktür hattı seçilmektedir. Belirgin kitle etkisi mevcuttur.",
+        impressionTemplate: "Akut Epidural Hematom (EDH). Acil Nöroşirürji konsültasyonu önerilir."
+    },
+    "subarachnoid_hemorrhage": {
+        pathologyId: "subarachnoid_hemorrhage",
+        technique: "Non-kontrast Kranial BT.",
+        findingsTemplate: "Bazal sisternalarda, Silviyan fissürlerde ve kortikal sulkuslarda hiperdens görünüm (kan) izlenmiştir. 'Deniz yıldızı' (Star sign) görünümü mevcuttur. Ventriküler sisteme açılım (intraventriküler hemoraji) eşlik etmektedir.",
+        impressionTemplate: "Akut Subaraknoid Kanama (SAK). Etyolojiye yönelik BT Anjiyografi önerilir."
+    },
+    "cerebral_abscess": {
+        pathologyId: "cerebral_abscess",
+        technique: "Difüzyon ağırlıklı ve kontrastlı Kranial MR.",
+        findingsTemplate: "T2 ağırlıklı serilerde hiperintens, çevresinde geniş vazojenik ödem alanı bulunan, IVKM sonrası ince ve düzgün halkasal (ring) kontrastlanma gösteren lezyon izlenmiştir. DWI incelemede lezyon merkezinde belirgin difüzyon kısıtlılığı (parlak sinyal) saptanmıştır (ADC düşüklüğü ile uyumlu).",
+        impressionTemplate: "Piyojenik Serebral Apse ile uyumlu MR bulguları."
+    },
+
     // --- SPINE ---
     "lumbar_disc_herniation": {
         pathologyId: "lumbar_disc_herniation",
@@ -34,6 +66,25 @@ export const REPORT_TEMPLATES: Record<string, ReportTemplate> = {
         findingsTemplate: "L[X]-L[Y] intervertebral diskinde yükseklik kaybı ve dejenerasyona sekonder T2 sinyal kaybı (disk desikasyonu) izlenmiştir. Bu düzeyde dural keseye ve sinir köküne bası oluşturan disk herniasyonu izlenmektedir. Nöral foramenler daralmıştır.",
         impressionTemplate: "L[X]-L[Y] disk herniasyonu ve sinir kökü basısı."
     },
+    "spinal_stenosis_lumbar": {
+        pathologyId: "spinal_stenosis_lumbar",
+        technique: "Lomber Spinal MR.",
+        findingsTemplate: "Lomber lordoz düzleşmiştir. L3-4 ve L4-5 düzeylerinde faset eklem hipertrofisi ve ligamentum flavum kalınlaşmasına bağlı spinal kanal çapında daralma izlenmiştir. Dural kese sıkışmış olup, kauda ekuina liflerinde kıvrımlanma (redundancy) mevcuttur.",
+        impressionTemplate: "Lomber Spinal Stenoz (Dar Kanal)."
+    },
+    "vertebral_osteomyelitis": {
+        pathologyId: "vertebral_osteomyelitis",
+        technique: "Kontrastlı Spinal MR.",
+        findingsTemplate: "L3 ve L4 vertebra korpuslarında karşılıklı end-plate destrüksiyonu, T1 hipointens, T2 hiperintens sinyal değişiklikleri (ödem) izlenmiştir. IVKM sonrası vertebra korpuslarında ve arada kalan disk dokusunda yoğun kontrastlanma mevcuttur. Paraspinal yumuşak dokuda apse formasyonu eşlik etmektedir.",
+        impressionTemplate: "Spondilodiskit (Vertebral Osteomiyelit) ile uyumlu bulgular."
+    },
+    "spondylolisthesis": {
+        pathologyId: "spondylolisthesis",
+        technique: "Lomber Spinal MR/BT.",
+        findingsTemplate: "L5 vertebranın S1 vertebra üzerinde anteriora doğru yer değiştirdiği (anterolistezis) izlenmiştir. Pars interartikülarislerde defekt (spondilolizis) veya faset eklem dejenerasyonu eşlik etmektedir. Spinal kanal ön-arka çapı daralmıştır.",
+        impressionTemplate: "L5-S1 Spondilolistezis."
+    }
+    ,
 
     // --- LIVER ---
     "hcc": {
