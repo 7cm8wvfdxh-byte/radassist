@@ -7,12 +7,13 @@ import { PathologyListItem } from "@/components/pathology-list-item";
 import { QuizMode } from "@/components/quiz-mode";
 import { CaseStudyMode } from "@/components/case-study-mode";
 import { AIAssistant } from "@/components/ai-assistant";
+import { SwipeMode } from "@/components/swipe-mode";
 import { brainPathologies } from "@/data/brain-pathologies";
 import { spinePathologies } from "@/data/spine-pathologies";
 import { liverPathologies } from "@/data/liver-pathologies";
 import { kidneyPathologies } from "@/data/kidney-pathologies";
 import { lungPathologies } from "@/data/lung-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Heart, Droplets, Wind, Trophy } from "lucide-react";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Heart, Droplets, Wind, Trophy, Library } from "lucide-react";
 import { DiagnosisWizard } from "@/components/diagnosis-wizard";
 import { DailyCaseModal } from "@/components/daily-case-modal";
 import { Pathology } from "@/types";
@@ -23,7 +24,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-  const [viewMode, setViewMode] = useState<"grid" | "list" | "quiz" | "case" | "wizard" | "ai">("grid");
+  const [viewMode, setViewMode] = useState<"grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe">("grid");
   const [activeModule, setActiveModule] = useState<"brain" | "spine" | "liver" | "kidney" | "lung">("brain");
   const [selectedPathology, setSelectedPathology] = useState<Pathology | null>(null);
   const [showDailyModal, setShowDailyModal] = useState(false);
@@ -140,6 +141,19 @@ export default function Home() {
             <div className="absolute inset-0 bg-purple-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
             <Wand2 className="w-5 h-5 text-purple-400 group-hover:rotate-12 transition-transform" />
             <span className="text-sm font-bold text-purple-200 group-hover:text-purple-100">Tanı Sihirbazı</span>
+          </button>
+
+          {/* Swipe Mode Button (Mobile First) */}
+          <button
+            onClick={() => {
+              setViewMode("swipe");
+              localStorage.setItem("radassist-view-mode", "swipe");
+            }}
+            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500/10 to-rose-500/10 border border-pink-500/20 hover:border-pink-500/40 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-300"
+          >
+            <div className="absolute inset-0 bg-pink-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
+            <Library className="w-5 h-5 text-pink-400 group-hover:scale-110 transition-transform" />
+            <span className="text-sm font-bold text-pink-200 group-hover:text-pink-100">Kart Modu</span>
           </button>
         </div>
 
@@ -408,6 +422,12 @@ export default function Home() {
           <DiagnosisWizard activeModule={activeModule === "spine" ? "spine" : "brain"} />
         ) : viewMode === "ai" ? (
           <AIAssistant />
+        ) : viewMode === "swipe" ? (
+          <SwipeMode
+            pathologies={filteredPathologies}
+            onToggleFavorite={toggleFavorite}
+            onExit={() => setViewMode("grid")}
+          />
         ) : filteredPathologies.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-32 text-slate-600 animate-in fade-in zoom-in duration-500">
             <Search className="w-16 h-16 mb-4 opacity-20" />

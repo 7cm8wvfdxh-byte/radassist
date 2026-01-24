@@ -7,8 +7,8 @@ export const liverPathologies: Pathology[] = [
         "category": "Neoplastik",
         "gallery": [
             { "url": "/images/liver/hcc_ct_arterial.png", "caption": "BT Arteriyel Faz (Wash-in)", "modality": "CT" },
-            { "url": "/images/liver/hcc_ct_portal.png", "caption": "BT Portal Faz (Wash-out)", "modality": "CT" },
-            { "url": "/images/liver/hcc_mri_t2.png", "caption": "MRI T2 Hiperintens", "modality": "MRI" }
+            // { "url": "/images/liver/hcc_ct_portal.png", "caption": "BT Portal Faz (Wash-out)", "modality": "CT" },
+            // { "url": "/images/liver/hcc_mri_t2.png", "caption": "MRI T2 Hiperintens", "modality": "MRI" }
         ],
         "findings": {
             "ultrasound": {
@@ -40,8 +40,8 @@ export const liverPathologies: Pathology[] = [
         "name": "Karaciğer Metastazı",
         "category": "Neoplastik",
         "gallery": [
-            { "url": "/images/liver/metastasis_mri_t2.png", "caption": "MRI T2 - Target Sign", "modality": "MRI" },
-            { "url": "/images/liver/metastasis_ct_portal.png", "caption": "BT Portal Faz - Hipodens", "modality": "CT" }
+            // { "url": "/images/liver/metastasis_mri_t2.png", "caption": "MRI T2 - Target Sign", "modality": "MRI" },
+            // { "url": "/images/liver/metastasis_ct_portal.png", "caption": "BT Portal Faz - Hipodens", "modality": "CT" }
         ],
         "findings": {
             "ct": {
@@ -69,8 +69,8 @@ export const liverPathologies: Pathology[] = [
         "category": "Benign",
         "gallery": [
             { "url": "/images/liver/hemangioma_usg.png", "caption": "USG - Hiperekoik", "modality": "USG" },
-            { "url": "/images/liver/hemangioma_mri_t2.png", "caption": "MRI T2 - Ampul İşareti", "modality": "MRI" },
-            { "url": "/images/liver/hemangioma_ct_delayed.png", "caption": "BT Geç Faz - Dolum", "modality": "CT" }
+            // { "url": "/images/liver/hemangioma_mri_t2.png", "caption": "MRI T2 - Ampul İşareti", "modality": "MRI" },
+            // { "url": "/images/liver/hemangioma_ct_delayed.png", "caption": "BT Geç Faz - Dolum", "modality": "CT" }
         ],
         "findings": {
             "ultrasound": {
@@ -100,8 +100,8 @@ export const liverPathologies: Pathology[] = [
         "name": "Fokal Nodüler Hiperplazi (FNH)",
         "category": "Benign",
         "gallery": [
-            { "url": "/images/liver/fnh_ct_arterial.png", "caption": "BT Arteriyel - Yoğun Kontrast", "modality": "CT" },
-            { "url": "/images/liver/fnh_mri_hepatobiliary.png", "caption": "MRI Hepatobilier - İzointens", "modality": "MRI" }
+            // { "url": "/images/liver/fnh_ct_arterial.png", "caption": "BT Arteriyel - Yoğun Kontrast", "modality": "CT" },
+            // { "url": "/images/liver/fnh_mri_hepatobiliary.png", "caption": "MRI Hepatobilier - İzointens", "modality": "MRI" }
         ],
         "findings": {
             "ct": {
@@ -127,8 +127,8 @@ export const liverPathologies: Pathology[] = [
         "name": "Hepatik Adenom",
         "category": "Benign",
         "gallery": [
-            { "url": "/images/liver/adenoma_mri_t1_outphase.png", "caption": "MRI T1 Out-Phase (Yağ)", "modality": "MRI" },
-            { "url": "/images/liver/adenoma_mri_hepatobiliary.png", "caption": "MRI Hepatobilier - Hipointens", "modality": "MRI" }
+            // { "url": "/images/liver/adenoma_mri_t1_outphase.png", "caption": "MRI T1 Out-Phase (Yağ)", "modality": "MRI" },
+            // { "url": "/images/liver/adenoma_mri_hepatobiliary.png", "caption": "MRI Hepatobilier - Hipointens", "modality": "MRI" }
         ],
         "findings": {
             "ct": {
@@ -154,8 +154,8 @@ export const liverPathologies: Pathology[] = [
         "name": "Karaciğer Apsesi (Piyojenik)",
         "category": "Enfeksiyon",
         "gallery": [
-            { "url": "/images/liver/abscess_ct_contrast.png", "caption": "BT - Double Target Sign", "modality": "CT" },
-            { "url": "/images/liver/abscess_mri_dwi.png", "caption": "MRI DWI - Kısıtlanma", "modality": "MRI" }
+            // { "url": "/images/liver/abscess_ct_contrast.png", "caption": "BT - Double Target Sign", "modality": "CT" },
+            // { "url": "/images/liver/abscess_mri_dwi.png", "caption": "MRI DWI - Kısıtlanma", "modality": "MRI" }
         ],
         "findings": {
             "ultrasound": {
@@ -185,8 +185,8 @@ export const liverPathologies: Pathology[] = [
         "name": "Siroz ve Portal Hipertansiyon",
         "category": "Dejeneratif",
         "gallery": [
-            { "url": "/images/liver/cirrhosis_ct.png", "caption": "BT - Nodüler Karaciğer", "modality": "CT" },
-            { "url": "/images/liver/varices_ct.png", "caption": "BT - Özofageal Varisler", "modality": "CT" }
+            // { "url": "/images/liver/cirrhosis_ct.png", "caption": "BT - Nodüler Karaciğer", "modality": "CT" },
+            // { "url": "/images/liver/varices_ct.png", "caption": "BT - Özofageal Varisler", "modality": "CT" }
         ],
         "findings": {
             "ultrasound": {
@@ -216,8 +216,8 @@ export const liverPathologies: Pathology[] = [
         "name": "Hidatik Kist (Ekinokok)",
         "category": "Enfeksiyon",
         "gallery": [
-            { "url": "/images/liver/hydatid_usg_lilly.png", "caption": "USG - Water Lily Sign", "modality": "USG" },
-            { "url": "/images/liver/hydatid_ct_calcified.png", "caption": "BT - Kalsifiye Kist", "modality": "CT" }
+            // { "url": "/images/liver/hydatid_usg_lilly.png", "caption": "USG - Water Lily Sign", "modality": "USG" },
+            // { "url": "/images/liver/hydatid_ct_calcified.png", "caption": "BT - Kalsifiye Kist", "modality": "CT" }
         ],
         "findings": {
             "ultrasound": {
