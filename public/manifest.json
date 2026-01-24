@@ -1,6 +1,6 @@
 {
-    "name": "RadAssist: Radiology Diagnostic Assistant",
-    "short_name": "RadAssist",
+    "name": "RadAsist: Radyoloji Tanı Rehberi",
+    "short_name": "RadAsist",
     "description": "Yapay Zeka Destekli Radyoloji Tanı Rehberi ve Topluluk Platformu",
     "start_url": "/",
     "display": "standalone",

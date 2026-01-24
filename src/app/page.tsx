@@ -133,7 +133,7 @@ export default function Home() {
 
 
         <h1 className="text-6xl sm:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-          RadAssist
+          RadAsist
         </h1>
 
         {/* Hero Actions Container */}

@@ -39,7 +39,7 @@ export const announcements: Announcement[] = [
     },
     {
         id: "4",
-        title: "RadAssist v2.0 Yayında!",
+        title: "RadAsist v2.0 Yayında!",
         type: "update",
         date: "2026-01-24",
         content: "Gastrointestinal, Jinekoloji modülleri ve herkesin beklediği 'RadRoom' forum özelliği eklendi. Hemen keşfedin!",

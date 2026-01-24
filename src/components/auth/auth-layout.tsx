@@ -26,7 +26,7 @@ export function AuthLayout({ children, title, subtitle, illustration }: AuthLayo
                         <Brain className="w-6 h-6 text-white" />
                     </div>
                     <span className="text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-400">
-                        RadAssist
+                        RadAsist
                     </span>
                 </div>
 
@@ -49,7 +49,7 @@ export function AuthLayout({ children, title, subtitle, illustration }: AuthLayo
 
                 {/* Footer */}
                 <div className="relative z-10 flex gap-6 text-sm text-zinc-500">
-                    <span>© 2026 RadAssist AI</span>
+                    <span>© 2026 RadAsist AI</span>
                     <span className="w-px h-4 bg-zinc-800" />
                     <span>v2.0 Encyclopedia</span>
                 </div>

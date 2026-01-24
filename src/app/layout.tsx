@@ -14,13 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RadAssist: Radyoloji Asistanı",
+  title: "RadAsist: Radyoloji Asistanı",
   description: "Yapay Zeka Destekli Radyoloji Tanı Rehberi",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "RadAssist",
+    title: "RadAsist",
   },
   icons: {
     icon: "/icons/icon-192x192.png",

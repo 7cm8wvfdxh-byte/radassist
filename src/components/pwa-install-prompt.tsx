@@ -38,7 +38,7 @@ export function PwaInstallPrompt() {
                 <div className="flex gap-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex-shrink-0" />
                     <div className="space-y-2">
-                        <h3 className="font-bold text-white text-sm">RadAssist'i Uygulama Olarak Yükle</h3>
+                        <h3 className="font-bold text-white text-sm">RadAsist'i Uygulama Olarak Yükle</h3>
                         <p className="text-zinc-400 text-xs">
                             Daha hızlı erişim ve tam ekran deneyimi için ana ekrana ekleyin.
                         </p>

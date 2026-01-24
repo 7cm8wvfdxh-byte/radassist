@@ -123,7 +123,7 @@ export function AIAssistant() {
                         <Bot className="w-6 h-6 text-purple-400" />
                     </div>
                     <div>
-                        <h2 className="text-lg font-semibold text-white">RadAssist AI</h2>
+                        <h2 className="text-lg font-semibold text-white">RadAsist AI</h2>
                         <p className="text-xs text-gray-400">Gemini Flash destekli radyoloji asistanı</p>
                     </div>
                 </div>
@@ -146,7 +146,7 @@ export function AIAssistant() {
                             <Sparkles className="w-12 h-12 text-purple-400" />
                         </div>
                         <div>
-                            <h3 className="text-xl font-semibold text-white mb-2">Merhaba! Ben RadAssist AI</h3>
+                            <h3 className="text-xl font-semibold text-white mb-2">Merhaba! Ben RadAsist AI</h3>
                             <p className="text-gray-400 max-w-md">
                                 Radyoloji konusunda sorularınızı yanıtlayabilir, tanı desteği sağlayabilir
                                 ve rapor yazmada yardımcı olabilirim.
@@ -183,8 +183,8 @@ export function AIAssistant() {
                         )}
                         <div
                             className={`max-w-[80%] rounded-2xl px-4 py-3 ${message.role === 'user'
-                                    ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
-                                    : 'bg-white/5 border border-white/10 text-gray-200'
+                                ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
+                                : 'bg-white/5 border border-white/10 text-gray-200'
                                 }`}
                         >
                             <div className="prose prose-invert prose-sm max-w-none whitespace-pre-wrap">
