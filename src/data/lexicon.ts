@@ -94,3 +94,4 @@ export const MRI_FINDINGS: FindingOption[] = [
     { id: "ct_polo_mint_sign", label: "Polo Mint Sign (Damar İçi Defekt)", category: "Şekil/Kenar", weight: 10 }, // PE
     { id: "ct_crazy_paving", label: "Crazy Paving (Kaldırım Taşı)", category: "Diğer", weight: 7 }, // COVID/Proteinosis
     { id: "ct_cavitation", label: "Kavitasyon (Hava İçeren Boşluk)", category: "Eko/Dansite/Sinyal", weight: 8 }, // TB/Apse/Ca
+];
