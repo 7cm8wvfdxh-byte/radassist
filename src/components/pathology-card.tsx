@@ -1,350 +1,238 @@
-import { expandQueryTokens } from "@/lib/search-utils"; // Import smart tokenizer
+import { expandQueryTokens } from "@/lib/search-utils";
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
-import { Copy, Check, ChevronDown, ChevronUp, Maximize2, X, Star } from 'lucide-react';
+import { Copy, Check, ChevronDown, ChevronUp, Maximize2, X, Star, RotateCw, Sparkles, Brain, Stethoscope, Lightbulb } from 'lucide-react';
 
 interface PathologyCardProps {
     data: Pathology;
     isFavorite?: boolean;
     onToggleFavorite?: () => void;
-    highlightQuery?: string; // Search query for highlighting
+    highlightQuery?: string;
 }
 
 type TabType = "summary" | "ct" | "mri" | "usg";
 
-// Helper component for highlighting text
 const HighlightedText = ({ text, query }: { text: string, query?: string }) => {
     if (!query || !query.trim()) return <>{text}</>;
-
-    // Use smart token expansion to catch synonyms
     const tokens = expandQueryTokens(query);
     if (tokens.length === 0) return <>{text}</>;
-
-    // Create regex from unique tokens, sorted by length (longest first) to match "yer kaplayan" before "yer"
     const uniqueTokens = Array.from(new Set(tokens)).sort((a, b) => b.length - a.length);
     const regex = new RegExp(`(${uniqueTokens.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi');
-
     const parts = text.split(regex);
-
     return (
         <>
-            {parts.map((part, i) =>
-                regex.test(part) ? (
-                    <mark key={i} className="bg-yellow-500/40 text-yellow-100 rounded-sm px-0.5 mx-0.5 font-semibold decoration-clone box-decoration-clone">
-                        {part}
-                    </mark>
-                ) : (
-                    part
-                )
-            )}
+            {parts.map((part, i) => regex.test(part) ? <mark key={i} className="bg-yellow-500/40 text-yellow-100 rounded-sm px-0.5 mx-0.5 font-semibold">{part}</mark> : part)}
         </>
     );
 };
 
 export function PathologyCard({ data, isFavorite = false, onToggleFavorite, highlightQuery }: PathologyCardProps) {
-    // ... hooks ...
+    const [isFlipped, setIsFlipped] = useState(false);
     const [activeTab, setActiveTab] = useState<TabType>("summary");
     const [activeImage, setActiveImage] = useState<number | null>(null);
 
-    // SMART COVER IMAGE LOGIC:
-    // If a highlight query exists (search), try to find a matching image in the gallery
-    // and set it as the active (cover) image automatically.
+    // Initial Cover Image Logic
     React.useEffect(() => {
         if (!highlightQuery || !data.gallery) return;
-
         const query = highlightQuery.toLowerCase();
-        // Check for modality keywords in query
-        const targetIndex = data.gallery.findIndex(img => {
-            const mod = img.modality.toLowerCase();
-            const caption = img.caption.toLowerCase();
-
-            // Priority 1: Modality match (e.g. user typed "t2")
-            if (query.includes(mod)) return true;
-
-            // Priority 2: Simple mapping
-            if (query.includes("t2") && mod.includes("t2")) return true;
-            if (query.includes("t1") && mod.includes("t1")) return true;
-            if (query.includes("dwi") && mod.includes("dwi")) return true;
-            if (query.includes("swi") && mod.includes("swi")) return true;
-            if (query.includes("bt") && (mod.includes("ct") || mod.includes("bt"))) return true;
-            if (query.includes("ct") && (mod.includes("ct") || mod.includes("bt"))) return true;
-
-            // Priority 3: Caption match
-            if (caption.includes(query)) return true;
-
-            return false;
-        });
-
-        if (targetIndex !== -1) {
-            setActiveImage(targetIndex);
-        } else {
-            setActiveImage(null); // Reset if no match
-        }
+        const targetIndex = data.gallery.findIndex(img => query.includes(img.modality.toLowerCase()) || img.caption.toLowerCase().includes(query));
+        if (targetIndex !== -1) setActiveImage(targetIndex);
     }, [highlightQuery, data.gallery]);
-    const divRef = useRef<HTMLDivElement>(null);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [opacity, setOpacity] = useState(0);
-
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!divRef.current) return;
-        const div = divRef.current;
-        const rect = div.getBoundingClientRect();
-        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-    };
-
-    const hasCT = !!data.findings.ct;
-    const hasMRI = !!data.findings.mri;
-    const hasUSG = !!data.findings.ultrasound;
 
     // Category Color Mapping
     const getCategoryStyles = (cat: string) => {
         const lowerCat = cat.toLowerCase();
-        if (lowerCat.includes("vasküler")) return {
-            badge: "text-rose-400 bg-rose-400/10 border-rose-400/20",
-            point: "bg-rose-500 shadow-rose-500/20"
-        };
-        if (lowerCat.includes("neoplastik")) return {
-            badge: "text-purple-400 bg-purple-400/10 border-purple-400/20",
-            point: "bg-purple-500 shadow-purple-500/20"
-        };
-        if (lowerCat.includes("travma")) return {
-            badge: "text-amber-400 bg-amber-400/10 border-amber-400/20",
-            point: "bg-amber-500 shadow-amber-500/20"
-        };
-        if (lowerCat.includes("demiyelinizan")) return {
-            badge: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
-            point: "bg-emerald-500 shadow-emerald-500/20"
-        };
-        if (lowerCat.includes("enfeksiyon")) return {
-            badge: "text-lime-400 bg-lime-400/10 border-lime-400/20",
-            point: "bg-lime-500 shadow-lime-500/20"
-        };
-        if (lowerCat.includes("konjenital") || lowerCat.includes("fakomatoz")) return {
-            badge: "text-pink-400 bg-pink-400/10 border-pink-400/20",
-            point: "bg-pink-500 shadow-pink-500/20"
-        };
-        if (lowerCat.includes("dejeneratif")) return {
-            badge: "text-sky-400 bg-sky-400/10 border-sky-400/20",
-            point: "bg-sky-500 shadow-sky-500/20"
-        };
-        // Default (Sellar, etc.)
-        return {
-            badge: "text-cyan-400 bg-cyan-400/10 border-cyan-400/20",
-            point: "bg-cyan-500 shadow-cyan-500/20"
-        };
+        if (lowerCat.includes("vasküler")) return "text-rose-400 border-rose-400/30 bg-rose-950/20";
+        if (lowerCat.includes("neoplastik")) return "text-purple-400 border-purple-400/30 bg-purple-950/20";
+        if (lowerCat.includes("travma")) return "text-amber-400 border-amber-400/30 bg-amber-950/20";
+        if (lowerCat.includes("enfeksiyon")) return "text-lime-400 border-lime-400/30 bg-lime-950/20";
+        if (lowerCat.includes("dejeneratif")) return "text-sky-400 border-sky-400/30 bg-sky-950/20";
+        return "text-cyan-400 border-cyan-400/30 bg-cyan-950/20";
+    };
+    const catStyle = getCategoryStyles(data.category);
+
+    // Toggle Flip
+    const handleFlip = (e?: React.MouseEvent) => {
+        if (e) e.stopPropagation();
+        setIsFlipped(!isFlipped);
     };
 
-    const styles = getCategoryStyles(data.category);
-
     return (
-        <div
-            ref={divRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={() => setOpacity(1)}
-            onMouseLeave={() => setOpacity(0)}
-            className="relative flex flex-col bg-white/5 border border-white/10 rounded-3xl overflow-hidden transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl hover:border-white/20 group z-0"
-        >
-            {/* Spotlight Effect */}
+        <div className="relative w-full h-[500px] perspective-1000 group/card">
+
+            {/* CARD CONTAINER (Preserves space) */}
             <div
-                className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 z-0"
-                style={{
-                    opacity,
-                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.06), transparent 40%)`
-                }}
-            />
+                className={cn(
+                    "relative w-full h-full transition-all duration-700 transform-style-3d",
+                    isFlipped ? "rotate-y-180" : ""
+                )}
+            >
+                {/* --- FRONT FACE --- */}
+                <div className="absolute inset-0 backface-hidden w-full h-full bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-xl">
+                    {/* Header Image Area */}
+                    <div className="relative h-48 w-full bg-black shrink-0">
+                        {data.gallery && data.gallery.length > 0 ? (
+                            <Image
+                                src={data.gallery[activeImage ?? 0].url}
+                                alt={data.name}
+                                fill
+                                className="object-cover opacity-80 group-hover/card:opacity-100 transition-opacity"
+                            />
+                        ) : (
+                            <div className="flex items-center justify-center h-full text-zinc-600 bg-zinc-800">No Image</div>
+                        )}
 
-            {/* Content Container */}
-            <div className="flex flex-col h-full relative z-10">
-                {/* Header & Tabs */}
-                {/* Added explicit z-index to header container to manage stacking context if needed, but DOM order should suffice now */}
-                <div className="p-6 pb-0 flex-none relative">
+                        {/* Overlay Gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent" />
 
-                    <div className="flex items-start justify-between mb-4 pr-32">
-                        <div className="flex-1 mr-4">
-                            <div className="flex items-center gap-2">
-                                {data.organ && (
-                                    <span className="px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold border backdrop-blur-sm shadow-sm transition-colors text-slate-300 bg-slate-800/50 border-slate-700">
-                                        {data.organ}
-                                    </span>
-                                )}
-                                <span className={cn("px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold border backdrop-blur-sm shadow-sm transition-colors", styles.badge)}>
-                                    {data.category}
-                                </span>
-                                <button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        onToggleFavorite?.();
-                                    }}
-                                    className={cn(
-                                        "p-1.5 rounded-full transition-all duration-300 hover:bg-white/10 active:scale-95 group/star",
-                                        isFavorite ? "text-yellow-400 bg-yellow-400/10" : "text-slate-600 hover:text-yellow-200"
-                                    )}
-                                    title={isFavorite ? "Favorilerden Çıkar" : "Favorilere Ekle"}
-                                >
-                                    <Star className={cn("w-4 h-4", isFavorite ? "fill-yellow-400" : "group-hover/star:scale-110")} />
-                                </button>
-                            </div>
-                            <h3 className="text-2xl font-bold text-white mt-3 leading-tight drop-shadow-md">
-                                {data.name}
-                            </h3>
+                        {/* Top Badges */}
+                        <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
+                            <span className={cn("px-2 py-1 rounded text-[10px] font-bold uppercase border backdrop-blur-sm", catStyle)}>
+                                {data.category}
+                            </span>
+                            <button
+                                onClick={(e) => { e.stopPropagation(); onToggleFavorite?.(); }}
+                                className="p-2 rounded-full bg-black/40 backdrop-blur border border-white/10 hover:bg-yellow-500/20 text-yellow-500 transition-all"
+                            >
+                                <Star className={cn("w-4 h-4", isFavorite && "fill-yellow-500")} />
+                            </button>
                         </div>
-                    </div>
 
-                    <div className="flex space-x-1 p-1 bg-black/40 backdrop-blur-md rounded-xl w-full sm:w-auto self-start border border-white/10 shadow-lg relative z-10">
-                        <button onClick={() => setActiveTab('summary')} className={cn("flex-1 sm:flex-none h-10 sm:h-auto px-4 py-2 rounded-lg text-sm sm:text-xs font-semibold transition-all mb-0 flex items-center justify-center", activeTab === 'summary' ? "bg-white text-black shadow-lg" : "text-slate-400 hover:text-white")}>
-                            Özet
-                        </button>
-                        {hasCT && (
-                            <button onClick={() => setActiveTab('ct')} className={cn("flex-1 sm:flex-none h-10 sm:h-auto px-4 py-2 rounded-lg text-sm sm:text-xs font-semibold transition-all mb-0 flex items-center justify-center", activeTab === 'ct' ? "bg-white text-black shadow-lg" : "text-slate-400 hover:text-white")}>
-                                BT
-                            </button>
-                        )}
-                        {hasMRI && (
-                            <button onClick={() => setActiveTab('mri')} className={cn("flex-1 sm:flex-none h-10 sm:h-auto px-4 py-2 rounded-lg text-sm sm:text-xs font-semibold transition-all mb-0 flex items-center justify-center", activeTab === 'mri' ? "bg-white text-black shadow-lg" : "text-slate-400 hover:text-white")}>
-                                MR
-                            </button>
-                        )}
-                        {hasUSG && (
-                            <button onClick={() => setActiveTab('usg')} className={cn("flex-1 sm:flex-none h-10 sm:h-auto px-4 py-2 rounded-lg text-sm sm:text-xs font-semibold transition-all mb-0 flex items-center justify-center", activeTab === 'usg' ? "bg-white text-black shadow-lg" : "text-slate-400 hover:text-white")}>
-                                USG
-                            </button>
-                        )}
-                    </div>
-
-                    {/* Gallery Container (Top Right) - MOVED TO BOTTOM of this container to sit on TOP visually */}
-                    {/* Gallery Container (Top Right) */}
-                    {data.gallery && data.gallery.length > 0 && (
-                        <div className="absolute top-3 right-3 flex -space-x-4 pointer-events-auto transition-all duration-300 isolate z-50">
-                            {data.gallery.map((img, idx) => {
-                                const isZoomed = activeImage === idx;
-
-                                // Swipe Handlers
-                                const handleTouchStart = (e: React.TouchEvent) => {
-                                    if (!isZoomed) return;
-                                    const touch = e.touches[0];
-                                    // Store initial touch in a data attribute or temp variable via refs
-                                    // Using simple direct logic for now or refs. 
-                                    // Better to use refs if inside a mapped component, but here we can use a closure if carefully done.
-                                    // Let's use a simple coordinate approach.
-                                    (e.currentTarget as any)._touchStartX = touch.clientX;
-                                };
-
-                                const handleTouchEnd = (e: React.TouchEvent) => {
-                                    if (!isZoomed) return;
-                                    const touchEnd = e.changedTouches[0].clientX;
-                                    const touchStart = (e.currentTarget as any)._touchStartX;
-
-                                    if (!touchStart) return;
-
-                                    const diff = touchStart - touchEnd;
-                                    const SWIPE_THRESHOLD = 50;
-
-                                    if (Math.abs(diff) > SWIPE_THRESHOLD) {
-                                        if (diff > 0) {
-                                            // Swipe Left -> Next Image
-                                            if (activeImage !== null && activeImage < (data.gallery?.length || 0) - 1) {
-                                                setActiveImage(activeImage + 1);
-                                            }
-                                        } else {
-                                            // Swipe Right -> Prev Image
-                                            if (activeImage !== null && activeImage > 0) {
-                                                setActiveImage(activeImage - 1);
-                                            }
-                                        }
-                                    }
-                                };
-
-                                return (
-                                    <div
-                                        key={idx}
-                                        onClick={(e) => {
-                                            e.stopPropagation(); // Prevent card clicks
-                                            setActiveImage(isZoomed ? null : idx);
-                                        }}
-                                        onTouchStart={handleTouchStart}
-                                        onTouchEnd={handleTouchEnd}
+                        {/* Image Gallery Indicators */}
+                        {data.gallery && data.gallery.length > 1 && (
+                            <div className="absolute bottom-2 right-2 flex gap-1">
+                                {data.gallery.map((_, i) => (
+                                    <button
+                                        key={i}
+                                        onClick={(e) => { e.stopPropagation(); setActiveImage(i); }}
                                         className={cn(
-                                            "relative w-12 h-12 rounded-lg border border-slate-700 bg-black overflow-hidden transition-all duration-300 ease-out origin-top-right shadow-lg cursor-zoom-in brightness-75 hover:brightness-100",
-                                            isZoomed
-                                                ? "!scale-[6.5] !z-[100] border-blue-500 brightness-100 cursor-zoom-out shadow-2xl touch-none" // touch-none prevents scrolling while swiping
-                                                : "hover:scale-[1.75] hover:z-50 hover:border-slate-500", // Hover Peek (1.75x)
-                                            !isZoomed && activeImage !== null ? "opacity-30 blur-[1px]" : "opacity-100" // Dim others when one is zoomed
+                                            "w-1.5 h-1.5 rounded-full transition-all",
+                                            (activeImage ?? 0) === i ? "bg-white w-3" : "bg-white/40 hover:bg-white/80"
                                         )}
-                                        style={{
-                                            // Explicit z-index for stacking order when not zoomed
-                                            zIndex: isZoomed ? 100 : 10 - idx
-                                        }}
-                                    >
-                                        <Image
-                                            src={img.url}
-                                            alt={img.caption}
-                                            fill
-                                            className="object-cover"
-                                            draggable={false} // Prevent image drag interfering with swipe
-                                        />
-                                        {/* Caption Overlay on Zoom */}
-                                        <div className={cn(
-                                            "absolute bottom-0 left-0 w-full bg-black/60 backdrop-blur-[1px] text-[2px] leading-tight text-white/90 text-center py-[1.5px] transition-opacity whitespace-nowrap px-0.5 font-medium",
-                                            isZoomed ? "opacity-100" : "opacity-0"
-                                        )}>
-                                            {img.caption}
-                                            {/* Swipe Hint (Mobile Only) */}
-                                            <span className="hidden sm:hidden md:hidden lg:hidden active:inline-block ml-1 opacity-50">↔</span>
-                                        </div>
-                                        {/* Modality Tag */}
-                                        <div className={cn(
-                                            "absolute top-[1px] right-[1px] bg-blue-500 text-[1.5px] leading-none text-white px-1 py-[1px] rounded-bl-[2px] transition-opacity font-bold tracking-tighter shadow-sm",
-                                            isZoomed ? "opacity-100" : "opacity-0"
-                                        )}>
-                                            {img.modality}
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    )}
-                </div>
-
-                {/* Content Body */}
-                <div className="p-6 flex-grow relative z-0">
-                    <div className="h-full min-h-[200px] text-sm text-slate-300 leading-relaxed font-normal animate-in fade-in slide-in-from-bottom-3 duration-500">
-
-                        {activeTab === 'summary' && (
-                            <div className="space-y-4">
-                                {data.keyPoints.map((kp, idx) => (
-                                    <div key={idx} className="flex gap-3 text-slate-300 group/point">
-                                        <span className={cn("mt-2 w-1.5 h-1.5 rounded-full shrink-0 transition-colors", styles.point.split(" ")[0])} />
-                                        <p className="group-hover/point:text-white transition-colors">
-                                            <HighlightedText text={kp} query={highlightQuery} />
-                                        </p>
-                                    </div>
+                                    />
                                 ))}
                             </div>
                         )}
+                    </div>
 
-                        {activeTab !== 'summary' && (
-                            <div className="grid grid-cols-1 gap-3">
-                                {Object.entries((data.findings as any)[activeTab === "mri" ? "mri" : activeTab === "ct" ? "ct" : "ultrasound"] || {}).map(([key, value]) => {
-                                    if (!value) return null;
-                                    const label = key.replace(/_/g, " ").toUpperCase();
-                                    return (
-                                        <div key={key} className="bg-white/5 rounded-xl p-3 border border-white/5 hover:border-white/10 transition-colors">
-                                            <span className="text-[10px] font-bold text-slate-500 block mb-1 uppercase tracking-wider">{label}</span>
-                                            <span className="text-slate-200 font-medium block">
-                                                <HighlightedText text={value as string} query={highlightQuery} />
-                                            </span>
+                    {/* Front Content */}
+                    <div className="p-5 flex-1 flex flex-col">
+                        <div className="flex justify-between items-start mb-2">
+                            <h3 className="text-xl font-bold text-white leading-tight pr-4">{data.name}</h3>
+                            <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider">
+                                <RotateCw className="w-3 h-3 group-hover/flip:rotate-180 transition-transform duration-500" />
+                                Detay
+                            </button>
+                        </div>
+
+                        {/* Tabs */}
+                        <div className="flex gap-2 mb-4 border-b border-white/5 pb-2">
+                            {(['summary', 'ct', 'mri'] as TabType[]).map(t => {
+                                const hasData = t === 'summary' || (t === 'ct' && data.findings.ct) || (t === 'mri' && data.findings.mri);
+                                if (!hasData) return null;
+                                return (
+                                    <button
+                                        key={t}
+                                        onClick={(e) => { e.stopPropagation(); setActiveTab(t); }}
+                                        className={cn(
+                                            "text-xs font-medium px-2 py-1 rounded transition-colors",
+                                            activeTab === t ? "bg-white/10 text-white" : "text-zinc-500 hover:text-zinc-300"
+                                        )}
+                                    >
+                                        {t.toUpperCase()}
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        {/* Scrollable Content Area */}
+                        <div className="flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-700">
+                            {activeTab === 'summary' ? (
+                                <ul className="space-y-2">
+                                    {data.keyPoints.slice(0, 3).map((kp, i) => (
+                                        <li key={i} className="flex gap-2 text-sm text-zinc-400">
+                                            <span className="text-cyan-500 font-bold mt-1">•</span>
+                                            <span className="leading-snug"><HighlightedText text={kp} query={highlightQuery} /></span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <div className="space-y-2 text-sm text-zinc-400">
+                                    {Object.entries((data.findings as any)[activeTab] || {}).slice(0, 3).map(([k, v]) => (
+                                        <div key={k} className="border-l-2 border-zinc-700 pl-2">
+                                            <span className="text-[10px] text-zinc-500 uppercase block">{k}</span>
+                                            <span className="text-zinc-300"><HighlightedText text={v as string} query={highlightQuery} /></span>
                                         </div>
-                                    )
-                                })}
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Bottom Action Hint */}
+                    <div className="p-3 bg-zinc-950/30 border-t border-white/5 text-[10px] text-center text-zinc-500">
+                        Detaylı patofizyoloji için kartı çevirin ↻
+                    </div>
+                </div>
+
+                {/* --- BACK FACE (THE REVEAL) --- */}
+                <div className="absolute inset-0 backface-hidden rotate-y-180 w-full h-full bg-gradient-to-br from-zinc-900 to-black border border-cyan-500/30 rounded-3xl overflow-hidden flex flex-col shadow-2xl shadow-cyan-900/10">
+                    {/* Back Header */}
+                    <div className="p-5 border-b border-white/10 flex justify-between items-center bg-cyan-950/10">
+                        <div className="flex items-center gap-2 text-cyan-400">
+                            <Brain className="w-5 h-5" />
+                            <span className="font-bold tracking-widest text-xs uppercase">Patofizyolojik Mekanizma</span>
+                        </div>
+                        <button onClick={handleFlip} className="p-1.5 hover:bg-white/10 rounded-full text-zinc-400 hover:text-white transition-colors">
+                            <X className="w-5 h-5" />
+                        </button>
+                    </div>
+
+                    {/* Back Content */}
+                    <div className="p-6 flex-1 overflow-y-auto space-y-6">
+
+                        {/* WHY? Section */}
+                        {data.mechanism && (
+                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
+                                <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
+                                    <Lightbulb className="w-4 h-4 text-yellow-500" />
+                                    Neden Böyle Görünüyor?
+                                </h4>
+                                <div className="p-4 rounded-xl bg-yellow-500/5 border border-yellow-500/10 text-sm text-yellow-100/90 leading-relaxed font-serif italic">
+                                    "{data.mechanism}"
+                                </div>
                             </div>
                         )}
 
+                        {/* Pearls Section */}
+                        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
+                            <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
+                                <Sparkles className="w-4 h-4 text-cyan-400" />
+                                Kritik İpuçları (Pearls)
+                            </h4>
+                            <ul className="space-y-2">
+                                {data.keyPoints.map((kp, i) => (
+                                    <li key={i} className="flex gap-2 text-xs text-zinc-400 border-b border-white/5 pb-2 last:border-0">
+                                        <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                                        <span><HighlightedText text={kp} query={highlightQuery} /></span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    {/* Back Footer */}
+                    <div className="p-4 bg-zinc-950/50 border-t border-white/5 flex justify-center">
+                        <button onClick={handleFlip} className="text-xs text-cyan-500 font-medium hover:text-cyan-400 transition-colors uppercase tracking-widest flex items-center gap-2">
+                            <RotateCw className="w-3 h-3" />
+                            Görüntüye Dön
+                        </button>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }

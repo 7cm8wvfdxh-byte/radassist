@@ -26,6 +26,7 @@ export const brainPathologies: Pathology[] = [
                 "swi": "Hemorajik transformasyon veya trombus içinde 'blooming' artefaktı (susceptibility vessel sign)."
             }
         },
+        "mechanism": "Sitotoksik ödem (hücre şişmesi) nedeniyle su moleküllerinin hareketi kısıtlanır (DWI Parlak). Kan-beyin bariyeri yıkılınca vazojenik ödem ve kontrastlanma başlar.",
         "keyPoints": [
             "DWI, erken tanı ve iskemi ayırımı için altın standarttır.",
             "BT, beyin kanamasını (hemorajiyi) dışlamak için ilk tercihtir.",
@@ -57,6 +58,7 @@ export const brainPathologies: Pathology[] = [
                 "spectroscopy": "Yüksek Kolin (hücre yıkımı/turnover), Düşük NAA (nöronal kayıp), Lipid/Laktat piki (nekroz)."
             }
         },
+        "mechanism": "Hızlı, infiltratif tümör büyümesi ve santral nekroz. 'Palizadik nekroz' çevresindeki canlı tümör hücreleri yoğun kontrast tutar (Ring Enhancement).",
         "keyPoints": [
             "Erişkinlerde en sık görülen primer malign beyin tümörüdür.",
             "Orta hattı geçme eğilimindedir (Kelebek / Butterfly glioma).",
@@ -85,6 +87,7 @@ export const brainPathologies: Pathology[] = [
                 "spectroscopy": "Alanin piki (ayırt edici özellik), Yüksek Kolin."
             }
         },
+        "mechanism": "Ekstra-aksiyal, meninkslerden köken alan yavaş büyüyen tümör. 'Dural kuyruk' reaktif vaskülarizasyon veya tümör infiltrasyonu nedeniyle oluşur.",
         "keyPoints": [
             "En sık görülen ekstra-aksiyal tümördür.",
             "Kadınlarda daha sıktır.",
@@ -110,6 +113,7 @@ export const brainPathologies: Pathology[] = [
                 "swi": "Santral ven işareti (lezyonun içinden geçen ven), mikrovasküler hastalıktan ayırmada yardımcıdır."
             }
         },
+        "mechanism": "Otoimmün T-hücre aracılı miyelin kılıf hasarı. Kan-beyin bariyeri (BBB) bozulduğunda akut plaklarda kontrastlanma görülür.",
         "keyPoints": [
             "Zamanda (DIT) ve Mekanda (DIS) yayılım.",
             "Tanı için McDonald Kriterleri kullanılır.",

@@ -67,7 +67,8 @@ export interface Pathology {
     keyPoints: string[];
     references?: string[];
     // Flashcard / Cube Data
-    etiology?: string; // Pathophysiology
+    etiology?: string; // Cause/Origin
+    mechanism?: string; // Pathophysiology explained (The "WHY" behind imaging)
     differentialDiagnosis?: string[]; // DDx list
     goldStandard?: string; // Best imaging modality/sequence
     clinicalPearl?: string; // "Classic triad", specific sign etc.
