@@ -25,8 +25,12 @@ import { DailyCaseModal } from "@/components/daily-case-modal";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils"; // Ensure cn is imported
 import { performSmartSearch } from "@/lib/search-utils";
+import { useAuth } from "@/context/auth-context";
+import Link from "next/link"; // Need Link for navigation
+import { LogIn, LogOut, User } from "lucide-react"; // Icons
 
 export default function Home() {
+  const { user, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
@@ -183,6 +187,33 @@ export default function Home() {
             <Wrench className="w-5 h-5 text-teal-400 group-hover:rotate-12 transition-transform" />
             <span className="text-sm font-bold text-teal-200 group-hover:text-teal-100">Alet Çantası</span>
           </button>
+        </div>
+
+        {/* User Profile / Auth */}
+        <div className="absolute top-6 right-6 z-50">
+          {user ? (
+            <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md rounded-full pl-4 pr-2 py-1.5 border border-white/10 shadow-lg">
+              <div className="flex flex-col items-end mr-1">
+                <span className="text-xs font-bold text-white leading-none">{user.name}</span>
+                <span className="text-[10px] text-cyan-400 leading-none mt-0.5">{user.specialty}</span>
+              </div>
+              <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center">
+                <User className="w-4 h-4 text-white" />
+              </div>
+              <button
+                onClick={logout}
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-red-500/20 text-zinc-400 hover:text-red-400 flex items-center justify-center transition-colors"
+                title="Çıkış Yap"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
+            </div>
+          ) : (
+            <Link href="/login" className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-full border border-white/10 text-white text-sm font-medium transition-all hover:scale-105 active:scale-95">
+              <LogIn className="w-4 h-4 text-cyan-400" />
+              <span>Giriş Yap</span>
+            </Link>
+          )}
         </div>
 
         <div className="w-full max-w-3xl relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
