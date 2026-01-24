@@ -6,6 +6,9 @@ export const gynecologyPathologies: Pathology[] = [
         name: "Uterin Leiomyom (Miyom)",
         category: "Uterus",
         keyPoints: ["En sık görülen benign uterin tümördür.", "T2 ağırlıklı serilerde tipik olarak hipointens (karanlık) görülür.", "Dejenerasyon (kistik, hyalin, kırmızı) görünümü değiştirebilir."],
+        gallery: [
+            { "url": "/images/gyn/fibroid_mri.png", "caption": "MRI T2 - Uterin Miyom (Hipointens)", "modality": "MRI" }
+        ],
         findings: {
             usg: {
                 description: "Hipokoik, heterojen miyometrial kitle. Akustik gölgelenme (kalsifikasyona bağlı). Çevresel 'venetian blind' (jaluzi) gölgelenmesi."
@@ -37,6 +40,9 @@ export const gynecologyPathologies: Pathology[] = [
         name: "Endometrioma (Çikolata Kisti)",
         category: "Ovary",
         keyPoints: ["'T1 shading' (T2'de sinyal kaybı) kesin tanı koydurucudur.", "İçeriği kan ürünleri (methemoglobin) nedeniyle T1 parlaktır.", "Tümör belirteçleri (Ca-125) yükselebilir."],
+        gallery: [
+            { "url": "/images/gyn/endometrioma_mri.png", "caption": "MRI T1 - Endometrioma (Parlak Kist)", "modality": "MRI" }
+        ],
         findings: {
             usg: {
                 description: "Diffüz düşük seviyeli internal ekolar (buzlu cam / ground glass). Kalın duvarlı kistik yapı. Mural nodül varsa malignite ekarte edilmeli."
