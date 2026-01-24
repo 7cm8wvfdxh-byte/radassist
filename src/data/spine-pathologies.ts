@@ -85,15 +85,15 @@ export const spinePathologies: Pathology[] = [
         "category": "Neoplastik",
         "gallery": [
             {
-                "url": "/images/placeholder-spine.png",
-                "caption": "Görüntü Eklenecek",
+                "url": "/images/spine/spinal_metastasis_sagittal.png",
+                "caption": "Sagittal T1: 'Winking Owl' (Pedikül Kaybı) ve Kitle",
                 "modality": "MRI"
             }
         ],
         "findings": {
             "mri": {
                 "t1": "Vertebra korpusunda normal yağ iliği sinyalinin kaybı (Hipointens). 'Baykuş Gözü' (Pedikül) kaybı (Winking owl sign).",
-                "t2": "Değişken, genellikle hiperintens. Patolojik kırık (kompresyon) eşlik edebilir.",
+                "t2": "Değişken, genellikle hiperintens. Patolojik kırık (kompresyon) eşlik eder.",
                 "t1_c": "Heterojen kontrastlanma. Epidural/Paraspinal uzanım.",
                 "stir": "Yağ baskılı serilerde belirgin hiperintensite (ödem/tümör)."
             }
@@ -110,8 +110,8 @@ export const spinePathologies: Pathology[] = [
         "category": "Travma",
         "gallery": [
             {
-                "url": "/images/placeholder-spine.png",
-                "caption": "Görüntü Eklenecek",
+                "url": "/images/spine/burst_fracture_ct.png",
+                "caption": "Sagittal BT: L1 Patlama Kırığı ve Retropulsiyon",
                 "modality": "CT"
             }
         ],
@@ -204,6 +204,13 @@ export const spinePathologies: Pathology[] = [
         "id": "spinal_ependymoma",
         "name": "Spinal Ependimom (İntrameduller)",
         "category": "Neoplastik",
+        "gallery": [
+            {
+                "url": "/images/spine/ependymoma_sagittal.png",
+                "caption": "Sagittal T2: Kord İçi (İntramedüller) Ependimom",
+                "modality": "MRI"
+            }
+        ],
         "findings": {
             "mri": {
                 "t1": "Korda ekspansiyon yapan izointens/hipointens kitle. Polar kistler (tümör üst/altında siringomiyeli benzeri).",
@@ -224,6 +231,13 @@ export const spinePathologies: Pathology[] = [
         "id": "spinal_schwannoma",
         "name": "Spinal Schwannom (Nörilemmoma)",
         "category": "Neoplastik",
+        "gallery": [
+            {
+                "url": "/images/spine/schwannoma_axial.png",
+                "caption": "Aksiyel T1+C: 'Dumbbell' (Kum Saati) Şekilli Tümör",
+                "modality": "MRI"
+            }
+        ],
         "findings": {
             "mri": {
                 "t1": "İzointens veya hafif hipointens kitle. Foraminal genişleme.",
