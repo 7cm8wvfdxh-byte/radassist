@@ -27,7 +27,7 @@ import { cn } from "@/lib/utils"; // Ensure cn is imported
 import { performSmartSearch } from "@/lib/search-utils";
 import { useAuth } from "@/context/auth-context";
 import Link from "next/link"; // Need Link for navigation
-import { LogIn, LogOut, User } from "lucide-react"; // Icons
+import { LogIn, LogOut, User, Bell } from "lucide-react"; // Icons
 
 export default function Home() {
   const { user, logout } = useAuth();
@@ -191,6 +191,15 @@ export default function Home() {
 
         {/* User Profile / Auth */}
         <div className="absolute top-6 right-6 z-50">
+          <Link href="/community" className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+            <span className="text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">RadRoom</span>
+          </Link>
+
+          <Link href="/announcements" title="Duyurular & Etkinlikler" className="hidden md:flex items-center justify-center w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors relative">
+            <Bell className="w-4 h-4" />
+            <span className="absolute top-2 right-2.5 w-1.5 h-1.5 bg-red-500 rounded-full border border-black" />
+          </Link>
           {user ? (
             <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md rounded-full pl-4 pr-2 py-1.5 border border-white/10 shadow-lg">
               <div className="flex flex-col items-end mr-1">
