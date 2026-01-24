@@ -3,7 +3,7 @@ import { Modality } from '@/data/lexicon';
 import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from '@/data/lexicon';
 import { useDiagnosticEngine } from '@/hooks/use-diagnostic-engine';
 import { clsx } from 'clsx';
-import { Check, ChevronRight, Stethoscope, AlertTriangle, FileText, X, Brain, Bone, Activity, Droplets, Wind } from 'lucide-react';
+import { Check, ChevronRight, Stethoscope, AlertTriangle, FileText, X, Brain, Bone, Activity, Droplets, Wind, Sparkles } from 'lucide-react';
 
 interface DiagnosisWizardProps {
     activeModule: 'brain' | 'spine' | 'liver' | 'kidney' | 'lung';
@@ -24,9 +24,6 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
     const [modality, setModality] = useState<Modality | null>(null);
     const [selectedFindings, setSelectedFindings] = useState<string[]>([]);
     const [isReportOpen, setIsReportOpen] = useState(false);
-
-    // Update internal organ state if prop changes (optional sync)
-    // useEffect(() => setOrgan(activeModule === 'brain' ? "Brain" : "Spine"), [activeModule]);
 
     // Hook handles the heavy lifting
     const results = useDiagnosticEngine(selectedFindings, organ);
@@ -302,7 +299,35 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                                     </div>
                                 </div>
 
-                                <div className="space-y-1">
+                                {/* SMART SUGGESTIONS: Missing Strong Findings */}
+                                {idx === 0 && result.missingFindings && result.missingFindings.length > 0 && (
+                                    <div className="mt-3 pt-3 border-t border-cyan-500/30">
+                                        <p className="text-[10px] uppercase font-bold text-cyan-400 tracking-wider mb-2 flex items-center gap-1">
+                                            <Sparkles className="w-3 h-3" />
+                                            Tanıyı Güçlendir (Bunu Kontrol Et):
+                                        </p>
+                                        <div className="flex flex-wrap gap-2">
+                                            {result.missingFindings.slice(0, 3).map(mId => {
+                                                const allFindings = [...USG_FINDINGS, ...CT_FINDINGS, ...MRI_FINDINGS];
+                                                const fDef = allFindings.find(f => f.id === mId);
+                                                if (!fDef) return null;
+
+                                                return (
+                                                    <button
+                                                        key={mId}
+                                                        onClick={() => toggleFinding(mId)}
+                                                        className="text-xs bg-cyan-950/60 hover:bg-cyan-900 border border-cyan-500/40 text-cyan-200 px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 group/sug"
+                                                    >
+                                                        <span>{fDef.label}?</span>
+                                                        <span className="opacity-50 text-[10px] group-hover/sug:opacity-100 group-hover/sug:text-cyan-400">+3 Puan</span>
+                                                    </button>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                )}
+
+                                <div className="space-y-1 mt-3">
                                     <p className="text-xs text-zinc-500">Eşleşen Bulgular:</p>
                                     <div className="flex flex-wrap gap-1">
                                         {result.matchedFindings.map(fid => {

@@ -15,7 +15,7 @@ export interface DiseaseSignature {
 }
 
 export const DISEASE_SIGNATURES: DiseaseSignature[] = [
-    // --- BRAIN ---
+    // --- BRAIN (Beyin) ---
     {
         id: "glioblastoma",
         name: "Glioblastom (GBM)",
@@ -24,7 +24,7 @@ export const DISEASE_SIGNATURES: DiseaseSignature[] = [
         signatures: {
             MRI: {
                 strongFindings: ["mri_enhance_ring", "mri_edema_vasogenic", "mri_dwi_restrict", "mri_loc_intra_axial"],
-                weakFindings: ["mri_t1_hypo", "mri_t2_hyper"],
+                weakFindings: ["mri_t1_hypo", "mri_t2_hyper", "mri_swi_bloom"],
                 description: "Tipik olarak geniş vazojenik ödem ile çevrili, periferik düzensiz kontrast tutan kitle."
             }
         }
@@ -84,7 +84,7 @@ export const DISEASE_SIGNATURES: DiseaseSignature[] = [
         }
     },
 
-    // --- SPINE ---
+    // --- SPINE (Omurga) ---
     {
         id: "lumbar_disc_herniation",
         name: "Lomber Disk Hernisi",
@@ -93,6 +93,7 @@ export const DISEASE_SIGNATURES: DiseaseSignature[] = [
         signatures: {
             MRI: {
                 strongFindings: ["spine_disc_herniation", "spine_nerve_compression"],
+                weakFindings: ["spine_marrow_edema"],
                 description: "İntervertebral diskte taşma ve sinir kökü basısı."
             }
         }
@@ -110,6 +111,22 @@ export const DISEASE_SIGNATURES: DiseaseSignature[] = [
         }
     },
     {
+        id: "spinal_spondylolisthesis",
+        name: "Spondilolistezis",
+        organ: "Spine",
+        baseProbability: 15,
+        signatures: {
+            MRI: {
+                strongFindings: ["spine_spondylolisthesis", "spine_pars_defect"],
+                description: "Vertebra korpusunun bir diğeri üzerinde öne kayması."
+            },
+            CT: {
+                strongFindings: ["spine_spondylolisthesis", "spine_pars_defect"],
+                description: "Pars interartikülaris defekti ve listezis."
+            }
+        }
+    },
+    {
         id: "spinal_trauma_burst",
         name: "Spinal Patlama (Burst) Kırığı",
         organ: "Spine",
@@ -118,11 +135,27 @@ export const DISEASE_SIGNATURES: DiseaseSignature[] = [
             CT: {
                 strongFindings: ["spine_fracture_burst", "ct_hyperdense"],
                 description: "Vertebra korpusunda parçalı kırık ve retropulsiyon."
+            },
+            MRI: {
+                strongFindings: ["spine_fracture_burst", "spine_marrow_edema", "spine_nerve_compression"],
+                description: "Kırık hattı, kemik iliği ödemi ve korda bası."
+            }
+        }
+    },
+    {
+        id: "spinal_metastasis",
+        name: "Omurga Metastazı",
+        organ: "Spine",
+        baseProbability: 10,
+        signatures: {
+            MRI: {
+                strongFindings: ["mri_t1_hypo", "mri_enhance_hetero", "spine_marrow_edema"],
+                description: "Vertebra korpusunda T1 hipointens infiltrasyon."
             }
         }
     },
 
-    // --- LIVER ---
+    // --- LIVER (Karaciğer) ---
     {
         id: "hcc",
         name: "Hepatosellüler Karsinom (HCC)",
@@ -130,11 +163,14 @@ export const DISEASE_SIGNATURES: DiseaseSignature[] = [
         baseProbability: 10,
         signatures: {
             CT: {
-                strongFindings: ["ct_contrast_washout", "ct_enhance_hetero"],
-                weakFindings: ["usg_liver_coarse"], // If USG findings present in context
+                strongFindings: ["ct_contrast_washout", "ct_enhance_hetero", "mri_capsule_appearance"],
+                weakFindings: ["usg_liver_coarse"],
                 description: "Arteriyel fazda parlak, geç fazda washout (yıkanma) gösteren kitle."
+            },
+            MRI: {
+                strongFindings: ["ct_contrast_washout", "mri_capsule_appearance", "mri_fat_intracellular"],
+                description: "Arteriyel boyanma, washout ve kapsül görünümü."
             }
-            // USG signature could be added if needed
         }
     },
     {
@@ -169,8 +205,38 @@ export const DISEASE_SIGNATURES: DiseaseSignature[] = [
             }
         }
     },
+    {
+        id: "fnh",
+        name: "Fokal Nodüler Hiperplazi (FNH)",
+        organ: "Liver",
+        baseProbability: 5,
+        signatures: {
+            CT: {
+                strongFindings: ["ct_central_scar", "ct_enhance_hetero"],
+                description: "Santral skar içeren, arteriyel fazda homojen parlak boyanan lezyon."
+            },
+            MRI: {
+                strongFindings: ["ct_central_scar"],
+                weakFindings: ["mri_t2_hyper"], // Scar is hyper on T2
+                description: "T2 hiperintens santral skar."
+            }
+        }
+    },
+    {
+        id: "hydatid_cyst",
+        name: "Kist Hidatik",
+        organ: "Liver",
+        baseProbability: 4,
+        signatures: {
+            USG: {
+                strongFindings: ["usg_hydatid_sand", "usg_anechoic"], // Mixed echogenicity usually
+                weakFindings: ["usg_posterior_enhancement"],
+                description: "Kız veziküller, hidatik kum görünümü."
+            }
+        }
+    },
 
-    // --- KIDNEY ---
+    // --- KIDNEY (Böbrek) ---
     {
         id: "kidney_stone",
         name: "Böbrek Taşı",
@@ -201,8 +267,49 @@ export const DISEASE_SIGNATURES: DiseaseSignature[] = [
             }
         }
     },
+    {
+        id: "angiomyolipoma",
+        name: "Anjiyomiyolipom (AML)",
+        organ: "Kidney",
+        baseProbability: 8,
+        signatures: {
+            CT: {
+                strongFindings: ["ct_fat_density"],
+                description: "Makroskopik yağ dansitesi (-HU) içeren kitle."
+            },
+            MRI: {
+                strongFindings: ["mri_fat_intracellular"], // Using existing fat finding
+                description: "Yağ bastırmalı sekanslarda sinyal kaybı."
+            }
+        }
+    },
+    {
+        id: "pyelonephritis",
+        name: "Akut Piyelonefrit",
+        organ: "Kidney",
+        baseProbability: 15,
+        signatures: {
+            CT: {
+                strongFindings: ["ct_striated_nephrogram"],
+                description: "Böbrekte çizgilenme tarzında (striated) perfüzyon defekti."
+            }
+        }
+    },
+    {
+        id: "bosniak_cyst",
+        name: "Kompleks Renal Kist (Bosniak)",
+        organ: "Kidney",
+        baseProbability: 5,
+        signatures: {
+            CT: {
+                strongFindings: ["ct_bosniak_complex"],
+                weakFindings: ["ct_calcification"],
+                description: "Kalın duvarlı, septalı, kontrast tutan kompleks kist."
+            }
+        }
+    },
 
-    // --- LUNG ---
+    // --- LUNG (Akciğer) ---
     {
         id: "lung_cancer",
         name: "Akciğer Kanseri",
@@ -211,7 +318,7 @@ export const DISEASE_SIGNATURES: DiseaseSignature[] = [
         signatures: {
             CT: {
                 strongFindings: ["ct_lung_nodule_spiculated", "ct_enhance_hetero"],
-                weakFindings: ["ct_pleural_effusion"],
+                weakFindings: ["ct_pleural_effusion", "ct_cavitation"],
                 description: "Spiküle konturlu (düzensiz) solid nodül veya kitle."
             }
         }
@@ -225,6 +332,30 @@ export const DISEASE_SIGNATURES: DiseaseSignature[] = [
             CT: {
                 strongFindings: ["ct_lung_consolidation", "ct_lung_ground_glass"],
                 description: "Hava bronkogramları içeren konsolidasyon/buzlu cam alanları."
+            }
+        }
+    },
+    {
+        id: "pulmonary_embolism",
+        name: "Pulmoner Emboli (PE)",
+        organ: "Lung",
+        baseProbability: 12,
+        signatures: {
+            CT: {
+                strongFindings: ["ct_polo_mint_sign", "ct_hamptons_hump"],
+                description: "Pulmoner arterde dolum defekti, kama şeklinde konsolidasyon."
+            }
+        }
+    },
+    {
+        id: "ild",
+        name: "İnterstisyel Akciğer Hastalığı (ILD)",
+        organ: "Lung",
+        baseProbability: 8,
+        signatures: {
+            CT: {
+                strongFindings: ["ct_crazy_paving", "ct_lung_ground_glass"],
+                description: "Yaygın buzlu cam, retiküler dansiteler, bal peteği görünümü."
             }
         }
     }

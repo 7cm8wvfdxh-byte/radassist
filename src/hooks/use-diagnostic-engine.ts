@@ -34,10 +34,18 @@ export function useDiagnosticEngine(selectedFindingIds: string[], selectedOrgan:
                         const weight = findingDef?.weight || 5;
                         score += weight * 3;
                         if (!matchedFindings.includes(fId)) matchedFindings.push(fId);
+                    } else {
+                        // This is a missing strong finding - potential suggestion
+                        // We probably only want to suggest it if it's RELEVANT (modality matches or generic)
+                        if (!matchedFindings.includes(fId)) {
+                            // Add to missing findings, but we need to handle duplicates if iterating multiple modalities
+                            // Actually, missingFindings is scoped to the pathology object, so we should collect them.
+                            // But here we are inside modality loop.
+                        }
                     }
                 });
 
-                // Check Weak Findings
+                // Check Weak Findings (Restored)
                 if (signature.weakFindings) {
                     signature.weakFindings.forEach(fId => {
                         if (selectedFindingIds.includes(fId)) {
@@ -50,6 +58,15 @@ export function useDiagnosticEngine(selectedFindingIds: string[], selectedOrgan:
                 }
             });
 
+            // RE-CALCULATE MISSING FINDINGS GLOBALLY FOR THE DISEASE
+            // ensuring we suggest findings from ALL modalities of this disease
+            const allStrongFindings = new Set<string>();
+            (Object.keys(disease.signatures) as Modality[]).forEach(mod => {
+                disease.signatures[mod]?.strongFindings.forEach(f => allStrongFindings.add(f));
+            });
+
+            const missingFindings = Array.from(allStrongFindings).filter(f => !selectedFindingIds.includes(f));
+
             // Determine Probability Label
             let probabilityLabel: "Yüksek Olasılık" | "Orta Olasılık" | "Düşük Olasılık" = "Düşük Olasılık";
             if (score > 50) probabilityLabel = "Yüksek Olasılık";
@@ -60,7 +77,7 @@ export function useDiagnosticEngine(selectedFindingIds: string[], selectedOrgan:
                 pathologyName: disease.name,
                 score,
                 matchedFindings,
-                missingFindings: [], // Deprecated in this new logic or needs complex calculation per modality
+                missingFindings,
                 probabilityLabel
             };
         });

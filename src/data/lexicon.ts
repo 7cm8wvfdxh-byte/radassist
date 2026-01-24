@@ -75,4 +75,22 @@ export const MRI_FINDINGS: FindingOption[] = [
     { id: "spine_canal_stenosis", label: "Spinal Kanal Darlığı (Stenoz)", category: "Şekil/Kenar", weight: 8 },
     { id: "spine_marrow_edema", label: "Kemik İliği Ödemi (T2 Hiper)", category: "Eko/Dansite/Sinyal", weight: 6 },
     { id: "spine_fracture_burst", label: "Kırık: Burst (Patlama) Tipi", category: "Şekil/Kenar", weight: 10 },
-];
+    { id: "spine_spondylolisthesis", label: "Spondilolistezis (Kayma)", category: "Şekil/Kenar", weight: 9 },
+    { id: "spine_pars_defect", label: "Pars İnterartikülaris Defekti", category: "Diğer", weight: 9 },
+    { id: "spine_modic_change", label: "Modic Değişikliği (Tip 1/2/3)", category: "Eko/Dansite/Sinyal", weight: 6 },
+
+    // --- Liver (Karaciğer) ---
+    { id: "ct_central_scar", label: "Santral Skar (FNH)", category: "Şekil/Kenar", weight: 9 },
+    { id: "mri_capsule_appearance", label: "Kapsül Görünümü (HCC)", category: "Şekil/Kenar", weight: 8 },
+    { id: "ct_target_sign", label: "Target (Hedef) İşareti", category: "Şekil/Kenar", weight: 7 }, // Metastaz/Apse
+    { id: "usg_hydatid_sand", label: "Hidatik Kum / Kız Vezikül", category: "Diğer", weight: 10 }, // Kist Hidatik
+
+    // --- Kidney (Böbrek) ---
+    { id: "ct_bosniak_complex", label: "Kompleks Kist (Septum/Duvar)", category: "Şekil/Kenar", weight: 8 },
+    { id: "ct_striated_nephrogram", label: "Striated (Çizgili) Nefrogram", category: "Kontrastlanma", weight: 9 }, // Piyelonefrit
+
+    // --- Lung (Akciğer) ---
+    { id: "ct_hamptons_hump", label: "Hampton's Hump (Üçgen Konsolidasyon)", category: "Şekil/Kenar", weight: 9 }, // PE
+    { id: "ct_polo_mint_sign", label: "Polo Mint Sign (Damar İçi Defekt)", category: "Şekil/Kenar", weight: 10 }, // PE
+    { id: "ct_crazy_paving", label: "Crazy Paving (Kaldırım Taşı)", category: "Diğer", weight: 7 }, // COVID/Proteinosis
+    { id: "ct_cavitation", label: "Kavitasyon (Hava İçeren Boşluk)", category: "Eko/Dansite/Sinyal", weight: 8 }, // TB/Apse/Ca
