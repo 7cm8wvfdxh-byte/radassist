@@ -156,5 +156,59 @@ export const lungPathologies: Pathology[] = [
             "NSIP vs UIP: NSIP'te ground-glass fazla, honeycombing yok/az.",
             "HRCT: 1-2mm kesit kalınlığı, yüksek çözünürlük gerekli."
         ]
+    },
+    {
+        "id": "ipf",
+        "name": "İdiopatik Pulmoner Fibrozis (IPF / UIP)",
+        "category": "İnterstisyel",
+        "findings": {
+            "ct": {
+                "non_contrast": "UIP Paterni: Bazal ve subplevral ağırlıklı tutulum. Balpeteği (Honeycombing) kistleri. Traksiyon bronşiektazileri. Retiküler opasiteler. Buzlu cam (Ground-glass) baskın DEĞİLDİR (Baskınsa NSIP düşün)."
+            }
+        },
+        "keyPoints": [
+            "Progresif dispne ve kuru öksürük (Yaşlı erkek hasta).",
+            "UIP paterni (BT) + Klinik uyum = Biyopsi gerekmez.",
+            "Balpeteği görünümü (3-10mm kistler) kötü prognoz işaretidir."
+        ]
+    },
+    {
+        "id": "pneumothorax",
+        "name": "Pnömotoraks",
+        "category": "Acil",
+        "findings": {
+            "xray": {
+                "description": "Visseral plevra çizgisi (ince beyaz hat). Periferde damar izlerinin olmaması (radyolusent alan). Derin sulkus (Deep sulcus) işareti (yatan hastada)."
+            },
+            "ct": {
+                "non_contrast": "Plevral boşlukta hava. Akciğer parankiminde kollaps. Tansiyon pnömotoraks: Mediastinal şif (karşı tarafa itilme), trakeal deviasyon, diyafram basısı."
+            },
+            "usg": {
+                "description": "Akciğer kayma hareketinin (Lung sliding) ve kuyruklu yıldız (Comet tail) artefaktının kaybolması. Barcode/Stratosphere sign (M-mod). Lung point (Sağlam ve pnömotoraks sınırını gösterir - Spesifiktir)."
+            }
+        },
+        "keyPoints": [
+            "Tansiyon pnömotoraks klinik bir tanıdır, röntgen BEKLENMEZ (Acil iğne dekompresyonu!).",
+            "Primer spontan: Genç, uzun, zayıf erkek, sigara içicisi (Apikal bleb rüptürü).",
+            "USG, yatak başı tanıda (eFAST) BT kadar duyarlıdır."
+        ]
+    },
+    {
+        "id": "emphysema",
+        "name": "Amfizem (KOAH)",
+        "category": "Obstrüktif",
+        "findings": {
+            "ct": {
+                "non_contrast": "Parsiyel asiner (Sentrilobüler): Sigara ile ilişkili, üst lob ağırlıklı, santral lüsent alanlar. Panasiner: Alfa-1 antitripsin eksikliği, alt lob ağırlıklı. Paraseptal: Subplevral, üst lob, pnömotoraks riski. Büllöz: >1cm hava kistleri."
+            },
+            "xray": {
+                "description": "Akciğer hacminde artış (Hiperinflasyon). Diyaframda düzleşme. Retrosternal mesafede artış. Kot aralıklarında genişleme. 'Damla kalp' (kalbin dikey ve küçük görünmesi)."
+            }
+        },
+        "keyPoints": [
+            "Sigara en önemli risk faktörüdür.",
+            "Kor pulmonale (Sağ kalp yetmezliği) gelişebilir (Pulmoner arter genişlemesi >29mm).",
+            "Saber-sheath trakea (Trakeanın koronal çapının daralması) eşlik edebilir."
+        ]
     }
 ];

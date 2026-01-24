@@ -806,5 +806,79 @@ export const brainPathologies: Pathology[] = [
             "Lokasyonlar: Serebellum > Optik yolak (NF1) > Hipotalamus.",
             "'Kist + mural nodül' paterni klasik ama %50 solid olabilir."
         ]
+    },
+    {
+        "id": "multiple_sclerosis",
+        "name": "Multipl Skleroz (MS)",
+        "category": "Demiyelinizan",
+        "findings": {
+            "mri": {
+                "t2_flair": "Periventriküler (Dawson Fingers), Jukstakortikal, İnfratentoryal ve Spinal kord yerleşimli hiperintens plaklar. 90 derece açılı yerleşim (venüller etrafında).",
+                "t1_c": "Aktif Plak: 'Open Ring' (Hilal) veya nodüler kontrastlanma. Kronik Plak: Kontrast tutmaz, 'Black Hole' (T1 Hipointens) akson kaybını gösterir.",
+                "sagittal": "Korpus kallozum tutulumu: Kallozal-septal bileşkede sinyal artışı."
+            }
+        },
+        "keyPoints": [
+            "Zamanda ve Mekanda yayılım (DIS/DIT) McDonald kriterleri ile tanı konur.",
+            "Santral ven (Central Vein Sign): T2*/SWI'da plak ortasında venül görülmesi MS için spesifiktir.",
+            "Optik Nörit: Optik sinirde T2 hiperintensitesi ve kontrastlanma."
+        ]
+    },
+    {
+        "id": "pres",
+        "name": "PRES (Posterior Reversible Encephalopathy Syndrome)",
+        "category": "Vasküler / Metabolik",
+        "findings": {
+            "mri": {
+                "t2_flair": "Bilateral simetrik, özellikle paryeto-oksipital loblarda beyaz cevherde vazojenik ödem (Hiperintens). Frontal lob ve bazal ganglion tutulumu da görülebilir.",
+                "dwi": "Genellikle difüzyon kısıtlanması YOKTUR (Vazojenik ödem). Eğer kısıtlanma varsa (Sitotoksik ödem) irreversibl hasarı (infarkt) gösterir.",
+                "swi": "Mikrohemorajiler görülebilir."
+            }
+        },
+        "mechanism": "Akut hipertansiyon -> Serebral otoregülasyon kaybı -> Endotel hasarı -> Vazojenik ödem.",
+        "keyPoints": [
+            "Klinik: Baş ağrısı, nöbet, görme bozukluğu, mental durum değişikliği.",
+            "Etyoloji: Hipertansiyon, Eklampsi, İmmünsupresif ilaçlar (Siklosporin).",
+            "Genellikle reversibldir, ancak tedavi edilmezse infarkta ilerler."
+        ]
+    },
+    {
+        "id": "avm",
+        "name": "Arteriovenöz Malformasyon (AVM)",
+        "category": "Vasküler",
+        "findings": {
+            "mri": {
+                "t2": "Nidus (karışık yumak) içinde 'Flow Void' (siyah, akım boşluğu) yapıları. Sinyal artışı (ödem/gliosis) çevre dokuda olabilir.",
+                "t1_c": "Güçlü kontrastlanma."
+            },
+            "dsa": {
+                "description": "Altın standart: Erken venöz drenaj (kapiller yatak yok), besleyici arterler, nidus ve drene eden venler."
+            },
+            "ct": {
+                "cta": "Kalsifikasyon içerebilen, kontrastlanan vasküler yumak. Erken venöz dolum."
+            }
+        },
+        "keyPoints": [
+            "Spetzler-Martin skoru cerrahi riski belirler.",
+            "Yıllık kanama riski %2-4.",
+            "Nidus içinde anevrizma olması kanama riskini artırır."
+        ]
+    },
+    {
+        "id": "vestibular_schwannoma",
+        "name": "Vestibüler Schwannom (Akustik Nörom)",
+        "category": "Neoplastik",
+        "findings": {
+            "mri": {
+                "t1_c": "Serebello-pontin köşe (CPA) kitlelerinde en sık. İnternal Akustik Kanala (IAC) giren, genişleten (Dondurma külahı / Ice cream cone) yoğun kontrastlanan kitle.",
+                "t2": "Heterojen hiperintens. Kistik dejenerasyon sık.",
+                "dwi": "Difüzyon kısıtlamaz (Meningiom ve Epidermoidden farkı)."
+            }
+        },
+        "keyPoints": [
+            "Bilateral görülürse NF2 (Nörofibromatozis Tip 2) düşünülmeli.",
+            "İşitme kaybı ve tinnitus ile gelir.",
+            "Meningiomdan farkı: IAC içine uzanım (Meningiom genelde IAC'yi korur, dural kuyruk yapar)."
+        ]
     }
 ];

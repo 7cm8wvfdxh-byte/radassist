@@ -17,7 +17,9 @@ import { lungPathologies } from "@/data/lung-pathologies";
 
 import { breastPathologies } from "@/data/breast-pathologies";
 import { mskPathologies } from "@/data/msk-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Heart, Droplets, Wind, Trophy, Library, Wrench, Microscope, Activity } from "lucide-react";
+import { gastroPathologies } from "@/data/gastro-pathologies";
+import { gynecologyPathologies } from "@/data/gynecology-pathologies";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Heart, Droplets, Wind, Trophy, Library, Wrench, Microscope, Activity, Utensils, Baby } from "lucide-react";
 import { DiagnosisWizard } from "@/components/diagnosis-wizard";
 import { DailyCaseModal } from "@/components/daily-case-modal";
 import { Pathology } from "@/types";
@@ -29,7 +31,7 @@ export default function Home() {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const [viewMode, setViewMode] = useState<"grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox">("grid");
-  const [activeModule, setActiveModule] = useState<"brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk">("brain");
+  const [activeModule, setActiveModule] = useState<"brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk" | "gi" | "gyn">("brain");
   const [selectedPathology, setSelectedPathology] = useState<Pathology | null>(null);
   const [showDailyModal, setShowDailyModal] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -46,7 +48,7 @@ export default function Home() {
     }
     const savedModule = localStorage.getItem("radassist-module");
     if (savedModule) {
-      setActiveModule(savedModule as "brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk");
+      setActiveModule(savedModule as "brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk" | "gi" | "gyn");
     }
     setIsLoaded(true);
   }, []);
@@ -76,7 +78,9 @@ export default function Home() {
         ...kidneyPathologies.map(p => ({ ...p, organ: 'Böbrek' })),
         ...lungPathologies.map(p => ({ ...p, organ: 'Akciğer' })),
         ...breastPathologies.map(p => ({ ...p, organ: 'Meme' })),
-        ...mskPathologies.map(p => ({ ...p, organ: 'Kas-İskelet' }))
+        ...mskPathologies.map(p => ({ ...p, organ: 'Kas-İskelet' })),
+        ...gastroPathologies.map(p => ({ ...p, organ: 'Gastrointestinal' })),
+        ...gynecologyPathologies.map(p => ({ ...p, organ: 'Jinekoloji' }))
       ];
     } else {
       // Select data source based on active module
@@ -88,6 +92,8 @@ export default function Home() {
         case "lung": result = lungPathologies; break;
         case "breast": result = breastPathologies; break;
         case "msk": result = mskPathologies; break;
+        case "gi": result = gastroPathologies; break;
+        case "gyn": result = gynecologyPathologies; break;
       }
     }
 
@@ -296,6 +302,38 @@ export default function Home() {
                 >
                   <Activity className="w-4 h-4" />
                   <span>Kas-İskelet</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setActiveModule("gi");
+                    localStorage.setItem("radassist-module", "gi");
+                    setShowFavoritesOnly(false);
+                  }}
+                  className={cn(
+                    "flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 relative z-10",
+                    activeModule === "gi"
+                      ? "bg-amber-600 text-white shadow-lg shadow-amber-500/25"
+                      : "text-slate-400 hover:text-white hover:bg-white/5"
+                  )}
+                >
+                  <Utensils className="w-4 h-4" />
+                  <span>Gastro</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setActiveModule("gyn");
+                    localStorage.setItem("radassist-module", "gyn");
+                    setShowFavoritesOnly(false);
+                  }}
+                  className={cn(
+                    "flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 relative z-10",
+                    activeModule === "gyn"
+                      ? "bg-purple-600 text-white shadow-lg shadow-purple-500/25"
+                      : "text-slate-400 hover:text-white hover:bg-white/5"
+                  )}
+                >
+                  <Baby className="w-4 h-4" />
+                  <span>Jinekoloji</span>
                 </button>
               </div>
             </div>
