@@ -1,22 +1,30 @@
 {
     "name": "RadAssist: Radiology Diagnostic Assistant",
     "short_name": "RadAssist",
-    "description": "AI-Enhanced Radiology Diagnostic Guide",
+    "description": "Yapay Zeka Destekli Radyoloji Tanı Rehberi ve Topluluk Platformu",
     "start_url": "/",
     "display": "standalone",
+    "orientation": "portrait",
     "background_color": "#020617",
     "theme_color": "#020617",
-    "orientation": "portrait",
+    "scope": "/",
+    "categories": [
+        "medical",
+        "education",
+        "productivity"
+    ],
     "icons": [
         {
             "src": "/icons/icon-192x192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
             "src": "/icons/icon-512x512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ]
 }

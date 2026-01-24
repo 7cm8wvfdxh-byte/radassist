@@ -17,6 +17,15 @@ export const metadata: Metadata = {
   title: "RadAssist: Radyoloji Asistanı",
   description: "Yapay Zeka Destekli Radyoloji Tanı Rehberi",
   manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "RadAssist",
+  },
+  icons: {
+    icon: "/icons/icon-192x192.png",
+    apple: "/icons/icon-192x192.png", // Using 192px icon as apple-touch-icon
+  },
 };
 
 export const viewport = {
@@ -29,6 +38,8 @@ export const viewport = {
 
 import { AuthProvider } from "@/context/auth-context";
 import { ForumProvider } from "@/context/forum-context";
+
+import { PwaInstallPrompt } from "@/components/pwa-install-prompt";
 
 export default function RootLayout({
   children,
@@ -43,6 +54,7 @@ export default function RootLayout({
         <AuthProvider>
           <ForumProvider>
             {children}
+            <PwaInstallPrompt />
           </ForumProvider>
         </AuthProvider>
       </body>
