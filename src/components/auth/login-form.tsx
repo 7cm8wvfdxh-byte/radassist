@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/auth-context";
+import { supabase } from "@/lib/supabase";
 import { Mail, Lock, ArrowRight, Loader2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -13,24 +13,28 @@ export function LoginForm() {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
-    const { login } = useAuth();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
         setError("");
 
-        // Simulate network delay
-        setTimeout(() => {
-            if (email && password) {
-                // Mock login
-                login(email, "Dr. Kullanıcı", "Radyoloji Asistanı");
-                router.push("/");
-            } else {
-                setError("Lütfen tüm alanları doldurunuz.");
-                setIsLoading(false);
-            }
-        }, 1000);
+        try {
+            const { error } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
+
+            if (error) throw error;
+
+            // Success
+            router.push("/");
+            router.refresh(); // Refresh to update auth context
+        } catch (err: any) {
+            setError(err.message || "Giriş yapılırken bir hata oluştu.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (

@@ -20,34 +20,43 @@ export default function PostDetailPage() {
 
     // Fetch post logic - wrapped in useEffect to handle hydration/context availability
     useEffect(() => {
-        if (id) {
-            // Find post from context
-            const foundPost = getPost(id as string);
-            setPost(foundPost);
-            setIsLoading(false);
+        async function loadPost() {
+            if (id) {
+                // Find post from context
+                const foundPost = await getPost(id as string);
+                if (foundPost) {
+                    setPost(foundPost);
+                }
+                setIsLoading(false);
+            }
         }
-    }, [id, getPost, post?.comments.length, post?.likes]); // Re-run if comments/likes change (simplified reactivity)
+        loadPost();
+    }, [id, getPost]); // Removed post?.comments dependency to avoid infinite loop with object reference
 
     if (isLoading) return <div className="min-h-screen bg-black text-white p-8">Yükleniyor...</div>;
     if (!post) return <div className="min-h-screen bg-black text-white p-8">Gönderi bulunamadı.</div>;
 
-    const handleComment = (e: React.FormEvent) => {
+    const handleComment = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!user) {
             alert("Yorum yapmak için giriş yapmalısınız.");
             return;
         }
-        if (commentText.trim()) {
-            addComment(post.id, commentText, user);
+        if (commentText.trim() && post) {
+            await addComment(post.id, commentText, user);
             setCommentText("");
-            // Force re-fetch (in a real app this would be automatic via SWR/Query)
-            setPost(getPost(post.id));
+            // Force re-fetch
+            const updatedPost = await getPost(post.id);
+            if (updatedPost) setPost(updatedPost);
         }
     };
 
-    const handleLike = () => {
-        toggleLike(post.id);
-        setPost(getPost(post.id));
+    const handleLike = async () => {
+        if (post) {
+            await toggleLike(post.id);
+            const updatedPost = await getPost(post.id);
+            if (updatedPost) setPost(updatedPost);
+        }
     };
 
     return (
@@ -68,11 +77,11 @@ export default function PostDetailPage() {
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg">
-                                    <span className="text-sm font-bold text-white">{post.author.name.charAt(0)}</span>
+                                    <span className="text-sm font-bold text-white">{(post.author?.name || 'A').charAt(0)}</span>
                                 </div>
                                 <div>
-                                    <div className="font-bold text-white">{post.author.name}</div>
-                                    <div className="text-xs text-zinc-400">{post.author.specialty} • {new Date(post.createdAt).toLocaleDateString('tr-TR')}</div>
+                                    <div className="font-bold text-white">{post.author?.name || 'Anonim'}</div>
+                                    <div className="text-xs text-zinc-400">{post.author?.specialty || ''} • {new Date(post.created_at).toLocaleDateString('tr-TR')}</div>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +111,7 @@ export default function PostDetailPage() {
                             </button>
                             <button className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/5 text-zinc-400 hover:text-white transition-colors cursor-default">
                                 <MessageSquare className="w-5 h-5" />
-                                <span className="font-bold">{post.comments.length} Yorum</span>
+                                <span className="font-bold">{post.comments?.length || 0} Yorum</span>
                             </button>
                         </div>
                         <button className="p-2 text-zinc-500 hover:text-white transition-colors">
@@ -136,24 +145,24 @@ export default function PostDetailPage() {
 
                     {/* Comments List */}
                     <div className="space-y-4">
-                        {post.comments.map(comment => (
+                        {(post.comments || []).map(comment => (
                             <div key={comment.id} className="p-6 bg-white/5 border border-white/5 rounded-2xl animate-in fade-in slide-in-from-bottom-2">
                                 <div className="flex items-center justify-between mb-3">
                                     <div className="flex items-center gap-2">
-                                        <span className="font-bold text-sm text-zinc-300">{comment.author.name}</span>
+                                        <span className="font-bold text-sm text-zinc-300">{comment.author?.name || 'Anonim'}</span>
                                         <span className="w-1 h-1 bg-zinc-600 rounded-full" />
-                                        <span className="text-xs text-zinc-500">{comment.author.specialty}</span>
+                                        <span className="text-xs text-zinc-500">{comment.author?.specialty || ''}</span>
                                     </div>
                                     <span className="text-xs text-zinc-600 flex items-center gap-1">
                                         <Clock className="w-3 h-3" />
-                                        {new Date(comment.createdAt).toLocaleDateString('tr-TR')}
+                                        {new Date(comment.created_at).toLocaleDateString('tr-TR')}
                                     </span>
                                 </div>
                                 <p className="text-zinc-400 leading-relaxed">{comment.content}</p>
                             </div>
                         ))}
 
-                        {post.comments.length === 0 && (
+                        {(!post.comments || post.comments.length === 0) && (
                             <div className="text-center py-10 text-zinc-600 italic">
                                 Henüz yorum yok. İlk yorumu siz yapın!
                             </div>

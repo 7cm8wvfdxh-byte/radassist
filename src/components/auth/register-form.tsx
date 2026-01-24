@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/auth-context";
+import { supabase } from "@/lib/supabase";
 import { Mail, Lock, User, Stethoscope, ArrowRight, Loader2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -15,23 +15,52 @@ export function RegisterForm() {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
-    const { register } = useAuth();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
         setError("");
 
-        // Simulate network delay
-        setTimeout(() => {
-            if (name && email && password) {
-                register(email, name, specialty);
+        try {
+            // 1. Sign up user
+            const { data: authData, error: authError } = await supabase.auth.signUp({
+                email,
+                password,
+                options: {
+                    data: {
+                        name,
+                        specialty
+                    }
+                }
+            });
+
+            if (authError) throw authError;
+
+            if (authData.user) {
+                // 2. Create profile in 'profiles' table (using the user ID from auth)
+                const { error: profileError } = await supabase
+                    .from('profiles')
+                    .insert({
+                        id: authData.user.id,
+                        name,
+                        specialty,
+                        email
+                    });
+
+                if (profileError) {
+                    console.error("Profile creation error:", profileError);
+                    // Don't block registration success, profiles can be created on login
+                }
+
                 router.push("/");
-            } else {
-                setError("Lütfen tüm alanları doldurunuz.");
-                setIsLoading(false);
+                router.refresh();
             }
-        }, 1200);
+
+        } catch (err: any) {
+            setError(err.message || "Kayıt olurken bir hata oluştu.");
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -74,7 +103,6 @@ export function RegisterForm() {
                         <option value="Tıp Öğrencisi" className="bg-zinc-900">Tıp Öğrencisi</option>
                         <option value="Diğer" className="bg-zinc-900">Diğer</option>
                     </select>
-                    {/* Custom arrow could go here */}
                 </div>
 
                 {/* Email Input */}

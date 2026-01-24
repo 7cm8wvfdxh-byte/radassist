@@ -13,7 +13,7 @@ interface PostCardProps {
 
 export function PostCard({ post, compact = false }: PostCardProps) {
     const { toggleLike } = useForum();
-    const date = new Date(post.createdAt).toLocaleDateString("tr-TR", { month: 'short', day: 'numeric' });
+    const date = new Date(post.created_at).toLocaleDateString("tr-TR", { month: 'short', day: 'numeric' });
 
     return (
         <div className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/[0.07] transition-all group">
@@ -21,11 +21,11 @@ export function PostCard({ post, compact = false }: PostCardProps) {
             <div className="flex items-center justify-between mb-3 text-xs text-zinc-400">
                 <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
-                        <span className="text-[10px] font-bold text-white">{post.author.name.charAt(0)}</span>
+                        <span className="text-[10px] font-bold text-white">{(post.author?.name || 'A').charAt(0)}</span>
                     </div>
-                    <span className="font-medium text-zinc-300">{post.author.name}</span>
+                    <span className="font-medium text-zinc-300">{post.author?.name || 'Anonim'}</span>
                     <span className="w-1 h-1 rounded-full bg-zinc-700" />
-                    <span>{post.author.specialty}</span>
+                    <span>{post.author?.specialty || ''}</span>
                     <span className="w-1 h-1 rounded-full bg-zinc-700" />
                     <span>{date}</span>
                 </div>
@@ -62,14 +62,14 @@ export function PostCard({ post, compact = false }: PostCardProps) {
 
                     <Link href={`/community/${post.id}`} className="flex items-center gap-1.5 text-zinc-500 hover:text-white transition-colors text-xs font-medium">
                         <MessageSquare className="w-4 h-4" />
-                        <span>{post.comments.length} Yorum</span>
+                        <span>{post.comments?.length || 0} Yorum</span>
                     </Link>
                 </div>
 
                 <div className="flex items-center gap-4 text-xs text-zinc-600">
                     <div className="flex items-center gap-1">
                         <Eye className="w-3.5 h-3.5" />
-                        <span>{post.viewCount}</span>
+                        <span>{post.view_count}</span>
                     </div>
                     <button className="hover:text-white transition-colors">
                         <Share2 className="w-3.5 h-3.5" />
