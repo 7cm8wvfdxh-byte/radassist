@@ -241,5 +241,76 @@ export const liverPathologies: Pathology[] = [
             "Rüptür komplikasyonu: Anafilaksi, yavru kist disseminasyonu.",
             "Seroloji + Görüntüleme = Tanı. Cerrahi veya PAIR tedavi."
         ]
+    },
+    {
+        "id": "liver_hemangioma",
+        "name": "Hepatik Hemanjiyom",
+        "category": "Benign",
+        "findings": {
+            "ultrasound": {
+                "description": "Tipik: İyi sınırlı, homojen HİPEREKOİK lezyon (<3cm). Atipik: Hipoekoik, mikst eko, kalsifikasyon."
+            },
+            "ct": {
+                "contrast": "Tipik 'Peripheral Nodular Enhancement' (Çevresel nodüler boyanma). Erken fazda periferik nodüller, geç fazda santrale dolum (Centripetal filling). Dev hemanjiyomlarda santral skar dolmayabilir."
+            },
+            "mri": {
+                "t1": "Belirgin hipointens.",
+                "t2": "Çok parlak ('Light bulb' - Ampul işareti).",
+                "t1_c": "BT ile aynı: Periferik nodüler başlayıp santrale dolan kontrastlanma. Geç fazda kan havuzuna (blood pool) eşdeğer kalır.",
+                "dwi": "T2 parlaklığı nedeniyle hiperintens görünür (T2 shine-through), ancak ADC değeri yüksektir (Kısıtlanma YOKTUR)."
+            }
+        },
+        "keyPoints": [
+            "En sık benign karaciğer tümörüdür.",
+            "Flash-filling hemanjiyom: Arteriyel fazda anında ve tamamen boyanır (küçük lezyonlar).",
+            "Biyopsi kontrendikedir (Kanama riski)."
+        ]
+    },
+    {
+        "id": "fnh",
+        "name": "Fokal Nodüler Hiperplazi (FNH)",
+        "category": "Benign",
+        "findings": {
+            "mri": {
+                "t1": "İzo/Hipointens. Santral skar hipointens.",
+                "t2": "İzo/Hafif hiperintens. Santral skar T2 HİPERİNTENS (Hemanjiyom skarı T2 hipointenstir, onkositom gibidir).",
+                "other_sequences": "Hepatobilier Ajan (Primovist): FNH, safra kanalları içerdiği için ajanı tutar ve HİPERİNTENS / İZONTENS görünür. (Adenom ve HCC ajan tutmaz ve hipointens görünür - EN ÖNEMLİ AYIRICI)."
+            },
+            "ct": {
+                "contrast": "Arteriyel fazda yoğun homojen kontrastlanma (Hemanjiomdan hızlı). Portal ve geç fazda izodensleşir (görünmez olur). Santral skar geç fazda kontrast tutabilir."
+            },
+            "ultrasound": {
+                "description": "Genellikle izoekoik ve zor seçilir. Santral skar bazen hiperekoik görülebilir.",
+                "doppler": "Santral skar içinden perifere yayılan 'Spoke-wheel' (Tekerlek) vaskülarite paterni."
+            }
+        },
+        "keyPoints": [
+            "İkinci en sık benign tümör.",
+            "Doğumsal vasküler malformasyona hiperplastik yanıttır (Gerçek tümör değildir).",
+            "Kanamaz, malignleşmez -> Tedavi gerekmez.",
+            "Hepatobilier MR kesin tanı koydurucudur."
+        ]
+    },
+    {
+        "id": "hydatid_cyst",
+        "name": "Kist Hidatik (Ekinokok Kisti)",
+        "category": "Enfeksiyon",
+        "findings": {
+            "ultrasound": {
+                "description": "Gharbi Sınıflaması: Tip 1 (Saf kist). Tip 2 (Membran ayrışması - Nilüfer çiçeği / Water lily sign). Tip 3 (Kız veziküller - Bal peteği). Tip 4 (Solid - Psödotümör). Tip 5 (Kalsifik - Ölü)."
+            },
+            "ct": {
+                "contrast": "İyi sınırlı kistik lezyon. Duvar kalsifikasyonu. İçinde kız veziküller (daha düşük dansiteli). Kontrast tutmaz (Komplike değilse)."
+            },
+            "mri": {
+                "t2": "Kist sıvısı hiperintens. Düşük sinyalli (hipointens) rim (kist duvarı) karakteristiktir.",
+                "t1_c": "Duvar kontrastlanabilir (Perikist - konak yanıtı)."
+            }
+        },
+        "keyPoints": [
+            "Echinococcus granulosus etkendir.",
+            "Anaflaksi riski nedeniyle ponksiyon dikkatli yapılmalıdır (PAIR tedavisi).",
+            "Tip 3 (Kız vezikül) ve Tip 2 (Membran) aktiftir."
+        ]
     }
 ];

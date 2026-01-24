@@ -328,5 +328,63 @@ export const spinePathologies: Pathology[] = [
             "'Cold abscess': Klasik inflamasyon bulguları olmayan apse.",
             "Gibbus (açısal kifoz) kronik Pott hastalığı için patognomonik."
         ]
+    },
+    {
+        "id": "spinal_discitis_osteomyelitis",
+        "name": "Spondilodiskitis / Vertebral Osteomiyelit",
+        "category": "Enfeksiyon",
+        "findings": {
+            "mri": {
+                "t2": "Disk mesafesinde ve komşu vertebra uç plaklarında PARLAK sinyal (ödem/sıvı). Disk yüksekliğinde azalma. Paravertebral/Epidural apse (Hiperintens koleksiyon).",
+                "t1": "Konfluent hipointens (karanlık) kemik iliği ödemi (İki komşu vertebra ve disk tutulumu).",
+                "t1_c": "Disk ve vertebralarda yoğun diffüz kontrastlanma. Apse varsa çevresel (Rim) boyanma.",
+                "dwi": "Apse içinde difüzyon kısıtlılığı (Parlak)."
+            },
+            "ct": {
+                "bone_window": "Geç dönemde vertebral uç plaklarda erozyon (tırtıklı görünüm), destrüksiyon. 'Mirror effect' (karşılıklı yüzeylerde harabiyet)."
+            }
+        },
+        "keyPoints": [
+            "MRI tanıda altın standarttır.",
+            "En sık etken S. aureus.",
+            "Tüberküloz (Pott hastalığı): Gibbus deformitesi, büyük psoas apseleri, disk nispeten korunur (Skip lesions)."
+        ]
+    },
+    {
+        "id": "modic_changes",
+        "name": "Modic Değişiklikleri (Vertebral Endplate)",
+        "category": "Dejeneratif",
+        "findings": {
+            "mri": {
+                "t1": "Tip 1 (Ödem): Hipointens. Tip 2 (Yağlı): Hiperintens. Tip 3 (Sklerotik): Hipointens.",
+                "t2": "Tip 1: Hiperintens (Aktif inflamasyon). Tip 2: İzo/Hiperintens (Sarı ilik). Tip 3: Hipointens (Kemik sklerozu).",
+                "t1_c": "Tip 1 değişiklikler kontrast tutabilir (enfeksiyonla karışabilir, ancak disk sağlamdır!)."
+            }
+        },
+        "keyPoints": [
+            "Tip 1 Modic değişiklikleri bel ağrısı ile güçlü ilişkilidir.",
+            "Enfeksiyondan farkı: Disk sinyali normaldir veya sadece dejeneredir (Diskitiste disk parlaktır)."
+        ]
+    },
+    {
+        "id": "spondylolysis",
+        "name": "Spondilolizis ve Listezis (Bel Kayması)",
+        "category": "Travma / Dejeneratif",
+        "findings": {
+            "ct": {
+                "bone_window": "Pars interartikulariste defekt (kırık hattı). 'İskoç Köpeği' (Scotch Terrier) boynu kırık görünümü. Grade 1-4 kayma (Meyerding).",
+                "sagittal": "Vertebra korpusunun bir alt seviyeye göre öne (anterolistezis) veya arkaya (retrolistezis) yer değiştirmesi."
+            },
+            "mri": {
+                "t2": "Pars defekti çevresinde ödem (Akut stres reaksiyonu). Genişlemiş spinal kanal (Lizise bağlıysa) veya dar kanal (Dejeneratifse).",
+                "sagittal": "Foraminal stenoz (Sinir kökü basısı)."
+            }
+        },
+        "keyPoints": [
+            "Genç sporcularda (jimnastik) L5-S1 en sık (%90).",
+            "Spondilolizis: Pars defekti.",
+            "Spondilolistezis: Kayma.",
+            "İstmik (Litik) tipte kanal genişler, Dejeneratif tipte kanal daralır."
+        ]
     }
 ];

@@ -176,5 +176,67 @@ export const kidneyPathologies: Pathology[] = [
             "Ürik asit taşlar: Daha düşük HU (<600), medikal tedaviye yanıt.",
             "'Rim sign': Üreteral taş çevresinde yumuşak doku - Flebit'ten ayırıcı."
         ]
+    },
+    {
+        "id": "acute_pyelonephritis",
+        "name": "Akut Pyelonefrit",
+        "category": "Enfeksiyon",
+        "findings": {
+            "ct": {
+                "contrast": "Nefrografik fazda kama şeklinde (wedge-shaped) hipodens (düşük kontrastlanan) alanlar. Çizgili nefrogram (striated nephrogram). Böbrek boyutunda artış (ödem).",
+                "non_contrast": "Genellikle normal. Taş veya gaz (Amfizematoz pyelonefrit) görülebilir."
+            },
+            "ultrasound": {
+                "description": "Genellikle normal (%75). Ödem nedeniyle renal sinüs ekojenitesinde silinme. Kortikomedüller ayrım kaybı. Hipoekoik veya hiperekoik alanlar (fokal nefrit)."
+            },
+            "mri": {
+                "dwi": "Enfekte parankimde belirgin difüzyon kısıtlılığı (Parlak)."
+            }
+        },
+        "keyPoints": [
+            "BT tanıda en duyarlı yöntemdir ancak komplike vakalarda (apse şüphesi, dirençli ateş) önerilir.",
+            "Amfizematoz pyelonefrit: Diyabetik hastalarda parankim içinde gaz görülmesi (Acil ve mortal seyredebilir).",
+            "Apse: Sıvı dansitesinde, kontrastlanan duvarı olan koleksiyon."
+        ]
+    },
+    {
+        "id": "renal_oncocytoma",
+        "name": "Renal Onkositom",
+        "category": "Benign",
+        "findings": {
+            "ct": {
+                "contrast": "RCC ile ayrımı zordur. Santral skar (Yıldızvari hipodansite) klasik bulgusudur (%30-50). Spoke-wheel (tekerlek) tarzı kontrastlanma."
+            },
+            "mri": {
+                "t1": "İzo/Hipointens. Santral skar hipointens.",
+                "t2": "İzointens veya hafif hiperintens."
+            }
+        },
+        "keyPoints": [
+            "İkinci en sık benign renal tümör (AML'den sonra).",
+            "Görüntüleme ile RCC'den kesin ayrımı zordur, genellikle cerrahi sonrası tanı konur.",
+            "Santral skar RCC'de de görülebilir (Nekroz) ancak onkositomda daha düzenlidir."
+        ]
+    },
+    {
+        "id": "tcc_renal_pelvis",
+        "name": "Transizyonel Hücreli Karsinom (TCC) / Ürotelyal Ca",
+        "category": "Neoplastik",
+        "findings": {
+            "ct": {
+                "contrast": "Renal pelviste santral yerleşimli yumuşak doku kitlesi. Dolum defekti. Kalisiyel dilatasyon (Tümör obstrüksiyonuna bağlı).",
+                "non_contrast": "İzodens kitle.",
+                "ct_venogram": "CT Ürografi (Boşaltım fazı) altın standarttır."
+            },
+            "mri": {
+                "t2": "Hipointens (Böbrek parankimine göre).",
+                "dwi": "Difüzyon kısıtlar."
+            }
+        },
+        "keyPoints": [
+            "Mesane kanseri ile birlikteliği sıktır (Multifokalite - Field defect).",
+            "Hemalüri en sık semptomdur.",
+            "RCC'den farkı: Böbrek konturunu bozmaz (santral yerleşim), parankimi invaze etmeden toplayıcı sistemi doldurur."
+        ]
     }
 ];
