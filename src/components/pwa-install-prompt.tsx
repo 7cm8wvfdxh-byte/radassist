@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { Share, X, PlusSquare } from "lucide-react";
+import { useLanguage } from "@/context/language-context";
 
 export function PwaInstallPrompt() {
+    const { t, language } = useLanguage();
     const [showPrompt, setShowPrompt] = useState(false);
     const [isIOS, setIsIOS] = useState(false);
 
@@ -43,7 +45,7 @@ export function PwaInstallPrompt() {
                 <button
                     onClick={() => setShowPrompt(false)}
                     className="absolute top-2 right-2 text-zinc-400 hover:text-white p-1"
-                    aria-label="Kapat"
+                    aria-label={t("general.close")}
                     type="button"
                 >
                     <X className="w-4 h-4" />
@@ -52,16 +54,16 @@ export function PwaInstallPrompt() {
                 <div className="flex gap-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex-shrink-0" aria-hidden="true" />
                     <div className="space-y-2">
-                        <h3 id="pwa-prompt-title" className="font-bold text-white text-sm">RadAsist'i Uygulama Olarak Yükle</h3>
+                        <h3 id="pwa-prompt-title" className="font-bold text-white text-sm">{t("pwa.install")}</h3>
                         <p className="text-zinc-400 text-xs">
-                            Daha hızlı erişim ve tam ekran deneyimi için ana ekrana ekleyin.
+                            {t("pwa.installText")}
                         </p>
                         <div className="flex flex-col gap-2 pt-1 text-sm text-cyan-400 font-medium">
                             <div className="flex items-center gap-2">
-                                1. <Share className="w-4 h-4" /> butonuna tıklayın
+                                1. <Share className="w-4 h-4" /> {language === 'tr' ? 'butonuna tıklayın' : 'tap the button'}
                             </div>
                             <div className="flex items-center gap-2">
-                                2. <PlusSquare className="w-4 h-4" /> "Ana Ekrana Ekle" seçin
+                                2. <PlusSquare className="w-4 h-4" /> {language === 'tr' ? '"Ana Ekrana Ekle" seçin' : '"Add to Home Screen"'}
                             </div>
                         </div>
                     </div>
