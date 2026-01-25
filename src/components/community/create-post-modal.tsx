@@ -23,7 +23,9 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
 
     if (!isOpen) return null;
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!user) {
             setError("Gönderi paylaşmak için giriş yapmalısınız.");
@@ -34,11 +36,21 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
             return;
         }
 
-        addPost(title, content, selectedTags, user);
-        setTitle("");
-        setContent("");
-        setSelectedTags([]);
-        onClose();
+        setIsSubmitting(true);
+        setError("");
+
+        const result = await addPost(title, content, selectedTags, user);
+
+        setIsSubmitting(false);
+
+        if (result.success) {
+            setTitle("");
+            setContent("");
+            setSelectedTags([]);
+            onClose();
+        } else {
+            setError(result.error || "Gönderi oluşturulamadı. Lütfen tekrar deneyin.");
+        }
     };
 
     const toggleTag = (tag: string) => {
@@ -129,10 +141,11 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
                     </button>
                     <button
                         onClick={handleSubmit}
-                        className="px-6 py-2.5 rounded-xl font-bold bg-cyan-600 hover:bg-cyan-500 text-white shadow-lg shadow-cyan-500/20 flex items-center gap-2 transition-all"
+                        disabled={isSubmitting}
+                        className="px-6 py-2.5 rounded-xl font-bold bg-cyan-600 hover:bg-cyan-500 text-white shadow-lg shadow-cyan-500/20 flex items-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <Send className="w-4 h-4" />
-                        Paylaş
+                        {isSubmitting ? "Gönderiliyor..." : "Paylaş"}
                     </button>
                 </div>
             </div>
