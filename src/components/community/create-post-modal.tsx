@@ -20,10 +20,9 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
     const [content, setContent] = useState("");
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [error, setError] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     if (!isOpen) return null;
-
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
