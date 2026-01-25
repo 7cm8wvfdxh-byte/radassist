@@ -26,7 +26,7 @@ const RADIOLOGY_SYNONYMS: Record<string, string[]> = {
 
     // Görüntüleme Yöntemleri
     "bt": ["ct", "tomografi", "bilgisayarlı"],
-    "mr": ["mri", "prostat", "manyetik"], // "Prostat" yanlışlıkla girdi ama kalsın :)
+    "mr": ["mri", "manyetik", "manyetik rezonans"],
     "usg": ["ultrason", "eko", "doppler"],
 
     // Spesifik Terimler
