@@ -68,6 +68,7 @@ export const viewport = {
 
 import { AuthProvider } from "@/context/auth-context";
 import { ForumProvider } from "@/context/forum-context";
+import { LanguageProvider } from "@/context/language-context";
 
 import { PwaInstallPrompt } from "@/components/pwa-install-prompt";
 
@@ -81,12 +82,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider>
-          <ForumProvider>
-            {children}
-            <PwaInstallPrompt />
-          </ForumProvider>
-        </AuthProvider>
+        <LanguageProvider>
+          <AuthProvider>
+            <ForumProvider>
+              {children}
+              <PwaInstallPrompt />
+            </ForumProvider>
+          </AuthProvider>
+        </LanguageProvider>
       </body>
     </html>
   );
