@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, FormEvent } from 'react';
 import { Send, Bot, User, Sparkles, Loader2, Trash2 } from 'lucide-react';
+import DOMPurify from 'dompurify';
 
 interface ChatMessage {
     id: string;
@@ -191,10 +192,13 @@ export function AIAssistant() {
                                 {message.role === 'assistant' ? (
                                     <div
                                         dangerouslySetInnerHTML={{
-                                            __html: message.content
-                                                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                                .replace(/\n/g, '<br />')
-                                                .replace(/^- /gm, '• ')
+                                            __html: DOMPurify.sanitize(
+                                                message.content
+                                                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                                                    .replace(/\n/g, '<br />')
+                                                    .replace(/^- /gm, '• '),
+                                                { ALLOWED_TAGS: ['strong', 'br', 'em', 'b', 'i', 'p', 'span'] }
+                                            )
                                         }}
                                     />
                                 ) : (

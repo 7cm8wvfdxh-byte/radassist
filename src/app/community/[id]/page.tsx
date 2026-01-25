@@ -52,8 +52,12 @@ export default function PostDetailPage() {
     };
 
     const handleLike = async () => {
+        if (!user) {
+            alert("Beğenmek için giriş yapmalısınız.");
+            return;
+        }
         if (post) {
-            await toggleLike(post.id);
+            await toggleLike(post.id, user.id);
             const updatedPost = await getPost(post.id);
             if (updatedPost) setPost(updatedPost);
         }

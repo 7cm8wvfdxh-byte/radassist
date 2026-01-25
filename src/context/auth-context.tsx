@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { supabase } from "@/lib/supabase";
 import { Session, User as SupabaseUser } from "@supabase/supabase-js";
 
@@ -12,12 +12,17 @@ export interface User {
     specialty: string;
 }
 
+interface AuthResult {
+    success: boolean;
+    error?: string;
+}
+
 interface AuthContextType {
     user: User | null;
     isLoading: boolean;
-    login: (email: string, name: string, specialty: string) => Promise<void>; // Modified signature for simplicity/compatibility or can be changed
+    login: (email: string, password: string) => Promise<AuthResult>;
     logout: () => Promise<void>;
-    register: (email: string, name: string, specialty: string) => Promise<void>;
+    register: (email: string, password: string, name: string, specialty: string) => Promise<AuthResult>;
     session: Session | null;
 }
 
@@ -87,24 +92,81 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
     };
 
-    const login = async (email: string, _: string, __: string) => {
-        // In real Supabase, login only needs email/password.
-        // For this migration, we kept the signature but only use email (and a hardcoded password for now or magic link)
-        // To make it simple for the user without building a full password UI, let's use Magic Link or simple password.
-        // NOTE: Simulating a "passwordless" or "fixed password" flow for demo simplicity unless user builds password UI.
-        // Let's assume the existing Login Form sends a password. Ideally we should update the Login Form to accept password.
+    const login = useCallback(async (email: string, password: string): Promise<AuthResult> => {
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
 
-        // TEMPORARY: Since our Login Form sends (email, name, specialty), but Supabase needs (email, password),
-        // we need to update LoginForm.tsx to actually capture password and pass it here.
-        // For now, let's throw an error if called incorrectly, or handle it in the UI.
-        // We will update this to just be a placeholder that warns the user they need to use the real Supabase methods.
+            if (error) {
+                let errorMessage = "Giriş yapılırken bir hata oluştu.";
+                if (error.message.includes("Invalid login credentials")) {
+                    errorMessage = "E-posta veya şifre hatalı.";
+                } else if (error.message.includes("Email not confirmed")) {
+                    errorMessage = "E-posta adresinizi doğrulayın.";
+                }
+                return { success: false, error: errorMessage };
+            }
 
-        console.warn("Please use supabase.auth.signInWithPassword directly in components or update this context");
-    };
+            if (data.user) {
+                await fetchProfile(data.user);
+            }
 
-    const register = async (email: string, name: string, specialty: string) => {
-        // Logic handled in RegisterForm
-    };
+            return { success: true };
+        } catch (e) {
+            return { success: false, error: "Beklenmeyen bir hata oluştu." };
+        }
+    }, []);
+
+    const register = useCallback(async (email: string, password: string, name: string, specialty: string): Promise<AuthResult> => {
+        try {
+            // 1. Sign up user
+            const { data: authData, error: authError } = await supabase.auth.signUp({
+                email,
+                password,
+                options: {
+                    data: {
+                        name,
+                        specialty
+                    }
+                }
+            });
+
+            if (authError) {
+                let errorMessage = "Kayıt olurken bir hata oluştu.";
+                if (authError.message.includes("already registered")) {
+                    errorMessage = "Bu e-posta adresi zaten kayıtlı.";
+                } else if (authError.message.includes("password")) {
+                    errorMessage = "Şifre en az 6 karakter olmalıdır.";
+                }
+                return { success: false, error: errorMessage };
+            }
+
+            if (authData.user) {
+                // 2. Create profile in 'profiles' table
+                const { error: profileError } = await supabase
+                    .from('profiles')
+                    .insert({
+                        id: authData.user.id,
+                        name,
+                        specialty,
+                        email
+                    });
+
+                if (profileError) {
+                    console.error("Profile creation error:", profileError);
+                    // Don't fail registration, profile will be created from user_metadata
+                }
+
+                await fetchProfile(authData.user);
+            }
+
+            return { success: true };
+        } catch (e) {
+            return { success: false, error: "Beklenmeyen bir hata oluştu." };
+        }
+    }, []);
 
     const logout = async () => {
         await supabase.auth.signOut();

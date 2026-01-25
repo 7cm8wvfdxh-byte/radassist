@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // PWA temporarily removed due to Serwist version compatibility issues
-  // Will re-add after successful deployment
+  // PWA can be added later with proper Serwist configuration
+  // when needed for offline support
 };
 
 export default nextConfig;

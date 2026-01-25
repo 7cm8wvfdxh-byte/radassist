@@ -42,18 +42,40 @@ export default function Home() {
 
   // Load favorites from local storage on mount
   useEffect(() => {
-    const stored = localStorage.getItem("radassist-favorites");
-    if (stored) {
-      setFavorites(JSON.parse(stored));
+    // SSR guard - only access localStorage on client
+    if (typeof window === 'undefined') return;
+
+    try {
+      const stored = localStorage.getItem("radassist-favorites");
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          setFavorites(parsed);
+        }
+      }
+    } catch (e) {
+      console.error("Error parsing favorites from localStorage:", e);
+      localStorage.removeItem("radassist-favorites");
     }
-    const savedView = localStorage.getItem("radassist-view-mode");
-    if (savedView) {
-      setViewMode(savedView as "grid" | "list" | "quiz" | "case" | "wizard" | "ai");
+
+    try {
+      const savedView = localStorage.getItem("radassist-view-mode");
+      if (savedView && ["grid", "list", "quiz", "case", "wizard", "ai", "swipe", "toolbox"].includes(savedView)) {
+        setViewMode(savedView as "grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox");
+      }
+    } catch (e) {
+      console.error("Error reading view mode from localStorage:", e);
     }
-    const savedModule = localStorage.getItem("radassist-module");
-    if (savedModule) {
-      setActiveModule(savedModule as "brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk" | "gi" | "gyn");
+
+    try {
+      const savedModule = localStorage.getItem("radassist-module");
+      if (savedModule && ["brain", "spine", "liver", "kidney", "lung", "breast", "msk", "gi", "gyn"].includes(savedModule)) {
+        setActiveModule(savedModule as "brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk" | "gi" | "gyn");
+      }
+    } catch (e) {
+      console.error("Error reading module from localStorage:", e);
     }
+
     setIsLoaded(true);
   }, []);
 
@@ -192,17 +214,17 @@ export default function Home() {
         {/* User Profile / Auth */}
         {/* User Profile / Auth */}
         <div className="absolute top-6 right-6 z-50 flex items-center gap-3">
-          <Link href="/community" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group">
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="hidden md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">RadRoom</span>
+          <Link href="/community" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group" aria-label="RadRoom - Topluluk forumu">
+            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" aria-hidden="true" />
+            <span className="sr-only md:not-sr-only md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">RadRoom</span>
           </Link>
 
-          <Link href="/announcements" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group relative">
+          <Link href="/announcements" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group relative" aria-label="Duyurular - Yeni bildirimler var">
             <div className="relative">
-              <Bell className="w-4 h-4 text-zinc-400 group-hover:text-white transition-colors" />
-              <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-red-500 rounded-full border border-black" />
+              <Bell className="w-4 h-4 text-zinc-400 group-hover:text-white transition-colors" aria-hidden="true" />
+              <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-red-500 rounded-full border border-black" aria-hidden="true" />
             </div>
-            <span className="hidden md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">Duyurular</span>
+            <span className="sr-only md:not-sr-only md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">Duyurular</span>
           </Link>
           {user ? (
             <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md rounded-full pl-4 pr-2 py-1.5 border border-white/10 shadow-lg">
@@ -216,9 +238,10 @@ export default function Home() {
               <button
                 onClick={logout}
                 className="w-8 h-8 rounded-full bg-white/10 hover:bg-red-500/20 text-zinc-400 hover:text-red-400 flex items-center justify-center transition-colors"
-                title="Çıkış Yap"
+                aria-label="Çıkış Yap"
+                type="button"
               >
-                <LogOut className="w-4 h-4" />
+                <LogOut className="w-4 h-4" aria-hidden="true" />
               </button>
             </div>
           ) : (

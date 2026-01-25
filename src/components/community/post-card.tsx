@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { MessageSquare, ThumbsUp, Eye, User, Share2 } from "lucide-react";
+import { MessageSquare, ThumbsUp, Eye, Share2 } from "lucide-react";
 import { Post, useForum } from "@/context/forum-context";
+import { useAuth } from "@/context/auth-context";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -13,6 +14,7 @@ interface PostCardProps {
 
 export function PostCard({ post, compact = false }: PostCardProps) {
     const { toggleLike } = useForum();
+    const { user } = useAuth();
     const date = new Date(post.created_at).toLocaleDateString("tr-TR", { month: 'short', day: 'numeric' });
 
     return (
@@ -53,10 +55,19 @@ export function PostCard({ post, compact = false }: PostCardProps) {
             <div className="flex items-center justify-between pt-2 border-t border-white/5">
                 <div className="flex items-center gap-4">
                     <button
-                        onClick={(e) => { e.preventDefault(); toggleLike(post.id); }}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            if (!user) {
+                                alert("Beğenmek için giriş yapmalısınız.");
+                                return;
+                            }
+                            toggleLike(post.id, user.id);
+                        }}
                         className="flex items-center gap-1.5 text-zinc-500 hover:text-cyan-400 transition-colors text-xs font-medium group/like"
+                        aria-label={`Beğen (${post.likes} beğeni)`}
+                        type="button"
                     >
-                        <ThumbsUp className="w-4 h-4 group-hover/like:scale-110 transition-transform" />
+                        <ThumbsUp className="w-4 h-4 group-hover/like:scale-110 transition-transform" aria-hidden="true" />
                         <span>{post.likes}</span>
                     </button>
 
