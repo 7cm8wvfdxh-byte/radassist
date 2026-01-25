@@ -28,9 +28,12 @@ import { performSmartSearch } from "@/lib/search-utils";
 import { useAuth } from "@/context/auth-context";
 import Link from "next/link"; // Need Link for navigation
 import { LogIn, LogOut, User, Bell } from "lucide-react"; // Icons
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { useLanguage } from "@/context/language-context";
 
 export default function Home() {
   const { user, logout } = useAuth();
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
@@ -212,8 +215,9 @@ export default function Home() {
         </div>
 
         {/* User Profile / Auth */}
-        {/* User Profile / Auth */}
         <div className="absolute top-6 right-6 z-50 flex items-center gap-3">
+          <LanguageSwitcher variant="full" />
+
           <Link href="/community" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group" aria-label="RadRoom - Topluluk forumu">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" aria-hidden="true" />
             <span className="sr-only md:not-sr-only md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">RadRoom</span>
