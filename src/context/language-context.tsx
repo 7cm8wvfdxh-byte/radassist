@@ -159,6 +159,26 @@ const tr: Record<string, string> = {
     "general.confirm": "Onayla",
     "general.yes": "Evet",
     "general.no": "Hayır",
+    "general.new": "YENİ",
+    "general.all": "Tümü",
+
+    // Hero Section
+    "hero.aiPowered": "Yapay Zeka Destekli Radyoloji",
+    "hero.dailyCard": "Günün Kartı",
+    "hero.cardMode": "Kart Modu",
+
+    // View Modes
+    "view.grid": "Izgara",
+    "view.list": "Liste",
+    "view.showFavorites": "Favorileri Göster",
+    "view.globalSearch": "Global Arama",
+    "view.noResults": "Sonuç bulunamadı",
+    "view.resultsCount": "sonuç bulundu",
+
+    // Search
+    "search.allModules": "Tüm modüllerde (Beyin, Omurga, Karaciğer, Meme, MSK...) ara...",
+    "search.inModule": "patolojisi ara...",
+    "search.searchAllModules": "Tüm Modüllerde Ara",
 };
 
 // English translations
@@ -308,6 +328,26 @@ const en: Record<string, string> = {
     "general.confirm": "Confirm",
     "general.yes": "Yes",
     "general.no": "No",
+    "general.new": "NEW",
+    "general.all": "All",
+
+    // Hero Section
+    "hero.aiPowered": "AI-Powered Radiology",
+    "hero.dailyCard": "Daily Card",
+    "hero.cardMode": "Card Mode",
+
+    // View Modes
+    "view.grid": "Grid",
+    "view.list": "List",
+    "view.showFavorites": "Show Favorites",
+    "view.globalSearch": "Global Search",
+    "view.noResults": "No results found",
+    "view.resultsCount": "results found",
+
+    // Search
+    "search.allModules": "Search all modules (Brain, Spine, Liver, Breast, MSK...)",
+    "search.inModule": "Search pathology...",
+    "search.searchAllModules": "Search All Modules",
 };
 
 const translations: Record<Language, Record<string, string>> = { tr, en };

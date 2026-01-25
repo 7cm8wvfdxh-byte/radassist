@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { X, Send, Tag, HelpCircle, FileText } from "lucide-react";
 import { useAuth } from "@/context/auth-context";
 import { useForum } from "@/context/forum-context";
+import { useLanguage } from "@/context/language-context";
 import { cn } from "@/lib/utils";
 
 interface CreatePostModalProps {
@@ -16,6 +17,7 @@ const AVAILABLE_TAGS = ["Brain", "Spine", "Liver", "Kidney", "Lung", "Breast", "
 export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
     const { user } = useAuth();
     const { addPost } = useForum();
+    const { t } = useLanguage();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -29,11 +31,11 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
         console.log("handleSubmit called, user:", user);
 
         if (!user) {
-            setError("Gönderi paylaşmak için giriş yapmalısınız.");
+            setError(t("post.loginRequired"));
             return;
         }
         if (!title || !content) {
-            setError("Başlık ve açıklama zorunludur.");
+            setError(t("post.fieldsRequired"));
             return;
         }
 
@@ -83,8 +85,8 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
                             <FileText className="w-5 h-5 text-cyan-400" />
                         </div>
                         <div>
-                            <h2 className="text-xl font-bold text-white">Yeni Vaka / Tartışma</h2>
-                            <p className="text-xs text-zinc-400">Radyoloji topluluğuna danışın (Anonimize etmeyi unutmayın!)</p>
+                            <h2 className="text-xl font-bold text-white">{t("post.create")}</h2>
+                            <p className="text-xs text-zinc-400">{t("post.createSubtitle")}</p>
                         </div>
                     </div>
                     <button onClick={onClose} className="p-2 rounded-lg hover:bg-white/10 text-zinc-400 hover:text-white transition-colors">
@@ -97,29 +99,29 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
                     {error && <div className="text-red-400 text-sm bg-red-500/10 p-3 rounded-lg border border-red-500/20">{error}</div>}
 
                     <div className="space-y-2">
-                        <label className="text-sm font-medium text-zinc-400">Başlık</label>
+                        <label className="text-sm font-medium text-zinc-400">{t("post.title")}</label>
                         <input
                             type="text"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            placeholder="Ör: MCA Enfarktlarında BT Perfüzyon yorumu?"
+                            placeholder={t("post.titlePlaceholder")}
                             className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 placeholder:text-zinc-600"
                         />
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-sm font-medium text-zinc-400">Detaylı Açıklama</label>
+                        <label className="text-sm font-medium text-zinc-400">{t("post.content")}</label>
                         <textarea
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
-                            placeholder="Vaka detaylarını veya sorunuzu buraya yazın..."
+                            placeholder={t("post.contentPlaceholder")}
                             className="w-full h-32 bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 placeholder:text-zinc-600 resize-none"
                         />
                     </div>
 
                     <div className="space-y-3">
                         <label className="flex items-center gap-2 text-sm font-medium text-zinc-400">
-                            <Tag className="w-4 h-4" /> Etiketler (Max 3)
+                            <Tag className="w-4 h-4" /> {t("post.tags")}
                         </label>
                         <div className="flex flex-wrap gap-2">
                             {AVAILABLE_TAGS.map(tag => (
@@ -146,7 +148,7 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
                         onClick={onClose}
                         className="px-5 py-2.5 rounded-xl font-medium text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
                     >
-                        Vazgeç
+                        {t("post.cancel")}
                     </button>
                     <button
                         onClick={handleSubmit}
@@ -154,7 +156,7 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
                         className="px-6 py-2.5 rounded-xl font-bold bg-cyan-600 hover:bg-cyan-500 text-white shadow-lg shadow-cyan-500/20 flex items-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <Send className="w-4 h-4" />
-                        {isSubmitting ? "Gönderiliyor..." : "Paylaş"}
+                        {isSubmitting ? t("post.submitting") : t("post.submit")}
                     </button>
                 </div>
             </div>

@@ -153,7 +153,7 @@ export default function Home() {
 
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold mb-8 animate-in fade-in slide-in-from-top-4 duration-700">
           <Sparkles className="w-3 h-3" />
-          <span>Yapay Zeka Destekli Radyoloji</span>
+          <span>{t("hero.aiPowered")}</span>
         </div>
 
 
@@ -170,8 +170,8 @@ export default function Home() {
           >
             <div className="absolute inset-0 bg-amber-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
             <Trophy className="w-5 h-5 text-amber-500 group-hover:animate-bounce" />
-            <span className="text-sm font-bold text-amber-200 group-hover:text-amber-100">Günün Kartı</span>
-            <span className="bg-amber-500 text-black text-[10px] font-bold px-1.5 py-0.5 rounded ml-1 animate-pulse">YENİ</span>
+            <span className="text-sm font-bold text-amber-200 group-hover:text-amber-100">{t("hero.dailyCard")}</span>
+            <span className="bg-amber-500 text-black text-[10px] font-bold px-1.5 py-0.5 rounded ml-1 animate-pulse">{t("general.new")}</span>
           </button>
 
           {/* Diagnosis Wizard Button */}
@@ -184,7 +184,7 @@ export default function Home() {
           >
             <div className="absolute inset-0 bg-purple-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
             <Wand2 className="w-5 h-5 text-purple-400 group-hover:rotate-12 transition-transform" />
-            <span className="text-sm font-bold text-purple-200 group-hover:text-purple-100">Tanı Sihirbazı</span>
+            <span className="text-sm font-bold text-purple-200 group-hover:text-purple-100">{t("mode.diagnosis")}</span>
           </button>
 
           {/* Swipe Mode Button (Mobile First) */}
@@ -197,7 +197,7 @@ export default function Home() {
           >
             <div className="absolute inset-0 bg-pink-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
             <Library className="w-5 h-5 text-pink-400 group-hover:scale-110 transition-transform" />
-            <span className="text-sm font-bold text-pink-200 group-hover:text-pink-100">Kart Modu</span>
+            <span className="text-sm font-bold text-pink-200 group-hover:text-pink-100">{t("hero.cardMode")}</span>
           </button>
 
           {/* Toolbox Mode Button */}
@@ -210,7 +210,7 @@ export default function Home() {
           >
             <div className="absolute inset-0 bg-teal-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
             <Wrench className="w-5 h-5 text-teal-400 group-hover:rotate-12 transition-transform" />
-            <span className="text-sm font-bold text-teal-200 group-hover:text-teal-100">Alet Çantası</span>
+            <span className="text-sm font-bold text-teal-200 group-hover:text-teal-100">{t("mode.toolbox")}</span>
           </button>
         </div>
 
@@ -218,17 +218,17 @@ export default function Home() {
         <div className="absolute top-6 right-6 z-50 flex items-center gap-3">
           <LanguageSwitcher variant="full" />
 
-          <Link href="/community" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group" aria-label="RadRoom - Topluluk forumu">
+          <Link href="/community" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group" aria-label={t("nav.community")}>
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" aria-hidden="true" />
-            <span className="sr-only md:not-sr-only md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">RadRoom</span>
+            <span className="sr-only md:not-sr-only md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">{t("nav.community")}</span>
           </Link>
 
-          <Link href="/announcements" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group relative" aria-label="Duyurular - Yeni bildirimler var">
+          <Link href="/announcements" className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group relative" aria-label={t("nav.announcements")}>
             <div className="relative">
               <Bell className="w-4 h-4 text-zinc-400 group-hover:text-white transition-colors" aria-hidden="true" />
               <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-red-500 rounded-full border border-black" aria-hidden="true" />
             </div>
-            <span className="sr-only md:not-sr-only md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">Duyurular</span>
+            <span className="sr-only md:not-sr-only md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">{t("nav.announcements")}</span>
           </Link>
           {user ? (
             <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md rounded-full pl-4 pr-2 py-1.5 border border-white/10 shadow-lg">
@@ -242,7 +242,7 @@ export default function Home() {
               <button
                 onClick={logout}
                 className="w-8 h-8 rounded-full bg-white/10 hover:bg-red-500/20 text-zinc-400 hover:text-red-400 flex items-center justify-center transition-colors"
-                aria-label="Çıkış Yap"
+                aria-label={t("nav.logout")}
                 type="button"
               >
                 <LogOut className="w-4 h-4" aria-hidden="true" />
@@ -251,7 +251,7 @@ export default function Home() {
           ) : (
             <Link href="/login" className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-full border border-white/10 text-white text-sm font-medium transition-all hover:scale-105 active:scale-95">
               <LogIn className="w-4 h-4 text-cyan-400" />
-              <span>Giriş Yap</span>
+              <span>{t("auth.login")}</span>
             </Link>
           )}
         </div>
@@ -276,7 +276,7 @@ export default function Home() {
                   )}
                 >
                   <Brain className="w-4 h-4" />
-                  <span>Beyin</span>
+                  <span>{t("organ.brain")}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -292,7 +292,7 @@ export default function Home() {
                   )}
                 >
                   <Bone className="w-4 h-4" />
-                  <span>Omurga</span>
+                  <span>{t("organ.spine")}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -308,7 +308,7 @@ export default function Home() {
                   )}
                 >
                   <Heart className="w-4 h-4" />
-                  <span>Karaciğer</span>
+                  <span>{t("organ.liver")}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -324,7 +324,7 @@ export default function Home() {
                   )}
                 >
                   <Droplets className="w-4 h-4" />
-                  <span>Böbrek</span>
+                  <span>{t("organ.kidney")}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -340,7 +340,7 @@ export default function Home() {
                   )}
                 >
                   <Wind className="w-4 h-4" />
-                  <span>Akciğer</span>
+                  <span>{t("organ.lung")}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -356,7 +356,7 @@ export default function Home() {
                   )}
                 >
                   <Microscope className="w-4 h-4" />
-                  <span>Meme</span>
+                  <span>{t("organ.breast")}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -372,7 +372,7 @@ export default function Home() {
                   )}
                 >
                   <Activity className="w-4 h-4" />
-                  <span>Kas-İskelet</span>
+                  <span>{t("organ.msk")}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -388,7 +388,7 @@ export default function Home() {
                   )}
                 >
                   <Utensils className="w-4 h-4" />
-                  <span>Gastro</span>
+                  <span>{t("organ.gastro")}</span>
                 </button>
                 <button
                   onClick={() => {
@@ -404,7 +404,7 @@ export default function Home() {
                   )}
                 >
                   <Baby className="w-4 h-4" />
-                  <span>Jinekoloji</span>
+                  <span>{t("organ.gynecology")}</span>
                 </button>
               </div>
             </div>
@@ -418,11 +418,10 @@ export default function Home() {
                 <SearchBar
                   value={searchQuery}
                   onChange={setSearchQuery}
-
                   placeholder={
                     searchGlobal
-                      ? "Tüm modüllerde (Beyin, Omurga, Karaciğer, Meme, MSK...) ara..."
-                      : `${activeModule === 'brain' ? "Beyin" : activeModule === 'spine' ? "Omurga" : activeModule === 'liver' ? "Karaciğer" : activeModule === 'kidney' ? "Böbrek" : activeModule === 'lung' ? "Akciğer" : activeModule === 'breast' ? "Meme" : "Kas-İskelet"} patolojisi ara...`
+                      ? t("search.allModules")
+                      : `${t(`organ.${activeModule === 'gi' ? 'gastro' : activeModule === 'gyn' ? 'gynecology' : activeModule}`)} ${t("search.inModule")}`
                   }
                 />
 
@@ -432,7 +431,7 @@ export default function Home() {
                     <div className={`w-3 h-3 rounded-full border ${searchGlobal ? "bg-indigo-500 border-indigo-500" : "border-slate-500 group-hover/toggle:border-indigo-400"} transition-all`} />
                     <input type="checkbox" checked={searchGlobal} onChange={(e) => setSearchGlobal(e.target.checked)} className="hidden" />
                     <span className={`text-xs font-medium transition-colors ${searchGlobal ? "text-indigo-400" : "text-slate-500 group-hover/toggle:text-slate-300"}`}>
-                      Tüm Modüllerde Ara
+                      {t("search.searchAllModules")}
                     </span>
                   </label>
                 </div>

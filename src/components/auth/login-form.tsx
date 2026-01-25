@@ -6,8 +6,10 @@ import { supabase } from "@/lib/supabase";
 import { Mail, Lock, ArrowRight, Loader2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/language-context";
 
 export function LoginForm() {
+    const { t } = useLanguage();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -54,7 +56,7 @@ export function LoginForm() {
                     </div>
                     <input
                         type="email"
-                        placeholder="E-posta adresi"
+                        placeholder={t("auth.email")}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
@@ -68,7 +70,7 @@ export function LoginForm() {
                     </div>
                     <input
                         type="password"
-                        placeholder="Şifre"
+                        placeholder={t("auth.password")}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
@@ -77,12 +79,8 @@ export function LoginForm() {
                 </div>
             </div>
 
-            <div className="flex items-center justify-between text-sm">
-                <label className="flex items-center gap-2 text-zinc-400 cursor-pointer hover:text-white transition-colors">
-                    <input type="checkbox" className="rounded border-zinc-700 bg-zinc-800 text-cyan-500 focus:ring-cyan-500/30" />
-                    Beni hatırla
-                </label>
-                <Link href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors">Şifremi unuttum?</Link>
+            <div className="flex items-center justify-end text-sm">
+                <Link href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors">{t("auth.forgotPassword")}</Link>
             </div>
 
             <button
@@ -98,15 +96,15 @@ export function LoginForm() {
                     <Loader2 className="w-5 h-5 animate-spin" />
                 ) : (
                     <>
-                        Giriş Yap <ArrowRight className="w-4 h-4" />
+                        {t("auth.login")} <ArrowRight className="w-4 h-4" />
                     </>
                 )}
             </button>
 
             <p className="text-center text-zinc-500 text-sm">
-                Hesabınız yok mu?{' '}
+                {t("auth.noAccount")}{' '}
                 <Link href="/register" className="text-white hover:text-cyan-400 font-semibold transition-colors">
-                    Kayıt Ol
+                    {t("auth.register")}
                 </Link>
             </p>
         </form>
