@@ -141,17 +141,24 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
 
     const addPost = async (title: string, content: string, tags: string[], user: User): Promise<{ success: boolean; error?: string }> => {
         try {
-            const { error: insertError } = await supabase
+            console.log("Adding post with user:", user);
+            console.log("Post data:", { title, content, tags, author_id: user.id });
+
+            const { data, error: insertError } = await supabase
                 .from('posts')
                 .insert({
                     title,
                     content,
                     tags,
                     author_id: user.id
-                });
+                })
+                .select();
+
+            console.log("Supabase response:", { data, error: insertError });
 
             if (insertError) {
-                const errorMessage = "Gönderi oluşturulurken bir hata oluştu.";
+                console.error("Supabase insert error:", insertError);
+                const errorMessage = `Gönderi oluşturulamadı: ${insertError.message}`;
                 setError(errorMessage);
                 return { success: false, error: errorMessage };
             }
@@ -159,6 +166,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
             await fetchPosts();
             return { success: true };
         } catch (e) {
+            console.error("Unexpected error in addPost:", e);
             const errorMessage = "Beklenmeyen bir hata oluştu.";
             setError(errorMessage);
             return { success: false, error: errorMessage };

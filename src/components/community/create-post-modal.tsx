@@ -26,6 +26,8 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        console.log("handleSubmit called, user:", user);
+
         if (!user) {
             setError("Gönderi paylaşmak için giriş yapmalısınız.");
             return;
@@ -38,17 +40,25 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
         setIsSubmitting(true);
         setError("");
 
-        const result = await addPost(title, content, selectedTags, user);
+        try {
+            console.log("Calling addPost...");
+            const result = await addPost(title, content, selectedTags, user);
+            console.log("addPost result:", result);
 
-        setIsSubmitting(false);
+            setIsSubmitting(false);
 
-        if (result.success) {
-            setTitle("");
-            setContent("");
-            setSelectedTags([]);
-            onClose();
-        } else {
-            setError(result.error || "Gönderi oluşturulamadı. Lütfen tekrar deneyin.");
+            if (result.success) {
+                setTitle("");
+                setContent("");
+                setSelectedTags([]);
+                onClose();
+            } else {
+                setError(result.error || "Gönderi oluşturulamadı. Lütfen tekrar deneyin.");
+            }
+        } catch (err) {
+            console.error("Error in handleSubmit:", err);
+            setIsSubmitting(false);
+            setError("Beklenmeyen bir hata oluştu.");
         }
     };
 
