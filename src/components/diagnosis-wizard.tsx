@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { Modality } from '@/data/lexicon';
 import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from '@/data/lexicon';
@@ -5,12 +7,14 @@ import { useDiagnosticEngine } from '@/hooks/use-diagnostic-engine';
 import { clsx } from 'clsx';
 import { Check, ChevronRight, Stethoscope, AlertTriangle, FileText, X, Brain, Bone, Activity, Droplets, Wind, Sparkles } from 'lucide-react';
 import { REPORT_TEMPLATES, GENERIC_TEMPLATE } from '@/data/report-templates';
+import { useLanguage } from '@/context/language-context';
 
 interface DiagnosisWizardProps {
     activeModule: 'brain' | 'spine' | 'liver' | 'kidney' | 'lung';
 }
 
 export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
+    const { t, language } = useLanguage();
     const getInitialOrgan = () => {
         switch (activeModule) {
             case 'brain': return "Brain";
@@ -54,10 +58,10 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                 <div>
                     <h2 className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center gap-2">
                         <Stethoscope className="w-6 h-6 text-cyan-400" />
-                        Tanı Sihirbazı
+                        {t("wizard.title")}
                     </h2>
                     <p className="text-sm text-zinc-400 mt-1">
-                        Bulguları seçerek olası tanıları ve rapor taslağını görüntüleyin.
+                        {t("wizard.subtitle")}
                     </p>
                 </div>
 
@@ -67,13 +71,13 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                         <div className="flex items-center justify-between mb-3">
                             <h3 className="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2">
                                 <Activity className="w-4 h-4" />
-                                Seçili Bulgular ({selectedFindings.length})
+                                {t("wizard.selectedFindings")} ({selectedFindings.length})
                             </h3>
                             <button
                                 onClick={() => setSelectedFindings([])}
                                 className="text-[10px] text-zinc-500 hover:text-red-400 transition-colors"
                             >
-                                Temizle
+                                {t("wizard.clear")}
                             </button>
                         </div>
                         <div className="flex flex-wrap gap-2">
@@ -100,7 +104,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
 
                 {/* Step 0: Organ Selection */}
                 <div className="space-y-3">
-                    <label className="text-sm font-medium text-zinc-300">Organ Sistemi</label>
+                    <label className="text-sm font-medium text-zinc-300">{t("wizard.organSystem")}</label>
                     <div className="flex flex-wrap gap-2">
                         <button
                             onClick={() => { setOrgan("Brain"); setSelectedFindings([]); }}
@@ -112,7 +116,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                             )}
                         >
                             <Brain className="w-5 h-5" />
-                            <span className="font-semibold">Beyin</span>
+                            <span className="font-semibold">{t("wizard.brain")}</span>
                         </button>
                         <button
                             onClick={() => { setOrgan("Spine"); setSelectedFindings([]); }}
@@ -124,7 +128,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                             )}
                         >
                             <Bone className="w-5 h-5" />
-                            <span className="font-semibold">Omurga</span>
+                            <span className="font-semibold">{t("wizard.spine")}</span>
                         </button>
                         <button
                             onClick={() => { setOrgan("Liver"); setSelectedFindings([]); }}
@@ -136,7 +140,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                             )}
                         >
                             <Activity className="w-5 h-5" />
-                            <span className="font-semibold">Karaciğer</span>
+                            <span className="font-semibold">{t("wizard.liver")}</span>
                         </button>
                         <button
                             onClick={() => { setOrgan("Kidney"); setSelectedFindings([]); }}
@@ -148,7 +152,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                             )}
                         >
                             <Droplets className="w-5 h-5" />
-                            <span className="font-semibold">Böbrek</span>
+                            <span className="font-semibold">{t("wizard.kidney")}</span>
                         </button>
                         <button
                             onClick={() => { setOrgan("Lung"); setSelectedFindings([]); }}
@@ -160,14 +164,14 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                             )}
                         >
                             <Wind className="w-5 h-5" />
-                            <span className="font-semibold">Akciğer</span>
+                            <span className="font-semibold">{t("wizard.lung")}</span>
                         </button>
                     </div>
                 </div>
 
                 {/* Step 1: Modality */}
                 <div className="space-y-3">
-                    <label className="text-sm font-medium text-zinc-300">İnceleme Yöntemi (Modality)</label>
+                    <label className="text-sm font-medium text-zinc-300">{t("wizard.modality")}</label>
                     <div className="flex gap-2">
                         {(['USG', 'CT', 'MRI'] as Modality[]).map(m => (
                             <button
@@ -189,7 +193,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                 {/* Step 2: Findings */}
                 {modality && (
                     <div className="space-y-4 animate-in slide-in-from-left-4 duration-300">
-                        <label className="text-sm font-medium text-zinc-300">Saptanan Bulgular</label>
+                        <label className="text-sm font-medium text-zinc-300">{t("wizard.findings")}</label>
                         <div className="space-y-4">
                             {Object.entries(groupedFindings).map(([category, findings]) => {
                                 // Dynamic Category Icon
@@ -250,10 +254,10 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
             {/* RIGHT PANEL: RESULTS */}
             <div className="flex-1 bg-zinc-900/80 rounded-2xl border border-zinc-800 p-5 overflow-hidden flex flex-col min-h-[400px]">
                 <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-lg font-semibold text-zinc-100">Analiz Sonuçları</h3>
+                    <h3 className="text-lg font-semibold text-zinc-100">{t("wizard.results")}</h3>
                     {results.length > 0 && (
                         <span className="text-xs px-2 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                            {results.length} Eşleşme
+                            {results.length} {t("wizard.matches")}
                         </span>
                     )}
                 </div>
@@ -262,12 +266,12 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                     {selectedFindings.length === 0 ? (
                         <div className="h-full flex flex-col items-center justify-center text-zinc-600 space-y-3 opacity-60">
                             <Stethoscope className="w-12 h-12" />
-                            <p className="text-center text-sm">Bulguları seçmeye başladığınızda<br />olası tanılar burada listelenecektir.</p>
+                            <p className="text-center text-sm">{t("wizard.startSelect")}</p>
                         </div>
                     ) : results.length === 0 ? (
                         <div className="h-full flex flex-col items-center justify-center text-zinc-500 space-y-3">
                             <AlertTriangle className="w-10 h-10 text-orange-500/50" />
-                            <p className="text-center text-sm">Seçilen kriterlere uygun<br />tanı bulunamadı.</p>
+                            <p className="text-center text-sm">{t("wizard.noMatch")}</p>
                         </div>
                     ) : (
                         results.map((result, idx) => (
@@ -292,7 +296,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                                                 result.probabilityLabel === 'Orta Olasılık' ? "bg-yellow-500/20 text-yellow-400" :
                                                     "bg-zinc-700 text-zinc-400"
                                         )}>
-                                            %{Math.min(result.score, 99)} Güven
+                                            %{Math.min(result.score, 99)} {t("wizard.confidence")}
                                         </span>
                                     </div>
                                     <div className="text-right">
@@ -305,7 +309,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                                     <div className="mt-3 pt-3 border-t border-cyan-500/30">
                                         <p className="text-[10px] uppercase font-bold text-cyan-400 tracking-wider mb-2 flex items-center gap-1">
                                             <Sparkles className="w-3 h-3" />
-                                            Tanıyı Güçlendir (Bunu Kontrol Et):
+                                            {t("wizard.strengthen")}
                                         </p>
                                         <div className="flex flex-wrap gap-2">
                                             {result.missingFindings.slice(0, 3).map(mId => {
@@ -329,7 +333,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                                 )}
 
                                 <div className="space-y-1 mt-3">
-                                    <p className="text-xs text-zinc-500">Eşleşen Bulgular:</p>
+                                    <p className="text-xs text-zinc-500">{t("wizard.matchedFindings")}</p>
                                     <div className="flex flex-wrap gap-1">
                                         {result.matchedFindings.map(fid => {
                                             const finding = groupedFindings[Object.keys(groupedFindings).find(cat => groupedFindings[cat].find(f => f.id === fid)) || ""]?.find(f => f.id === fid)
@@ -354,7 +358,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                             onClick={() => setIsReportOpen(true)}
                             className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold shadow-lg shadow-cyan-900/20 hover:from-cyan-500 hover:to-blue-500 transition-all flex items-center justify-center gap-2">
                             <FileText className="w-5 h-5" />
-                            Rapor Taslağı Oluştur
+                            {t("wizard.generateReport")}
                         </button>
                     </div>
                 )}
@@ -367,7 +371,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                         <div className="bg-zinc-100 px-6 py-4 border-b flex justify-between items-center shrink-0">
                             <h3 className="font-bold text-lg text-zinc-800 flex items-center gap-2">
                                 <FileText className="w-5 h-5 text-zinc-600" />
-                                Radyoloji Rapor Taslağı
+                                {t("wizard.reportTitle")}
                             </h3>
                             <button onClick={() => setIsReportOpen(false)} className="p-2 hover:bg-zinc-200 rounded-full transition-colors">
                                 <X className="w-5 h-5 text-zinc-500" />
@@ -382,24 +386,24 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
 
                                 return (
                                     <>
-                                        <p className="font-bold mb-2">KLİNİK BİLGİ:</p>
-                                        <p className="mb-4 text-zinc-600">[Klinik bilgi giriniz...]</p>
+                                        <p className="font-bold mb-2">{t("wizard.clinicalInfo")}</p>
+                                        <p className="mb-4 text-zinc-600">{t("wizard.enterClinical")}</p>
 
-                                        <p className="font-bold mb-2">İNCELEME:</p>
+                                        <p className="font-bold mb-2">{t("wizard.examination")}</p>
                                         <p className="mb-4 text-zinc-600 font-semibold uppercase">
-                                            {organ === 'Brain' ? 'Kranial' : organ === 'Spine' ? 'Spinal' : organ === 'Liver' ? 'Abdominal (Karaciğer)' : organ === 'Kidney' ? 'Üriner sistem' : 'Toraks'} {modality} incelemesi
+                                            {organ === 'Brain' ? t("wizard.cranial") : organ === 'Spine' ? t("wizard.spinal") : organ === 'Liver' ? t("wizard.abdominal") : organ === 'Kidney' ? t("wizard.urinary") : t("wizard.thorax")} {modality} {t("wizard.examination_suffix")}
                                         </p>
 
-                                        <p className="font-bold mb-2">TEKNİK:</p>
+                                        <p className="font-bold mb-2">{t("wizard.technique")}</p>
                                         <p className="mb-4 text-zinc-600">{template.technique}</p>
 
-                                        <p className="font-bold mb-2">BULGULAR:</p>
+                                        <p className="font-bold mb-2">{t("wizard.findingsLabel")}</p>
                                         <p className="mb-4 text-zinc-700 whitespace-pre-line">
                                             {template.findingsTemplate}
                                         </p>
 
                                         {/* List specific selected findings as well to ensure nothing is missed */}
-                                        <p className="font-bold mb-1 text-xs text-zinc-500">EK İŞARETLENEN BULGULAR:</p>
+                                        <p className="font-bold mb-1 text-xs text-zinc-500">{t("wizard.additionalFindings")}</p>
                                         <ul className="list-disc pl-5 mb-6 space-y-1 text-zinc-600 text-xs">
                                             {selectedFindings.map(id => {
                                                 const label = activeFindingsList.find(f => f.id === id)?.label || id;
@@ -407,13 +411,13 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                                             })}
                                         </ul>
 
-                                        <p className="font-bold mb-2">SONUÇ & ÖNERİLER:</p>
+                                        <p className="font-bold mb-2">{t("wizard.conclusion")}</p>
                                         <div className="space-y-4 text-zinc-900 font-semibold bg-zinc-100 p-4 rounded-lg border border-zinc-200">
                                             <p className="uppercase">{template.impressionTemplate.replace("[Olası Tanı]", topResult.pathologyName)}</p>
                                         </div>
 
                                         <div className="mt-6 pt-4 border-t border-zinc-200">
-                                            <p className="text-zinc-500 text-xs mb-2">Olası Ayırıcı Tanılar (Alternatifler):</p>
+                                            <p className="text-zinc-500 text-xs mb-2">{t("wizard.alternatives")}</p>
                                             <ol className="list-decimal pl-5 text-zinc-600 text-xs">
                                                 {results.slice(1, 4).map((res) => (
                                                     <li key={res.pathologyId}>
@@ -425,7 +429,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                                         </div>
 
                                         <p className="mt-4 italic text-zinc-400 text-[10px] text-center">
-                                            * Bu rapor yapay zeka destekli taslak niteliğindedir. Uzman radyolog onayı gerektirir.
+                                            {t("wizard.disclaimer")}
                                         </p>
                                     </>
                                 );
@@ -433,8 +437,8 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                         </div>
 
                         <div className="bg-zinc-50 px-6 py-4 border-t flex justify-end gap-3 shrink-0">
-                            <button onClick={() => setIsReportOpen(false)} className="px-4 py-2 text-zinc-600 font-medium hover:text-zinc-900">Kapat</button>
-                            <button className="px-4 py-2 bg-zinc-900 text-white rounded-lg hover:bg-zinc-800 font-medium">Kopyala</button>
+                            <button onClick={() => setIsReportOpen(false)} className="px-4 py-2 text-zinc-600 font-medium hover:text-zinc-900">{t("general.close")}</button>
+                            <button className="px-4 py-2 bg-zinc-900 text-white rounded-lg hover:bg-zinc-800 font-medium">{t("wizard.copy")}</button>
                         </div>
                     </div>
                 </div>

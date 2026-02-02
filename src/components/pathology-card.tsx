@@ -1,8 +1,11 @@
+"use client";
+
 import { expandQueryTokens } from "@/lib/search-utils";
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/language-context";
 import {
     Copy, Check, ChevronDown, ChevronUp, Maximize2, X, Star, RotateCw,
     Sparkles, Brain, Stethoscope, Lightbulb, Activity, Layers, Scan, Radiation, Zap, FileText, ShieldCheck
@@ -43,6 +46,7 @@ const HighlightedText = ({ text, query }: { text: string, query?: string }) => {
 };
 
 export function PathologyCard({ data, isFavorite = false, onToggleFavorite, highlightQuery }: PathologyCardProps) {
+    const { t } = useLanguage();
     const [isFlipped, setIsFlipped] = useState(false);
 
     // Default active tab: first available modality
@@ -142,7 +146,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             <h3 className="text-xl font-bold text-white leading-tight pr-4">{data.name}</h3>
                             <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider shrink-0">
                                 <RotateCw className="w-3 h-3 group-hover/flip:rotate-180 transition-transform duration-500" />
-                                Detay
+                                {t("card.detail")}
                             </button>
                         </div>
 
@@ -158,7 +162,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                 )}
                             >
                                 <FileText className="w-3.5 h-3.5" />
-                                ÖZET
+                                {t("card.summary")}
                             </button>
 
                             {Object.keys(data.findings).map(modality => {
@@ -224,7 +228,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
 
                     {/* Bottom Action Hint */}
                     <div className="p-3 bg-zinc-950/30 border-t border-white/5 text-[10px] text-center text-zinc-500">
-                        Detaylı patofizyoloji ve mekanizma için kartı çevirin ↻
+                        {t("card.flipHint")}
                     </div>
                 </div>
 
@@ -234,7 +238,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     <div className="p-5 border-b border-white/10 flex justify-between items-center bg-cyan-950/10">
                         <div className="flex items-center gap-2 text-cyan-400">
                             <Brain className="w-5 h-5" />
-                            <span className="font-bold tracking-widest text-xs uppercase">Patofizyolojik Mekanizma</span>
+                            <span className="font-bold tracking-widest text-xs uppercase">{t("card.mechanism")}</span>
                         </div>
                         <button onClick={handleFlip} className="p-1.5 hover:bg-white/10 rounded-full text-zinc-400 hover:text-white transition-colors">
                             <X className="w-5 h-5" />
@@ -249,7 +253,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
                                 <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
                                     <Lightbulb className="w-4 h-4 text-yellow-500" />
-                                    Neden Böyle Görünüyor?
+                                    {t("card.whyLooksLike")}
                                 </h4>
                                 <div className="p-4 rounded-xl bg-yellow-500/5 border border-yellow-500/10 text-sm text-yellow-100/90 leading-relaxed font-serif italic">
                                     "{data.mechanism}"
@@ -261,7 +265,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
                             <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
                                 <Sparkles className="w-4 h-4 text-cyan-400" />
-                                Kritik İpuçları (Pearls)
+                                {t("card.pearls")}
                             </h4>
                             <ul className="space-y-2">
                                 {data.keyPoints.map((kp, i) => (
@@ -279,7 +283,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     <div className="p-4 bg-zinc-950/50 border-t border-white/5 flex justify-center">
                         <button onClick={handleFlip} className="text-xs text-cyan-500 font-medium hover:text-cyan-400 transition-colors uppercase tracking-widest flex items-center gap-2">
                             <RotateCw className="w-3 h-3" />
-                            Görüntüye Dön
+                            {t("card.backToImage")}
                         </button>
                     </div>
                 </div>

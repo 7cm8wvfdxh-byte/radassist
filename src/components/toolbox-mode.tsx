@@ -1,9 +1,13 @@
+"use client";
+
 import React, { useState } from 'react';
 import { Ruler, Calculator, Search, ChevronRight, Activity, Percent, ArrowRight, Check, AlertTriangle, Calculator as CalcIcon } from 'lucide-react';
 import { RADIOLOGY_MEASUREMENTS, RADIOLOGY_CALCULATORS, Measurement } from '@/data/toolbox-data';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/context/language-context';
 
 export function ToolboxMode() {
+    const { t } = useLanguage();
     const [activeTab, setActiveTab] = useState<'ruler' | 'calc'>('ruler');
     const [searchQuery, setSearchQuery] = useState('');
     const [activeCalc, setActiveCalc] = useState<string | null>(null);
@@ -207,7 +211,7 @@ export function ToolboxMode() {
                         )}
                     >
                         <Ruler className="w-4 h-4" />
-                        Normal Değerler (Cetvel)
+                        {t("toolbox.normalValues")}
                     </button>
                     <button
                         onClick={() => setActiveTab('calc')}
@@ -219,7 +223,7 @@ export function ToolboxMode() {
                         )}
                     >
                         <CalcIcon className="w-4 h-4" />
-                        Hesaplayıcılar
+                        {t("toolbox.calculators")}
                     </button>
                 </div>
             </div>
@@ -232,7 +236,7 @@ export function ToolboxMode() {
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                         <input
                             type="text"
-                            placeholder="Ölçüm ara (örn: koletok, dalak, aorta)..."
+                            placeholder={t("toolbox.searchMeasurement")}
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-3 pl-10 pr-4 text-zinc-200 placeholder:text-zinc-600 focus:outline-none focus:border-cyan-500 transition-colors"
@@ -242,7 +246,7 @@ export function ToolboxMode() {
                     {/* Results */}
                     <div className="space-y-6">
                         {Object.keys(groupedMeasurements).length === 0 ? (
-                            <div className="text-center py-10 text-zinc-500">Sonuç bulunamadı.</div>
+                            <div className="text-center py-10 text-zinc-500">{t("toolbox.noResults")}</div>
                         ) : (
                             Object.entries(groupedMeasurements).map(([organ, items]) => (
                                 <div key={organ} className="bg-zinc-900/40 rounded-2xl border border-white/5 overflow-hidden">
@@ -258,12 +262,12 @@ export function ToolboxMode() {
                                                 </div>
                                                 <div className="flex flex-col items-end gap-1 text-right">
                                                     <div className="text-sm">
-                                                        <span className="text-zinc-500 text-xs mr-2">Normal:</span>
+                                                        <span className="text-zinc-500 text-xs mr-2">{t("toolbox.normal")}</span>
                                                         <span className="font-mono text-cyan-400 font-bold">{item.normalValues}</span>
                                                     </div>
                                                     {item.pathologicalThreshold && (
                                                         <div className="text-sm">
-                                                            <span className="text-zinc-500 text-xs mr-2">Patolojik:</span>
+                                                            <span className="text-zinc-500 text-xs mr-2">{t("toolbox.pathological")}</span>
                                                             <span className="font-mono text-red-400 font-bold">{item.pathologicalThreshold}</span>
                                                         </div>
                                                     )}
@@ -305,7 +309,7 @@ export function ToolboxMode() {
                         {!activeCalc ? (
                             <div className="h-full flex flex-col items-center justify-center text-zinc-600">
                                 <Activity className="w-12 h-12 mb-3 opacity-30" />
-                                <p>Sol taraftan bir hesaplayıcı seçin.</p>
+                                <p>{t("toolbox.selectCalculator")}</p>
                             </div>
                         ) : (
                             <div className="w-full max-w-sm mx-auto space-y-6">
@@ -521,7 +525,7 @@ export function ToolboxMode() {
                                 {/* Result Display */}
                                 {calcResult && (
                                     <div className="mt-6 p-5 bg-gradient-to-br from-zinc-800 to-zinc-900 border border-white/10 rounded-xl text-center animate-in zoom-in slide-in-from-bottom-2 duration-300 shadow-xl">
-                                        <div className="text-xs text-zinc-400 font-bold uppercase tracking-widest mb-2">Sonuç</div>
+                                        <div className="text-xs text-zinc-400 font-bold uppercase tracking-widest mb-2">{t("toolbox.result")}</div>
                                         <div className="text-xl font-bold text-white mb-2">{calcResult.main}</div>
                                         {calcResult.detail && (
                                             <div className="text-sm text-cyan-400 font-medium whitespace-pre-wrap px-4 py-2 bg-cyan-950/30 rounded border border-cyan-500/20 inline-block min-w-[200px]">
