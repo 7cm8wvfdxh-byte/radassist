@@ -32,6 +32,29 @@ export const brainPathologies: Pathology[] = [
             "BT, beyin kanamasını (hemorajiyi) dışlamak için ilk tercihtir.",
             "ASPECTS skoru, MCA infarktlarında iskemik alanın yaygınlığını değerlendirmek için kullanılır.",
             "Zaman beyindir: Tromboliz penceresi <4.5 saat, Trombektomi <24 saat (seçilmiş vakalarda)."
+        ],
+        "nameEn": "Acute Ischemic Stroke",
+        "categoryEn": "Vascular",
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Usually normal in first hours (<6h). Early signs: Hyperdense MCA sign (thrombus), Loss of insular ribbon, Loss of gray-white matter differentiation (obscuration of lentiform nucleus). Late (>6h): Hypodensity (cytotoxic edema) and mass effect.",
+                "cta": "Vessel occlusion (cutoff sign), filling defect in distal vessels, evaluation of collaterals.",
+                "ct_perfusion": "Infarct Core: Low CBV, Low CBF. Penumbra (Salvageable tissue): Normal/High CBV, Low CBF, Increased MTT/Tmax."
+            },
+            "mri": {
+                "t1": "Isointense (early), Hypointense (chronic). Parenchymal swelling.",
+                "t2_flair": "May be normal in hyperacute phase. Hyperintense signal develops >6-12 hours. Lesion may appear isointense at 2-3 weeks due to 'Fogging effect'.",
+                "dwi": "Marked Hyperintensity (Restricted Diffusion) - Most sensitive early sign (within minutes).",
+                "adc": "Hypointense (confirms true restriction). Normalizes around 2 weeks (pseudonormalization).",
+                "t1_c": "Intravascular enhancement (early/subacute - 1-3 days). Parenchymal enhancement (subacute - days/weeks, 'luxury perfusion').",
+                "swi": "Blooming artifact in hemorrhagic transformation or thrombus (susceptibility vessel sign)."
+            }
+        },
+        "keyPointsEn": [
+            "DWI is the gold standard for early diagnosis and differentiation of ischemia.",
+            "CT is the first choice to exclude hemorrhage.",
+            "ASPECTS score is used to assess the extent of ischemic area in MCA infarcts.",
+            "Time is brain: Thrombolysis window <4.5 hours, Thrombectomy <24 hours (in selected cases)."
         ]
     },
     {
@@ -63,6 +86,27 @@ export const brainPathologies: Pathology[] = [
             "Erişkinlerde en sık görülen primer malign beyin tümörüdür.",
             "Orta hattı geçme eğilimindedir (Kelebek / Butterfly glioma).",
             "WHO 2021 sınıflamasına göre moleküler tanımı IDH-wildtype'tır."
+        ],
+        "nameEn": "Glioblastoma (GBM - IDH-wildtype)",
+        "categoryEn": "Neoplastic",
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Irregular hypodense mass containing central heterogeneity (necrosis). Significant mass effect and vasogenic edema.",
+                "contrast": "Irregular, thick, nodular peripheral (ring) enhancement. Central necrotic area does not enhance."
+            },
+            "mri": {
+                "t1": "Hypointense, heterogeneous mass. Hemorrhagic areas may be hyperintense.",
+                "t2_flair": "Heterogeneous hyperintensity. Extensive surrounding vasogenic edema ('finger-like' appearance), corpus callosum involvement.",
+                "t1_c": "Thick, irregular, nodular peripheral rim enhancement. Central necrosis.",
+                "dwi": "Variable. Restriction may occur in cellular components. Diffusion is facilitated in necrotic areas.",
+                "perfusion": "High rCBV in enhancing components (neoangiogenesis).",
+                "spectroscopy": "High Choline (cell destruction/turnover), Low NAA (neuronal loss), Lipid/Lactate peak (necrosis)."
+            }
+        },
+        "keyPointsEn": [
+            "Most common primary malignant brain tumor in adults.",
+            "Tends to cross the midline (Butterfly glioma).",
+            "Molecular definition according to WHO 2021 is IDH-wildtype."
         ]
     },
     {
@@ -92,12 +136,34 @@ export const brainPathologies: Pathology[] = [
             "En sık görülen ekstra-aksiyal tümördür.",
             "Kadınlarda daha sıktır.",
             "'Dural kuyruk' ve 'BOS yarığı' (CSF cleft) klasik bulgulardır."
+        ],
+        "nameEn": "Meningioma",
+        "categoryEn": "Neoplastic",
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Extra-axial, usually hyperdense (70-75%) or isodense mass. Calcification is common (20-25%). Hyperostosis in adjacent bone.",
+                "contrast": "Intense, homogenous enhancement."
+            },
+            "mri": {
+                "t1": "Isointense or hypointense relative to gray matter.",
+                "t2": "Isointense or hyperintense. 'CSF cleft sign' (CSF space between brain parenchyma and tumor).",
+                "t1_c": "Intense, homogenous enhancement. 'Dural tail' sign (thickening/enhancement of adjacent dura).",
+                "adc": "Usually facilitated diffusion, but restriction may be seen in atypical/malignant types.",
+                "spectroscopy": "Alanine peak (distinguishing feature), High Choline."
+            }
+        },
+        "keyPointsEn": [
+            "Most common extra-axial tumor.",
+            "More common in women.",
+            "'Dural tail' and 'CSF cleft' are classic signs."
         ]
     },
     {
         "id": "multiple_sclerosis",
         "name": "Multipl Skleroz (MS)",
+        "nameEn": "Multiple Sclerosis (MS)",
         "category": "Demiyelinizan",
+        "categoryEn": "Demyelinating",
         "gallery": [
             { "url": "/images/mri_ms_sagittal.png", "caption": "Sagittal (Dawson)", "modality": "MRI" },
             { "url": "/images/mri_ms_axial.png", "caption": "Axial FLAIR", "modality": "MRI" }
@@ -113,17 +179,35 @@ export const brainPathologies: Pathology[] = [
                 "swi": "Santral ven işareti (lezyonun içinden geçen ven), mikrovasküler hastalıktan ayırmada yardımcıdır."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Low sensitivity. Non-specific hypodensities in white matter. Atrophy in advanced stages."
+            },
+            "mri": {
+                "t2_flair": "Multiple hyperintense ovoid lesions perpendicular to ventricles. Location: Periventricular (Dawson's fingers), Juxtacortical/Cortical, Infratentorial, Spinal cord.",
+                "t1": "Isointense or Hypointense ('Black holes' = irreversible axonal damage).",
+                "t1_c": "Open-ring enhancement indicates active demyelination.",
+                "swi": "Central vein sign (vein passing through lesion) helps differentiate from microvascular disease."
+            }
+        },
         "mechanism": "Otoimmün T-hücre aracılı miyelin kılıf hasarı. Kan-beyin bariyeri (BBB) bozulduğunda akut plaklarda kontrastlanma görülür.",
         "keyPoints": [
             "Zamanda (DIT) ve Mekanda (DIS) yayılım.",
             "Tanı için McDonald Kriterleri kullanılır.",
             "Lezyonlar arasında normal beyaz cevher bulunur."
+        ],
+        "keyPointsEn": [
+            "Dissemination in Time (DIT) and Space (DIS).",
+            "McDonald Criteria used for diagnosis.",
+            "Normal white matter exists between lesions."
         ]
     },
     {
         "id": "subdural_hematoma",
         "name": "Subdural Hematom (SDH)",
+        "nameEn": "Subdural Hematoma (SDH)",
         "category": "Travma",
+        "categoryEn": "Trauma",
         "gallery": [
             { "url": "/images/ct_sdh.png", "caption": "BT (Akut Hilal)", "modality": "CT" }
         ],
@@ -137,16 +221,33 @@ export const brainPathologies: Pathology[] = [
                 "t2": "Akut: Hipointens. Subakut: Hiperintens. Kronik: Hiperintens. Akut-üzerine-kronik kanamalarda 'Hematokrit etkisi' (seviyelemesı)."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Crescent shaped. Does NOT cross dural reflections (falx/tentorium), DOES cross sutures. Acute (<3 days): Hyperdense. Subacute (3d-3w): Isodense (may be missed - look for mass effect). Chronic (>3 weeks): Hypodense.",
+                "contrast": "Enhancement of membranes in chronic SDH. Cortical vein displacement."
+            },
+            "mri": {
+                "t1": "Acute: Isointense. Subacute (early): Hyperintense (Met-Hb). Chronic: Hypointense.",
+                "t2": "Acute: Hypointense. Subacute: Hyperintense. Chronic: Hyperintense. 'Hematocrit effect' (fluid-fluid level) in acute-on-chronic hemorrhage."
+            }
+        },
         "keyPoints": [
             "Venöz kaynaklıdır (köprü venleri).",
             "Yaşlılarda ve alkoliklerde (atrofi nedeniyle venler gerildiği için) sıktır.",
             "Akut-üzerine-kronik SDH: BT'de miks (karışık) dansite."
+        ],
+        "keyPointsEn": [
+            "Venous origin (bridging veins).",
+            "Common in elderly and alcoholics (due to atrophy stretching veins).",
+            "Acute-on-chronic SDH: Mixed density on CT."
         ]
     },
     {
         "id": "epidural_hematoma",
         "name": "Epidural Hematom (EDH)",
+        "nameEn": "Epidural Hematoma (EDH)",
         "category": "Travma",
+        "categoryEn": "Trauma",
         "gallery": [
             { "url": "/images/ct_edh.png", "caption": "BT (Lens/Bikonveks)", "modality": "CT" }
         ],
@@ -161,16 +262,34 @@ export const brainPathologies: Pathology[] = [
                 "swi": "Blooming artefaktı."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Biconvex (lens) shaped. Crosses dural reflections (falx), DOES NOT cross sutures (unless fractured). Heterogeneous 'swirl' sign indicates active bleeding.",
+                "bone_window": "Skull fracture associated in 85-95% of cases."
+            },
+            "mri": {
+                "t1": "Isointense (acute).",
+                "t2": "Hypointense due to deoxyhemoglobin (acute).",
+                "swi": "Blooming artifact."
+            }
+        },
         "keyPoints": [
             "Arteriyel kaynaklıdır (Genellikle A. Meningea Media).",
             "Lucid interval (bilincin açılıp tekrar kapanması) klasik ama her zaman görülmez.",
             "Belirgin kitle etkisi varsa nöroşirürjik acildir."
+        ],
+        "keyPointsEn": [
+            "Arterial origin (Usually Middle Meningeal Artery).",
+            "Lucid interval (regaining consciousness then deteriorating) is classic but not always present.",
+            "Neurosurgical emergency if significant mass effect."
         ]
     },
     {
         "id": "subarachnoid_hemorrhage",
         "name": "Subaraknoid Kanama (SAK)",
+        "nameEn": "Subarachnoid Hemorrhage (SAH)",
         "category": "Travma/Vasküler",
+        "categoryEn": "Trauma/Vascular",
         "gallery": [
             { "url": "/images/ct_sah.png", "caption": "BT (Yıldız Belirtisi)", "modality": "CT" }
         ],
@@ -185,16 +304,34 @@ export const brainPathologies: Pathology[] = [
                 "t1": "Akut dönemde genellikle yüksek sinyal vermez."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Hyperdensity in subarachnoid spaces (cisterns, sulci, fissures). 'Starfish' appearance in basal cisterns.",
+                "cta": "Required to detect underlying aneurysm (Berry aneurysm)."
+            },
+            "mri": {
+                "t2_flair": "Hyperintense signal in sulci ('Dirty CSF' appearance - very sensitive).",
+                "swi": "Blooming artifact in sulci.",
+                "t1": "Usually no high signal in acute phase."
+            }
+        },
         "keyPoints": [
             "Ani başlayan şiddetli baş ağrısı ('Hayatımın en kötü ağrısı').",
             "En sık neden travmadır; travma dışı en sık neden anevrizma rüptürüdür.",
             "Komplikasyonlar: Vazospazm, Hidrosefali."
+        ],
+        "keyPointsEn": [
+            "Sudden onset severe headache ('Worst headache of my life').",
+            "Most common cause is trauma; non-traumatic cause is aneurysm rupture.",
+            "Complications: Vasospasm, Hydrocephalus."
         ]
     },
     {
         "id": "cerebral_abscess",
         "name": "Serebral Apse",
+        "nameEn": "Cerebral Abscess",
         "category": "Enfeksiyon",
+        "categoryEn": "Infection",
         "findings": {
             "ct": {
                 "non_contrast": "Hipodens merkez, izodens/hafif hiperdens kapsül, çevresinde geniş ödem.",
@@ -209,15 +346,35 @@ export const brainPathologies: Pathology[] = [
                 "swi": "Çift halka işareti (dual rim sign) - dışta hipointens, içte hiperintens."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Hypodense center, isodense/slightly hyperdense capsule, extensive surrounding edema.",
+                "contrast": "Thin, smooth, uniform ring enhancement."
+            },
+            "mri": {
+                "t1": "Hypointense center, isointense capsule.",
+                "t2": "Hyperintense center, hypointense capsule.",
+                "dwi": "Marked Restriction (Hyperintense) centrally - Due to pus content.",
+                "adc": "Hypointense.",
+                "t2_flair": "Extensive vasogenic edema.",
+                "swi": "Dual rim sign - hypointense outer, hyperintense inner."
+            }
+        },
         "keyPoints": [
             "Halka kontrastlanan lezyon ayırıcı tanısı: 'MAGICAL DR' (Metastaz, Apse, GBM, İnfarkt, Kontüzyon, AIDS, Lenfoma, Demiyelinizasyon, Radyasyon).",
             "Difüzyon kısıtlığı (DWI), nekrotik tümörlerden (genellikle kolaylaşmıştır) ayırt etmede kilit rol oynar."
+        ],
+        "keyPointsEn": [
+            "Ring enhancing lesion DDx: 'MAGICAL DR' (Metastasis, Abscess, GBM, Infarct, Contusion, AIDS, Lymphoma, Demyelination, Radiation).",
+            "Restricted diffusion (DWI) is key to differentiate from necrotic tumors (usually facilitated)."
         ]
     },
     {
         "id": "vestibular_schwannoma",
         "name": "Vestibüler Schwannom (Akustik Nörinom)",
+        "nameEn": "Vestibular Schwannoma (Acoustic Neuroma)",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
         "findings": {
             "ct": {
                 "non_contrast": "Serebellopontin köşe (CPA) sisternasında izo/hipodens kitle. İç Kulak Yolu (IAC) genişlemesi.",
@@ -230,10 +387,27 @@ export const brainPathologies: Pathology[] = [
                 "swi": "Mikrokanamalar sıktır (Meningiomun aksine)."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Iso/hypodense mass in cerebellopontine angle (CPA) cistern. Widening of Internal Auditory Canal (IAC).",
+                "contrast": "Enhances."
+            },
+            "mri": {
+                "t1": "Isointense or hypointense.",
+                "t2": "Heterogeneous hyperintense. Associated arachnoid cysts may occur.",
+                "t1_c": "Intense enhancement. 'Ice cream cone' appearance (intra- and extra-canalicular components).",
+                "swi": "Microhemorrhages are common (unlike Meningioma)."
+            }
+        },
         "keyPoints": [
             "8. kafa çiftinin vestibüler dalından köken alır.",
             "Sensörinöral tip işitme kaybı.",
             "Bilateral (iki taraflı) olması NF2 hastalığını düşündürür."
+        ],
+        "keyPointsEn": [
+            "Arises from vestibular branch of 8th cranial nerve.",
+            "Sensorineural hearing loss.",
+            "Bilateral involvement suggests NF2 disease."
         ]
     },
     {

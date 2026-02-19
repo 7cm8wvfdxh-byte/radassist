@@ -67,10 +67,14 @@ export interface ModalityFindings {
 export interface Pathology {
     id: string;
     name: string;
+    nameEn?: string; // English Name
     organ?: string; // Added for global search identification
     category: string;
+    categoryEn?: string; // English Category
     findings: ModalityFindings;
+    findingsEn?: ModalityFindings; // English Findings
     keyPoints: string[];
+    keyPointsEn?: string[]; // English Key Points
     references?: string[];
     // Flashcard / Cube Data
     etiology?: string; // Cause/Origin

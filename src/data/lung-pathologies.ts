@@ -4,7 +4,9 @@ export const lungPathologies: Pathology[] = [
     {
         "id": "lung_cancer",
         "name": "Akciğer Kanseri (NSCLC/SCLC)",
+        "nameEn": "Lung Cancer (NSCLC/SCLC)",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
         "gallery": [
             { "url": "/images/lung/lung_cancer_ct.png", "caption": "BT - Spiküle Kitle", "modality": "CT" },
             // { "url": "/images/lung/pancoast_mri.png", "caption": "MRI - Pancoast Tümörü", "modality": "MRI" }
@@ -21,17 +23,37 @@ export const lungPathologies: Pathology[] = [
                 "dwi": "Solid tümörlerde kısıtlanma. Tedavi yanıtı izleminde kullanılır."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Central (SCLC, Squamous): Hilar/peribronchial mass, atelectasis. Peripheral (Adenocarcinoma): Solid nodule/mass, spiculated margin, pleural tail.",
+                "contrast": "Heterogeneous enhancement. Mediastinal LAP evaluation. Pleural effusion, chest wall invasion.",
+                "bone_window": "Rib, vertebral destruction (T3-T4 staging)."
+            },
+            "mri": {
+                "t1": "Pancoast tumor: Evaluation of brachial plexus, subclavian vessel invasion.",
+                "t2": "Tumor-normal tissue contrast. Spinal canal invasion.",
+                "dwi": "Restriction in solid tumors. Used for monitoring treatment response."
+            }
+        },
         "keyPoints": [
             "NSCLC (%85): Adenokarsinom (en sık), Skuamöz, Büyük hücreli.",
             "SCLC (%15): Santral, hızlı büyüme, paraneoplatik sendromlar.",
             "Evreleme: TNM (Tümör boyutu, Nodal tutulum, Metastaz).",
             "Ground-glass + solid = Part-solid nodül = Adenokarsinom şüpheli."
+        ],
+        "keyPointsEn": [
+            "NSCLC (85%): Adenocarcinoma (most common), Squamous, Large cell.",
+            "SCLC (15%): Central, rapid growth, paraneoplastic syndromes.",
+            "Staging: TNM (Tumor size, Nodal involvement, Metastasis).",
+            "Ground-glass + solid = Part-solid nodule = Suspicious for Adenocarcinoma."
         ]
     },
     {
         "id": "pulmonary_embolism",
         "name": "Pulmoner Emboli",
+        "nameEn": "Pulmonary Embolism",
         "category": "Vasküler",
+        "categoryEn": "Vascular",
         "gallery": [
             // { "url": "/images/lung/pe_ct_angio.png", "caption": "BT Anjiyo - Dolum Defekti", "modality": "CT" },
             // { "url": "/images/lung/hampton_hump_cxr.png", "caption": "CXR - Hampton's Hump", "modality": "X-Ray" }
@@ -48,17 +70,37 @@ export const lungPathologies: Pathology[] = [
                 "other_sequences": "Perfüzyon MR: V/Q eşdeğeri olarak kullanılabilir."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "cta": "PULMONARY ARTERIAL PHASE: Intravascular filling defect. 'Polo mint sign' (Axial): Central hypodensity within the vessel. 'Railway track sign' (Coronal): Parallel hypodense thrombus.",
+                "contrast": "Right ventricular dilatation (RV/LV >1 = Poor prognosis). Interventricular septum bowed to left. Pulmonary infarct: Wedge-shaped peripheral consolidation (Hampton's hump).",
+                "non_contrast": "Insufficient for acute emboli diagnosis. Mosaic perfusion (chronic PE)."
+            },
+            "mri": {
+                "mra": "MR pulmonary angiography: Alternative when contrast is contraindicated.",
+                "t1_c": "Thrombus: Hypointense filling defect.",
+                "other_sequences": "Perfusion MRI: Can be used as V/Q equivalent."
+            }
+        },
         "keyPoints": [
             "BT Pulmoner Anjiyo altın standart. Duyarlılık %90+.",
             "Wells Skoru + D-dimer: Düşük olasılık -> PE dışlanır.",
             "Sağ ventrikül strain: rV/LV >1, interventrikular septum bowing.",
             "'Saddle embolus': Ana pulmoner arter bifurkasyonu - Masif PE."
+        ],
+        "keyPointsEn": [
+            "CT Pulmonary Angio is the gold standard. Sensitivity 90%+.",
+            "Wells Score + D-dimer: Low probability -> PE excluded.",
+            "Right ventricular strain: RV/LV >1, interventricular septum bowing.",
+            "'Saddle embolus': Main pulmonary artery bifurcation - Massive PE."
         ]
     },
     {
         "id": "pneumonia",
         "name": "Pnömoni (Bakteriyel/Viral/COVID-19)",
+        "nameEn": "Pneumonia (Bacterial/Viral/COVID-19)",
         "category": "Enfeksiyon",
+        "categoryEn": "Infection",
         "gallery": [
             // { "url": "/images/lung/pneumonia_lobar.png", "caption": "BT - Lober Konsolidasyon", "modality": "CT" },
             // { "url": "/images/lung/covid_ground_glass.png", "caption": "BT - Buzlu Cam (COVID-19)", "modality": "CT" }
@@ -73,17 +115,35 @@ export const lungPathologies: Pathology[] = [
                 "dwi": "Apse: Merkezi kısıtlanma (nekrotik materyalden ayırıcı)."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "BACTERIAL: Lobar consolidation, air-bronchograms, pleural effusion. VIRAL/ATYPICAL: Bilateral patchy ground-glass, peribronchial distribution. COVID-19: Bilateral, peripheral predominant ground-glass, crazy-paving pattern, subpleural bands.",
+                "contrast": "Abscess: Ring enhancement, cavitation. Empyema: Pleural thickening and enhancement."
+            },
+            "mri": {
+                "t2": "Consolidation: Heterogeneous hyperintense.",
+                "dwi": "Abscess: Central restriction (distinguishes from necrotic material)."
+            }
+        },
         "keyPoints": [
             "Bakteriyel: Lober, akut. S. pneumoniae en sık.",
             "Viral/Atipik: Bilateral, interstisyel, ground-glass.",
             "COVID-19: Periferal ground-glass → Crazy paving → Konsolidasyon → Fibrozis progresyonu.",
             "Nekrotizan pnömoni: Multiple kavitasyon, Klebsiella, S. aureus."
+        ],
+        "keyPointsEn": [
+            "Bacterial: Lobar, acute. S. pneumoniae most common.",
+            "Viral/Atypical: Bilateral, interstitial, ground-glass.",
+            "COVID-19: Peripheral ground-glass → Crazy paving → Consolidation → Fibrosis progression.",
+            "Necrotizing pneumonia: Multiple cavitation, Klebsiella, S. aureus."
         ]
     },
     {
         "id": "lung_nodule",
         "name": "Akciğer Nodülü (Fleischner Kriterleri)",
+        "nameEn": "Lung Nodule (Fleischner Criteria)",
         "category": "Belirsiz",
+        "categoryEn": "Indeterminate",
         "gallery": [
             // { "url": "/images/lung/nodule_spiculated.png", "caption": "BT - Spiküle Solita Nodül", "modality": "CT" },
             // { "url": "/images/lung/nodule_ground_glass.png", "caption": "BT - Subsolid Nodül", "modality": "CT" }
@@ -99,42 +159,84 @@ export const lungPathologies: Pathology[] = [
                 "t1_c": "Solid nodül kontrastlanma değerlendirmesi."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "SOLID NODULE: Homogeneous soft tissue density. SUBSOLID: Part-solid (solid + ground-glass) or Pure ground-glass. Morphology: Spiculated, lobulated, smooth margins.",
+                "contrast": ">15 HU increase = Vascular nodule (suspicious for malignancy).",
+                "evolution": "Volume doubling time: <400 days = High suspicion of malignancy."
+            },
+            "mri": {
+                "dwi": "Tendency for restriction in malignant nodules.",
+                "t1_c": "Evaluation of solid nodule enhancement."
+            }
+        },
         "keyPoints": [
             "Fleischner 2017: Solid ve subsolid nodüller için ayrı algoritmalar.",
             "<6mm solid nodül (düşük risk): Takip gerekmez.",
             "Part-solid nodül: Solid komponent >6mm = Yüksek malignite riski.",
             "PET-CT: >8mm solid nodül metabolik değerlendirme için önerilir."
+        ],
+        "keyPointsEn": [
+            "Fleischner 2017: Separate algorithms for solid and subsolid nodules.",
+            "<6mm solid nodule (low risk): No follow-up needed.",
+            "Part-solid nodule: Solid component >6mm = High malignancy risk.",
+            "PET-CT: Recommended for metabolic evaluation of >8mm solid nodules."
         ]
     },
     {
         "id": "pneumothorax",
         "name": "Pnömotoraks",
+        "nameEn": "Pneumothorax",
         "category": "Travma/İyatrojenik",
+        "categoryEn": "Trauma/Iatrogenic",
         "gallery": [
             // { "url": "/images/lung/pneumothorax_cxr.png", "caption": "CXR - Plevral Hat", "modality": "X-Ray" },
             // { "url": "/images/lung/pneumothorax_ct.png", "caption": "BT - Serbest Hava", "modality": "CT" }
         ],
         "findings": {
+            "xray": {
+                "description": "Visseral plevra çizgisi (ince beyaz hat). Periferde damar izlerinin olmaması (radyolusent alan). Derin sulkus (Deep sulcus) işareti (yatan hastada)."
+            },
             "ct": {
                 "non_contrast": "Plevral boşlukta SERBEST HAVA. Visseral plevra çizgisi görülür. Akciğer kollapsı derecesi. Tansiyon pneumotoraks: Mediastinal şift, kontralateral tarafa itilme.",
                 "bone_window": "Subkutan amfizem. Kot fraktürü (travmatik)."
             },
             "ultrasound": {
-                "description": "'Lung sliding' KAYBI = Pnömotoraks. 'Barcode sign' (M-mode): Paralel çizgiler (normal 'seashore' paterni yerine). 'Lung point': Pnömotoraks sınırı - Patognomonik.",
+                "description": "'Lung sliding' KAYBI (en hassas bulgulardan). 'Barcode sign' (M-mode): Paralel çizgiler (normal 'seashore' paterni yerine). 'Lung point': Pnömotoraks sınırı - Patognomonik.",
                 "doppler": "Kullanılmaz."
+            }
+        },
+        "findingsEn": {
+            "xray": {
+                "description": "Visceral pleural line (thin white line). Absence of lung markings in periphery (radiolucent area). Deep sulcus sign (in supine patient)."
+            },
+            "ct": {
+                "non_contrast": "FREE AIR in pleural space. Visceral pleural line visible. Degree of lung collapse. Tension pneumothorax: Mediastinal shift, displacement to contralateral side.",
+                "bone_window": "Subcutaneous emphysema. Rib fracture (traumatic)."
+            },
+            "ultrasound": {
+                "description": "Loss of 'Lung sliding' (one of the most sensitive signs). 'Barcode sign' (M-mode): Parallel lines (instead of normal 'seashore' pattern). 'Lung point': Pneumothorax border - Pathognomonic."
             }
         },
         "keyPoints": [
             "Tansiyon pneumotoraks: ACİL dekompresyon (iğne/tüp).",
             "Supin BT: Anterior/medial hava birikimi ('deep sulcus sign' X-ray'de).",
             "Primer spontan: Genç, uzun, erkek, apikal bleb.",
-            "Sekonder: KOAH, interstisyel akciğer hastalığı, travma."
+            "USG, yatak başı tanıda (eFAST) BT kadar duyarlıdır."
+        ],
+        "keyPointsEn": [
+            "Tension pneumothorax: URGENT decompression (needle/tube).",
+            "Supine CT: Anterior/medial air accumulation ('deep sulcus sign' on X-ray).",
+            "Primary spontaneous: Young, tall, male, apical bleb.",
+            "USG is as sensitive as CT in bedside diagnosis (eFAST)."
         ]
     },
     {
         "id": "interstitial_lung_disease",
         "name": "İnterstisyel Akciğer Hastalığı (ILD/UIP)",
+        "nameEn": "Interstitial Lung Disease (ILD/UIP)",
         "category": "Fibrotik",
+        "categoryEn": "Fibrotic",
         "gallery": [
             // { "url": "/images/lung/ild_honeycombing.png", "caption": "HRCT - Bal Peteği (Honeycombing)", "modality": "CT" },
             // { "url": "/images/lung/ild_traction.png", "caption": "HRCT - Traksiyon Bronşektazi", "modality": "CT" }
@@ -150,53 +252,63 @@ export const lungPathologies: Pathology[] = [
                 "other_sequences": "Fonksiyonel MR: Ventilasyon/perfüzyon değerlendirmesi."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "UIP (Idiopathic Pulmonary Fibrosis): BASILAR, SUBPLEURAL predominance. 'Honeycombing': Cystic air spaces, thick walls - PATHOGNOMONIC. Traction bronchiectasis. Minimal or no ground-glass.",
+                "contrast": "Usually not required. Can be used for complications (pulmonary HT).",
+                "evolution": "NSIP: More ground-glass, less honeycombing. Better prognosis."
+            },
+            "mri": {
+                "t2": "Fibrotic areas hypointense. Active inflammation hyperintense.",
+                "other_sequences": "Functional MRI: Ventilation/perfusion assessment."
+            }
+        },
         "keyPoints": [
             "UIP paterni = IPF tanısı için yeterli (biyopsi gerekmez).",
             "Honeycombing + Traksiyon bronşektazi + Baziler/subplevral = UIP kesin.",
             "NSIP vs UIP: NSIP'te ground-glass fazla, honeycombing yok/az.",
             "HRCT: 1-2mm kesit kalınlığı, yüksek çözünürlük gerekli."
+        ],
+        "keyPointsEn": [
+            "UIP pattern = Sufficient for IPF diagnosis (biopsy not required).",
+            "Honeycombing + Traction bronchiectasis + Basilar/subpleural = Definite UIP.",
+            "NSIP vs UIP: NSIP has more ground-glass, no/little honeycombing.",
+            "HRCT: 1-2mm slice thickness, high resolution required."
         ]
     },
     {
         "id": "ipf",
         "name": "İdiopatik Pulmoner Fibrozis (IPF / UIP)",
+        "nameEn": "Idiopathic Pulmonary Fibrosis (IPF / UIP)",
         "category": "İnterstisyel",
+        "categoryEn": "Interstitial",
         "findings": {
             "ct": {
                 "non_contrast": "UIP Paterni: Bazal ve subplevral ağırlıklı tutulum. Balpeteği (Honeycombing) kistleri. Traksiyon bronşiektazileri. Retiküler opasiteler. Buzlu cam (Ground-glass) baskın DEĞİLDİR (Baskınsa NSIP düşün)."
+            }
+        },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "UIP Pattern: Basal and subpleural predominant involvement. Honeycombing cysts. Traction bronchiectasis. Reticular opacities. Ground-glass is NOT dominant (If dominant, consider NSIP)."
             }
         },
         "keyPoints": [
             "Progresif dispne ve kuru öksürük (Yaşlı erkek hasta).",
             "UIP paterni (BT) + Klinik uyum = Biyopsi gerekmez.",
             "Balpeteği görünümü (3-10mm kistler) kötü prognoz işaretidir."
-        ]
-    },
-    {
-        "id": "pneumothorax",
-        "name": "Pnömotoraks",
-        "category": "Acil",
-        "findings": {
-            "xray": {
-                "description": "Visseral plevra çizgisi (ince beyaz hat). Periferde damar izlerinin olmaması (radyolusent alan). Derin sulkus (Deep sulcus) işareti (yatan hastada)."
-            },
-            "ct": {
-                "non_contrast": "Plevral boşlukta hava. Akciğer parankiminde kollaps. Tansiyon pnömotoraks: Mediastinal şif (karşı tarafa itilme), trakeal deviasyon, diyafram basısı."
-            },
-            "usg": {
-                "description": "Akciğer kayma hareketinin (Lung sliding) ve kuyruklu yıldız (Comet tail) artefaktının kaybolması. Barcode/Stratosphere sign (M-mod). Lung point (Sağlam ve pnömotoraks sınırını gösterir - Spesifiktir)."
-            }
-        },
-        "keyPoints": [
-            "Tansiyon pnömotoraks klinik bir tanıdır, röntgen BEKLENMEZ (Acil iğne dekompresyonu!).",
-            "Primer spontan: Genç, uzun, zayıf erkek, sigara içicisi (Apikal bleb rüptürü).",
-            "USG, yatak başı tanıda (eFAST) BT kadar duyarlıdır."
+        ],
+        "keyPointsEn": [
+            "Progressive dyspnea and dry cough (Elderly male patient).",
+            "UIP pattern (CT) + Clinical correlation = No biopsy needed.",
+            "Honeycombing appearance (3-10mm cysts) is a sign of poor prognosis."
         ]
     },
     {
         "id": "emphysema",
         "name": "Amfizem (KOAH)",
+        "nameEn": "Emphysema (COPD)",
         "category": "Obstrüktif",
+        "categoryEn": "Obstructive",
         "findings": {
             "ct": {
                 "non_contrast": "Parsiyel asiner (Sentrilobüler): Sigara ile ilişkili, üst lob ağırlıklı, santral lüsent alanlar. Panasiner: Alfa-1 antitripsin eksikliği, alt lob ağırlıklı. Paraseptal: Subplevral, üst lob, pnömotoraks riski. Büllöz: >1cm hava kistleri."
@@ -205,10 +317,23 @@ export const lungPathologies: Pathology[] = [
                 "description": "Akciğer hacminde artış (Hiperinflasyon). Diyaframda düzleşme. Retrosternal mesafede artış. Kot aralıklarında genişleme. 'Damla kalp' (kalbin dikey ve küçük görünmesi)."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Centrilobular: Smoking-related, upper lobe predominant, central lucent areas. Panacinar: Alpha-1 antitrypsin deficiency, lower lobe predominant. Paraseptal: Subpleural, upper lobe, pneumothorax risk. Bullous: >1cm air cysts."
+            },
+            "xray": {
+                "description": "Increased lung volume (Hyperinflation). Flattening of diaphragm. Increased retrosternal space. Widening of rib spaces. 'Teardrop heart' (heart appearing vertical and small)."
+            }
+        },
         "keyPoints": [
             "Sigara en önemli risk faktörüdür.",
             "Kor pulmonale (Sağ kalp yetmezliği) gelişebilir (Pulmoner arter genişlemesi >29mm).",
             "Saber-sheath trakea (Trakeanın koronal çapının daralması) eşlik edebilir."
+        ],
+        "keyPointsEn": [
+            "Smoking is the most important risk factor.",
+            "Cor pulmonale (Right heart failure) may develop (Pulmonary artery enlargement >29mm).",
+            "Saber-sheath trachea (narrowing of coronal diameter of trachea) may be associated."
         ]
     }
 ];

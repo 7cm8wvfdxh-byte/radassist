@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "RadAsist: Radyoloji Asistanı",
   description: "Yapay Zeka Destekli Radyoloji Tanı Rehberi",
+  metadataBase: new URL("https://www.radasist.com"),
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
@@ -37,6 +38,7 @@ export const viewport = {
 };
 
 import { AuthProvider } from "@/context/auth-context";
+import { LanguageProvider } from "@/context/language-context";
 import { ForumProvider } from "@/context/forum-context";
 
 import { PwaInstallPrompt } from "@/components/pwa-install-prompt";
@@ -52,10 +54,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <ForumProvider>
-            {children}
-            <PwaInstallPrompt />
-          </ForumProvider>
+          <LanguageProvider>
+            <ForumProvider>
+              {children}
+              <PwaInstallPrompt />
+            </ForumProvider>
+          </LanguageProvider>
         </AuthProvider>
       </body>
     </html>

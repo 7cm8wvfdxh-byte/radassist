@@ -26,11 +26,13 @@ import { Pathology } from "@/types";
 import { cn } from "@/lib/utils"; // Ensure cn is imported
 import { performSmartSearch } from "@/lib/search-utils";
 import { useAuth } from "@/context/auth-context";
+import { useLanguage } from "@/context/language-context";
 import Link from "next/link"; // Need Link for navigation
 import { LogIn, LogOut, User, Bell } from "lucide-react"; // Icons
 
 export default function Home() {
   const { user, logout } = useAuth();
+  const { language, toggleLanguage } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
@@ -204,6 +206,18 @@ export default function Home() {
             </div>
             <span className="hidden md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">Duyurular</span>
           </Link>
+
+          {/* Language Toggle */}
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
+          >
+            <span className={`text-xs font-bold ${language === 'TR' ? 'text-white' : 'text-zinc-500'}`}>TR</span>
+            <div className="w-8 h-4 bg-zinc-800 rounded-full relative mx-1 border border-white/10">
+              <div className={`absolute top-0.5 w-3 h-3 rounded-full bg-indigo-500 transition-all duration-300 ${language === 'EN' ? 'left-[18px]' : 'left-0.5'}`} />
+            </div>
+            <span className={`text-xs font-bold ${language === 'EN' ? 'text-white' : 'text-zinc-500'}`}>EN</span>
+          </button>
           {user ? (
             <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md rounded-full pl-4 pr-2 py-1.5 border border-white/10 shadow-lg">
               <div className="flex flex-col items-end mr-1">

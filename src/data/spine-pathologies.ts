@@ -4,7 +4,9 @@ export const spinePathologies: Pathology[] = [
     {
         "id": "lumbar_disc_herniation",
         "name": "Lomber Disk Hernisi (Bel Fıtığı)",
+        "nameEn": "Lumbar Disc Herniation",
         "category": "Dejeneratif",
+        "categoryEn": "Degenerative",
         "gallery": [
             {
                 "url": "/images/spine/lumbar_herniation_sagittal.png",
@@ -23,17 +25,36 @@ export const spinePathologies: Pathology[] = [
                 "non_contrast": "Yumuşak doku dansitesinde disk materyalinin kanal içine uzanımı. Kalsifikasyon olabilir (Sert disk)."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t2": "Decreased disc height (Degeneration). Nucleus pulposus herniating through annulus fibrosus. High signal 'HIZ' (High Intensity Zone) indicates annular tear.",
+                "t1": "Effacement of epidural fat. Nerve root compression.",
+                "sagittal": "Disc vertical dimension > base dimension = 'Extrusion', Base > vertical = 'Protrusion'. Disconnected from disc = 'Sequestrated'.",
+                "axial": "Location: Central, Paracentral (Recess), Foraminal, Extraforaminal."
+            },
+            "ct": {
+                "non_contrast": "Soft tissue density disc material extending into the canal. Calcification may be present (Hard disc)."
+            }
+        },
         "keyPoints": [
             "Terminoloji (Radiopaedia 2.0): Bulging (Taşma) vs Herni (Fıtık).",
             "Fokal (<%25) vs Yaygın (>%25).",
             "L4-L5 ve L5-S1 en sık etkilenen seviyelerdir.",
             "Acil durum: Kauda Ekuina Sendromu (İdrar retansiyonu, eyer tarzı anestezi)."
+        ],
+        "keyPointsEn": [
+            "Terminology (Radiopaedia 2.0): Bulging vs Herniation.",
+            "Focal (<25%) vs Diffuse (>25%).",
+            "L4-L5 and L5-S1 are the most frequently affected levels.",
+            "Emergency: Cauda Equina Syndrome (Urinary retention, saddle anesthesia)."
         ]
     },
     {
         "id": "spinal_stenosis_lumbar",
         "name": "Lomber Spinal Stenoz (Dar Kanal)",
+        "nameEn": "Lumbar Spinal Stenosis",
         "category": "Dejeneratif",
+        "categoryEn": "Degenerative",
         "gallery": [
             {
                 "url": "/images/spine/spinal_stenosis_axial.png",
@@ -47,16 +68,29 @@ export const spinePathologies: Pathology[] = [
                 "axial": "Ligamentum flavum hipertrofisi (>4mm). Faset eklem artrozu/hipertrofisi."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t2": "Narrowing of CSF space. 'Redundancy' (curling) of cauda equina nerve roots. 'Trefoil' appearance on axial sections.",
+                "axial": "Ligamentum flavum hypertrophy (>4mm). Facet joint arthrosis/hypertrophy."
+            }
+        },
         "keyPoints": [
             "Klinik: Nörojenik Kladikasyo (Yürürken bacak ağrısı, öne eğilince geçer).",
             "AP kanal çapı < 10mm (Rölatif), < 7mm (Mutlak Stenoz).",
             "Santral, Lateral Resess veya Foraminal olabilir."
+        ],
+        "keyPointsEn": [
+            "Clinical: Neurogenic Claudication (Leg pain with walking, relieved by leaning forward).",
+            "AP canal diameter < 10mm (Relative), < 7mm (Absolute Stenosis).",
+            "Can be Central, Lateral Recess, or Foraminal."
         ]
     },
     {
         "id": "spondylolisthesis",
         "name": "Spondilolistezis (Bel Kayması)",
+        "nameEn": "Spondylolisthesis",
         "category": "Dejeneratif/Travma",
+        "categoryEn": "Degenerative/Trauma",
         "gallery": [
             {
                 "url": "/images/spine/spondylolisthesis_sagittal.png",
@@ -73,16 +107,32 @@ export const spinePathologies: Pathology[] = [
                 "bone_window": "Pars interartikülaris defekti 'İskoç Köpeği' (Scottie Dog) boynunda kırık görünümü."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "sagittal": "Anterior (anterolisthesis) or posterior (retrolisthesis) slippage of one vertebra relative to the one below. Narrowing of canal diameter.",
+                "t2": "Edema in pars interarticularis (Active spondylolysis) or defect (Chronic)."
+            },
+            "ct": {
+                "bone_window": "Pars interarticularis defect appearing as a break in the 'Scottie Dog' neck."
+            }
+        },
         "keyPoints": [
             "Meyerding Sınıflaması (Evre 1-4).",
             "En sık L4-L5 (Dejeneratif) ve L5-S1 (İstmik/Litik).",
             "Step-off (basamaklanma) deformitesi."
+        ],
+        "keyPointsEn": [
+            "Meyerding Classification (Grade 1-4).",
+            "Most common at L4-L5 (Degenerative) and L5-S1 (Isthmic/Lytic).",
+            "Step-off deformity."
         ]
     },
     {
         "id": "spinal_metastasis",
         "name": "Spinal Metastaz",
+        "nameEn": "Spinal Metastasis",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
         "gallery": [
             {
                 "url": "/images/spine/spinal_metastasis_sagittal.png",
@@ -98,16 +148,31 @@ export const spinePathologies: Pathology[] = [
                 "stir": "Yağ baskılı serilerde belirgin hiperintensite (ödem/tümör)."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t1": "Loss of normal fatty marrow signal in vertebral body (Hypointense). Loss of pedicle ('Winking Owl' sign).",
+                "t2": "Variable, usually hyperintense. Associated pathologic fracture (compression).",
+                "t1_c": "Heterogeneous enhancement. Epidural/Paraspinal extension.",
+                "stir": "Marked hyperintensity on fat-suppressed sequences (edema/tumor)."
+            }
+        },
         "keyPoints": [
             "En sık kemik metastaz kaynağı: Meme, Prostat, Akciğer.",
             "Torakal bölge en sık tutulur.",
             "Kortikal yıkım varsa BT daha duyarlıdır."
+        ],
+        "keyPointsEn": [
+            "Most common sources of bone metastasis: Breast, Prostate, Lung.",
+            "Thoracic region is most frequently affected.",
+            "CT is more sensitive if cortical destruction is present."
         ]
     },
     {
         "id": "spinal_trauma_burst",
         "name": "Burst (Patlama) Kırığı",
+        "nameEn": "Burst Fracture",
         "category": "Travma",
+        "categoryEn": "Trauma",
         "gallery": [
             {
                 "url": "/images/spine/burst_fracture_ct.png",
@@ -125,16 +190,33 @@ export const spinePathologies: Pathology[] = [
                 "stir": "Posterior ligaman kompleks (PLC) hasarı (Hiperintensite) açısından kritiktir."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "bone_window": "Fracture involving both anterior and posterior columns of vertebral body. Retropulsion of posterior wall into spinal canal.",
+                "sagittal": "Height loss, kyphotic angulation."
+            },
+            "mri": {
+                "t2": "Evaluation for cord edema/contusion.",
+                "stir": "Critical for assessing Posterior Ligamentous Complex (PLC) injury (Hyperintensity)."
+            }
+        },
         "keyPoints": [
             "Stabilite için TLICS sınıflaması kullanılır.",
             "Nörolojik defisit riski yüksektir.",
             "Kompresyon kırığından farkı: Arka duvar ve arka kolon tutulumudur."
+        ],
+        "keyPointsEn": [
+            "TLICS classification is used for stability.",
+            "High risk of neurological deficit.",
+            "Distinction from compression fracture: Involvement of posterior wall and posterior column."
         ]
     },
     {
         "id": "cervical_disc_herniation",
         "name": "Servikal Disk Hernisi (Boyun Fıtığı)",
+        "nameEn": "Cervical Disc Herniation",
         "category": "Dejeneratif",
+        "categoryEn": "Degenerative",
         "findings": {
             "mri": {
                 "t2": "Disk T2 sinyalinde azalma (dejenerasyon). Posterior/posterolateral disk çıkıntısı. Kord basısı varsa: Miyelopati bulguları (T2'de kord içi hiperintensite - 'Snake eye' veya 'Pencil-like' görünüm).",
@@ -148,17 +230,38 @@ export const spinePathologies: Pathology[] = [
                 "bone_window": "Uncovertebral artropati, faset dejenerasyonu."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t2": "Decreased T2 disc signal (degeneration). Posterior/posterolateral disc protrusion. If cord compression: Myelopathy signs (intramedullary hyperintensity on T2 - 'Snake eye' or 'Pencil-like' appearance).",
+                "t1": "Effacement of epidural fat. Disc-osteophyte complex anteriorly or posteriorly.",
+                "sagittal": "C5-C6 and C6-C7 are most commonly affected levels. Disc height loss. Retrolisthesis may be associated.",
+                "axial": "Foraminal narrowing, nerve root compression. Evaluation of cord compression.",
+                "t2_flair": "STIR or T2 preferred for myelopathy evaluation."
+            },
+            "ct": {
+                "non_contrast": "Calcified disc (hard disc). Osteophytes (spondylosis). Foraminal narrowing.",
+                "bone_window": "Uncovertebral arthropathy, facet degeneration."
+            }
+        },
         "keyPoints": [
             "Miyelopatik bulgular (El beceriksizliği, yürüme bozukluğu, hiperrefleksi): Cerrahi endikasyon.",
             "Radikülopati: Dermatomal ağrı ve güçsüzlük (C6: Başparmak, C7: Orta parmak).",
             "MRI'da kord sinyal değişikliği: Miyelomalaziyi gösterir (kötü prognoz).",
             "Ayırıcı tanı: OPLL (Posterior Longitudinal Ligaman Ossifikasyonu), Servikal stenoz."
+        ],
+        "keyPointsEn": [
+            "Myelopathic signs (Clumsiness, gait disturbance, hyperreflexia): Surgical indication.",
+            "Radiculopathy: Dermatomal pain and weakness (C6: Thumb, C7: Middle finger).",
+            "Cord signal change on MRI: Indicates myelomalacia (poor prognosis).",
+            "Differential diagnosis: OPLL (Ossification of Posterior Longitudinal Ligament), Cervical stenosis."
         ]
     },
     {
         "id": "schmorl_nodule",
         "name": "Schmorl Nodülü",
+        "nameEn": "Schmorl Node",
         "category": "Dejeneratif",
+        "categoryEn": "Degenerative",
         "findings": {
             "mri": {
                 "t1": "Vertebra end-plate'e doğru fokal disk hernisi. Akut: Çevre ödem (hipointens). Kronik: Sklerotik halka.",
@@ -170,17 +273,36 @@ export const spinePathologies: Pathology[] = [
                 "bone_window": "End-plate irregülaritesi. Sklerotik halka (kronik). Multipl lezyonlar olabilir."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t1": "Focal disc herniation into vertebral end-plate. Acute: Surrounding edema (hypointense). Chronic: Sclerotic rim.",
+                "t2": "Acute: End-plate edema (hyperintense). Chronic: Reactive sclerosis (hypointense). Disc material signal variable.",
+                "stir": "Marked edema in acute phase. Edema resolves in chronic phase.",
+                "sagittal": "Visualization of focal defect in end-plate and disc herniation."
+            },
+            "ct": {
+                "bone_window": "End-plate irregularity. Sclerotic rim (chronic). Multiple lesions may be present."
+            }
+        },
         "keyPoints": [
             "Genellikle insidental bulgu. Ağrı ile ilişki tartışmalı.",
             "Modic değişiklikleri eşlik edebilir: Tip 1 (ödem), Tip 2 (yağ), Tip 3 (skleroz).",
             "Akut Schmorl nodülü: Ağrı kaynağı olabilir.",
             "Scheuermann hastalığı: Multipl Schmorl nodülleri + kifoz."
+        ],
+        "keyPointsEn": [
+            "Usually an incidental finding. Relation to pain is controversial.",
+            "May be associated with Modic changes: Type 1 (edema), Type 2 (fat), Type 3 (sclerosis).",
+            "Acute Schmorl node: Can be a source of pain.",
+            "Scheuermann's disease: Multiple Schmorl nodes + kyphosis."
         ]
     },
     {
         "id": "facet_arthropathy",
         "name": "Faset Artropatisi (Faset Sendromu)",
+        "nameEn": "Facet Arthropathy (Facet Syndrome)",
         "category": "Dejeneratif",
+        "categoryEn": "Degenerative",
         "findings": {
             "mri": {
                 "t2": "Faset eklem hipertrofisi. Eklem effüzyonu (hiperintens). Sinovyal kist oluşumu (lateral resess basısı yapabilir).",
@@ -193,17 +315,37 @@ export const spinePathologies: Pathology[] = [
                 "axial": "Faset subluksasyonu. Kanal ve foramen daralması."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t2": "Facet joint hypertrophy. Joint effusion (hyperintense). Synovial cyst formation (may cause lateral recess compression).",
+                "t1": "Facet sclerosis (hypointense). Fatty degeneration.",
+                "axial": "Facet enlargement and angulation change. Associated with ligamentum flavum hypertrophy.",
+                "stir": "Edema if active inflammation is present."
+            },
+            "ct": {
+                "bone_window": "Facet hypertrophy. Osteophyte formation. Vacuum phenomenon (gas accumulation - advanced degeneration).",
+                "axial": "Facet subluxation. Narrowing of canal and foramen."
+            }
+        },
         "keyPoints": [
             "Klinik: Bel ağrısı, ekstansiyonda artan, fleksiyonda azalan.",
             "Lomber lordoz artışı riski: Posterior element yükü artar.",
             "Sinovyal kist: Lateral resess stenozu ve radikülopati yapabilir.",
             "Faset bloğu ve ablasyon: Tanı ve tedavi amaçlı kullanılır."
+        ],
+        "keyPointsEn": [
+            "Clinical: Lower back pain, worsened by extension, relieved by flexion.",
+            "Increased lumbar lordosis risk: Increases load on posterior elements.",
+            "Synovial cyst: Can cause lateral recess stenosis and radiculopathy.",
+            "Facet block and ablation: Used for diagnosis and treatment."
         ]
     },
     {
         "id": "spinal_ependymoma",
         "name": "Spinal Ependimom (İntrameduller)",
+        "nameEn": "Spinal Ependymoma (Intramedullary)",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
         "gallery": [
             {
                 "url": "/images/spine/ependymoma_sagittal.png",
@@ -220,17 +362,34 @@ export const spinePathologies: Pathology[] = [
                 "location": "En sık: Konus medullaris, Filum terminale (Miksopapiller tip). Servikal > Torakal."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t1": "Isointense/hypointense mass expanding the cord. Polar cysts (syrinx-like cysts above/below tumor).",
+                "t2": "Centrally located, well-defined, homogeneous HYPERINTENSE mass. 'Cap sign': Cranial and caudal hemosiderin (hypointense) - Pathognomonic.",
+                "t1_c": "Intense, HOMOGENEOUS enhancement. Clear margins, favorable for surgery.",
+                "stir": "Evaluation of tumor and surrounding edema.",
+                "location": "Most common: Conus medullaris, Filum terminale (Myxopapillary type). Cervical > Thoracic."
+            }
+        },
         "keyPoints": [
             "Erişkinlerde en sık intrameduller spinal tümör.",
             "'Cap sign' (hemosiderin) ependimom için patognomonik.",
             "Miksopapiller ependimom: Filum terminale, BOS yoluyla yayılım riski.",
             "Cerrahi: Tam rezeksiyon mümkün (iyi sınırlı)."
+        ],
+        "keyPointsEn": [
+            "Most common intramedullary spinal tumor in adults.",
+            "'Cap sign' (hemosiderin) is pathognomonic for ependymoma.",
+            "Myxopapillary ependymoma: Filum terminale, risk of CSF seeding.",
+            "Surgery: Gross total resection is possible (well-defined)."
         ]
     },
     {
         "id": "spinal_schwannoma",
         "name": "Spinal Schwannom (Nörilemmoma)",
+        "nameEn": "Spinal Schwannoma (Neurilemmoma)",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
         "gallery": [
             {
                 "url": "/images/spine/schwannoma_axial.png",
@@ -249,17 +408,36 @@ export const spinePathologies: Pathology[] = [
                 "bone_window": "Neural foramen genişlemesi. Kemik erozyonu (yavaş büyüyen)."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t1": "Isointense or slightly hypointense mass. Foraminal widening.",
+                "t2": "HETEROGENEOUS hyperintense (Antoni A/B areas). 'Target sign': Central hypointense, peripheral hyperintense.",
+                "t1_c": "Intense enhancement. Cystic/necrotic areas do not enhance.",
+                "axial": "Foraminal widening (bone remodeling). 'Dumbbell' configuration: Both intradural and extradural extension."
+            },
+            "ct": {
+                "bone_window": "Neural foramen enlargement. Bone erosion (slow growing)."
+            }
+        },
         "keyPoints": [
             "En sık intradural-ekstramedüller spinal tümör.",
             "Nörofibromdan farkı: Eksentrik yerleşim, fokal, tek sinir kökü.",
             "NF2'de bilateral vestibüler schwannom + multipl spinal schwannom.",
             "'Dumbbell' tümör: Foramenı genişleterek hem kanal içi hem dışına uzanır."
+        ],
+        "keyPointsEn": [
+            "Most common intradural-extramedullary spinal tumor.",
+            "Distinction from Neurofibroma: Eccentric location, focal, single nerve root.",
+            "In NF2: Bilateral vestibular schwannomas + multiple spinal schwannomas.",
+            "'Dumbbell' tumor: Extends both inside and outside the canal by widening the foramen."
         ]
     },
     {
         "id": "vertebral_osteomyelitis",
         "name": "Vertebral Osteomiyelit (Spondilodiskit)",
+        "nameEn": "Vertebral Osteomyelitis (Spondylodiscitis)",
         "category": "Enfeksiyon",
+        "categoryEn": "Infection",
         "findings": {
             "mri": {
                 "t1": "Vertebra korpusunda ve END-PLATE'lerde HİPO İNTENSİTE (normal yağ sinyali kaybı). İki komşu vertebra tutulumu tipik.",
@@ -273,17 +451,38 @@ export const spinePathologies: Pathology[] = [
                 "bone_window": "End-plate erozyonu ve destrüksiyon. Disk mesafesi daralması. Sekonder kemik sklerozisi (kronik)."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t1": "HYPOINTENSITY in vertebral body and END-PLATES (loss of normal marrow fat signal). Involvement of two adjacent vertebrae is typical.",
+                "t2": "Vertebra and disc: HYPERINTENSE signal (edema). Decreased disc height and increased signal.",
+                "stir": "End-plate and paraspinal edema is very prominent. Most sensitive sequence.",
+                "t1_c": "ENHANCEMENT in end-plates, disc, and paraspinal soft tissue. Abscess: Ring enhancement.",
+                "dwi": "Abscess: Central diffusion RESTRICTION. DISTINCT from degenerative Modic changes.",
+                "sagittal": "Characteristic: Involvement of two adjacent vertebrae + intervening disc."
+            },
+            "ct": {
+                "bone_window": "End-plate erosion and destruction. Disc space narrowing. Secondary bone sclerosis (chronic)."
+            }
+        },
         "keyPoints": [
             "En sık etken: Staph. aureus. TB bölgelerde M. tuberculosis.",
             "Modic Tip 1'den farkı: DWI kısıtlanma, kontrastlanma paterni, disk tutulumu.",
             "Lomber bölge en sık. Hematojen yayılım (üriner, IV ilaç).",
             "Komplikasyonlar: Epidural apse, paraspinal apse, patolojik kırık."
+        ],
+        "keyPointsEn": [
+            "Most common agent: Staph. aureus. M. tuberculosis in endemic areas.",
+            "Distinction from Modic Type 1: DWI restriction, enhancement pattern, disc involvement.",
+            "Lumbar region most common. Hematogenous spread (urinary, IV drugs).",
+            "Complications: Epidural abscess, paraspinal abscess, pathologic fracture."
         ]
     },
     {
         "id": "epidural_abscess_spine",
         "name": "Spinal Epidural Apse",
+        "nameEn": "Spinal Epidural Abscess",
         "category": "Enfeksiyon",
+        "categoryEn": "Infection",
         "findings": {
             "mri": {
                 "t1": "Epidural mesafede İZOİNTENS veya hafif hipointens sıvı koleksiyonu. Kord basısı.",
@@ -298,17 +497,39 @@ export const spinePathologies: Pathology[] = [
                 "contrast": "Halka kontrastlanma."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t1": "ISOINTENSE or slightly hypointense fluid collection in epidural space. Cord compression.",
+                "t2": "HYPERINTENSE epidural collection. Cord edema/myelopathy signs (T2 hyperintensity).",
+                "t1_c": "Peripheral RING-like enhancement. Center does not enhance (purulent content).",
+                "dwi": "Central RESTRICTION (Bright) - Pus content. DISTINGUISHING FEATURE!",
+                "stir": "Surrounding edema and inflammation.",
+                "axial": "Thecal sac compression, degree of cord compression. Critical for surgical planning."
+            },
+            "ct": {
+                "non_contrast": "Epidural soft tissue density. Bone destruction (associated osteomyelitis).",
+                "contrast": "Ring enhancement."
+            }
+        },
         "keyPoints": [
             "NÖROŞİRÜRJİK ACİL! Kord basısı = Acil dekompresyon.",
             "Triad: Ateş + Bel/Sırt ağrısı + Nörolojik defisit.",
             "DWI en önemli sekans: Kısıtlanma = pü konfirme.",
             "Risk faktörleri: IV ilaç kullanımı, DM, immunosupresyon, yakın spinal girişim."
+        ],
+        "keyPointsEn": [
+            "NEUROSURGICAL EMERGENCY! Cord compression = Urgent decompression.",
+            "Triad: Fever + Back pain + Neurological deficit.",
+            "DWI is the most important sequence: Restriction = pus confirmation.",
+            "Risk factors: IV drug use, DM, immunosuppression, recent spinal procedure."
         ]
     },
     {
         "id": "pott_disease",
         "name": "Tüberküloz Spondiliti (Pott Hastalığı)",
+        "nameEn": "Tuberculous Spondylitis (Pott Disease)",
         "category": "Enfeksiyon",
+        "categoryEn": "Infection",
         "findings": {
             "mri": {
                 "t1": "Vertebra tutulumu: T1 hipointens. Multipl vertebra tutulumu (atlayıcı lezyonlar). Anterior vertebra tutulumu ön planda.",
@@ -322,17 +543,38 @@ export const spinePathologies: Pathology[] = [
                 "contrast": "Kalın apse duvarı. Çevre rim kontrastlanması."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t1": "Vertebral involvement: T1 hypointense. Multiple vertebral involvement (skip lesions). Anterior vertebral involvement predominates.",
+                "t2": "Paraspinal abscess (hourglass shape). 'Cold abscess' - low inflammation. Disc may be PRESERVED (DISTINCTION from Pyogenic).",
+                "t1_c": "Thin, smooth wall enhancement. Heterogeneous internal structure.",
+                "stir": "Vertebral edema. Spread to paraspinal and psoas abscess.",
+                "sagittal": "Gibbus deformity (kyphosis). Subligamentous spread (multiple vertebral involvement)."
+            },
+            "ct": {
+                "bone_window": "Fine trabecular destruction. Paraspinal calcification (typical for chronic TB).",
+                "contrast": "Thick abscess wall. Peripheral rim enhancement."
+            }
+        },
         "keyPoints": [
             "Piyojenik enfeksiyondan farkı: Disk korunmuş, paraspinal apse, yavaş seyir, subligamentöz yayılım.",
             "Torakal ve lomber vertebra en sık. Posterior elementler korunur (piyojenikte tutulabilir).",
             "'Cold abscess': Klasik inflamasyon bulguları olmayan apse.",
             "Gibbus (açısal kifoz) kronik Pott hastalığı için patognomonik."
+        ],
+        "keyPointsEn": [
+            "Difference from pyogenic infection: Disc preserved, paraspinal abscess, slow course, subligamentous spread.",
+            "Thoracic and lumbar vertebrae most common. Posterior elements spared (can be involved in pyogenic).",
+            "'Cold abscess': Abscess without classic signs of inflammation.",
+            "Gibbus (angular kyphosis) is pathognomonic for chronic Pott disease."
         ]
     },
     {
         "id": "spinal_discitis_osteomyelitis",
         "name": "Spondilodiskitis / Vertebral Osteomiyelit",
+        "nameEn": "Spondylodiscitis / Vertebral Osteomyelitis",
         "category": "Enfeksiyon",
+        "categoryEn": "Infection",
         "findings": {
             "mri": {
                 "t2": "Disk mesafesinde ve komşu vertebra uç plaklarında PARLAK sinyal (ödem/sıvı). Disk yüksekliğinde azalma. Paravertebral/Epidural apse (Hiperintens koleksiyon).",
@@ -344,16 +586,34 @@ export const spinePathologies: Pathology[] = [
                 "bone_window": "Geç dönemde vertebral uç plaklarda erozyon (tırtıklı görünüm), destrüksiyon. 'Mirror effect' (karşılıklı yüzeylerde harabiyet)."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t2": "BRIGHT signal (edema/fluid) in disc space and adjacent vertebral endplates. Decreased disc height. Paravertebral/Epidural abscess (Hyperintense collection).",
+                "t1": "Confluent hypointense (dark) marrow edema (Involvement of two adjacent vertebrae and disc).",
+                "t1_c": "Intense diffuse enhancement in disc and vertebrae. Peripheral (Rim) enhancement if abscess is present.",
+                "dwi": "Diffusion restriction within abscess (Bright)."
+            },
+            "ct": {
+                "bone_window": "Late stage endplate erosion (jagged appearance), destruction. 'Mirror effect' (destruction on opposing surfaces)."
+            }
+        },
         "keyPoints": [
             "MRI tanıda altın standarttır.",
             "En sık etken S. aureus.",
             "Tüberküloz (Pott hastalığı): Gibbus deformitesi, büyük psoas apseleri, disk nispeten korunur (Skip lesions)."
+        ],
+        "keyPointsEn": [
+            "MRI is the gold standard for diagnosis.",
+            "Most common agent is S. aureus.",
+            "Tuberculosis (Pott disease): Gibbus deformity, large psoas abscesses, disc relatively preserved (Skip lesions)."
         ]
     },
     {
         "id": "modic_changes",
         "name": "Modic Değişiklikleri (Vertebral Endplate)",
+        "nameEn": "Modic Changes (Vertebral Endplate)",
         "category": "Dejeneratif",
+        "categoryEn": "Degenerative",
         "findings": {
             "mri": {
                 "t1": "Tip 1 (Ödem): Hipointens. Tip 2 (Yağlı): Hiperintens. Tip 3 (Sklerotik): Hipointens.",
@@ -361,15 +621,28 @@ export const spinePathologies: Pathology[] = [
                 "t1_c": "Tip 1 değişiklikler kontrast tutabilir (enfeksiyonla karışabilir, ancak disk sağlamdır!)."
             }
         },
+        "findingsEn": {
+            "mri": {
+                "t1": "Type 1 (Edema): Hypointense. Type 2 (Fatty): Hyperintense. Type 3 (Sclerotic): Hypointense.",
+                "t2": "Type 1: Hyperintense (Active inflammation). Type 2: Iso/Hyperintense (Yellow marrow). Type 3: Hypointense (Bone sclerosis).",
+                "t1_c": "Type 1 changes may enhance (can be confused with infection, but disc is intact!)."
+            }
+        },
         "keyPoints": [
             "Tip 1 Modic değişiklikleri bel ağrısı ile güçlü ilişkilidir.",
             "Enfeksiyondan farkı: Disk sinyali normaldir veya sadece dejeneredir (Diskitiste disk parlaktır)."
+        ],
+        "keyPointsEn": [
+            "Type 1 Modic changes are strongly associated with low back pain.",
+            "Distinction from infection: Disc signal is normal or only degenerative (Disc is bright in discitis)."
         ]
     },
     {
         "id": "spondylolysis",
         "name": "Spondilolizis ve Listezis (Bel Kayması)",
+        "nameEn": "Spondylolysis and Listhesis",
         "category": "Travma / Dejeneratif",
+        "categoryEn": "Trauma / Degenerative",
         "findings": {
             "ct": {
                 "bone_window": "Pars interartikulariste defekt (kırık hattı). 'İskoç Köpeği' (Scotch Terrier) boynu kırık görünümü. Grade 1-4 kayma (Meyerding).",
@@ -380,11 +653,27 @@ export const spinePathologies: Pathology[] = [
                 "sagittal": "Foraminal stenoz (Sinir kökü basısı)."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "bone_window": "Defect in pars interarticularis (fracture line). 'Scottie Dog' (Scotch Terrier) neck fracture appearance. Grade 1-4 slippage (Meyerding).",
+                "sagittal": "Anterior (anterolisthesis) or posterior (retrolisthesis) displacement of vertebral body relative to the one below."
+            },
+            "mri": {
+                "t2": "Edema around pars defect (Acute stress reaction). Widened spinal canal (if Lytic) or narrow canal (if Degenerative).",
+                "sagittal": "Foraminal stenosis (Nerve root compression)."
+            }
+        },
         "keyPoints": [
             "Genç sporcularda (jimnastik) L5-S1 en sık (%90).",
             "Spondilolizis: Pars defekti.",
             "Spondilolistezis: Kayma.",
             "İstmik (Litik) tipte kanal genişler, Dejeneratif tipte kanal daralır."
+        ],
+        "keyPointsEn": [
+            "Most common at L5-S1 in young athletes (gymnastics) (90%).",
+            "Spondylolysis: Pars defect.",
+            "Spondylolisthesis: Slippage.",
+            "Canal widens in Isthmic (Lytic) type, narrows in Degenerative type."
         ]
     }
 ];

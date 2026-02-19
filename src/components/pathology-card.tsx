@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/language-context";
 import {
     Copy, Check, ChevronDown, ChevronUp, Maximize2, X, Star, RotateCw,
     Sparkles, Brain, Stethoscope, Lightbulb, Activity, Layers, Scan, Radiation, Zap, FileText, ShieldCheck
@@ -43,10 +44,20 @@ const HighlightedText = ({ text, query }: { text: string, query?: string }) => {
 };
 
 export function PathologyCard({ data, isFavorite = false, onToggleFavorite, highlightQuery }: PathologyCardProps) {
+    const { language, t } = useLanguage();
+    const isEn = language === "EN";
     const [isFlipped, setIsFlipped] = useState(false);
 
-    // Default active tab: first available modality
-    const firstModality = Object.keys(data.findings)[0];
+    // Select content based on language
+    const displayName = isEn ? (data.nameEn || data.name) : data.name;
+    const displayCategory = isEn ? (data.categoryEn || data.category) : data.category;
+    const displayFindings = isEn ? (data.findingsEn || data.findings) : data.findings;
+    const displayKeyPoints = isEn ? (data.keyPointsEn || data.keyPoints) : data.keyPoints;
+    // Mechanism is currently only TR in some items, fallback to TR if EN missing (should be handled in data later)
+    // For now assuming mechanism is same or handled
+
+    // Default active tab: first available modality from current findings
+    const firstModality = Object.keys(displayFindings)[0];
     const [activeTab, setActiveTab] = useState<TabType>("summary");
     const [activeImage, setActiveImage] = useState<number | null>(null);
 
@@ -109,7 +120,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         {/* Top Badges */}
                         <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
                             <span className={cn("px-2 py-1 rounded text-[10px] font-bold uppercase border backdrop-blur-sm", catStyle)}>
-                                {data.category}
+                                {displayCategory}
                             </span>
                             <button
                                 onClick={(e) => { e.stopPropagation(); onToggleFavorite?.(); }}
@@ -139,10 +150,10 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     {/* Front Content */}
                     <div className="p-5 flex-1 flex flex-col min-h-0">
                         <div className="flex justify-between items-start mb-2">
-                            <h3 className="text-xl font-bold text-white leading-tight pr-4">{data.name}</h3>
+                            <h3 className="text-xl font-bold text-white leading-tight pr-4">{displayName}</h3>
                             <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider shrink-0">
                                 <RotateCw className="w-3 h-3 group-hover/flip:rotate-180 transition-transform duration-500" />
-                                Detay
+                                {t("detailed_view")}
                             </button>
                         </div>
 
@@ -158,10 +169,10 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                 )}
                             >
                                 <FileText className="w-3.5 h-3.5" />
-                                ÖZET
+                                {t("quick_view")}
                             </button>
 
-                            {Object.keys(data.findings).map(modality => {
+                            {Object.keys(displayFindings).map(modality => {
                                 const config = MODALITY_CONFIG[modality] || { label: modality.toUpperCase(), icon: Activity, color: "text-zinc-400", bg: "bg-zinc-500/10 border-zinc-500/20" };
                                 const Icon = config.icon;
                                 const isActive = activeTab === modality;
@@ -188,7 +199,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         <div className="flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-700 min-h-0">
                             {activeTab === 'summary' ? (
                                 <ul className="space-y-2">
-                                    {data.keyPoints.slice(0, 4).map((kp, i) => ( // Show up to 4 key points
+                                    {displayKeyPoints.slice(0, 4).map((kp, i) => ( // Show up to 4 key points
                                         <li key={i} className="flex gap-2 text-sm text-zinc-400">
                                             <span className="text-cyan-500 font-bold mt-1">•</span>
                                             <span className="leading-snug"><HighlightedText text={kp} query={highlightQuery} /></span>
@@ -199,7 +210,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                 <div className="space-y-3 text-sm text-zinc-400 animate-in fade-in duration-300">
                                     {/* Handle Object content (e.g. CT phases) or String content */}
                                     {(() => {
-                                        const content = (data.findings as any)[activeTab];
+                                        const content = (displayFindings as any)[activeTab];
                                         if (typeof content === 'string') {
                                             return <p className="leading-relaxed"><HighlightedText text={content} query={highlightQuery} /></p>;
                                         }
@@ -224,7 +235,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
 
                     {/* Bottom Action Hint */}
                     <div className="p-3 bg-zinc-950/30 border-t border-white/5 text-[10px] text-center text-zinc-500">
-                        Detaylı patofizyoloji ve mekanizma için kartı çevirin ↻
+                        {isEn ? "Flip card for detailed pathophysiology & mechanism ↻" : "Detaylı patofizyoloji ve mekanizma için kartı çevirin ↻"}
                     </div>
                 </div>
 
@@ -234,7 +245,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     <div className="p-5 border-b border-white/10 flex justify-between items-center bg-cyan-950/10">
                         <div className="flex items-center gap-2 text-cyan-400">
                             <Brain className="w-5 h-5" />
-                            <span className="font-bold tracking-widest text-xs uppercase">Patofizyolojik Mekanizma</span>
+                            <span className="font-bold tracking-widest text-xs uppercase">{t("mechanism")}</span>
                         </div>
                         <button onClick={handleFlip} className="p-1.5 hover:bg-white/10 rounded-full text-zinc-400 hover:text-white transition-colors">
                             <X className="w-5 h-5" />
@@ -249,7 +260,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
                                 <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
                                     <Lightbulb className="w-4 h-4 text-yellow-500" />
-                                    Neden Böyle Görünüyor?
+                                    {isEn ? "Why?" : "Neden Böyle Görünüyor?"}
                                 </h4>
                                 <div className="p-4 rounded-xl bg-yellow-500/5 border border-yellow-500/10 text-sm text-yellow-100/90 leading-relaxed font-serif italic">
                                     "{data.mechanism}"
@@ -261,10 +272,10 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
                             <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
                                 <Sparkles className="w-4 h-4 text-cyan-400" />
-                                Kritik İpuçları (Pearls)
+                                {t("clinical_pearls")}
                             </h4>
                             <ul className="space-y-2">
-                                {data.keyPoints.map((kp, i) => (
+                                {displayKeyPoints.map((kp, i) => (
                                     <li key={i} className="flex gap-2 text-xs text-zinc-400 border-b border-white/5 pb-2 last:border-0">
                                         <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
                                         <span><HighlightedText text={kp} query={highlightQuery} /></span>
@@ -279,7 +290,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     <div className="p-4 bg-zinc-950/50 border-t border-white/5 flex justify-center">
                         <button onClick={handleFlip} className="text-xs text-cyan-500 font-medium hover:text-cyan-400 transition-colors uppercase tracking-widest flex items-center gap-2">
                             <RotateCw className="w-3 h-3" />
-                            Görüntüye Dön
+                            {isEn ? "Back to Image" : "Görüntüye Dön"}
                         </button>
                     </div>
                 </div>
