@@ -15,9 +15,39 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "RadAsist: Radyoloji Asistanı",
-  description: "Yapay Zeka Destekli Radyoloji Tanı Rehberi",
+  description: "Yapay Zeka Destekli Radyoloji Tanı Rehberi - Radyoloji eğitimi, patoloji veritabanı, tanı sihirbazı ve AI asistan ile radyoloji asistanları için kapsamlı öğrenme platformu.",
   metadataBase: new URL("https://www.radasist.com"),
   manifest: "/manifest.json",
+  keywords: ["radyoloji", "radyoloji asistanı", "tıbbi görüntüleme", "MRI", "CT", "ultrason", "tanı", "patoloji", "radyoloji eğitimi"],
+  authors: [{ name: "RadAsist" }],
+  creator: "RadAsist",
+  publisher: "RadAsist",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "tr_TR",
+    url: "https://radasist.com",
+    siteName: "RadAsist",
+    title: "RadAsist: Yapay Zeka Destekli Radyoloji Asistanı",
+    description: "Radyoloji eğitimi, patoloji veritabanı, tanı sihirbazı ve AI asistan ile radyoloji asistanları için kapsamlı öğrenme platformu.",
+    images: [
+      {
+        url: "/icons/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "RadAsist - Radyoloji Asistanı",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "RadAsist: Yapay Zeka Destekli Radyoloji Asistanı",
+    description: "Radyoloji eğitimi, patoloji veritabanı, tanı sihirbazı ve AI asistan.",
+    images: ["/icons/og-image.png"],
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
@@ -25,7 +55,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/icons/icon-192x192.png",
-    apple: "/icons/icon-192x192.png", // Using 192px icon as apple-touch-icon
+    apple: "/icons/icon-192x192.png",
   },
 };
 
@@ -49,18 +79,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="tr">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider>
-          <LanguageProvider>
+        <LanguageProvider>
+          <AuthProvider>
             <ForumProvider>
               {children}
               <PwaInstallPrompt />
             </ForumProvider>
-          </LanguageProvider>
-        </AuthProvider>
+          </AuthProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

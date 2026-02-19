@@ -25,7 +25,7 @@ export function SwipeCard({ data, onSwipeRight, onSwipeLeft, isFront }: SwipeCar
     const bgLike = useTransform(x, [0, 150], ["rgba(34, 197, 94, 0)", "rgba(34, 197, 94, 0.2)"]); // Green tint
     const bgNope = useTransform(x, [0, -150], ["rgba(239, 68, 68, 0)", "rgba(239, 68, 68, 0.2)"]); // Red tint
 
-    const handleDragEnd = async (event: any, info: PanInfo) => {
+    const handleDragEnd = async (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
         const offset = info.offset.x;
         const velocity = info.velocity.x;
 
@@ -118,7 +118,12 @@ export function SwipeCard({ data, onSwipeRight, onSwipeLeft, isFront }: SwipeCar
                 >
                     <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
                         <h3 className="text-xl font-bold text-indigo-400">{data.name}</h3>
-                        <button onClick={(e) => { e.stopPropagation(); setIsFlipped(false); }} className="p-2 bg-white/5 rounded-full">
+                        <button
+                            onClick={(e) => { e.stopPropagation(); setIsFlipped(false); }}
+                            className="p-2 bg-white/5 rounded-full"
+                            aria-label="Kartı çevir"
+                            type="button"
+                        >
                             <RotateCw className="w-4 h-4 text-zinc-400" />
                         </button>
                     </div>

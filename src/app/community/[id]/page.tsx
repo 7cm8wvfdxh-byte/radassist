@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useForum, Post } from "@/context/forum-context";
 import { useAuth } from "@/context/auth-context";
+import { useLanguage } from "@/context/language-context";
 import { ArrowLeft, User, ThumbsUp, MessageSquare, Send, Clock, Share2 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -12,6 +13,7 @@ export default function PostDetailPage() {
     const { id } = useParams();
     const { getPost, addComment, toggleLike } = useForum();
     const { user } = useAuth();
+    const { t, language } = useLanguage();
     const router = useRouter();
 
     const [post, setPost] = useState<Post | undefined>(undefined);
@@ -33,13 +35,13 @@ export default function PostDetailPage() {
         loadPost();
     }, [id, getPost]); // Removed post?.comments dependency to avoid infinite loop with object reference
 
-    if (isLoading) return <div className="min-h-screen bg-black text-white p-8">Yükleniyor...</div>;
-    if (!post) return <div className="min-h-screen bg-black text-white p-8">Gönderi bulunamadı.</div>;
+    if (isLoading) return <div className="min-h-screen bg-black text-white p-8">{t("general.loading")}</div>;
+    if (!post) return <div className="min-h-screen bg-black text-white p-8">{language === 'tr' ? 'Gönderi bulunamadı.' : 'Post not found.'}</div>;
 
     const handleComment = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!user) {
-            alert("Yorum yapmak için giriş yapmalısınız.");
+            alert(t("post.loginToComment"));
             return;
         }
         if (commentText.trim() && post) {
@@ -52,8 +54,12 @@ export default function PostDetailPage() {
     };
 
     const handleLike = async () => {
+        if (!user) {
+            alert(language === 'tr' ? "Beğenmek için giriş yapmalısınız." : "You must be logged in to like.");
+            return;
+        }
         if (post) {
-            await toggleLike(post.id);
+            await toggleLike(post.id, user.id);
             const updatedPost = await getPost(post.id);
             if (updatedPost) setPost(updatedPost);
         }
@@ -66,7 +72,7 @@ export default function PostDetailPage() {
                 {/* Navigation */}
                 <Link href="/community" className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors mb-6 group">
                     <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    <span>Foruma Dön</span>
+                    <span>{language === 'tr' ? 'Foruma Dön' : 'Back to Forum'}</span>
                 </Link>
 
                 {/* Main Post Card */}
@@ -80,8 +86,8 @@ export default function PostDetailPage() {
                                     <span className="text-sm font-bold text-white">{(post.author?.name || 'A').charAt(0)}</span>
                                 </div>
                                 <div>
-                                    <div className="font-bold text-white">{post.author?.name || 'Anonim'}</div>
-                                    <div className="text-xs text-zinc-400">{post.author?.specialty || ''} • {new Date(post.created_at).toLocaleDateString('tr-TR')}</div>
+                                    <div className="font-bold text-white">{post.author?.name || (language === 'tr' ? 'Anonim' : 'Anonymous')}</div>
+                                    <div className="text-xs text-zinc-400">{post.author?.specialty || ''} • {new Date(post.created_at).toLocaleDateString(language === 'tr' ? 'tr-TR' : 'en-US')}</div>
                                 </div>
                             </div>
                         </div>
@@ -107,11 +113,11 @@ export default function PostDetailPage() {
                         <div className="flex gap-4">
                             <button onClick={handleLike} className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/5 text-zinc-400 hover:text-cyan-400 transition-colors">
                                 <ThumbsUp className="w-5 h-5" />
-                                <span className="font-bold">{post.likes} Beğeni</span>
+                                <span className="font-bold">{post.likes} {t("forum.likes")}</span>
                             </button>
                             <button className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/5 text-zinc-400 hover:text-white transition-colors cursor-default">
                                 <MessageSquare className="w-5 h-5" />
-                                <span className="font-bold">{post.comments?.length || 0} Yorum</span>
+                                <span className="font-bold">{post.comments?.length || 0} {t("forum.comments")}</span>
                             </button>
                         </div>
                         <button className="p-2 text-zinc-500 hover:text-white transition-colors">
@@ -122,7 +128,7 @@ export default function PostDetailPage() {
 
                 {/* Comments Section */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-bold text-white px-2">Yorumlar</h3>
+                    <h3 className="text-xl font-bold text-white px-2">{t("forum.comments")}</h3>
 
                     {/* Comment Input */}
                     <form onSubmit={handleComment} className="flex gap-4 p-4 bg-zinc-900/30 rounded-2xl border border-white/5">
@@ -130,7 +136,7 @@ export default function PostDetailPage() {
                             <textarea
                                 value={commentText}
                                 onChange={(e) => setCommentText(e.target.value)}
-                                placeholder="Bu vaka hakkında ne düşünüyorsunuz?"
+                                placeholder={t("post.writeComment")}
                                 className="w-full bg-transparent text-white placeholder:text-zinc-600 focus:outline-none resize-none h-12 py-3"
                             />
                         </div>
@@ -149,13 +155,13 @@ export default function PostDetailPage() {
                             <div key={comment.id} className="p-6 bg-white/5 border border-white/5 rounded-2xl animate-in fade-in slide-in-from-bottom-2">
                                 <div className="flex items-center justify-between mb-3">
                                     <div className="flex items-center gap-2">
-                                        <span className="font-bold text-sm text-zinc-300">{comment.author?.name || 'Anonim'}</span>
+                                        <span className="font-bold text-sm text-zinc-300">{comment.author?.name || (language === 'tr' ? 'Anonim' : 'Anonymous')}</span>
                                         <span className="w-1 h-1 bg-zinc-600 rounded-full" />
                                         <span className="text-xs text-zinc-500">{comment.author?.specialty || ''}</span>
                                     </div>
                                     <span className="text-xs text-zinc-600 flex items-center gap-1">
                                         <Clock className="w-3 h-3" />
-                                        {new Date(comment.created_at).toLocaleDateString('tr-TR')}
+                                        {new Date(comment.created_at).toLocaleDateString(language === 'tr' ? 'tr-TR' : 'en-US')}
                                     </span>
                                 </div>
                                 <p className="text-zinc-400 leading-relaxed">{comment.content}</p>
@@ -164,7 +170,7 @@ export default function PostDetailPage() {
 
                         {(!post.comments || post.comments.length === 0) && (
                             <div className="text-center py-10 text-zinc-600 italic">
-                                Henüz yorum yok. İlk yorumu siz yapın!
+                                {t("post.noComments")}
                             </div>
                         )}
                     </div>

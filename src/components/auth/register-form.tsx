@@ -6,8 +6,10 @@ import { supabase } from "@/lib/supabase";
 import { Mail, Lock, User, Stethoscope, ArrowRight, Loader2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/language-context";
 
 export function RegisterForm() {
+    const { t } = useLanguage();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [specialty, setSpecialty] = useState("Radyoloji Asistanı");
@@ -80,7 +82,7 @@ export function RegisterForm() {
                     </div>
                     <input
                         type="text"
-                        placeholder="Ad Soyad (Ör: Dr. Ali Veli)"
+                        placeholder={t("auth.name")}
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all"
@@ -98,7 +100,7 @@ export function RegisterForm() {
                         onChange={(e) => setSpecialty(e.target.value)}
                         className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all appearance-none cursor-pointer"
                     >
-                        <option value="Radyoloji Asistanı" className="bg-zinc-900">Radyoloji Asistanı</option>
+                        <option value="Radyoloji Asistanı" className="bg-zinc-900">{t("auth.specialty")}</option>
                         <option value="Radyoloji Uzmanı" className="bg-zinc-900">Radyoloji Uzmanı</option>
                         <option value="Tıp Öğrencisi" className="bg-zinc-900">Tıp Öğrencisi</option>
                         <option value="Diğer" className="bg-zinc-900">Diğer</option>
@@ -112,7 +114,7 @@ export function RegisterForm() {
                     </div>
                     <input
                         type="email"
-                        placeholder="E-posta adresi"
+                        placeholder={t("auth.email")}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all"
@@ -127,7 +129,7 @@ export function RegisterForm() {
                     </div>
                     <input
                         type="password"
-                        placeholder="Şifre"
+                        placeholder={t("auth.password")}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all"
@@ -149,15 +151,15 @@ export function RegisterForm() {
                     <Loader2 className="w-5 h-5 animate-spin" />
                 ) : (
                     <>
-                        Kayıt Ol ve Başla <ArrowRight className="w-4 h-4" />
+                        {t("auth.register")} <ArrowRight className="w-4 h-4" />
                     </>
                 )}
             </button>
 
             <p className="text-center text-zinc-500 text-sm mt-4">
-                Zaten hesabınız var mı?{' '}
+                {t("auth.hasAccount")}{' '}
                 <Link href="/login" className="text-white hover:text-purple-400 font-semibold transition-colors">
-                    Giriş Yap
+                    {t("auth.login")}
                 </Link>
             </p>
         </form>

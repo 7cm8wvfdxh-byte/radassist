@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect, FormEvent } from 'react';
 import { Send, Bot, User, Sparkles, Loader2, Trash2 } from 'lucide-react';
+import DOMPurify from 'dompurify';
+import { useLanguage } from '@/context/language-context';
 
 interface ChatMessage {
     id: string;
@@ -9,14 +11,23 @@ interface ChatMessage {
     content: string;
 }
 
-const QUICK_PROMPTS = [
+const QUICK_PROMPTS_TR = [
     { icon: '🧠', text: 'Glioblastom için tipik MR bulguları nedir?' },
     { icon: '🩺', text: 'MS ile ADEM ayrımı nasıl yapılır?' },
     { icon: '🦴', text: 'Disk hernisi sınıflandırması nedir?' },
     { icon: '📝', text: 'Rapor örneği: Akut iskemik inme' },
 ];
 
+const QUICK_PROMPTS_EN = [
+    { icon: '🧠', text: 'What are typical MRI findings for Glioblastoma?' },
+    { icon: '🩺', text: 'How to differentiate MS from ADEM?' },
+    { icon: '🦴', text: 'What is disc herniation classification?' },
+    { icon: '📝', text: 'Report example: Acute ischemic stroke' },
+];
+
 export function AIAssistant() {
+    const { t, language } = useLanguage();
+    const QUICK_PROMPTS = language === 'tr' ? QUICK_PROMPTS_TR : QUICK_PROMPTS_EN;
     const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [inputValue, setInputValue] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -93,7 +104,7 @@ export function AIAssistant() {
                 {
                     id: (Date.now() + 1).toString(),
                     role: 'assistant',
-                    content: '⚠️ Bir hata oluştu. Lütfen tekrar deneyin.',
+                    content: language === 'tr' ? '⚠️ Bir hata oluştu. Lütfen tekrar deneyin.' : '⚠️ An error occurred. Please try again.',
                 },
             ]);
         } finally {
@@ -123,15 +134,15 @@ export function AIAssistant() {
                         <Bot className="w-6 h-6 text-purple-400" />
                     </div>
                     <div>
-                        <h2 className="text-lg font-semibold text-white">RadAsist AI</h2>
-                        <p className="text-xs text-gray-400">Gemini Flash destekli radyoloji asistanı</p>
+                        <h2 className="text-lg font-semibold text-white">{t("ai.title")}</h2>
+                        <p className="text-xs text-gray-400">{t("ai.subtitle")}</p>
                     </div>
                 </div>
                 {messages.length > 0 && (
                     <button
                         onClick={clearChat}
                         className="p-2 rounded-lg hover:bg-white/5 text-gray-400 hover:text-white transition-colors"
-                        title="Sohbeti temizle"
+                        title={language === 'tr' ? "Sohbeti temizle" : "Clear chat"}
                     >
                         <Trash2 className="w-5 h-5" />
                     </button>
@@ -146,10 +157,13 @@ export function AIAssistant() {
                             <Sparkles className="w-12 h-12 text-purple-400" />
                         </div>
                         <div>
-                            <h3 className="text-xl font-semibold text-white mb-2">Merhaba! Ben RadAsist AI</h3>
+                            <h3 className="text-xl font-semibold text-white mb-2">
+                                {language === 'tr' ? 'Merhaba! Ben RadAsist AI' : 'Hello! I am RadAsist AI'}
+                            </h3>
                             <p className="text-gray-400 max-w-md">
-                                Radyoloji konusunda sorularınızı yanıtlayabilir, tanı desteği sağlayabilir
-                                ve rapor yazmada yardımcı olabilirim.
+                                {language === 'tr'
+                                    ? 'Radyoloji konusunda sorularınızı yanıtlayabilir, tanı desteği sağlayabilir ve rapor yazmada yardımcı olabilirim.'
+                                    : 'I can answer your radiology questions, provide diagnostic support, and help with report writing.'}
                             </p>
                         </div>
 
@@ -191,10 +205,13 @@ export function AIAssistant() {
                                 {message.role === 'assistant' ? (
                                     <div
                                         dangerouslySetInnerHTML={{
-                                            __html: message.content
-                                                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                                .replace(/\n/g, '<br />')
-                                                .replace(/^- /gm, '• ')
+                                            __html: DOMPurify.sanitize(
+                                                message.content
+                                                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                                                    .replace(/\n/g, '<br />')
+                                                    .replace(/^- /gm, '• '),
+                                                { ALLOWED_TAGS: ['strong', 'br', 'em', 'b', 'i', 'p', 'span'] }
+                                            )
                                         }}
                                     />
                                 ) : (
@@ -220,7 +237,7 @@ export function AIAssistant() {
                         <div className="bg-white/5 border border-white/10 rounded-2xl px-4 py-3">
                             <div className="flex items-center gap-2 text-gray-400">
                                 <Loader2 className="w-4 h-4 animate-spin" />
-                                <span className="text-sm">Düşünüyorum...</span>
+                                <span className="text-sm">{t("ai.thinking")}</span>
                             </div>
                         </div>
                     </div>
@@ -241,8 +258,8 @@ export function AIAssistant() {
                         name="prompt"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
-                        placeholder="Radyoloji hakkında bir soru sorun..."
-                        className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 
+                        placeholder={t("ai.placeholder")}
+                        className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10
                                    text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50
                                    focus:ring-2 focus:ring-purple-500/20 transition-all"
                         disabled={isLoading}
@@ -250,7 +267,7 @@ export function AIAssistant() {
                     <button
                         type="submit"
                         disabled={isLoading || !inputValue.trim()}
-                        className="px-4 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 
+                        className="px-4 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600
                                    text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed
                                    hover:from-purple-500 hover:to-blue-500 transition-all
                                    flex items-center gap-2"
@@ -259,7 +276,9 @@ export function AIAssistant() {
                     </button>
                 </div>
                 <p className="text-xs text-gray-500 mt-2 text-center">
-                    ⚠️ AI yanıtları bilgilendirme amaçlıdır, kesin tanı için klinik korelasyon gereklidir.
+                    {language === 'tr'
+                        ? '⚠️ AI yanıtları bilgilendirme amaçlıdır, kesin tanı için klinik korelasyon gereklidir.'
+                        : '⚠️ AI responses are for informational purposes only, clinical correlation is required for definitive diagnosis.'}
                 </p>
             </form>
         </div>

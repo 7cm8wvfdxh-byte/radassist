@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
-import { MessageSquare, ThumbsUp, Eye, User, Share2 } from "lucide-react";
+import { MessageSquare, ThumbsUp, Eye, Share2 } from "lucide-react";
 import { Post, useForum } from "@/context/forum-context";
+import { useAuth } from "@/context/auth-context";
+import { useLanguage } from "@/context/language-context";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -13,7 +15,9 @@ interface PostCardProps {
 
 export function PostCard({ post, compact = false }: PostCardProps) {
     const { toggleLike } = useForum();
-    const date = new Date(post.created_at).toLocaleDateString("tr-TR", { month: 'short', day: 'numeric' });
+    const { user } = useAuth();
+    const { t, language } = useLanguage();
+    const date = new Date(post.created_at).toLocaleDateString(language === 'tr' ? "tr-TR" : "en-US", { month: 'short', day: 'numeric' });
 
     return (
         <div className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/[0.07] transition-all group">
@@ -23,7 +27,7 @@ export function PostCard({ post, compact = false }: PostCardProps) {
                     <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
                         <span className="text-[10px] font-bold text-white">{(post.author?.name || 'A').charAt(0)}</span>
                     </div>
-                    <span className="font-medium text-zinc-300">{post.author?.name || 'Anonim'}</span>
+                    <span className="font-medium text-zinc-300">{post.author?.name || (language === 'tr' ? 'Anonim' : 'Anonymous')}</span>
                     <span className="w-1 h-1 rounded-full bg-zinc-700" />
                     <span>{post.author?.specialty || ''}</span>
                     <span className="w-1 h-1 rounded-full bg-zinc-700" />
@@ -53,16 +57,25 @@ export function PostCard({ post, compact = false }: PostCardProps) {
             <div className="flex items-center justify-between pt-2 border-t border-white/5">
                 <div className="flex items-center gap-4">
                     <button
-                        onClick={(e) => { e.preventDefault(); toggleLike(post.id); }}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            if (!user) {
+                                alert(language === 'tr' ? "Beğenmek için giriş yapmalısınız." : "You must be logged in to like.");
+                                return;
+                            }
+                            toggleLike(post.id, user.id);
+                        }}
                         className="flex items-center gap-1.5 text-zinc-500 hover:text-cyan-400 transition-colors text-xs font-medium group/like"
+                        aria-label={`${language === 'tr' ? 'Beğen' : 'Like'} (${post.likes} ${t("forum.likes")})`}
+                        type="button"
                     >
-                        <ThumbsUp className="w-4 h-4 group-hover/like:scale-110 transition-transform" />
+                        <ThumbsUp className="w-4 h-4 group-hover/like:scale-110 transition-transform" aria-hidden="true" />
                         <span>{post.likes}</span>
                     </button>
 
                     <Link href={`/community/${post.id}`} className="flex items-center gap-1.5 text-zinc-500 hover:text-white transition-colors text-xs font-medium">
                         <MessageSquare className="w-4 h-4" />
-                        <span>{post.comments?.length || 0} Yorum</span>
+                        <span>{post.comments?.length || 0} {t("forum.comments")}</span>
                     </Link>
                 </div>
 
