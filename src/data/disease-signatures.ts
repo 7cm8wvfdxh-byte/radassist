@@ -3,7 +3,7 @@ import { Modality } from "./lexicon";
 export interface DiseaseSignature {
     id: string; // unique disease id (e.g. 'glioblastoma')
     name: string; // Display name
-    organ: "Brain" | "Spine" | "Liver" | "Kidney" | "Lung";
+    organ: "Brain" | "Spine" | "Liver" | "Kidney" | "Lung" | "MSK" | "GI" | "Breast" | "Gynecology";
     signatures: {
         [key in Modality]?: {
             strongFindings: string[]; // Highly suggestive findings
@@ -356,6 +356,253 @@ export const DISEASE_SIGNATURES: DiseaseSignature[] = [
             CT: {
                 strongFindings: ["ct_crazy_paving", "ct_lung_ground_glass"],
                 description: "Yaygın buzlu cam, retiküler dansiteler, bal peteği görünümü."
+            }
+        }
+    },
+
+    // --- MSK (Kas-İskelet) ---
+    {
+        id: "acl_tear",
+        name: "Ön Çapraz Bağ (ACL) Yırtığı",
+        organ: "MSK",
+        baseProbability: 20,
+        signatures: {
+            MRI: {
+                strongFindings: ["mri_tendon_rupture", "mri_joint_effusion", "mri_bone_marrow_edema"],
+                weakFindings: ["mri_t2_hyper"],
+                description: "T2'de sinyal artışı ve ligaman devamsızlığı. Bone bruise eşlik edebilir."
+            }
+        }
+    },
+    {
+        id: "rotator_cuff_tear",
+        name: "Rotator Cuff Yırtığı (Supraspinatus)",
+        organ: "MSK",
+        baseProbability: 25,
+        signatures: {
+            MRI: {
+                strongFindings: ["mri_tendon_rupture", "mri_t2_hyper"],
+                weakFindings: ["mri_joint_effusion"],
+                description: "Tendonda T2 hiperintens sıvı sinyali (gap) ve retraksiyon."
+            },
+            USG: {
+                strongFindings: ["usg_tendon_defect"],
+                description: "Fokal anekoik defekt ve kartilaj arayüz işareti."
+            }
+        }
+    },
+    {
+        id: "meniscus_tear",
+        name: "Menisküs Yırtığı",
+        organ: "MSK",
+        baseProbability: 20,
+        signatures: {
+            MRI: {
+                strongFindings: ["mri_meniscus_tear", "mri_joint_effusion"],
+                description: "Menisküs içinde yüzeye ulaşan sinyal artışı."
+            }
+        }
+    },
+    {
+        id: "bankart_lesion",
+        name: "Bankart Lezyonu",
+        organ: "MSK",
+        baseProbability: 10,
+        signatures: {
+            MRI: {
+                strongFindings: ["mri_labrum_detach", "mri_joint_effusion"],
+                description: "Anteroinferior labrumun glenoid'den ayrılması."
+            }
+        }
+    },
+    {
+        id: "avascular_necrosis",
+        name: "Avasküler Nekroz (AVN)",
+        organ: "MSK",
+        baseProbability: 8,
+        signatures: {
+            MRI: {
+                strongFindings: ["mri_t1_hypo", "mri_bone_marrow_edema"],
+                weakFindings: ["mri_t2_hyper"],
+                description: "Femur başında T1 hipointens nekroz alanı, double-line sign."
+            }
+        }
+    },
+
+    // --- GI (Gastrointestinal) ---
+    {
+        id: "acute_appendicitis_gi",
+        name: "Akut Apandisit",
+        organ: "GI",
+        baseProbability: 25,
+        signatures: {
+            USG: {
+                strongFindings: ["usg_non_compressible", "usg_hyperechoic"],
+                description: "Bası ile sönmeyen, aperistaltik tübüler yapı (>6mm)."
+            },
+            CT: {
+                strongFindings: ["ct_appendix_dilated", "ct_fat_stranding"],
+                weakFindings: ["ct_bowel_wall_thick"],
+                description: "Genişlemiş apendiks ve periappendiküler yağ kirlenmesi."
+            }
+        }
+    },
+    {
+        id: "acute_diverticulitis_gi",
+        name: "Akut Divertikülit",
+        organ: "GI",
+        baseProbability: 15,
+        signatures: {
+            CT: {
+                strongFindings: ["ct_fat_stranding", "ct_bowel_wall_thick"],
+                description: "İnflame divertikül etrafında yağ kirlenmesi ve kolon duvarı kalınlaşması."
+            }
+        }
+    },
+    {
+        id: "bowel_obstruction_gi",
+        name: "Mekanik İleus",
+        organ: "GI",
+        baseProbability: 12,
+        signatures: {
+            CT: {
+                strongFindings: ["ct_bowel_dilated"],
+                weakFindings: ["ct_hypodense"],
+                description: "Proksimal dilatasyon, distal kollaps, geçiş noktası."
+            }
+        }
+    },
+    {
+        id: "gi_perforation",
+        name: "GI Perforasyon (Serbest Hava)",
+        organ: "GI",
+        baseProbability: 5,
+        signatures: {
+            CT: {
+                strongFindings: ["ct_free_air", "ct_fat_stranding"],
+                description: "İntraperitoneal serbest hava ve peritoneal irritasyon."
+            }
+        }
+    },
+    {
+        id: "crohn_gi",
+        name: "Crohn Hastalığı",
+        organ: "GI",
+        baseProbability: 8,
+        signatures: {
+            CT: {
+                strongFindings: ["ct_bowel_wall_thick", "ct_fat_stranding"],
+                description: "Terminal ileum tutulumu, transmural inflamasyon, creeping fat."
+            },
+            MRI: {
+                strongFindings: ["mri_t2_hyper", "ct_bowel_wall_thick"],
+                description: "MR Enterografi: Duvar kalınlaşması, T2 hiperintensite, fistül."
+            }
+        }
+    },
+
+    // --- Breast (Meme) ---
+    {
+        id: "breast_carcinoma",
+        name: "Meme Karsinomu",
+        organ: "Breast",
+        baseProbability: 15,
+        signatures: {
+            USG: {
+                strongFindings: ["usg_irregular_margin", "usg_hypoechoic", "usg_posterior_shadow_breast"],
+                description: "Spiküle kenarlı, hipoekoik, posterior gölgeleme yapan solid kitle."
+            },
+            MRI: {
+                strongFindings: ["mri_breast_enhance_rapid", "mri_dwi_restrict"],
+                weakFindings: ["mri_pelvic_mass"],
+                description: "Hızlı kontrast tutulumu + washout kinetikleri, DWI kısıtlılığı."
+            }
+        }
+    },
+    {
+        id: "fibroadenoma",
+        name: "Fibroadenom",
+        organ: "Breast",
+        baseProbability: 30,
+        signatures: {
+            USG: {
+                strongFindings: ["usg_hypoechoic", "usg_posterior_enhancement"],
+                weakFindings: ["usg_isoechoic"],
+                description: "Oval/lobüle, homojen hipoekoik, posterior güçlenme gösteren solid kitle."
+            }
+        }
+    },
+    {
+        id: "breast_dcis",
+        name: "DCIS (Non-Mass Enhancement)",
+        organ: "Breast",
+        baseProbability: 8,
+        signatures: {
+            MRI: {
+                strongFindings: ["mri_breast_non_mass", "ct_calcification"],
+                description: "Lineer/segmental NME, ince dallanan kalsifikasyonlar."
+            }
+        }
+    },
+
+    // --- Gynecology (Jinekoloji) ---
+    {
+        id: "ovarian_simple_cyst",
+        name: "Basit Overyan Kist",
+        organ: "Gynecology",
+        baseProbability: 35,
+        signatures: {
+            USG: {
+                strongFindings: ["usg_anechoic", "usg_posterior_enhancement"],
+                description: "İnce duvarlı, anekoik, posterior güçlenme gösteren kist."
+            }
+        }
+    },
+    {
+        id: "endometrioma",
+        name: "Endometrioma (Çikolata Kisti)",
+        organ: "Gynecology",
+        baseProbability: 10,
+        signatures: {
+            USG: {
+                strongFindings: ["usg_ground_glass_cyst"],
+                description: "Buzlu cam görünümlü, homojen düşük düzeyli eko içerikli kist."
+            },
+            MRI: {
+                strongFindings: ["mri_t1_hyper", "mri_t2_hypo"],
+                description: "T1 hiperintens, T2'de shading (karanlıklaşma) gösteren kist."
+            }
+        }
+    },
+    {
+        id: "dermoid_cyst",
+        name: "Overyan Dermoidi (Mature Teratom)",
+        organ: "Gynecology",
+        baseProbability: 10,
+        signatures: {
+            CT: {
+                strongFindings: ["ct_fat_density", "ct_calcification"],
+                description: "Yağ dansitesi ve kalsifikasyon içeren kistik kitle (Rokitansky nodülü)."
+            },
+            USG: {
+                strongFindings: ["usg_hyperechoic", "usg_posterior_shadowing"],
+                description: "Tip of the Iceberg işareti, hiperekoik yağ-sıvı seviyesi."
+            }
+        }
+    },
+    {
+        id: "uterine_fibroid",
+        name: "Uterin Myom (Leiomyom)",
+        organ: "Gynecology",
+        baseProbability: 30,
+        signatures: {
+            USG: {
+                strongFindings: ["usg_uterine_mass", "usg_hypoechoic"],
+                description: "Uterustan kaynaklanan, iyi sınırlı, hipoekoik solid kitle."
+            },
+            MRI: {
+                strongFindings: ["mri_t2_hypo", "mri_pelvic_mass"],
+                description: "T2 hipointens, iyi sınırlı myometrial kitle."
             }
         }
     }

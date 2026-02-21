@@ -164,5 +164,159 @@ export const gastroPathologies: Pathology[] = [
                 contrast: "Dilatation in proximal segments (>2.5-3cm), collapse distally (Transition point). Small Bowel Feces Sign: Feces-like appearance immediately proximal to obstruction."
             }
         }
+    },
+    {
+        id: "colorectal-carcinoma",
+        name: "Kolorektal Karsinom",
+        nameEn: "Colorectal Carcinoma",
+        category: "Bowel (Tumor)",
+        categoryEn: "Bowel (Tumor)",
+        keyPoints: ["Sigmoid ve rektum en sık lokalizasyondur.", "'Apple core' (elma kurdu) görünümü baryumlu grafide tipiktir.", "MRI rektal kanserde lokal evreleme standardıdır."],
+        keyPointsEn: ["Sigmoid and rectum are the most common locations.", "'Apple core' appearance is typical on barium enema.", "MRI is the standard for local staging in rectal cancer."],
+        findings: {
+            ct: {
+                contrast: "Kolon duvarında asimetrik kalınlaşma ve lümen daralması (Apple core). Mezenterik lenf nodları. Karaciğer ve peritoneal metastaz araştırması."
+            },
+            mri: {
+                other_sequences: "Rektal MRI: Tümör tabakalaşması (T1-T3 evre), mezorektum fasya invazyonu (MRF+/-), lenf nodu morfoljisi. Difüzyon (DWI) tümör sınırlarını netleştirir."
+            }
+        },
+        findingsEn: {
+            ct: {
+                contrast: "Asymmetric colon wall thickening and luminal narrowing (Apple core). Mesenteric lymph nodes. Evaluation for hepatic and peritoneal metastases."
+            },
+            mri: {
+                other_sequences: "Rectal MRI: Tumor layering (T1-T3 stage), mesorectal fascia invasion (MRF+/-), lymph node morphology. Diffusion (DWI) clarifies tumor margins."
+            }
+        }
+    },
+    {
+        id: "mesenteric-ischemia",
+        name: "Akut Mezenter İskemisi",
+        nameEn: "Acute Mesenteric Ischemia",
+        category: "Bowel (Acil)",
+        categoryEn: "Bowel (Emergency)",
+        keyPoints: ["'Ağrı ile orantısız muayene bulgusu' klasik klinik triyadın parçasıdır.", "SMA embolisi en sık nedendir (%50).", "Pnömatozis intestinalis ve portal venöz gaz kötü prognoz işaretidir."],
+        keyPointsEn: ["'Pain out of proportion to examination' is part of the classic triad.", "SMA embolism is the most common cause (50%).", "Pneumatosis intestinalis and portal venous gas indicate poor prognosis."],
+        findings: {
+            ct: {
+                contrast: "BT Anjiyografi (CTA): SMA/SMV içinde dolum defekti (trombüs/emboli). Bağırsak duvarında incelme veya kontrast tutmaması (nekroz). Pnömatozis intestinalis (Duvar içinde gaz kabarcıkları). Portal venöz sistem içinde gaz.",
+                non_contrast: "Mezenterik damarlarda hiperdens trombüs görülebilir."
+            }
+        },
+        findingsEn: {
+            ct: {
+                contrast: "CT Angiography (CTA): Filling defect in SMA/SMV (thrombus/embolus). Bowel wall thinning or lack of enhancement (necrosis). Pneumatosis intestinalis (gas bubbles within wall). Gas within portal venous system.",
+                non_contrast: "Hyperdense thrombus in mesenteric vessels may be visible."
+            }
+        }
+    },
+    {
+        id: "intussusception",
+        name: "İnvajinasyon (İntussusception)",
+        nameEn: "Intussusception",
+        category: "Bowel (Acil)",
+        categoryEn: "Bowel (Emergency)",
+        keyPoints: ["Çocuklarda en sık karın cerrahisi acillerinden biridir; ileokolik tip sık.", "Erişkinde altta yatan sebep (kitle) araştırılmalıdır.", "USG'de 'Target Sign' (hedef işareti) tanı koydurucudur."],
+        keyPointsEn: ["One of the most common abdominal surgical emergencies in children; ileocolic type is frequent.", "In adults, an underlying cause (mass) should be investigated.", "'Target Sign' on USG is diagnostic."],
+        findings: {
+            usg: {
+                description: "Transvers kesitte: Target sign (Hedef İşareti) — iç içe geçmiş halka görünümü. Longitudinal kesitte: Pseudokidney Sign (Böbrek benzeri görünüm). Renkli Doppler ile vaskülarite değerlendirmesi."
+            },
+            ct: {
+                contrast: "Bağırsak içinde bağırsak görünümü (Bowel-within-bowel). İnvajine mezokolon yağ dokusu ve damarları (Leading point). Primer kitle lezyonu araştırması."
+            }
+        },
+        findingsEn: {
+            usg: {
+                description: "Transverse view: Target Sign — concentric ring appearance. Longitudinal view: Pseudokidney Sign. Vascularity assessment with Color Doppler."
+            },
+            ct: {
+                contrast: "Bowel-within-bowel appearance. Invaginated mesenteric fat and vessels (Leading point). Investigation for primary mass lesion."
+            }
+        }
+    },
+    {
+        id: "gist",
+        name: "GİST (Gastrointestinal Stromal Tümör)",
+        nameEn: "GIST (Gastrointestinal Stromal Tumor)",
+        category: "Bowel (Tumor)",
+        categoryEn: "Bowel (Tumor)",
+        keyPoints: ["En sık mide ve ince barsakta görülür.", "Ekzofitik büyüme paternine sahiptir (Lümene değil, dışarıya doğru büyür).", "c-KIT (CD117) pozitifliği tanı koydurucudur; imatinib ile tedavi edilir."],
+        keyPointsEn: ["Most common in stomach and small intestine.", "Exophytic growth pattern (grows outward, not into lumen).", "c-KIT (CD117) positivity is diagnostic; treated with imatinib."],
+        findings: {
+            ct: {
+                contrast: "Ekzofitik, iyi sınırlı, heterojen kontrastlanan kitle (Nekroz/Kistik değişiklik içerebilir). Küçük lezyonlar homojen. İnce barsakta ülserasyon görülebilir."
+            },
+            mri: {
+                t2: "Heterojen sinyal intensitesi (Nekroz alanları T2 hiperintens). Kapsül genellikle sağlam."
+            }
+        },
+        findingsEn: {
+            ct: {
+                contrast: "Exophytic, well-defined, heterogeneously enhancing mass (may contain necrosis/cystic change). Small lesions are homogeneous. Ulceration may be seen in small intestine."
+            },
+            mri: {
+                t2: "Heterogeneous signal intensity (necrotic areas are T2 hyperintense). Capsule usually intact."
+            }
+        }
+    },
+    {
+        id: "liver-abscess",
+        name: "Pyojenik Karaciğer Apsesi",
+        nameEn: "Pyogenic Liver Abscess",
+        category: "Liver (Karaciğer)",
+        categoryEn: "Liver",
+        keyPoints: ["Bilier patoloji (kolanjit) en sık etiyolojidir.", "Cluster sign: Birleşmiş multipl apse odaklarının görünümü.", "Perkütan drenaj hem tanı hem tedavi sağlar."],
+        keyPointsEn: ["Biliary pathology (cholangitis) is the most common etiology.", "Cluster sign: Appearance of merged multiple abscess foci.", "Percutaneous drainage provides both diagnosis and treatment."],
+        findings: {
+            ct: {
+                contrast: "Karaciğerde, duvarı kontrast tutan (rim enhancement), içi hipodens sıvı koleksiyonu. Cluster Sign: Birleşme eğiliminde multipl odaklar. Çift hedef (Double Target) işareti."
+            },
+            usg: {
+                description: "Hipoekoik veya karışık ekojenitede kistik yapı, düzensiz iç yüzey. Posterior akustik güçlenme. İçeride hava kabarcıkları (gaz üreten bakteri — hareketli parlak odaklar)."
+            },
+            mri: {
+                t2: "T2 hiperintens sıvı içeriği. Kalın, kontrast tutan duvar.",
+                dwi: "Pü içeriği nedeniyle belirgin difüzyon kısıtlılığı."
+            }
+        },
+        findingsEn: {
+            ct: {
+                contrast: "Hypodense fluid collection with rim-enhancing wall in liver. Cluster Sign: Multiple foci with tendency to merge. Double Target Sign."
+            },
+            usg: {
+                description: "Hypoechoic or mixed echogenicity cystic structure, irregular inner surface. Posterior acoustic enhancement. Air bubbles inside (gas-forming bacteria — mobile bright foci)."
+            },
+            mri: {
+                t2: "T2 hyperintense fluid content. Thick, contrast-enhancing wall.",
+                dwi: "Marked diffusion restriction due to pus content."
+            }
+        }
+    },
+    {
+        id: "esophageal-carcinoma",
+        name: "Özofagus Karsinomu",
+        nameEn: "Esophageal Carcinoma",
+        category: "Esophagus (Yemek Borusu)",
+        categoryEn: "Esophagus",
+        keyPoints: ["Skuamöz hücreli karsinom üst/orta 1/3, adenokarsinom alt 1/3 (Barrett özofagusu).", "CT evrelemede; lokal invazyon, lenf nodu ve uzak metastaz değerlendirilir.", "PET/CT rekürrens ve evrelemede kritik rol oynar."],
+        keyPointsEn: ["Squamous cell carcinoma in upper/middle 1/3, adenocarcinoma in lower 1/3 (Barrett's esophagus).", "CT staging assesses local invasion, lymph nodes, and distant metastases.", "PET/CT plays a critical role in recurrence and staging."],
+        findings: {
+            ct: {
+                contrast: "Özofagus duvarında halkasal kalınlaşma ve lümen daralması. Mediastinal lenf nodları. Komşu yapılara (aorta, trakea) invazyon değerlendirmesi. Karaciğer ve akciğer metastazları."
+            },
+            mri: {
+                other_sequences: "Lokal evreleme: Adventisya tutulumu (T3), komşu yapı invazyonu (T4). Difüzyon (DWI) tümör aktivitesini gösterir."
+            }
+        },
+        findingsEn: {
+            ct: {
+                contrast: "Circumferential wall thickening and luminal narrowing of esophagus. Mediastinal lymph nodes. Assessment of invasion into adjacent structures (aorta, trachea). Liver and lung metastases."
+            },
+            mri: {
+                other_sequences: "Local staging: Adventitia involvement (T3), adjacent structure invasion (T4). Diffusion (DWI) shows tumor activity."
+            }
+        }
     }
 ];

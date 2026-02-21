@@ -19,7 +19,7 @@ import { breastPathologies } from "@/data/breast-pathologies";
 import { mskPathologies } from "@/data/msk-pathologies";
 import { gastroPathologies } from "@/data/gastro-pathologies";
 import { gynecologyPathologies } from "@/data/gynecology-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Heart, Droplets, Wind, Trophy, Library, Wrench, Microscope, Activity, Utensils, Baby } from "lucide-react";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Flame, Bean, Wind, Trophy, Library, Wrench, Scan, Dumbbell, Utensils, Heart } from "lucide-react";
 import { DiagnosisWizard } from "@/components/diagnosis-wizard";
 import { DailyCaseModal } from "@/components/daily-case-modal";
 import { Pathology } from "@/types";
@@ -319,7 +319,7 @@ export default function Home() {
                       : "text-slate-400 hover:text-white hover:bg-white/5"
                   )}
                 >
-                  <Heart className="w-4 h-4" />
+                  <Flame className="w-4 h-4" />
                   <span>{t("organ.liver")}</span>
                 </button>
                 <button
@@ -335,7 +335,7 @@ export default function Home() {
                       : "text-slate-400 hover:text-white hover:bg-white/5"
                   )}
                 >
-                  <Droplets className="w-4 h-4" />
+                  <Bean className="w-4 h-4" />
                   <span>{t("organ.kidney")}</span>
                 </button>
                 <button
@@ -367,7 +367,7 @@ export default function Home() {
                       : "text-slate-400 hover:text-white hover:bg-white/5"
                   )}
                 >
-                  <Microscope className="w-4 h-4" />
+                  <Scan className="w-4 h-4" />
                   <span>{t("organ.breast")}</span>
                 </button>
                 <button
@@ -383,7 +383,7 @@ export default function Home() {
                       : "text-slate-400 hover:text-white hover:bg-white/5"
                   )}
                 >
-                  <Activity className="w-4 h-4" />
+                  <Dumbbell className="w-4 h-4" />
                   <span>{t("organ.msk")}</span>
                 </button>
                 <button
@@ -415,7 +415,7 @@ export default function Home() {
                       : "text-slate-400 hover:text-white hover:bg-white/5"
                   )}
                 >
-                  <Baby className="w-4 h-4" />
+                  <Heart className="w-4 h-4" />
                   <span>{t("organ.gynecology")}</span>
                 </button>
               </div>
@@ -605,7 +605,7 @@ export default function Home() {
         ) : viewMode === "case" ? (
           <CaseStudyMode />
         ) : viewMode === "wizard" ? (
-          <DiagnosisWizard activeModule={activeModule === "spine" ? "spine" : "brain"} />
+          <DiagnosisWizard activeModule={activeModule} />
         ) : viewMode === "ai" ? (
           <AIAssistant />
         ) : viewMode === "swipe" ? (
