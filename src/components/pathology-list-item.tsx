@@ -12,7 +12,7 @@ interface PathologyListItemProps {
 
 export function PathologyListItem({ data, isFavorite = false, onToggleFavorite, onClick }: PathologyListItemProps) {
     const { language } = useLanguage();
-    const isEn = language === "EN";
+    const isEn = language === "en";
 
     const displayName = isEn ? (data.nameEn || data.name) : data.name;
     const displayCategory = isEn ? (data.categoryEn || data.category) : data.category;

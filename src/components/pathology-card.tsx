@@ -45,7 +45,7 @@ const HighlightedText = ({ text, query }: { text: string, query?: string }) => {
 
 export function PathologyCard({ data, isFavorite = false, onToggleFavorite, highlightQuery }: PathologyCardProps) {
     const { language, t } = useLanguage();
-    const isEn = language === "EN";
+    const isEn = language === "en";
     const [isFlipped, setIsFlipped] = useState(false);
 
     // Select content based on language

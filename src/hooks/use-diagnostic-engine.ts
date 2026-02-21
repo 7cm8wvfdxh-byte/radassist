@@ -8,7 +8,7 @@ const ALL_FINDINGS = [...USG_FINDINGS, ...CT_FINDINGS, ...MRI_FINDINGS];
 const FINDING_MAP = new Map<string, FindingOption>();
 ALL_FINDINGS.forEach(f => FINDING_MAP.set(f.id, f));
 
-export function useDiagnosticEngine(selectedFindingIds: string[], selectedOrgan: "Brain" | "Spine" | "Liver" | "Kidney" | "Lung") {
+export function useDiagnosticEngine(selectedFindingIds: string[], selectedOrgan: "Brain" | "Spine" | "Liver" | "Kidney" | "Lung" | "MSK" | "GI" | "Breast" | "Gynecology") {
     const results = useMemo(() => {
         if (selectedFindingIds.length === 0) return [];
 

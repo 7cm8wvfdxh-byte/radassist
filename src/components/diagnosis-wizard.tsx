@@ -3,11 +3,11 @@ import { Modality } from '@/data/lexicon';
 import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from '@/data/lexicon';
 import { useDiagnosticEngine } from '@/hooks/use-diagnostic-engine';
 import { clsx } from 'clsx';
-import { Check, ChevronRight, Stethoscope, AlertTriangle, FileText, X, Brain, Bone, Activity, Droplets, Wind, Sparkles } from 'lucide-react';
+import { Check, ChevronRight, Stethoscope, AlertTriangle, FileText, X, Brain, Bone, Flame, Bean, Wind, Sparkles, Dumbbell, Utensils, Scan, Heart, Activity, Droplets } from 'lucide-react';
 import { REPORT_TEMPLATES, GENERIC_TEMPLATE } from '@/data/report-templates';
 
 interface DiagnosisWizardProps {
-    activeModule: 'brain' | 'spine' | 'liver' | 'kidney' | 'lung';
+    activeModule: 'brain' | 'spine' | 'liver' | 'kidney' | 'lung' | 'breast' | 'msk' | 'gi' | 'gyn';
 }
 
 export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
@@ -18,10 +18,14 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
             case 'liver': return "Liver";
             case 'kidney': return "Kidney";
             case 'lung': return "Lung";
+            case 'breast': return "Breast";
+            case 'msk': return "MSK";
+            case 'gi': return "GI";
+            case 'gyn': return "Gynecology";
             default: return "Brain";
         }
     };
-    const [organ, setOrgan] = useState<"Brain" | "Spine" | "Liver" | "Kidney" | "Lung">(getInitialOrgan());
+    const [organ, setOrgan] = useState<"Brain" | "Spine" | "Liver" | "Kidney" | "Lung" | "MSK" | "GI" | "Breast" | "Gynecology">(getInitialOrgan());
     const [modality, setModality] = useState<Modality | null>(null);
     const [selectedFindings, setSelectedFindings] = useState<string[]>([]);
     const [isReportOpen, setIsReportOpen] = useState(false);
@@ -135,7 +139,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                                     : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
                             )}
                         >
-                            <Activity className="w-5 h-5" />
+                            <Flame className="w-5 h-5" />
                             <span className="font-semibold">Karaciğer</span>
                         </button>
                         <button
@@ -147,7 +151,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                                     : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
                             )}
                         >
-                            <Droplets className="w-5 h-5" />
+                            <Bean className="w-5 h-5" />
                             <span className="font-semibold">Böbrek</span>
                         </button>
                         <button
@@ -161,6 +165,54 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
                         >
                             <Wind className="w-5 h-5" />
                             <span className="font-semibold">Akciğer</span>
+                        </button>
+                        <button
+                            onClick={() => { setOrgan("Breast"); setSelectedFindings([]); }}
+                            className={clsx(
+                                "flex-1 min-w-[100px] p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
+                                organ === "Breast"
+                                    ? "bg-pink-500/20 border-pink-500 text-pink-50 shadow-lg shadow-pink-500/10"
+                                    : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
+                            )}
+                        >
+                            <Scan className="w-5 h-5" />
+                            <span className="font-semibold">Meme</span>
+                        </button>
+                        <button
+                            onClick={() => { setOrgan("MSK"); setSelectedFindings([]); }}
+                            className={clsx(
+                                "flex-1 min-w-[100px] p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
+                                organ === "MSK"
+                                    ? "bg-orange-500/20 border-orange-500 text-orange-50 shadow-lg shadow-orange-500/10"
+                                    : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
+                            )}
+                        >
+                            <Dumbbell className="w-5 h-5" />
+                            <span className="font-semibold">MSK</span>
+                        </button>
+                        <button
+                            onClick={() => { setOrgan("GI"); setSelectedFindings([]); }}
+                            className={clsx(
+                                "flex-1 min-w-[100px] p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
+                                organ === "GI"
+                                    ? "bg-green-500/20 border-green-500 text-green-50 shadow-lg shadow-green-500/10"
+                                    : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
+                            )}
+                        >
+                            <Utensils className="w-5 h-5" />
+                            <span className="font-semibold">GIS</span>
+                        </button>
+                        <button
+                            onClick={() => { setOrgan("Gynecology"); setSelectedFindings([]); }}
+                            className={clsx(
+                                "flex-1 min-w-[100px] p-3 rounded-xl border flex items-center justify-center gap-2 transition-all",
+                                organ === "Gynecology"
+                                    ? "bg-purple-500/20 border-purple-500 text-purple-50 shadow-lg shadow-purple-500/10"
+                                    : "bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:bg-zinc-800"
+                            )}
+                        >
+                            <Heart className="w-5 h-5" />
+                            <span className="font-semibold">Jinekoloji</span>
                         </button>
                     </div>
                 </div>
@@ -387,7 +439,7 @@ export function DiagnosisWizard({ activeModule }: DiagnosisWizardProps) {
 
                                         <p className="font-bold mb-2">İNCELEME:</p>
                                         <p className="mb-4 text-zinc-600 font-semibold uppercase">
-                                            {organ === 'Brain' ? 'Kranial' : organ === 'Spine' ? 'Spinal' : organ === 'Liver' ? 'Abdominal (Karaciğer)' : organ === 'Kidney' ? 'Üriner sistem' : 'Toraks'} {modality} incelemesi
+                                            {organ === 'Brain' ? 'Kranial' : organ === 'Spine' ? 'Spinal' : organ === 'Liver' ? 'Abdominal (Karaciğer)' : organ === 'Kidney' ? 'Üriner Sistem' : organ === 'Lung' ? 'Toraks' : organ === 'Breast' ? 'Meme' : organ === 'MSK' ? 'Kas-İskelet Sistemi' : organ === 'GI' ? 'Gastrointestinal' : 'Pelvis (Jinekoloji)'} {modality} incelemesi
                                         </p>
 
                                         <p className="font-bold mb-2">TEKNİK:</p>
