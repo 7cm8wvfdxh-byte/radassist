@@ -55,7 +55,7 @@ export function DailyCaseModal({ isOpen, onClose }: DailyCaseModalProps) {
     if (!isOpen || !currentCase) return null;
 
     const hasImage = currentCase.gallery && currentCase.gallery.length > 0;
-    const coverImage = hasImage ? currentCase.gallery![0].url : "/placeholder_source.png";
+    const coverImage = hasImage ? currentCase.gallery![0].url : "/images/ct.png";
     const modality = hasImage ? currentCase.gallery![0].modality : "Bilinmiyor";
 
     // Card Content Renderer

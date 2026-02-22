@@ -8,8 +8,8 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Neoplastik",
         "categoryEn": "Neoplastic",
         "gallery": [
-            // { "url": "/images/kidney/rcc_ct_corticomedullary.png", "caption": "BT Kortikomedüller - Heterojen", "modality": "CT" },
-            // { "url": "/images/kidney/rcc_mri_t2.png", "caption": "MRI T2 - Clear Cell Hiperintens", "modality": "MRI" }
+            { "url": "/images/kidney/rcc_ct_corticomedullary.png", "caption": "BT Kortikomedüller - Heterojen", "modality": "CT" },
+            { "url": "/images/kidney/rcc_mri_t2.png", "caption": "MRI T2 - Clear Cell Hiperintens", "modality": "MRI" }
         ],
         "findings": {
             "ultrasound": {
@@ -65,8 +65,8 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Benign",
         "categoryEn": "Benign",
         "gallery": [
-            // { "url": "/images/kidney/aml_ct_fat.png", "caption": "BT - Makroskopik Yağ (-40 HU)", "modality": "CT" },
-            // { "url": "/images/kidney/aml_usg.png", "caption": "USG - Hiperekoik", "modality": "USG" }
+            { "url": "/images/kidney/aml_ct_fat.png", "caption": "BT - Makroskopik Yağ (-40 HU)", "modality": "CT" },
+            { "url": "/images/kidney/aml_usg.png", "caption": "USG - Hiperekoik", "modality": "USG" }
         ],
         "findings": {
             "ultrasound": {
@@ -118,8 +118,8 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Benign",
         "categoryEn": "Benign",
         "gallery": [
-            // { "url": "/images/kidney/cyst_usg_anechoic.png", "caption": "USG - Anekoik, Posterior Güçlenme", "modality": "USG" },
-            // { "url": "/images/kidney/cyst_ct.png", "caption": "BT - Su Dansitesi", "modality": "CT" }
+            { "url": "/images/kidney/cyst_usg_anechoic.png", "caption": "USG - Anekoik, Posterior Güçlenme", "modality": "USG" },
+            { "url": "/images/kidney/cyst_ct.png", "caption": "BT - Su Dansitesi", "modality": "CT" }
         ],
         "findings": {
             "ultrasound": {
@@ -171,8 +171,8 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Benign/Malign",
         "categoryEn": "Benign/Malignant",
         "gallery": [
-            // { "url": "/images/kidney/bosniak_types.png", "caption": "Bosniak Sınıflaması Şeması", "modality": "CT" },
-            // { "url": "/images/kidney/bosniak_3_ct.png", "caption": "Bosniak III - Kalın Duvar/Septum", "modality": "CT" }
+            { "url": "/images/kidney/bosniak_types.png", "caption": "Bosniak Sınıflaması Şeması", "modality": "CT" },
+            { "url": "/images/kidney/bosniak_3_ct.png", "caption": "Bosniak III - Kalın Duvar/Septum", "modality": "CT" }
         ],
         "findings": {
             "ct": {
@@ -214,8 +214,8 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Enfeksiyon",
         "categoryEn": "Infection",
         "gallery": [
-            // { "url": "/images/kidney/pyelonephritis_ct.png", "caption": "BT - Striated Nefrogram", "modality": "CT" },
-            // { "url": "/images/kidney/pyelonephritis_dwi.png", "caption": "MRI DWI - Kısıtlanma", "modality": "MRI" }
+            { "url": "/images/kidney/pyelonephritis_ct.png", "caption": "BT - Striated Nefrogram", "modality": "CT" },
+            { "url": "/images/kidney/pyelonephritis_dwi.png", "caption": "MRI DWI - Kısıtlanma", "modality": "MRI" }
         ],
         "findings": {
             "ultrasound": {
@@ -268,7 +268,7 @@ export const kidneyPathologies: Pathology[] = [
         "categoryEn": "Obstruction",
         "gallery": [
             { "url": "/images/kidney/stone_ct.png", "caption": "BT Non-Kontrast - Hiperdens Taş", "modality": "CT" },
-            // { "url": "/images/kidney/stone_usg_shadow.png", "caption": "USG - Akustik Gölge", "modality": "USG" }
+            { "url": "/images/kidney/stone_usg_shadow.png", "caption": "USG - Akustik Gölge", "modality": "USG" }
         ],
         "findings": {
             "ultrasound": {

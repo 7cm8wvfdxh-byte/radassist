@@ -9,7 +9,7 @@ export const lungPathologies: Pathology[] = [
         "categoryEn": "Neoplastic",
         "gallery": [
             { "url": "/images/lung/lung_cancer_ct.png", "caption": "BT - Spiküle Kitle", "modality": "CT" },
-            // { "url": "/images/lung/pancoast_mri.png", "caption": "MRI - Pancoast Tümörü", "modality": "MRI" }
+            { "url": "/images/lung/pancoast_mri.png", "caption": "MRI - Pancoast Tümörü", "modality": "MRI" }
         ],
         "findings": {
             "ct": {
@@ -55,8 +55,8 @@ export const lungPathologies: Pathology[] = [
         "category": "Vasküler",
         "categoryEn": "Vascular",
         "gallery": [
-            // { "url": "/images/lung/pe_ct_angio.png", "caption": "BT Anjiyo - Dolum Defekti", "modality": "CT" },
-            // { "url": "/images/lung/hampton_hump_cxr.png", "caption": "CXR - Hampton's Hump", "modality": "X-Ray" }
+            { "url": "/images/lung/pe_ct_angio.png", "caption": "BT Anjiyo - Dolum Defekti", "modality": "CT" },
+            { "url": "/images/lung/hampton_hump_cxr.png", "caption": "CXR - Hampton's Hump", "modality": "X-Ray" }
         ],
         "findings": {
             "ct": {
@@ -102,8 +102,8 @@ export const lungPathologies: Pathology[] = [
         "category": "Enfeksiyon",
         "categoryEn": "Infection",
         "gallery": [
-            // { "url": "/images/lung/pneumonia_lobar.png", "caption": "BT - Lober Konsolidasyon", "modality": "CT" },
-            // { "url": "/images/lung/covid_ground_glass.png", "caption": "BT - Buzlu Cam (COVID-19)", "modality": "CT" }
+            { "url": "/images/lung/pneumonia_lobar.png", "caption": "BT - Lober Konsolidasyon", "modality": "CT" },
+            { "url": "/images/lung/covid_ground_glass.png", "caption": "BT - Buzlu Cam (COVID-19)", "modality": "CT" }
         ],
         "findings": {
             "ct": {
@@ -145,8 +145,8 @@ export const lungPathologies: Pathology[] = [
         "category": "Belirsiz",
         "categoryEn": "Indeterminate",
         "gallery": [
-            // { "url": "/images/lung/nodule_spiculated.png", "caption": "BT - Spiküle Solita Nodül", "modality": "CT" },
-            // { "url": "/images/lung/nodule_ground_glass.png", "caption": "BT - Subsolid Nodül", "modality": "CT" }
+            { "url": "/images/lung/nodule_spiculated.png", "caption": "BT - Spiküle Solita Nodül", "modality": "CT" },
+            { "url": "/images/lung/nodule_ground_glass.png", "caption": "BT - Subsolid Nodül", "modality": "CT" }
         ],
         "findings": {
             "ct": {
@@ -190,8 +190,8 @@ export const lungPathologies: Pathology[] = [
         "category": "Travma/İyatrojenik",
         "categoryEn": "Trauma/Iatrogenic",
         "gallery": [
-            // { "url": "/images/lung/pneumothorax_cxr.png", "caption": "CXR - Plevral Hat", "modality": "X-Ray" },
-            // { "url": "/images/lung/pneumothorax_ct.png", "caption": "BT - Serbest Hava", "modality": "CT" }
+            { "url": "/images/lung/pneumothorax_cxr.png", "caption": "CXR - Plevral Hat", "modality": "X-Ray" },
+            { "url": "/images/lung/pneumothorax_ct.png", "caption": "BT - Serbest Hava", "modality": "CT" }
         ],
         "findings": {
             "xray": {
@@ -238,8 +238,8 @@ export const lungPathologies: Pathology[] = [
         "category": "Fibrotik",
         "categoryEn": "Fibrotic",
         "gallery": [
-            // { "url": "/images/lung/ild_honeycombing.png", "caption": "HRCT - Bal Peteği (Honeycombing)", "modality": "CT" },
-            // { "url": "/images/lung/ild_traction.png", "caption": "HRCT - Traksiyon Bronşektazi", "modality": "CT" }
+            { "url": "/images/lung/ild_honeycombing.png", "caption": "HRCT - Bal Peteği (Honeycombing)", "modality": "CT" },
+            { "url": "/images/lung/ild_traction.png", "caption": "HRCT - Traksiyon Bronşektazi", "modality": "CT" }
         ],
         "findings": {
             "ct": {
