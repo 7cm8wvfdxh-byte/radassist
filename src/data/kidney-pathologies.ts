@@ -317,6 +317,7 @@ export const kidneyPathologies: Pathology[] = [
         "nameEn": "Renal Oncocytoma",
         "category": "Benign",
         "categoryEn": "Benign",
+        "mechanism": "Proksimal tübüler intersitisyel hücrelerden (onkositler) köken alan benign epitelyal tümör. Mitokondri açısından zengin eozinofilik hücreler kompakt adacıklar oluşturur. Santral yıldız şeklindeki skar, fibrotik stroma birikiminin sonucudur.",
         "findings": {
             "ct": {
                 "contrast": "RCC ile ayrımı zordur. Santral skar (Yıldızvari hipodansite) klasik bulgusudur (%30-50). Spoke-wheel (tekerlek) tarzı kontrastlanma."
@@ -352,6 +353,7 @@ export const kidneyPathologies: Pathology[] = [
         "nameEn": "Transitional Cell Carcinoma (TCC) / Urothelial Ca",
         "category": "Neoplastik",
         "categoryEn": "Neoplastic",
+        "mechanism": "Kronik ürotelyum irritasyonu (sigara, aromatik amin maruziyeti) → DNA hasarı → Transizyonel epitel displazisi → Karsinoma. Tüm ürotelyumu etkileyebilen 'field effect' nedeniyle multifokaldır; eş zamanlı mesane tümörü sık görülür.",
         "findings": {
             "ct": {
                 "contrast": "Renal pelviste santral yerleşimli yumuşak doku kitlesi. Dolum defekti. Kalisiyel dilatasyon (Tümör obstrüksiyonuna bağlı).",
