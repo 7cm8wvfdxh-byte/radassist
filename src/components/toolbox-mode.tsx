@@ -1,194 +1,161 @@
 import React, { useState } from 'react';
-import { Ruler, Calculator, Search, ChevronRight, Activity, Percent, ArrowRight, Check, AlertTriangle, Calculator as CalcIcon } from 'lucide-react';
+import { Ruler, Calculator, Search, Activity, Calculator as CalcIcon, ShieldCheck, FileText, FlaskConical } from 'lucide-react';
 import { RADIOLOGY_MEASUREMENTS, RADIOLOGY_CALCULATORS, Measurement } from '@/data/toolbox-data';
+import { RADS_SYSTEMS, RadsSystem } from '@/data/rads-data';
+import { REPORT_TEMPLATES, ReportTemplate } from '@/data/report-templates';
+import { IMAGING_PROTOCOLS, ImagingProtocol } from '@/data/protocol-data';
 import { cn } from '@/lib/utils';
 
-export function ToolboxMode() {
-    const [activeTab, setActiveTab] = useState<'ruler' | 'calc'>('ruler');
-    const [searchQuery, setSearchQuery] = useState('');
-    const [activeCalc, setActiveCalc] = useState<string | null>(null);
+const RADS_COLOR_MAP: Record<string, { badge: string; bar: string; text: string }> = {
+    green:  { badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30', bar: 'bg-emerald-500', text: 'text-emerald-300' },
+    yellow: { badge: 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30',   bar: 'bg-yellow-400',  text: 'text-yellow-300' },
+    orange: { badge: 'bg-orange-500/15 text-orange-300 border-orange-500/30',   bar: 'bg-orange-500',  text: 'text-orange-300' },
+    red:    { badge: 'bg-red-500/15 text-red-300 border-red-500/30',             bar: 'bg-red-500',     text: 'text-red-300' },
+    purple: { badge: 'bg-purple-500/15 text-purple-300 border-purple-500/30',   bar: 'bg-purple-500',  text: 'text-purple-300' },
+    gray:   { badge: 'bg-zinc-500/15 text-zinc-400 border-zinc-500/30',          bar: 'bg-zinc-500',    text: 'text-zinc-400' },
+    blue:   { badge: 'bg-blue-500/15 text-blue-300 border-blue-500/30',          bar: 'bg-blue-500',    text: 'text-blue-300' },
+};
 
-    // Filter Measurements
+export function ToolboxMode() {
+    const [activeTab, setActiveTab] = useState<'ruler' | 'calc' | 'rads' | 'templates' | 'protocols'>('ruler');
+
+    // --- RULER state ---
+    const [searchQuery, setSearchQuery] = useState('');
+
+    // --- RADS state ---
+    const [activeRads, setActiveRads] = useState<string>(RADS_SYSTEMS[0].id);
+
+    // --- CALCULATOR state ---
+    const [activeCalc, setActiveCalc] = useState<string | null>(null);
+    const [calcValues, setCalcValues] = useState<Record<string, number>>({});
+    const [calcResult, setCalcResult] = useState<any>(null);
+
+    // --- TEMPLATES state ---
+    const [templateSearch, setTemplateSearch] = useState('');
+    const [activeTemplate, setActiveTemplate] = useState<string | null>(null);
+    const [copyFeedback, setCopyFeedback] = useState<'findings' | 'impression' | null>(null);
+
+    // --- PROTOCOLS state ---
+    const [protocolSearch, setProtocolSearch] = useState('');
+    const [activeProtocol, setActiveProtocol] = useState<string | null>(null);
+
+    // ── Filter Measurements ──────────────────────────────────────
     const filteredMeasurements = RADIOLOGY_MEASUREMENTS.filter(m =>
         m.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
         m.organ.toLowerCase().includes(searchQuery.toLowerCase()) ||
         m.id.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
-    // Group by Organ
     const groupedMeasurements = filteredMeasurements.reduce((acc, m) => {
         if (!acc[m.organ]) acc[m.organ] = [];
         acc[m.organ].push(m);
         return acc;
     }, {} as Record<string, Measurement[]>);
 
+    // ── Filter Templates ─────────────────────────────────────────
+    const allTemplates = Object.values(REPORT_TEMPLATES);
+    const filteredTemplates = allTemplates.filter(t =>
+        t.label.toLowerCase().includes(templateSearch.toLowerCase()) ||
+        t.organ.toLowerCase().includes(templateSearch.toLowerCase())
+    );
+    const groupedTemplates = filteredTemplates.reduce((acc, t) => {
+        if (!acc[t.organ]) acc[t.organ] = [];
+        acc[t.organ].push(t);
+        return acc;
+    }, {} as Record<string, ReportTemplate[]>);
 
-    // Calculator State
-    const [calcValues, setCalcValues] = useState<Record<string, number>>({});
-    const [calcResult, setCalcResult] = useState<any>(null); // Flexible result type
+    // ── Filter Protocols ─────────────────────────────────────────
+    const filteredProtocols = IMAGING_PROTOCOLS.filter(p =>
+        p.name.toLowerCase().includes(protocolSearch.toLowerCase()) ||
+        p.organ.toLowerCase().includes(protocolSearch.toLowerCase()) ||
+        p.modality.toLowerCase().includes(protocolSearch.toLowerCase())
+    );
+    const groupedProtocols = filteredProtocols.reduce((acc, p) => {
+        if (!acc[p.organ]) acc[p.organ] = [];
+        acc[p.organ].push(p);
+        return acc;
+    }, {} as Record<string, ImagingProtocol[]>);
 
+    // ── Calculator ───────────────────────────────────────────────
     const handleCalcChange = (key: string, val: string) => {
         setCalcValues(prev => ({ ...prev, [key]: parseFloat(val) || 0 }));
         setCalcResult(null);
     };
 
-    // --- ALGORITHMS ---
-
     const calculateAdrenal = () => {
         const { pre, ven, del } = calcValues;
         if (pre === undefined || ven === undefined || del === undefined) return;
-
         const absoluteAPW = ((ven - del) / (ven - pre)) * 100;
         const relativeRPW = ((ven - del) / ven) * 100;
-
-        let res = {
+        setCalcResult({
             main: `APW: %${absoluteAPW.toFixed(1)} | RPW: %${relativeRPW.toFixed(1)}`,
             detail: absoluteAPW >= 60 || relativeRPW >= 40
                 ? "Lipid-rich Adenom ile uyumlu. (Yüksek Olasılık)"
                 : "Adenom dışı lezyon (Mets/Pheo/Ca) şüphesi. Washout yetersiz."
-        };
-        setCalcResult(res);
+        });
     };
 
     const calculateVolume = () => {
         const { l, w, h } = calcValues;
         if (!l || !w || !h) return;
-        const vol = l * w * h * 0.52;
-        setCalcResult({ main: `Volüm: ${vol.toFixed(2)} cc (ml)` });
+        setCalcResult({ main: `Volüm: ${(l * w * h * 0.52).toFixed(2)} cc (ml)` });
     };
 
     const calculateNascet = () => {
         const { distal, stenosis } = calcValues;
         if (!distal || !stenosis) return;
-        // NASCET Formula: (Distal Normal Lumen - Stenosis Diameter) / Distal Normal Lumen
-        if (stenosis > distal) {
-            setCalcResult({ main: "Hata: Darlık çapı distalden büyük olamaz." });
-            return;
-        }
+        if (stenosis > distal) { setCalcResult({ main: "Hata: Darlık çapı distalden büyük olamaz." }); return; }
         const pct = ((distal - stenosis) / distal) * 100;
-
-        let grade = "";
-        if (pct < 50) grade = "Hafif Darlık (<%50)";
-        else if (pct < 70) grade = "Orta Derece Darlık (%50-69)";
-        else grade = "Ciddi Darlık (%70-99)";
-
-        setCalcResult({
-            main: `%${pct.toFixed(1)} Stenoz (NASCET)`,
-            detail: grade
-        });
+        let grade = pct < 50 ? "Hafif Darlık (<%50)" : pct < 70 ? "Orta Derece Darlık (%50-69)" : "Ciddi Darlık (%70-99)";
+        setCalcResult({ main: `%${pct.toFixed(1)} Stenoz (NASCET)`, detail: grade });
     };
 
     const calculateRECIST = () => {
-        // Simple % change calculator
         const { baseline, current } = calcValues;
         if (!baseline || !current) return;
-
         const change = ((current - baseline) / baseline) * 100;
-        let response = "";
-
-        // RECIST 1.1 Basics
-        if (change <= -30) response = "Kısmi Yanıt (PR)";
-        else if (change >= 20 && (current - baseline) >= 5) response = "Progresif Hastalık (PD)"; // 5mm absolute increase rule
-        else response = "Stabil Hastalık (SD)";
-
-        if (current === 0) response = "Tam Yanıt (CR)";
-
-        setCalcResult({
-            main: `%${change.toFixed(1)} Değişim`,
-            detail: response
-        });
+        let response = current === 0 ? "Tam Yanıt (CR)" :
+            change <= -30 ? "Kısmi Yanıt (PR)" :
+            change >= 20 && (current - baseline) >= 5 ? "Progresif Hastalık (PD)" : "Stabil Hastalık (SD)";
+        setCalcResult({ main: `%${change.toFixed(1)} Değişim`, detail: response });
     };
 
     const calculateEGFR = () => {
-        const { creat, age, gender, race } = calcValues; // gender: 0=female, 1=male. race: 0=non-black, 1=black
+        const { creat, age, gender } = calcValues;
         if (!creat || !age) return;
-
-        // CKD-EPI 2021 (Simplified, creatinine based)
-        // Constants dependent on gender
         const k = gender === 1 ? 0.9 : 0.7;
         const a = gender === 1 ? -0.302 : -0.241;
-
-        // Formula: 142 * min(Scr/k, 1)^a * max(Scr/k, 1)^-1.200 * 0.9938^Age * (1.012 if Female)
-        // Note: 2021 formula removed race coefficient dedicatedly, usually. Let's use standard CKD-EPI.
-
         let egfr = 142 * Math.pow(Math.min(creat / k, 1), a) * Math.pow(Math.max(creat / k, 1), -1.200) * Math.pow(0.9938, age);
-
-        if (gender === 0) egfr *= 1.012; // Female correction
-
-        let stage = "";
-        if (egfr >= 90) stage = "Evre 1 (Normal)";
-        else if (egfr >= 60) stage = "Evre 2 (Hafif)";
-        else if (egfr >= 45) stage = "Evre 3a (Hafif-Orta)";
-        else if (egfr >= 30) stage = "Evre 3b (Orta-Ciddi)";
-        else if (egfr >= 15) stage = "Evre 4 (Ciddi)";
-        else stage = "Evre 5 (Böbrek Yetmezliği)";
-
-        // Contrast Safety Note
-        let safety = "";
-        if (egfr < 30) safety = "🛑 IV Kontrast Riskli! Hidrasyon/Konsültasyon gerekir.";
-        else if (egfr < 45) safety = "⚠️ IV Kontrast Dikkatli Kullanılmalı (Hidrasyon).";
-        else safety = "✅ IV Kontrast Güvenli.";
-
-        setCalcResult({
-            main: `eGFR: ${egfr.toFixed(1)} ml/min/1.73m²`,
-            detail: `${stage}\n${safety}`
-        });
+        if (gender === 0) egfr *= 1.012;
+        const stage = egfr >= 90 ? "Evre 1 (Normal)" : egfr >= 60 ? "Evre 2 (Hafif)" : egfr >= 45 ? "Evre 3a (Hafif-Orta)" : egfr >= 30 ? "Evre 3b (Orta-Ciddi)" : egfr >= 15 ? "Evre 4 (Ciddi)" : "Evre 5 (Böbrek Yetmezliği)";
+        const safety = egfr < 30 ? "🛑 IV Kontrast Riskli! Hidrasyon/Konsültasyon gerekir." : egfr < 45 ? "⚠️ IV Kontrast Dikkatli Kullanılmalı (Hidrasyon)." : "✅ IV Kontrast Güvenli.";
+        setCalcResult({ main: `eGFR: ${egfr.toFixed(1)} ml/min/1.73m²`, detail: `${stage}\n${safety}` });
     };
 
     const calculateICH = () => {
         const { gcs, volume, ivh, infratentorial, age } = calcValues;
-        // gcs: 3-4 (2), 5-12 (1), 13-15 (0) -> handled by UI dropdown sending 0,1,2 value directly? 
-        // Or user inputs raw GCS and we logic it. Let's do raw input mapping.
-
-        // Inputs need to be mapped if raw. Assuming UI sends pre-calculated points or raw values.
-        // Let's assume UI toggle sets boolean (0/1) or raw number.
-
-        // Score summation
         let score = 0;
-
-        // GCS Logic
-        if (gcs <= 4) score += 2;
-        else if (gcs <= 12) score += 1;
-
+        if (gcs <= 4) score += 2; else if (gcs <= 12) score += 1;
         if (volume >= 30) score += 1;
-        if (ivh === 1) score += 1; // Intraventricular Hemorrhage Yes
-        if (infratentorial === 1) score += 1; // Infratentorial origin Yes
+        if (ivh === 1) score += 1;
+        if (infratentorial === 1) score += 1;
         if (age >= 80) score += 1;
-
-        let mortality = "0%";
-        switch (score) {
-            case 0: mortality = "0%"; break;
-            case 1: mortality = "%13"; break;
-            case 2: mortality = "%26"; break;
-            case 3: mortality = "%72"; break;
-            case 4: mortality = "%97"; break;
-            case 5: mortality = "%100"; break;
-            case 6: mortality = "%100"; break;
-        }
-
-        setCalcResult({
-            main: `ICH Skoru: ${score}`,
-            detail: `Tahmini 30 Günlük Mortalite: ${mortality}`
-        });
+        const mortalityMap: Record<number, string> = { 0: "0%", 1: "%13", 2: "%26", 3: "%72", 4: "%97", 5: "%100", 6: "%100" };
+        setCalcResult({ main: `ICH Skoru: ${score}`, detail: `Tahmini 30 Günlük Mortalite: ${mortalityMap[score] ?? "%100"}` });
     };
 
     const calculateTIRADS = () => {
         const { composition, echogenicity, shape, margin, echogenicfoci } = calcValues;
-        // Simple summation. UI must provide point values.
-        let total = (composition || 0) + (echogenicity || 0) + (shape || 0) + (margin || 0) + (echogenicfoci || 0);
+        const total = (composition || 0) + (echogenicity || 0) + (shape || 0) + (margin || 0) + (echogenicfoci || 0);
+        const tr = total === 0 ? "TR1 (Benign)" : total < 3 ? "TR2 (Şüpheli Değil)" : total < 4 ? "TR3 (Hafif Şüpheli)" : total < 7 ? "TR4 (Orta Şüpheli)" : "TR5 (Yüksek Şüpheli)";
+        const rec = total === 0 ? "İİAB gerekmez." : total < 3 ? "İİAB gerekmez." : total < 4 ? "≥2.5cm ise İİAB, ≥1.5cm ise Takip." : total < 7 ? "≥1.5cm ise İİAB, ≥1cm ise Takip." : "≥1cm ise İİAB, ≥0.5cm ise Takip.";
+        setCalcResult({ main: `${tr} (Puan: ${total})`, detail: rec });
+    };
 
-        let tr = "";
-        let rec = "";
-
-        if (total === 0) { tr = "TR1 (Benign)"; rec = "İİAB gerekmez."; }
-        else if (total < 3) { tr = "TR2 (Şüpheli Değil)"; rec = "İİAB gerekmez."; }
-        else if (total < 4) { tr = "TR3 (Hafif Şüpheli)"; rec = "≥2.5cm ise İİAB, ≥1.5cm ise Takip."; }
-        else if (total < 7) { tr = "TR4 (Orta Şüpheli)"; rec = "≥1.5cm ise İİAB, ≥1cm ise Takip."; }
-        else { tr = "TR5 (Yüksek Şüpheli)"; rec = "≥1cm ise İİAB, ≥0.5cm ise Takip."; }
-
-        setCalcResult({
-            main: `${tr} (Puan: ${total})`,
-            detail: rec
+    // ── Copy to clipboard helper ─────────────────────────────────
+    const copyToClipboard = (text: string, type: 'findings' | 'impression') => {
+        navigator.clipboard.writeText(text).then(() => {
+            setCopyFeedback(type);
+            setTimeout(() => setCopyFeedback(null), 1800);
         });
     };
 
@@ -196,59 +163,39 @@ export function ToolboxMode() {
         <div className="h-full flex flex-col animate-in fade-in duration-500">
             {/* Header Tabs */}
             <div className="flex justify-center mb-6">
-                <div className="bg-zinc-900/50 p-1 rounded-xl border border-white/10 flex gap-1">
-                    <button
-                        onClick={() => setActiveTab('ruler')}
-                        className={cn(
-                            "flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all",
-                            activeTab === 'ruler'
-                                ? "bg-cyan-600 text-white shadow-lg"
-                                : "text-zinc-400 hover:text-white hover:bg-white/5"
-                        )}
-                    >
-                        <Ruler className="w-4 h-4" />
-                        Normal Değerler (Cetvel)
+                <div className="bg-zinc-900/50 p-1 rounded-xl border border-white/10 flex gap-1 flex-wrap justify-center">
+                    <button onClick={() => setActiveTab('ruler')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'ruler' ? "bg-cyan-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
+                        <Ruler className="w-4 h-4" /> Normal Değerler
                     </button>
-                    <button
-                        onClick={() => setActiveTab('calc')}
-                        className={cn(
-                            "flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all",
-                            activeTab === 'calc'
-                                ? "bg-purple-600 text-white shadow-lg"
-                                : "text-zinc-400 hover:text-white hover:bg-white/5"
-                        )}
-                    >
-                        <CalcIcon className="w-4 h-4" />
-                        Hesaplayıcılar
+                    <button onClick={() => setActiveTab('calc')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'calc' ? "bg-purple-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
+                        <CalcIcon className="w-4 h-4" /> Hesaplayıcılar
+                    </button>
+                    <button onClick={() => setActiveTab('rads')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'rads' ? "bg-emerald-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
+                        <ShieldCheck className="w-4 h-4" /> RADS
+                    </button>
+                    <button onClick={() => setActiveTab('templates')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'templates' ? "bg-sky-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
+                        <FileText className="w-4 h-4" /> Şablonlar
+                    </button>
+                    <button onClick={() => setActiveTab('protocols')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'protocols' ? "bg-amber-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
+                        <FlaskConical className="w-4 h-4" /> Protokoller
                     </button>
                 </div>
             </div>
 
-            {/* TAB CONTENT: RULER */}
+            {/* ─── TAB: RULER ─────────────────────────────────────── */}
             {activeTab === 'ruler' && (
                 <div className="max-w-3xl mx-auto w-full space-y-4">
-                    {/* Search */}
                     <div className="relative">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
-                        <input
-                            type="text"
-                            placeholder="Ölçüm ara (örn: koletok, dalak, aorta)..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-3 pl-10 pr-4 text-zinc-200 placeholder:text-zinc-600 focus:outline-none focus:border-cyan-500 transition-colors"
-                        />
+                        <input type="text" placeholder="Ölçüm ara (örn: koletok, dalak, aorta)..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-3 pl-10 pr-4 text-zinc-200 placeholder:text-zinc-600 focus:outline-none focus:border-cyan-500 transition-colors" />
                     </div>
-
-                    {/* Results */}
                     <div className="space-y-6">
                         {Object.keys(groupedMeasurements).length === 0 ? (
                             <div className="text-center py-10 text-zinc-500">Sonuç bulunamadı.</div>
                         ) : (
                             Object.entries(groupedMeasurements).map(([organ, items]) => (
                                 <div key={organ} className="bg-zinc-900/40 rounded-2xl border border-white/5 overflow-hidden">
-                                    <div className="px-4 py-2 bg-white/5 border-b border-white/5 text-xs font-bold text-zinc-400 uppercase tracking-widest">
-                                        {organ}
-                                    </div>
+                                    <div className="px-4 py-2 bg-white/5 border-b border-white/5 text-xs font-bold text-zinc-400 uppercase tracking-widest">{organ}</div>
                                     <div className="divide-y divide-white/5">
                                         {items.map(item => (
                                             <div key={item.id} className="p-4 hover:bg-white/5 transition-colors flex flex-col md:flex-row md:items-center justify-between gap-2">
@@ -257,16 +204,8 @@ export function ToolboxMode() {
                                                     {item.note && <p className="text-xs text-zinc-500 italic mt-0.5">{item.note}</p>}
                                                 </div>
                                                 <div className="flex flex-col items-end gap-1 text-right">
-                                                    <div className="text-sm">
-                                                        <span className="text-zinc-500 text-xs mr-2">Normal:</span>
-                                                        <span className="font-mono text-cyan-400 font-bold">{item.normalValues}</span>
-                                                    </div>
-                                                    {item.pathologicalThreshold && (
-                                                        <div className="text-sm">
-                                                            <span className="text-zinc-500 text-xs mr-2">Patolojik:</span>
-                                                            <span className="font-mono text-red-400 font-bold">{item.pathologicalThreshold}</span>
-                                                        </div>
-                                                    )}
+                                                    <div className="text-sm"><span className="text-zinc-500 text-xs mr-2">Normal:</span><span className="font-mono text-cyan-400 font-bold">{item.normalValues}</span></div>
+                                                    {item.pathologicalThreshold && <div className="text-sm"><span className="text-zinc-500 text-xs mr-2">Patolojik:</span><span className="font-mono text-red-400 font-bold">{item.pathologicalThreshold}</span></div>}
                                                 </div>
                                             </div>
                                         ))}
@@ -278,29 +217,70 @@ export function ToolboxMode() {
                 </div>
             )}
 
-            {/* TAB CONTENT: CALCULATOR */}
+            {/* ─── TAB: RADS ──────────────────────────────────────── */}
+            {activeTab === 'rads' && (
+                <div className="max-w-4xl mx-auto w-full flex gap-6">
+                    <div className="w-1/3 space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-zinc-700">
+                        {RADS_SYSTEMS.map(sys => (
+                            <button key={sys.id} onClick={() => setActiveRads(sys.id)} className={cn("w-full text-left p-3 rounded-xl border transition-all text-sm", activeRads === sys.id ? "bg-emerald-500/20 border-emerald-500 text-emerald-200 shadow-[0_0_10px_rgba(16,185,129,0.15)]" : "bg-zinc-900/40 border-zinc-800 text-zinc-400 hover:bg-zinc-800")}>
+                                <div className="font-bold">{sys.name}</div>
+                                <div className="text-[10px] opacity-60 mt-0.5">{sys.organ} — {sys.modality}</div>
+                            </button>
+                        ))}
+                    </div>
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px] overflow-y-auto">
+                        {(() => {
+                            const sys: RadsSystem | undefined = RADS_SYSTEMS.find(s => s.id === activeRads);
+                            if (!sys) return null;
+                            return (
+                                <div className="space-y-4">
+                                    <div className="pb-4 border-b border-white/5">
+                                        <div className="flex items-start justify-between gap-3">
+                                            <div>
+                                                <h3 className="text-xl font-extrabold text-white">{sys.name}</h3>
+                                                <p className="text-xs text-zinc-500 mt-1">{sys.organ} · {sys.modality}</p>
+                                            </div>
+                                            <span className="flex-shrink-0 text-[10px] px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">{sys.categories.length} Kategori</span>
+                                        </div>
+                                        <p className="text-sm text-zinc-400 mt-2 leading-relaxed">{sys.description}</p>
+                                        {sys.note && <p className="text-[11px] text-amber-400/70 mt-2 italic border-l-2 border-amber-500/30 pl-2">{sys.note}</p>}
+                                    </div>
+                                    <div className="space-y-2">
+                                        {sys.categories.map(cat => {
+                                            const colors = RADS_COLOR_MAP[cat.color];
+                                            return (
+                                                <div key={cat.category} className="flex gap-3 p-3 bg-zinc-900/50 rounded-xl border border-white/5 hover:border-white/10 transition-colors">
+                                                    <div className={cn("w-1 flex-shrink-0 rounded-full", colors.bar)} />
+                                                    <div className="flex-1 min-w-0">
+                                                        <div className="flex items-center gap-2 flex-wrap mb-1">
+                                                            <span className={cn("text-xs font-bold px-2 py-0.5 rounded border", colors.badge)}>{cat.category}</span>
+                                                            <span className="text-sm font-semibold text-zinc-200">{cat.label}</span>
+                                                            {cat.risk && <span className={cn("text-[11px] font-mono ml-auto", colors.text)}>{cat.risk}</span>}
+                                                        </div>
+                                                        <p className="text-xs text-zinc-400 leading-relaxed">{cat.management}</p>
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            );
+                        })()}
+                    </div>
+                </div>
+            )}
+
+            {/* ─── TAB: CALCULATOR ────────────────────────────────── */}
             {activeTab === 'calc' && (
                 <div className="max-w-4xl mx-auto w-full flex gap-6">
-                    {/* Calc Selector */}
                     <div className="w-1/3 space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-zinc-700">
                         {RADIOLOGY_CALCULATORS.map(c => (
-                            <button
-                                key={c.id}
-                                onClick={() => { setActiveCalc(c.id); setCalcResult(null); setCalcValues({}); }}
-                                className={cn(
-                                    "w-full text-left p-3 rounded-xl border transition-all text-sm",
-                                    activeCalc === c.id
-                                        ? "bg-purple-500/20 border-purple-500 text-purple-200 shadow-[0_0_10px_rgba(168,85,247,0.2)]"
-                                        : "bg-zinc-900/40 border-zinc-800 text-zinc-400 hover:bg-zinc-800"
-                                )}
-                            >
+                            <button key={c.id} onClick={() => { setActiveCalc(c.id); setCalcResult(null); setCalcValues({}); }} className={cn("w-full text-left p-3 rounded-xl border transition-all text-sm", activeCalc === c.id ? "bg-purple-500/20 border-purple-500 text-purple-200 shadow-[0_0_10px_rgba(168,85,247,0.2)]" : "bg-zinc-900/40 border-zinc-800 text-zinc-400 hover:bg-zinc-800")}>
                                 <div className="font-semibold">{c.name}</div>
                                 <div className="text-[10px] opacity-60 truncate">{c.description}</div>
                             </button>
                         ))}
                     </div>
-
-                    {/* Active Calc Workspace */}
                     <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px]">
                         {!activeCalc ? (
                             <div className="h-full flex flex-col items-center justify-center text-zinc-600">
@@ -309,101 +289,56 @@ export function ToolboxMode() {
                             </div>
                         ) : (
                             <div className="w-full max-w-sm mx-auto space-y-6">
-                                <h3 className="text-xl font-bold text-white text-center mb-6 pb-4 border-b border-white/5">
-                                    {RADIOLOGY_CALCULATORS.find(c => c.id === activeCalc)?.name}
-                                </h3>
+                                <h3 className="text-xl font-bold text-white text-center mb-6 pb-4 border-b border-white/5">{RADIOLOGY_CALCULATORS.find(c => c.id === activeCalc)?.name}</h3>
 
-                                {/* 1. ADRENAL */}
                                 {activeCalc === 'adrenal_washout' && (
                                     <>
                                         <div className="space-y-4">
-                                            <div>
-                                                <label className="text-xs text-zinc-400 block mb-1">Pre-Kontrast (Native) HU</label>
-                                                <input type="number" onChange={(e) => handleCalcChange('pre', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none" placeholder="Örn: 30" />
-                                            </div>
-                                            <div>
-                                                <label className="text-xs text-zinc-400 block mb-1">Venöz Faz (Portal) HU</label>
-                                                <input type="number" onChange={(e) => handleCalcChange('ven', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none" placeholder="Örn: 80" />
-                                            </div>
-                                            <div>
-                                                <label className="text-xs text-zinc-400 block mb-1">Geç Faz (15dk Delayed) HU</label>
-                                                <input type="number" onChange={(e) => handleCalcChange('del', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none" placeholder="Örn: 40" />
-                                            </div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">Pre-Kontrast (Native) HU</label><input type="number" onChange={(e) => handleCalcChange('pre', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none" placeholder="Örn: 30" /></div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">Venöz Faz (Portal) HU</label><input type="number" onChange={(e) => handleCalcChange('ven', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none" placeholder="Örn: 80" /></div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">Geç Faz (15dk Delayed) HU</label><input type="number" onChange={(e) => handleCalcChange('del', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none" placeholder="Örn: 40" /></div>
                                         </div>
                                         <button onClick={calculateAdrenal} className="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-xl font-bold transition-all shadow-lg shadow-purple-900/20 active:scale-95">Hesapla</button>
                                     </>
                                 )}
 
-                                {/* 2. VOLUME (Thyoid/Prostate) */}
                                 {(activeCalc === 'thyroid_volume' || activeCalc === 'prostate_volume') && (
                                     <>
-                                        <div className="space-y-4">
-                                            <div className="grid grid-cols-3 gap-3">
-                                                <div>
-                                                    <label className="text-xs text-zinc-400 block mb-1">Boy (cm)</label>
-                                                    <input type="number" onChange={(e) => handleCalcChange('l', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" />
-                                                </div>
-                                                <div>
-                                                    <label className="text-xs text-zinc-400 block mb-1">En (cm)</label>
-                                                    <input type="number" onChange={(e) => handleCalcChange('w', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" />
-                                                </div>
-                                                <div>
-                                                    <label className="text-xs text-zinc-400 block mb-1">Yükseklik (cm)</label>
-                                                    <input type="number" onChange={(e) => handleCalcChange('h', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" />
-                                                </div>
-                                            </div>
+                                        <div className="grid grid-cols-3 gap-3">
+                                            <div><label className="text-xs text-zinc-400 block mb-1">Boy (cm)</label><input type="number" onChange={(e) => handleCalcChange('l', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" /></div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">En (cm)</label><input type="number" onChange={(e) => handleCalcChange('w', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" /></div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">Yükseklik (cm)</label><input type="number" onChange={(e) => handleCalcChange('h', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" /></div>
                                         </div>
                                         <button onClick={calculateVolume} className="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-xl font-bold transition-all shadow-lg shadow-purple-900/20">Hacim Hesapla</button>
                                     </>
                                 )}
 
-                                {/* 3. NASCET */}
                                 {activeCalc === 'nascet_stenosis' && (
                                     <>
                                         <div className="space-y-4">
-                                            <div>
-                                                <label className="text-xs text-zinc-400 block mb-1">Distal Normal Lümen Çapı (mm)</label>
-                                                <input type="number" onChange={(e) => handleCalcChange('distal', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" />
-                                            </div>
-                                            <div>
-                                                <label className="text-xs text-zinc-400 block mb-1">En Dar Kısım Çapı (mm)</label>
-                                                <input type="number" onChange={(e) => handleCalcChange('stenosis', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" />
-                                            </div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">Distal Normal Lümen Çapı (mm)</label><input type="number" onChange={(e) => handleCalcChange('distal', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" /></div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">En Dar Kısım Çapı (mm)</label><input type="number" onChange={(e) => handleCalcChange('stenosis', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" /></div>
                                         </div>
                                         <button onClick={calculateNascet} className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold transition-all shadow-lg shadow-indigo-900/20">Darlık Hesapla</button>
                                     </>
                                 )}
 
-                                {/* 4. RECIST */}
                                 {activeCalc === 'recist' && (
                                     <>
                                         <div className="space-y-4">
-                                            <div>
-                                                <label className="text-xs text-zinc-400 block mb-1">Bazal Kısa Aks/Çap (mm)</label>
-                                                <input type="number" onChange={(e) => handleCalcChange('baseline', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" />
-                                            </div>
-                                            <div>
-                                                <label className="text-xs text-zinc-400 block mb-1">Güncel Kısa Aks/Çap (mm)</label>
-                                                <input type="number" onChange={(e) => handleCalcChange('current', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" />
-                                            </div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">Bazal Kısa Aks/Çap (mm)</label><input type="number" onChange={(e) => handleCalcChange('baseline', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" /></div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">Güncel Kısa Aks/Çap (mm)</label><input type="number" onChange={(e) => handleCalcChange('current', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" /></div>
                                         </div>
                                         <button onClick={calculateRECIST} className="w-full py-3 bg-rose-600 hover:bg-rose-500 text-white rounded-xl font-bold transition-all shadow-lg shadow-rose-900/20">Yanıt Değerlendir</button>
                                     </>
                                 )}
 
-                                {/* 5. EGFR */}
                                 {activeCalc === 'egfr_ckd_epi' && (
                                     <>
                                         <div className="space-y-4">
                                             <div className="grid grid-cols-2 gap-3">
-                                                <div>
-                                                    <label className="text-xs text-zinc-400 block mb-1">Kreatinin (mg/dL)</label>
-                                                    <input type="number" step="0.1" onChange={(e) => handleCalcChange('creat', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" />
-                                                </div>
-                                                <div>
-                                                    <label className="text-xs text-zinc-400 block mb-1">Yaş</label>
-                                                    <input type="number" onChange={(e) => handleCalcChange('age', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" />
-                                                </div>
+                                                <div><label className="text-xs text-zinc-400 block mb-1">Kreatinin (mg/dL)</label><input type="number" step="0.1" onChange={(e) => handleCalcChange('creat', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" /></div>
+                                                <div><label className="text-xs text-zinc-400 block mb-1">Yaş</label><input type="number" onChange={(e) => handleCalcChange('age', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" /></div>
                                             </div>
                                             <div>
                                                 <label className="text-xs text-zinc-400 block mb-2">Cinsiyet</label>
@@ -417,121 +352,224 @@ export function ToolboxMode() {
                                     </>
                                 )}
 
-                                {/* 6. ICH SCORE */}
                                 {activeCalc === 'ich_score' && (
                                     <>
                                         <div className="space-y-4 text-sm">
-                                            <div className="flex items-center justify-between">
-                                                <span>GCS Skoru</span>
-                                                <select className="bg-black/40 border border-zinc-700 rounded p-1 text-xs w-32" onChange={e => handleCalcChange('gcs', e.target.value)}>
-                                                    <option value="15">13-15 (0 puan)</option>
-                                                    <option value="12">5-12 (1 puan)</option>
-                                                    <option value="3">3-4 (2 puan)</option>
-                                                </select>
-                                            </div>
-                                            <div className="flex items-center justify-between">
-                                                <span>Kanama Hacmi</span>
-                                                <select className="bg-black/40 border border-zinc-700 rounded p-1 text-xs w-32" onChange={e => handleCalcChange('volume', e.target.value)}>
-                                                    <option value="10">&lt; 30 ml (0)</option>
-                                                    <option value="40">≥ 30 ml (1)</option>
-                                                </select>
-                                            </div>
-                                            <div className="flex items-center justify-between">
-                                                <span>Intraventriküler (IVH)</span>
-                                                <div className="flex bg-black/40 p-0.5 rounded border border-zinc-700">
-                                                    <button onClick={() => handleCalcChange('ivh', '0')} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues.ivh !== 1 ? "bg-zinc-600 text-white" : "text-zinc-500")}>Hayır</button>
-                                                    <button onClick={() => handleCalcChange('ivh', '1')} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues.ivh === 1 ? "bg-zinc-600 text-white" : "text-zinc-500")}>Evet (+1)</button>
-                                                </div>
-                                            </div>
-                                            <div className="flex items-center justify-between">
-                                                <span>Infratentoryal Yerleşim</span>
-                                                <div className="flex bg-black/40 p-0.5 rounded border border-zinc-700">
-                                                    <button onClick={() => handleCalcChange('infratentorial', '0')} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues.infratentorial !== 1 ? "bg-zinc-600 text-white" : "text-zinc-500")}>Hayır</button>
-                                                    <button onClick={() => handleCalcChange('infratentorial', '1')} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues.infratentorial === 1 ? "bg-zinc-600 text-white" : "text-zinc-500")}>Evet (+1)</button>
-                                                </div>
-                                            </div>
-                                            <div className="flex items-center justify-between">
-                                                <span>Yaş ≥ 80</span>
-                                                <div className="flex bg-black/40 p-0.5 rounded border border-zinc-700">
-                                                    <button onClick={() => handleCalcChange('age', '70')} className={cn("px-2 py-0.5 rounded text-[10px]", (!calcValues.age || calcValues.age < 80) ? "bg-zinc-600 text-white" : "text-zinc-500")}>Hayır</button>
-                                                    <button onClick={() => handleCalcChange('age', '85')} className={cn("px-2 py-0.5 rounded text-[10px]", (calcValues.age && calcValues.age >= 80) ? "bg-zinc-600 text-white" : "text-zinc-500")}>Evet (+1)</button>
-                                                </div>
-                                            </div>
+                                            <div className="flex items-center justify-between"><span>GCS Skoru</span><select className="bg-black/40 border border-zinc-700 rounded p-1 text-xs w-32" onChange={e => handleCalcChange('gcs', e.target.value)}><option value="15">13-15 (0 puan)</option><option value="12">5-12 (1 puan)</option><option value="3">3-4 (2 puan)</option></select></div>
+                                            <div className="flex items-center justify-between"><span>Kanama Hacmi</span><select className="bg-black/40 border border-zinc-700 rounded p-1 text-xs w-32" onChange={e => handleCalcChange('volume', e.target.value)}><option value="10">&lt; 30 ml (0)</option><option value="40">≥ 30 ml (1)</option></select></div>
+                                            <div className="flex items-center justify-between"><span>Intraventriküler (IVH)</span><div className="flex bg-black/40 p-0.5 rounded border border-zinc-700"><button onClick={() => handleCalcChange('ivh', '0')} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues.ivh !== 1 ? "bg-zinc-600 text-white" : "text-zinc-500")}>Hayır</button><button onClick={() => handleCalcChange('ivh', '1')} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues.ivh === 1 ? "bg-zinc-600 text-white" : "text-zinc-500")}>Evet (+1)</button></div></div>
+                                            <div className="flex items-center justify-between"><span>Infratentoryal Yerleşim</span><div className="flex bg-black/40 p-0.5 rounded border border-zinc-700"><button onClick={() => handleCalcChange('infratentorial', '0')} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues.infratentorial !== 1 ? "bg-zinc-600 text-white" : "text-zinc-500")}>Hayır</button><button onClick={() => handleCalcChange('infratentorial', '1')} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues.infratentorial === 1 ? "bg-zinc-600 text-white" : "text-zinc-500")}>Evet (+1)</button></div></div>
+                                            <div className="flex items-center justify-between"><span>Yaş ≥ 80</span><div className="flex bg-black/40 p-0.5 rounded border border-zinc-700"><button onClick={() => handleCalcChange('age', '70')} className={cn("px-2 py-0.5 rounded text-[10px]", (!calcValues.age || calcValues.age < 80) ? "bg-zinc-600 text-white" : "text-zinc-500")}>Hayır</button><button onClick={() => handleCalcChange('age', '85')} className={cn("px-2 py-0.5 rounded text-[10px]", (calcValues.age && calcValues.age >= 80) ? "bg-zinc-600 text-white" : "text-zinc-500")}>Evet (+1)</button></div></div>
                                         </div>
                                         <button onClick={calculateICH} className="w-full py-3 bg-red-800 hover:bg-red-700 text-white rounded-xl font-bold transition-all mt-4 border border-red-500/30 shadow-lg shadow-red-900/20">Mortalite Hesapla</button>
                                     </>
                                 )}
 
-                                {/* 7. TI-RADS */}
                                 {activeCalc === 'ti_rads' && (
                                     <>
                                         <div className="space-y-4 text-sm max-h-[300px] overflow-y-auto pr-1">
-                                            {/* Composition */}
-                                            <div className="space-y-1">
-                                                <label className="text-[10px] uppercase text-zinc-500 font-bold">Yapı (Composition)</label>
-                                                <select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('composition', e.target.value)}>
-                                                    <option value="0">Kistik / Tamamen Spongiform (0)</option>
-                                                    <option value="0">Karışık Kistik/Solid (0)</option>
-                                                    <option value="2">Solid veya neredeyse tamamen solid (+2)</option>
-                                                </select>
-                                            </div>
-                                            {/* Echogenicity */}
-                                            <div className="space-y-1">
-                                                <label className="text-[10px] uppercase text-zinc-500 font-bold">Ekojenite</label>
-                                                <select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('echogenicity', e.target.value)}>
-                                                    <option value="0">Anekoik (0)</option>
-                                                    <option value="1">Hiperekoik / İzoekoik (+1)</option>
-                                                    <option value="2">Hipoekoik (+2)</option>
-                                                    <option value="3">Çok Hipoekoik (+3)</option>
-                                                </select>
-                                            </div>
-                                            {/* Shape */}
-                                            <div className="space-y-1">
-                                                <label className="text-[10px] uppercase text-zinc-500 font-bold">Şekil</label>
-                                                <select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('shape', e.target.value)}>
-                                                    <option value="0">Geniş (W ≥ T) (0)</option>
-                                                    <option value="3">Uzun (Taller-than-wide) (+3)</option>
-                                                </select>
-                                            </div>
-                                            {/* Margin */}
-                                            <div className="space-y-1">
-                                                <label className="text-[10px] uppercase text-zinc-500 font-bold">Kenar</label>
-                                                <select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('margin', e.target.value)}>
-                                                    <option value="0">Düzgün / Belirsiz (0)</option>
-                                                    <option value="2">Lobüle / Düzensiz (+2)</option>
-                                                    <option value="3">Ekstratiroidal Yayılım (+3)</option>
-                                                </select>
-                                            </div>
-                                            {/* Echogenic Foci */}
-                                            <div className="space-y-1">
-                                                <label className="text-[10px] uppercase text-zinc-500 font-bold">Ekojenik Odak</label>
-                                                <select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('echogenicfoci', e.target.value)}>
-                                                    <option value="0">Yok (0)</option>
-                                                    <option value="1">Makrokalsifikasyon (+1)</option>
-                                                    <option value="2">Periferal (Rim) kalsifikasyon (+2)</option>
-                                                    <option value="3">Punctate eksojenik odaklar (+3)</option>
-                                                </select>
-                                            </div>
+                                            <div className="space-y-1"><label className="text-[10px] uppercase text-zinc-500 font-bold">Yapı (Composition)</label><select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('composition', e.target.value)}><option value="0">Kistik / Tamamen Spongiform (0)</option><option value="0">Karışık Kistik/Solid (0)</option><option value="2">Solid veya neredeyse tamamen solid (+2)</option></select></div>
+                                            <div className="space-y-1"><label className="text-[10px] uppercase text-zinc-500 font-bold">Ekojenite</label><select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('echogenicity', e.target.value)}><option value="0">Anekoik (0)</option><option value="1">Hiperekoik / İzoekoik (+1)</option><option value="2">Hipoekoik (+2)</option><option value="3">Çok Hipoekoik (+3)</option></select></div>
+                                            <div className="space-y-1"><label className="text-[10px] uppercase text-zinc-500 font-bold">Şekil</label><select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('shape', e.target.value)}><option value="0">Geniş (W ≥ T) (0)</option><option value="3">Uzun (Taller-than-wide) (+3)</option></select></div>
+                                            <div className="space-y-1"><label className="text-[10px] uppercase text-zinc-500 font-bold">Kenar</label><select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('margin', e.target.value)}><option value="0">Düzgün / Belirsiz (0)</option><option value="2">Lobüle / Düzensiz (+2)</option><option value="3">Ekstratiroidal Yayılım (+3)</option></select></div>
+                                            <div className="space-y-1"><label className="text-[10px] uppercase text-zinc-500 font-bold">Ekojenik Odak</label><select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('echogenicfoci', e.target.value)}><option value="0">Yok (0)</option><option value="1">Makrokalsifikasyon (+1)</option><option value="2">Periferal (Rim) kalsifikasyon (+2)</option><option value="3">Punctate eksojenik odaklar (+3)</option></select></div>
                                         </div>
                                         <button onClick={calculateTIRADS} className="w-full py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-xl font-bold transition-all mt-2 border border-amber-500/30 shadow-lg shadow-amber-900/20">Risk Hesapla</button>
                                     </>
                                 )}
 
-
-                                {/* Result Display */}
                                 {calcResult && (
                                     <div className="mt-6 p-5 bg-gradient-to-br from-zinc-800 to-zinc-900 border border-white/10 rounded-xl text-center animate-in zoom-in slide-in-from-bottom-2 duration-300 shadow-xl">
                                         <div className="text-xs text-zinc-400 font-bold uppercase tracking-widest mb-2">Sonuç</div>
                                         <div className="text-xl font-bold text-white mb-2">{calcResult.main}</div>
-                                        {calcResult.detail && (
-                                            <div className="text-sm text-cyan-400 font-medium whitespace-pre-wrap px-4 py-2 bg-cyan-950/30 rounded border border-cyan-500/20 inline-block min-w-[200px]">
-                                                {calcResult.detail}
-                                            </div>
-                                        )}
+                                        {calcResult.detail && <div className="text-sm text-cyan-400 font-medium whitespace-pre-wrap px-4 py-2 bg-cyan-950/30 rounded border border-cyan-500/20 inline-block min-w-[200px]">{calcResult.detail}</div>}
                                     </div>
                                 )}
                             </div>
                         )}
+                    </div>
+                </div>
+            )}
+
+            {/* ─── TAB: TEMPLATES ─────────────────────────────────── */}
+            {activeTab === 'templates' && (
+                <div className="max-w-4xl mx-auto w-full flex gap-6">
+                    {/* Left: list */}
+                    <div className="w-1/3 flex flex-col gap-2 max-h-[620px]">
+                        <div className="relative flex-shrink-0">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
+                            <input type="text" placeholder="Şablon ara..." value={templateSearch} onChange={e => setTemplateSearch(e.target.value)} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-2.5 pl-9 pr-3 text-zinc-200 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-sky-500 transition-colors" />
+                        </div>
+                        <div className="flex-1 overflow-y-auto space-y-3 pr-1 scrollbar-thin scrollbar-thumb-zinc-700">
+                            {Object.entries(groupedTemplates).map(([organ, templates]) => (
+                                <div key={organ}>
+                                    <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 px-1 mb-1">{organ}</div>
+                                    <div className="space-y-1">
+                                        {templates.map(t => (
+                                            <button key={t.pathologyId} onClick={() => setActiveTemplate(t.pathologyId)} className={cn("w-full text-left px-3 py-2 rounded-lg border transition-all text-sm", activeTemplate === t.pathologyId ? "bg-sky-500/20 border-sky-500 text-sky-200" : "bg-zinc-900/40 border-zinc-800 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200")}>
+                                                {t.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                            {Object.keys(groupedTemplates).length === 0 && <div className="text-center py-8 text-zinc-600 text-sm">Sonuç bulunamadı.</div>}
+                        </div>
+                    </div>
+
+                    {/* Right: detail */}
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px] overflow-y-auto">
+                        {!activeTemplate ? (
+                            <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-3">
+                                <FileText className="w-12 h-12 opacity-20" />
+                                <p className="text-sm">Sol taraftan bir şablon seçin.</p>
+                            </div>
+                        ) : (() => {
+                            const t = REPORT_TEMPLATES[activeTemplate];
+                            if (!t) return null;
+                            return (
+                                <div className="space-y-5">
+                                    <div className="pb-4 border-b border-white/5">
+                                        <div className="flex items-start justify-between gap-3">
+                                            <div>
+                                                <h3 className="text-lg font-extrabold text-white">{t.label}</h3>
+                                                <p className="text-xs text-zinc-500 mt-0.5">{t.organ}</p>
+                                            </div>
+                                            <span className="text-[10px] px-2 py-1 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 font-semibold flex-shrink-0">Şablon</span>
+                                        </div>
+                                        <p className="text-xs text-amber-400/70 mt-2 italic border-l-2 border-amber-500/30 pl-2">{t.technique}</p>
+                                    </div>
+
+                                    {/* Findings */}
+                                    <div>
+                                        <div className="flex items-center justify-between mb-1.5">
+                                            <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Bulgular (Findings)</span>
+                                            <button onClick={() => copyToClipboard(t.findingsTemplate, 'findings')} className={cn("text-[10px] px-2 py-0.5 rounded border transition-all", copyFeedback === 'findings' ? "bg-sky-500/20 text-sky-300 border-sky-500/40" : "bg-zinc-800 text-zinc-400 border-zinc-700 hover:text-sky-300 hover:border-sky-500/40")}>
+                                                {copyFeedback === 'findings' ? "✓ Kopyalandı" : "Kopyala"}
+                                            </button>
+                                        </div>
+                                        <div className="bg-zinc-950/60 border border-zinc-700/50 rounded-xl p-4 text-sm text-zinc-300 leading-relaxed whitespace-pre-wrap font-mono">
+                                            {t.findingsTemplate}
+                                        </div>
+                                    </div>
+
+                                    {/* Impression */}
+                                    <div>
+                                        <div className="flex items-center justify-between mb-1.5">
+                                            <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Sonuç / Yorum (Impression)</span>
+                                            <button onClick={() => copyToClipboard(t.impressionTemplate, 'impression')} className={cn("text-[10px] px-2 py-0.5 rounded border transition-all", copyFeedback === 'impression' ? "bg-sky-500/20 text-sky-300 border-sky-500/40" : "bg-zinc-800 text-zinc-400 border-zinc-700 hover:text-sky-300 hover:border-sky-500/40")}>
+                                                {copyFeedback === 'impression' ? "✓ Kopyalandı" : "Kopyala"}
+                                            </button>
+                                        </div>
+                                        <div className="bg-zinc-950/60 border border-zinc-700/50 rounded-xl p-4 text-sm text-zinc-300 leading-relaxed whitespace-pre-wrap font-mono">
+                                            {t.impressionTemplate}
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })()}
+                    </div>
+                </div>
+            )}
+
+            {/* ─── TAB: PROTOCOLS ─────────────────────────────────── */}
+            {activeTab === 'protocols' && (
+                <div className="max-w-4xl mx-auto w-full flex gap-6">
+                    {/* Left: list */}
+                    <div className="w-1/3 flex flex-col gap-2 max-h-[620px]">
+                        <div className="relative flex-shrink-0">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
+                            <input type="text" placeholder="Protokol ara..." value={protocolSearch} onChange={e => setProtocolSearch(e.target.value)} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-2.5 pl-9 pr-3 text-zinc-200 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-amber-500 transition-colors" />
+                        </div>
+                        <div className="flex-1 overflow-y-auto space-y-3 pr-1 scrollbar-thin scrollbar-thumb-zinc-700">
+                            {Object.entries(groupedProtocols).map(([organ, protocols]) => (
+                                <div key={organ}>
+                                    <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 px-1 mb-1">{organ}</div>
+                                    <div className="space-y-1">
+                                        {protocols.map(p => (
+                                            <button key={p.id} onClick={() => setActiveProtocol(p.id)} className={cn("w-full text-left px-3 py-2 rounded-lg border transition-all text-sm", activeProtocol === p.id ? "bg-amber-500/20 border-amber-500 text-amber-200" : "bg-zinc-900/40 border-zinc-800 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200")}>
+                                                <div>{p.name}</div>
+                                                <div className="text-[10px] opacity-50 mt-0.5">{p.modality}</div>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                            {Object.keys(groupedProtocols).length === 0 && <div className="text-center py-8 text-zinc-600 text-sm">Sonuç bulunamadı.</div>}
+                        </div>
+                    </div>
+
+                    {/* Right: detail */}
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px] overflow-y-auto">
+                        {!activeProtocol ? (
+                            <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-3">
+                                <FlaskConical className="w-12 h-12 opacity-20" />
+                                <p className="text-sm">Sol taraftan bir protokol seçin.</p>
+                            </div>
+                        ) : (() => {
+                            const p = IMAGING_PROTOCOLS.find(pr => pr.id === activeProtocol);
+                            if (!p) return null;
+                            return (
+                                <div className="space-y-5">
+                                    {/* Header */}
+                                    <div className="pb-4 border-b border-white/5">
+                                        <div className="flex items-start justify-between gap-3">
+                                            <div>
+                                                <h3 className="text-lg font-extrabold text-white">{p.name}</h3>
+                                                <p className="text-xs text-zinc-500 mt-0.5">{p.organ} · {p.modality}</p>
+                                            </div>
+                                            <span className="text-[10px] px-2 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold flex-shrink-0">{p.steps.length} Adım</span>
+                                        </div>
+                                        <p className="text-xs text-zinc-400 mt-2 leading-relaxed italic">{p.indication}</p>
+                                    </div>
+
+                                    {/* Patient Prep */}
+                                    <div>
+                                        <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2">Hasta Hazırlığı</div>
+                                        <ul className="space-y-1">
+                                            {p.patientPrep.map((item, i) => (
+                                                <li key={i} className="flex gap-2 text-sm text-zinc-300">
+                                                    <span className="text-amber-500 flex-shrink-0 mt-0.5">•</span>
+                                                    <span>{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    {/* Steps */}
+                                    <div>
+                                        <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2">Çekim Adımları</div>
+                                        <div className="space-y-2">
+                                            {p.steps.map((step, i) => (
+                                                <div key={i} className="flex gap-3 p-3 bg-zinc-900/50 rounded-xl border border-white/5">
+                                                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 text-[10px] font-bold flex items-center justify-center border border-amber-500/30">{i + 1}</span>
+                                                    <div>
+                                                        <div className="text-sm font-semibold text-zinc-200">{step.step}</div>
+                                                        <div className="text-xs text-zinc-500 mt-0.5">{step.detail}</div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Contrast Info */}
+                                    {p.contrastInfo && (
+                                        <div className="p-3 bg-blue-500/5 border border-blue-500/20 rounded-xl">
+                                            <div className="text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-1">Kontrast Bilgisi</div>
+                                            <p className="text-xs text-zinc-300">{p.contrastInfo}</p>
+                                        </div>
+                                    )}
+
+                                    {/* Notes */}
+                                    {p.notes && (
+                                        <div className="p-3 bg-amber-500/5 border border-amber-500/20 rounded-xl">
+                                            <div className="text-[10px] font-bold uppercase tracking-widest text-amber-400 mb-1">Notlar</div>
+                                            <p className="text-xs text-zinc-300">{p.notes}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })()}
                     </div>
                 </div>
             )}
