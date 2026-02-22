@@ -117,4 +117,37 @@ export const RADS_SYSTEMS: RadsSystem[] = [
             { category: "NI-RADS 4", label: "Yeni / Uzak Metastaz", risk: "Yüksek", management: "Uzak metastaz veya yeni primer düşün. Multidisipliner onkoloji konsültasyonu.", color: "red" },
         ]
     },
+    {
+        id: "cad_rads",
+        name: "CAD-RADS 2.0",
+        organ: "Koroner Arterler",
+        modality: "Koroner BT Anjiyografi (KBTA)",
+        description: "Coronary Artery Disease – Reporting and Data System — Koroner BT anjiyografide aterosklerotik hastalık yükü ve darlık derecesini standardize eder.",
+        note: "CAD-RADS 2.0 (2022). Stenoz derecesine ek olarak N (non-diagnostic), HRP (high-risk plaque) ve S (stent) modifikatörleri kullanılır.",
+        categories: [
+            { category: "CAD-RADS 0", label: "Plak Yok — %0 Stenoz", risk: "0%", management: "Koroner ateroskleroz yok. Risk faktörü yönetimi. Rutin klinik takip.", color: "green" },
+            { category: "CAD-RADS 1", label: "Minimal — <%25 Stenoz", risk: "Çok Düşük", management: "Minimal plak yükü. Statin ve yaşam tarzı değişikliği önerilir. Kardiyoloji değerlendirmesi.", color: "green" },
+            { category: "CAD-RADS 2", label: "Hafif — %25–49 Stenoz", risk: "Düşük", management: "Hafif plak. Optimum medikal tedavi (statin, antiplatelet). Risk faktörü kontrolü.", color: "yellow" },
+            { category: "CAD-RADS 3", label: "Orta — %50–69 Stenoz", risk: "Orta", management: "Fonksiyonel değerlendirme (FFR-CT, stres testi) veya kardiyoloji konsültasyonu önerilir.", color: "orange" },
+            { category: "CAD-RADS 4A", label: "Ciddi — %70–99 Stenoz", risk: "Yüksek", management: "İnvazif koroner anjiyografi (ICA) veya FFR-CT. Revaskülarizasyon planlaması.", color: "red" },
+            { category: "CAD-RADS 4B", label: "Ciddi — Sol Ana / Proksimal LAD ≥ %50", risk: "Çok Yüksek", management: "Acil kardiyoloji konsültasyonu. ICA önerilir. CABG veya PCI planlaması.", color: "red" },
+            { category: "CAD-RADS 5", label: "Total Oklüzyon — %100 Stenoz", risk: "Çok Yüksek", management: "Kronik total oklüzyon (CTO). İnvazif değerlendirme ve revaskülarizasyon seçenekleri.", color: "red" },
+            { category: "CAD-RADS N", label: "Non-Diagnostik", risk: "—", management: "Görüntü kalitesi yetersiz. Tekrar KBTA veya alternatif tanı yöntemi (stres EKO, MPS).", color: "gray" },
+        ]
+    },
+    {
+        id: "c_rads",
+        name: "C-RADS",
+        organ: "Kolon",
+        modality: "BT Kolonografi (Sanal Kolonoskopi)",
+        description: "CT Colonography Reporting and Data System — BT kolonografide kolorektal polip ve kitlelerin boyut ve sayısına göre yönetimini standardize eder.",
+        note: "C-RADS (2005, ACR). Polip boyutu: küçük < 6mm, orta 6–9mm, büyük ≥ 10mm.",
+        categories: [
+            { category: "C0", label: "Yetersiz İnceleme", risk: "—", management: "Bağırsak temizliği yetersiz veya teknik sorun. Tekrar BT kolonografi veya optik kolonoskopi.", color: "gray" },
+            { category: "C1", label: "Normal veya Benign", risk: "0%", management: "Normal kolon veya lipom/submuköz kist gibi kesinlikle benign lezyon. 5–10 yıllık rutin tarama.", color: "green" },
+            { category: "C2", label: "Küçük-Orta Polip (6–9 mm)", risk: "Düşük", management: "1–3 adet 6–9 mm polip. 3 yıllık BT kolonografi veya kısa aralıklı kolonoskopi takibi.", color: "yellow" },
+            { category: "C3", label: "Büyük Polip (≥ 10 mm) veya Çok Sayıda Polip", risk: "Orta–Yüksek", management: "≥ 10 mm polip veya 3 ve üzeri 6–9 mm polip. Optik kolonoskopi ve polipektomi önerilir.", color: "orange" },
+            { category: "C4", label: "Kolorektal Karsinom Şüphesi", risk: "Yüksek", management: "Kitleden şüphelenilmektedir. Acil kolonoskopi + biyopsi. Evreleme için BT toraks-abdomen-pelvis.", color: "red" },
+        ]
+    },
 ];
