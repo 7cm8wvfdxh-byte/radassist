@@ -77,6 +77,8 @@ interface ForumContextType {
     addPost: (title: string, content: string, tags: string[], user: User) => Promise<{ success: boolean; error?: string }>;
     addComment: (postId: string, content: string, user: User) => Promise<{ success: boolean; error?: string }>;
     toggleLike: (postId: string, userId: string) => Promise<{ success: boolean; error?: string }>;
+    deletePost: (postId: string) => Promise<{ success: boolean; error?: string }>;
+    deleteComment: (commentId: string) => Promise<{ success: boolean; error?: string }>;
     getPost: (id: string) => Promise<Post | null>;
     refreshPosts: () => void;
     clearError: () => void;
@@ -283,6 +285,32 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
         }
     };
 
+    const deletePost = async (postId: string): Promise<{ success: boolean; error?: string }> => {
+        try {
+            // Delete comments first (FK constraint)
+            await supabase.from('comments').delete().eq('post_id', postId);
+            // Delete likes
+            await supabase.from('post_likes').delete().eq('post_id', postId);
+            // Delete post
+            const { error: deleteError } = await supabase.from('posts').delete().eq('id', postId);
+            if (deleteError) return { success: false, error: "Gönderi silinemedi." };
+            setPosts(prev => prev.filter(p => p.id !== postId));
+            return { success: true };
+        } catch {
+            return { success: false, error: "Beklenmeyen bir hata oluştu." };
+        }
+    };
+
+    const deleteComment = async (commentId: string): Promise<{ success: boolean; error?: string }> => {
+        try {
+            const { error: deleteError } = await supabase.from('comments').delete().eq('id', commentId);
+            if (deleteError) return { success: false, error: "Yorum silinemedi." };
+            return { success: true };
+        } catch {
+            return { success: false, error: "Beklenmeyen bir hata oluştu." };
+        }
+    };
+
     const getPost = async (id: string): Promise<Post | null> => {
         try {
             const { data, error: fetchError } = await supabase
@@ -323,6 +351,8 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
             addPost,
             addComment,
             toggleLike,
+            deletePost,
+            deleteComment,
             getPost,
             refreshPosts: fetchPosts,
             clearError

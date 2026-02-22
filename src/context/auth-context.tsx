@@ -10,6 +10,7 @@ export interface User {
     name: string;
     email: string;
     specialty: string;
+    is_admin: boolean;
 }
 
 interface AuthResult {
@@ -75,14 +76,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     id: supabaseUser.id,
                     email: supabaseUser.email!,
                     name: supabaseUser.user_metadata.name || 'Kullanıcı',
-                    specialty: supabaseUser.user_metadata.specialty || 'Radyoloji'
+                    specialty: supabaseUser.user_metadata.specialty || 'Radyoloji',
+                    is_admin: false
                 });
             } else if (data) {
                 setUser({
                     id: data.id,
                     email: supabaseUser.email!,
                     name: data.name,
-                    specialty: data.specialty
+                    specialty: data.specialty,
+                    is_admin: data.is_admin === true
                 });
             }
         } catch (error) {
@@ -151,7 +154,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                         id: authData.user.id,
                         name,
                         specialty,
-                        email
+                        email,
+                        is_admin: false
                     });
 
                 if (profileError) {

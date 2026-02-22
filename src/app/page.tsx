@@ -28,7 +28,7 @@ import { performSmartSearch } from "@/lib/search-utils";
 import { useAuth } from "@/context/auth-context";
 import { useLanguage } from "@/context/language-context";
 import Link from "next/link"; // Need Link for navigation
-import { LogIn, LogOut, User, Bell } from "lucide-react"; // Icons
+import { LogIn, LogOut, User, Bell, ShieldCheck } from "lucide-react"; // Icons
 import { LanguageSwitcher } from "@/components/language-switcher";
 
 export default function Home() {
@@ -245,7 +245,15 @@ export default function Home() {
           {user ? (
             <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md rounded-full pl-4 pr-2 py-1.5 border border-white/10 shadow-lg">
               <div className="flex flex-col items-end mr-1">
-                <span className="text-xs font-bold text-white leading-none">{user.name}</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-bold text-white leading-none">{user.name}</span>
+                  {user.is_admin && (
+                    <span className="flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[9px] font-bold">
+                      <ShieldCheck className="w-2.5 h-2.5" />
+                      YÖNETİCİ
+                    </span>
+                  )}
+                </div>
                 <span className="text-[10px] text-cyan-400 leading-none mt-0.5">{user.specialty}</span>
               </div>
               <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center">

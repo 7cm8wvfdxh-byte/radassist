@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { MessageSquare, ThumbsUp, Eye, Share2 } from "lucide-react";
+import { MessageSquare, ThumbsUp, Eye, Share2, Trash2, ShieldCheck } from "lucide-react";
 import { Post, useForum } from "@/context/forum-context";
 import { useAuth } from "@/context/auth-context";
 import { useLanguage } from "@/context/language-context";
@@ -14,10 +14,16 @@ interface PostCardProps {
 }
 
 export function PostCard({ post, compact = false }: PostCardProps) {
-    const { toggleLike } = useForum();
+    const { toggleLike, deletePost } = useForum();
     const { user } = useAuth();
     const { t, language } = useLanguage();
     const date = new Date(post.created_at).toLocaleDateString(language === 'tr' ? "tr-TR" : "en-US", { month: 'short', day: 'numeric' });
+
+    const handleDelete = async (e: React.MouseEvent) => {
+        e.preventDefault();
+        if (!confirm(language === 'tr' ? "Bu gönderiyi silmek istediğinizden emin misiniz?" : "Are you sure you want to delete this post?")) return;
+        await deletePost(post.id);
+    };
 
     return (
         <div className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/[0.07] transition-all group">
@@ -28,11 +34,29 @@ export function PostCard({ post, compact = false }: PostCardProps) {
                         <span className="text-[10px] font-bold text-white">{(post.author?.name || 'A').charAt(0)}</span>
                     </div>
                     <span className="font-medium text-zinc-300">{post.author?.name || (language === 'tr' ? 'Anonim' : 'Anonymous')}</span>
+                    {/* Admin badge — gönderi sahibi admin ise göster (author_id üzerinden) */}
+                    {user?.is_admin && user.id === post.author_id && (
+                        <span className="flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[9px] font-bold">
+                            <ShieldCheck className="w-2.5 h-2.5" />
+                            YÖNETİCİ
+                        </span>
+                    )}
                     <span className="w-1 h-1 rounded-full bg-zinc-700" />
                     <span>{post.author?.specialty || ''}</span>
                     <span className="w-1 h-1 rounded-full bg-zinc-700" />
                     <span>{date}</span>
                 </div>
+
+                {/* Admin delete button */}
+                {user?.is_admin && (
+                    <button
+                        onClick={handleDelete}
+                        className="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg text-zinc-600 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                        title="Gönderiyi Sil (Admin)"
+                    >
+                        <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                )}
             </div>
 
             {/* Content */}
