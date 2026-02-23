@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
-import { Ruler, Search, Activity, Calculator as CalcIcon, ShieldCheck, FileText, FlaskConical } from 'lucide-react';
+import { Ruler, Search, Activity, Calculator as CalcIcon, ShieldCheck, FileText, FlaskConical, Eye, GitBranch, Droplets, Zap, BookOpen } from 'lucide-react';
 import { RADIOLOGY_MEASUREMENTS, RADIOLOGY_CALCULATORS, Measurement } from '@/data/toolbox-data';
 import { RADS_SYSTEMS, RadsSystem } from '@/data/rads-data';
 import { REPORT_TEMPLATES, ReportTemplate } from '@/data/report-templates';
 import { IMAGING_PROTOCOLS, ImagingProtocol } from '@/data/protocol-data';
+import { RADIOLOGICAL_SIGNS, RadiologicalSign } from '@/data/signs-data';
+import { DDX_LIST } from '@/data/ddx-data';
+import { CONTRAST_AGENTS, CONTRAST_REACTIONS, PREMEDICATION_PROTOCOLS, EGFR_GUIDELINES, METFORMIN_RULES, NSF_INFO } from '@/data/contrast-data';
+import { IMAGING_ARTIFACTS } from '@/data/artifacts-data';
+import { RADIOLOGY_GLOSSARY } from '@/data/glossary-data';
 import { cn } from '@/lib/utils';
 
 const RADS_COLOR_MAP: Record<string, { badge: string; bar: string; text: string }> = {
@@ -17,7 +22,7 @@ const RADS_COLOR_MAP: Record<string, { badge: string; bar: string; text: string 
 };
 
 export function ToolboxMode() {
-    const [activeTab, setActiveTab] = useState<'ruler' | 'calc' | 'rads' | 'templates' | 'protocols'>('ruler');
+    const [activeTab, setActiveTab] = useState<'ruler' | 'calc' | 'rads' | 'templates' | 'protocols' | 'signs' | 'ddx' | 'contrast' | 'artifacts' | 'glossary'>('ruler');
 
     // --- RULER state ---
     const [searchQuery, setSearchQuery] = useState('');
@@ -38,6 +43,24 @@ export function ToolboxMode() {
     // --- PROTOCOLS state ---
     const [protocolSearch, setProtocolSearch] = useState('');
     const [activeProtocol, setActiveProtocol] = useState<string | null>(null);
+
+    // --- SIGNS state ---
+    const [signsSearch, setSignsSearch] = useState('');
+    const [activeSign, setActiveSign] = useState<string | null>(null);
+
+    // --- DDX state ---
+    const [ddxSearch, setDdxSearch] = useState('');
+    const [activeDdx, setActiveDdx] = useState<string | null>(null);
+
+    // --- CONTRAST state ---
+    const [contrastTab, setContrastTab] = useState<'agents' | 'reactions' | 'premed' | 'egfr' | 'nsf'>('agents');
+
+    // --- ARTIFACTS state ---
+    const [artifactSearch, setArtifactSearch] = useState('');
+    const [activeArtifact, setActiveArtifact] = useState<string | null>(null);
+
+    // --- GLOSSARY state ---
+    const [glossarySearch, setGlossarySearch] = useState('');
 
     // ── Filter Measurements ──────────────────────────────────────
     const filteredMeasurements = RADIOLOGY_MEASUREMENTS.filter(m =>
@@ -74,6 +97,52 @@ export function ToolboxMode() {
         acc[p.organ].push(p);
         return acc;
     }, {} as Record<string, ImagingProtocol[]>);
+
+    // ── Filter Signs ─────────────────────────────────────────────
+    const filteredSigns = RADIOLOGICAL_SIGNS.filter(s =>
+        s.name.toLowerCase().includes(signsSearch.toLowerCase()) ||
+        s.turkishName.toLowerCase().includes(signsSearch.toLowerCase()) ||
+        s.organ.toLowerCase().includes(signsSearch.toLowerCase()) ||
+        s.pathology.toLowerCase().includes(signsSearch.toLowerCase())
+    );
+    const groupedSigns = filteredSigns.reduce((acc, s) => {
+        if (!acc[s.organ]) acc[s.organ] = [];
+        acc[s.organ].push(s);
+        return acc;
+    }, {} as Record<string, RadiologicalSign[]>);
+
+    // ── Filter DDx ────────────────────────────────────────────────
+    const filteredDdx = DDX_LIST.filter(d =>
+        d.finding.toLowerCase().includes(ddxSearch.toLowerCase()) ||
+        d.organ.toLowerCase().includes(ddxSearch.toLowerCase()) ||
+        d.modality.toLowerCase().includes(ddxSearch.toLowerCase())
+    );
+
+    // ── Filter Artifacts ──────────────────────────────────────────
+    const filteredArtifacts = IMAGING_ARTIFACTS.filter(a =>
+        a.name.toLowerCase().includes(artifactSearch.toLowerCase()) ||
+        a.turkishName.toLowerCase().includes(artifactSearch.toLowerCase()) ||
+        a.modality.toLowerCase().includes(artifactSearch.toLowerCase()) ||
+        a.category.toLowerCase().includes(artifactSearch.toLowerCase())
+    );
+    const groupedArtifacts = filteredArtifacts.reduce((acc, a) => {
+        if (!acc[a.category]) acc[a.category] = [];
+        acc[a.category].push(a);
+        return acc;
+    }, {} as Record<string, typeof IMAGING_ARTIFACTS>);
+
+    // ── Filter Glossary ───────────────────────────────────────────
+    const filteredGlossary = RADIOLOGY_GLOSSARY.filter(g =>
+        g.abbreviation.toLowerCase().includes(glossarySearch.toLowerCase()) ||
+        g.fullForm.toLowerCase().includes(glossarySearch.toLowerCase()) ||
+        g.turkishMeaning.toLowerCase().includes(glossarySearch.toLowerCase()) ||
+        g.category.toLowerCase().includes(glossarySearch.toLowerCase())
+    );
+    const groupedGlossary = filteredGlossary.reduce((acc, g) => {
+        if (!acc[g.category]) acc[g.category] = [];
+        acc[g.category].push(g);
+        return acc;
+    }, {} as Record<string, typeof RADIOLOGY_GLOSSARY>);
 
     // ── Calculator ───────────────────────────────────────────────
     const handleCalcChange = (key: string, val: string) => {
@@ -229,6 +298,22 @@ export function ToolboxMode() {
                     </button>
                     <button onClick={() => setActiveTab('protocols')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'protocols' ? "bg-amber-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
                         <FlaskConical className="w-4 h-4" /> Protokoller
+                    </button>
+                    <div className="w-px h-6 bg-white/10 mx-1 self-center" />
+                    <button onClick={() => setActiveTab('signs')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'signs' ? "bg-rose-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
+                        <Eye className="w-4 h-4" /> İşaretler
+                    </button>
+                    <button onClick={() => setActiveTab('ddx')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'ddx' ? "bg-orange-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
+                        <GitBranch className="w-4 h-4" /> DDx
+                    </button>
+                    <button onClick={() => setActiveTab('contrast')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'contrast' ? "bg-blue-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
+                        <Droplets className="w-4 h-4" /> Kontrast
+                    </button>
+                    <button onClick={() => setActiveTab('artifacts')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'artifacts' ? "bg-yellow-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
+                        <Zap className="w-4 h-4" /> Artefaktlar
+                    </button>
+                    <button onClick={() => setActiveTab('glossary')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'glossary' ? "bg-teal-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
+                        <BookOpen className="w-4 h-4" /> Sözlük
                     </button>
                 </div>
             </div>
@@ -723,6 +808,410 @@ export function ToolboxMode() {
                                 </div>
                             );
                         })()}
+                    </div>
+                </div>
+            )}
+            {/* ─── TAB: SIGNS ───────────────────────────────────────── */}
+            {activeTab === 'signs' && (
+                <div className="max-w-4xl mx-auto w-full flex gap-6">
+                    {/* Left: list */}
+                    <div className="w-1/3 flex flex-col gap-2 max-h-[620px]">
+                        <div className="relative flex-shrink-0">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
+                            <input type="text" placeholder="İşaret ara (örn: hampton, target)..." value={signsSearch} onChange={e => setSignsSearch(e.target.value)} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-2.5 pl-9 pr-3 text-zinc-200 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-rose-500 transition-colors" />
+                        </div>
+                        <div className="flex-1 overflow-y-auto space-y-3 pr-1 scrollbar-thin scrollbar-thumb-zinc-700">
+                            {Object.entries(groupedSigns).map(([organ, signs]) => (
+                                <div key={organ}>
+                                    <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 px-1 mb-1">{organ}</div>
+                                    <div className="space-y-1">
+                                        {signs.map(s => (
+                                            <button key={s.id} onClick={() => setActiveSign(s.id)} className={cn("w-full text-left px-3 py-2 rounded-lg border transition-all text-sm", activeSign === s.id ? "bg-rose-500/20 border-rose-500 text-rose-200" : "bg-zinc-900/40 border-zinc-800 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200")}>
+                                                <div className="font-semibold">{s.name}</div>
+                                                <div className="text-[10px] opacity-60">{s.turkishName}</div>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                            {Object.keys(groupedSigns).length === 0 && <div className="text-center py-8 text-zinc-600 text-sm">Sonuç bulunamadı.</div>}
+                        </div>
+                    </div>
+
+                    {/* Right: detail */}
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px] overflow-y-auto">
+                        {!activeSign ? (
+                            <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-3">
+                                <Eye className="w-12 h-12 opacity-20" />
+                                <p className="text-sm">Sol taraftan bir radyolojik işaret seçin.</p>
+                            </div>
+                        ) : (() => {
+                            const s = RADIOLOGICAL_SIGNS.find(x => x.id === activeSign);
+                            if (!s) return null;
+                            return (
+                                <div className="space-y-5">
+                                    <div className="pb-4 border-b border-white/5">
+                                        <h3 className="text-xl font-extrabold text-white">{s.name}</h3>
+                                        <p className="text-sm text-rose-400 font-medium">{s.turkishName}</p>
+                                        <div className="flex gap-2 mt-2">
+                                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20 font-semibold">{s.modality}</span>
+                                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-zinc-500/10 text-zinc-400 border border-zinc-500/20 font-semibold">{s.organ}</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1.5">Görünüm</div>
+                                        <p className="text-sm text-zinc-300 leading-relaxed">{s.appearance}</p>
+                                    </div>
+                                    <div className="p-3 bg-rose-500/5 border border-rose-500/20 rounded-xl">
+                                        <div className="text-[10px] font-bold uppercase tracking-widest text-rose-400 mb-1">İlişkili Patoloji</div>
+                                        <p className="text-sm text-white font-semibold">{s.pathology}</p>
+                                    </div>
+                                    {s.clinicalNote && (
+                                        <div className="p-3 bg-amber-500/5 border border-amber-500/20 rounded-xl">
+                                            <div className="text-[10px] font-bold uppercase tracking-widest text-amber-400 mb-1">Klinik Not</div>
+                                            <p className="text-xs text-zinc-300">{s.clinicalNote}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })()}
+                    </div>
+                </div>
+            )}
+
+            {/* ─── TAB: DDX ────────────────────────────────────────────── */}
+            {activeTab === 'ddx' && (
+                <div className="max-w-4xl mx-auto w-full flex gap-6">
+                    {/* Left: list */}
+                    <div className="w-1/3 flex flex-col gap-2 max-h-[620px]">
+                        <div className="relative flex-shrink-0">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
+                            <input type="text" placeholder="Bulgu ara (ring enhance, GGO)..." value={ddxSearch} onChange={e => setDdxSearch(e.target.value)} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-2.5 pl-9 pr-3 text-zinc-200 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-orange-500 transition-colors" />
+                        </div>
+                        <div className="flex-1 overflow-y-auto space-y-1 pr-1 scrollbar-thin scrollbar-thumb-zinc-700">
+                            {filteredDdx.map(d => (
+                                <button key={d.id} onClick={() => setActiveDdx(d.id)} className={cn("w-full text-left px-3 py-2.5 rounded-lg border transition-all text-sm", activeDdx === d.id ? "bg-orange-500/20 border-orange-500 text-orange-200" : "bg-zinc-900/40 border-zinc-800 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200")}>
+                                    <div className="font-semibold">{d.finding}</div>
+                                    <div className="text-[10px] opacity-60">{d.organ} · {d.modality}</div>
+                                </button>
+                            ))}
+                            {filteredDdx.length === 0 && <div className="text-center py-8 text-zinc-600 text-sm">Sonuç bulunamadı.</div>}
+                        </div>
+                    </div>
+
+                    {/* Right: detail */}
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px] overflow-y-auto">
+                        {!activeDdx ? (
+                            <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-3">
+                                <GitBranch className="w-12 h-12 opacity-20" />
+                                <p className="text-sm">Sol taraftan bir bulgu seçerek DDx listesini görün.</p>
+                            </div>
+                        ) : (() => {
+                            const d = DDX_LIST.find(x => x.id === activeDdx);
+                            if (!d) return null;
+                            const likelihoodColors = { common: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30', less_common: 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30', rare: 'bg-red-500/15 text-red-300 border-red-500/30' };
+                            const likelihoodLabels = { common: 'Sık', less_common: 'Daha Az Sık', rare: 'Nadir' };
+                            return (
+                                <div className="space-y-5">
+                                    <div className="pb-4 border-b border-white/5">
+                                        <h3 className="text-xl font-extrabold text-white">{d.finding}</h3>
+                                        <div className="flex gap-2 mt-2">
+                                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-orange-500/10 text-orange-400 border border-orange-500/20 font-semibold">{d.modality}</span>
+                                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-zinc-500/10 text-zinc-400 border border-zinc-500/20 font-semibold">{d.organ}</span>
+                                        </div>
+                                    </div>
+                                    <div className="space-y-2">
+                                        {d.differentials.map((dx, i) => (
+                                            <div key={i} className="flex gap-3 p-3 bg-zinc-900/50 rounded-xl border border-white/5 hover:border-white/10 transition-colors">
+                                                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-orange-500/20 text-orange-400 text-[10px] font-bold flex items-center justify-center border border-orange-500/30">{i + 1}</span>
+                                                <div className="flex-1 min-w-0">
+                                                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                                                        <span className="text-sm font-semibold text-zinc-200">{dx.diagnosis}</span>
+                                                        <span className={cn("text-[10px] font-bold px-1.5 py-0.5 rounded border", likelihoodColors[dx.likelihood])}>{likelihoodLabels[dx.likelihood]}</span>
+                                                    </div>
+                                                    <p className="text-xs text-zinc-400 leading-relaxed">{dx.keyFeature}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    {d.clinicalPearl && (
+                                        <div className="p-3 bg-amber-500/5 border border-amber-500/20 rounded-xl">
+                                            <div className="text-[10px] font-bold uppercase tracking-widest text-amber-400 mb-1">Klinik İpucu</div>
+                                            <p className="text-xs text-zinc-300 leading-relaxed">{d.clinicalPearl}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })()}
+                    </div>
+                </div>
+            )}
+
+            {/* ─── TAB: CONTRAST ───────────────────────────────────────── */}
+            {activeTab === 'contrast' && (
+                <div className="max-w-4xl mx-auto w-full space-y-4">
+                    {/* Sub-tabs */}
+                    <div className="flex justify-center">
+                        <div className="bg-zinc-900/50 p-1 rounded-lg border border-white/5 flex gap-1 flex-wrap justify-center">
+                            {([['agents', 'Ajanlar'], ['reactions', 'Reaksiyonlar'], ['premed', 'Premedikasyon'], ['egfr', 'eGFR & Metformin'], ['nsf', 'NSF']] as const).map(([key, label]) => (
+                                <button key={key} onClick={() => setContrastTab(key)} className={cn("px-3 py-1.5 rounded text-xs font-bold transition-all", contrastTab === key ? "bg-blue-600 text-white" : "text-zinc-400 hover:text-white hover:bg-white/5")}>{label}</button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Agents */}
+                    {contrastTab === 'agents' && (
+                        <div className="space-y-4">
+                            {CONTRAST_AGENTS.map(agent => (
+                                <div key={agent.id} className="bg-zinc-900/40 rounded-2xl border border-white/5 p-5">
+                                    <div className="flex items-start justify-between gap-3 mb-3">
+                                        <div>
+                                            <h4 className="font-bold text-white">{agent.name}</h4>
+                                            <p className="text-[10px] text-zinc-500">{agent.category}</p>
+                                        </div>
+                                        <span className={cn("text-[10px] px-2 py-0.5 rounded-full border font-semibold flex-shrink-0", agent.type === 'iodinated' ? "bg-yellow-500/10 text-yellow-400 border-yellow-500/20" : agent.type === 'gadolinium' ? "bg-purple-500/10 text-purple-400 border-purple-500/20" : agent.type === 'ultrasound' ? "bg-cyan-500/10 text-cyan-400 border-cyan-500/20" : "bg-zinc-500/10 text-zinc-400 border-zinc-500/20")}>{agent.type === 'iodinated' ? 'İyotlu' : agent.type === 'gadolinium' ? 'Gadolinyum' : agent.type === 'ultrasound' ? 'USG' : 'Oral'}</span>
+                                    </div>
+                                    <div className="text-xs text-zinc-400 mb-2"><span className="text-zinc-500 font-bold">Örnekler: </span>{agent.examples.join(', ')}</div>
+                                    <div className="text-xs text-zinc-400 mb-2"><span className="text-zinc-500 font-bold">Endikasyon: </span>{agent.indication}</div>
+                                    <div className="text-xs text-cyan-400 mb-2"><span className="text-zinc-500 font-bold">Dozaj: </span>{agent.dosing}</div>
+                                    <div className="grid grid-cols-2 gap-2 mt-3">
+                                        <div className="p-2 bg-red-500/5 border border-red-500/10 rounded-lg">
+                                            <div className="text-[10px] font-bold text-red-400 mb-1">Kontraendikasyonlar</div>
+                                            <ul className="text-[10px] text-zinc-400 space-y-0.5">{agent.contraindications.map((c, i) => <li key={i}>• {c}</li>)}</ul>
+                                        </div>
+                                        <div className="p-2 bg-amber-500/5 border border-amber-500/10 rounded-lg">
+                                            <div className="text-[10px] font-bold text-amber-400 mb-1">Yan Etkiler</div>
+                                            <ul className="text-[10px] text-zinc-400 space-y-0.5">{agent.sideEffects.map((s, i) => <li key={i}>• {s}</li>)}</ul>
+                                        </div>
+                                    </div>
+                                    {agent.notes && <p className="text-[10px] text-amber-400/60 mt-2 italic border-l-2 border-amber-500/20 pl-2">{agent.notes}</p>}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Reactions */}
+                    {contrastTab === 'reactions' && (
+                        <div className="space-y-4">
+                            {CONTRAST_REACTIONS.map(r => (
+                                <div key={r.severity} className={cn("rounded-2xl border p-5", r.severity === 'mild' ? "bg-emerald-500/5 border-emerald-500/20" : r.severity === 'moderate' ? "bg-yellow-500/5 border-yellow-500/20" : "bg-red-500/5 border-red-500/20")}>
+                                    <h4 className={cn("font-bold text-lg mb-3", r.severity === 'mild' ? "text-emerald-400" : r.severity === 'moderate' ? "text-yellow-400" : "text-red-400")}>{r.label}</h4>
+                                    <div className="grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2">Semptomlar</div>
+                                            <ul className="space-y-1">{r.symptoms.map((s, i) => <li key={i} className="text-sm text-zinc-300 flex gap-2"><span className="text-zinc-500 flex-shrink-0">•</span>{s}</li>)}</ul>
+                                        </div>
+                                        <div>
+                                            <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2">Yönetim</div>
+                                            <ul className="space-y-1">{r.management.map((m, i) => <li key={i} className="text-sm text-zinc-300 flex gap-2"><span className={cn("flex-shrink-0", r.severity === 'severe' ? "text-red-400" : "text-cyan-500")}>→</span>{m}</li>)}</ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Premedication */}
+                    {contrastTab === 'premed' && (
+                        <div className="space-y-4">
+                            {PREMEDICATION_PROTOCOLS.map(p => (
+                                <div key={p.id} className="bg-zinc-900/40 rounded-2xl border border-white/5 p-5">
+                                    <h4 className="font-bold text-white mb-1">{p.name}</h4>
+                                    <p className="text-xs text-zinc-500 mb-3 italic">{p.indication}</p>
+                                    <div className="space-y-2">
+                                        {p.regimen.map((step, i) => (
+                                            <div key={i} className="flex gap-3 p-2.5 bg-zinc-900/50 rounded-xl border border-white/5">
+                                                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 text-[10px] font-bold flex items-center justify-center border border-blue-500/30">{i + 1}</span>
+                                                <span className="text-sm text-zinc-300">{step}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    {p.notes && <p className="text-[10px] text-amber-400/60 mt-3 italic border-l-2 border-amber-500/20 pl-2">{p.notes}</p>}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* eGFR */}
+                    {contrastTab === 'egfr' && (
+                        <div className="space-y-4">
+                            <div className="bg-zinc-900/40 rounded-2xl border border-white/5 p-5">
+                                <h4 className="font-bold text-white mb-4">eGFR Bazlı IV Kontrast Güvenliği</h4>
+                                <div className="space-y-2">
+                                    {EGFR_GUIDELINES.map((g, i) => {
+                                        const colorMap = { green: 'border-emerald-500/30 bg-emerald-500/5', yellow: 'border-yellow-500/30 bg-yellow-500/5', orange: 'border-orange-500/30 bg-orange-500/5', red: 'border-red-500/30 bg-red-500/5' };
+                                        const textMap = { green: 'text-emerald-400', yellow: 'text-yellow-400', orange: 'text-orange-400', red: 'text-red-400' };
+                                        return (
+                                            <div key={i} className={cn("p-3 rounded-xl border", colorMap[g.color])}>
+                                                <div className="flex items-center gap-3 mb-1">
+                                                    <span className={cn("font-bold text-sm", textMap[g.color])}>{g.range}</span>
+                                                    <span className={cn("text-[10px] font-bold px-2 py-0.5 rounded border", g.color === 'green' ? "bg-emerald-500/15 text-emerald-300 border-emerald-500/30" : g.color === 'yellow' ? "bg-yellow-500/15 text-yellow-300 border-yellow-500/30" : g.color === 'orange' ? "bg-orange-500/15 text-orange-300 border-orange-500/30" : "bg-red-500/15 text-red-300 border-red-500/30")}>{g.risk}</span>
+                                                </div>
+                                                <p className="text-xs text-zinc-300">{g.action}</p>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                            <div className="bg-zinc-900/40 rounded-2xl border border-white/5 p-5">
+                                <h4 className="font-bold text-white mb-3">{METFORMIN_RULES.title}</h4>
+                                <div className="space-y-2">
+                                    {METFORMIN_RULES.rules.map((r, i) => (
+                                        <div key={i} className={cn("p-3 rounded-xl border", r.severity === 'safe' ? "bg-emerald-500/5 border-emerald-500/20" : r.severity === 'danger' ? "bg-red-500/5 border-red-500/20" : "bg-yellow-500/5 border-yellow-500/20")}>
+                                            <span className={cn("text-xs font-bold", r.severity === 'safe' ? "text-emerald-400" : r.severity === 'danger' ? "text-red-400" : "text-yellow-400")}>eGFR {r.egfr}: </span>
+                                            <span className="text-xs text-zinc-300">{r.action}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <p className="text-[10px] text-amber-400/60 mt-3 italic border-l-2 border-amber-500/20 pl-2">{METFORMIN_RULES.note}</p>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* NSF */}
+                    {contrastTab === 'nsf' && (
+                        <div className="bg-zinc-900/40 rounded-2xl border border-white/5 p-5 space-y-4">
+                            <h4 className="font-bold text-white text-lg">{NSF_INFO.title}</h4>
+                            <p className="text-sm text-zinc-400">{NSF_INFO.description}</p>
+                            <div>
+                                <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2">Risk Faktörleri</div>
+                                <ul className="space-y-1">{NSF_INFO.riskFactors.map((r, i) => <li key={i} className="text-sm text-zinc-300 flex gap-2"><span className="text-red-400 flex-shrink-0">•</span>{r}</li>)}</ul>
+                            </div>
+                            <div className="space-y-2">
+                                <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2">Ajan Risk Grupları</div>
+                                {NSF_INFO.agentRiskGroups.map((g, i) => (
+                                    <div key={i} className={cn("p-3 rounded-xl border", g.color === 'red' ? "bg-red-500/5 border-red-500/20" : g.color === 'yellow' ? "bg-yellow-500/5 border-yellow-500/20" : "bg-emerald-500/5 border-emerald-500/20")}>
+                                        <div className={cn("text-xs font-bold mb-1", g.color === 'red' ? "text-red-400" : g.color === 'yellow' ? "text-yellow-400" : "text-emerald-400")}>{g.group}</div>
+                                        <p className="text-xs text-zinc-300">{g.agents.join(' · ')}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="p-3 bg-blue-500/5 border border-blue-500/20 rounded-xl">
+                                <div className="text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-1">Korunma</div>
+                                <p className="text-xs text-zinc-300">{NSF_INFO.prevention}</p>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            )}
+
+            {/* ─── TAB: ARTIFACTS ───────────────────────────────────────── */}
+            {activeTab === 'artifacts' && (
+                <div className="max-w-4xl mx-auto w-full flex gap-6">
+                    {/* Left: list */}
+                    <div className="w-1/3 flex flex-col gap-2 max-h-[620px]">
+                        <div className="relative flex-shrink-0">
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
+                            <input type="text" placeholder="Artefakt ara (motion, beam)..." value={artifactSearch} onChange={e => setArtifactSearch(e.target.value)} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-2.5 pl-9 pr-3 text-zinc-200 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-yellow-500 transition-colors" />
+                        </div>
+                        <div className="flex-1 overflow-y-auto space-y-3 pr-1 scrollbar-thin scrollbar-thumb-zinc-700">
+                            {Object.entries(groupedArtifacts).map(([category, artifacts]) => (
+                                <div key={category}>
+                                    <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 px-1 mb-1">{category}</div>
+                                    <div className="space-y-1">
+                                        {artifacts.map(a => (
+                                            <button key={a.id} onClick={() => setActiveArtifact(a.id)} className={cn("w-full text-left px-3 py-2 rounded-lg border transition-all text-sm", activeArtifact === a.id ? "bg-yellow-500/20 border-yellow-500 text-yellow-200" : "bg-zinc-900/40 border-zinc-800 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-200")}>
+                                                <div className="font-semibold">{a.name}</div>
+                                                <div className="text-[10px] opacity-60">{a.turkishName}</div>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                            {Object.keys(groupedArtifacts).length === 0 && <div className="text-center py-8 text-zinc-600 text-sm">Sonuç bulunamadı.</div>}
+                        </div>
+                    </div>
+
+                    {/* Right: detail */}
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px] overflow-y-auto">
+                        {!activeArtifact ? (
+                            <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-3">
+                                <Zap className="w-12 h-12 opacity-20" />
+                                <p className="text-sm">Sol taraftan bir artefakt seçin.</p>
+                            </div>
+                        ) : (() => {
+                            const a = IMAGING_ARTIFACTS.find(x => x.id === activeArtifact);
+                            if (!a) return null;
+                            return (
+                                <div className="space-y-5">
+                                    <div className="pb-4 border-b border-white/5">
+                                        <h3 className="text-xl font-extrabold text-white">{a.name}</h3>
+                                        <p className="text-sm text-yellow-400 font-medium">{a.turkishName}</p>
+                                        <div className="flex gap-2 mt-2">
+                                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 font-semibold">{a.modality}</span>
+                                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-zinc-500/10 text-zinc-400 border border-zinc-500/20 font-semibold">{a.category}</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1.5">Mekanizma</div>
+                                        <p className="text-sm text-zinc-300 leading-relaxed">{a.mechanism}</p>
+                                    </div>
+                                    <div>
+                                        <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-1.5">Görünüm</div>
+                                        <p className="text-sm text-zinc-300 leading-relaxed">{a.appearance}</p>
+                                    </div>
+                                    <div className="p-3 bg-yellow-500/5 border border-yellow-500/20 rounded-xl">
+                                        <div className="text-[10px] font-bold uppercase tracking-widest text-yellow-400 mb-1">Klinik Etki</div>
+                                        <p className="text-sm text-zinc-300">{a.clinicalImpact}</p>
+                                    </div>
+                                    <div>
+                                        <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2">Önleme / Çözüm</div>
+                                        <div className="space-y-1.5">
+                                            {a.prevention.map((p, i) => (
+                                                <div key={i} className="flex gap-2 text-sm text-zinc-300">
+                                                    <span className="text-yellow-500 flex-shrink-0">→</span>
+                                                    <span>{p}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    {a.pitfall && (
+                                        <div className="p-3 bg-red-500/5 border border-red-500/20 rounded-xl">
+                                            <div className="text-[10px] font-bold uppercase tracking-widest text-red-400 mb-1">Dikkat (Pitfall)</div>
+                                            <p className="text-xs text-zinc-300">{a.pitfall}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })()}
+                    </div>
+                </div>
+            )}
+
+            {/* ─── TAB: GLOSSARY ───────────────────────────────────────── */}
+            {activeTab === 'glossary' && (
+                <div className="max-w-3xl mx-auto w-full space-y-4">
+                    <div className="relative">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
+                        <input type="text" placeholder="Kısaltma ara (DWI, FLAIR, HU, PACS)..." value={glossarySearch} onChange={e => setGlossarySearch(e.target.value)} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-3 pl-10 pr-4 text-zinc-200 placeholder:text-zinc-600 focus:outline-none focus:border-teal-500 transition-colors" />
+                    </div>
+                    <div className="space-y-6">
+                        {Object.keys(groupedGlossary).length === 0 ? (
+                            <div className="text-center py-10 text-zinc-500">Sonuç bulunamadı.</div>
+                        ) : (
+                            Object.entries(groupedGlossary).map(([category, entries]) => (
+                                <div key={category} className="bg-zinc-900/40 rounded-2xl border border-white/5 overflow-hidden">
+                                    <div className="px-4 py-2 bg-white/5 border-b border-white/5 text-xs font-bold text-zinc-400 uppercase tracking-widest">{category}</div>
+                                    <div className="divide-y divide-white/5">
+                                        {entries.map(entry => (
+                                            <div key={entry.id} className="p-4 hover:bg-white/5 transition-colors">
+                                                <div className="flex items-start justify-between gap-3">
+                                                    <div>
+                                                        <div className="flex items-center gap-2">
+                                                            <span className="font-mono font-bold text-teal-400 text-lg">{entry.abbreviation}</span>
+                                                            <span className="text-xs text-zinc-500">—</span>
+                                                            <span className="text-sm text-zinc-300">{entry.fullForm}</span>
+                                                        </div>
+                                                        <p className="text-xs text-zinc-500 mt-0.5">{entry.turkishMeaning}</p>
+                                                    </div>
+                                                </div>
+                                                {entry.description && <p className="text-xs text-zinc-400 mt-2 leading-relaxed">{entry.description}</p>}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))
+                        )}
                     </div>
                 </div>
             )}
