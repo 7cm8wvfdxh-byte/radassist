@@ -104,7 +104,6 @@ export default function Home() {
         ...spinePathologies.map(p => ({ ...p, organ: 'Omurga' })),
         ...liverPathologies.map(p => ({ ...p, organ: 'Karaciğer' })),
         ...kidneyPathologies.map(p => ({ ...p, organ: 'Böbrek' })),
-        ...kidneyPathologies.map(p => ({ ...p, organ: 'Böbrek' })),
         ...lungPathologies.map(p => ({ ...p, organ: 'Akciğer' })),
         ...breastPathologies.map(p => ({ ...p, organ: 'Meme' })),
         ...mskPathologies.map(p => ({ ...p, organ: 'Kas-İskelet' })),

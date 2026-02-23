@@ -20,11 +20,6 @@ export function QuizMode() {
     const [streak, setStreak] = useState(0);
     const [showResult, setShowResult] = useState(false);
 
-    // Initial Question Generation
-    useEffect(() => {
-        generateQuestion();
-    }, []);
-
     const generateQuestion = () => {
         // 1. Filter pathologies that have images
         const validPathologies = brainPathologies.filter(p => p.gallery && p.gallery.length > 0);
@@ -59,6 +54,12 @@ export function QuizMode() {
         setSelectedAnswer(null);
         setShowResult(false);
     };
+
+    // Initial Question Generation — declared AFTER generateQuestion to avoid hoisting issue
+    useEffect(() => {
+        generateQuestion();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleAnswer = (pathologyId: string) => {
         if (selectedAnswer || !question) return; // Prevent double click

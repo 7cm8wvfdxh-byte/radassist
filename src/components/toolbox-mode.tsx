@@ -105,7 +105,7 @@ export function ToolboxMode() {
         if (!distal || !stenosis) return;
         if (stenosis > distal) { setCalcResult({ main: "Hata: Darlık çapı distalden büyük olamaz." }); return; }
         const pct = ((distal - stenosis) / distal) * 100;
-        let grade = pct < 50 ? "Hafif Darlık (<%50)" : pct < 70 ? "Orta Derece Darlık (%50-69)" : "Ciddi Darlık (%70-99)";
+        const grade = pct < 50 ? "Hafif Darlık (<%50)" : pct < 70 ? "Orta Derece Darlık (%50-69)" : "Ciddi Darlık (%70-99)";
         setCalcResult({ main: `%${pct.toFixed(1)} Stenoz (NASCET)`, detail: grade });
     };
 
@@ -113,7 +113,7 @@ export function ToolboxMode() {
         const { baseline, current } = calcValues;
         if (!baseline || !current) return;
         const change = ((current - baseline) / baseline) * 100;
-        let response = current === 0 ? "Tam Yanıt (CR)" :
+        const response = current === 0 ? "Tam Yanıt (CR)" :
             change <= -30 ? "Kısmi Yanıt (PR)" :
             change >= 20 && (current - baseline) >= 5 ? "Progresif Hastalık (PD)" : "Stabil Hastalık (SD)";
         setCalcResult({ main: `%${change.toFixed(1)} Değişim`, detail: response });
