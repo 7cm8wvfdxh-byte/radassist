@@ -384,6 +384,7 @@ export const brainPathologies: Pathology[] = [
                 "t1": "İzointens veya hipointens.",
                 "t2": "Heterojen hiperintens. Eşlik eden araknoid kistler olabilir.",
                 "t1_c": "Yoğun kontrastlanma. 'Dondurma külahı' (Ice cream cone) görünümü (intra ve ekstra-kanaliküler bileşenler).",
+                "dwi": "Difüzyon kısıtlamaz — Meningiom ve Epidermoidin aksine (Epidermoid DWI parlak, Schwannom değil).",
                 "swi": "Mikrokanamalar sıktır (Meningiomun aksine)."
             }
         },
@@ -396,6 +397,7 @@ export const brainPathologies: Pathology[] = [
                 "t1": "Isointense or hypointense.",
                 "t2": "Heterogeneous hyperintense. Associated arachnoid cysts may occur.",
                 "t1_c": "Intense enhancement. 'Ice cream cone' appearance (intra- and extra-canalicular components).",
+                "dwi": "No diffusion restriction — unlike Meningioma and Epidermoid (Epidermoid is DWI bright, Schwannoma is not).",
                 "swi": "Microhemorrhages are common (unlike Meningioma)."
             }
         },
@@ -1076,23 +1078,6 @@ export const brainPathologies: Pathology[] = [
             "Spetzler-Martin skoru cerrahi riski belirler.",
             "Yıllık kanama riski %2-4.",
             "Nidus içinde anevrizma olması kanama riskini artırır."
-        ]
-    },
-    {
-        "id": "vestibular_schwannoma",
-        "name": "Vestibüler Schwannom (Akustik Nörom)",
-        "category": "Neoplastik",
-        "findings": {
-            "mri": {
-                "t1_c": "Serebello-pontin köşe (CPA) kitlelerinde en sık. İnternal Akustik Kanala (IAC) giren, genişleten (Dondurma külahı / Ice cream cone) yoğun kontrastlanan kitle.",
-                "t2": "Heterojen hiperintens. Kistik dejenerasyon sık.",
-                "dwi": "Difüzyon kısıtlamaz (Meningiom ve Epidermoidden farkı)."
-            }
-        },
-        "keyPoints": [
-            "Bilateral görülürse NF2 (Nörofibromatozis Tip 2) düşünülmeli.",
-            "İşitme kaybı ve tinnitus ile gelir.",
-            "Meningiomdan farkı: IAC içine uzanım (Meningiom genelde IAC'yi korur, dural kuyruk yapar)."
         ]
     }
 ];
