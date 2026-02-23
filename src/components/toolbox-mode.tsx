@@ -28,7 +28,7 @@ export function ToolboxMode() {
     // --- CALCULATOR state ---
     const [activeCalc, setActiveCalc] = useState<string | null>(null);
     const [calcValues, setCalcValues] = useState<Record<string, number>>({});
-    const [calcResult, setCalcResult] = useState<any>(null);
+    const [calcResult, setCalcResult] = useState<{ main: string; detail?: string } | null>(null);
 
     // --- TEMPLATES state ---
     const [templateSearch, setTemplateSearch] = useState('');

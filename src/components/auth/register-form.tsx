@@ -58,8 +58,8 @@ export function RegisterForm() {
                 router.refresh();
             }
 
-        } catch (err: any) {
-            setError(err.message || "Kayıt olurken bir hata oluştu.");
+        } catch (err: unknown) {
+            setError(err instanceof Error ? err.message : "Kayıt olurken bir hata oluştu.");
         } finally {
             setIsLoading(false);
         }

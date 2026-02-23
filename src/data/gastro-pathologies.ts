@@ -27,7 +27,8 @@ export const gastroPathologies: Pathology[] = [
             ct: {
                 contrast: "Dilated (>6 mm) appendix. Wall enhancement and thickening. Periappendiceal fat stranding. Thickening at the cecal base (Arrowhead sign)."
             }
-        }
+        },
+        mechanism: "Appendiks lümeninin fekalit, lenfoid hiperplazi veya parazit ile obstrüksiyonu → mukus birikimi → lümen içi basınç artışı → venöz drenaj bozulması → iskemi → bakteriyel aşırı büyüme (E. coli, Bacteroides) → transmural inflamasyon → perforasyon riski. Çap >6mm obstrüksiyona işaret eder; periappendiküler yağ kirlenmesi (fat stranding) inflamasyonun yayıldığını gösterir."
     },
     {
         id: "acute-diverticulitis",
@@ -52,7 +53,8 @@ export const gastroPathologies: Pathology[] = [
             usg: {
                 description: "Hypoechoic outpouching from colon wall (diverticulum). Surrounding hyperechoic fat halo (inflammation)."
             }
-        }
+        },
+        mechanism: "Düşük lifli diyet → uzun geçiş süresi → artmış intralüminal basınç → kolon duvarının zayıf noktalarında (vasküler geçiş noktaları) mukozanın herniyasyonu → divertikül oluşumu. Fekalit ile tıkanan divertikül → mikroperfürasyon → perikolik inflamasyon. Komplikasyon: Perforasyon (Hinchey 1-4), apse, fistül, obstrüksiyon."
     },
     {
         id: "acute-pancreatitis",
@@ -86,7 +88,8 @@ export const gastroPathologies: Pathology[] = [
             mri: {
                 t2: "Better visualization of fluid collections and main pancreatic duct (MRCP)."
             }
-        }
+        },
+        mechanism: "Safra taşı veya alkol → pankreatik asiner hücrelerde tripsinojeni erken aktive eden mekanizmalar → tripsin içeride birikimine bağlı oto-sindirim. Hafif: Ödem ve peripankreatik sıvı (ödematöz pankreatit). Ağır: Pankreas parankiminin transmural nekrozu → damar hasarı → sepsis. BT'de kontrast almayan alanlar nekrozu yansıtır; erken çekilirse (72h) olduğundan hafif görünebilir."
     },
     {
         id: "pancreatic-adenocarcinoma",
@@ -113,7 +116,8 @@ export const gastroPathologies: Pathology[] = [
                 t1_c: "Hypointense mass on contrast sequences.",
                 other_sequences: "MRCP: 'Double Duct Sign'. Abrupt cutoff."
             }
-        }
+        },
+        mechanism: "KRAS mutasyonu (%90+) → ERK/MAPK sinyal aktivasyonu → pankreas duktal epitelinde kontrolsüz proliferasyon. Desmoplastik stroma oluşumu → tümör hipovaskülerdir (Yoğun fibrotik doku kontrast geçişini engeller → BT'de hipodens). Pankreas başı lokalizasyonu → erken safra kanalı ve Wirsung kanalı kompresyonu → painless obstrüktif sarılık + double duct sign."
     },
     {
         id: "crohn-disease",
@@ -138,7 +142,8 @@ export const gastroPathologies: Pathology[] = [
             mri: {
                 other_sequences: "MR Enterography: Wall thickening, T2 hyperintensity (edema), Ulcers, Fistula tracts and Abscesses."
             }
-        }
+        },
+        mechanism: "Anormal Th1/Th17 immün yanıt + bağırsak mikrobiyom disregülasyonu → mukozal bariyer bozulması → transmural granülomatöz inflamasyon (tüm katmanlar tutulur). Skip lezyonlar (atlayıcı tutulum) Crohn'a özgüdür. Kronik inflamasyon: Fibroz ve darlık, fistül/apse oluşumu. Comb sign: Aktif inflamasyonun besleyici mezenterik damarların artmasına yol açması."
     },
     {
         id: "bowel-obstruction",
@@ -163,7 +168,8 @@ export const gastroPathologies: Pathology[] = [
             ct: {
                 contrast: "Dilatation in proximal segments (>2.5-3cm), collapse distally (Transition point). Small Bowel Feces Sign: Feces-like appearance immediately proximal to obstruction."
             }
-        }
+        },
+        mechanism: "Mekanik engel (yapışıklık, herni, tümör, volvülüs) → bağırsak lümeninin tıkanması → proksimalde gaz ve sıvı birikimi → distansiyon → mukozal iskemi → bakteri translokasyonu. Strangülasyon (kapalı loop): Venöz drenaj + arteriyel beslenme bozulması → hızlı nekroz ve perforasyon (acil!). BT'de geçiş noktası (transition zone) tıkanan yeri, small bowel feces sign ise kronik parsiyel obstrüksiyonu gösterir."
     },
     {
         id: "colorectal-carcinoma",
@@ -188,7 +194,8 @@ export const gastroPathologies: Pathology[] = [
             mri: {
                 other_sequences: "Rectal MRI: Tumor layering (T1-T3 stage), mesorectal fascia invasion (MRF+/-), lymph node morphology. Diffusion (DWI) clarifies tumor margins."
             }
-        }
+        },
+        mechanism: "APC, KRAS, TP53 mutasyonlarının birikimi → kolorektal karsinom gelişim basamakları (Adenoma-karsinom sekansı). Hiperplastik polip → adenom → yüksek grade displazi → invaziv karsinom (10-15 yıl). MSI (mikrosatellit instabilite): Lynch sendromu → farklı mutasyon yolu. Tümör desmoplastik büyüme ile lümeni daralttıkça apple-core görünümü oluşur."
     },
     {
         id: "mesenteric-ischemia",
@@ -209,7 +216,8 @@ export const gastroPathologies: Pathology[] = [
                 contrast: "CT Angiography (CTA): Filling defect in SMA/SMV (thrombus/embolus). Bowel wall thinning or lack of enhancement (necrosis). Pneumatosis intestinalis (gas bubbles within wall). Gas within portal venous system.",
                 non_contrast: "Hyperdense thrombus in mesenteric vessels may be visible."
             }
-        }
+        },
+        mechanism: "SMA embolisi (%50, kardiyak kaynaklı) veya trombüs → mezenterik arteriyel akım kaybı → bağırsak iskemisi → mukoza nekrozu → transmural hasar → pnömatozis intestinalis (duvar içi gaz). Venöz tromboz (SMV): Venöz konjesyon → arteriyel yetmezlik. Geç aşamada: Bağırsak perforasyonu → peritonit. Portal venöz gaz = Kritik iskemi/nekroz (Çok kötü prognoz işareti)."
     },
     {
         id: "intussusception",
@@ -232,9 +240,10 @@ export const gastroPathologies: Pathology[] = [
                 description: "Transverse view: Target Sign — concentric ring appearance. Longitudinal view: Pseudokidney Sign. Vascularity assessment with Color Doppler."
             },
             ct: {
-                contrast: "Bowel-within-bowel appearance. Invaginated mesenteric fat and vessels (Leading point). Investigation for primary mass lesion."
+                contrast: "Bowel-within-bowel appearance. Invaginated mesenteric fat and vessels (Leading point). Bowel investigation for primary mass lesion."
             }
-        }
+        },
+        mechanism: "Öncü lezyon (polip, Meckel divertikülü, lenfoma) veya idiyopatik peristaltik anomali → bir bağırsak segmentinin bir sonrakinin içine teleskop gibi girişi → venöz staz → mukoza ödemi → arteryel yetmezlik → nekroz. Çocuklarda (%90 idiyopatik): Lenfoid hipertrofi (viral enfeksiyon sonrası) öncü lezyon görevi görür. Target sign: İç içe geçmiş bağırsak duvarlarının aksiyel kesitteki halka görüntüsüdür."
     },
     {
         id: "gist",
@@ -259,7 +268,8 @@ export const gastroPathologies: Pathology[] = [
             mri: {
                 t2: "Heterogeneous signal intensity (necrotic areas are T2 hyperintense). Capsule usually intact."
             }
-        }
+        },
+        mechanism: "KIT (CD117) veya PDGFRA onkogen aktivasyon mutasyonu → Cajal hücrelerinden köken alan interstisyel pacemaker hücreleri kontrolsüz prolifere olur → GİST oluşumu. c-KIT mutasyonu (%75): İmatinib tedavisine yanıt verir. Ekzofitik büyüme: Kas tabakasından kaynaklanan tümör dışa doğru büyür, lümene geç uzanır (bu nedenle obstrüksiyon geç olur). Büyüdükçe merkezi nekroz/kavitasyon gelişir."
     },
     {
         id: "liver-abscess",
@@ -292,7 +302,8 @@ export const gastroPathologies: Pathology[] = [
                 t2: "T2 hyperintense fluid content. Thick, contrast-enhancing wall.",
                 dwi: "Marked diffusion restriction due to pus content."
             }
-        }
+        },
+        mechanism: "Bilier sistem enfeksiyonu (kolanjit → portal bakteremi) veya hematojen yayılım → karaciğerde fokal bakteriyel enfeksiyon → merkezi likefaksiyon nekrozu → pü birikimi → apse kavitesi. Granülasyon dokusu çeperinin BT'de iç halka kontrastlanması, çevre ödem dış halkayı oluşturur (double target sign). DWI parlak: Pü yüksek viskoziteli → difüzyon kısıtlı."
     },
     {
         id: "esophageal-carcinoma",
@@ -317,6 +328,7 @@ export const gastroPathologies: Pathology[] = [
             mri: {
                 other_sequences: "Local staging: Adventitia involvement (T3), adjacent structure invasion (T4). Diffusion (DWI) shows tumor activity."
             }
-        }
+        },
+        mechanism: "Skuamöz hücreli karsinom (üst/orta 1/3): Sigara, alkol, sıcak içecek → skuamöz epitel kronik hasarı → displazi → SCC. Adenokarsinom (alt 1/3): Kronik GÖRH → Barrett metaplazisi (kolumnar epitel) → intestinal metaplazi → displazi → adenokarsinom. Her iki tip çevresel (sirkumferensiyel) büyüme ile lümeni daraltır; mediasten yakınlığı erken damar ve sinir invazyonuna yol açar."
     }
 ];

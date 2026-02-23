@@ -44,7 +44,7 @@ export interface ModalityFindings {
     };
     usg?: {
         description?: string;
-        [key: string]: any;
+        [key: string]: string | undefined;
     };
     dsa?: {
         description?: string;
