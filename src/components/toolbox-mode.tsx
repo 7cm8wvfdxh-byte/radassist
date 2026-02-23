@@ -151,6 +151,57 @@ export function ToolboxMode() {
         setCalcResult({ main: `${tr} (Puan: ${total})`, detail: rec });
     };
 
+    const calculateEvansIndex = () => {
+        const { frontal_horn, inner_table } = calcValues;
+        if (!frontal_horn || !inner_table) return;
+        const ei = frontal_horn / inner_table;
+        const grade = ei >= 0.37 ? "Ventriküler Dilatasyon (Hidrosefali şüphesi)" : ei >= 0.30 ? "Sınırda (Takip önerilir)" : "Normal";
+        setCalcResult({ main: `Evans Index: ${ei.toFixed(3)}`, detail: `${grade}\n(N: < 0.30 | Şüpheli: 0.30-0.36 | Hidrosefali: ≥ 0.37)` });
+    };
+
+    const calculateDeRitis = () => {
+        const { ast, alt } = calcValues;
+        if (!ast || !alt) return;
+        const ratio = ast / alt;
+        const interp = ratio > 2 ? "Alkolik Hepatit düşündürür (>2)" : ratio > 1 ? "Siroz / Hepatoselüler hastalık" : ratio < 1 ? "Akut Viral Hepatit düşündürür (<1)" : "Normal sınır";
+        setCalcResult({ main: `De Ritis Oranı: ${ratio.toFixed(2)}`, detail: interp });
+    };
+
+    const calculateMELD = () => {
+        const { bili, inr_val, creat } = calcValues;
+        if (!bili || !inr_val || !creat) return;
+        const b = Math.max(bili, 1);
+        const i = Math.max(inr_val, 1);
+        const c = Math.max(Math.min(creat, 4), 1);
+        const meld = Math.round(3.78 * Math.log(b) + 11.2 * Math.log(i) + 9.57 * Math.log(c) + 6.43);
+        const mort = meld < 10 ? "<%2 (3 aylık mortalite)" : meld < 20 ? "%6–12" : meld < 30 ? "%20–25" : meld < 40 ? "%50" : ">%70";
+        setCalcResult({ main: `MELD Skoru: ${meld}`, detail: `Tahmini 3 Aylık Mortalite: ${mort}` });
+    };
+
+    const calculateChildPugh = () => {
+        const { bili_cp, alb, pt_cp, ascites, encep } = calcValues;
+        const total = (bili_cp || 0) + (alb || 0) + (pt_cp || 0) + (ascites || 0) + (encep || 0);
+        const cls = total <= 6 ? "Child A (İyi kompanze, operatif risk düşük)" : total <= 9 ? "Child B (Orta dereceli, karaciğer yetmezliği var)" : "Child C (Dekompanze siroz, yüksek operatif risk)";
+        const surv = total <= 6 ? "1 yıllık sürvi: ~%100, 2 yıl: ~%85" : total <= 9 ? "1 yıl: ~%80, 2 yıl: ~%60" : "1 yıl: ~%45, 2 yıl: ~%35";
+        setCalcResult({ main: `Child-Pugh ${total <= 6 ? 'A' : total <= 9 ? 'B' : 'C'} (${total} puan)`, detail: `${cls}\n${surv}` });
+    };
+
+    const calculateASPECTS = () => {
+        // ASPECTS: 10 points, each checked region subtracts 1
+        const regions = ['c', 'm1', 'm2', 'm3', 'm4', 'm5', 'm6', 'ic', 'l', 'i'];
+        let score = 10;
+        regions.forEach(r => { if (calcValues[r] === 1) score -= 1; });
+        const rec = score >= 8 ? "Trombektomi için uygun (ASPECTS ≥ 8)" : score >= 6 ? "Seçilmiş hastalarda trombektomi — klinik değerlendirme" : "Geniş enfarkt (ASPECTS < 6) — yüksek hemorajik risk, dikkatli değerlendirin";
+        setCalcResult({ main: `ASPECTS: ${score}/10`, detail: rec });
+    };
+
+    const calculateWellsPE = () => {
+        const { dvt_sign, alt_diag, hr, immob, prev_dvtpe, hemoptysis, malign } = calcValues;
+        const total = (dvt_sign || 0) + (alt_diag || 0) + (hr || 0) + (immob || 0) + (prev_dvtpe || 0) + (hemoptysis || 0) + (malign || 0);
+        const prob = total <= 1 ? "Düşük Olasılık (<2) — D-Dimer ile dışla" : total <= 6 ? "Orta Olasılık (2-6) — D-Dimer veya BTPA" : "Yüksek Olasılık (>6) — Direkt BTPA önerilir";
+        setCalcResult({ main: `Wells Skoru: ${total}`, detail: prob });
+    };
+
     // ── Copy to clipboard helper ─────────────────────────────────
     const copyToClipboard = (text: string, type: 'findings' | 'impression') => {
         navigator.clipboard.writeText(text).then(() => {
@@ -375,6 +426,108 @@ export function ToolboxMode() {
                                             <div className="space-y-1"><label className="text-[10px] uppercase text-zinc-500 font-bold">Ekojenik Odak</label><select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('echogenicfoci', e.target.value)}><option value="0">Yok (0)</option><option value="1">Makrokalsifikasyon (+1)</option><option value="2">Periferal (Rim) kalsifikasyon (+2)</option><option value="3">Punctate eksojenik odaklar (+3)</option></select></div>
                                         </div>
                                         <button onClick={calculateTIRADS} className="w-full py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-xl font-bold transition-all mt-2 border border-amber-500/30 shadow-lg shadow-amber-900/20">Risk Hesapla</button>
+                                    </>
+                                )}
+
+                                {activeCalc === 'evans_index' && (
+                                    <>
+                                        <div className="space-y-4">
+                                            <div><label className="text-xs text-zinc-400 block mb-1">Frontal Boynuz Çapı (mm) — İki tarafın toplamı</label><input type="number" step="0.1" onChange={(e) => handleCalcChange('frontal_horn', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none" placeholder="Örn: 44.0" /></div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">Maksimum İç Kranial Çap (mm)</label><input type="number" step="0.1" onChange={(e) => handleCalcChange('inner_table', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white focus:border-purple-500 focus:outline-none" placeholder="Örn: 135.0" /></div>
+                                        </div>
+                                        <button onClick={calculateEvansIndex} className="w-full py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-xl font-bold transition-all shadow-lg shadow-purple-900/20">Hesapla</button>
+                                    </>
+                                )}
+
+                                {activeCalc === 'de_ritis_ratio' && (
+                                    <>
+                                        <div className="space-y-4">
+                                            <div><label className="text-xs text-zinc-400 block mb-1">AST (U/L)</label><input type="number" onChange={(e) => handleCalcChange('ast', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" placeholder="Örn: 85" /></div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">ALT (U/L)</label><input type="number" onChange={(e) => handleCalcChange('alt', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" placeholder="Örn: 40" /></div>
+                                        </div>
+                                        <button onClick={calculateDeRitis} className="w-full py-3 bg-rose-600 hover:bg-rose-500 text-white rounded-xl font-bold transition-all shadow-lg">Hesapla</button>
+                                    </>
+                                )}
+
+                                {activeCalc === 'meld_score' && (
+                                    <>
+                                        <div className="space-y-4">
+                                            <div><label className="text-xs text-zinc-400 block mb-1">Total Bilirubin (mg/dL)</label><input type="number" step="0.1" onChange={(e) => handleCalcChange('bili', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" placeholder="Örn: 2.4" /></div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">INR</label><input type="number" step="0.1" onChange={(e) => handleCalcChange('inr_val', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" placeholder="Örn: 1.8" /></div>
+                                            <div><label className="text-xs text-zinc-400 block mb-1">Kreatinin (mg/dL)</label><input type="number" step="0.1" onChange={(e) => handleCalcChange('creat', e.target.value)} className="w-full bg-black/40 border border-zinc-700 rounded-lg p-3 text-white" placeholder="Örn: 1.2" /></div>
+                                        </div>
+                                        <button onClick={calculateMELD} className="w-full py-3 bg-amber-600 hover:bg-amber-500 text-white rounded-xl font-bold transition-all shadow-lg">MELD Hesapla</button>
+                                    </>
+                                )}
+
+                                {activeCalc === 'child_pugh' && (
+                                    <>
+                                        <div className="space-y-3 text-sm">
+                                            <div className="space-y-1"><label className="text-[10px] uppercase text-zinc-500 font-bold">Bilirubin (mg/dL)</label><select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('bili_cp', e.target.value)}><option value="1">&lt;2 mg/dL (+1)</option><option value="2">2-3 mg/dL (+2)</option><option value="3">&gt;3 mg/dL (+3)</option></select></div>
+                                            <div className="space-y-1"><label className="text-[10px] uppercase text-zinc-500 font-bold">Albümin (g/dL)</label><select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('alb', e.target.value)}><option value="1">&gt;3.5 g/dL (+1)</option><option value="2">2.8–3.5 g/dL (+2)</option><option value="3">&lt;2.8 g/dL (+3)</option></select></div>
+                                            <div className="space-y-1"><label className="text-[10px] uppercase text-zinc-500 font-bold">PT (saniye uzama)</label><select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('pt_cp', e.target.value)}><option value="1">&lt;4 sn (+1)</option><option value="2">4-6 sn (+2)</option><option value="3">&gt;6 sn (+3)</option></select></div>
+                                            <div className="space-y-1"><label className="text-[10px] uppercase text-zinc-500 font-bold">Asit</label><select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('ascites', e.target.value)}><option value="1">Yok (+1)</option><option value="2">Hafif-Orta (+2)</option><option value="3">Belirgin (+3)</option></select></div>
+                                            <div className="space-y-1"><label className="text-[10px] uppercase text-zinc-500 font-bold">Ensefalopati</label><select className="w-full bg-black/40 border border-zinc-700 rounded p-2 text-xs" onChange={e => handleCalcChange('encep', e.target.value)}><option value="1">Yok (+1)</option><option value="2">Grad 1-2 (+2)</option><option value="3">Grad 3-4 (+3)</option></select></div>
+                                        </div>
+                                        <button onClick={calculateChildPugh} className="w-full py-3 bg-orange-600 hover:bg-orange-500 text-white rounded-xl font-bold transition-all mt-2 shadow-lg">Skor Hesapla</button>
+                                    </>
+                                )}
+
+                                {activeCalc === 'aspects_score' && (
+                                    <>
+                                        <div className="space-y-3 text-sm max-h-[300px] overflow-y-auto pr-1">
+                                            <p className="text-xs text-zinc-500 italic">Her bölge: normal=0 puan, iskemi=−1 puan. Toplam 10 üzerinden.</p>
+                                            <div className="bg-zinc-900/50 rounded-lg p-3 border border-zinc-800">
+                                                <p className="text-[10px] font-bold text-zinc-500 uppercase mb-2">Bazal Ganglia Düzeyi</p>
+                                                {[['c','Kaudat (C)'],['l','Lentiküler (L)'],['i','İnsüla (I)'],['ic','İnternal kapsül (IC)']].map(([key, label]) => (
+                                                    <div key={key} className="flex items-center justify-between py-1">
+                                                        <span>{label}</span>
+                                                        <div className="flex bg-black/40 p-0.5 rounded border border-zinc-700">
+                                                            <button onClick={() => handleCalcChange(key, '0')} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues[key] !== 1 ? "bg-zinc-600 text-white" : "text-zinc-500")}>Normal</button>
+                                                            <button onClick={() => handleCalcChange(key, '1')} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues[key] === 1 ? "bg-red-600 text-white" : "text-zinc-500")}>İskemi (−1)</button>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <div className="bg-zinc-900/50 rounded-lg p-3 border border-zinc-800">
+                                                <p className="text-[10px] font-bold text-zinc-500 uppercase mb-2">MCA Korteks Düzeyi</p>
+                                                {[['m1','M1 (Ant MCA)'],['m2','M2 (Ant Temporal)'],['m3','M3 (Post Temporal)'],['m4','M4 (Ant Sup)'],['m5','M5 (Lat Sup)'],['m6','M6 (Post Sup)']].map(([key, label]) => (
+                                                    <div key={key} className="flex items-center justify-between py-1">
+                                                        <span>{label}</span>
+                                                        <div className="flex bg-black/40 p-0.5 rounded border border-zinc-700">
+                                                            <button onClick={() => handleCalcChange(key, '0')} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues[key] !== 1 ? "bg-zinc-600 text-white" : "text-zinc-500")}>Normal</button>
+                                                            <button onClick={() => handleCalcChange(key, '1')} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues[key] === 1 ? "bg-red-600 text-white" : "text-zinc-500")}>İskemi (−1)</button>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <button onClick={calculateASPECTS} className="w-full py-3 bg-red-700 hover:bg-red-600 text-white rounded-xl font-bold transition-all mt-2 shadow-lg">ASPECTS Hesapla</button>
+                                    </>
+                                )}
+
+                                {activeCalc === 'wells_pe' && (
+                                    <>
+                                        <div className="space-y-3 text-sm">
+                                            {[
+                                                { key: 'dvt_sign', label: 'DVT klinik bulguları', pts: 3 },
+                                                { key: 'alt_diag', label: 'PE en olası tanı', pts: 3 },
+                                                { key: 'hr', label: 'Kalp hızı > 100/dk', pts: 1.5 },
+                                                { key: 'immob', label: 'İmmobilizasyon / Operasyon (son 4 hafta)', pts: 1.5 },
+                                                { key: 'prev_dvtpe', label: 'Daha önce DVT veya PE', pts: 1.5 },
+                                                { key: 'hemoptysis', label: 'Hemoptizi', pts: 1 },
+                                                { key: 'malign', label: 'Aktif malignite (tedavi altında)', pts: 1 },
+                                            ].map(({ key, label, pts }) => (
+                                                <div key={key} className="flex items-center justify-between">
+                                                    <span className="text-xs pr-2">{label}</span>
+                                                    <div className="flex bg-black/40 p-0.5 rounded border border-zinc-700 flex-shrink-0">
+                                                        <button onClick={() => handleCalcChange(key, '0')} className={cn("px-2 py-0.5 rounded text-[10px]", (!calcValues[key] || calcValues[key] === 0) ? "bg-zinc-600 text-white" : "text-zinc-500")}>Hayır</button>
+                                                        <button onClick={() => handleCalcChange(key, String(pts))} className={cn("px-2 py-0.5 rounded text-[10px]", calcValues[key] === pts ? "bg-blue-600 text-white" : "text-zinc-500")}>Evet (+{pts})</button>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <button onClick={calculateWellsPE} className="w-full py-3 bg-blue-700 hover:bg-blue-600 text-white rounded-xl font-bold transition-all mt-4 shadow-lg">Skor Hesapla</button>
                                     </>
                                 )}
 

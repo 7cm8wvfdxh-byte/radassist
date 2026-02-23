@@ -372,6 +372,127 @@ export const REPORT_TEMPLATES: Record<string, ReportTemplate> = {
         technique: "Kontrastlı Abdomen-Pelvis BT.",
         findingsTemplate: "[Sigmoid/Rektum/Çıkan kolon/İnen kolon] segmentinde dairesel veya ekzofitik kitle lezyonu izlenmiştir. Lümen belirgin daralmış ve barsak duvarı düzensiz kalınlaşma göstermektedir. Perikolonik yağ doku infiltrasyonu [mevcut/yok] olarak değerlendirilmiştir. Mezorektal fasya mesafesi [X] mm. Bölgesel mezenterik lenf nodu büyümesi [mevcut/yok]. Karaciğerde metastatik lezyon [mevcut/yok].",
         impressionTemplate: "Kolorektal karsinom ile uyumlu bulgular. Kolonoskopi / Genel Cerrahi ve Onkoloji konsültasyonu önerilir."
+    },
+
+    // ═══════════════════════════════════════════════════
+    // TİROİD
+    // ═══════════════════════════════════════════════════
+    "thyroid_nodule": {
+        pathologyId: "thyroid_nodule",
+        label: "Tiroid Nodülü (TI-RADS)",
+        organ: "Tiroid",
+        technique: "Yüksek frekanslı (7-15 MHz) lineer prob ile tiroid USG.",
+        clinicalInfo: "Tiroid nodülü, boyun kitlesi, tiroid fonksiyon testleri.",
+        findingsTemplate: "Tiroid [sağ/sol] lobunda, [üst/orta/alt] polde, [X x Y x Z] mm boyutlarında lezyon izlenmiştir.\n\nYapı: [Solid / Predominant solid / Kistik-solid karışık / Spongioform]\nEkojenite: [Hiperekoik / İzoekoik / Hipoekoik / Belirgin hipoekoik]\nŞekil: [Genişliği > Yüksekliği (Geniş) / Yüksekliği > Genişliği (Uzun, şüpheli)]\nKenar: [Düzgün / Belirsiz / Lobüle / Düzensiz / Mikrolob]\nEkojenik odak: [Yok / Kaba kalsifikasyon / Periferal kalsifikasyon / Punctate ekojenik odak]\n\nACR TI-RADS Puan: [X] → [TR1/TR2/TR3/TR4/TR5]\nDopler: [Hipervaskülarizan / Normal]\nKomşu lenf nodu: [Saptanmadı / Saptandı]",
+        impressionTemplate: "Tiroid [sağ/sol] lobunda tanımlanan lezyon ACR TI-RADS [X] kategorisi ile uyumludur.\n[TR3: ≥1.5cm takip / TR4: ≥1.5cm İİAB / TR5: ≥1cm İİAB]\nEndokrinoloji konsültasyonu önerilir."
+    },
+    "hashimoto_thyroiditis": {
+        pathologyId: "hashimoto_thyroiditis",
+        label: "Hashimoto Tiroiditi",
+        organ: "Tiroid",
+        technique: "Tiroid USG ve Doppler.",
+        findingsTemplate: "Tiroid bezi diffüz olarak büyümüş olup parankimi heterojen görünümdedir. T2 ağırlıklı serilerde diffüz hipoekoik alan, fibröz bantlar ve nodüler yapılanmalar seçilmektedir. Parankimde 'ağ' manzarası ile uyumlu lobülasyon izlenmektedir. Power Doppler'de parankimde artmış vaskülarizasyon dikkati çekmiştir. Bilateral over: Hacim [X] ml (Sağ), [Y] ml (Sol).",
+        impressionTemplate: "Hashimoto Otoimmün Tiroiditi ile uyumlu USG bulguları. Klinik ve laboratuvar korelasyon önerilir (Anti-TPO, Anti-Tg, TSH)."
+    },
+
+    // ═══════════════════════════════════════════════════
+    // ADRENAL
+    // ═══════════════════════════════════════════════════
+    "adrenal_adenoma": {
+        pathologyId: "adrenal_adenoma",
+        label: "Adrenal Adenom (Kontrast BT)",
+        organ: "Adrenal",
+        technique: "Üç fazlı adrenal BT protokolü (Native, Venöz, 15 dk Gecikmiş).",
+        findingsTemplate: "[Sağ/Sol] adrenal bezde [X x Y] mm boyutlarında lezyon izlenmiştir.\n\nNative (pre-kontrast): [X] HU\nVenöz faz: [Y] HU\nGeç faz (15 dk): [Z] HU\n\nAbsolute Percentage Washout (APW): [(Y-Z)/(Y-X)] x100 = %[değer]\nRelative Percentage Washout (RPW): [(Y-Z)/Y] x100 = %[değer]\n\nLezyon Özelliği: [Homojen/Heterojen], [Yağ içeriği mevcut/yok]",
+        impressionTemplate: "APW %[X] ve RPW %[Y] değerleri ile lezyon;\n[APW ≥60% veya RPW ≥40%]: Yağlı Adenom ile uyumlu → klinik takip yeterli.\n[APW <60% veya RPW <40%]: Non-adenom şüphelidir → MRG veya ek değerlendirme önerilir."
+    },
+    "pheochromocytoma": {
+        pathologyId: "pheochromocytoma",
+        label: "Feokromositoma",
+        organ: "Adrenal",
+        technique: "Kontrastlı Abdomen BT ve/veya Adrenal MRG.",
+        findingsTemplate: "[Sağ/Sol] adrenal bezde [X x Y x Z] mm boyutlarında kitlesel lezyon izlenmiştir. Lezyon içinde kistik-nekrotik alanlar ve kanama alanları dikkati çekmektedir. BT'de yoğun kontrast tutulumu ve yavaş washout gözlenmektedir. Native BT dansite değeri [X] HU olup yüksek nativ dansitesiyle adenom ile uyumsuz değerlendirilmiştir. MRG'de T2 ağırlıklı serilerde belirgin hiperintens sinyal (yüksek su içeriği), T1'de heterojen sinyal izlenmektedir. 'Işık ampulü' (light bulb) belirtisi mevcuttur.",
+        impressionTemplate: "Feokromositoma ile uyumlu adrenal kitle. Biyokimyasal değerlendirme (idrarda katekolaminler, metanefrin) ve Endokrinoloji konsültasyonu önerilir. Kontrast uygulamasından önce alfa-blokaj gereklidir."
+    },
+
+    // ═══════════════════════════════════════════════════
+    // PANKREAS
+    // ═══════════════════════════════════════════════════
+    "pancreatic_cancer": {
+        pathologyId: "pancreatic_cancer",
+        label: "Pankreas Kanseri (Duktal Adenokarsinom)",
+        organ: "Pankreas",
+        technique: "Üç fazlı pankreas BT protokolü (Native, Pankreatik faz, Portal-venöz faz).",
+        findingsTemplate: "Pankreas [baş/gövde/kuyruk] bölgesinde, [X x Y x Z] mm boyutlarında, pankreas parankimine göre hipodens kitlesel lezyon izlenmiştir. Ana pankreas kanalında proksimalinde genişleme [mevcut/yok]. Ana safra kanalında dilatasyonu [mevcut/yok — Çift kanal bulgusu: [var/yok]]. Çevre büyük damarlarla ilişki:\n- Süperiyor mezenterik ven (SMV): [< 180° / ≥ 180° temas]\n- Portal ven (PV): [< 180° / ≥ 180° temas]\n- Çölyak aks: [Temas yok / temas mevcut]\n- Süperiyor mezenterik arter (SMA): [< 180° / ≥ 180° temas]\nBölgesel lenf nodu büyümesi: [Mevcut/Yok]. Karaciğer metastazı: [Mevcut/Yok]. Periton implantı: [Mevcut/Yok].",
+        impressionTemplate: "Pankreas [baş/gövde/kuyruk] bölgesinde tanımlanan kitle, duktal adenokarsinom ile uyumludur.\nCerrahi Rezektabilite: [Rezektabl / Sınırda Rezektabl / Lokal İleri Evre / Metastatik]\nGastroenteroloji ve Genel Cerrahi Onkoloji konsültasyonu önerilir."
+    },
+    "ipmn": {
+        pathologyId: "ipmn",
+        label: "IPMN (İntraduktil Papiller Müsinöz Neoplazi)",
+        organ: "Pankreas",
+        technique: "MRCP ve Kontrastlı Abdomen MRG.",
+        findingsTemplate: "Pankreas [baş/gövde/kuyruk] bölgesinde MRCP'de ana pankreas kanalı / yan dal ile ilişkili kistik lezyon izlenmiştir.\n\nTip: [Ana Dal IPMN / Yan Dal IPMN / Mikst Tip]\nBoyut: [X x Y] mm\nAna Pankreas Kanalı Çapı: [X] mm [N: <3mm]\nEndişe Verici Özellikler (Worrisome Features):\n- Kist boyutu ≥ 3cm: [Evet/Hayır]\n- Duvar kalınlaşması: [Var/Yok]\n- Büyük dal IPMN: [Evet/Hayır]\n- Ana kanal genişliği 5-9mm: [Evet/Hayır]\n- Mural nodül: [Var/Yok]\nYüksek Risk Bulguları (High-Risk Stigmata):\n- Obstrüktif sarılık: [Var/Yok]\n- Enhancing solid bileşen: [Var/Yok]\n- AKD > 10mm: [Evet/Hayır]",
+        impressionTemplate: "Pankreas [baş/gövde/kuyruk]'nda [yan dal / ana dal / mikst tip] IPMN ile uyumlu kistik lezyon.\n[Yüksek risk bulgusu varsa]: Cerrahi konsültasyon önerilir.\n[Worrisome features]: EUS / 3-6 aylık MRG takibi önerilir.\n[Düşük risk]: Yıllık MRG takibi yeterlidir."
+    },
+
+    // ═══════════════════════════════════════════════════
+    // KAS-İSKELET EK
+    // ═══════════════════════════════════════════════════
+    "shoulder_impingement": {
+        pathologyId: "shoulder_impingement",
+        label: "Omuz İmpingement Sendromu (MRG)",
+        organ: "Kas-İskelet",
+        technique: "Omuz MRG (T1, PD FS, T2 FS, Koronal, Sagital, Aksiyal).",
+        findingsTemplate: "Supraspinatus tendonu değerlendirmesi:\n- Tendon kalınlığı: [Normal / İnce / Kalın]\n- Sinyal özelliği: [Normal / T2'de hiperintensite (tendinopati)]\n- Yırtık: [Yok / Parsiyel yüzeysel / Parsiyel derinsel / Tam kat (boyut: Xmm)]\n\nSubakromiyal-subdeltoid bursit: [Yok / Minimal / Belirgin]\nAkromion tipi: [Tip 1 (Düz) / Tip 2 (Kıvrık) / Tip 3 (Çengel şekilli)]\nAkromiohümeral mesafe: [X] mm [N: ≥7mm]\nBikipital tendon (uzun başı): [Normal / Tendinopati / Dislokasyon / Yırtık]\nGlenohümeral eklem: [Normal / Efüzyon mevcut]",
+        impressionTemplate: "Supraspinatus tendonunda [tendinopati / parsiyel yırtık / tam kat yırtık] ve [Tip X] akromion varlığı ile uyumlu bulgular — impingement sendromu ile uyumlu. Ortopedi konsültasyonu önerilir."
+    },
+    "knee_meniscus": {
+        pathologyId: "knee_meniscus",
+        label: "Diz MRG — Menisküs ve Bağ Kompleksi",
+        organ: "Kas-İskelet",
+        technique: "Diz MRG (Sagital PD FS, Koronal T2 FS, Aksiyal PD FS).",
+        findingsTemplate: "MEDİAL MENİSKÜS:\n- Ön boynuz: [Normal / Grad 1-2 sinyal / Grad 3 yırtık (vertikal/horizonatal/radyal/komplex/kova sapı)]\n- Arka boynuz: [Normal / Grad 1-2 sinyal / Grad 3 yırtık]\n\nLATERAL MENİSKÜS:\n- Ön boynuz: [Normal / Grad 1-2 / Grad 3 yırtık]\n- Arka boynuz: [Normal / Grad 1-2 / Grad 3 yırtık]\n- Diskoid menisküs: [Yok / Var]\n\nÖN ÇAPRAZ BAĞ (ACL):\n[Normal — kontinüitesi tam, paralel lifler seçilmekte]\n[Parsiyel yırtık — liflerde izlenme sürekliliği azalmış]\n[Tam yırtık — bağ seçilmemekte; 'boş çentik bulgusu' (empty notch sign)]\n\nARKA ÇAPRAZ BAĞ (PCL): [Normal / Gerilme / Yırtık]\nMEDİAL KOLLATERAL BAĞ (MCL): [Normal / Yırtık]\nEFÜZYON: [Yok / Minimal / Orta / Belirgin]\nKIKIRDAK: [Korunaklı / Fokal defekt — Lokalizasyon: X]",
+        impressionTemplate: "Diz MRG'de [menisküs yırtığı lokalizasyon ve tipi], [ACL/PCL durumu] saptanmıştır. Ortopedi konsültasyonu önerilir."
+    },
+    "hip_labral_tear": {
+        pathologyId: "hip_labral_tear",
+        label: "Kalça Labrumu (Direkt Artrografi MRG)",
+        organ: "Kas-İskelet",
+        technique: "Kalça MR Artrografi (İntra-artiküler Gadolinyum) — Aksiyal, Koronal, Sagital T1 FS.",
+        findingsTemplate: "Femoral baş sferisitesi: [Normal / Çam koni deformitesi (Cam) — alfa açısı: X°]\nAsetabular örtünme: [Normal / Pincer deformitesi (CE açısı: X°)]\n\nLABRUM:\n- Anterior-süperiyor: [Normal / Parsiyel yırtık / Tam yırtık / Dejenere]\n- Posterior: [Normal / Yırtık]\n- Labral kist: [Mevcut — boyut: X mm / Yok]\n\nAsetabular kıkırdak: [Korunaklı / Fokal defekt (Lokalizasyon: X)]\nSinoviyal efüzyon: [Yok / Minimal / Belirgin]\nLigamentum teres: [Normal / Yırtık / İzlenemiyor]",
+        impressionTemplate: "Kalça MR artrografisinde [labrum yırtığı lokalizasyonu ve tipi] saptanmıştır. [Cam/Pincer/Mikst] tip FAI (Femoroacetabular İmpingement) bulguları ile uyumludur. Ortopedi konsültasyonu önerilir."
+    },
+
+    // ═══════════════════════════════════════════════════
+    // VASKÜLER EK
+    // ═══════════════════════════════════════════════════
+    "dvt": {
+        pathologyId: "dvt",
+        label: "Derin Ven Trombozu (DVT)",
+        organ: "Vasküler",
+        technique: "Alt ekstremite derin ven Doppler USG.",
+        findingsTemplate: "Alt ekstremite derin ven sistem değerlendirmesi:\n\n[Sağ / Sol] ekstremite:\n- Eksternal iliak ven: [Kompressibl / Non-kompressibl (Tromboz mevcut)]\n- Femoral ven (ortak): [Kompressibl / Tromboz — Ekojenik materyal]\n- Yüzeyel femoral ven: [Kompressibl / Tromboz (Uzunluk: X cm)]\n- Popliteal ven: [Kompressibl / Tromboz]\n- Tibial venler: [Değerlendirildi / Değerlendirilemedi]\n\nDoppler özellikleri: [Faz ile değişim mevcut / Kayıp]\nKolateral venler: [Görülmedi / Görüldü]\nEkstremitede ödem: [Yok / Var]",
+        impressionTemplate: "[Sağ/Sol] alt ekstremite [proksimal/distal] derin ven trombozu (DVT) ile uyumlu Doppler USG bulguları. Antikoagülan tedavi planlaması için İç Hastalıkları/Hematoloji konsültasyonu önerilir."
+    },
+    "aortic_dissection": {
+        pathologyId: "aortic_dissection",
+        label: "Aort Diseksiyonu",
+        organ: "Vasküler",
+        technique: "Kontrastlı BT Anjiyografi (Torakoabdominal).",
+        findingsTemplate: "Aortada intimal flep seçilmekte olup aort lümeni gerçek lümen (TL) ve yalancı lümen (FL) olmak üzere iki kanala ayrılmaktadır.\n\nBaşlangıç yeri: [Asendan aort / Aort kökü / Desendan aort / İnterventrüküler bölge]\nSınıflandırma:\n- Stanford: [Tip A (Asendan tutulum) / Tip B (Asendan tutulumu yok)]\n- DeBakey: [Tip I / II / III]\n\nProksimal uzanım: [Aort kökü / Aort kökü tutulmamış]\nDistal uzanım: [Torakal aort / Çölyak / SMA / Renal arterler / İliak arterler]\nDal damarlarının beslenmesi: [Gerçek lümenden / Yalancı lümenden]\nPerikard efüzyonu: [Yok / Mevcut]\nPleural efüzyon: [Yok / Sol / Sağ / Bilateral]",
+        impressionTemplate: "Stanford [Tip A / Tip B] Aort Diseksiyonu ile uyumlu bulgular.\nTip A: Acil Kalp-Damar Cerrahisi konsültasyonu!\nTip B: Anjiyografi/Endovasküler tedavi (TEVAR) planlaması için Kalp-Damar Cerrahisi konsültasyonu önerilir."
+    },
+
+    // ═══════════════════════════════════════════════════
+    // HEPATOBİLİYER EK
+    // ═══════════════════════════════════════════════════
+    "cholangiocarcinoma": {
+        pathologyId: "cholangiocarcinoma",
+        label: "Kolanjiyokarsinom",
+        organ: "Hepatobiliyer",
+        technique: "MRCP ve Kontrastlı Abdomen MRG.",
+        findingsTemplate: "Hepatik [sağ/sol/her iki lob / Hiler bölge / Distal safra yolu] tutulumu izlenmiştir.\n\nTip (Bismuth-Corlette): [Tip I / II / IIIa / IIIb / IV]\nSafra yolu: [İntra/Ekstrahepatik safra yollarında dilatasyon (CBD: X mm)]\nLezyon: [X x Y x Z] mm boyutlarında, T1'de hipointens, T2'de hiperintens, IVKM sonrası periferik ve geç kontrast tutulumu gösteren kitlesel lezyon.\n\nVasküler tutulum:\n- Portal ven sağ/sol kol: [Serbest / Temas / Oklüzyon]\n- Hepatik arterler: [Serbest / Temas]\nKaraciğer atrofisi: [Sağ / Sol / Yok]\nLokorejyonal lenf nodu: [Yok / Mevcut — kısa aks: X mm]",
+        impressionTemplate: "Kolanjiyokarsinom ile uyumlu bulgular (Bismuth-Corlette Tip [X]).\nCerrahi rezektabilite değerlendirmesi için Hepatobiliyer Cerrahi ve Onkoloji konsültasyonu önerilir."
     }
 };
 

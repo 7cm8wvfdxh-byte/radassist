@@ -366,5 +366,280 @@ export const IMAGING_PROTOCOLS: ImagingProtocol[] = [
         ],
         contrastInfo: "0.1 mmol/kg Gadolinyum IV.",
         notes: "Bosniak 2024 sınıflaması için tüm fazlar gereklidir. Bosniak III–IV: Cerrahi / ablasyon değerlendirmesi."
+    },
+
+    // ═══════════════════════════════════════════════
+    // TİROİD / BOYUN USG
+    // ═══════════════════════════════════════════════
+    {
+        id: "thyroid_usg",
+        name: "Tiroid USG",
+        organ: "Tiroid",
+        modality: "USG",
+        indication: "Tiroid nodülü, guatr, tiroidit, boyun kitlesi değerlendirmesi.",
+        patientPrep: [
+            "Aç kalmaya gerek yok.",
+            "Boyun bölgesinde takı çıkartılmalı.",
+            "Hasta supin pozisyonda, boyun hiperekstensiyon pozisyonunda."
+        ],
+        steps: [
+            { step: "Tiroid Lobu (Sağ-Sol) B-Mode", detail: "7-15 MHz lineer prob. Uzun ve kısa aks boyutlar ölçülür. Lob boyutu: AP x TR x Uzunluk (mm)." },
+            { step: "İsthmus Kalınlığı", detail: "Orta hattan AP çap ölçümü (N: < 3mm)." },
+            { step: "Parankimal Yapı", detail: "Ekojenite, heterojenite, nodülarite, vaskülarizasyon değerlendirilir." },
+            { step: "Nodül Karakterizasyonu (TI-RADS)", detail: "Yapı, ekojenite, şekil (geniş vs uzun), kenar, ekojenik odak. ACR TI-RADS skoru hesaplanır." },
+            { step: "Doppler / Power Doppler", detail: "Diffüz hipervaskülarizan → Graves. Periferik vaskülarizan → Hashimoto." },
+            { step: "Servikal Lenf Nodları", detail: "Level II-VI boyu: Kısa aks çap, morfoloji (hilus, korteks)." }
+        ],
+        notes: "TI-RADS ≥ TR4 (≥4 puan) veya TR3 ≥1.5 cm → İİAB değerlendirmesi. Elastografi (varsa) ek bilgi sağlar."
+    },
+    {
+        id: "renal_usg",
+        name: "Böbrek USG",
+        organ: "Böbrek / Üriner",
+        modality: "USG",
+        indication: "Böbrek boyutu ve parankimal hastalık, hidronefroz, kitle, taş.",
+        patientPrep: [
+            "Aç kalmaya gerek yok.",
+            "Dolu mesane tercih edilir (mesane değerlendirmesi yapılacaksa).",
+            "Hasta supin veya dekübit lateral pozisyonunda."
+        ],
+        steps: [
+            { step: "B-Mode (3-5 MHz Konveks Prob)", detail: "Sağ böbrek: Subkostal ve interkostal pencereler. Sol böbrek: Posterior/lateral yaklaşım." },
+            { step: "Böbrek Boyutları", detail: "Uzunluk (kranio-kaudal), AP ve transvers çap ölçümü. N: 9-13 cm." },
+            { step: "Korteks Kalınlığı", detail: "N: > 10 mm. Azalmış korteks → Kronik böbrek hastalığı." },
+            { step: "Toplama Sistemi", detail: "Pelvis çapı (N: < 10mm), kaliksiyel dilatasyon derecesi (SFU Grade 1-4)." },
+            { step: "Kitle/Kist Değerlendirmesi", detail: "Boyut, lokalizasyon, iç yapı. Kist: Bosniak sınıflaması. Solid: Kontrast BT/MR önerilir." },
+            { step: "Resistif İndeks (RI) — Doppler", detail: "N: 0.5–0.7. >0.7 → Renal arter darlığı, obstrüksiyon. İnterlobar arterlerden ölçülür." }
+        ],
+        notes: "Akut pyelonefrit: USG normalse CT gerekebilir. Hidronefroz derecesi SFU sistemi ile raporlanmalıdır."
+    },
+    {
+        id: "abdominal_usg",
+        name: "Batın USG (Tüm Abdomen)",
+        organ: "Abdomen",
+        modality: "USG",
+        indication: "Karın ağrısı, organ boyutu, asit, lenfadenopati genel değerlendirmesi.",
+        patientPrep: [
+            "En az 4-6 saat aç olunmalı (safra kesesi için optimal).",
+            "Yeterli sıvı alınmış, mesane dolu olmalı.",
+            "Hasta supin pozisyonda."
+        ],
+        steps: [
+            { step: "Karaciğer", detail: "Sağ lob uzunluğu (N: <15cm), sol lob, segmental anatomi. Ekojenik yapı, fokal lezyon (kist, hemanjiom, metastaz)." },
+            { step: "Safra Yolları ve Safra Kesesi", detail: "Kolelitiyazis (ekojen taş + arka gölge), duvar kalınlığı (N: <3mm), CBD çapı (N: <6-7mm)." },
+            { step: "Pankreas", detail: "Başta 2.5-3 cm, gövde 2cm, kuyruk 2cm normal. Wirsung kanalı (N: <3mm). Solid kitle/kistik lezyon." },
+            { step: "Dalak", detail: "Uzun aks (N: <13cm). Splenomegali, fokal lezyon, aksesuar dalak." },
+            { step: "Böbrekler (Her İki)", detail: "Boyut, korteks, toplama sistemi, kist/kitle (bkz. Böbrek USG protokolü)." },
+            { step: "Serbest Sıvı (Asit)", detail: "Morison poşu, pelvis, Koller de sac: Serbest sıvı miktarı ve lokalizasyonu." },
+            { step: "Büyük Damarlar", detail: "Abdominal aorta (N: <3cm), İVC, portal ven çapı (N: <13mm)." }
+        ],
+        notes: "Postprandial incelemede safra kesesi kontrakte olabilir — bildirilmelidir. Şüpheli kitleler için kontrast görüntüleme (BT/MR) önerilir."
+    },
+
+    // ═══════════════════════════════════════════════
+    // KARORİD DOPPLER USG
+    // ═══════════════════════════════════════════════
+    {
+        id: "carotid_doppler_usg",
+        name: "Karotis Doppler USG",
+        organ: "Vasküler (Karotis)",
+        modality: "USG-Doppler",
+        indication: "İnme/TIA risk, karotis darlığı, plak değerlendirmesi, tarama.",
+        patientPrep: [
+            "Aç kalmaya gerek yok.",
+            "Boyun bölgesinde aksesuar çıkartılmalı.",
+            "Hasta supin, baş hafifçe karşı tarafa çevrilmiş."
+        ],
+        steps: [
+            { step: "B-Mode Genel Değerlendirme", detail: "Her iki CCA, ICA, ECA ve vertebral arterler görüntülenir." },
+            { step: "İntima-Media Kalınlığı (IMT)", detail: "CCA'nın 1 cm proksimalinden B-mode ile. N: <0.9mm. >1.5mm → Plak." },
+            { step: "Plak Değerlendirmesi", detail: "Lokalizasyon, boyut (cm²), yüzey (düzgün/düzensiz), ekojenisite (homojen/heterojen/hipoekoik). Hipoekoik yumuşak plak → emboli riski yüksek." },
+            { step: "Doppler Spektral Analiz (PSV / EDV)", detail: "ICA PSV: N < 125 cm/s. >125: %50-69, >230: ≥%70 stenoz. ICA/CCA oranı: N < 2." },
+            { step: "Renk Doppler", detail: "Mozaik akım paterni (türbülans) → darlık. Sinyal kaybı → oklüzyon." },
+            { step: "Vertebral Arterler", detail: "Akım yönü (retrograd → subklavyan steal). PSV değerleri." }
+        ],
+        notes: "NASCET kriterlerine göre darlık yüzdesi hesaplanır. %70+ darlık → Endarterektomi veya stent değerlendirmesi."
+    },
+
+    // ═══════════════════════════════════════════════
+    // DERİN VEN DOPPLER USG
+    // ═══════════════════════════════════════════════
+    {
+        id: "lower_extremity_venous_usg",
+        name: "Alt Ekstremite Venöz Doppler USG (DVT)",
+        organ: "Vasküler (Venöz)",
+        modality: "USG-Doppler",
+        indication: "DVT şüphesi, ödematöz ekstremite, emboli kaynağı araştırması.",
+        patientPrep: [
+            "Aç kalmaya gerek yok.",
+            "Hasta supin pozisyonunda. İnguinal bölge için hafif dış rotasyon."
+        ],
+        steps: [
+            { step: "Kompresyon USG (CUS) — Proksimal", detail: "Ortak femoral ven, yüzeyel femoral ven, popliteal ven. Her 2 cm'de kompresyon. Tromboz → non-kompressibl." },
+            { step: "Renkli Doppler", detail: "Spontan akım, faz değişimi (respiratuvar), Valsalva yanıtı değerlendirilir. Tromboz → Akım yokluğu." },
+            { step: "Kompresyon USG — Distal", detail: "Tibio-peroneal trunkus, posterior tibial, peroneal venler. Teknik olarak güç olabilir." },
+            { step: "Büyük Safen Ven (GSV)", detail: "Yüzeyel DVT veya tromboflebit için." },
+            { step: "Poplitiyal Fossada Kist Değerlendirmesi", detail: "Baker kisti → DVT ile benzer klinik sunum." }
+        ],
+        notes: "Wells skoru ≥2 ve D-dimer pozitifse USG endikasyonu güçlüdür. Negatif proksimal USG + yüksek klinik şüphe → 1 haftada tekrar veya BTPA düşünülmeli."
+    },
+
+    // ═══════════════════════════════════════════════
+    // KAS-İSKELET MR
+    // ═══════════════════════════════════════════════
+    {
+        id: "knee_mri",
+        name: "Diz MRG",
+        organ: "Kas-İskelet",
+        modality: "MR",
+        indication: "Diz ağrısı, menisküs/bağ yırtığı şüphesi, kıkırdak değerlendirme.",
+        patientPrep: [
+            "Metal implant sorgulanmalı (diz protezi varsa artefakt olabilir).",
+            "Ön bölmede sarmal (knee coil) kullanılmalı.",
+            "Diz tam ekstansiyon / hafif fleksiyonda."
+        ],
+        steps: [
+            { step: "Sagital PD FS (Temel Seri)", detail: "4 mm, FOV 16cm. Menisküs, PCL/ACL değerlendirmesi. Anterior-posterior komissür." },
+            { step: "Koronal T2 FS", detail: "4 mm. MCL/LCL, menisküs gövdesi, tibiofemortal eklem aralığı." },
+            { step: "Aksiyal PD FS", detail: "4 mm. Patella kıkırdağı, retinakulumlar, patellar tendon, MPFL." },
+            { step: "Sagital T1", detail: "Kemik iliği değerlendirmesi (ödem, nekroz, kırık)." },
+            { step: "Koronal T1 (İsteğe Bağlı)", detail: "Menisküs dejeneras yonu, kemik lezyonu." },
+            { step: "IVKM (Seçici)", detail: "Kitle, enfeksiyon, sürrealist pannus şüphesinde." }
+        ],
+        notes: "Menisküs yırtık derecelendirmesi: Grad 1-2 (İçsel dejeneras yon), Grad 3 (Yırtık — eklem yüzeyine ulaşan). ACL yırtığı: 'Empty notch sign', femoral attachment area. Kıkırdak: ICRS veya OARSI skoru."
+    },
+    {
+        id: "shoulder_mri",
+        name: "Omuz MRG",
+        organ: "Kas-İskelet",
+        modality: "MR",
+        indication: "Rotator kaf yırtığı, omuz ağrısı, SLAP lezyonu, instabilite.",
+        patientPrep: [
+            "Metal implant sorgulanmalı.",
+            "Shoulder coil. Hasta supin, kol nötral (başparmak yukarı).",
+            "Artrografi için direkt intraartüküler gadolinyum."
+        ],
+        steps: [
+            { step: "Koronal Oblik PD FS (Ana seri)", detail: "Supraspinatus tendonuna paralel. Tam kat / parsiyel yırtık, kalınlık, geri çekilme mesafesi." },
+            { step: "Sagital Oblik T2 FS", detail: "Muskulotendinöz bileşke. Akromion tipi (düz/kıvrık/çengel), impingement değerlendirmesi." },
+            { step: "Aksiyal T2 FS veya PD FS", detail: "Biseps tendon, labrum ant/post, glenoid kıkırdak." },
+            { step: "Koronal T1", detail: "Supraspinatus yağlı atrofi değerlendirmesi." },
+            { step: "Sagital T1", detail: "Infraspinatus / teres minor atrofisi (Goutallier sınıflaması)." },
+            { step: "3D Gradient Echo (İsteğe Bağlı)", detail: "Labrum detayı, kıkırdak." }
+        ],
+        notes: "Tam kat yırtıkta geri çekilme mesafesi (Patte sınıflaması) ve yağlı atrofi (Goutallier 0-4) raporlanmalıdır. Artrografi, labrum ve parsiyel yüzeyel yırtıklar için üstündür."
+    },
+    {
+        id: "hip_mri",
+        name: "Kalça MRG",
+        organ: "Kas-İskelet",
+        modality: "MR",
+        indication: "AVN, labrum yırtığı, FAI, stres kırığı, koksartroz.",
+        patientPrep: [
+            "Metal implant sorgulanmalı (kalça protezi kontrendikasyon olabilir).",
+            "Phased-array gövde koili. Hasta supin, her iki kalça değerlendirilebilir."
+        ],
+        steps: [
+            { step: "Koronal T1 (Her iki kalça)", detail: "Kemik iliği yapısı. AVN: T1 hipointensite bantı (kresent). Korteks bütünlüğü." },
+            { step: "Koronal STIR (Her iki kalça)", detail: "Kemik iliği ödemi, stres kırığı, sinoviyal kalınlaşma." },
+            { step: "Aksiyal T1 ve T2 FS", detail: "Femoral baş, boyun, sferisitesi. Alfa açısı (CAM deformitesi): >55° anormal." },
+            { step: "Sagital PD FS (Unilateral)", detail: "Labrum, anterior ve posterior, anterior impingement." },
+            { step: "IVKM (Seçici)", detail: "Tümör, enfeksiyon şüphesinde." }
+        ],
+        notes: "AVN evrelemesi: Ficat-Arlet (0-4). Stres kırığı: Inferior boyun bölgesi (kompressiyon) vs süperiyor (distraksiyon — yüksek riskli). FAI: Alfa açısı + CE açısı kombine değerlendirilmelidir."
+    },
+    {
+        id: "ankle_mri",
+        name: "Ayak Bileği MRG",
+        organ: "Kas-İskelet",
+        modality: "MR",
+        indication: "Tendon patolojisi (Aşil, peroneal, posterior tibial), bağ, osteokondroz.",
+        patientPrep: [
+            "Küçük ekstremite koili tercih edilir.",
+            "Ayak bileği nötral pozisyonda (plantifleksiyon yok).",
+            "Metal çıkartılmalı."
+        ],
+        steps: [
+            { step: "Sagital PD FS", detail: "Aşil tendonu (kalınlık, sinyal), Kalkaneusun kemik iliği, peroneal retinakulumlar." },
+            { step: "Aksiyal PD FS", detail: "Peroneal tendon, FHL, FDL, posterior tibial tendon. İnterossöz membran. Tünel içi tenosinovitis." },
+            { step: "Koronal T2 FS", detail: "Deltoid, ATFL, CFL bağları. Talus dom OCD (osteokondroz)." },
+            { step: "Sagital T1", detail: "Kemik yağ iliği, kırık, avasküler nekroz." },
+            { step: "3D GRE / T2* (İsteğe Bağlı)", detail: "Eklem kıkırdağı haritalaması için." }
+        ],
+        notes: "Aşil tendon yırtığı: Tam kat yırtıkta geri çekilme mesafesi Rodineau veya Kuwada ile sınıflanır. OCD: Berndt-Harty radyolojik / Anderson MR sınıflaması kullanılır."
+    },
+
+    // ═══════════════════════════════════════════════
+    // HEPATOBİLİYER ÖZEL
+    // ═══════════════════════════════════════════════
+    {
+        id: "mrcp",
+        name: "MRCP (Manyetik Rezonans Kolanjiopankreatografi)",
+        organ: "Hepatobiliyer / Pankreas",
+        modality: "MR",
+        indication: "Safra yolu dilatasyonu, kolelitiyazis, kolanjit, IPMN, pankreas kanalı patolojisi.",
+        patientPrep: [
+            "En az 4-6 saat aç olunmalı (safra kesesi ve kanalların dolu görülmesi için).",
+            "Susuz kalınmalı — mide içeriği MRCP'yi artefaktla bozabilir.",
+            "Negatif oral kontrast (ananas suyu / blueberry juice): İsteğe bağlı gastrik sinyal bastırma."
+        ],
+        steps: [
+            { step: "2D HASTE Koronal", detail: "Tek nefes tutma, 40-80mm slab. Genel overviw — safra yolları, pankreas kanalı." },
+            { step: "3D MRCP (Navigator gated)", detail: "1-1.5mm izotropik. Çok planar MPR reformat — detaylı anatomik değerlendirme." },
+            { step: "Aksiyel T2 HASTE", detail: "Karaciğer parankimi, perikoledokal yapılar, pankreatik kist." },
+            { step: "Aksiyel ve Koronal T1 FS VIBE", detail: "Sinyal az: Yağ baskılı pankreas parankimi, patolojik kontrast tutulumu." },
+            { step: "Dinamik Kontrastlı VIBE (İsteğe Bağlı)", detail: "IPMN solid bileşen, kolanjiyokarsinom, ampuller kitle için." },
+            { step: "MIP Reformat", detail: "Maksimum intensite projeksiyonu — safra yolu ağacı 3D görünümü." }
+        ],
+        contrastInfo: "Temel MRCP kontrastsız yapılır. Kitle şüpheliise 0.1 mmol/kg Gadolinyum IV eklenir.",
+        notes: "Wirsung kanalı çapı: Baş<3.5mm, gövde<2.5mm, kuyruk<1.5mm. Dilasyon → Tümör/kronik pankreatit. Kolanjioskopi veya ERCP öncesi yol haritası oluşturur."
+    },
+    {
+        id: "mr_enterography",
+        name: "MR Enterografi (İnce Barsak MRG)",
+        organ: "Gastrointestinal",
+        modality: "MR",
+        indication: "Crohn hastalığı, ince barsak tümörü, obscure kanama, Meckel divertikülü.",
+        patientPrep: [
+            "4-6 saat açlık.",
+            "1.5-2 litre oral kontrast (poliethylenglikol bazlı veya mannitol + su) — 45-60 dk içinde içirilir.",
+            "Peristaltizm inhibitörü (Buscopan / Glucagon) IV verilir.",
+            "IV damar yolu (antekubital, 18G)."
+        ],
+        steps: [
+            { step: "Koronal SSFSE / HASTE (Barsak Dolumu Kontrolü)", detail: "Yeterli distansiyon var mı? Gerekirse oral kontrastı tamamla." },
+            { step: "Koronal T2 HASTE", detail: "Barsak ansı distansiyonu, duvar kalınlığı, mezenter." },
+            { step: "Aksiyel T2 FS HASTE", detail: "Terminal ileum, mezenter, lenf nodları." },
+            { step: "Aksiyel DWI (b=50, 500, 800)", detail: "Aktif inflamasyon, ülser, apse: Difüzyon kısıtlılığı gösterir." },
+            { step: "Dinamik Kontrastlı T1 FS VIBE", detail: "Duvar kontrastlanması — aktif Crohn değerlendirmesi." },
+            { step: "Enteroklizis (Alternatif)", detail: "Nazojejunal tüp ile direkt kontrast verilmesi — daha iyi distansiyon sağlar." }
+        ],
+        contrastInfo: "0.1 mmol/kg Gadolinyum IV. MaReady (Gadofosveset) enteroklizis için alternatif.",
+        notes: "Crohn hastalığı değerlendirmesi: Duvar kalınlığı (N:<3mm), mural stratifikasyon kaybı, comb sign (mezenterik vasküler konjesyon), creeping fat, striktur, fistül. Harvey-Bradshaw veya CDAI klinik skoru ile korele edilmelidir."
+    },
+
+    // ═══════════════════════════════════════════════
+    // ADRENAL BT
+    // ═══════════════════════════════════════════════
+    {
+        id: "adrenal_ct_protocol",
+        name: "Adrenal BT Protokolü (Washout)",
+        organ: "Adrenal",
+        modality: "BT",
+        indication: "Adrenal insidentaloma, adrenal kitle karakterizasyonu.",
+        patientPrep: [
+            "eGFR değerlendirilmeli.",
+            "IV damar yolu (18G antekubital).",
+            "4 saat açlık."
+        ],
+        steps: [
+            { step: "Native (Kontrastsız) Faz", detail: "Adrenal bölge. ROI ile HU ölçümü: <10 HU → lipid-rich adenom (başka faz gerekmez). >10HU → adrenal washout protokolüne devam." },
+            { step: "Portal-Venöz Faz (60-70 saniye)", detail: "IV kontrast sonrası. Adrenal kontrast tutulumu ve peak enhancement." },
+            { step: "15 Dakika Gecikmiş Faz", detail: "Gecikmiş kontrastlanma ve washout hesaplaması için kritik faz." },
+            { step: "Washout Hesaplama", detail: "APW = [(Venöz-Geç)/(Venöz-Native)] x100. RPW = [(Venöz-Geç)/Venöz] x100." },
+            { step: "Multiplanar Reformat (MPR)", detail: "Aksiyel, koronal, sagital 2-3mm kesitler. Lezyon karakteri, komşu organlar." }
+        ],
+        contrastInfo: "370 mgI/ml: 80-100 ml, 3 ml/sn.",
+        notes: "APW ≥ %60 veya RPW ≥ %40 → Lipid-rich Adenom (benign). APW < %60 → Adenom dışı düşün (feokromositoma, metastaz). Native <10 HU → Zaten Adenom (washout hesaplanmaz). Feokromositoma şüphesinde kontrast öncesi alfa blokaj gerekebilir."
     }
 ];
