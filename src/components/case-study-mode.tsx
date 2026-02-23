@@ -2,16 +2,15 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { CaseStudy, CaseStep } from "@/types";
 
-import { CheckCircle2, XCircle, ArrowRight, Activity, Clock, AlertTriangle, ChevronRight, RotateCcw } from "lucide-react";
+import { CheckCircle2, XCircle, ArrowRight, Activity, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Temporary mock import workaround if data file export name differs
 import { caseStudies } from "@/data/case-studies";
 
 export function CaseStudyMode() {
-    const [activeCaseIndex, setActiveCaseIndex] = useState(0);
+    const [activeCaseIndex] = useState(0);
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState<number | null>(null);
     const [isStepCompleted, setIsStepCompleted] = useState(false);

@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, Calendar, MapPin, ExternalLink, Megaphone, Bell, GraduationCap, FileText, Globe } from "lucide-react";
-import { announcements, Announcement } from "@/data/announcements";
+import { ArrowLeft, MapPin, ExternalLink, Megaphone, Bell, GraduationCap, FileText, Globe } from "lucide-react";
+import { announcements } from "@/data/announcements";
 import { cn } from "@/lib/utils";
 
 export default function AnnouncementsPage() {

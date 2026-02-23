@@ -1,12 +1,12 @@
 import { expandQueryTokens } from "@/lib/search-utils";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/language-context";
 import {
-    Copy, Check, ChevronDown, ChevronUp, Maximize2, X, Star, RotateCw,
-    Sparkles, Brain, Stethoscope, Lightbulb, Activity, Layers, Scan, Radiation, Zap, FileText, ShieldCheck
+    Check, X, Star, RotateCw,
+    Sparkles, Brain, Lightbulb, Activity, Layers, Scan, Radiation, Zap, FileText
 } from 'lucide-react';
 
 interface PathologyCardProps {
@@ -56,8 +56,6 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     // Mechanism is currently only TR in some items, fallback to TR if EN missing (should be handled in data later)
     // For now assuming mechanism is same or handled
 
-    // Default active tab: first available modality from current findings
-    const firstModality = Object.keys(displayFindings)[0];
     const [activeTab, setActiveTab] = useState<TabType>("summary");
     const [activeImage, setActiveImage] = useState<number | null>(null);
 

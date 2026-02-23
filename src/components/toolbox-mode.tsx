@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Ruler, Calculator, Search, Activity, Calculator as CalcIcon, ShieldCheck, FileText, FlaskConical } from 'lucide-react';
+import { Ruler, Search, Activity, Calculator as CalcIcon, ShieldCheck, FileText, FlaskConical } from 'lucide-react';
 import { RADIOLOGY_MEASUREMENTS, RADIOLOGY_CALCULATORS, Measurement } from '@/data/toolbox-data';
 import { RADS_SYSTEMS, RadsSystem } from '@/data/rads-data';
 import { REPORT_TEMPLATES, ReportTemplate } from '@/data/report-templates';

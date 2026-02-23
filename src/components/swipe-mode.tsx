@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Pathology } from "@/types";
 import { SwipeCard } from "./swipe-card";
 import { AnimatePresence, motion } from "framer-motion";
@@ -13,14 +13,10 @@ interface SwipeModeProps {
 export function SwipeMode({ pathologies, onToggleFavorite, onExit }: SwipeModeProps) {
     // Local state to manage the "deck"
     // We shuffle initially, then pop from the array
-    const [deck, setDeck] = useState<Pathology[]>([]);
+    const [deck, setDeck] = useState<Pathology[]>(() =>
+        [...pathologies].sort(() => Math.random() - 0.5)
+    );
     const [swipedCount, setSwipedCount] = useState(0);
-
-    useEffect(() => {
-        // Shuffle and set initial deck
-        const shuffled = [...pathologies].sort(() => Math.random() - 0.5);
-        setDeck(shuffled);
-    }, [pathologies]);
 
     const handleSwipe = (direction: "left" | "right") => {
         if (deck.length === 0) return;

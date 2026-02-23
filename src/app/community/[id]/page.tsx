@@ -7,7 +7,6 @@ import { useAuth } from "@/context/auth-context";
 import { useLanguage } from "@/context/language-context";
 import { ArrowLeft, ThumbsUp, MessageSquare, Send, Clock, Share2, Trash2, ShieldCheck } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 export default function PostDetailPage() {
     const { id } = useParams();

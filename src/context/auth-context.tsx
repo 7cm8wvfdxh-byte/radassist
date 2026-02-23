@@ -117,7 +117,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             }
 
             return { success: true };
-        } catch (e) {
+        } catch {
             return { success: false, error: "Beklenmeyen bir hata oluştu." };
         }
     }, []);
@@ -167,7 +167,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             }
 
             return { success: true };
-        } catch (e) {
+        } catch {
             return { success: false, error: "Beklenmeyen bir hata oluştu." };
         }
     }, []);

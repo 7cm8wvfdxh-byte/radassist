@@ -3,7 +3,7 @@ import { Modality } from '@/data/lexicon';
 import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from '@/data/lexicon';
 import { useDiagnosticEngine } from '@/hooks/use-diagnostic-engine';
 import { clsx } from 'clsx';
-import { Check, ChevronRight, Stethoscope, AlertTriangle, FileText, X, Brain, Bone, Flame, Bean, Wind, Sparkles, Dumbbell, Utensils, Scan, Heart, Activity, Droplets } from 'lucide-react';
+import { Check, Stethoscope, AlertTriangle, FileText, X, Brain, Bone, Flame, Bean, Wind, Sparkles, Dumbbell, Utensils, Scan, Heart, Activity, Droplets } from 'lucide-react';
 import { REPORT_TEMPLATES, GENERIC_TEMPLATE } from '@/data/report-templates';
 
 interface DiagnosisWizardProps {

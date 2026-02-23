@@ -2,7 +2,7 @@ import { motion, PanInfo, useMotionValue, useTransform, useAnimation } from "fra
 import { useState } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
-import { Brain, Info, Check, X, RotateCw, Sparkles } from "lucide-react";
+import { Brain, Info, RotateCw } from "lucide-react";
 import { clsx } from "clsx";
 
 interface SwipeCardProps {

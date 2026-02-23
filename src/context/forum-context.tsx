@@ -191,7 +191,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
             }
 
             return { success: true };
-        } catch (e) {
+        } catch {
             return { success: false, error: "Beklenmeyen bir hata oluştu." };
         }
     };
@@ -280,7 +280,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
             }
 
             return { success: true };
-        } catch (e) {
+        } catch {
             return { success: false, error: "Beklenmeyen bir hata oluştu." };
         }
     };
