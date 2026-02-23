@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, Calendar, MapPin, ExternalLink, Megaphone, Bell, GraduationCap, FileText, Globe } from "lucide-react";
-import { announcements, Announcement } from "@/data/announcements";
+import { ArrowLeft, MapPin, ExternalLink, Megaphone, Bell, GraduationCap, FileText, Globe } from "lucide-react";
+import { announcements } from "@/data/announcements";
 import { cn } from "@/lib/utils";
 
 export default function AnnouncementsPage() {
@@ -69,7 +69,7 @@ export default function AnnouncementsPage() {
                     {['all', 'congress', 'seminar', 'news', 'update'].map((f) => (
                         <button
                             key={f}
-                            onClick={() => setFilter(f as any)}
+                            onClick={() => setFilter(f as 'all' | 'congress' | 'seminar' | 'news' | 'update')}
                             className={cn(
                                 "px-4 py-2 rounded-full text-sm font-medium transition-all",
                                 filter === f

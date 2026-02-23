@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback } from "react";
 
 export type Language = "tr" | "en";
 
@@ -354,16 +354,11 @@ const en: Record<string, string> = {
 const translations: Record<Language, Record<string, string>> = { tr, en };
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-    const [language, setLanguageState] = useState<Language>("tr");
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const saved = localStorage.getItem("radassist-language") as Language;
-            if (saved && (saved === "tr" || saved === "en")) {
-                setLanguageState(saved);
-            }
-        }
-    }, []);
+    const [language, setLanguageState] = useState<Language>(() => {
+        if (typeof window === 'undefined') return "tr";
+        const saved = localStorage.getItem("radassist-language") as Language;
+        return (saved === "tr" || saved === "en") ? saved : "tr";
+    });
 
     const setLanguage = useCallback((lang: Language) => {
         setLanguageState(lang);

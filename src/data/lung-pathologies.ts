@@ -9,7 +9,7 @@ export const lungPathologies: Pathology[] = [
         "categoryEn": "Neoplastic",
         "gallery": [
             { "url": "/images/lung/lung_cancer_ct.png", "caption": "BT - Spiküle Kitle", "modality": "CT" },
-            // { "url": "/images/lung/pancoast_mri.png", "caption": "MRI - Pancoast Tümörü", "modality": "MRI" }
+            { "url": "/images/lung/pancoast_mri.png", "caption": "MRI - Pancoast Tümörü", "modality": "MRI" }
         ],
         "findings": {
             "ct": {
@@ -46,7 +46,12 @@ export const lungPathologies: Pathology[] = [
             "SCLC (15%): Central, rapid growth, paraneoplastic syndromes.",
             "Staging: TNM (Tumor size, Nodal involvement, Metastasis).",
             "Ground-glass + solid = Part-solid nodule = Suspicious for Adenocarcinoma."
-        ]
+        ],
+        "mechanism": "Sigara karsinojenleri veya genetik mutasyonlar (EGFR, ALK, KRAS) → bronşiyal epitelde DNA hasarı → onkogen aktivasyonu / tümör supresör kaybı → kontrolsüz hücre proliferasyonu. Adenokarsinom subplevral asinerlerde gelişir (EGFR mutasyonu sık); skuamöz tip santral bronşlarda gelişir (skvamöz metaplazi → displazi → CIS → invaziv). SCLC nöroendokrin kökenden kaynaklanır, çok hızlı büyür.",
+        "etiology": "Sigara (%85-90 risk faktörü), Radon gazı, Asbest, Mesleki karsinojenler (nikel, krom). EGFR mutasyonu: Sigara içmeyenler, Asya kökenli.",
+        "differentialDiagnosis": ["Pnömoni (Ateş, CRP artışı, antibiyotiğe yanıt)", "Granülom (TB, histoplazma - kalsifikasyon)", "Karsinoid Tümör (Santral, düşük grade)", "Metastaz (Multipl nodüller, bilinen primer)"],
+        "goldStandard": "BT-PET: Evreleme ve biyopsi kılavuzluğu. PET-CT: Mediastinal ve uzak metastaz değerlendirmesi. Biyopsi: Histolojik tip ve moleküler belirteç.",
+        "clinicalPearl": "Spiküle kenar + Plevral çekme + Hiler adenopati = Akciğer kanseri. 'Satellite nodule' + Nodül >3cm = T2 evre."
     },
     {
         "id": "pulmonary_embolism",
@@ -55,8 +60,8 @@ export const lungPathologies: Pathology[] = [
         "category": "Vasküler",
         "categoryEn": "Vascular",
         "gallery": [
-            // { "url": "/images/lung/pe_ct_angio.png", "caption": "BT Anjiyo - Dolum Defekti", "modality": "CT" },
-            // { "url": "/images/lung/hampton_hump_cxr.png", "caption": "CXR - Hampton's Hump", "modality": "X-Ray" }
+            { "url": "/images/lung/pe_ct_angio.png", "caption": "BT Anjiyo - Dolum Defekti", "modality": "CT" },
+            { "url": "/images/lung/hampton_hump_cxr.png", "caption": "CXR - Hampton's Hump", "modality": "X-Ray" }
         ],
         "findings": {
             "ct": {
@@ -93,7 +98,12 @@ export const lungPathologies: Pathology[] = [
             "Wells Score + D-dimer: Low probability -> PE excluded.",
             "Right ventricular strain: RV/LV >1, interventricular septum bowing.",
             "'Saddle embolus': Main pulmonary artery bifurcation - Massive PE."
-        ]
+        ],
+        "mechanism": "Derin ven trombozu (DVT) → trombus kopması → sağ kalbe geçiş → pulmoner artere embolizasyon → damar tıkanması → perfüzyon azalması (ventilasyon korunur: V/Q uyumsuzluğu → hipoksi). Büyük tıkanmada sağ ventrikül afterload artar → RV dilatasyonu → sol kalp dolumu azalır → kardiyojenik şok. Pulmoner infarkt: Distal arterlerde tam tıkanma + yetersiz bronşiyal kollateral → wedge şekilli konsolidasyon (Hampton's hump).",
+        "etiology": "DVT (Virchow triadı: Staz, Hiperkoagülabilite, Damar hasarı). Risk: Uzun yolculuk, Malignansi, OKS, Cerrahi sonrası, İmmobilizasyon.",
+        "differentialDiagnosis": ["Pnömoni (Ateş, produktif öksürük, konsolidasyon)", "Pnömotoraks (Ani dispne, plevral hat X-ray)", "Akut koroner sendrom (EKG değişikliği, troponin)", "KOAH alevlenmesi (Kronik zemin, wheezing)"],
+        "goldStandard": "BT Pulmoner Anjiografi (BTPA): Altın standart, duyarlılık >%90. V/Q sintigrafi: BT kontrendike ise (hamile, böbrek yetmezliği).",
+        "clinicalPearl": "Polo mint sign (aksiyel) + Railway track sign (koronal) = PE. RV/LV >1 = Masif/submasif PE, kötü prognoz."
     },
     {
         "id": "pneumonia",
@@ -102,8 +112,8 @@ export const lungPathologies: Pathology[] = [
         "category": "Enfeksiyon",
         "categoryEn": "Infection",
         "gallery": [
-            // { "url": "/images/lung/pneumonia_lobar.png", "caption": "BT - Lober Konsolidasyon", "modality": "CT" },
-            // { "url": "/images/lung/covid_ground_glass.png", "caption": "BT - Buzlu Cam (COVID-19)", "modality": "CT" }
+            { "url": "/images/lung/pneumonia_lobar.png", "caption": "BT - Lober Konsolidasyon", "modality": "CT" },
+            { "url": "/images/lung/covid_ground_glass.png", "caption": "BT - Buzlu Cam (COVID-19)", "modality": "CT" }
         ],
         "findings": {
             "ct": {
@@ -136,7 +146,8 @@ export const lungPathologies: Pathology[] = [
             "Viral/Atypical: Bilateral, interstitial, ground-glass.",
             "COVID-19: Peripheral ground-glass → Crazy paving → Consolidation → Fibrosis progression.",
             "Necrotizing pneumonia: Multiple cavitation, Klebsiella, S. aureus."
-        ]
+        ],
+        "mechanism": "Bakteriyel: Patojenin alt solunum yollarına ulaşması → alveolar makrofajların yetersiz temizliği → bakteri proliferasyonu → nötrofil yanıtı → eksüda dolu alveoller (konsolidasyon). Viral/COVID-19: Hücresel immün yanıt ve sitokin fırtınası → difüz alveolar hasar → tip II pnömosit hasarı → surfaktan kaybı → alveoler kollaps → ground-glass opasiteler, crazy-paving. Nekrotizan: Vaskülit ve tromboz → akciğer parankimi nekrozu → kavitasyon."
     },
     {
         "id": "lung_nodule",
@@ -145,8 +156,8 @@ export const lungPathologies: Pathology[] = [
         "category": "Belirsiz",
         "categoryEn": "Indeterminate",
         "gallery": [
-            // { "url": "/images/lung/nodule_spiculated.png", "caption": "BT - Spiküle Solita Nodül", "modality": "CT" },
-            // { "url": "/images/lung/nodule_ground_glass.png", "caption": "BT - Subsolid Nodül", "modality": "CT" }
+            { "url": "/images/lung/nodule_spiculated.png", "caption": "BT - Spiküle Solita Nodül", "modality": "CT" },
+            { "url": "/images/lung/nodule_ground_glass.png", "caption": "BT - Subsolid Nodül", "modality": "CT" }
         ],
         "findings": {
             "ct": {
@@ -181,7 +192,8 @@ export const lungPathologies: Pathology[] = [
             "<6mm solid nodule (low risk): No follow-up needed.",
             "Part-solid nodule: Solid component >6mm = High malignancy risk.",
             "PET-CT: Recommended for metabolic evaluation of >8mm solid nodules."
-        ]
+        ],
+        "mechanism": "Solid nodül: Tam solid doku proliferasyonu — granülom (enfeksiyöz: TB, histoplazma), karsinoid, metastaz veya primer malignite. Subsolid/ground-glass nodül: Kısmi alveol dolumu ile birlikte hava korunumu — atipik adenomatöz hiperplazi (AAH) → in situ adenokarsinom (AIS) → minimal invaziv adenokarsinom (MIA) → invaziv adenokarsinom malignisite spektrumu. Solid komponent arttıkça invazyon artmaktadır."
     },
     {
         "id": "pneumothorax",
@@ -190,8 +202,8 @@ export const lungPathologies: Pathology[] = [
         "category": "Travma/İyatrojenik",
         "categoryEn": "Trauma/Iatrogenic",
         "gallery": [
-            // { "url": "/images/lung/pneumothorax_cxr.png", "caption": "CXR - Plevral Hat", "modality": "X-Ray" },
-            // { "url": "/images/lung/pneumothorax_ct.png", "caption": "BT - Serbest Hava", "modality": "CT" }
+            { "url": "/images/lung/pneumothorax_cxr.png", "caption": "CXR - Plevral Hat", "modality": "X-Ray" },
+            { "url": "/images/lung/pneumothorax_ct.png", "caption": "BT - Serbest Hava", "modality": "CT" }
         ],
         "findings": {
             "xray": {
@@ -229,7 +241,8 @@ export const lungPathologies: Pathology[] = [
             "Supine CT: Anterior/medial air accumulation ('deep sulcus sign' on X-ray).",
             "Primary spontaneous: Young, tall, male, apical bleb.",
             "USG is as sensitive as CT in bedside diagnosis (eFAST)."
-        ]
+        ],
+        "mechanism": "Visseral veya pariyetal plevra bütünlüğünün bozulması → plevral boşluğa hava kaçışı → akciğer elastik geri çekim kuvveti ile çöküş. Primer spontan: Apikal subplevral bleb rüptürü (genç, uzun erkeklerde zayıf mezoteliyal doku). Tansiyon: Tek yönlü valf mekanizması → inspirasyonda hava girer, ekspirasyonda çıkamaz → giderek artan basınç → mediastinal şift → karşı akciğer ve venöz dönüş baskılanması → kardiyovasküler kollaps."
     },
     {
         "id": "interstitial_lung_disease",
@@ -238,8 +251,8 @@ export const lungPathologies: Pathology[] = [
         "category": "Fibrotik",
         "categoryEn": "Fibrotic",
         "gallery": [
-            // { "url": "/images/lung/ild_honeycombing.png", "caption": "HRCT - Bal Peteği (Honeycombing)", "modality": "CT" },
-            // { "url": "/images/lung/ild_traction.png", "caption": "HRCT - Traksiyon Bronşektazi", "modality": "CT" }
+            { "url": "/images/lung/ild_honeycombing.png", "caption": "HRCT - Bal Peteği (Honeycombing)", "modality": "CT" },
+            { "url": "/images/lung/ild_traction.png", "caption": "HRCT - Traksiyon Bronşektazi", "modality": "CT" }
         ],
         "findings": {
             "ct": {
@@ -274,7 +287,8 @@ export const lungPathologies: Pathology[] = [
             "Honeycombing + Traction bronchiectasis + Basilar/subpleural = Definite UIP.",
             "NSIP vs UIP: NSIP has more ground-glass, no/little honeycombing.",
             "HRCT: 1-2mm slice thickness, high resolution required."
-        ]
+        ],
+        "mechanism": "Kronik alveolar epitelyal hasar (tip II pnömosit) → anormal yara iyileşmesi → fibroblast aktivasyonu (TGF-β, PDGF) → aşırı ECM depolanması → akciğer parankim mimarisinin bozulması. Baziler/subplevral tutulum: Bu bölgelerdeki mekanik strese duyarlılık ile ilişkilidir. Honeycombing: Alveol gruplarının fibröz doku ile dolması ve birbirine yapışarak kistik hava boşlukları oluşturması."
     },
     {
         "id": "ipf",
@@ -301,7 +315,8 @@ export const lungPathologies: Pathology[] = [
             "Progressive dyspnea and dry cough (Elderly male patient).",
             "UIP pattern (CT) + Clinical correlation = No biopsy needed.",
             "Honeycombing appearance (3-10mm cysts) is a sign of poor prognosis."
-        ]
+        ],
+        "mechanism": "Bilinmeyen tetikleyici → tekrarlayan epitelyal mikro-hasarlar → TGF-β mediated fibroblast aktivasyonu → miyofibroblastlara dönüşüm → kollajen birikimi. Alveolar yüzey azalır → gaz değişimi bozulur → restriktif patern. Baziler subplevral tutulum, bu bölgelerin solunum sırasındaki gerilme kuvvetlerine olan duyarlılığıyla açıklanır."
     },
     {
         "id": "emphysema",
@@ -334,6 +349,7 @@ export const lungPathologies: Pathology[] = [
             "Smoking is the most important risk factor.",
             "Cor pulmonale (Right heart failure) may develop (Pulmonary artery enlargement >29mm).",
             "Saber-sheath trachea (narrowing of coronal diameter of trachea) may be associated."
-        ]
+        ],
+        "mechanism": "Sigara dumanı veya alfa-1 antitripsin eksikliği → proteaz/antiproteaz dengesizliği (nötrofil elastaz artışı, alfa-1 antitripsin azalması) → alveolar duvar yıkımı → hava boşluğu genişlemesi → akciğer elastisitesi azalır → hava hapsi. Sentrilobüler amfizem: Sigara ile ilişkili, merkezi asiner hasar. Panasiner: Tüm asiner yıkım. Hiperinflasyon ve flatleşen diyafram bu gaz hapsi mekanizmasının yansımasıdır."
     }
 ];

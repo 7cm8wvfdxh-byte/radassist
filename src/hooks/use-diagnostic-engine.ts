@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { DISEASE_SIGNATURES } from '@/data/disease-signatures';
 import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS, FindingOption, Modality } from '@/data/lexicon';
 import { ScoredPathology } from '@/types';

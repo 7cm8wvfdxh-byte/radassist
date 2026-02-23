@@ -2,17 +2,15 @@
 
 import React, { useState } from "react";
 import { useForum } from "@/context/forum-context";
-import { useAuth } from "@/context/auth-context";
 import { useLanguage } from "@/context/language-context";
 import { PostCard } from "@/components/community/post-card";
 import { CreatePostModal } from "@/components/community/create-post-modal";
-import { Search, Plus, TrendingUp, Filter, MessageCircle } from "lucide-react";
+import { Search, Plus, TrendingUp, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export default function CommunityPage() {
     const { posts } = useForum();
-    const { user } = useAuth();
     const { t } = useLanguage();
     const [filter, setFilter] = useState("all");
     const [isModalOpen, setIsModalOpen] = useState(false);

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Send, Tag, HelpCircle, FileText } from "lucide-react";
+import { X, Send, Tag, FileText } from "lucide-react";
 import { useAuth } from "@/context/auth-context";
 import { useForum } from "@/context/forum-context";
 import { useLanguage } from "@/context/language-context";

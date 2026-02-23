@@ -1,12 +1,12 @@
 import { expandQueryTokens } from "@/lib/search-utils";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/language-context";
 import {
-    Copy, Check, ChevronDown, ChevronUp, Maximize2, X, Star, RotateCw,
-    Sparkles, Brain, Stethoscope, Lightbulb, Activity, Layers, Scan, Radiation, Zap, FileText, ShieldCheck
+    Check, X, Star, RotateCw,
+    Sparkles, Brain, Lightbulb, Activity, Layers, Scan, Radiation, Zap, FileText
 } from 'lucide-react';
 
 interface PathologyCardProps {
@@ -18,7 +18,7 @@ interface PathologyCardProps {
 
 type TabType = "summary" | string;
 
-const MODALITY_CONFIG: Record<string, { label: string, icon: any, color: string, bg: string }> = {
+const MODALITY_CONFIG: Record<string, { label: string, icon: React.ElementType, color: string, bg: string }> = {
     ultrasound: { label: "USG", icon: Activity, color: "text-emerald-400", bg: "bg-emerald-500/10 border-emerald-500/20" },
     usg: { label: "USG", icon: Activity, color: "text-emerald-400", bg: "bg-emerald-500/10 border-emerald-500/20" },
     ct: { label: "BT", icon: Layers, color: "text-amber-400", bg: "bg-amber-500/10 border-amber-500/20" },
@@ -56,8 +56,6 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     // Mechanism is currently only TR in some items, fallback to TR if EN missing (should be handled in data later)
     // For now assuming mechanism is same or handled
 
-    // Default active tab: first available modality from current findings
-    const firstModality = Object.keys(displayFindings)[0];
     const [activeTab, setActiveTab] = useState<TabType>("summary");
     const [activeImage, setActiveImage] = useState<number | null>(null);
 
@@ -210,7 +208,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                 <div className="space-y-3 text-sm text-zinc-400 animate-in fade-in duration-300">
                                     {/* Handle Object content (e.g. CT phases) or String content */}
                                     {(() => {
-                                        const content = (displayFindings as any)[activeTab];
+                                        const content = (displayFindings as Record<string, unknown>)[activeTab];
                                         if (typeof content === 'string') {
                                             return <p className="leading-relaxed"><HighlightedText text={content} query={highlightQuery} /></p>;
                                         }
@@ -263,7 +261,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                     {isEn ? "Why?" : "Neden Böyle Görünüyor?"}
                                 </h4>
                                 <div className="p-4 rounded-xl bg-yellow-500/5 border border-yellow-500/10 text-sm text-yellow-100/90 leading-relaxed font-serif italic">
-                                    "{data.mechanism}"
+                                    &ldquo;{data.mechanism}&rdquo;
                                 </div>
                             </div>
                         )}

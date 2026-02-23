@@ -55,7 +55,11 @@ export const brainPathologies: Pathology[] = [
             "CT is the first choice to exclude hemorrhage.",
             "ASPECTS score is used to assess the extent of ischemic area in MCA infarcts.",
             "Time is brain: Thrombolysis window <4.5 hours, Thrombectomy <24 hours (in selected cases)."
-        ]
+        ],
+        "etiology": "Kardiyoembolik (%30): AF, Endokardit. Büyük damar ateroskleroz (%25). Küçük damar hastalığı (laküner, %25). Kriptojenik (%20). CADASIL, Vaskülit (Nadir).",
+        "differentialDiagnosis": ["Beyin Tümörü (Subakut başlangıç, kitle etkisi, kontrast tutulumu)", "MS Plakı (Genç hasta, ovoid periventriküler lezyonlar)", "Beyin Apsesi (DWI pozitif ama klinik farklı: ateş)", "Hemiplejik Migren (Geri dönüşümlü, MR geçici bulgu)"],
+        "goldStandard": "MRI DWI/ADC: Akut infarkt (DWI parlak/ADC karanlık). BT: İlk değerlendirme (kanama ekle). BT anjiyografi: Büyük damar oklüzyonu (LVO) tespiti.",
+        "clinicalPearl": "DWI parlak + ADC karanlık = Akut iskemi (İlk dakikalardan itibaren pozitif). BT ilk 6 saatte normal olabilir, DWI asla."
     },
     {
         "id": "glioblastoma",
@@ -107,7 +111,11 @@ export const brainPathologies: Pathology[] = [
             "Most common primary malignant brain tumor in adults.",
             "Tends to cross the midline (Butterfly glioma).",
             "Molecular definition according to WHO 2021 is IDH-wildtype."
-        ]
+        ],
+        "etiology": "Sporadik (%90+), Radyasyon maruziyeti, NF1/NF2 (Pediatrik GBM). WHO 2021: IDH-wildtype, TERT promoter mutasyonu, EGFR amplifikasyonu.",
+        "differentialDiagnosis": ["Beyin Metastazı (Multipl, gri-beyaz madde bileşkesi, bilinen primer)", "Primer CNS Lenfoma (Santral derin yerleşim, üniform kontrastlanma)", "Anaplastik Astrositom (IDH mutant, daha az nekroz)", "Beyin Apses (DWI merkezi kısıtlanma, ateş)"],
+        "goldStandard": "MRI T1+C + FLAIR + DWI + Perfüzyon + Spektroskopi. Stereotaktik biyopsi: Moleküler tanı için.",
+        "clinicalPearl": "Rim (çevresel) kontrastlanma + Merkezi nekroz + FLAIR ödem + Kelebek patern (korpus kallozum invazyonu) = GBM klasik triadı."
     },
     {
         "id": "meningioma",
@@ -156,7 +164,11 @@ export const brainPathologies: Pathology[] = [
             "Most common extra-axial tumor.",
             "More common in women.",
             "'Dural tail' and 'CSF cleft' are classic signs."
-        ]
+        ],
+        "etiology": "Araknoid hücre kökenli. Radyasyon (iyonizan), NF2 mutasyonu (bilateral = NF2). Kadınlarda 2:1. Progesteron reseptörü pozitifliği büyümeyi etkiler.",
+        "differentialDiagnosis": ["Dural Metastaz (İrregüler sınır, agresif yıkım, bilinen primer)", "Schwannom (Sinir kökenli, foramen genişlemesi, dumbbell)", "Hemanjiyoperisitom (Seri yenidenme, kemik yıkım)", "Lenfoma (Dural plak, uniform kontrast, BOS tutulumu)"],
+        "goldStandard": "MRI T1+C: Homojen yoğun kontrastlanma + Dural tail. BT: Hiperostoz veya kemik yıkım değerlendirmesi.",
+        "clinicalPearl": "Dural tail + BOS yarığı (CSF cleft) + Homojen kontrastlanma + Ekstra-aksiyel = Menenjiyom. Kadın + Konveksite yerleşimi en sık."
     },
     {
         "id": "multiple_sclerosis",
@@ -384,6 +396,7 @@ export const brainPathologies: Pathology[] = [
                 "t1": "İzointens veya hipointens.",
                 "t2": "Heterojen hiperintens. Eşlik eden araknoid kistler olabilir.",
                 "t1_c": "Yoğun kontrastlanma. 'Dondurma külahı' (Ice cream cone) görünümü (intra ve ekstra-kanaliküler bileşenler).",
+                "dwi": "Difüzyon kısıtlamaz — Meningiom ve Epidermoidin aksine (Epidermoid DWI parlak, Schwannom değil).",
                 "swi": "Mikrokanamalar sıktır (Meningiomun aksine)."
             }
         },
@@ -396,6 +409,7 @@ export const brainPathologies: Pathology[] = [
                 "t1": "Isointense or hypointense.",
                 "t2": "Heterogeneous hyperintense. Associated arachnoid cysts may occur.",
                 "t1_c": "Intense enhancement. 'Ice cream cone' appearance (intra- and extra-canalicular components).",
+                "dwi": "No diffusion restriction — unlike Meningioma and Epidermoid (Epidermoid is DWI bright, Schwannoma is not).",
                 "swi": "Microhemorrhages are common (unlike Meningioma)."
             }
         },
@@ -413,7 +427,10 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "pituitary_adenoma",
         "name": "Hipofiz Adenomu",
+        "nameEn": "Pituitary Adenoma",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
+        "mechanism": "Adenohipofiz hücrelerinden monoklonal proliferasyon. Makroadenomlar sellar genişlemeye ve optik kiazma basısına neden olur. Dinamik MRI'da normal gland önce kontrast tutar; mikroadenom relatif hipointens (daha az kontrastlanan) olarak kalır.",
         "findings": {
             "ct": {
                 "non_contrast": "Sellar genişleme, klinoidlerde erozyon (Makroadenom).",
@@ -425,16 +442,35 @@ export const brainPathologies: Pathology[] = [
                 "t1_c_dynamic": "Mikroadenom (<10mm): Erken fazlarda normal glanda göre daha az kontrastlanır (hipo-enhancing). Makroadenom (>10mm): Heterojen kontrastlanma, diyafragma sella tarafından sıkıştırılırsa 'kardan adam' (figure-of-8) görünümü."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Sellar enlargement, erosion of clinoids (Macroadenoma).",
+                "contrast": "Variable enhancement pattern."
+            },
+            "mri": {
+                "t1": "Usually isointense. Hyperintense if hemorrhage (Apoplexy).",
+                "t2": "Variable.",
+                "t1_c_dynamic": "Microadenoma (<10mm): Less enhancement than normal gland in early phases (hypo-enhancing). Macroadenoma (>10mm): Heterogeneous enhancement, 'figure-of-8' appearance if compressed by diaphragma sellae."
+            }
+        },
         "keyPoints": [
             "Optik kiazma basısı (bitemporal hemianopsi).",
             "Fonksiyonel (Prolaktinoma, GH salgılayan) veya Non-fonksiyonel olabilir.",
             "Hipofizer apopleksi acil bir durumdur."
+        ],
+        "keyPointsEn": [
+            "Optic chiasm compression (bitemporal hemianopsia).",
+            "Can be Functional (Prolactinoma, GH-secreting) or Non-functional.",
+            "Pituitary apoplexy is a medical emergency."
         ]
     },
     {
         "id": "cerebral_metastasis",
         "name": "Serebral Metastaz",
+        "nameEn": "Cerebral Metastasis",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
+        "mechanism": "Hematojen yayılım ile gri-beyaz cevher bileşkesine yerleşim (kan akımının yavaşladığı ve emboli tuzağına düştüğü alan). Primer tümörden kaynaklanan tümör hücreleri lokal invazyon ve vazojenik ödeme yol açar.",
         "gallery": [
             { "url": "/images/mri_mets.png", "caption": "T1+C (Çoklu Halka)", "modality": "MRI" }
         ],
@@ -451,10 +487,28 @@ export const brainPathologies: Pathology[] = [
                 "spectroscopy": "Lipid/Lactate piki. Kolin/NAA oranı yüksektir ancak peritümöral ödem alanında oranlar NORMALDİR (GBM infiltrasyonunun aksine)."
             }
         },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Iso/Hypo/Hyperdense. Multiple lesions > Single (50%). Vasogenic edema disproportionately large relative to mass size. Can be hemorrhagic (Renal cell, Choriocarcinoma, Melanoma, Thyroid).",
+                "contrast": "Ring-shaped (thick/irregular) or solid enhancement."
+            },
+            "mri": {
+                "t1": "Iso/Hypointense. Hyperintense if hemorrhagic or contains melanin.",
+                "t2_flair": "Large vasogenic edema.",
+                "t1_c": "Enhances. Small lesions (<5mm) may only be visible on contrast-enhanced MRI.",
+                "dwi": "Generally facilitated diffusion.",
+                "spectroscopy": "Lipid/Lactate peak. Elevated Cho/NAA ratio, but peritumoral edema shows NORMAL ratios (unlike GBM infiltration)."
+            }
+        },
         "keyPoints": [
             "Erişkinlerde en sık görülen intrakraniyal tümördür.",
             "Gri-beyaz cevher bileşkesi tipik yerleşim yeridir.",
             "Akciğer, Meme, Melanom, Böbrek ve Kolon en sık primer kaynaklardır."
+        ],
+        "keyPointsEn": [
+            "Most common intracranial tumor in adults.",
+            "Gray-white matter junction is the typical location.",
+            "Lung, Breast, Melanoma, Kidney and Colon are the most common primary sources."
         ]
     },
     {
@@ -1036,23 +1090,6 @@ export const brainPathologies: Pathology[] = [
             "Spetzler-Martin skoru cerrahi riski belirler.",
             "Yıllık kanama riski %2-4.",
             "Nidus içinde anevrizma olması kanama riskini artırır."
-        ]
-    },
-    {
-        "id": "vestibular_schwannoma",
-        "name": "Vestibüler Schwannom (Akustik Nörom)",
-        "category": "Neoplastik",
-        "findings": {
-            "mri": {
-                "t1_c": "Serebello-pontin köşe (CPA) kitlelerinde en sık. İnternal Akustik Kanala (IAC) giren, genişleten (Dondurma külahı / Ice cream cone) yoğun kontrastlanan kitle.",
-                "t2": "Heterojen hiperintens. Kistik dejenerasyon sık.",
-                "dwi": "Difüzyon kısıtlamaz (Meningiom ve Epidermoidden farkı)."
-            }
-        },
-        "keyPoints": [
-            "Bilateral görülürse NF2 (Nörofibromatozis Tip 2) düşünülmeli.",
-            "İşitme kaybı ve tinnitus ile gelir.",
-            "Meningiomdan farkı: IAC içine uzanım (Meningiom genelde IAC'yi korur, dural kuyruk yapar)."
         ]
     }
 ];

@@ -7,6 +7,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "Anterior Cruciate Ligament (ACL) Tear",
         category: "Knee (Diz)",
         categoryEn: "Knee",
+        mechanism: "Valgus + iç rotasyon + hiperekstansiyon (pivot-shift) kuvveti → ACL'nin femoral yapışma yerine yakın bölgede yırtılması. Kissing contusion paterni: tibia posteriora çarpar → lateral femoral kondil + posterolateral tibia kemik iliği ödemi (Empty Notch Sign).",
         keyPoints: ["En sık görülen diz bağ yaralanmasıdır.", "T2'de sinyal artışı ve devamsızlık tipiktir.", "Bone bruise (Kemik iliği ödemi) eşlik edebilir."],
         keyPointsEn: ["Most common knee ligament injury.", "Increased signal and discontinuity on T2 are typical.", "Bone bruise (marrow edema) may be present."],
         findings: {
@@ -28,6 +29,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "Bucket-Handle Meniscus Tear",
         category: "Knee (Diz)",
         categoryEn: "Knee",
+        mechanism: "Aksiyel yük altında rotasyonel yaralanma → longitudinal vertikal menisküs yırtığı → iç fragmanın interkondiler çukura deplase göçü (kova sapı hareketi). Deplase fragment femur ve tibia arasında mekanik engel oluşturur → kilitli diz.",
         keyPoints: ["Longitudinal vertikal yırtığın deplase olmasıdır.", "Kilitli dize neden olur.", "Double PCL bulgusu tipiktir."],
         keyPointsEn: ["Displaced longitudinal vertical tear.", "Causes locked knee.", "Double PCL sign is typical."],
         findings: {
@@ -47,6 +49,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "Supraspinatus Full-Thickness Tear",
         category: "Shoulder (Omuz)",
         categoryEn: "Shoulder",
+        mechanism: "Supraspinatus tendonu kritik hipovasküleer bölgede (tuberositas major'a 1cm proksimal) → kronik subakromial sıkışma + tekrarlayan yük → dejenerasyon + mikro yırtık birikimi → tam kat yırtık. Kronik yırtıkta kas fiberleri yağlı dejenerasyonla (Goutallier) değişir; retraksiyon cerrahi başarıyı etkiler.",
         keyPoints: ["Omuz ağrısının en sık nedenidir.", "Tendon retraksiyonu ve kas atrofisi cerrahi başarıyı etkiler.", "Sıvı sinyali (Gap) görülür."],
         keyPointsEn: ["Most common cause of shoulder pain.", "Tendon retraction and muscle atrophy affect surgical success.", "Fluid signal (Gap) is seen."],
         findings: {
@@ -74,6 +77,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "Bankart Lesion",
         category: "Shoulder (Omuz)",
         categoryEn: "Shoulder",
+        mechanism: "Omuzun anteriora travmatik dislokasyonu → humerus başının anteriora itilmesi → anteroinferior glenohumeral ligaman + labrum kompleksinin glenoiddan kopması. Hill-Sachs: humerus başı posterolateraline sertleşmiş glenoid rim çarpar → impaksiyon defekti.",
         keyPoints: ["Anteroinferior labrumun ayrılmasıdır.", "Omuz instabilitesine neden olur.", "Hill-Sachs lezyonu sıklıkla eşlik eder."],
         keyPointsEn: ["Detachment of anteroinferior labrum.", "Causes shoulder instability.", "Hill-Sachs lesion is frequently associated."],
         findings: {
@@ -93,6 +97,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "Baker's Cyst (Popliteal Cyst)",
         category: "Knee (Diz)",
         categoryEn: "Knee",
+        mechanism: "Diz eklem efüzyonu (menisküs yırtığı, OA, RA) → artan intraartikular basınç → medial gastroknemius-semimembranosus bursası ile eklem arasındaki 'boyun' yapısından posterior sıvı geçişi → kist büyümesi. Rüptürde sıvı baldıra yayılır → DVT taklidi.",
         keyPoints: ["Media gastroknemius ve semimembranosus tendonları arasındadır.", "'Boyun' yapısının görülmesi tanı koydurucudur.", "Rüptüre olursa DVT'yi taklit eder."],
         keyPointsEn: ["Located between medial gastrocnemius and semimembranosus tendons.", "Visualization of 'neck' is diagnostic.", "Rupture mimics DVT."],
         findings: {
@@ -118,6 +123,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "Achilles Tendon Rupture",
         category: "Ankle (Ayak Bileği)",
         categoryEn: "Ankle",
+        mechanism: "Ani eksantrik kasılma kuvveti (sprintte itme, merdiven atlama) → hipovasküleer watershed bölgede (kalkaneusun 2-6cm proksimali) tendon bütünlüğünün ani kaybı. Kager yağ yastığı, rüptür alanına komşu olduğundan kanamayı içerir → ödem.",
         keyPoints: ["Watershed (kanlanması az) bölgede sık görülür (kalkaneusun 2-6cm proksimali).", "Thompson testi pozitiftir.", "Kager yağ yastığı ödemlidir."],
         keyPointsEn: ["Common in watershed (hypovascular) zone (2-6cm proximal to calcaneus).", "Thompson test is positive.", "Kager's fat pad is edematous."],
         findings: {
@@ -143,6 +149,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "Achilles Tendinopathy",
         category: "Ankle (Ayak Bileği)",
         categoryEn: "Ankle",
+        mechanism: "Kronik tekrarlayan yük → hipovasküleer watershed bölgede yetersiz iyileşme → mukoid kollajen fibril dejenerasyonu (tendinozis). İnflamasyon minimaldir; esas olay dejeneratif kollajen yeniden yapılanması. Neovaskülarizasyon (Doppler) ağrı iletimi yapan sinir lifleriyle birliktedir.",
         keyPoints: ["Rüptür öncüsü olabilir; watershed bölgesinde sık.", "MRI'da iğ şekilli (fusiform) kalınlaşma tipiktir.", "USG dinamik inceleme ile izlenir."],
         keyPointsEn: ["May precede rupture; common in watershed zone.", "Fusiform thickening on MRI is typical.", "USG allows dynamic assessment."],
         findings: {
@@ -170,6 +177,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "Lateral Epicondylitis (Tennis Elbow)",
         category: "Elbow (Dirsek)",
         categoryEn: "Elbow",
+        mechanism: "Tekrarlayan ön kol ekstansör aktivitesi (backhand vuruşu) → ECRB'nin lateral epikondile yapışma yerinde angiofibroblastik hiperplazi. Temel patoloji: kollajen fibrillerinde dejenerasyon (tendinozis), akut inflamasyon değil. İntratendinöz mukoid değişiklikler karakteristiktir.",
         keyPoints: ["Ekstansör karpi radialis brevis (ECRB) en sık etkilenen tendondur.", "Tendinoz (dejenerasyon) esas patolojidir, inflamasyon değil.", "USG ile tanı ve girişimsel tedavi yönetilebilir."],
         keyPointsEn: ["ECRB is the most commonly affected tendon.", "Tendinosis (degeneration) is the main pathology, not inflammation.", "Diagnosis and interventional treatment possible with USG."],
         findings: {
@@ -197,6 +205,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "De Quervain's Tenosynovitis",
         category: "Wrist (El Bileği)",
         categoryEn: "Wrist",
+        mechanism: "1. dorsal kompartmandaki APL ve EPB tendonlarına kronik tekrarlayan ulnar deviasyon + fleksiyon yükü → fibröz tendon kılıfının stenotik daralması → tendinöz kaymada mekanik engel + sinoviyal inflamasyon. Doğum sonrası dönemde hormonal değişiklikler bağ dokusunu predispoze eder.",
         keyPoints: ["1. dorsal kompartman (APL + EPB) tutulur.", "Finkelstein testi pozitiftir.", "Yeni anneler ve müzisyenlerde sık."],
         keyPointsEn: ["1st dorsal compartment (APL + EPB) is involved.", "Finkelstein test is positive.", "Common in new mothers and musicians."],
         findings: {
@@ -224,6 +233,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "Patellar Tendinopathy (Jumper's Knee)",
         category: "Knee (Diz)",
         categoryEn: "Knee",
+        mechanism: "Tekrarlayan atlama yükü → patellar tendonun proksimal insersiyonunda kollajen mikrofibril yıkımı → angiofibroblastik hiperplazi (tendinozis). Neovaskülarizasyon: ağrıyı ileten sinir lifleriyle birlikte seyreder. Temel patoloji dejenerasyon, akut inflamasyon değil.",
         keyPoints: ["Patellar tendonun proksimal yapışma yerinde en sık görülür.", "Atlama sporlarında sık (voleybol, basketbol).", "USG ile Doppler neovaskülarizasyonu tedaviyi yönlendirir."],
         keyPointsEn: ["Most common at proximal patellar tendon insertion.", "Common in jumping sports (volleyball, basketball).", "Doppler neovascularization guides treatment."],
         findings: {
@@ -251,6 +261,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "Avascular Necrosis (AVN) - Femoral Head",
         category: "Hip (Kalça)",
         categoryEn: "Hip",
+        mechanism: "Risk faktörleri (steroid, alkol, hemoglobinopatiler, dalış hastalığı) → femur başının terminal end-arterlerinde tıkanma → iskemik nekroz. Reaktif sınırda: iç hat = skleroz (hipointens), dış hat = granülasyon dokusu (hiperintens) → Double-Line Sign. İleri evrede kıkırdak + subkondral çöküş.",
         keyPoints: ["Erken evre tanısı MRI ile mümkündür (X-Ray normal olabilir).", "Double-Line Sign (T2'de): İç hipointens + dış hiperintens hat — patognomik.", "Risk faktörleri: Steroid, alkol, orak hücreli anemi, dalış."],
         keyPointsEn: ["Early stage diagnosis possible with MRI (X-Ray may be normal).", "Double-Line Sign (T2): Inner hypointense + outer hyperintense band — pathognomonic.", "Risk factors: Steroids, alcohol, sickle cell anemia, diving."],
         findings: {
@@ -274,6 +285,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "Stress Fracture",
         category: "General (Genel)",
         categoryEn: "General",
+        mechanism: "Kas yorgunluğu + tekrarlayan subkritik yük → kemik yeniden yapılanma kapasitesinin aşılması → mikro kırık birikimi. T2/STIR'de intramedullar ödem en erken bulgudur; ince hipointens kırık hattı geç dönemde X-Ray'de periosteal reaksiyon olarak belirir.",
         keyPoints: ["Kırık hattı X-Ray'de görülmeyebilir; MRI en duyarlı yöntemdir.", "Metatars 2-3 ve tibia en sık lokalizasyondur.", "T2/STIR'de kemik iliği ödemi erken bulgu."],
         keyPointsEn: ["Fracture line may not be visible on X-Ray; MRI is most sensitive.", "Metatarsals 2-3 and tibia are most common locations.", "Bone marrow edema on T2/STIR is an early finding."],
         findings: {
@@ -303,6 +315,7 @@ export const mskPathologies: Pathology[] = [
         nameEn: "Hip Labral Tear",
         category: "Hip (Kalça)",
         categoryEn: "Hip",
+        mechanism: "FAI: Cam (femoral başın asferik büyümesi) → anterosüperior labrumun her fleksiyonda sıkışması → tekrarlayan mikro yırtık birikimi. Pincer (asetabüler over-coverage) → labral ezilme ve degenerasyon. MRA: intraartiküler gadolinyum kontrast labral yırtık içine girer → net görüntüleme.",
         keyPoints: ["FAI (Femoroacetabüler İmpingement) ile sık ilişkilidir.", "MR Artrografi (MRA) tanı standardıdır.", "Anterosüperior labrum en sık yırtık bölgesidir."],
         keyPointsEn: ["Frequently associated with FAI (Femoroacetabular Impingement).", "MR Arthrography (MRA) is the diagnostic standard.", "Anterosuperior labrum is the most common tear site."],
         findings: {

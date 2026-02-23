@@ -31,7 +31,8 @@ export const gynecologyPathologies: Pathology[] = [
                 t1_c: "Variable enhancement. Usually enhances less than myometrium but increases in delayed phase.",
                 other_sequences: "Cystic degeneration: T2 hyperintense (fluid). Red (carneous) degeneration: T1 hyperintense (hemorrhage)."
             }
-        }
+        },
+        mechanism: "Düz kas hücrelerinin klonal proliferasyonu → miyom oluşumu. Östrojen bağımlı büyüme: Premenopozal dönemde büyür, menopozdan sonra küçülür. MRI T2 hipointensitesi: Yoğun düz kas hücresi demetleri ve fibröz stroma → serbest su protonları az. Dejenerasyon türleri: Hyalin (%60, en sık), kistik, kırmızı (gebelikte trofoblastik kanamaya bağlı), müsinöz, kalsifik."
     },
     {
         id: "adenomyosis",
@@ -58,7 +59,8 @@ export const gynecologyPathologies: Pathology[] = [
                 t2: "Junction zone (JZ) thickening (>12mm). Small T2 hyperintense foci within myometrium (ectopic endometrium/cysts).",
                 t1: "May be T1 hyperintense if hemorrhage present in cystic foci."
             }
-        }
+        },
+        mechanism: "Endometrial bazal tabaka hücrelerinin miyometriuma doğru invaze olması → ektopik endometrial bezler ve stroma miyometrium içinde. İki hipotez: (1) Endometrial bazal tabakanın doğrudan invazyonu; (2) endometriyal kök hücre göçü. Ektopik endometrial doku her menstrüel siklustan etkilenir → lokal hemoraji → adenomyotik nodül/küçük kistler. Junction zone kalınlığı >12mm → tanısal MRI bulgusu."
     },
     {
         id: "endometrioma",
@@ -90,7 +92,8 @@ export const gynecologyPathologies: Pathology[] = [
                 t2: "'Shading sign': Lesion bright on T1 becomes progressively darker on T2 due to increased iron concentration.",
                 t1_c: "Wall enhances, content does not. Clear Cell Ca risk if solid nodule present!"
             }
-        }
+        },
+        mechanism: "Retrograd menstrüasyon → ektopik endometrial dokunun over yüzeyine implante olması → over korteksine invazyon → tekrarlayan siklik kanama → eski kan ürünleri (methemoglobin, hemosiderin) birikimi. Methemoglobin (T1 parlak), artmış demir konsantrasyonu (T2 shading = giderek kararan sinyal). Dermoid kistlerde yağ baskılanır; endometriomada kan ürünleri yağ baskılamaya yanıt vermez (ayrım bu şekilde yapılır)."
     },
     {
         id: "ovarian-dermoid",
@@ -125,7 +128,8 @@ export const gynecologyPathologies: Pathology[] = [
             ct: {
                 contrast: "Cystic mass containing fat density (-20 to -100 HU). May contain Tooth/Bone (calcification)."
             }
-        }
+        },
+        mechanism: "Totipotent germ hücrelerinin (over primitif germ hücreleri) üç germ tabakasına diferansiyasyonu → ektoderm (kıl, deri, sebum), mezoderm (kemik, diş, yağ), endoderm (sindirim bezleri). Sebum (yağ) birikimi → kist içeriği. Yağ sinyal karakteri T1 parlak, fat-sat'ta baskılanan → benign dermoid tanısı (malign transformasyon nadir: <1%, skuamöz hücreli karsinom). Rokitansky nodülü: Kalsifikasyon, kıl, diş içeren solid yapı."
     },
     {
         id: "ovarian-torsion",
@@ -158,7 +162,8 @@ export const gynecologyPathologies: Pathology[] = [
             mri: {
                 t2: "Diffuse high signal in ovarian stroma (edema). Torsed pedicle (Beak sign)."
             }
-        }
+        },
+        mechanism: "Overin kendi vasküler pedikülü etrafında dönmesi → önce venöz, ardından arteryel akım kesilmesi → over ödem ve iskemisi. Büyük over kitlesi (kist, dermoid) veya uzun infundibulo-pelvik ligaman predispozan faktördür. Foliküller ödemli overde perifere sıkışır ('string of pearls'). Whirlpool sign: Doppler'da dönen vasküler pedikül görüntüsü. Akım varlığı torsiyonu ekarte ettirmez (kısmi torsiyon, arteriyel akım devam edebilir)."
     },
     {
         id: "cervical-carcinoma",
@@ -181,6 +186,7 @@ export const gynecologyPathologies: Pathology[] = [
                 dwi: "Marked diffusion restriction (Bright).",
                 t1_c: "Tumor enhances earlier than stroma in early arterial phase."
             }
-        }
+        },
+        mechanism: "HPV 16/18 enfeksiyonu → servikal transformasyon zonunda skuamöz hücre displazisi (CIN 1→2→3) → invaziv skuamöz hücreli karsinom. HPV onkoproteinleri (E6: TP53 inhibisyonu, E7: Rb inhibisyonu) → hücre döngüsü kontrolsüzlüğü. MRI'da servikal stroma (fibröz doku → T2 hipointens) tümör tarafından bozulur (T2 ara-yüksek sinyal). Parametriyal yağ invazyonu evre IIB → cerrahi kontraendike."
     }
 ];

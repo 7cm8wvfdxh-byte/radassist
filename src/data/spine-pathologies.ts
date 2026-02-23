@@ -47,7 +47,12 @@ export const spinePathologies: Pathology[] = [
             "Focal (<25%) vs Diffuse (>25%).",
             "L4-L5 and L5-S1 are the most frequently affected levels.",
             "Emergency: Cauda Equina Syndrome (Urinary retention, saddle anesthesia)."
-        ]
+        ],
+        "mechanism": "Yaşlanma veya tekrarlayan travma → anulus fibrozus kollajen liflerinin yıkımı → nükleus pulpozus su kaybı (T2 sinyal azalması) → disk yüksekliği azalması → anular yırtık → nükleus pulpozus materyalinin kanal/foramene herniyasyonu. Mekanik bası + kimyasal enflamasyon (fosfolipaz A2 salınımı) → sinir kökü ödemi ve radikülopati.",
+        "etiology": "Dejeneratif (yaşlanma, tekrarlayan aksiyel yüklenme), Akut travma, Konjenital dar kanal, Genetik predispozisyon.",
+        "differentialDiagnosis": ["Piriformis Sendromu (Ekstraforaminal, piriformis kasında patoloji)", "Faset Artropatisi (Posterior ağrı, ekstansiyonda artar)", "Spinal Stenoz (Bilateral nörojenik kladikasyo)", "Vertebral Metastaz (Gece ağrısı, T1 sinyal kaybı)"],
+        "goldStandard": "MRI (Sagittal + Aksiyel T2): Kanal çapı, sinir kökü basısı, kord sinyali değerlendirmesi. BT myelografi: MRI çekilemez ise.",
+        "clinicalPearl": "L4-L5 herniasyonu → L5 kökü basısı (Ayak dorsifleksiyon zayıflığı). L5-S1 → S1 (Aşil refleks kaybı). İdrar retansiyonu + Eyer anestezi = Kauda Ekuina Acil!"
     },
     {
         "id": "spinal_stenosis_lumbar",
@@ -83,7 +88,8 @@ export const spinePathologies: Pathology[] = [
             "Clinical: Neurogenic Claudication (Leg pain with walking, relieved by leaning forward).",
             "AP canal diameter < 10mm (Relative), < 7mm (Absolute Stenosis).",
             "Can be Central, Lateral Recess, or Foraminal."
-        ]
+        ],
+        "mechanism": "Çoklu dejeneratif değişikliklerin birikmesi → kanal daralması. Disk yükseklik kaybı → faset ekleme artan yük → faset artrozu ve hipertrofi. Ligamentum flavum: Elastin kaybı → kollajen hipertrofisi (>4mm). Osteofitler + ligaman hipertrofisi + faset hipertrofisi = trifokal (trefoil) dar kanal. Öne eğilme sırasında kanal açılması nörojenik kladikasiyo ile bisiklete binebilme ayrımını açıklar."
     },
     {
         "id": "spondylolisthesis",
@@ -125,7 +131,8 @@ export const spinePathologies: Pathology[] = [
             "Meyerding Classification (Grade 1-4).",
             "Most common at L4-L5 (Degenerative) and L5-S1 (Isthmic/Lytic).",
             "Step-off deformity."
-        ]
+        ],
+        "mechanism": "İstmik tip: Tekrarlayan hiperextansiyon stresi (jimnastikçi, futbolcu) → pars interartikülaris stres kırığı (spondilolizis) → her iki tarafta kırık → vertebra kayması. Dejeneratif tip: Faset ve disk dejenerasyonu → posterior stabilizasyon kaybı → öne kayma. Travmatik tip: Akut yüksek enerjili travma → pars veya pedikül kırığı → ani kayma. Kayma derecesi arttıkça kanal ve foramen daralır."
     },
     {
         "id": "spinal_metastasis",
@@ -165,7 +172,8 @@ export const spinePathologies: Pathology[] = [
             "Most common sources of bone metastasis: Breast, Prostate, Lung.",
             "Thoracic region is most frequently affected.",
             "CT is more sensitive if cortical destruction is present."
-        ]
+        ],
+        "mechanism": "Primer tümör hematojen yayılımla Batson pleksusundan (vertebral venöz pleksus) vertebra kemik iliğine ulaşır → trabeküler yıkım. Osteolitik (akciğer, böbrek, tiroid, melanom) vs osteoblastik (prostat, meme). Normal yağ iliği yerini tümör hücreleri aldığı için T1'de hipointens (yağ sinyali kaybolur). STIR sekansında su içeriği arttığı için parlak sinyal verir."
     },
     {
         "id": "spinal_trauma_burst",
@@ -209,7 +217,8 @@ export const spinePathologies: Pathology[] = [
             "TLICS classification is used for stability.",
             "High risk of neurological deficit.",
             "Distinction from compression fracture: Involvement of posterior wall and posterior column."
-        ]
+        ],
+        "mechanism": "Yüksek enerjili aksiyel yüklenme (suyun yüzeyine ayak dibi ile düşme, trafik kazası) → vertebra korpusunun santral çökmesi → her iki korteksin kırılması → kemik parçacıklarının spinal kanala retropulsiyonu. Dennis'in üç kolon modeli: Orta ve arka kolon birlikte tutulunca kord basısı ve nörolojik hasar riski artar; bu burst kırığını kompresyon kırığından ayırır."
     },
     {
         "id": "cervical_disc_herniation",
@@ -254,7 +263,8 @@ export const spinePathologies: Pathology[] = [
             "Radiculopathy: Dermatomal pain and weakness (C6: Thumb, C7: Middle finger).",
             "Cord signal change on MRI: Indicates myelomalacia (poor prognosis).",
             "Differential diagnosis: OPLL (Ossification of Posterior Longitudinal Ligament), Cervical stenosis."
-        ]
+        ],
+        "mechanism": "Servikal bölgede disk dejenerasyonu → nükleus pulpozus herniyasyonu veya disk-osteofil kompleksi oluşumu → posterior/posterolateral bası → sinir kökü basısı (radikülopati) veya kord kompresyonu (miyelopati). Lomber disk hernisinden farklı olarak dar kanal alanı nedeniyle küçük bir herninin bile kord basısına yol açabileceği unutulmamalı. Unkovertebral artropati foraminal stenoza ek katkı sağlar."
     },
     {
         "id": "schmorl_nodule",
@@ -295,7 +305,8 @@ export const spinePathologies: Pathology[] = [
             "May be associated with Modic changes: Type 1 (edema), Type 2 (fat), Type 3 (sclerosis).",
             "Acute Schmorl node: Can be a source of pain.",
             "Scheuermann's disease: Multiple Schmorl nodes + kyphosis."
-        ]
+        ],
+        "mechanism": "Zayıflamış vertebral end-plate + aniden artan aksiyel yük → nükleus pulpozusun end-plate korteksini delerek vertebra spongioza dokusu içine herniyasyonu. End-plate kıkırdağının konjenital zayıflığı (Scheuermann hastalığı) ya da osteoporoz zemin hazırlar. Akut fazda çevre kemikte ödem/vasküler tepki (Modic Tip 1), kronik fazda reaktif skleroz (Modic Tip 3) oluşur."
     },
     {
         "id": "facet_arthropathy",
@@ -338,7 +349,8 @@ export const spinePathologies: Pathology[] = [
             "Increased lumbar lordosis risk: Increases load on posterior elements.",
             "Synovial cyst: Can cause lateral recess stenosis and radiculopathy.",
             "Facet block and ablation: Used for diagnosis and treatment."
-        ]
+        ],
+        "mechanism": "Faset (zigapofiziyel) eklem artrozisi: Disk yüksekliği azaldıkça faset ekleme binen yük artar → kıkırdak dejenerasyonu → kemik subkondral değişiklikler → osteofitler → eklem kapsülü ve çevredeki sinoviyal membranın kalınlaşması. Sinoviyal kist: Kronik irritasyon → sinoviyal sıvının eklem kapsülü zayıf noktasından herniyasyonu → lateral recess veya foramene bası yapabilir."
     },
     {
         "id": "spinal_ependymoma",
@@ -382,7 +394,8 @@ export const spinePathologies: Pathology[] = [
             "'Cap sign' (hemosiderin) is pathognomonic for ependymoma.",
             "Myxopapillary ependymoma: Filum terminale, risk of CSF seeding.",
             "Surgery: Gross total resection is possible (well-defined)."
-        ]
+        ],
+        "mechanism": "Ependimal hücrelerden (spinal kanalın santral kanalını ve ventriküllerini döşeyen hücreler) köken alan WHO Grade 2 tümör. Tümöre ait kanama→hemosiderin birikimi (cap sign); polar kistler ependimal hasar ve BOS birikmesiyle oluşur. Konus ve filum terminale lokalizasyonu: Bu bölgelerde geniş ependimal hücre rezervuarı bulunur. İyi sınırlı yapısı cerrahi tam rezeksiyona olanak tanır."
     },
     {
         "id": "spinal_schwannoma",
@@ -430,7 +443,8 @@ export const spinePathologies: Pathology[] = [
             "Distinction from Neurofibroma: Eccentric location, focal, single nerve root.",
             "In NF2: Bilateral vestibular schwannomas + multiple spinal schwannomas.",
             "'Dumbbell' tumor: Extends both inside and outside the canal by widening the foramen."
-        ]
+        ],
+        "mechanism": "Schwann hücrelerinden köken alan benign tümör (WHO Grade 1). Spinal sinir köklerinde (dorsal > ventral) gelişir. Yavaş büyüme → foramen kemik remodelinge uğrar (genişler). Antoni A (hücresel, kompakt) ve Antoni B (miksoid, hücresiz) alanlar arası geçiş → T2 heterojenik hiperintensite ve target sign. NF2'de NF2 geninin (merlin proteini) bialelik inaktivasyonu → multipl schwannom."
     },
     {
         "id": "vertebral_osteomyelitis",
@@ -475,7 +489,8 @@ export const spinePathologies: Pathology[] = [
             "Distinction from Modic Type 1: DWI restriction, enhancement pattern, disc involvement.",
             "Lumbar region most common. Hematogenous spread (urinary, IV drugs).",
             "Complications: Epidural abscess, paraspinal abscess, pathologic fracture."
-        ]
+        ],
+        "mechanism": "Hematojen bakteriyemi (S. aureus, Klebsiella) → vertebral metafizer bölge arteriyollerinde tutulma → end-plate vasküler hasar → disk avasküleri nedeniyle disk başlangıçta korunur → ilerleme sonucu disk katılımı. İki komşu vertebranın end-plate'lerinin simetrik tutulumu tipiktir (disk ortak besleme alanı). Enfeksiyon ilerledikçe epidural/paraspinal apse oluşabilir."
     },
     {
         "id": "epidural_abscess_spine",
@@ -522,7 +537,8 @@ export const spinePathologies: Pathology[] = [
             "Triad: Fever + Back pain + Neurological deficit.",
             "DWI is the most important sequence: Restriction = pus confirmation.",
             "Risk factors: IV drug use, DM, immunosuppression, recent spinal procedure."
-        ]
+        ],
+        "mechanism": "Hematojen yayılım veya komşu vertebra osteomiyelitinden direkt yayılım → epidural mesafede pü birikimi. Visköz pü → su moleküllerinin hareketi kısıtlanır → DWI'da parlak, ADC düşük. Epidural mesafedeki artan basınç → spinal kord ve sinir köklerine kompresyon ve vasküler ischemi → nörolojik hasar. Torasik bölgede kanal dardır, küçük koleksiyonlar bile nörolojik defisit yapabilir."
     },
     {
         "id": "pott_disease",
@@ -567,7 +583,8 @@ export const spinePathologies: Pathology[] = [
             "Thoracic and lumbar vertebrae most common. Posterior elements spared (can be involved in pyogenic).",
             "'Cold abscess': Abscess without classic signs of inflammation.",
             "Gibbus (angular kyphosis) is pathognomonic for chronic Pott disease."
-        ]
+        ],
+        "mechanism": "M. tuberculosis hematojen yayılım → vertebral ön elemanlar (cisimler) tutulur → yavaş granülomatöz yıkım. Disk enzim salabilecek nötrofil içermediğinden (tüberküloz granülomatöz inflamasyon) disk ileri aşamaya kadar korunur (piyojenik enfeksiyondan fark). Anterior subligamentöz yayılım → multipl vertebra tutulumu. Vertebra ön yüzünde çöküş → kyphosis (gibbus deformitesi). Soğuk apse: Düşük ateş/belirgin inflamasyon yok çünkü granülomatöz tepki lokalize eder."
     },
     {
         "id": "spinal_discitis_osteomyelitis",
@@ -606,7 +623,8 @@ export const spinePathologies: Pathology[] = [
             "MRI is the gold standard for diagnosis.",
             "Most common agent is S. aureus.",
             "Tuberculosis (Pott disease): Gibbus deformity, large psoas abscesses, disc relatively preserved (Skip lesions)."
-        ]
+        ],
+        "mechanism": "S. aureus hematojen yayılım → vertebral end-plate damarlanması (ağırlıklı olarak diskin beslendiği alanlar) tıkanır → end-plate nekrozu → diskitis. İnfeksiyonun diskte ilerlemesiyle disk yüksekliği azalır ve sinyal artar. Epidural apse: Enfeksiyonun posterior epidural mesafeye yayılması ile oluşur. Piyojenik enfeksiyonun potttan farkı: Disk erken tutulur, nötrofil kökenli proteolitik enzimler diski hızla yıkar."
     },
     {
         "id": "modic_changes",
@@ -635,7 +653,8 @@ export const spinePathologies: Pathology[] = [
         "keyPointsEn": [
             "Type 1 Modic changes are strongly associated with low back pain.",
             "Distinction from infection: Disc signal is normal or only degenerative (Disc is bright in discitis)."
-        ]
+        ],
+        "mechanism": "Disk dejenerasyonu ve biyomekanik stres → vertebral end-plate mikro-hasarı → reaktif kemik iliği değişiklikleri. Tip 1 (akut/subakut): End-plate kırığı/nekroz + vasküler granülasyon dokusu → T1 hipointens, T2 hiperintens. Tip 2 (kronik): Granülasyon dokusu yerini yağlı ilik dönüşümüne bırakır → T1 hiperintens (yağ sinyali). Tip 3 (ileri kronik): Reaktif kemik sklerozu → T1 ve T2 hipointens."
     },
     {
         "id": "spondylolysis",
@@ -674,6 +693,7 @@ export const spinePathologies: Pathology[] = [
             "Spondylolysis: Pars defect.",
             "Spondylolisthesis: Slippage.",
             "Canal widens in Isthmic (Lytic) type, narrows in Degenerative type."
-        ]
+        ],
+        "mechanism": "Tekrarlayan hiperextansiyon ve rotasyon kuvvetleri → pars interartikülaris'te stres kırığı (spondilolizis). Pars, hem faset eklemi hem de disk dejenerasyonunun yükünü taşıyan narin bir kemik köprüdür. İki taraflı pars kırığı → vertebra korpusunun posterior elementlerden ayrışması → anteriorlistezis (kayma). İstmik tipte: Kırık parçalar arasındaki mesafe artar ve spinal kanal genişler (dejeneratif stenozdaki daralmanın aksine)."
     }
 ];

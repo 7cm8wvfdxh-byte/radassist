@@ -35,50 +35,47 @@ export default function Home() {
   const { user, logout } = useAuth();
   const { language, toggleLanguage, t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
-  const [favorites, setFavorites] = useState<string[]>([]);
-  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-  const [viewMode, setViewMode] = useState<"grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox">("grid");
-  const [activeModule, setActiveModule] = useState<"brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk" | "gi" | "gyn">("brain");
-  const [selectedPathology, setSelectedPathology] = useState<Pathology | null>(null);
-  const [showDailyModal, setShowDailyModal] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  // Load favorites from local storage on mount
-  useEffect(() => {
-    // SSR guard - only access localStorage on client
-    if (typeof window === 'undefined') return;
-
+  const [favorites, setFavorites] = useState<string[]>(() => {
+    if (typeof window === 'undefined') return [];
     try {
       const stored = localStorage.getItem("radassist-favorites");
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) {
-          setFavorites(parsed);
-        }
+        if (Array.isArray(parsed)) return parsed;
       }
-    } catch (e) {
-      console.error("Error parsing favorites from localStorage:", e);
-      localStorage.removeItem("radassist-favorites");
-    }
-
+    } catch { /* ignore */ }
+    return [];
+  });
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [viewMode, setViewMode] = useState<"grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox">(() => {
+    if (typeof window === 'undefined') return "grid";
     try {
       const savedView = localStorage.getItem("radassist-view-mode");
-      if (savedView && ["grid", "list", "quiz", "case", "wizard", "ai", "swipe", "toolbox"].includes(savedView)) {
-        setViewMode(savedView as "grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox");
+      const validModes = ["grid", "list", "quiz", "case", "wizard", "ai", "swipe", "toolbox"];
+      if (savedView && validModes.includes(savedView)) {
+        return savedView as "grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox";
       }
-    } catch (e) {
-      console.error("Error reading view mode from localStorage:", e);
-    }
-
+    } catch { /* ignore */ }
+    return "grid";
+  });
+  const [activeModule, setActiveModule] = useState<"brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk" | "gi" | "gyn">(() => {
+    if (typeof window === 'undefined') return "brain";
     try {
       const savedModule = localStorage.getItem("radassist-module");
-      if (savedModule && ["brain", "spine", "liver", "kidney", "lung", "breast", "msk", "gi", "gyn"].includes(savedModule)) {
-        setActiveModule(savedModule as "brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk" | "gi" | "gyn");
+      const validModules = ["brain", "spine", "liver", "kidney", "lung", "breast", "msk", "gi", "gyn"];
+      if (savedModule && validModules.includes(savedModule)) {
+        return savedModule as "brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk" | "gi" | "gyn";
       }
-    } catch (e) {
-      console.error("Error reading module from localStorage:", e);
-    }
+    } catch { /* ignore */ }
+    return "brain";
+  });
+  const [selectedPathology, setSelectedPathology] = useState<Pathology | null>(null);
+  const [showDailyModal, setShowDailyModal] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
+  // Mark as loaded after client hydration (intentional setState-in-effect for hydration detection)
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsLoaded(true);
   }, []);
 
@@ -103,7 +100,6 @@ export default function Home() {
         ...brainPathologies.map(p => ({ ...p, organ: 'Beyin' })),
         ...spinePathologies.map(p => ({ ...p, organ: 'Omurga' })),
         ...liverPathologies.map(p => ({ ...p, organ: 'Karaciğer' })),
-        ...kidneyPathologies.map(p => ({ ...p, organ: 'Böbrek' })),
         ...kidneyPathologies.map(p => ({ ...p, organ: 'Böbrek' })),
         ...lungPathologies.map(p => ({ ...p, organ: 'Akciğer' })),
         ...breastPathologies.map(p => ({ ...p, organ: 'Meme' })),

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useLanguage, Language } from "@/context/language-context";
+import { useLanguage } from "@/context/language-context";
 import { Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 

@@ -7,7 +7,6 @@ import { useLanguage } from "@/context/language-context";
 export function PwaInstallPrompt() {
     const { t, language } = useLanguage();
     const [showPrompt, setShowPrompt] = useState(false);
-    const [isIOS, setIsIOS] = useState(false);
 
     useEffect(() => {
         // SSR guard - only access window on client
@@ -21,23 +20,14 @@ export function PwaInstallPrompt() {
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
             (window.navigator as Navigator & { standalone?: boolean }).standalone;
 
-        let timer: ReturnType<typeof setTimeout> | null = null;
+        if (!isIosDevice || isStandalone) return;
 
-        if (isIosDevice && !isStandalone) {
-            setIsIOS(true);
-            // Delay prompt to not annoy user immediately
-            timer = setTimeout(() => setShowPrompt(true), 3000);
-        }
-
-        // Cleanup function always runs on unmount
-        return () => {
-            if (timer) {
-                clearTimeout(timer);
-            }
-        };
+        // Delay prompt to not annoy user immediately
+        const timer = setTimeout(() => setShowPrompt(true), 3000);
+        return () => clearTimeout(timer);
     }, []);
 
-    if (!showPrompt || !isIOS) return null;
+    if (!showPrompt) return null;
 
     return (
         <div className="fixed bottom-4 left-4 right-4 z-[100] animate-in slide-in-from-bottom-5 duration-500" role="dialog" aria-labelledby="pwa-prompt-title">

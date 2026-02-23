@@ -1,6 +1,6 @@
 import { brainPathologies } from '@/data/brain-pathologies';
 import { spinePathologies } from '@/data/spine-pathologies';
-import { Pathology } from '@/types';
+import { Pathology, ModalityFindings } from '@/types';
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -12,13 +12,13 @@ const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const normalize = (text: string) => text.toLowerCase().replace(/['",.]/g, '');
 
 // Helper to safely search findings
-const searchFindings = (findings: any, query: string): boolean => {
+const searchFindings = (findings: ModalityFindings | null | undefined, query: string): boolean => {
     if (!findings) return false;
     // Iterate over modality keys (ct, mri, etc.)
-    return Object.values(findings).some((modalityFindings: any) => {
+    return Object.values(findings as Record<string, Record<string, unknown>>).some((modalityFindings: Record<string, unknown>) => {
         if (!modalityFindings) return false;
         // Iterate over finding keys (t1, t2, etc.) or just check values if it's a flat object
-        return Object.values(modalityFindings).some((val: any) =>
+        return Object.values(modalityFindings).some((val: unknown) =>
             typeof val === 'string' && normalize(val).includes(query)
         );
     });
@@ -63,7 +63,7 @@ export async function POST(req: Request) {
         if (foundPathology.findings) {
             responseText += `**Bulgular:**\n`;
             // Extract relevant findings based on available keys
-            const f = foundPathology.findings as any;
+            const f = foundPathology.findings as Record<string, Record<string, string | undefined>>;
             if (f.mri) {
                 if (f.mri.t1) responseText += `- **MRI T1:** ${f.mri.t1}\n`;
                 if (f.mri.t2) responseText += `- **MRI T2:** ${f.mri.t2}\n`;

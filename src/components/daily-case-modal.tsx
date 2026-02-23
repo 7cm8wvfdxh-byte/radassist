@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
-import { X, RefreshCw, ChevronRight, ChevronLeft, Trophy, Flag, Brain, Stethoscope, Microscope, Search, Lightbulb, ScanEye, ArrowRight, Layers } from "lucide-react";
+import { X, RefreshCw, ChevronLeft, Trophy, Microscope, Search, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { brainPathologies } from "@/data/brain-pathologies";
 import { spinePathologies } from "@/data/spine-pathologies";
@@ -40,8 +40,19 @@ export function DailyCaseModal({ isOpen, onClose }: DailyCaseModalProps) {
 
     useEffect(() => {
         if (isOpen && !currentCase) {
-            pickRandomCase();
+            const allPaths = [
+                ...brainPathologies,
+                ...spinePathologies,
+                ...liverPathologies,
+                ...kidneyPathologies,
+                ...lungPathologies
+            ];
+            const randomIndex = Math.floor(Math.random() * allPaths.length);
+            setTimeout(() => {
+                setCurrentCase(allPaths[randomIndex]);
+            }, 300);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isOpen]);
 
     const handleNext = () => {
@@ -55,7 +66,7 @@ export function DailyCaseModal({ isOpen, onClose }: DailyCaseModalProps) {
     if (!isOpen || !currentCase) return null;
 
     const hasImage = currentCase.gallery && currentCase.gallery.length > 0;
-    const coverImage = hasImage ? currentCase.gallery![0].url : "/placeholder_source.png";
+    const coverImage = hasImage ? currentCase.gallery![0].url : "/images/ct.png";
     const modality = hasImage ? currentCase.gallery![0].modality : "Bilinmiyor";
 
     // Card Content Renderer

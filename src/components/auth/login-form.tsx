@@ -32,8 +32,8 @@ export function LoginForm() {
             // Success
             router.push("/");
             router.refresh(); // Refresh to update auth context
-        } catch (err: any) {
-            setError(err.message || "Giriş yapılırken bir hata oluştu.");
+        } catch (err: unknown) {
+            setError(err instanceof Error ? err.message : "Giriş yapılırken bir hata oluştu.");
         } finally {
             setIsLoading(false);
         }

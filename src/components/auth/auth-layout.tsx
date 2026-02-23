@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, Brain, ShieldCheck } from 'lucide-react';
+import { Brain, ShieldCheck } from 'lucide-react';
 
 interface AuthLayoutProps {
     children: React.ReactNode;

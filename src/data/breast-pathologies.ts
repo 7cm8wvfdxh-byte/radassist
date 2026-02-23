@@ -7,6 +7,7 @@ export const breastPathologies: Pathology[] = [
         nameEn: "Malignant Mass (Invasive Ductal Ca)",
         category: "Mass",
         categoryEn: "Mass",
+        mechanism: "DNA hasarı ve genetik mutasyonlar (BRCA1/2, HER2 amplifikasyonu) → terminal duktulo-lobüler ünitenin anaplastik dönüşümü → invaziv büyüme. Tümör stroması desmoplastik reaksiyon oluşturur → spiküle görünüm + sertlik.",
         keyPoints: ["Spiküle kontur en önemli malignite kriteridir.", "Taller-than-wide (Dikey) oryantasyon ultrasona özgüdür.", "Posterior akustik gölgeleme desmoplaziyi gösterir."],
         keyPointsEn: ["Spiculated margin is the most important malignancy criterion.", "Taller-than-wide (Vertical) orientation is specific to ultrasound.", "Posterior acoustic shadowing indicates desmoplasia."],
         findings: {
@@ -38,6 +39,7 @@ export const breastPathologies: Pathology[] = [
         nameEn: "Fibroadenoma",
         category: "Mass",
         categoryEn: "Mass",
+        mechanism: "Hormonal stimülasyon (östrojen) → stroma ve lobüler epitelyal doku proliferasyonu → bifazik benign tümör. Kapsüler büyüme düzenli sınırları oluşturur. İnvolüsyonda kollajen birikimi → kaba 'popcorn' kalsifikasyon.",
         keyPoints: ["Genç hastalarda en sık benign kitle.", "Ultrasonda 'Popcorn' kalsifikasyon involüsyonu gösterir.", "İyi sınırlı ve mobildir."],
         keyPointsEn: ["Most common benign mass in young patients.", "'Popcorn' calcification on ultrasound indicates involution.", "Well-defined and mobile."],
         findings: {
@@ -69,6 +71,7 @@ export const breastPathologies: Pathology[] = [
         nameEn: "Simple Cyst",
         category: "Cystic",
         categoryEn: "Cystic",
+        mechanism: "Terminal duktülün fibröz obliterasyonu veya dilate olması → luminal sekresyon birikimi → fibroelastik duvarlı, saf seröz sıvı içeren kavite. Sıvı içeriği akustik empedans farkı yaratmaz → posterior güçlenme.",
         keyPoints: ["BI-RADS 2 lezyondur, işlem gerekmez.", "Anekoik, keskin sınırlı, posterior güçlenme.", "Septa veya solid komponent içermez."],
         keyPointsEn: ["BI-RADS 2 lesion, no action needed.", "Anechoic, sharp margins, posterior enhancement.", "No septations or solid components."],
         findings: {
@@ -94,6 +97,7 @@ export const breastPathologies: Pathology[] = [
         nameEn: "Complicated Cyst",
         category: "Cystic",
         categoryEn: "Cystic",
+        mechanism: "Basit kist içine kanama veya inflamasyon → sıvı içeriğinde protein ve debrinin artması → homojen düşük seviyeli ekolar. Vasküler yapı içermez; Doppler negatiftir.",
         keyPoints: ["İçerik (debris) vardır ama solid komponent yoktur.", "Vaskülarite içermez.", "BI-RADS 3 kabul edilebilir."],
         keyPointsEn: ["Contains debris but no solid component.", "No vascularity.", "Considered BI-RADS 3."],
         findings: {
@@ -113,6 +117,7 @@ export const breastPathologies: Pathology[] = [
         nameEn: "Intraductal Papilloma",
         category: "Ductal",
         categoryEn: "Ductal",
+        mechanism: "Retroareolar büyük duktusun epitelinin fibro-vasküler pediküllü papiler proliferasyonu → duktus obstrüksiyonu → proksimal dilatasyon + seröz/kanlı akıntı. Apokrin metaplazi ve epiteli kaplayan papiler dallanmalar karakteristiktir.",
         keyPoints: ["Kanlı meme başı akıntısının en sık benign nedenidir.", "Duktus içinde solid lezyon.", "Ektatik duktus görülür."],
         keyPointsEn: ["Most common benign cause of bloody nipple discharge.", "Solid lesion within duct.", "Ectatic duct seen."],
         findings: {
@@ -144,6 +149,7 @@ export const breastPathologies: Pathology[] = [
         nameEn: "Fat Necrosis",
         category: "Benign Mimic",
         categoryEn: "Benign Mimic",
+        mechanism: "Travma, cerrahi veya radyasyon → yağ hücrelerinde iskemik nekroz → lipidlerin serbest yağ asitlerine dönüşümü → granülomatöz inflamatuar yanıt → fibrozis. Kapsülleşme: yağ kisti (radyolusen merkezli, egg-shell kalsifikasyon) → eski lezyonda distrofik kalsifikasyon.",
         keyPoints: ["Travma öyküsü önemlidir.", "Maligniteyi taklit edebilir.", "Yağ kisti ve distrofik kalsifikasyon tipiktir."],
         keyPointsEn: ["History of trauma is important.", "Can mimic malignancy.", "Oil cyst and dystrophic calcification are typical."],
         findings: {

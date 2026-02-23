@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Ruler, Calculator, Search, Activity, Calculator as CalcIcon, ShieldCheck, FileText, FlaskConical } from 'lucide-react';
+import { Ruler, Search, Activity, Calculator as CalcIcon, ShieldCheck, FileText, FlaskConical } from 'lucide-react';
 import { RADIOLOGY_MEASUREMENTS, RADIOLOGY_CALCULATORS, Measurement } from '@/data/toolbox-data';
 import { RADS_SYSTEMS, RadsSystem } from '@/data/rads-data';
 import { REPORT_TEMPLATES, ReportTemplate } from '@/data/report-templates';
@@ -28,7 +28,7 @@ export function ToolboxMode() {
     // --- CALCULATOR state ---
     const [activeCalc, setActiveCalc] = useState<string | null>(null);
     const [calcValues, setCalcValues] = useState<Record<string, number>>({});
-    const [calcResult, setCalcResult] = useState<any>(null);
+    const [calcResult, setCalcResult] = useState<{ main: string; detail?: string } | null>(null);
 
     // --- TEMPLATES state ---
     const [templateSearch, setTemplateSearch] = useState('');
@@ -105,7 +105,7 @@ export function ToolboxMode() {
         if (!distal || !stenosis) return;
         if (stenosis > distal) { setCalcResult({ main: "Hata: Darlık çapı distalden büyük olamaz." }); return; }
         const pct = ((distal - stenosis) / distal) * 100;
-        let grade = pct < 50 ? "Hafif Darlık (<%50)" : pct < 70 ? "Orta Derece Darlık (%50-69)" : "Ciddi Darlık (%70-99)";
+        const grade = pct < 50 ? "Hafif Darlık (<%50)" : pct < 70 ? "Orta Derece Darlık (%50-69)" : "Ciddi Darlık (%70-99)";
         setCalcResult({ main: `%${pct.toFixed(1)} Stenoz (NASCET)`, detail: grade });
     };
 
@@ -113,7 +113,7 @@ export function ToolboxMode() {
         const { baseline, current } = calcValues;
         if (!baseline || !current) return;
         const change = ((current - baseline) / baseline) * 100;
-        let response = current === 0 ? "Tam Yanıt (CR)" :
+        const response = current === 0 ? "Tam Yanıt (CR)" :
             change <= -30 ? "Kısmi Yanıt (PR)" :
             change >= 20 && (current - baseline) >= 5 ? "Progresif Hastalık (PD)" : "Stabil Hastalık (SD)";
         setCalcResult({ main: `%${change.toFixed(1)} Değişim`, detail: response });

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { brainPathologies } from "@/data/brain-pathologies"; // Corrected path
-import { CheckCircle2, XCircle, RefreshCcw, Trophy, Brain, ChevronRight } from "lucide-react";
+import { CheckCircle2, XCircle, Trophy, Brain, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface QuizQuestion {
@@ -13,49 +13,32 @@ interface QuizQuestion {
     options: Pathology[]; // 1 Correct + 3 Distractors
 }
 
+function buildQuestion(): QuizQuestion | null {
+    const validPathologies = brainPathologies.filter(p => p.gallery && p.gallery.length > 0);
+    if (validPathologies.length < 4) return null;
+    const correctPathology = validPathologies[Math.floor(Math.random() * validPathologies.length)];
+    const randomImageIndex = Math.floor(Math.random() * (correctPathology.gallery?.length || 0));
+    const randomImage = correctPathology.gallery![randomImageIndex];
+    const distractors: Pathology[] = [];
+    while (distractors.length < 3) {
+        const randomP = brainPathologies[Math.floor(Math.random() * brainPathologies.length)];
+        if (randomP.id !== correctPathology.id && !distractors.find(d => d.id === randomP.id)) {
+            distractors.push(randomP);
+        }
+    }
+    const options = [...distractors, correctPathology].sort(() => Math.random() - 0.5);
+    return { pathology: correctPathology, image: randomImage, options };
+}
+
 export function QuizMode() {
-    const [question, setQuestion] = useState<QuizQuestion | null>(null);
+    const [question, setQuestion] = useState<QuizQuestion | null>(() => buildQuestion());
     const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
     const [score, setScore] = useState(0);
     const [streak, setStreak] = useState(0);
     const [showResult, setShowResult] = useState(false);
 
-    // Initial Question Generation
-    useEffect(() => {
-        generateQuestion();
-    }, []);
-
     const generateQuestion = () => {
-        // 1. Filter pathologies that have images
-        const validPathologies = brainPathologies.filter(p => p.gallery && p.gallery.length > 0);
-
-        if (validPathologies.length < 4) return; // Not enough data
-
-        // 2. Pick Random Correct Pathology
-        const correctPathology = validPathologies[Math.floor(Math.random() * validPathologies.length)];
-
-        // 3. Pick Random Image from that Pathology
-        const randomImageIndex = Math.floor(Math.random() * (correctPathology.gallery?.length || 0));
-        const randomImage = correctPathology.gallery![randomImageIndex];
-
-        // 4. Pick 3 Distractors (Try to match category if possible for difficulty, or just random)
-        // Let's make it smarter later. For now, random but unique.
-        const distractors: Pathology[] = [];
-        while (distractors.length < 3) {
-            const randomP = brainPathologies[Math.floor(Math.random() * brainPathologies.length)];
-            if (randomP.id !== correctPathology.id && !distractors.find(d => d.id === randomP.id)) {
-                distractors.push(randomP);
-            }
-        }
-
-        // 5. Shuffle Options
-        const options = [...distractors, correctPathology].sort(() => Math.random() - 0.5);
-
-        setQuestion({
-            pathology: correctPathology,
-            image: randomImage,
-            options
-        });
+        setQuestion(buildQuestion());
         setSelectedAnswer(null);
         setShowResult(false);
     };
