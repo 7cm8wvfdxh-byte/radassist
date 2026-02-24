@@ -9,6 +9,11 @@ import { CaseStudyMode } from "@/components/case-study-mode";
 import { AIAssistant } from "@/components/ai-assistant";
 import { SwipeMode } from "@/components/swipe-mode";
 import { ToolboxMode } from "@/components/toolbox-mode";
+import { StructuredReporting } from "@/components/structured-reporting";
+import { ComparisonMode } from "@/components/comparison-mode";
+import { EmergencyPanel } from "@/components/emergency-panel";
+import { LearningStats } from "@/components/learning-stats";
+import { AnatomyAtlas } from "@/components/anatomy-atlas";
 import { brainPathologies } from "@/data/brain-pathologies";
 import { spinePathologies } from "@/data/spine-pathologies";
 import { liverPathologies } from "@/data/liver-pathologies";
@@ -19,7 +24,7 @@ import { breastPathologies } from "@/data/breast-pathologies";
 import { mskPathologies } from "@/data/msk-pathologies";
 import { gastroPathologies } from "@/data/gastro-pathologies";
 import { gynecologyPathologies } from "@/data/gynecology-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Flame, Bean, Wind, Trophy, Library, Wrench, Scan, Dumbbell, Utensils, Heart } from "lucide-react";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Flame, Bean, Wind, Trophy, Library, Wrench, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen } from "lucide-react";
 import { DiagnosisWizard } from "@/components/diagnosis-wizard";
 import { DailyCaseModal } from "@/components/daily-case-modal";
 import { Pathology } from "@/types";
@@ -47,13 +52,13 @@ export default function Home() {
     return [];
   });
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-  const [viewMode, setViewMode] = useState<"grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox">(() => {
+  const [viewMode, setViewMode] = useState<"grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy">(() => {
     if (typeof window === 'undefined') return "grid";
     try {
       const savedView = localStorage.getItem("radassist-view-mode");
-      const validModes = ["grid", "list", "quiz", "case", "wizard", "ai", "swipe", "toolbox"];
+      const validModes = ["grid", "list", "quiz", "case", "wizard", "ai", "swipe", "toolbox", "report", "compare", "emergency", "stats", "anatomy"];
       if (savedView && validModes.includes(savedView)) {
-        return savedView as "grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox";
+        return savedView as "grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy";
       }
     } catch { /* ignore */ }
     return "grid";
@@ -208,6 +213,32 @@ export default function Home() {
             <Wrench className="w-5 h-5 text-teal-400 group-hover:rotate-12 transition-transform" />
             <span className="text-sm font-bold text-teal-200 group-hover:text-teal-100">{t("mode.toolbox")}</span>
           </button>
+
+          {/* Emergency Panel Button */}
+          <button
+            onClick={() => {
+              setViewMode("emergency");
+              localStorage.setItem("radassist-view-mode", "emergency");
+            }}
+            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 hover:border-red-500/40 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-300"
+          >
+            <div className="absolute inset-0 bg-red-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
+            <AlertTriangle className="w-5 h-5 text-red-400 group-hover:scale-110 transition-transform" />
+            <span className="text-sm font-bold text-red-200 group-hover:text-red-100">{language === 'tr' ? 'Acil Radyoloji' : 'Emergency'}</span>
+          </button>
+
+          {/* Structured Reporting Button */}
+          <button
+            onClick={() => {
+              setViewMode("report");
+              localStorage.setItem("radassist-view-mode", "report");
+            }}
+            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 hover:border-blue-500/40 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-300"
+          >
+            <div className="absolute inset-0 bg-blue-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
+            <FileText className="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform" />
+            <span className="text-sm font-bold text-blue-200 group-hover:text-blue-100">{language === 'tr' ? 'Raporlama' : 'Reporting'}</span>
+          </button>
         </div>
 
         {/* User Profile / Auth */}
@@ -275,7 +306,7 @@ export default function Home() {
         <div className="w-full max-w-3xl relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
 
           {/* Module Selector - 5 Organs */}
-          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && (
+          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
             <div className="flex justify-center mb-8">
               <div className="flex flex-wrap justify-center gap-1 p-1 bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-2xl relative">
                 <button
@@ -427,7 +458,7 @@ export default function Home() {
           )}
 
           {/* Hide Search Bar in Quiz Mode */}
-          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && (
+          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
             <div className="relative group mb-4">
               <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
               <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl ring-1 ring-white/10 shadow-2xl flex flex-col">
@@ -561,10 +592,63 @@ export default function Home() {
               >
                 <Wrench className="w-4 h-4" />
               </button>
+
+              <div className="w-px h-4 bg-slate-700 mx-0.5" />
+
+              <button
+                onClick={() => {
+                  setViewMode("emergency");
+                  localStorage.setItem("radassist-view-mode", "emergency");
+                }}
+                className={`p-1.5 rounded-full transition-all ${viewMode === "emergency" ? "bg-red-500 text-white shadow-lg ring-2 ring-red-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
+                title="Acil Radyoloji"
+              >
+                <AlertTriangle className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => {
+                  setViewMode("report");
+                  localStorage.setItem("radassist-view-mode", "report");
+                }}
+                className={`p-1.5 rounded-full transition-all ${viewMode === "report" ? "bg-blue-500 text-white shadow-lg ring-2 ring-blue-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
+                title="Yapılandırılmış Raporlama"
+              >
+                <FileText className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => {
+                  setViewMode("compare");
+                  localStorage.setItem("radassist-view-mode", "compare");
+                }}
+                className={`p-1.5 rounded-full transition-all ${viewMode === "compare" ? "bg-violet-500 text-white shadow-lg ring-2 ring-violet-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
+                title="Karşılaştırma Modu"
+              >
+                <GitCompare className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => {
+                  setViewMode("stats");
+                  localStorage.setItem("radassist-view-mode", "stats");
+                }}
+                className={`p-1.5 rounded-full transition-all ${viewMode === "stats" ? "bg-yellow-500 text-white shadow-lg ring-2 ring-yellow-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
+                title="Öğrenme İstatistikleri"
+              >
+                <BarChart3 className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => {
+                  setViewMode("anatomy");
+                  localStorage.setItem("radassist-view-mode", "anatomy");
+                }}
+                className={`p-1.5 rounded-full transition-all ${viewMode === "anatomy" ? "bg-green-500 text-white shadow-lg ring-2 ring-green-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
+                title="Anatomi Atlası"
+              >
+                <BookOpen className="w-4 h-4" />
+              </button>
             </div>
 
             {/* Favorites Toggle (Hide in Quiz) */}
-            {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && (
+            {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
               <button
                 onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${showFavoritesOnly
@@ -583,7 +667,7 @@ export default function Home() {
             )}
           </div>
 
-          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && (
+          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
             <p className="mt-4 text-slate-500 text-xs">
               {activeModule === 'brain' ? (
                 <>Örn: <span className="text-slate-400 border-b border-indigo-500/30 mx-1">Glioblastom</span>, <span className="text-slate-400 border-b border-cyan-500/30 mx-1">İnme</span></>
@@ -620,6 +704,16 @@ export default function Home() {
           />
         ) : viewMode === "toolbox" ? (
           <ToolboxMode />
+        ) : viewMode === "report" ? (
+          <StructuredReporting />
+        ) : viewMode === "compare" ? (
+          <ComparisonMode />
+        ) : viewMode === "emergency" ? (
+          <EmergencyPanel />
+        ) : viewMode === "stats" ? (
+          <LearningStats />
+        ) : viewMode === "anatomy" ? (
+          <AnatomyAtlas />
         ) : filteredPathologies.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-32 text-slate-600 animate-in fade-in zoom-in duration-500">
             <Search className="w-16 h-16 mb-4 opacity-20" />

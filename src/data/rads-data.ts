@@ -150,4 +150,50 @@ export const RADS_SYSTEMS: RadsSystem[] = [
             { category: "C4", label: "Kolorektal Karsinom Şüphesi", risk: "Yüksek", management: "Kitleden şüphelenilmektedir. Acil kolonoskopi + biyopsi. Evreleme için BT toraks-abdomen-pelvis.", color: "red" },
         ]
     },
+    {
+        id: "ti_rads",
+        name: "ACR TI-RADS",
+        organ: "Tiroid",
+        modality: "USG",
+        description: "Thyroid Imaging Reporting and Data System — Tiroid nodüllerinde malignite riskini USG özelliklerine göre (yapı, ekojenite, şekil, kenar, ekojenik odak) puanlandırır ve İİAB kararı verir.",
+        note: "ACR TI-RADS 2017. Puan hesaplaması: Yapı + Ekojenite + Şekil + Kenar + Ekojenik odak toplamı.",
+        categories: [
+            { category: "TR1", label: "Benign (0 puan)", risk: "~0%", management: "İİAB gerekmez. Rutin klinik takip yeterlidir.", color: "green" },
+            { category: "TR2", label: "Normal Görünüm / Şüphelilik Yok (2 puan)", risk: "~0%", management: "İİAB gerekmez.", color: "green" },
+            { category: "TR3", label: "Hafif Şüpheli (3 puan)", risk: "~5%", management: "≥ 2.5 cm → İİAB. ≥ 1.5 cm → 1, 3, 5 yıl USG takibi.", color: "yellow" },
+            { category: "TR4", label: "Orta Şüpheli (4–6 puan)", risk: "~5–20%", management: "≥ 1.5 cm → İİAB. ≥ 1 cm → 1, 2, 3, 5 yıl USG takibi.", color: "orange" },
+            { category: "TR5", label: "Yüksek Şüpheli (≥7 puan)", risk: "~20–80%", management: "≥ 1 cm → İİAB. ≥ 0.5 cm → 1, 2, 3, 5 yıl takip.", color: "red" },
+        ]
+    },
+    {
+        id: "bosniak",
+        name: "Bosniak Böbrek Kist Sınıflaması",
+        organ: "Böbrek",
+        modality: "BT / MRG",
+        description: "Renal kistlerin malignite riskini ve yönetimini belirler. Kontrastlı BT veya MRG'de septasyon, kalsifikasyon, nodülarite ve kontrast tutulumuna göre sınıflandırılır.",
+        note: "Bosniak 2019 revizyonu (NEJM). MRG ile Bosniak II ve IIF lezyonlar daha doğru sınıflandırılabilir.",
+        categories: [
+            { category: "I", label: "Basit Kist", risk: "Neredeyse 0%", management: "Benign basit kist. İzlem gerekmez.", color: "green" },
+            { category: "II", label: "Minimal Kompleks Kist", risk: "< %1", management: "Birkaç ince septa, ince kalsifikasyon. İzlem gerekmez.", color: "green" },
+            { category: "IIF", label: "Follow-Up Gerektiren Kompleks Kist", risk: "%6", management: "Çok sayıda ince septa veya kalın olmayan kalsifikasyon. 6-12 aylık BT/MRG takibi.", color: "yellow" },
+            { category: "III", label: "Belirsiz Malign Lezyon", risk: "%25–50", management: "Kalın, düzensiz septa, düzensiz kalsifikasyon, ölçülebilir kontrast tutulumu. Cerrahi veya aktif gözetim.", color: "orange" },
+            { category: "IV", label: "Malinite ile Yüksek Uyumlu", risk: "≥ %75", management: "Kistik bileşenli solid ağırlıklı lezyon. Cerrahi tedavi endikasyonu.", color: "red" },
+        ]
+    },
+    {
+        id: "bt_rads",
+        name: "BT-RADS (Beyin Tümörü)",
+        organ: "Beyin",
+        modality: "MRG",
+        description: "Brain Tumor Reporting and Data System — Beyin tümörü tedavisinde görüntüleme yanıtını (progresyon, psödoprogresyon, radyonekroz) standardize eder. Özellikle GBM tedavisinde RANO kriterleri ile birlikte kullanılır.",
+        note: "RANO (Response Assessment in Neuro-Oncology) 2023 kriterlerine dayanmaktadır.",
+        categories: [
+            { category: "BT-RADS 1", label: "Tam Yanıt (CR)", risk: "—", management: "Tüm ölçülebilir lezyonlar kaybolmuş, yeni lezyon yok. Tedaviye yanıt tam.", color: "green" },
+            { category: "BT-RADS 2", label: "Kısmi Yanıt (PR)", risk: "—", management: "Ölçülebilir lezyonlarda ≥ %50 küçülme, yeni lezyon yok. Tedaviye devam.", color: "green" },
+            { category: "BT-RADS 3", label: "Stabil Hastalık (SD)", risk: "—", management: "Ne CR ne PD. Artış < %25, azalma < %50. Klinik değerlendirme ile devam.", color: "yellow" },
+            { category: "BT-RADS 4", label: "Psödoprogresyon (PsP)", risk: "—", management: "Tedavi sonrası geçici kontrast artışı. Genellikle 12 haftada düzelir. 4-6 haftada tekrar MRG.", color: "yellow" },
+            { category: "BT-RADS 5", label: "Radyonekroz", risk: "—", management: "Radyoterapi sonrası nekroz. PET veya MR Spektroskopi ile PD'den ayırt edilmeli.", color: "orange" },
+            { category: "BT-RADS 6", label: "Progresif Hastalık (PD)", risk: "Yüksek", management: "Kontrast tutan alanda ≥ %25 artış veya yeni lezyon. Tedavi değişikliği planlanmalı.", color: "red" },
+        ]
+    },
 ];
