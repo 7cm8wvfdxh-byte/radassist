@@ -351,5 +351,275 @@ export const lungPathologies: Pathology[] = [
             "Saber-sheath trachea (narrowing of coronal diameter of trachea) may be associated."
         ],
         "mechanism": "Sigara dumanı veya alfa-1 antitripsin eksikliği → proteaz/antiproteaz dengesizliği (nötrofil elastaz artışı, alfa-1 antitripsin azalması) → alveolar duvar yıkımı → hava boşluğu genişlemesi → akciğer elastisitesi azalır → hava hapsi. Sentrilobüler amfizem: Sigara ile ilişkili, merkezi asiner hasar. Panasiner: Tüm asiner yıkım. Hiperinflasyon ve flatleşen diyafram bu gaz hapsi mekanizmasının yansımasıdır."
+    },
+    {
+        "id": "pleural_effusion",
+        "name": "Plevral Effüzyon",
+        "nameEn": "Pleural Effusion",
+        "category": "Plevral",
+        "categoryEn": "Pleural",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "Akciğer Grafisi - Menisküs İşareti", "modality": "X-Ray" },
+            { "url": "/images/placeholder_source.png", "caption": "BT - Bilateral Plevral Efüzyon", "modality": "CT" },
+            { "url": "/images/placeholder_source.png", "caption": "USG - Anekojenik Efüzyon", "modality": "USG" }
+        ],
+        "findings": {
+            "xray": {
+                "description": "PA Grafi: 200-300mL'den fazla efüzyon görülebilir. Kostofrenlik açısı körleşmesi (blunting). Menisküs işareti: Konkav üst sınır. Büyük efüzyon: Hemitoraks opasitesi, mediasten kontralaterale yer değiştirme. Lateral dekübit: 5mL kadar küçük efüzyonu gösterir. Subpulmoner: Diyaframa şişme, 'düzleşmiş' köşe."
+            },
+            "ct": {
+                "non_contrast": "Bağımlı (posterior) alanda serbest sıvı. HU değeri: Transüda (0-15), Eksüda/Hemorajik (>20-30). Lokulasiyon (kompartmanlar arası bölücüler) eksüdayı düşündürür.",
+                "contrast": "Plevral kalınlaşma + kontrastlanma = Eksüda (apse, tümör). Plevral kitle veya nodül = Malign mezotelyoma, metastaz."
+            },
+            "ultrasound": {
+                "description": "En hassas yöntem (5-10mL görülebilir). Anekojenik (basit transüda). İç ekolar/septalar = Eksüda, ampiyem. 'Jellyfish sign': Efüzyon içinde yüzen kompresyon atelektazisi. Torasentez kılavuzluğu için ideal."
+            },
+            "mri": {
+                "t2": "Serbest sıvı T2 hiperintens. Hemotoraksta T1 hiperintens (oksihemoglobin).",
+                "other_sequences": "DWI: Ampiyemde kısıtlanma (apse içeriği)."
+            }
+        },
+        "findingsEn": {
+            "xray": {
+                "description": "PA Chest X-ray: >200-300mL detectable. Costophrenic angle blunting. Meniscus sign: Concave upper border. Large effusion: Hemithorax opacity, contralateral mediastinal shift. Lateral decubitus: Detects as little as 5mL. Subpulmonic: Elevated hemidiaphragm, flat costophrenic angle."
+            },
+            "ct": {
+                "non_contrast": "Dependent (posterior) free fluid. HU values: Transudate (0-15), Exudate/Hemorrhagic (>20-30). Loculation (septae) suggests exudate.",
+                "contrast": "Pleural thickening + enhancement = Exudate (abscess, tumor). Pleural mass or nodule = Malignant mesothelioma, metastasis."
+            },
+            "ultrasound": {
+                "description": "Most sensitive (detects 5-10mL). Anechoic (simple transudate). Internal echoes/septae = Exudate, empyema. 'Jellyfish sign': Compressive atelectasis floating in effusion. Ideal for thoracentesis guidance."
+            },
+            "mri": {
+                "t2": "Free fluid T2 hyperintense. Hemothorax: T1 hyperintense (oxyhemoglobin).",
+                "other_sequences": "DWI: Restriction in empyema (abscess content)."
+            }
+        },
+        "keyPoints": [
+            "X-Ray: Kostofrenlik körleşmesi = >200mL. Lateral dekübit = >5mL.",
+            "USG: En hassas, torasentez kılavuzluğu için altın standart.",
+            "BT: HU <15 = Transüda. HU >20 = Eksüda/hemorajik. Plevral kalınlaşma = Eksüda.",
+            "Light Kriterleri: Eksüda vs transüda ayırımı (klinik-laboratuvar)."
+        ],
+        "keyPointsEn": [
+            "X-Ray: Costophrenic blunting = >200mL. Lateral decubitus = >5mL.",
+            "USG: Most sensitive, gold standard for thoracentesis guidance.",
+            "CT: HU <15 = Transudate. HU >20 = Exudate/hemorrhagic. Pleural thickening = Exudate.",
+            "Light's Criteria: Exudate vs transudate differentiation (clinical-lab)."
+        ],
+        "mechanism": "Plevral sıvı oluşumu: Parietal plevradan sıvı üretimi > visseral plevradan emilim. Transüda: Hidrostatik basınç artışı (KKY) veya onkotik basınç azalması (hipoalbüminemi) → osmotik kuvvetler bozulur. Eksüda: İnflamasyon/tümör → kapiller geçirgenlik artışı → protein ve hücre kaçışı. Hematotoraks: Travma/kanama. Şilotoraks: Torasik duktus hasarı.",
+        "etiology": "Transüda: KKY, siroz, nefrotik sendrom, perikardit. Eksüda: Pnömoni, tüberküloz, malignite, PE, pankreatit. Hematotoraks: Travma, aort diseksiyonu.",
+        "differentialDiagnosis": ["Pnömoni (Konsolidasyon, ateş)", "Atelektazi (Volüm kaybı)", "Diyafragma Elevasyonu", "Plevral Kitle (Nodüler, kalın)"],
+        "goldStandard": "USG (tanı + torasentez kılavuzluğu). BT: Etiyoloji ve komplikasyon değerlendirmesi.",
+        "clinicalPearl": "Masif efüzyon + kontralateral mediastinal yer değiştirme = Serbest efüzyon. İpsilateral yer değiştirme YOK = Atelektazi veya malign mezotelyoma (plevral tutulum akciğeri sabitler)."
+    },
+    {
+        "id": "pulmonary_tuberculosis",
+        "name": "Pulmoner Tüberküloz (Akciğer Verem)",
+        "nameEn": "Pulmonary Tuberculosis",
+        "category": "Enfeksiyöz",
+        "categoryEn": "Infectious",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "Akciğer Grafisi - Üst Lob Kavite", "modality": "X-Ray" },
+            { "url": "/images/placeholder_source.png", "caption": "HRCT - Ağaç Tomurcuğu (Tree-in-Bud)", "modality": "CT" }
+        ],
+        "findings": {
+            "xray": {
+                "description": "Primer TB: Alt/orta lob konsolidasyon, hiler adenopati. Ghon kompleksi (kalsifik nodül + kalsifik hiler LAP). Post-primer (Reaktivasyon) TB: ÜST LOB dominansı, apikoposterior segment. Kavite oluşumu (ince/kalın duvarlı). Milyer TB: 1-3mm yayılmış nodüller (hematojenik). Plevral effüzyon (özellikle primer TB)."
+            },
+            "ct": {
+                "non_contrast": "Tree-in-bud: Sentrilobüler nodüller + dallanma opasite = Endobronşial yayılım (aktif!). Kavite: Kalın düzensiz duvar (aktif) veya ince düzgün duvar (eski). Kalsifik granülom, Ranke kompleksi.",
+                "contrast": "Lenfadenit: Merkezi düşük dansite + periferal rim kontrastlanması (nekrotik LAP = TB'e özgü). Milyer: Milimetrik nodüller akciğer parankiminde diffüz dağılım."
+            },
+            "mri": {
+                "t2": "Konsolidasyon, kavite duvarı. Vertebral TB (Pott): Disk mesafesi daralması, paravertebral apse.",
+                "t1_c": "Nekrotik LAP: Periferal rim kontrastlanması.",
+                "dwi": "Apse formasyonunda kısıtlanma."
+            }
+        },
+        "findingsEn": {
+            "xray": {
+                "description": "Primary TB: Lower/middle lobe consolidation, hilar adenopathy. Ghon complex (calcified nodule + calcified hilar LAP). Post-primary (Reactivation) TB: UPPER LOBE dominance, apicoposterior segment. Cavity formation (thin/thick-walled). Miliary TB: 1-3mm disseminated nodules (hematogenous). Pleural effusion (especially primary TB)."
+            },
+            "ct": {
+                "non_contrast": "Tree-in-bud: Centrilobular nodules + branching opacity = Endobronchial spread (active!). Cavity: Thick irregular wall (active) or thin smooth wall (old). Calcified granuloma, Ranke complex.",
+                "contrast": "Lymphadenitis: Central low density + peripheral rim enhancement (necrotic LAP = specific to TB). Miliary: Millimetric nodules diffusely distributed in lung parenchyma."
+            },
+            "mri": {
+                "t2": "Consolidation, cavity wall. Vertebral TB (Pott's): Disc space narrowing, paravertebral abscess.",
+                "t1_c": "Necrotic LAP: Peripheral rim enhancement.",
+                "dwi": "Restriction in abscess formation."
+            }
+        },
+        "keyPoints": [
+            "Reaktivasyon TB: Üst lob + apikal segment + kavite = Klasik triad.",
+            "Tree-in-bud işareti: Aktif endobronşial yayılım, bulaşıcılık işareti.",
+            "Nekrotik LAP: Merkezi düşük dansite + rim kontrastlanma = TB'e özgü.",
+            "Milyer TB: Hematojenik yayılım, immünsüprese hastalarda sık."
+        ],
+        "keyPointsEn": [
+            "Reactivation TB: Upper lobe + apical segment + cavity = Classic triad.",
+            "Tree-in-bud sign: Active endobronchial spread, infectivity marker.",
+            "Necrotic LAP: Central low density + rim enhancement = Specific to TB.",
+            "Miliary TB: Hematogenous spread, common in immunosuppressed patients."
+        ],
+        "mechanism": "Mycobacterium tuberculosis inhalasyonu → alveolar makrofajlarca fagosite edilir → granülom oluşumu (Langhans dev hücreli). Primer infeksiyonda: Alt/orta lob tutulumu, hiler LAP (Ghon kompleksi). İmmün kontrol altında latent kalır. Reaktivasyon: İmmünsüpresyon → üst lob apikal bölgeye hematojenik yayılım (yüksek O2 gerilimi) → kazeöz nekroz → kavite → endobronşial yayılım (tree-in-bud). Hematojenik yayılım → milyer TB (karaciğer, dalak, meninks, kemik).",
+        "etiology": "Mycobacterium tuberculosis. Risk: HIV, immünsüpresyon, DM, kronik böbrek hastalığı, malnütrisyon, kalabalık ortam.",
+        "differentialDiagnosis": ["Akciğer Kanseri (Üst lob kitle, spiküle)", "Fungal Enfeksiyon (Aspergilloz, Kavite + halo)", "Sarkoidoz (Hiler LAP, üst lob nodüller)", "Bakteriyel Pnömoni (Alt lob, akut klinik)"],
+        "goldStandard": "Balgam ARB + Kültür (Löwenstein-Jensen). Moleküler: GeneXpert MTB/RIF (hızlı tanı). Görüntüleme destekleyicidir.",
+        "clinicalPearl": "Üst lob + kavite + tree-in-bud = Aktif TB ekarte edilmeli. Nekrotik LAP'ta rim kontrastlanma TB'e özgüdür — lenfoma ve metastazdan ayırır."
+    },
+    {
+        "id": "lung_abscess",
+        "name": "Akciğer Apsesi",
+        "nameEn": "Lung Abscess",
+        "category": "Enfeksiyöz",
+        "categoryEn": "Infectious",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "Akciğer Grafisi - Hava-Sıvı Seviyesi", "modality": "X-Ray" },
+            { "url": "/images/placeholder_source.png", "caption": "BT - Kalın Duvarlı Kavite + Air-Fluid Level", "modality": "CT" }
+        ],
+        "findings": {
+            "xray": {
+                "description": "Kalın duvarlı kavite. İçinde hava-sıvı seviyesi (air-fluid level): Horizontal sınır — aspirasyon veya nekrotizan pnömonide. Alt lob, posterior segment sık (aspirasyona bağlı). Çevre parankimde konsolidasyon."
+            },
+            "ct": {
+                "non_contrast": "Kalın, düzensiz kenarlı kaviter lezyon. İçinde hava-sıvı seviyesi. Çevresinde konsolidasyon/buzlu cam.",
+                "contrast": "Duvar kontrastlanması (iltihabi granülasyon dokusu). DİKKAT: İnce, düzgün kenarlı kavite = Tümör kavitasyonu veya bül. Kalın, düzensiz = Apse."
+            },
+            "mri": {
+                "t2": "Kavite içeriği T2 hiperintens (sıvı). Duvar T2 orta-düşük sinyal.",
+                "dwi": "Apse içeriğinde belirgin kısıtlanma (piojenik materyal) — Nekrotik tümörden ayırır.",
+                "t1_c": "Duvar kontrastlanması."
+            }
+        },
+        "findingsEn": {
+            "xray": {
+                "description": "Thick-walled cavity. Internal air-fluid level: Horizontal border — aspiration or necrotizing pneumonia. Lower lobe, posterior segment common (aspiration-related). Surrounding parenchymal consolidation."
+            },
+            "ct": {
+                "non_contrast": "Thick, irregular-walled cavitary lesion. Internal air-fluid level. Surrounding consolidation/ground-glass.",
+                "contrast": "Wall enhancement (inflammatory granulation tissue). NOTE: Thin, smooth-walled cavity = Tumor cavitation or bulla. Thick, irregular = Abscess."
+            },
+            "mri": {
+                "t2": "Cavity content T2 hyperintense (fluid). Wall intermediate-low signal.",
+                "dwi": "Marked restriction within abscess content (pyogenic material) — distinguishes from necrotic tumor.",
+                "t1_c": "Wall enhancement."
+            }
+        },
+        "keyPoints": [
+            "Hava-sıvı seviyesi + Kalın düzensiz duvar = Apse (Tümörden: DWI kısıtlanma!).",
+            "Aspirasyon apseleri: Alt lob posterior segmentler, sağ > sol.",
+            "DWI: Apse içeriği kısıtlanır → nekrotik tümörle en önemli ayırıcı.",
+            "Antibiyotik yanıtı (4-6 hafta) veya yok → Perkütan/cerrahi drenaj."
+        ],
+        "keyPointsEn": [
+            "Air-fluid level + Thick irregular wall = Abscess (vs Tumor: DWI restriction!).",
+            "Aspiration abscesses: Lower lobe posterior segments, right > left.",
+            "DWI: Abscess content restricts → most important distinguisher from necrotic tumor.",
+            "Antibiotic response (4-6 weeks) or failure → Percutaneous/surgical drainage."
+        ],
+        "mechanism": "Pulmoner parankim nekrozu → kavite oluşumu. Aspirasyon (en sık): Bilinç bozukluğu, disfaji, periodontal hastalık → anaerobik bakteri (Bacteroides, Fusobacterium). Pnömoni komplikasyonu: Stafilokokal, Klebsiella nekrotizan pnömoni. Septik emboli: Sağ kalp endokarditi → pulmoner emboli → infarkt → kavitasyon.",
+        "etiology": "Aspirasyon (en sık), nekrotizan pnömoni, septik emboli, pulmoner infarkt. Risk: Alkolizm, epilepsi, anestezi, disfaji.",
+        "differentialDiagnosis": ["Kaviter Akciğer Kanseri (DWI kısıtlanma yok, ince düzgün duvar)", "TB Kavitesi (Üst lob, tree-in-bud)", "Wegener/GPA (Bilateral, multipl)", "Bül/Amfizematöz Kavite (İnce duvar, sıvı yok)"],
+        "goldStandard": "BT + Balgam kültürü/bronkoskopi. DWI → apse içeriğini tümörden ayırır.",
+        "clinicalPearl": "DWI'da apse içeriği kısıtlanır (parlak), nekrotik tümör kısıtlanmaz → BT'de kavitasyon gördüğünde MRI-DWI yapmanın değeri büyüktür."
+    },
+    {
+        "id": "sarcoidosis",
+        "name": "Sarkoidoz",
+        "nameEn": "Sarcoidosis",
+        "category": "İnflamatuar",
+        "categoryEn": "Inflammatory",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "Akciğer Grafisi - Bilateral Hiler LAP", "modality": "X-Ray" },
+            { "url": "/images/placeholder_source.png", "caption": "HRCT - Perilenfatik Nodüller", "modality": "CT" }
+        ],
+        "findings": {
+            "xray": {
+                "description": "Evreleme (Scadding): Evre 0 Normal. Evre I: Bilateral hiler LAP (BHL). Evre II: BHL + pulmoner infiltrat. Evre III: Pulmoner infiltrat (BHL yok). Evre IV: Fibrozis. BHL: Simetrik, lobüler hiler büyüme ('potato nodes'). Paratrakeal LAP: Sağ > Sol."
+            },
+            "ct": {
+                "non_contrast": "Perilenfatik dağılım: Bronkovasküler yapılar, septal çizgiler, plevra boyunca nodüller (PATOGNOMONİK!). Üst-orta lob predominansı. 'Galaxy sign': Konfluent sarkoid granülomlar. 'Halo sign': Merkezi konsolidasyon + çevre buzlu cam.",
+                "contrast": "LAP kontrastlanması. Kardiyak sarkoidoz şüphesinde kalp MRI."
+            },
+            "mri": {
+                "other_sequences": "Kardiyak MRI: Gadolinium geç tutulumu (LGE) → kardiyak sarkoidoz. Nöronal MRI: Leptomeningeal tutulum, kranial sinir tutulumu."
+            }
+        },
+        "findingsEn": {
+            "xray": {
+                "description": "Scadding staging: Stage 0: Normal. Stage I: Bilateral hilar LAP (BHL). Stage II: BHL + pulmonary infiltrate. Stage III: Pulmonary infiltrate (no BHL). Stage IV: Fibrosis. BHL: Symmetric, lobular hilar enlargement ('potato nodes'). Paratracheal LAP: Right > Left."
+            },
+            "ct": {
+                "non_contrast": "Perilymphatic distribution: Along bronchovascular bundles, septal lines, pleura (PATHOGNOMONIC!). Upper-middle lobe predominance. 'Galaxy sign': Confluent sarcoid granulomas. 'Halo sign': Central consolidation + surrounding ground-glass.",
+                "contrast": "LAP enhancement. Cardiac MRI for cardiac sarcoidosis suspicion."
+            },
+            "mri": {
+                "other_sequences": "Cardiac MRI: Gadolinium late enhancement (LGE) → cardiac sarcoidosis. Neuronal MRI: Leptomeningeal involvement, cranial nerve involvement."
+            }
+        },
+        "keyPoints": [
+            "Bilateral hiler LAP + Perilenfatik nodüller = Sarkoidoz (biyopsisiz olası tanı).",
+            "HRCT: Perilenfatik dağılım (bronchovasküler + interlobüler septa + plevra) PATOGNOMONİK.",
+            "ACE yüksekliği + tipik görüntüleme → BAL + Biyopsi (non-kazeöz granülom).",
+            "Kardiyak sarkoidoz: LGE MRI → aritmik ani ölüm riski."
+        ],
+        "keyPointsEn": [
+            "Bilateral hilar LAP + Perilymphatic nodules = Sarcoidosis (likely diagnosis without biopsy).",
+            "HRCT: Perilymphatic distribution (bronchovascular + interlobular septa + pleura) PATHOGNOMONIC.",
+            "Elevated ACE + typical imaging → BAL + Biopsy (non-caseating granuloma).",
+            "Cardiac sarcoidosis: LGE MRI → risk of arrhythmic sudden death."
+        ],
+        "mechanism": "Antijen (mikobakteri, mantar veya organik partiküller?) → CD4+ T-hücre aktivasyonu → granülom oluşumu (non-kazeöz, epiteloid histiyositler + Langhans dev hücreleri). Perilenfatik dağılım: Granülomlar lenfatik damarlar boyunca yayılır → bronchovasküler kılıf, interlobüler septa ve plevra boyunca nodüler yapılar. Fibrozis gelişirse (Evre IV): Üst lob büzüşmesi, bronşiektazi, çekme bronşiektazisi.",
+        "etiology": "Bilinmeyen (genetik yatkınlık + antijenik uyaran). HLA-DRB1 ilişkisi. Meslek maruziyeti (tarım, itfaiyecilik) sıklaştırabilir.",
+        "differentialDiagnosis": ["Lenfoma (Anterior mediastinal, asimetrik LAP)", "Tüberküloz (Nekrotik LAP, üst lob kavite)", "Pnömokonyoz (Mesleki öykü, üst lob)", "Metastatik Hastalık (Bilinen primer, heterojen)"],
+        "goldStandard": "Doku biyopsisi (BAL veya transbronşial biyopsi): Non-kazeöz epiteloid granülom. ACE düzeyi destekleyici.",
+        "clinicalPearl": "Bilateral hiler LAP + nefes darlığı + eritema nodozum + artralji = Löfgren Sendromu (iyi prognozlu akut sarkoidoz)."
+    },
+    {
+        "id": "bronchiectasis",
+        "name": "Bronşiektazi",
+        "nameEn": "Bronchiectasis",
+        "category": "Havayolu",
+        "categoryEn": "Airway",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "HRCT - Signet Ring İşareti", "modality": "CT" }
+        ],
+        "findings": {
+            "xray": {
+                "description": "Tram-track işareti: Paralel çizgiler (dilate bronşlar). Ring gölge: Yuvarlak bronş kesit görünümü. Perihiler opasite artışı. Mukoid impaksiyon: 'V' veya 'Y' şekilli opasiteler."
+            },
+            "ct": {
+                "non_contrast": "Signet ring işareti (PATOGNOMONİK): Dilate bronş > eşlik eden pulmoner arterin çapı (normal: Bronş/Arter = 0.65-1.0). Bronş duvar kalınlaşması. Bronşların plevra ve kostofrenik açıya yakın uzanımı (bronşlar periferik kapanmaz). Silindirik, varis tipi, kistik bronşiektazi. Mukoid impaksiyon: 'Finger in glove'.",
+                "contrast": "Bronş duvarı kontrastlanması. Altta yatan etiyoloji (mediastinal kitle, LAP)."
+            }
+        },
+        "findingsEn": {
+            "xray": {
+                "description": "Tram-track sign: Parallel lines (dilated bronchi). Ring shadow: Circular bronchial cross-section. Perihilar opacity increase. Mucoid impaction: 'V' or 'Y' shaped opacities."
+            },
+            "ct": {
+                "non_contrast": "Signet ring sign (PATHOGNOMONIC): Dilated bronchus > accompanying pulmonary artery diameter (normal: Bronchus/Artery = 0.65-1.0). Bronchial wall thickening. Bronchi extend to within 1cm of pleura. Cylindrical, varicose, cystic bronchiectasis. Mucoid impaction: 'Finger in glove'.",
+                "contrast": "Bronchial wall enhancement. Underlying etiology (mediastinal mass, LAP)."
+            }
+        },
+        "keyPoints": [
+            "Signet ring işareti: Bronş çapı > eşlik eden arter = Bronşiektazi (HRCT'de PATOGNOMONİK).",
+            "Dağılım: Santral (Alerjik bronkopulmoner aspergillozis — ABPA), Alt lob (İmmotil silia, CF), Üst lob (TB, CF).",
+            "HRCT altın standarttır: Tip (silindirik/varis/kistik) ve yaygınlığı belirler.",
+            "Kistik fibrozis: Bilateral üst lob + ağır bronşiektazi + pankreas tutulumu."
+        ],
+        "keyPointsEn": [
+            "Signet ring sign: Bronchial diameter > accompanying artery = Bronchiectasis (PATHOGNOMONIC on HRCT).",
+            "Distribution: Central (ABPA), Lower lobe (Immotile cilia, CF), Upper lobe (TB, CF).",
+            "HRCT is gold standard: Determines type (cylindrical/varicose/cystic) and extent.",
+            "Cystic fibrosis: Bilateral upper lobe + severe bronchiectasis + pancreatic involvement."
+        ],
+        "mechanism": "Tekrarlayan veya kronik enfeksiyon/inflamasyon → bronş duvarı harabiyeti (elastin ve kas kaybı) → kalıcı bronş dilatasyonu → sekresyon birikimi → daha fazla enfeksiyon (kısır döngü). Konjenital: Kistik fibrozis, primer siliyer diskinezi. Edinsel: Post-enfeksiyöz (TB, boğmaca), obstrüktif, immün yetmezlik, ABPA (santral bronşiektazi).",
+        "etiology": "Kistik fibrozis (genç), TB (üst lob), Primer siliyer diskinezi, ABPA (santral, üst lob), İmmün yetmezlik (alt lob), Post-obstrüktif.",
+        "differentialDiagnosis": ["Amfizem (Duvar yok, hava alanı genişlemesi)", "Kaviter Lezyon (TB, apse — daha kalın duvar)", "Pulmoner Kist (Konjenital)", "ABPA (Santral bronşiektazi + mukoid impaksiyon)"],
+        "goldStandard": "HRCT toraksi: Signet ring işareti + bronş/arter oranı. Altta yatan etiyoloji araştırması: Ter testi (CF), siliyer motilite testi, immün panel.",
+        "clinicalPearl": "Günlük pürülan balgam + kronik öksürük + HRCT'de signet ring = Bronşiektazi. Santral tutulum → ABPA ekarte et (IgE, Aspergillus seroloji)."
     }
 ];

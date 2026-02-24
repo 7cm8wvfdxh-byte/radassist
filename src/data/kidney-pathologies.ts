@@ -396,5 +396,177 @@ export const kidneyPathologies: Pathology[] = [
             "Hematuria is the most common symptom.",
             "Distinction from RCC: Does not distort kidney contour (central location), fills collecting system without invading parenchyma."
         ]
+    },
+    {
+        "id": "hydronephrosis",
+        "name": "Hidronefroz (Toplayıcı Sistem Dilatasyonu)",
+        "nameEn": "Hydronephrosis (Collecting System Dilation)",
+        "category": "Obstrüktif",
+        "categoryEn": "Obstructive",
+        "gallery": [
+            { "url": "/images/kidney/stone_usg_shadow.png", "caption": "USG - Toplayıcı Sistem Dilatasyonu", "modality": "USG" },
+            { "url": "/images/kidney/stone_ct.png", "caption": "BT - Hidronefroz + Taş", "modality": "CT" }
+        ],
+        "findings": {
+            "ultrasound": {
+                "description": "Toplayıcı sistemde anekoik alan genişlemesi. Derecelendirme: Grade I (minör pelvis dilatasyonu), Grade II (pelvis + major kaliksler), Grade III (pelvis + tüm kaliksler, parankimde incelme yok), Grade IV (belirgin dilatasyon, parankimde belirgin incelme). Gerçek vs Yalancı Hidronefroz: İdrar kesesi dolu, fazla sıvı alımı yalancı pozitifliğe neden olabilir.",
+                "doppler": "Obstrüktif üropati: Böbrek içi arteriyel dirençte artış (RI >0.70). Karşı böbrekte kompansatris hipertrofi."
+            },
+            "ct": {
+                "non_contrast": "Toplayıcı sistemde dilatasyon (su yoğunluğu). Üreter takibi: Taş (hiperdens), kitle veya dıştan bası saptanabilir. Perinefritik yağ kirlenme (enfeksiyon eşliğinde).",
+                "contrast": "Gecikmiş faz (10-15 dk): Kontrast dolmuş dilate toplayıcı sistem görüntülenir. Obstrüksiyon seviyesi netleşir."
+            },
+            "mri": {
+                "t2": "Toplayıcı sistem ve üreter T2 hiperintens (sıvı). MR Ürografi: T2 ağırlıklı — İVP'nin MR eşdeğeri. Obstrüksiyon seviyesi ve etiyoloji.",
+                "t1_c": "Geç faz ürografik sekans: Dilate sistem kontrastle dolu."
+            }
+        },
+        "findingsEn": {
+            "ultrasound": {
+                "description": "Anechoic space enlargement in collecting system. Grading: Grade I (minor pelvis dilation), Grade II (pelvis + major calyces), Grade III (pelvis + all calyces, no parenchymal thinning), Grade IV (marked dilation, significant parenchymal thinning). True vs False Hydronephrosis: Full bladder, excess fluid intake may cause false positives.",
+                "doppler": "Obstructive uropathy: Increased intrarenal arterial resistance (RI >0.70). Compensatory hypertrophy in contralateral kidney."
+            },
+            "ct": {
+                "non_contrast": "Collecting system dilation (water density). Ureter tracing: Stone (hyperdense), mass or extrinsic compression. Perinephric fat stranding (with infection).",
+                "contrast": "Delayed phase (10-15 min): Contrast-filled dilated collecting system visualized. Obstruction level clarified."
+            },
+            "mri": {
+                "t2": "Collecting system and ureter T2 hyperintense (fluid). MR Urography: T2-weighted — MR equivalent of IVP. Obstruction level and etiology.",
+                "t1_c": "Late urographic sequence: Dilated system filled with contrast."
+            }
+        },
+        "keyPoints": [
+            "USG: Grade I-IV derecelendirme. RI >0.70 = Obstrüktif üropati kanıtı.",
+            "BT Ürogarafi: Taş, tümör veya dıştan bası etiyolojisini netleştirir.",
+            "MR Ürografi: Çocuklar ve gebeler için (radyasyonsuz).",
+            "Piyonefroz şüphesinde (ateş + obstrüksiyon): Acil dekompresyon (DJ stent/nefrostomi)."
+        ],
+        "keyPointsEn": [
+            "USG: Grade I-IV grading. RI >0.70 = Proof of obstructive uropathy.",
+            "CT Urography: Clarifies etiology (stone, tumor or extrinsic compression).",
+            "MR Urography: For children and pregnant patients (radiation-free).",
+            "Suspected pyonephrosis (fever + obstruction): Urgent decompression (DJ stent/nephrostomy)."
+        ],
+        "mechanism": "Üriner sistem obstrüksiyonu → toplayıcı sistemde basınç artışı → kalikslerin genişlemesi → renal parankimde atrofi (kronik). Akut obstrüksiyon: Ağrı, renal fonksiyon bozulması. Kronik: Sessiz → ciddi parankimal kayıp. Çocuklarda en sık neden: UPJ (Üreteropelvik bileşke) darlığı. Erişkinde: Taş > kitle > dıştan bası (retroperitoneal fibrozis, tümör).",
+        "etiology": "Taş (üreteral), Ürotelyal tümör, Dıştan bası (over/uterus tümörü, retroperitoneal kitle), UPJ darlığı, Prostat hipertrofisi/karsinomu, Retroperitoneal fibrozis.",
+        "differentialDiagnosis": ["Parapelvik Kist (USG'de anekojenik — ama kaliksler normal)", "Megakaliks (Anatomik varyasyon)", "Yalancı Hidronefroz (Dolu mesane, aşırı hidrasyon)"],
+        "goldStandard": "USG (ilk basamak) + BT Ürografi (etiyoloji). Fonksiyon değerlendirmesi: DMSA/MAG3 sintigrafisi.",
+        "clinicalPearl": "USG'de toplayıcı sistem genişlemesi görüldüğünde MUTLAKA üreter ve mesane değerlendir — taşı kaçırma. RI >0.70 obstrüksiyonu kanıtlar."
+    },
+    {
+        "id": "adpkd",
+        "name": "Otozomal Dominant Polikistik Böbrek Hastalığı (ADPKD)",
+        "nameEn": "Autosomal Dominant Polycystic Kidney Disease (ADPKD)",
+        "category": "Konjenital",
+        "categoryEn": "Congenital",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "USG - Bilateral Polikistik Böbrekler", "modality": "USG" },
+            { "url": "/images/placeholder_source.png", "caption": "BT - Büyümüş Polikistik Böbrekler", "modality": "CT" }
+        ],
+        "findings": {
+            "ultrasound": {
+                "description": "Bilateral böbrek büyümesi. Çok sayıda değişik boyutlarda renal kistler (bilateral). Hepatik kistler (%75): Karaciğerde multiple kistler — ADPKD'nin ekstrarenal bulgusu. İntrarenal kistlerde içi eko (komplikasyon: Kanama, enfeksiyon).",
+                "doppler": "Renal kan akımı azalmış (ileri evre). Renovasküler hipertansiyon."
+            },
+            "ct": {
+                "non_contrast": "Bilateral büyümüş böbrekler, tüm parankimi dolduran çok sayıda kist. Akut kanama: Hiperdens kist içeriği. Kalsifikasyon: Kist duvarında.",
+                "contrast": "Kistler kontrast tutmaz. Solid bileşen = Komplikasyon (RCC, enfekte kist) şüphesi."
+            },
+            "mri": {
+                "t2": "Kistler T2 hiperintens (sıvı). Hemorajik kist: T1 hiperintens, T2 değişken. Kist sayısı ve hacim ölçümü (Total Kidney Volume — TKV).",
+                "t1": "Hemorajik kistler T1 parlak (methemoglobin).",
+                "other_sequences": "İntrakraniyal anevrizma: Beyin MRA (aile öyküsüne göre tarama)."
+            }
+        },
+        "findingsEn": {
+            "ultrasound": {
+                "description": "Bilateral kidney enlargement. Numerous variable-sized renal cysts (bilateral). Hepatic cysts (75%): Multiple liver cysts — extrarenal manifestation of ADPKD. Internal echoes in renal cysts (complication: Hemorrhage, infection).",
+                "doppler": "Reduced renal blood flow (advanced stage). Renovascular hypertension."
+            },
+            "ct": {
+                "non_contrast": "Bilateral enlarged kidneys, numerous cysts filling all parenchyma. Acute hemorrhage: Hyperdense cyst content. Calcification: In cyst wall.",
+                "contrast": "Cysts do not enhance. Solid component = Complication (RCC, infected cyst) suspicion."
+            },
+            "mri": {
+                "t2": "Cysts T2 hyperintense (fluid). Hemorrhagic cyst: T1 hyperintense, T2 variable. Cyst count and volume measurement (Total Kidney Volume — TKV).",
+                "t1": "Hemorrhagic cysts T1 bright (methemoglobin).",
+                "other_sequences": "Intracranial aneurysm: Brain MRA (screening based on family history)."
+            }
+        },
+        "keyPoints": [
+            "ADPKD: PKD1 (%85) veya PKD2 (%15) mutasyonu — otozomal dominant.",
+            "Ravine Kriterleri: Yaşa göre kist sayısı eşiği (15-39 yaş: ≥3 kist/böbrek).",
+            "Ekstrarenal tutulum: Karaciğer kistleri (%75), intrakraniyal anevrizma (%5-10), mitral kapak prolapsusu.",
+            "TKV (Total Böbrek Hacmi): Hastalık progresyon belirteci — Tolvaptan tedavisi seçiminde."
+        ],
+        "keyPointsEn": [
+            "ADPKD: PKD1 (85%) or PKD2 (15%) mutation — autosomal dominant.",
+            "Ravine Criteria: Age-dependent cyst count threshold (age 15-39: ≥3 cysts/kidney).",
+            "Extrarenal involvement: Liver cysts (75%), intracranial aneurysm (5-10%), mitral valve prolapse.",
+            "TKV (Total Kidney Volume): Disease progression marker — for Tolvaptan treatment selection."
+        ],
+        "mechanism": "PKD1 (polisistin-1) veya PKD2 (polisistin-2) mutasyonu → tübüler epitel hücre proliferasyonu ve sıvı sekresyonu → kistik dilatasyon → böbrek büyümesi → renal kompresyon → kronik böbrek hastalığı. Her iki alelin bozulması (two-hit hipotezi): Germline mutasyon + somatik ikinci mutasyon → kist oluşumu. Karaciğerde de biliyer epitel aynı protein eksprese eder → hepatik kistler.",
+        "etiology": "PKD1 gen mutasyonu (kr. 16) %85; PKD2 (kr. 4) %15. PKD1: Daha ağır hastalık, erken ESRD.",
+        "differentialDiagnosis": ["Otozomal Resesif PKD (Çocukluk, daha ağır)", "Von Hippel-Lindau (RCC + nöroblastom + hemanjioblastom)", "Multipl Basit Kistler (ADPKD'ye göre sayıca az, böbrek boyutu normal)", "Medüller Kistik Böbrek (Farklı genetik, küçük böbrek)"],
+        "goldStandard": "Aile öyküsü + USG (Ravine kriterleri). Genetik test: Tanı belirsizliğinde (PKD1/2 dizi analizi).",
+        "clinicalPearl": "Genç hipertansif hasta + bilateral büyümüş böbrekler + karaciğer kistleri = ADPKD. Aile öyküsünde intrakraniyal anevrizma varsa MRA taraması yap."
+    },
+    {
+        "id": "renal_infarction",
+        "name": "Renal İnfarkt",
+        "nameEn": "Renal Infarction",
+        "category": "Vasküler",
+        "categoryEn": "Vascular",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "BT Kontrast - Kama Şekilli Perfüzyon Defekti", "modality": "CT" },
+            { "url": "/images/placeholder_source.png", "caption": "MRI DWI - Renal İnfarkt Kısıtlanma", "modality": "MRI" }
+        ],
+        "findings": {
+            "ultrasound": {
+                "description": "Erken evrede USG normal olabilir. Renkli Doppler: İnfarkt alanında perfüzyon kaybı (kontralateral ile karşılaştır). Global infarkt: Tüm böbrekte akım yok.",
+                "doppler": "Parsiyel infarkt: Fokal Doppler sinyal azalması. Renal arter embolisi: Ana damarda akım yokluğu."
+            },
+            "ct": {
+                "non_contrast": "Erken: Normal veya hafif şişme.",
+                "contrast": "KORTIKOMEDÜLLER FAZ: Üçgen/kama şekilli, kapsülden uzanan, kontrast tutmayan hipodens alan. 'Korteks işareti' (cortical rim sign): Kapsüler kolateral beslenme nedeniyle ince hiperintens rim — geç evrede izlenir (subakut). Global infarkt: Tüm böbrek kontrast tutmaz."
+            },
+            "mri": {
+                "t2": "Subakut: T2 değişken sinyal.",
+                "t1_c": "Üçgen şekilli perfüzyon defekti. Korteks işareti görülebilir.",
+                "dwi": "Akut infarkt: Kısıtlanma (iskemik hasarlı tübüler epitel → sitotoksik ödem)."
+            }
+        },
+        "findingsEn": {
+            "ultrasound": {
+                "description": "USG may be normal in early stages. Color Doppler: Loss of perfusion in infarcted area (compare with contralateral). Global infarction: No flow in entire kidney.",
+                "doppler": "Partial infarction: Focal Doppler signal reduction. Renal artery embolism: No flow in main vessel."
+            },
+            "ct": {
+                "non_contrast": "Early: Normal or mild swelling.",
+                "contrast": "CORTICOMEDULLARY PHASE: Triangular/wedge-shaped, capsule-based, non-enhancing hypodense area. 'Cortical rim sign': Thin hyperenhancing rim due to capsular collateral supply — seen in subacute phase. Global infarction: Entire kidney does not enhance."
+            },
+            "mri": {
+                "t2": "Subacute: Variable T2 signal.",
+                "t1_c": "Wedge-shaped perfusion defect. Cortical rim sign may be present.",
+                "dwi": "Acute infarction: Restriction (ischemic tubular epithelium → cytotoxic edema)."
+            }
+        },
+        "keyPoints": [
+            "BT kontrast: Kama şekilli (kapsülden uzanan) kontrast tutmayan alan = Renal infarkt.",
+            "Korteks işareti (cortical rim sign): Kapsüler kolateral → ince kontrastan şerit — subakut evre.",
+            "DWI: Akut infarkt kısıtlanır (serebral iskemiye benzer).",
+            "Etiyoloji: AF/kardiyak emboli, aort diseksiyonu, tromboz, vaskülit."
+        ],
+        "keyPointsEn": [
+            "CT contrast: Wedge-shaped (capsule-based) non-enhancing area = Renal infarction.",
+            "Cortical rim sign: Capsular collateral → thin contrast stripe — subacute phase.",
+            "DWI: Acute infarction restricts (similar to cerebral ischemia).",
+            "Etiology: AF/cardiac embolism, aortic dissection, thrombosis, vasculitis."
+        ],
+        "mechanism": "Renal arterde embolizm veya tromboz → renal parankime kan akışı kesilir → iskemik nekroz. Kama şekli: Arteriyel besleme bölgesel (kama şeklinde) → infarkt alanı bu anatomiye uyar. Korteks işareti: Kapsüler ve periüreteral arterler kapsülü besler → kapsüler rim korunur. DWI kısıtlanması: İskemik hücreler (sitotoksik ödem) su difüzyonunu kısıtlar.",
+        "etiology": "Atriyal fibrilasyon (kardiyoembolik), Aort diseksiyonu, Trombotik hastalıklar (antifosfolipid sendromu), Vaskülit, Travma, İatrojenik (anjiyografi komplikasyonu).",
+        "differentialDiagnosis": ["Pyelonefrit (Stranding + ateş, kama şekilli ama kontrastlanır)", "Renal Hücreli Karsinom (Kitlesel, heterojen kontrastlanma)", "Lenfoma (Difüz parankimal tutulum)"],
+        "goldStandard": "BT Anjiografi: İnfarkt alanı + renal arterin değerlendirmesi. DWI + MRA: Radyasyon kullanmak istenmediğinde.",
+        "clinicalPearl": "AF öyküsü + ani yan ağrısı + idrarda kan + BT'de kama defekti = Renal emboli. Korteks işareti subakut evrede izlenir (acil BT'de olmayabilir)."
     }
 ];

@@ -188,5 +188,249 @@ export const gynecologyPathologies: Pathology[] = [
             }
         },
         mechanism: "HPV 16/18 enfeksiyonu → servikal transformasyon zonunda skuamöz hücre displazisi (CIN 1→2→3) → invaziv skuamöz hücreli karsinom. HPV onkoproteinleri (E6: TP53 inhibisyonu, E7: Rb inhibisyonu) → hücre döngüsü kontrolsüzlüğü. MRI'da servikal stroma (fibröz doku → T2 hipointens) tümör tarafından bozulur (T2 ara-yüksek sinyal). Parametriyal yağ invazyonu evre IIB → cerrahi kontraendike."
+    },
+    {
+        id: "ovarian-carcinoma",
+        name: "Over Karsinomu",
+        nameEn: "Ovarian Carcinoma",
+        category: "Ovary",
+        categoryEn: "Ovary",
+        keyPoints: [
+            "En sık ve en ölümcül jinekolojik malignitedir.",
+            "Büyük kistik-solid kitle + asit + peritoneal implantlar = Over Ca şüphesi.",
+            "CA-125 yüksekliği destekler (yüksek olmayabilir erken evrede).",
+            "FIGO evrelemesi MRI + BT ile yapılır."
+        ],
+        keyPointsEn: [
+            "Most common and most lethal gynecologic malignancy.",
+            "Large cystic-solid mass + ascites + peritoneal implants = Ovarian Ca suspicion.",
+            "Elevated CA-125 supports (may not be elevated in early stage).",
+            "FIGO staging with MRI + CT."
+        ],
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "USG - Kompleks Over Kitlesi", modality: "USG" },
+            { url: "/images/placeholder_source.png", caption: "BT - Peritoneal İmplantlar", modality: "CT" }
+        ],
+        findings: {
+            usg: {
+                description: "Büyük, kompleks over kitlesi (kistik + solid bileşen). Kalın iç septalar (>3mm). Mural nodüller (papiller projeksiyon). Bilateral tutulum sık (%50-60). Serbest asit. Doppler: Solid alanlarda düşük dirençli arteryel akım (RI <0.40)."
+            },
+            ct: {
+                contrast: "Kompleks pelvik kitle, heterojen kontrastlanma. Peritoneal yayılım: Omental kek (omental caking), asit, peritoneal nodüler implantlar. Retroperitoneal LAP. Karaciğer, akciğer metastazı (evre IV)."
+            },
+            mri: {
+                t2: "Kistik bileşen T2 hiperintens, solid papiller proyeksiyonlar T2 orta sinyal. Bilateral over tutulumu değerlendirmesi.",
+                t1_c: "Solid bileşen ve septalar erken arteryel kontrastlanma.",
+                dwi: "Solid bileşende kısıtlanma (malignite göstergesi)."
+            }
+        },
+        findingsEn: {
+            usg: {
+                description: "Large, complex ovarian mass (cystic + solid component). Thick internal septa (>3mm). Mural nodules (papillary projections). Bilateral involvement common (50-60%). Free ascites. Doppler: Low-resistance arterial flow in solid areas (RI <0.40)."
+            },
+            ct: {
+                contrast: "Complex pelvic mass, heterogeneous enhancement. Peritoneal spread: Omental caking, ascites, peritoneal nodular implants. Retroperitoneal LAP. Liver, lung metastasis (stage IV)."
+            },
+            mri: {
+                t2: "Cystic component T2 hyperintense, solid papillary projections intermediate T2 signal. Bilateral ovarian involvement assessment.",
+                t1_c: "Solid components and septa early arterial enhancement.",
+                dwi: "Restriction in solid components (malignancy indicator)."
+            }
+        },
+        mechanism: "Yüzey epitel → malign transformasyon (seroz, müsinöz, endometrioid, berrak hücreli). En sık tip: Yüksek dereceli seroz karsinom (%70) — p53 mutasyonu, BRCA1/2 (herediter). Geç tanı: Pelvik periton → omentum → diyafragmatik periton yayılımı (FIGO III-IV). Asit oluşumu: Peritoneal tümör implantları → vasküler permeabilite artışı (VEGF).",
+        etiology: "BRCA1/2 mutasyonu (herediter), endometriozis, nulliparite, obezite. Koruyucu: OKS kullanımı, emzirme, tüp ligasyonu."
+    },
+    {
+        id: "endometrial-carcinoma",
+        name: "Endometrium Karsinomu",
+        nameEn: "Endometrial Carcinoma",
+        category: "Uterus",
+        categoryEn: "Uterus",
+        keyPoints: [
+            "En sık postmenopozal vajinal kanama nedeni olan jinekolojik malignite.",
+            "MRI: Miyometrial invazyon derinliği (FIGO evresi) en iyi MRI ile belirlenir.",
+            "DWI: Tümör yüksek sinyal (düşük ADC) — endometrial kaviteyi dolduran kitle.",
+            "Servikal yayılım: T2'de servikal stroma devamlılık kaybı → Evre II."
+        ],
+        keyPointsEn: [
+            "Most common gynecologic malignancy causing postmenopausal vaginal bleeding.",
+            "MRI: Myometrial invasion depth (FIGO stage) best determined with MRI.",
+            "DWI: Tumor shows high signal (low ADC) — mass filling endometrial cavity.",
+            "Cervical spread: Loss of cervical stromal continuity on T2 → Stage II."
+        ],
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "MRI T2 - Endometrial Kitle", modality: "MRI" },
+            { url: "/images/placeholder_source.png", caption: "USG - Endometrial Kalınlaşma", modality: "USG" }
+        ],
+        findings: {
+            usg: {
+                description: "Postmenopozal kanamalı hastada endometrial kalınlaşma >4-5mm = Biyopsi endikasyonu. Endometrial kavitede heterojen kitle. Renkli Doppler: Artmış vaskülarite."
+            },
+            mri: {
+                t2: "Endometrial kaviteyi dolduran T2 orta-yüksek sinyalli kitle. Junctional zone (JZ) bütünlüğü: Bozulursa miyometrium invazyonu var. Servikal tutulum: T2 hipointens servikal stroma disrupsiyonu.",
+                t1_c: "Tümör miyometriumdan erken kontrastlanır (dinamik faz). İnvazyon derinliği: <50% miyometrium (Evre IA), >50% (Evre IB).",
+                dwi: "Belirgin kısıtlanma (low ADC). Peritoneal/LAP değerlendirmesi."
+            }
+        },
+        findingsEn: {
+            usg: {
+                description: "Endometrial thickening >4-5mm in postmenopausal bleeding = Biopsy indication. Heterogeneous mass in endometrial cavity. Color Doppler: Increased vascularity."
+            },
+            mri: {
+                t2: "T2 intermediate-high signal mass filling endometrial cavity. Junctional zone (JZ) integrity: Disrupted = myometrial invasion. Cervical involvement: Disruption of T2 hypointense cervical stroma.",
+                t1_c: "Tumor enhances earlier than myometrium (dynamic phase). Invasion depth: <50% myometrium (Stage IA), >50% (Stage IB).",
+                dwi: "Marked restriction (low ADC). Peritoneal/LAP assessment."
+            }
+        },
+        mechanism: "Östrojen maruziyeti → endometrial hiperplazi → atipik hiperplazi → tip I (endometrioid, %80, iyi prognoz). Tip II: Seröz veya berrak hücreli (hormonal bağımsız, kötü prognoz). MRI'da tümör T2 orta-yüksek sinyal (yüksek hücrelük, geniş intersellüler su); normal endometrium daha hiperintens; junctional zone hipointens bariyer — tümör bu bariyer geçerse miyometrium invazyonu.",
+        etiology: "Tip I: Obezite, DM, HTN, PCOS, östrojen tedavisi, tamoksifen. Tip II: Atrofi zemininde, Lynch sendromu."
+    },
+    {
+        id: "ectopic-pregnancy",
+        name: "Ektopik Gebelik",
+        nameEn: "Ectopic Pregnancy",
+        category: "Acil",
+        categoryEn: "Emergency",
+        keyPoints: [
+            "Acil jinekolojik durum — tüp rüptürü mortalite riski taşır.",
+            "USG: İntrauterin gebelik kesin dışlanmıyorsa ektopik dışlanamaz.",
+            "Boş uterus + adneksiyal kitle + βhCG >1500-2000 mIU/mL = Ektopik şüphesi.",
+            "Serbest intraabdominal sıvı (kanama) = Rüptür olasılığı yüksek."
+        ],
+        keyPointsEn: [
+            "Gynecologic emergency — tubal rupture carries mortality risk.",
+            "USG: Ectopic cannot be excluded unless intrauterine pregnancy is definitively confirmed.",
+            "Empty uterus + adnexal mass + βhCG >1500-2000 mIU/mL = Ectopic suspicion.",
+            "Free intraabdominal fluid (hemorrhage) = High probability of rupture."
+        ],
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "USG - Adneksiyal Kitle + Perihepatik Sıvı", modality: "USG" },
+            { url: "/images/placeholder_source.png", caption: "BT - Hemoperitoneum", modality: "CT" }
+        ],
+        findings: {
+            usg: {
+                description: "Transvajinal USG ilk tercih. Bulgular: (1) Boş intrauterin kavite (IUP yok). (2) Adneksiyal ring işareti: Uterin dışı yuvarlak anekoik halka ('bagel sign'). (3) Ekstrauterin kardiyak aktivite (kesin tanı!). (4) Serbest pelvik/abdominal sıvı (ekojenlik artmışsa kanama). (5) Tutarsız yalancı gestasyonel kese (uterus içi — ektopik'i dışlamaz!).",
+                doppler: "Ring of fire işareti: Adneksiyal halka çevresinde artmış periferal renkli Doppler sinyali."
+            },
+            ct: {
+                contrast: "Hemoperitoneum (hiperdens serbest sıvı). Pelvik veya adneksiyal kitle. Aktif kanama (kontrast extravasasyonu). Genellikle BT gerekmez — klinik+USG+βhCG tanısaldır."
+            },
+            mri: {
+                t2: "Adneksiyal kitle: T2 heterojenik. Tuba tutulumu görülebilir.",
+                t1: "Hemorajik komponent T1 hiperintens (methemoglobin)."
+            }
+        },
+        findingsEn: {
+            usg: {
+                description: "Transvaginal USG is first choice. Findings: (1) Empty intrauterine cavity (no IUP). (2) Adnexal ring sign: Extrauterine round anechoic ring ('bagel sign'). (3) Extrauterine cardiac activity (definitive!). (4) Free pelvic/abdominal fluid (hemorrhage if echogenic). (5) Pseudo-gestational sac (intrauterine — does not exclude ectopic!).",
+                doppler: "Ring of fire sign: Increased peripheral color Doppler signal around adnexal ring."
+            },
+            ct: {
+                contrast: "Hemoperitoneum (hyperdense free fluid). Pelvic or adnexal mass. Active bleeding (contrast extravasation). Usually CT is not needed — Clinical+USG+βhCG is diagnostic."
+            },
+            mri: {
+                t2: "Adnexal mass: T2 heterogeneous. Tubal involvement may be seen.",
+                t1: "Hemorrhagic component T1 hyperintense (methemoglobin)."
+            }
+        },
+        mechanism: "Fallop tübüne implante olan embriyo → tüp büyümesi → distansiyon → rüptür (6-8. haftalar). En sık bölge: İstmus-ampulla bileşkesi. Ring of fire işareti: Trofoblastik doku periferal vaskülarite oluşturur. Salpenjit, tüp cerrahisi, OİU geçmişi risk faktörü. İntrauterin IUD varlığına rağmen tüp gebeliği olabilir (IUD uterusu korur, tübü değil).",
+        etiology: "Önceki PID/salpenjit, tüp cerrahisi, ektopik gebelik öyküsü, OİU, sigaracılık, IVF."
+    },
+    {
+        id: "tubo-ovarian-abscess",
+        name: "Tubo-Ovarian Apse (TOA)",
+        nameEn: "Tubo-Ovarian Abscess (TOA)",
+        category: "Enfeksiyöz",
+        categoryEn: "Infectious",
+        keyPoints: [
+            "PID'nin en ağır komplikasyonu — pelvik sepsis riski.",
+            "USG: Adneksiyel kompleks kitle + iç ekolar + kalın duvar.",
+            "BT: Multiloküler apse + perirektal / pelvik yağ kirlenme.",
+            "IV antibiyotik ilk tedavi; yanıtsızsa perkütan veya cerrahi drenaj."
+        ],
+        keyPointsEn: [
+            "Most severe complication of PID — risk of pelvic sepsis.",
+            "USG: Adnexal complex mass + internal echoes + thick wall.",
+            "CT: Multilocular abscess + perirectal/pelvic fat stranding.",
+            "IV antibiotics first; if unresponsive, percutaneous or surgical drainage."
+        ],
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "USG - Kompleks Adneksiyal Kitle", modality: "USG" },
+            { url: "/images/placeholder_source.png", caption: "BT - Pelvik Apse + Stranding", modality: "CT" }
+        ],
+        findings: {
+            usg: {
+                description: "Adneksiyal kompleks kistik-solid kitle. Kalın, düzensiz duvar. İç ekolar (pü içeriği). Septalar içinde debris. Over-tuba ayrımı kaybolmuş ('tubo-ovarian ünite'). Renkli Doppler: Duvar hipervaskülaritesi (enflamasyon).",
+                doppler: "Periferal artmış vaskülarite, düşük dirençli akım (RI düşük, inflamasyon). İçerikte akım yok."
+            },
+            ct: {
+                contrast: "Pelvik kompleks kistik kitle. Kalın, düzenli kontrastlanan duvar (rim enhancement). İnce septalar. Peritoneal/pelvik yağ kirlenme (fat stranding). Serbest sıvı. Uterin ve rektal komşuluk değerlendirmesi. Hava: Anaerobik enfeksiyon (acil!)."
+            },
+            mri: {
+                t2: "Kompleks kitle, T2 hiperintens sıvı içeriği, kalın düşük sinyalli duvar.",
+                t1_c: "Kalın rim kontrastlanması.",
+                dwi: "Apse içeriği kısıtlanır (piojenik materyal)."
+            }
+        },
+        findingsEn: {
+            usg: {
+                description: "Adnexal complex cystic-solid mass. Thick, irregular wall. Internal echoes (pus content). Debris within septa. Ovary-tube distinction lost ('tubo-ovarian unit'). Color Doppler: Wall hypervascularity (inflammation).",
+                doppler: "Peripheral increased vascularity, low-resistance flow (low RI, inflammation). No flow within content."
+            },
+            ct: {
+                contrast: "Pelvic complex cystic mass. Thick, regularly enhancing wall (rim enhancement). Thin septa. Peritoneal/pelvic fat stranding. Free fluid. Assessment of uterine and rectal proximity. Gas: Anaerobic infection (emergency!)."
+            },
+            mri: {
+                t2: "Complex mass, T2 hyperintense fluid content, thick low-signal wall.",
+                t1_c: "Thick rim enhancement.",
+                dwi: "Abscess content restricts (pyogenic material)."
+            }
+        },
+        mechanism: "Pelvik inflamatuar hastalık (PID) → salpenjit → adneksiyal bölgede mikroorganizma toplanması → abse oluşumu. En sık etkenler: N. gonorrhoeae, C. trachomatis, anaeroblar. Apse içindeki pü: Ölü lökositler, bakteri, fibrin → DWI'da kısıtlanma. Rüptür → peritonit → acil cerrahi.",
+        etiology: "Cinsel yolla bulaşan enfeksiyon (Gonore, Klamidya), IUD, jinekolojik işlem sonrası, Crohn hastalığı."
+    },
+    {
+        id: "pcos",
+        name: "Polikistik Over Sendromu (PCOS)",
+        nameEn: "Polycystic Ovary Syndrome (PCOS)",
+        category: "Ovary",
+        categoryEn: "Ovary",
+        keyPoints: [
+            "Rotterdam kriterleri: Oligo/anovülasyon + Klinik/biyokimyasal hiperandrojenizm + PCO morfolojisi (≥2 kriter).",
+            "USG: Over hacmi >10mL + ≥20 antral folikül (2-9mm) / over.",
+            "MRI: USG'nin yetersiz kaldığı obez hastalarda kullanılır.",
+            "Görüntüleme tek başına tanısal değildir — klinik ve hormonal verilerle birleştirilmeli."
+        ],
+        keyPointsEn: [
+            "Rotterdam criteria: Oligo/anovulation + Clinical/biochemical hyperandrogenism + PCO morphology (≥2 criteria).",
+            "USG: Ovarian volume >10mL + ≥20 antral follicles (2-9mm) / ovary.",
+            "MRI: Used in obese patients where USG is inadequate.",
+            "Imaging alone is not diagnostic — must be combined with clinical and hormonal data."
+        ],
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "USG - Periferik Foliküller ('İnci Dizisi')", modality: "USG" }
+        ],
+        findings: {
+            usg: {
+                description: "Over hacmi artmış (>10mL). Periferik yerleşimli multiple küçük foliküller (2-9mm, ≥20/over): 'İnci dizisi' / 'pearl necklace' görünümü. Artmış stromal ekojenite. Stromal/toplam over alanı oranı artmış. Endometrial kalınlaşma eşlik edebilir (kronik anovülasyon).",
+                doppler: "Artmış stromal vaskülarite (hiperandrojenizm ile ilişkili)."
+            },
+            mri: {
+                t2: "Periferik foliküller: T2 hiperintens. Stroma: T2 orta-düşük sinyal (artmış stroma). Over hacmi ve folikül sayısı doğrulaması. T2: 'Fıçı' görünümü (periferik foliküller, santral hiperinten stroma).",
+                t1_c: "Stromal kontrastlanma artışı."
+            }
+        },
+        findingsEn: {
+            usg: {
+                description: "Increased ovarian volume (>10mL). Peripherally located multiple small follicles (2-9mm, ≥20/ovary): 'Pearl necklace' appearance. Increased stromal echogenicity. Increased stromal/total ovarian area ratio. Endometrial thickening may accompany (chronic anovulation).",
+                doppler: "Increased stromal vascularity (related to hyperandrogenism)."
+            },
+            mri: {
+                t2: "Peripheral follicles: T2 hyperintense. Stroma: T2 intermediate-low signal (increased stroma). Confirmation of ovarian volume and follicle count. T2: 'Barrel' appearance (peripheral follicles, central hyperintense stroma).",
+                t1_c: "Increased stromal enhancement."
+            }
+        },
+        mechanism: "İnsülin direnci → Hiperinsulinemi → Over teka hücrelerinde androjen üretimi artışı (LH artışı) → FSH/LH oranı bozulur → folikül matürasyonu duraklar (anovülasyon) → foliküller küçük kalır ve birikir (PCO morfolojisi). LH pulsatilitesi artışı da katkıda bulunur. Sonuç: Kronik anovülasyon + hiperandrojenizm + infertilite döngüsü.",
+        etiology: "Genetik yatkınlık (ailesel) + Metabolik faktörler (obezite, insülin direnci). İnsülin duyarlaştırıcı tedavi (metformin) etkili."
     }
 ];
