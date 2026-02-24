@@ -108,7 +108,6 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
 
             if (fetchError) {
                 setError("Gönderiler yüklenirken bir hata oluştu. Lütfen tekrar deneyin.");
-                console.error("Error fetching posts:", fetchError);
             } else if (data) {
                 const formattedPosts: Post[] = data.map((p: RawPostData) => ({
                     ...p,
@@ -117,9 +116,8 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                 }));
                 setPosts(formattedPosts);
             }
-        } catch (e) {
+        } catch {
             setError("Beklenmeyen bir hata oluştu.");
-            console.error("Unexpected error:", e);
         } finally {
             setIsLoading(false);
         }
@@ -143,10 +141,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
 
     const addPost = async (title: string, content: string, tags: string[], user: User): Promise<{ success: boolean; error?: string }> => {
         try {
-            console.log("Adding post with user:", user);
-            console.log("Post data:", { title, content, tags, author_id: user.id });
-
-            const { data, error: insertError } = await supabase
+            const { error: insertError } = await supabase
                 .from('posts')
                 .insert({
                     title,
@@ -156,10 +151,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                 })
                 .select();
 
-            console.log("Supabase response:", { data, error: insertError });
-
             if (insertError) {
-                console.error("Supabase insert error:", insertError);
                 const errorMessage = `Gönderi oluşturulamadı: ${insertError.message}`;
                 setError(errorMessage);
                 return { success: false, error: errorMessage };
@@ -167,8 +159,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
 
             await fetchPosts();
             return { success: true };
-        } catch (e) {
-            console.error("Unexpected error in addPost:", e);
+        } catch {
             const errorMessage = "Beklenmeyen bir hata oluştu.";
             setError(errorMessage);
             return { success: false, error: errorMessage };
@@ -210,24 +201,31 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                 // PGRST116 = no rows found, which is expected if not liked
                 // If likes table doesn't exist, fall back to simple increment
                 if (checkError.code === '42P01') {
-                    // Table doesn't exist - use simple likes counter
-                    const post = posts.find(p => p.id === postId);
-                    if (post) {
+                    // Optimistic UI update
+                    setPosts(prev => prev.map(p =>
+                        p.id === postId ? { ...p, likes: p.likes + 1 } : p
+                    ));
+
+                    // Fetch fresh data to get actual count, then increment
+                    const { data: freshPost } = await supabase
+                        .from('posts')
+                        .select('likes')
+                        .eq('id', postId)
+                        .single();
+
+                    if (freshPost) {
                         const { error: updateError } = await supabase
                             .from('posts')
-                            .update({ likes: post.likes + 1 })
+                            .update({ likes: freshPost.likes + 1 })
                             .eq('id', postId);
 
                         if (updateError) {
+                            // Revert optimistic update
+                            await fetchPosts();
                             return { success: false, error: "Beğeni eklenirken bir hata oluştu." };
                         }
-
-                        // Update local state optimistically
-                        setPosts(prev => prev.map(p =>
-                            p.id === postId ? { ...p, likes: p.likes + 1 } : p
-                        ));
-                        return { success: true };
                     }
+                    return { success: true };
                 }
                 return { success: false, error: "Beğeni durumu kontrol edilirken hata oluştu." };
             }
@@ -243,18 +241,23 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                     return { success: false, error: "Beğeni kaldırılırken bir hata oluştu." };
                 }
 
-                // Decrement likes counter
-                const post = posts.find(p => p.id === postId);
-                if (post) {
+                // Fetch fresh count, then decrement
+                const { data: freshPost } = await supabase
+                    .from('posts')
+                    .select('likes')
+                    .eq('id', postId)
+                    .single();
+
+                if (freshPost) {
                     await supabase
                         .from('posts')
-                        .update({ likes: Math.max(0, post.likes - 1) })
+                        .update({ likes: Math.max(0, freshPost.likes - 1) })
                         .eq('id', postId);
-
-                    setPosts(prev => prev.map(p =>
-                        p.id === postId ? { ...p, likes: Math.max(0, p.likes - 1), liked_by_user: false } : p
-                    ));
                 }
+
+                setPosts(prev => prev.map(p =>
+                    p.id === postId ? { ...p, likes: Math.max(0, p.likes - 1), liked_by_user: false } : p
+                ));
             } else {
                 // Like: Add like and increment counter
                 const { error: insertError } = await supabase
@@ -265,18 +268,23 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                     return { success: false, error: "Beğeni eklenirken bir hata oluştu." };
                 }
 
-                // Increment likes counter
-                const post = posts.find(p => p.id === postId);
-                if (post) {
+                // Fetch fresh count, then increment
+                const { data: freshPost } = await supabase
+                    .from('posts')
+                    .select('likes')
+                    .eq('id', postId)
+                    .single();
+
+                if (freshPost) {
                     await supabase
                         .from('posts')
-                        .update({ likes: post.likes + 1 })
+                        .update({ likes: freshPost.likes + 1 })
                         .eq('id', postId);
-
-                    setPosts(prev => prev.map(p =>
-                        p.id === postId ? { ...p, likes: p.likes + 1, liked_by_user: true } : p
-                    ));
                 }
+
+                setPosts(prev => prev.map(p =>
+                    p.id === postId ? { ...p, likes: p.likes + 1, liked_by_user: true } : p
+                ));
             }
 
             return { success: true };
@@ -311,7 +319,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
         }
     };
 
-    const getPost = async (id: string): Promise<Post | null> => {
+    const getPost = useCallback(async (id: string): Promise<Post | null> => {
         try {
             const { data, error: fetchError } = await supabase
                 .from('posts')
@@ -337,11 +345,10 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                     author: { name: c.profiles?.name || 'Anonim', specialty: c.profiles?.specialty || '' }
                 }))
             };
-        } catch (e) {
-            console.error("Error fetching post:", e);
+        } catch {
             return null;
         }
-    };
+    }, []);
 
     return (
         <ForumContext.Provider value={{

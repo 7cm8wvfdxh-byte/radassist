@@ -21,7 +21,7 @@ import { breastPathologies } from "@/data/breast-pathologies";
 import { mskPathologies } from "@/data/msk-pathologies";
 import { gastroPathologies } from "@/data/gastro-pathologies";
 import { gynecologyPathologies } from "@/data/gynecology-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Bot, Flame, Bean, Wind, Wrench, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen } from "lucide-react";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Flame, Bean, Wind, Wrench, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen } from "lucide-react";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils"; // Ensure cn is imported
 import { performSmartSearch } from "@/lib/search-utils";
@@ -33,7 +33,7 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 
 export default function Home() {
   const { user, logout } = useAuth();
-  const { language, toggleLanguage, t } = useLanguage();
+  const { language, t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [favorites, setFavorites] = useState<string[]>(() => {
     if (typeof window === 'undefined') return [];
@@ -231,17 +231,6 @@ export default function Home() {
             <span className="sr-only md:not-sr-only md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">{t("nav.announcements")}</span>
           </Link>
 
-          {/* Language Toggle */}
-          <button
-            onClick={toggleLanguage}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors group"
-          >
-            <span className={`text-xs font-bold ${language === 'tr' ? 'text-white' : 'text-zinc-500'}`}>TR</span>
-            <div className="w-8 h-4 bg-zinc-800 rounded-full relative mx-1 border border-white/10">
-              <div className={`absolute top-0.5 w-3 h-3 rounded-full bg-indigo-500 transition-all duration-300 ${language === 'en' ? 'left-[18px]' : 'left-0.5'}`} />
-            </div>
-            <span className={`text-xs font-bold ${language === 'en' ? 'text-white' : 'text-zinc-500'}`}>EN</span>
-          </button>
           {user ? (
             <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md rounded-full pl-4 pr-2 py-1.5 border border-white/10 shadow-lg">
               <div className="flex flex-col items-end mr-1">
@@ -520,9 +509,9 @@ export default function Home() {
                   localStorage.setItem("radassist-view-mode", "ai");
                 }}
                 className={`p-1.5 rounded-full transition-all ${viewMode === "ai" ? "bg-purple-500 text-white shadow-lg ring-2 ring-purple-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="AI Asistan"
+                title="Patoloji Arama"
               >
-                <Bot className="w-4 h-4" />
+                <Search className="w-4 h-4" />
               </button>
 
               <button

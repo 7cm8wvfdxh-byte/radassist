@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import { AuthProvider } from "@/context/auth-context";
+import { LanguageProvider } from "@/context/language-context";
+import { ForumProvider } from "@/context/forum-context";
+import { PwaInstallPrompt } from "@/components/pwa-install-prompt";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "RadAsist: Radyoloji Asistanı",
-  description: "Yapay Zeka Destekli Radyoloji Tanı Rehberi - Radyoloji eğitimi, patoloji veritabanı, tanı sihirbazı ve AI asistan ile radyoloji asistanları için kapsamlı öğrenme platformu.",
+  description: "Radyoloji eğitimi, patoloji veritabanı ve patoloji arama asistanı ile radyoloji asistanları için kapsamlı öğrenme platformu.",
   metadataBase: new URL("https://www.radasist.com"),
   manifest: "/manifest.json",
   keywords: ["radyoloji", "radyoloji asistanı", "tıbbi görüntüleme", "MRI", "CT", "ultrason", "tanı", "patoloji", "radyoloji eğitimi"],
@@ -31,22 +34,22 @@ export const metadata: Metadata = {
     locale: "tr_TR",
     url: "https://radasist.com",
     siteName: "RadAsist",
-    title: "RadAsist: Yapay Zeka Destekli Radyoloji Asistanı",
-    description: "Radyoloji eğitimi, patoloji veritabanı, tanı sihirbazı ve AI asistan ile radyoloji asistanları için kapsamlı öğrenme platformu.",
+    title: "RadAsist: Radyoloji Asistanı",
+    description: "Radyoloji eğitimi, patoloji veritabanı ve patoloji arama asistanı ile radyoloji asistanları için kapsamlı öğrenme platformu.",
     images: [
       {
-        url: "/icons/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "/icons/icon-512x512.png",
+        width: 512,
+        height: 512,
         alt: "RadAsist - Radyoloji Asistanı",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "RadAsist: Yapay Zeka Destekli Radyoloji Asistanı",
-    description: "Radyoloji eğitimi, patoloji veritabanı, tanı sihirbazı ve AI asistan.",
-    images: ["/icons/og-image.png"],
+    title: "RadAsist: Radyoloji Asistanı",
+    description: "Radyoloji eğitimi, patoloji veritabanı ve patoloji arama asistanı.",
+    images: ["/icons/icon-512x512.png"],
   },
   appleWebApp: {
     capable: true,
@@ -63,15 +66,7 @@ export const viewport = {
   themeColor: "#020617",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
-
-import { AuthProvider } from "@/context/auth-context";
-import { LanguageProvider } from "@/context/language-context";
-import { ForumProvider } from "@/context/forum-context";
-
-import { PwaInstallPrompt } from "@/components/pwa-install-prompt";
 
 export default function RootLayout({
   children,
