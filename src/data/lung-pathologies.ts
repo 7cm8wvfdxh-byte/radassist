@@ -51,7 +51,13 @@ export const lungPathologies: Pathology[] = [
         "etiology": "Sigara (%85-90 risk faktörü), Radon gazı, Asbest, Mesleki karsinojenler (nikel, krom). EGFR mutasyonu: Sigara içmeyenler, Asya kökenli.",
         "differentialDiagnosis": ["Pnömoni (Ateş, CRP artışı, antibiyotiğe yanıt)", "Granülom (TB, histoplazma - kalsifikasyon)", "Karsinoid Tümör (Santral, düşük grade)", "Metastaz (Multipl nodüller, bilinen primer)"],
         "goldStandard": "BT-PET: Evreleme ve biyopsi kılavuzluğu. PET-CT: Mediastinal ve uzak metastaz değerlendirmesi. Biyopsi: Histolojik tip ve moleküler belirteç.",
-        "clinicalPearl": "Spiküle kenar + Plevral çekme + Hiler adenopati = Akciğer kanseri. 'Satellite nodule' + Nodül >3cm = T2 evre."
+        "clinicalPearl": "Spiküle kenar + Plevral çekme + Hiler adenopati = Akciğer kanseri. 'Satellite nodule' + Nodül >3cm = T2 evre.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Lung cancer"
+        ]
     },
     {
         "id": "pulmonary_embolism",
@@ -103,7 +109,12 @@ export const lungPathologies: Pathology[] = [
         "etiology": "DVT (Virchow triadı: Staz, Hiperkoagülabilite, Damar hasarı). Risk: Uzun yolculuk, Malignansi, OKS, Cerrahi sonrası, İmmobilizasyon.",
         "differentialDiagnosis": ["Pnömoni (Ateş, produktif öksürük, konsolidasyon)", "Pnömotoraks (Ani dispne, plevral hat X-ray)", "Akut koroner sendrom (EKG değişikliği, troponin)", "KOAH alevlenmesi (Kronik zemin, wheezing)"],
         "goldStandard": "BT Pulmoner Anjiografi (BTPA): Altın standart, duyarlılık >%90. V/Q sintigrafi: BT kontrendike ise (hamile, böbrek yetmezliği).",
-        "clinicalPearl": "Polo mint sign (aksiyel) + Railway track sign (koronal) = PE. RV/LV >1 = Masif/submasif PE, kötü prognoz."
+        "clinicalPearl": "Polo mint sign (aksiyel) + Railway track sign (koronal) = PE. RV/LV >1 = Masif/submasif PE, kötü prognoz.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Pulmonary embolism"
+        ]
     },
     {
         "id": "pneumonia",
@@ -147,7 +158,12 @@ export const lungPathologies: Pathology[] = [
             "COVID-19: Peripheral ground-glass → Crazy paving → Consolidation → Fibrosis progression.",
             "Necrotizing pneumonia: Multiple cavitation, Klebsiella, S. aureus."
         ],
-        "mechanism": "Bakteriyel: Patojenin alt solunum yollarına ulaşması → alveolar makrofajların yetersiz temizliği → bakteri proliferasyonu → nötrofil yanıtı → eksüda dolu alveoller (konsolidasyon). Viral/COVID-19: Hücresel immün yanıt ve sitokin fırtınası → difüz alveolar hasar → tip II pnömosit hasarı → surfaktan kaybı → alveoler kollaps → ground-glass opasiteler, crazy-paving. Nekrotizan: Vaskülit ve tromboz → akciğer parankimi nekrozu → kavitasyon."
+        "mechanism": "Bakteriyel: Patojenin alt solunum yollarına ulaşması → alveolar makrofajların yetersiz temizliği → bakteri proliferasyonu → nötrofil yanıtı → eksüda dolu alveoller (konsolidasyon). Viral/COVID-19: Hücresel immün yanıt ve sitokin fırtınası → difüz alveolar hasar → tip II pnömosit hasarı → surfaktan kaybı → alveoler kollaps → ground-glass opasiteler, crazy-paving. Nekrotizan: Vaskülit ve tromboz → akciğer parankimi nekrozu → kavitasyon.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Pneumonia"
+        ]
     },
     {
         "id": "lung_nodule",
@@ -193,7 +209,12 @@ export const lungPathologies: Pathology[] = [
             "Part-solid nodule: Solid component >6mm = High malignancy risk.",
             "PET-CT: Recommended for metabolic evaluation of >8mm solid nodules."
         ],
-        "mechanism": "Solid nodül: Tam solid doku proliferasyonu — granülom (enfeksiyöz: TB, histoplazma), karsinoid, metastaz veya primer malignite. Subsolid/ground-glass nodül: Kısmi alveol dolumu ile birlikte hava korunumu — atipik adenomatöz hiperplazi (AAH) → in situ adenokarsinom (AIS) → minimal invaziv adenokarsinom (MIA) → invaziv adenokarsinom malignisite spektrumu. Solid komponent arttıkça invazyon artmaktadır."
+        "mechanism": "Solid nodül: Tam solid doku proliferasyonu — granülom (enfeksiyöz: TB, histoplazma), karsinoid, metastaz veya primer malignite. Subsolid/ground-glass nodül: Kısmi alveol dolumu ile birlikte hava korunumu — atipik adenomatöz hiperplazi (AAH) → in situ adenokarsinom (AIS) → minimal invaziv adenokarsinom (MIA) → invaziv adenokarsinom malignisite spektrumu. Solid komponent arttıkça invazyon artmaktadır.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Pulmonary nodule"
+        ]
     },
     {
         "id": "pneumothorax",
@@ -242,7 +263,12 @@ export const lungPathologies: Pathology[] = [
             "Primary spontaneous: Young, tall, male, apical bleb.",
             "USG is as sensitive as CT in bedside diagnosis (eFAST)."
         ],
-        "mechanism": "Visseral veya pariyetal plevra bütünlüğünün bozulması → plevral boşluğa hava kaçışı → akciğer elastik geri çekim kuvveti ile çöküş. Primer spontan: Apikal subplevral bleb rüptürü (genç, uzun erkeklerde zayıf mezoteliyal doku). Tansiyon: Tek yönlü valf mekanizması → inspirasyonda hava girer, ekspirasyonda çıkamaz → giderek artan basınç → mediastinal şift → karşı akciğer ve venöz dönüş baskılanması → kardiyovasküler kollaps."
+        "mechanism": "Visseral veya pariyetal plevra bütünlüğünün bozulması → plevral boşluğa hava kaçışı → akciğer elastik geri çekim kuvveti ile çöküş. Primer spontan: Apikal subplevral bleb rüptürü (genç, uzun erkeklerde zayıf mezoteliyal doku). Tansiyon: Tek yönlü valf mekanizması → inspirasyonda hava girer, ekspirasyonda çıkamaz → giderek artan basınç → mediastinal şift → karşı akciğer ve venöz dönüş baskılanması → kardiyovasküler kollaps.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Pneumothorax"
+        ]
     },
     {
         "id": "interstitial_lung_disease",
@@ -288,7 +314,12 @@ export const lungPathologies: Pathology[] = [
             "NSIP vs UIP: NSIP has more ground-glass, no/little honeycombing.",
             "HRCT: 1-2mm slice thickness, high resolution required."
         ],
-        "mechanism": "Kronik alveolar epitelyal hasar (tip II pnömosit) → anormal yara iyileşmesi → fibroblast aktivasyonu (TGF-β, PDGF) → aşırı ECM depolanması → akciğer parankim mimarisinin bozulması. Baziler/subplevral tutulum: Bu bölgelerdeki mekanik strese duyarlılık ile ilişkilidir. Honeycombing: Alveol gruplarının fibröz doku ile dolması ve birbirine yapışarak kistik hava boşlukları oluşturması."
+        "mechanism": "Kronik alveolar epitelyal hasar (tip II pnömosit) → anormal yara iyileşmesi → fibroblast aktivasyonu (TGF-β, PDGF) → aşırı ECM depolanması → akciğer parankim mimarisinin bozulması. Baziler/subplevral tutulum: Bu bölgelerdeki mekanik strese duyarlılık ile ilişkilidir. Honeycombing: Alveol gruplarının fibröz doku ile dolması ve birbirine yapışarak kistik hava boşlukları oluşturması.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Interstitial lung disease"
+        ]
     },
     {
         "id": "ipf",
@@ -316,7 +347,12 @@ export const lungPathologies: Pathology[] = [
             "UIP pattern (CT) + Clinical correlation = No biopsy needed.",
             "Honeycombing appearance (3-10mm cysts) is a sign of poor prognosis."
         ],
-        "mechanism": "Bilinmeyen tetikleyici → tekrarlayan epitelyal mikro-hasarlar → TGF-β mediated fibroblast aktivasyonu → miyofibroblastlara dönüşüm → kollajen birikimi. Alveolar yüzey azalır → gaz değişimi bozulur → restriktif patern. Baziler subplevral tutulum, bu bölgelerin solunum sırasındaki gerilme kuvvetlerine olan duyarlılığıyla açıklanır."
+        "mechanism": "Bilinmeyen tetikleyici → tekrarlayan epitelyal mikro-hasarlar → TGF-β mediated fibroblast aktivasyonu → miyofibroblastlara dönüşüm → kollajen birikimi. Alveolar yüzey azalır → gaz değişimi bozulur → restriktif patern. Baziler subplevral tutulum, bu bölgelerin solunum sırasındaki gerilme kuvvetlerine olan duyarlılığıyla açıklanır.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Idiopathic pulmonary fibrosis"
+        ]
     },
     {
         "id": "emphysema",
@@ -350,7 +386,12 @@ export const lungPathologies: Pathology[] = [
             "Cor pulmonale (Right heart failure) may develop (Pulmonary artery enlargement >29mm).",
             "Saber-sheath trachea (narrowing of coronal diameter of trachea) may be associated."
         ],
-        "mechanism": "Sigara dumanı veya alfa-1 antitripsin eksikliği → proteaz/antiproteaz dengesizliği (nötrofil elastaz artışı, alfa-1 antitripsin azalması) → alveolar duvar yıkımı → hava boşluğu genişlemesi → akciğer elastisitesi azalır → hava hapsi. Sentrilobüler amfizem: Sigara ile ilişkili, merkezi asiner hasar. Panasiner: Tüm asiner yıkım. Hiperinflasyon ve flatleşen diyafram bu gaz hapsi mekanizmasının yansımasıdır."
+        "mechanism": "Sigara dumanı veya alfa-1 antitripsin eksikliği → proteaz/antiproteaz dengesizliği (nötrofil elastaz artışı, alfa-1 antitripsin azalması) → alveolar duvar yıkımı → hava boşluğu genişlemesi → akciğer elastisitesi azalır → hava hapsi. Sentrilobüler amfizem: Sigara ile ilişkili, merkezi asiner hasar. Panasiner: Tüm asiner yıkım. Hiperinflasyon ve flatleşen diyafram bu gaz hapsi mekanizmasının yansımasıdır.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Pulmonary emphysema"
+        ]
     },
     {
         "id": "pleural_effusion",
@@ -411,7 +452,12 @@ export const lungPathologies: Pathology[] = [
         "etiology": "Transüda: KKY, siroz, nefrotik sendrom, perikardit. Eksüda: Pnömoni, tüberküloz, malignite, PE, pankreatit. Hematotoraks: Travma, aort diseksiyonu.",
         "differentialDiagnosis": ["Pnömoni (Konsolidasyon, ateş)", "Atelektazi (Volüm kaybı)", "Diyafragma Elevasyonu", "Plevral Kitle (Nodüler, kalın)"],
         "goldStandard": "USG (tanı + torasentez kılavuzluğu). BT: Etiyoloji ve komplikasyon değerlendirmesi.",
-        "clinicalPearl": "Masif efüzyon + kontralateral mediastinal yer değiştirme = Serbest efüzyon. İpsilateral yer değiştirme YOK = Atelektazi veya malign mezotelyoma (plevral tutulum akciğeri sabitler)."
+        "clinicalPearl": "Masif efüzyon + kontralateral mediastinal yer değiştirme = Serbest efüzyon. İpsilateral yer değiştirme YOK = Atelektazi veya malign mezotelyoma (plevral tutulum akciğeri sabitler).",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Pleural effusion"
+        ]
     },
     {
         "id": "pulmonary_tuberculosis",
@@ -467,7 +513,12 @@ export const lungPathologies: Pathology[] = [
         "etiology": "Mycobacterium tuberculosis. Risk: HIV, immünsüpresyon, DM, kronik böbrek hastalığı, malnütrisyon, kalabalık ortam.",
         "differentialDiagnosis": ["Akciğer Kanseri (Üst lob kitle, spiküle)", "Fungal Enfeksiyon (Aspergilloz, Kavite + halo)", "Sarkoidoz (Hiler LAP, üst lob nodüller)", "Bakteriyel Pnömoni (Alt lob, akut klinik)"],
         "goldStandard": "Balgam ARB + Kültür (Löwenstein-Jensen). Moleküler: GeneXpert MTB/RIF (hızlı tanı). Görüntüleme destekleyicidir.",
-        "clinicalPearl": "Üst lob + kavite + tree-in-bud = Aktif TB ekarte edilmeli. Nekrotik LAP'ta rim kontrastlanma TB'e özgüdür — lenfoma ve metastazdan ayırır."
+        "clinicalPearl": "Üst lob + kavite + tree-in-bud = Aktif TB ekarte edilmeli. Nekrotik LAP'ta rim kontrastlanma TB'e özgüdür — lenfoma ve metastazdan ayırır.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Pulmonary tuberculosis"
+        ]
     },
     {
         "id": "lung_abscess",
@@ -523,7 +574,12 @@ export const lungPathologies: Pathology[] = [
         "etiology": "Aspirasyon (en sık), nekrotizan pnömoni, septik emboli, pulmoner infarkt. Risk: Alkolizm, epilepsi, anestezi, disfaji.",
         "differentialDiagnosis": ["Kaviter Akciğer Kanseri (DWI kısıtlanma yok, ince düzgün duvar)", "TB Kavitesi (Üst lob, tree-in-bud)", "Wegener/GPA (Bilateral, multipl)", "Bül/Amfizematöz Kavite (İnce duvar, sıvı yok)"],
         "goldStandard": "BT + Balgam kültürü/bronkoskopi. DWI → apse içeriğini tümörden ayırır.",
-        "clinicalPearl": "DWI'da apse içeriği kısıtlanır (parlak), nekrotik tümör kısıtlanmaz → BT'de kavitasyon gördüğünde MRI-DWI yapmanın değeri büyüktür."
+        "clinicalPearl": "DWI'da apse içeriği kısıtlanır (parlak), nekrotik tümör kısıtlanmaz → BT'de kavitasyon gördüğünde MRI-DWI yapmanın değeri büyüktür.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Lung abscess"
+        ]
     },
     {
         "id": "sarcoidosis",
@@ -575,7 +631,12 @@ export const lungPathologies: Pathology[] = [
         "etiology": "Bilinmeyen (genetik yatkınlık + antijenik uyaran). HLA-DRB1 ilişkisi. Meslek maruziyeti (tarım, itfaiyecilik) sıklaştırabilir.",
         "differentialDiagnosis": ["Lenfoma (Anterior mediastinal, asimetrik LAP)", "Tüberküloz (Nekrotik LAP, üst lob kavite)", "Pnömokonyoz (Mesleki öykü, üst lob)", "Metastatik Hastalık (Bilinen primer, heterojen)"],
         "goldStandard": "Doku biyopsisi (BAL veya transbronşial biyopsi): Non-kazeöz epiteloid granülom. ACE düzeyi destekleyici.",
-        "clinicalPearl": "Bilateral hiler LAP + nefes darlığı + eritema nodozum + artralji = Löfgren Sendromu (iyi prognozlu akut sarkoidoz)."
+        "clinicalPearl": "Bilateral hiler LAP + nefes darlığı + eritema nodozum + artralji = Löfgren Sendromu (iyi prognozlu akut sarkoidoz).",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Sarcoidosis"
+        ]
     },
     {
         "id": "bronchiectasis",
@@ -620,6 +681,11 @@ export const lungPathologies: Pathology[] = [
         "etiology": "Kistik fibrozis (genç), TB (üst lob), Primer siliyer diskinezi, ABPA (santral, üst lob), İmmün yetmezlik (alt lob), Post-obstrüktif.",
         "differentialDiagnosis": ["Amfizem (Duvar yok, hava alanı genişlemesi)", "Kaviter Lezyon (TB, apse — daha kalın duvar)", "Pulmoner Kist (Konjenital)", "ABPA (Santral bronşiektazi + mukoid impaksiyon)"],
         "goldStandard": "HRCT toraksi: Signet ring işareti + bronş/arter oranı. Altta yatan etiyoloji araştırması: Ter testi (CF), siliyer motilite testi, immün panel.",
-        "clinicalPearl": "Günlük pürülan balgam + kronik öksürük + HRCT'de signet ring = Bronşiektazi. Santral tutulum → ABPA ekarte et (IgE, Aspergillus seroloji)."
+        "clinicalPearl": "Günlük pürülan balgam + kronik öksürük + HRCT'de signet ring = Bronşiektazi. Santral tutulum → ABPA ekarte et (IgE, Aspergillus seroloji).",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Bronchiectasis"
+        ]
     }
 ];

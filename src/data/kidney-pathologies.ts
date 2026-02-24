@@ -61,7 +61,13 @@ export const kidneyPathologies: Pathology[] = [
         "etiology": "Sigara, Obezite, Hipertansiyon, Diyaliz hastası böbrek kistleri. VHL sendromu: Bilateral, multisentrik RCC. Herediter papiller RCC: MET mutasyonu.",
         "differentialDiagnosis": ["Anjiyomiyolipom (Makroskopik yağ <-10HU = Kesin AML)", "Onkositom (Santral yıldız skar, benign ama görüntülemeyle ayrılamaz)", "Ürotelyal Ca (Santral, lümene uzanır, kontürü bozmaz)", "Abse (DWI kısıtlanma, ateş, klinik)"],
         "goldStandard": "Multifazik BT (Kortikomedüller + Nefrogenik + Geç faz): RCC karakterizasyonu. MRI: Yağ tespiti, IVC değerlendirmesi.",
-        "clinicalPearl": "Clear cell RCC: T2 hiperintens + Chemical shift pozitif (yağ içeriği). >15-20HU kontrastlanma artışı = Solid kitle (malignite şüpheli)."
+        "clinicalPearl": "Clear cell RCC: T2 hiperintens + Chemical shift pozitif (yağ içeriği). >15-20HU kontrastlanma artışı = Solid kitle (malignite şüpheli).",
+        "references": [
+            "Israel GM, Bosniak MA. Renal imaging for diagnosis and staging of renal cell carcinoma. Urol Clin North Am. 2003;30(3):499-514.",
+            "ACR Appropriateness Criteria: Renal Cell Carcinoma Staging. American College of Radiology.",
+            "Silverman SG et al. Bosniak Classification of Cystic Renal Masses, Version 2019. Radiology. 2019;292(2):475-488.",
+            "Radiopaedia.org - Renal cell carcinoma"
+        ]
     },
     {
         "id": "angiomyolipoma",
@@ -115,7 +121,12 @@ export const kidneyPathologies: Pathology[] = [
             "Tuberous Sclerosis: Bilateral, multiple AMLs.",
             ">4cm AML: Increased bleeding risk → Consider embolization."
         ],
-        "mechanism": "mTOR yolağı aktivasyonu (TSC1/TSC2 mutasyonu veya sporadik) → anormal mezodermal diferansiasyon → yağ dokusu, düz kas ve anormal damarların karışımından oluşan hamartom. Anormal damarlar esnek duvardan yoksundur (anevrizma riski) → Wunderlich sendromu (spontan retroperitoneal kanama). Fat-poor AML: Düz kas baskın, TSC bağlantısı sık."
+        "mechanism": "mTOR yolağı aktivasyonu (TSC1/TSC2 mutasyonu veya sporadik) → anormal mezodermal diferansiasyon → yağ dokusu, düz kas ve anormal damarların karışımından oluşan hamartom. Anormal damarlar esnek duvardan yoksundur (anevrizma riski) → Wunderlich sendromu (spontan retroperitoneal kanama). Fat-poor AML: Düz kas baskın, TSC bağlantısı sık.",
+        "references": [
+            "Israel GM, Bosniak MA. Renal imaging for diagnosis and staging of renal cell carcinoma. Urol Clin North Am. 2003;30(3):499-514.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Renal angiomyolipoma"
+        ]
     },
     {
         "id": "simple_renal_cyst",
@@ -169,7 +180,12 @@ export const kidneyPathologies: Pathology[] = [
             "Hyperdense cyst: >20 HU but no enhancement - Bosniak II.",
             "Follow-up required: Only for Bosniak IIF and above."
         ],
-        "mechanism": "Renal tübülün fokal dilatasyon ve obstrüksiyonu → sıvı birikimi → kistik yapı. Edinsel kistler: Kronik renal hasarda tübüler atrofi ve fibröz bağ doku baskısıyla gelişir. Sıvı saf transüda (proteinsiz) olduğu için 0-20 HU, T2'de BOS benzeri çok parlak sinyal verir. Kontrastlanma olmaması, duvar ve içerik normalliği = benign."
+        "mechanism": "Renal tübülün fokal dilatasyon ve obstrüksiyonu → sıvı birikimi → kistik yapı. Edinsel kistler: Kronik renal hasarda tübüler atrofi ve fibröz bağ doku baskısıyla gelişir. Sıvı saf transüda (proteinsiz) olduğu için 0-20 HU, T2'de BOS benzeri çok parlak sinyal verir. Kontrastlanma olmaması, duvar ve içerik normalliği = benign.",
+        "references": [
+            "Silverman SG et al. Bosniak Classification of Cystic Renal Masses, Version 2019. Radiology. 2019;292(2):475-488.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Simple renal cyst"
+        ]
     },
     {
         "id": "bosniak_classification",
@@ -213,7 +229,13 @@ export const kidneyPathologies: Pathology[] = [
             "Bosniak III-IV: Surgery recommended (50-90% malignancy).",
             "2019 update: MRI findings incorporated."
         ],
-        "mechanism": "Basit kist zemininde oluşan komplikasyonlar (kanama, enfeksiyon, displazi) → kist duvarında kalınlaşma, septumasyon, kalsifikasyon veya solid komponent. Bosniak sınıflaması, kist duvar ve içerik özelliklerine göre malignite riskini katmanlara ayırır. Solid kontrastlanan komponent (Bosniak IV) kistik RCC için yüksek risk (%90) taşır."
+        "mechanism": "Basit kist zemininde oluşan komplikasyonlar (kanama, enfeksiyon, displazi) → kist duvarında kalınlaşma, septumasyon, kalsifikasyon veya solid komponent. Bosniak sınıflaması, kist duvar ve içerik özelliklerine göre malignite riskini katmanlara ayırır. Solid kontrastlanan komponent (Bosniak IV) kistik RCC için yüksek risk (%90) taşır.",
+        "references": [
+            "Bosniak MA. The Bosniak Renal Cyst Classification: 25 Years Later. Radiology. 2012;262(3):781-785.",
+            "Silverman SG et al. Bosniak Classification of Cystic Renal Masses, Version 2019. Radiology. 2019;292(2):475-488.",
+            "Israel GM, Bosniak MA. Renal imaging for diagnosis and staging of renal cell carcinoma. Urol Clin North Am. 2003;30(3):499-514.",
+            "Radiopaedia.org - Bosniak classification"
+        ]
     },
     {
         "id": "acute_pyelonephritis",
@@ -267,7 +289,12 @@ export const kidneyPathologies: Pathology[] = [
             "Emphysematous pyelonephritis: Intraparenchymal gas (DM, emergency).",
             "Clinical + urine + imaging = Diagnosis. CT for complications."
         ],
-        "mechanism": "E. coli (%80+) alt üriner yoldan renal pelvise çıkan enfeksiyon → tübüler epitel tutulumu → nötrofil infiltrasyonu ve ödem. Tübüler ödem, kontrast ajanlı BT'de tübülden geçişi yavaşlatır → striated nefrogram (hipoperfüze alanlar ile normoperfüze alanların radyal şerit paterni). Amfizematoz tip: Gaz üreten bakteriler (Klebsiella, E. coli) + diyabetik mikrovasküler hasar → intraparankimal gaz birikimi."
+        "mechanism": "E. coli (%80+) alt üriner yoldan renal pelvise çıkan enfeksiyon → tübüler epitel tutulumu → nötrofil infiltrasyonu ve ödem. Tübüler ödem, kontrast ajanlı BT'de tübülden geçişi yavaşlatır → striated nefrogram (hipoperfüze alanlar ile normoperfüze alanların radyal şerit paterni). Amfizematoz tip: Gaz üreten bakteriler (Klebsiella, E. coli) + diyabetik mikrovasküler hasar → intraparankimal gaz birikimi.",
+        "references": [
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Acute Pyelonephritis. American College of Radiology.",
+            "Radiopaedia.org - Acute pyelonephritis"
+        ]
     },
     {
         "id": "nephrolithiasis",
@@ -319,7 +346,12 @@ export const kidneyPathologies: Pathology[] = [
             "Uric acid stones: Lower HU (<600), response to medical therapy.",
             "'Rim sign': Soft tissue around ureteral stone - Distinguishes from phlebolith."
         ],
-        "mechanism": "İdrar supersatürasyonu → kristal nükleasyonu → taş büyümesi. Kalsiyum oksalat: Hiperoksalüri veya hiperkalsiüri. Ürik asit: Asidik idrar (pH <5.5) + hiperurisemi. Struvit (magnezyum amonyum fosfat): Üreaz (+) bakteri enfeksiyonu (Proteus, Klebsiella) → amonyak → alkali idrar. Sistin: Sistinopatide tübüler reabsorbsiyon bozukluğu. BT'de HU değeri taş kompozisyonunu yansıtır."
+        "mechanism": "İdrar supersatürasyonu → kristal nükleasyonu → taş büyümesi. Kalsiyum oksalat: Hiperoksalüri veya hiperkalsiüri. Ürik asit: Asidik idrar (pH <5.5) + hiperurisemi. Struvit (magnezyum amonyum fosfat): Üreaz (+) bakteri enfeksiyonu (Proteus, Klebsiella) → amonyak → alkali idrar. Sistin: Sistinopatide tübüler reabsorbsiyon bozukluğu. BT'de HU değeri taş kompozisyonunu yansıtır.",
+        "references": [
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Acute Onset Flank Pain — Suspicion of Stone Disease. American College of Radiology.",
+            "Radiopaedia.org - Nephrolithiasis"
+        ]
     },
     {
         "id": "renal_oncocytoma",
@@ -355,6 +387,11 @@ export const kidneyPathologies: Pathology[] = [
             "Second most common benign renal tumor (after AML).",
             "Definitive distinction from RCC is difficult with imaging, usually diagnosed post-surgery.",
             "Central scar can also be seen in RCC (Necrosis), but is more regular in oncocytoma."
+        ],
+        "references": [
+            "Israel GM, Bosniak MA. Renal imaging for diagnosis and staging of renal cell carcinoma. Urol Clin North Am. 2003;30(3):499-514.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Renal oncocytoma"
         ]
     },
     {
@@ -395,6 +432,11 @@ export const kidneyPathologies: Pathology[] = [
             "Frequent association with bladder cancer (Multifocality - Field defect).",
             "Hematuria is the most common symptom.",
             "Distinction from RCC: Does not distort kidney contour (central location), fills collecting system without invading parenchyma."
+        ],
+        "references": [
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Hematuria. American College of Radiology.",
+            "Radiopaedia.org - Transitional cell carcinoma of the renal pelvis"
         ]
     },
     {
@@ -451,7 +493,12 @@ export const kidneyPathologies: Pathology[] = [
         "etiology": "Taş (üreteral), Ürotelyal tümör, Dıştan bası (over/uterus tümörü, retroperitoneal kitle), UPJ darlığı, Prostat hipertrofisi/karsinomu, Retroperitoneal fibrozis.",
         "differentialDiagnosis": ["Parapelvik Kist (USG'de anekojenik — ama kaliksler normal)", "Megakaliks (Anatomik varyasyon)", "Yalancı Hidronefroz (Dolu mesane, aşırı hidrasyon)"],
         "goldStandard": "USG (ilk basamak) + BT Ürografi (etiyoloji). Fonksiyon değerlendirmesi: DMSA/MAG3 sintigrafisi.",
-        "clinicalPearl": "USG'de toplayıcı sistem genişlemesi görüldüğünde MUTLAKA üreter ve mesane değerlendir — taşı kaçırma. RI >0.70 obstrüksiyonu kanıtlar."
+        "clinicalPearl": "USG'de toplayıcı sistem genişlemesi görüldüğünde MUTLAKA üreter ve mesane değerlendir — taşı kaçırma. RI >0.70 obstrüksiyonu kanıtlar.",
+        "references": [
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Acute Onset Flank Pain — Suspicion of Stone Disease. American College of Radiology.",
+            "Radiopaedia.org - Hydronephrosis"
+        ]
     },
     {
         "id": "adpkd",
@@ -509,7 +556,12 @@ export const kidneyPathologies: Pathology[] = [
         "etiology": "PKD1 gen mutasyonu (kr. 16) %85; PKD2 (kr. 4) %15. PKD1: Daha ağır hastalık, erken ESRD.",
         "differentialDiagnosis": ["Otozomal Resesif PKD (Çocukluk, daha ağır)", "Von Hippel-Lindau (RCC + nöroblastom + hemanjioblastom)", "Multipl Basit Kistler (ADPKD'ye göre sayıca az, böbrek boyutu normal)", "Medüller Kistik Böbrek (Farklı genetik, küçük böbrek)"],
         "goldStandard": "Aile öyküsü + USG (Ravine kriterleri). Genetik test: Tanı belirsizliğinde (PKD1/2 dizi analizi).",
-        "clinicalPearl": "Genç hipertansif hasta + bilateral büyümüş böbrekler + karaciğer kistleri = ADPKD. Aile öyküsünde intrakraniyal anevrizma varsa MRA taraması yap."
+        "clinicalPearl": "Genç hipertansif hasta + bilateral büyümüş böbrekler + karaciğer kistleri = ADPKD. Aile öyküsünde intrakraniyal anevrizma varsa MRA taraması yap.",
+        "references": [
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Silverman SG et al. Bosniak Classification of Cystic Renal Masses, Version 2019. Radiology. 2019;292(2):475-488.",
+            "Radiopaedia.org - Autosomal dominant polycystic kidney disease"
+        ]
     },
     {
         "id": "renal_infarction",
@@ -567,6 +619,11 @@ export const kidneyPathologies: Pathology[] = [
         "etiology": "Atriyal fibrilasyon (kardiyoembolik), Aort diseksiyonu, Trombotik hastalıklar (antifosfolipid sendromu), Vaskülit, Travma, İatrojenik (anjiyografi komplikasyonu).",
         "differentialDiagnosis": ["Pyelonefrit (Stranding + ateş, kama şekilli ama kontrastlanır)", "Renal Hücreli Karsinom (Kitlesel, heterojen kontrastlanma)", "Lenfoma (Difüz parankimal tutulum)"],
         "goldStandard": "BT Anjiografi: İnfarkt alanı + renal arterin değerlendirmesi. DWI + MRA: Radyasyon kullanmak istenmediğinde.",
-        "clinicalPearl": "AF öyküsü + ani yan ağrısı + idrarda kan + BT'de kama defekti = Renal emboli. Korteks işareti subakut evrede izlenir (acil BT'de olmayabilir)."
+        "clinicalPearl": "AF öyküsü + ani yan ağrısı + idrarda kan + BT'de kama defekti = Renal emboli. Korteks işareti subakut evrede izlenir (acil BT'de olmayabilir).",
+        "references": [
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Renal Vascular Disease. American College of Radiology.",
+            "Radiopaedia.org - Renal infarction"
+        ]
     }
 ];

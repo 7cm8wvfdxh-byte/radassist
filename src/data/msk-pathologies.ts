@@ -25,7 +25,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Sporla ilişkili travma (%70+). Pivot-shift mekanizması: Valgus + iç rotasyon + hiperekstansiyon. Kadınlarda 2-8× daha sık (hormonal/anatomik — dar interkondiler notch, artmış Q açısı).",
         differentialDiagnosis: ["PCL Yırtığı (Posterior çekmece testi +)", "Posterolateral Köşe Yaralanması", "MCL Yırtığı (Eşlik edebilir — O'Donoghue triadı)", "Menisküs Yırtığı"],
         goldStandard: "MRI (Duyarlılık %95+). Sagittal T2 FSE/PD sekanslar ligaman bütünlüğünü en iyi gösterir.",
-        clinicalPearl: "O'Donoghue'nun mutsuz üçlüsü: ACL + MCL + Medial menisküs yırtığı. Segond kırığı (lateral tibial platoda avülsiyon) = Patolojik ACL yırtığı bulgusu."
+        clinicalPearl: "O'Donoghue'nun mutsuz üçlüsü: ACL + MCL + Medial menisküs yırtığı. Segond kırığı (lateral tibial platoda avülsiyon) = Patolojik ACL yırtığı bulgusu.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "ACR Appropriateness Criteria: Acute Trauma to the Knee. American College of Radiology; 2020.",
+            "Radiopaedia.org - Anterior cruciate ligament tear"
+        ]
     },
     {
         id: "meniscus-bucket-handle",
@@ -49,7 +55,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Aksiyel yük altında diz rotasyonu (spor, travma). Medial menisküs lateral menisküsten 10× daha sık bucket-handle yırtığı gösterir (MCL'ye yapışık olması nedeniyle mobilite kısıtlı).",
         differentialDiagnosis: ["Radyal Menisküs Yırtığı", "Horizontal Menisküs Yırtığı", "Meniskokapsuler Ayrılma", "Displaced Flap Yırtık"],
         goldStandard: "MRI (Sagittal + Koronal PD-FS). Absent bow tie sign sagittal kesitte 2'den az üçgen görülmesiyle tanı konur.",
-        clinicalPearl: "Double PCL sign: Deplase menisküs fragmanı PCL'nin önünde ikinci bir bant olarak görülür — bucket-handle yırtığı için patognomik MRI bulgusu."
+        clinicalPearl: "Double PCL sign: Deplase menisküs fragmanı PCL'nin önünde ikinci bir bant olarak görülür — bucket-handle yırtığı için patognomik MRI bulgusu.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Bucket handle meniscal tear"
+        ]
     },
     {
         id: "rotator-cuff-supraspinatus",
@@ -81,7 +93,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Kronik subakromial sıkışma (impingement) + yaşa bağlı dejenerasyon. 40 yaş üstü prevalans artar. Akut: Düşme veya ağırlık kaldırma. Tip III akromion (çengel şekilli) predispozan faktör.",
         differentialDiagnosis: ["Subakromial Bursit", "Kalsifik Tendinit", "Frozen Shoulder (Adheziv Kapsülit)", "Labral Yırtık (SLAP)"],
         goldStandard: "MRI (Koronal oblik T2 FS). Goutallier sınıflaması (T1 sagittal) kas yağlanmasını değerlendirir. USG deneyimli ellerde eşdeğer duyarlılığa sahiptir.",
-        clinicalPearl: "Goutallier Grade ≥2 (kas ≤ yağ) = Cerrahi onarım sonrası kötü prognoz. Tendon retraksiyonu glenoid seviyesine ulaştıysa irreparabl kabul edilir."
+        clinicalPearl: "Goutallier Grade ≥2 (kas ≤ yağ) = Cerrahi onarım sonrası kötü prognoz. Tendon retraksiyonu glenoid seviyesine ulaştıysa irreparabl kabul edilir.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "Goutallier D, Postel JM, Bernageau J, et al. Fatty muscle degeneration in cuff ruptures. Clin Orthop Relat Res. 1994;(304):78-83.",
+            "ACR Appropriateness Criteria: Shoulder Pain - Atraumatic. American College of Radiology; 2018."
+        ]
     },
     {
         id: "bankart-lesion",
@@ -105,7 +123,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Anteriora travmatik omuz dislokasyonu (%95). İlk dislokasyondan sonra rekürrens oranı genç hastalarda (%80-90) çok yüksektir. Kontakt sporlar (futbol, güreş) ve düşme en sık mekanizma.",
         differentialDiagnosis: ["SLAP Lezyonu (Süperior labrum — farklı lokalizasyon)", "ALPSA (Anterior Labroligamentöz Periosteal Sleeve Avülsiyonu)", "GLAD Lezyonu (Glenoid kıkırdak defekti)", "HAGL (Humerus tarafında avülsiyon)"],
         goldStandard: "MR Artrografi (MRA). İntraartiküler gadolinyum labral yırtığı %90+ duyarlılıkla gösterir. Konvansiyonel MRI duyarlılığı daha düşüktür.",
-        clinicalPearl: "Engaging Hill-Sachs: Humerus başı defektinin glenoid kenarla etkileşmesi → cerrahi onarım gerekli (Latarjet prosedürü). Kemik kaybı >%25 glenoid → tek başına Bankart onarımı yetersiz."
+        clinicalPearl: "Engaging Hill-Sachs: Humerus başı defektinin glenoid kenarla etkileşmesi → cerrahi onarım gerekli (Latarjet prosedürü). Kemik kaybı >%25 glenoid → tek başına Bankart onarımı yetersiz.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Bankart lesion"
+        ]
     },
     {
         id: "baker-cyst",
@@ -135,7 +159,12 @@ export const mskPathologies: Pathology[] = [
         etiology: "Sekonder: Diz eklem patolojisi (menisküs yırtığı, OA, RA) → kronik efüzyon → kist oluşumu. Primer (nadir): Çocuklarda eklem patolojisi olmadan. Kadınlarda daha sık.",
         differentialDiagnosis: ["DVT (Derin Ven Trombozu — rüptüre Baker kistini taklit eder)", "Popliteal Arter Anevrizması", "Ganglion Kisti", "Sinovyal Sarkom (Solid komponent, kontrastlanma)"],
         goldStandard: "USG (İlk tercih — dinamik değerlendirme, boyun yapısı). MRI altta yatan eklem patolojisini (menisküs yırtığı) gösterir.",
-        clinicalPearl: "Rüptüre Baker kisti = Psödotromboflebit sendromu: Baldırda ağrı, şişlik, DVT taklidi. USG ile ayırıcı tanı kritiktir — gereksiz antikoagülan tedaviden kaçınılır."
+        clinicalPearl: "Rüptüre Baker kisti = Psödotromboflebit sendromu: Baldırda ağrı, şişlik, DVT taklidi. USG ile ayırıcı tanı kritiktir — gereksiz antikoagülan tedaviden kaçınılır.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "Radiopaedia.org - Baker cyst"
+        ]
     },
     {
         id: "achilles-rupture",
@@ -165,7 +194,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Akut eksantrik kasılma (sprint, merdiven atlama). 30-50 yaş erkeklerde sık ('Weekend warrior'). Fluorokinolon antibiyotikler, steroid kullanımı, kronik tendinopatisi predispozan. Hipovasküleer watershed bölge (kalkaneusun 2-6cm proksimali).",
         differentialDiagnosis: ["Plantaris Tendon Rüptürü (Klinik benzer, daha hafif)", "Aşil Tendinopatisi (Parsiyel yırtık)", "Derin Ven Trombozu (Baldır ağrısı)", "Gastroknemius Yırtığı (Tennis Leg)"],
         goldStandard: "USG (Dinamik Thompson testi ile real-time değerlendirme — duyarlılık %95+). MRI parsiyel/tam yırtık ayrımı ve cerrahi planlama için.",
-        clinicalPearl: "Thompson testi: Baldır sıkılması → ayak plantar fleksiyonu olmalı. Yanıt yoksa tam rüptür. Fluorokinolon kullanan hastada bilateral rüptür riski hatırlanmalı!"
+        clinicalPearl: "Thompson testi: Baldır sıkılması → ayak plantar fleksiyonu olmalı. Yanıt yoksa tam rüptür. Fluorokinolon kullanan hastada bilateral rüptür riski hatırlanmalı!",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "ACR Appropriateness Criteria: Acute Trauma to the Foot. American College of Radiology; 2020.",
+            "Radiopaedia.org - Achilles tendon rupture"
+        ]
     },
     {
         id: "achilles-tendinopathy",
@@ -197,7 +232,12 @@ export const mskPathologies: Pathology[] = [
         etiology: "Kronik aşırı kullanım (koşu, uzun mesafe yürüyüş). Uygunsuz ayakkabı, ani antrenman artışı. Fluorokinolon, steroid. Obezite, diyabet, hiperlipidemi → tendon dejenerasyonunu hızlandırır.",
         differentialDiagnosis: ["Aşil Tendon Parsiyel Yırtığı", "Retrocalcaneal Bursit", "Haglund Deformitesi (Pompa çıkıntısı)", "Plantaris Sendromu"],
         goldStandard: "USG (Dinamik değerlendirme + Doppler neovaskülarizasyon). MRI kalınlık, intrasubstans değişiklik ve parsiyel yırtık değerlendirmesinde üstün.",
-        clinicalPearl: "İnsersiyonel vs non-insersiyonel tendinopati ayrımı tedaviyi yönlendirir. İnsersiyonel: Kalkaneusa yapışma yerinde → eksantrik egzersizler kontrendike. Neovaskülarizasyon = Ağrı korelasyonu (Öhberg)."
+        clinicalPearl: "İnsersiyonel vs non-insersiyonel tendinopati ayrımı tedaviyi yönlendirir. İnsersiyonel: Kalkaneusa yapışma yerinde → eksantrik egzersizler kontrendike. Neovaskülarizasyon = Ağrı korelasyonu (Öhberg).",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "Radiopaedia.org - Achilles tendinopathy"
+        ]
     },
     {
         id: "lateral-epicondylitis",
@@ -229,7 +269,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Tekrarlayan el bileği ekstansiyon/supinasyon aktivitesi (tenis backhand, bilgisayar kullanımı, vida çevirme). 35-55 yaş arası sık. Dominant kolda 2× daha fazla. Tendinozis (dejenerasyon) esas patolojidir.",
         differentialDiagnosis: ["Radyal Tünel Sendromu (Posterior interosseöz sinir sıkışması)", "Lateral Kollateral Ligaman Yırtığı", "Radyokapitaller Artrit", "Servikal Radikülopati (C6-C7)"],
         goldStandard: "USG (İlk tercih — yüksek rezolüsyon, dinamik değerlendirme, girişimsel rehberlik). MRI şüpheli olgularda ve cerrahi planlama öncesi.",
-        clinicalPearl: "ECRB (Ekstansör Karpi Radialis Brevis) en sık tutulan tendondur — diğer ekstansörlerden daha derin yerleşimli ve epikondile en yakın yapışma yeri. Cozen testi: Dirseğe karşı el bileği ekstansiyonunda ağrı."
+        clinicalPearl: "ECRB (Ekstansör Karpi Radialis Brevis) en sık tutulan tendondur — diğer ekstansörlerden daha derin yerleşimli ve epikondile en yakın yapışma yeri. Cozen testi: Dirseğe karşı el bileği ekstansiyonunda ağrı.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Lateral epicondylitis"
+        ]
     },
     {
         id: "de-quervain-tenosynovitis",
@@ -261,7 +307,12 @@ export const mskPathologies: Pathology[] = [
         etiology: "Tekrarlayan ulnar deviasyon + fleksiyon (yeni anneler — bebek kucaklama, müzisyenler, yazarlar). Hormonal değişiklikler (postpartum, OKS). Kadınlarda 6× daha sık.",
         differentialDiagnosis: ["Radyal Stiloid Kırığı", "1. CMC Eklem Artriti (Bazal Başparmak Artriti)", "İnterseksiyon Sendromu (2. kompartman)", "Wartenberg Sendromu (Radyal sinir sıkışması)"],
         goldStandard: "USG (Yüksek çözünürlüklü — tendon kılıf sıvısı, kalınlaşma, septum varlığı değerlendirilir). MRI nadiren gerekli.",
-        clinicalPearl: "Anatomik varyant: EPB için ayrı bir kompartman (septum) varlığı cerrahi dekompresyonda atlanırsa rekürrens nedenidir. USG ile ameliyat öncesi septum tespiti kritiktir."
+        clinicalPearl: "Anatomik varyant: EPB için ayrı bir kompartman (septum) varlığı cerrahi dekompresyonda atlanırsa rekürrens nedenidir. USG ile ameliyat öncesi septum tespiti kritiktir.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "Radiopaedia.org - De Quervain tenosynovitis"
+        ]
     },
     {
         id: "patellar-tendinopathy",
@@ -293,7 +344,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Atlama sporları (voleybol, basketbol). Tekrarlayan kuadriseps eksantrik kasılması → patellar tendon proksimal insertio hasarı. Adölesanlar ve genç sporcularda sık.",
         differentialDiagnosis: ["Osgood-Schlatter Hastalığı (Tibial tüberkül apofiziti)", "Sinding-Larsen-Johansson (Patellanın alt kutbu — çocuklarda)", "Hoffa Hastalığı (İnfrapatellar yağ yastığı impingement)", "Kuadriseps Tendinopatisi"],
         goldStandard: "USG (Dinamik değerlendirme + Doppler neovaskülarizasyon). MRI intrasubstans değişiklik ve parsiyel yırtık ayrımında üstün.",
-        clinicalPearl: "Victorian Institute of Sport Assessment (VISA-P) skoru klinik şiddeti objektifleştirir. Doppler neovaskülarizasyon varlığı ağrı ile koreledir ve sklerozan tedavi/PRP hedefini belirler."
+        clinicalPearl: "Victorian Institute of Sport Assessment (VISA-P) skoru klinik şiddeti objektifleştirir. Doppler neovaskülarizasyon varlığı ağrı ile koreledir ve sklerozan tedavi/PRP hedefini belirler.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "ACR Appropriateness Criteria: Chronic Knee Pain. American College of Radiology; 2018.",
+            "Radiopaedia.org - Patellar tendinopathy"
+        ]
     },
     {
         id: "avascular-necrosis-hip",
@@ -321,7 +378,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Steroid kullanımı (en sık), alkol, orak hücreli anemi (SCA), dalış hastalığı (dekompresyon), SLE, radyasyon, idiyopatik. Bilateral tutulum %50-80.",
         differentialDiagnosis: ["Geçici Osteoporoz (Bone Marrow Edema Sendromu — reversibl)", "Subkondral Yetersizlik Kırığı", "Septik Artrit", "Femur Başı Stres Kırığı"],
         goldStandard: "MRI (T1 + T2/STIR — Duyarlılık %99). Ficat-Arlet veya Steinberg sınıflaması. X-Ray erken evrede normal olabilir (Evre 0-I).",
-        clinicalPearl: "Double-Line Sign (T2'de): İç hat = Skleroz (hipointens) + dış hat = Granülasyon dokusu (hiperintens) — AVN için PATOGNOMONİK. Karşı kalça da mutlaka taranmalı (%50-80 bilateral)."
+        clinicalPearl: "Double-Line Sign (T2'de): İç hat = Skleroz (hipointens) + dış hat = Granülasyon dokusu (hiperintens) — AVN için PATOGNOMONİK. Karşı kalça da mutlaka taranmalı (%50-80 bilateral).",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "Ficat RP. Idiopathic bone necrosis of the femoral head. J Bone Joint Surg Br. 1985;67(1):3-9.",
+            "Radiopaedia.org - Avascular necrosis of the femoral head"
+        ]
     },
     {
         id: "stress-fracture",
@@ -355,7 +418,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Tekrarlayan submaksimal yük (koşu, marş, dans). Kadın atlet triadı (amenore, düşük enerji, osteoporoz). Ani antrenman artışı. Yetersizlik kırığı: Osteoporotik kemik, normal yük.",
         differentialDiagnosis: ["Osteoid Osteom (Gece ağrısı, aspirinle azalır)", "Osteomiyelit (Ateş, CRP artışı)", "Ewing Sarkomu (Periosteal reaksiyon + yumuşak doku kitlesi)", "Kemik İliği Ödemi Sendromu"],
         goldStandard: "MRI (Duyarlılık %99 — X-Ray'den 2-4 hafta önce bulgu verir). T1 hipointens kırık hattı + STIR hiperintens ödem tanı koydurucudur.",
-        clinicalPearl: "Fredericson MRI evrelemesi (Grade 1-4): Grade 4 = Kırık hattı görülür → yük verme kısıtlanır. 'Dreaded Black Line' (Tibia ön korteks): Yavaş iyileşen, non-union riski yüksek stres kırığı."
+        clinicalPearl: "Fredericson MRI evrelemesi (Grade 1-4): Grade 4 = Kırık hattı görülür → yük verme kısıtlanır. 'Dreaded Black Line' (Tibia ön korteks): Yavaş iyileşen, non-union riski yüksek stres kırığı.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Fredericson M, Bergman AG, Hoffman KL, et al. Tibial stress reaction in runners: correlation of clinical symptoms and scintigraphy with a new MRI grading system. Am J Sports Med. 1995;23(4):472-481.",
+            "ACR Appropriateness Criteria: Stress/Insufficiency Fracture. American College of Radiology; 2017.",
+            "Radiopaedia.org - Stress fracture"
+        ]
     },
     {
         id: "hip-labral-tear",
@@ -381,7 +450,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "FAI (Femoroacetabüler İmpingement): Cam (asferik femur başı) veya Pincer (asetabüler over-coverage). Spor travması. Kalça displazisi. Kadınlarda daha sık (%65).",
         differentialDiagnosis: ["Kalça OA (Dejeneratif — eklem aralığı daralması)", "İliopsoas Bursit/Snapping Hip", "Ligamentum Teres Yırtığı", "Stres Kırığı (Femur boynu)"],
         goldStandard: "MR Artrografi (MRA — Duyarlılık %90+). İntraartiküler gadolinyum labral yırtık içine girerek görünür kılar. Konvansiyonel MRI duyarlılığı düşüktür (%60-70).",
-        clinicalPearl: "Alpha açısı >55° = Cam deformitesi. Lateral CE açısı >40° = Pincer. Anterosüperior labrum en sık yırtık bölgesi (%90). FABER ve FADDIR testleri klinik değerlendirmede kullanılır."
+        clinicalPearl: "Alpha açısı >55° = Cam deformitesi. Lateral CE açısı >40° = Pincer. Anterosüperior labrum en sık yırtık bölgesi (%90). FABER ve FADDIR testleri klinik değerlendirmede kullanılır.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "ACR Appropriateness Criteria: Chronic Hip Pain. American College of Radiology; 2018.",
+            "Radiopaedia.org - Hip labral tear"
+        ]
     },
     {
         id: "osteosarcoma",
@@ -431,7 +506,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Sporadik (en sık). Risk: Retinoblastom (Rb mutasyonu), Li-Fraumeni (p53), Paget hastalığı, Radyasyon.",
         differentialDiagnosis: ["Ewing Sarkomu (Soğan zarı periosteal reaksiyon, diafizer, 5-15 yaş)", "Kondrosarkom (Kıkırdak matriksi, daha yaşlı hastalar)", "Osteomiyelit (Periosteal reaksiyon benzerliği)", "Anevrizmal Kemik Kisti (Sıvı-sıvı seviyeleri)"],
         goldStandard: "Röntgen (İlk değerlendirme — Codman üçgeni + sunburst). MRI lokal evreleme (skip metastaz, nörovasküler tutulum). BT akciğer metastaz taraması.",
-        clinicalPearl: "Osteosarkom üçgeni: Distal femur + Proksimal tibia + Proksimal humerus → tüm osteosarkomların %75'i. Neoadjuvan kemoterapi sonrası MRI'da nekroz oranı (%90+) = İyi prognoz (Huvos Grade III-IV)."
+        clinicalPearl: "Osteosarkom üçgeni: Distal femur + Proksimal tibia + Proksimal humerus → tüm osteosarkomların %75'i. Neoadjuvan kemoterapi sonrası MRI'da nekroz oranı (%90+) = İyi prognoz (Huvos Grade III-IV).",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Primary Bone Tumors. American College of Radiology; 2020.",
+            "Radiopaedia.org - Osteosarcoma"
+        ]
     },
     {
         id: "bone-metastasis",
@@ -481,7 +562,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Meme, Akciğer, Prostat, Böbrek, Tiroid (%80 vakası).",
         differentialDiagnosis: ["Multipl Miyelom (Yağmur damlası litik lezyonlar, M-spike)", "Lenfoma (Kemik tutulumu — ivory vertebra)", "Primer Kemik Tümörleri (Osteosarkom, Ewing)", "Fibröz Displazi (Benign — ground glass görünüm)"],
         goldStandard: "Tüm vücut MRI (DWIBS) veya PET-CT (Duyarlılık %95+). Omurga MRI T1-STIR: Normal yağlı kemik iliğinin replasmanı erken saptanır.",
-        clinicalPearl: "Litik: Akciğer, Böbrek, Tiroid ('Lobo Birası Tipi' — çok kanlı). Sklerotik: Prostat, Meme (nadir). Mirelsin skoru ≥9 = Profilaktik fiksasyon (Patolojik kırık riski yüksek)."
+        clinicalPearl: "Litik: Akciğer, Böbrek, Tiroid ('Lobo Birası Tipi' — çok kanlı). Sklerotik: Prostat, Meme (nadir). Mirelsin skoru ≥9 = Profilaktik fiksasyon (Patolojik kırık riski yüksek).",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Bone Metastases. American College of Radiology; 2020.",
+            "Radiopaedia.org - Bone metastases"
+        ]
     },
     {
         id: "acute-osteomyelitis",
@@ -531,7 +618,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Stafilokokus aureus (%90). MRSA giderek artan. Diyabetik ayak: Polimikrobiyal. Orak hücreli anemi: Salmonella.",
         differentialDiagnosis: ["Ewing Sarkomu (Soğan zarı periosteal reaksiyon — osteomiyeliti taklit eder!)", "Langerhans Hücre Histiyositozu", "Stres Kırığı (Kemik iliği ödemi)", "Charcot Artropatisi (Diyabetik ayak)"],
         goldStandard: "MRI (Duyarlılık %90-100). T1 hipointens kemik iliği + STIR hiperintens ödem + kontrastlı rim apse = Tanısal. Kemik biyopsi kültürü kesin tanı.",
-        clinicalPearl: "Penumbra sign (MRI): T1 kontrastlı — apse çeperinin iç kenarında hiperintens halka. Brodie apsesi: Subakut osteomiyelitin lokalize formu (metafizer sklerotik sınırlı lezyon). Diyabetik ayakta: T1 sinyal düşüklüğü kortkese ulaşmışsa osteomiyelit tanısaldır."
+        clinicalPearl: "Penumbra sign (MRI): T1 kontrastlı — apse çeperinin iç kenarında hiperintens halka. Brodie apsesi: Subakut osteomiyelitin lokalize formu (metafizer sklerotik sınırlı lezyon). Diyabetik ayakta: T1 sinyal düşüklüğü kortkese ulaşmışsa osteomiyelit tanısaldır.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "ACR Appropriateness Criteria: Suspected Osteomyelitis. American College of Radiology; 2020.",
+            "Radiopaedia.org - Acute osteomyelitis"
+        ]
     },
     {
         id: "plantar-fasciitis",
@@ -587,6 +680,12 @@ export const mskPathologies: Pathology[] = [
         etiology: "Uzun süre ayakta durma, koşu, obezite, pes planus/kavus, uygunsuz ayakkabı, kısa Aşil tendonu.",
         differentialDiagnosis: ["Kalkaneal Stres Kırığı (MRI'da bant şekilli ödem)", "Tarsal Tünel Sendromu (Tibial sinir sıkışması)", "Fat Pad Atrofisi (Topuk yağ yastığı incelmesi)", "Aşil Tendinopati (Posterior topuk ağrısı — farklı lokalizasyon)"],
         goldStandard: "USG (İlk tercih — Fasya kalınlığı >4mm + hipoekojenite = tanısal). MRI dirençli/atipik olgularda ve ayırıcı tanıda.",
-        clinicalPearl: "Plantar fasya kalınlığı: Normal <4mm, Patolojik >4mm. Kalkaneal spur (çıkıntı) = İnsidental bulgu, PF tanısı koymaz! Sabah ilk adımda şiddetli ağrı → gün içinde azalma = Tipik klinik patern."
+        clinicalPearl: "Plantar fasya kalınlığı: Normal <4mm, Patolojik >4mm. Kalkaneal spur (çıkıntı) = İnsidental bulgu, PF tanısı koymaz! Sabah ilk adımda şiddetli ağrı → gün içinde azalma = Tipik klinik patern.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "ACR Appropriateness Criteria: Chronic Foot Pain. American College of Radiology; 2018.",
+            "Radiopaedia.org - Plantar fasciitis"
+        ]
     }
 ];

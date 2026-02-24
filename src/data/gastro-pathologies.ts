@@ -32,7 +32,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "Fekalit obstrüksiyonu (en sık), lenfoid hiperplazi (çocuklarda), parazitler, appendiküler tümör (karsinoid — nadir). Genç erişkinlerde pik insidans (10-30 yaş).",
         differentialDiagnosis: ["Mezenterik Lenfadenit (Viral — çocuklarda)", "Over Kist Rüptürü/Torsiyonu (Kadınlarda)", "Crohn Hastalığı (Terminal ileit)", "Sağ Üreter Taşı (Kolik ağrı)"],
         goldStandard: "BT (Duyarlılık %95+). Çocuklarda ve hamilelerde: USG ilk tercih (Graded compression tekniği).",
-        clinicalPearl: "Arrowhead sign: Çekum tabanında kontrastlanan fokal kalınlaşma → obstrükte appendiks orifisi. Appendikolit varlığı perforasyon riskini artırır (%50+)."
+        clinicalPearl: "Arrowhead sign: Çekum tabanında kontrastlanan fokal kalınlaşma → obstrükte appendiks orifisi. Appendikolit varlığı perforasyon riskini artırır (%50+).",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "ACR Appropriateness Criteria: Right Lower Quadrant Pain. American College of Radiology; 2018.",
+            "Defined Defined",
+            "Radiopaedia.org - Acute appendicitis"
+        ]
     },
     {
         id: "acute-diverticulitis",
@@ -62,7 +68,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "Düşük lifli diyet, yaşlanma (>60 yaş %50+), obezite, sedanter yaşam. Sigmoid kolon en sık tutulan bölge (%95 Batı toplumları). Sağ kolon: Asya toplumlarında daha sık.",
         differentialDiagnosis: ["Kolon Kanseri (Kronik divertikülit kanser riskini artırır!)", "Crohn Hastalığı (Segmental tutulum — benzer görünüm)", "Epiploik Appendajit (Fokal yağ nekrozu)", "Over Patolojisi (Sol taraf — kadınlarda)"],
         goldStandard: "BT (IV kontrast — Duyarlılık %95+). Kolonoskopi akut dönemde kontrendike (perforasyon riski), 6-8 hafta sonra yapılmalı.",
-        clinicalPearl: "Hinchey sınıflaması: I = Perikolik apse, II = Pelvik apse, III = Purülan peritonit, IV = Fekal peritonit. Hinchey III-IV = Acil cerrahi. 'Sol tarafın apandisiti' olarak bilinir."
+        clinicalPearl: "Hinchey sınıflaması: I = Perikolik apse, II = Pelvik apse, III = Purülan peritonit, IV = Fekal peritonit. Hinchey III-IV = Acil cerrahi. 'Sol tarafın apandisiti' olarak bilinir.",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "Hinchey EJ, Schaal PG, Richards GK. Treatment of perforated diverticular disease of the colon. Adv Surg. 1978;12:85-109.",
+            "ACR Appropriateness Criteria: Left Lower Quadrant Pain. American College of Radiology; 2018.",
+            "Radiopaedia.org - Acute diverticulitis"
+        ]
     },
     {
         id: "acute-pancreatitis",
@@ -101,7 +113,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "Safra taşı (%40), alkol (%30), hipertrigliseridemi, post-ERCP, ilaçlar (azatioprin, valproik asit), idiyopatik (%15-20).",
         differentialDiagnosis: ["Perfore Peptik Ülser (Serbest hava)", "SMA Trombozu (Mezenter iskemisi)", "Pankreas Karsinomu (Fokal kitle — PK'yi taklit edebilir)", "Otoimmün Pankreatit (IgG4 — 'sosis pankreas')"],
         goldStandard: "BT (İV kontrast, pankreatik faz — 72 saat sonra optimal). Balthazar/CTSI skoru ciddiyeti belirler. MRI/MRCP safra taşı etiyolojisinde üstün.",
-        clinicalPearl: "Erken BT (<72h) nekrozu hafife alır! BT 72-96. saatte çekilmeli. Nekroz >%30 = Ciddi pankreatit. Walled-off nekroz (WON): 4 hafta sonra enkapsüle olur → perkütan/endoskopik drenaj zamanlaması."
+        clinicalPearl: "Erken BT (<72h) nekrozu hafife alır! BT 72-96. saatte çekilmeli. Nekroz >%30 = Ciddi pankreatit. Walled-off nekroz (WON): 4 hafta sonra enkapsüle olur → perkütan/endoskopik drenaj zamanlaması.",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "Balthazar EJ. Acute pancreatitis: assessment of severity with clinical and CT evaluation. Radiology. 2002;223(3):603-613.",
+            "ACR Appropriateness Criteria: Acute Pancreatitis. American College of Radiology; 2019.",
+            "Radiopaedia.org - Acute pancreatitis"
+        ]
     },
     {
         id: "pancreatic-adenocarcinoma",
@@ -133,7 +151,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "Sigara (%25 risk artışı), kronik pankreatit, diyabet (yeni başlangıçlı), aile öyküsü, BRCA2 mutasyonu, Lynch sendromu. Ortalama tanı yaşı 70.",
         differentialDiagnosis: ["Kronik Pankreatit (Kalsifikasyonlar + atrofi)", "Otoimmün Pankreatit (IgG4 — steroid yanıtı)", "Nöroendokrin Tümör (Hipervasküler — arteriyel fazda kontrast tutar)", "Metastaz (Böbrek, melanom)"],
         goldStandard: "Pankreas protokolü BT (Çift fazlı — arteriyel + portal venöz). MRCP double duct sign'ı net gösterir. EUS + FNA kesin tanı.",
-        clinicalPearl: "Hipovasküler kitle = Adenokarsinom, Hipervasküler kitle = NET/Adacık hücre tümörü. SMA/SMV tutulumu >180° = Unresectable (Borderline resectable: 90-180°). Courvoisier yasası: Ağrısız sarılık + palpabl safra kesesi = Pankreas başı Ca."
+        clinicalPearl: "Hipovasküler kitle = Adenokarsinom, Hipervasküler kitle = NET/Adacık hücre tümörü. SMA/SMV tutulumu >180° = Unresectable (Borderline resectable: 90-180°). Courvoisier yasası: Ağrısız sarılık + palpabl safra kesesi = Pankreas başı Ca.",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "NCCN Clinical Practice Guidelines in Oncology: Pancreatic Adenocarcinoma. National Comprehensive Cancer Network; 2023.",
+            "ACR Appropriateness Criteria: Jaundice. American College of Radiology; 2019.",
+            "Radiopaedia.org - Pancreatic adenocarcinoma"
+        ]
     },
     {
         id: "crohn-disease",
@@ -163,7 +187,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "Multifaktöriyel: Genetik (NOD2/CARD15), çevresel (sigara riski artırır!), mikrobiyom disregülasyonu, otoimmün. Genç erişkinlerde pik (15-30 yaş). Kuzey Avrupa/Yahudi kökenli daha sık.",
         differentialDiagnosis: ["Ülseratif Kolit (Sadece mukozal, rektumdan başlar, sürekli tutulum)", "Bağırsak Tüberkülozu (Çekum — kazeöz granülom)", "Behçet Hastalığı (İleoçekal ülserler)", "İskemik Kolit (Yaşlı, watershed bölgeler)"],
         goldStandard: "MR Enterografi (MRE — Duyarlılık %85-90). Radyasyon yok, genç hastalarda ideal. BT Enterografi akut değerlendirmede alternatif.",
-        clinicalPearl: "Creeping fat: Crohn'a özgü — mezenter yağı bağırsağı sarar. Comb sign: Aktif inflamasyon → vasa recta belirginleşmesi (BT/MRI'da 'tarak' görünümü). String sign: İleri fibrotik darlık → baryumda ince lümen."
+        clinicalPearl: "Creeping fat: Crohn'a özgü — mezenter yağı bağırsağı sarar. Comb sign: Aktif inflamasyon → vasa recta belirginleşmesi (BT/MRI'da 'tarak' görünümü). String sign: İleri fibrotik darlık → baryumda ince lümen.",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "ACR Appropriateness Criteria: Crohn Disease. American College of Radiology; 2020.",
+            "Defined Defined",
+            "Radiopaedia.org - Crohn disease"
+        ]
     },
     {
         id: "bowel-obstruction",
@@ -193,7 +223,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "Yapışıklıklar/brid (%60-75 — önceki cerrahi), inguinal herni (%15), tümör (%10), Crohn hastalığı, volvülüs. Kolon obstrüksiyonunda en sık neden: Kolorektal kanser.",
         differentialDiagnosis: ["Paralitik İleus (Fonksiyonel — postoperatif, elektrolit bozukluğu)", "Oğmentöz Pseudo-Obstrüksiyon (Ogilvie)", "Mezenter İskemisi (Vasküler acil)", "İnternal Herni (Bariatrik cerrahi sonrası)"],
         goldStandard: "BT (İV kontrast — Duyarlılık %95+). Transition point (geçiş noktası) ve strangülasyon bulgularını (duvar kontrastlanma kaybı, mezenter ödem) gösterir.",
-        clinicalPearl: "Small bowel feces sign: Tıkanıklığın hemen proksimalinde bağırsak içeriğinin feçes benzeri görünmesi → geçiş noktasının yakınında olduğunu işaret eder. Closed loop: Bağırsak segmentinin her iki ucundan tıkanması → hızlı strangülasyon → acil cerrahi!"
+        clinicalPearl: "Small bowel feces sign: Tıkanıklığın hemen proksimalinde bağırsak içeriğinin feçes benzeri görünmesi → geçiş noktasının yakınında olduğunu işaret eder. Closed loop: Bağırsak segmentinin her iki ucundan tıkanması → hızlı strangülasyon → acil cerrahi!",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "ACR Appropriateness Criteria: Suspected Small Bowel Obstruction. American College of Radiology; 2019.",
+            "Defined Defined",
+            "Radiopaedia.org - Small bowel obstruction"
+        ]
     },
     {
         id: "colorectal-carcinoma",
@@ -223,7 +259,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "Sporadik (%70-80): Yaş >50, düşük lifli diyet, kırmızı et, obezite, sigara. Herediter: Lynch sendromu (MSI — %5), FAP (APC mutasyonu — %1). İnflamatuar: Uzun süreli ÜK/Crohn → displazi → kanser.",
         differentialDiagnosis: ["Divertikülit (Segmental kalınlaşma — akut inflamasyon)", "Lenfoma (Diffüz kalınlaşma, anevrizmik dilatasyon)", "Endometriozis (Rektosigmoid — siklik semptomlar)", "Kolon Metastazı (Nadir — melanom, meme)"],
         goldStandard: "Kolonoskopi + Biyopsi (Kesin tanı). BT evreleme (T, N, M). Rektal kanser: MRI lokal evreleme standardı (mezorektal fasya invazyonu).",
-        clinicalPearl: "Apple core sign: Baryumda veya BT'de lümenin konsantrik daralması → CRC için klasik. Rektal MRI'da CRM (Circumferential Resection Margin) >1mm = Negatif → cerrahi prognoz iyi. 50 yaş altı CRC artıyor → 'erken başlangıçlı CRC' farkındalığı."
+        clinicalPearl: "Apple core sign: Baryumda veya BT'de lümenin konsantrik daralması → CRC için klasik. Rektal MRI'da CRM (Circumferential Resection Margin) >1mm = Negatif → cerrahi prognoz iyi. 50 yaş altı CRC artıyor → 'erken başlangıçlı CRC' farkındalığı.",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "NCCN Clinical Practice Guidelines in Oncology: Rectal Cancer. National Comprehensive Cancer Network; 2023.",
+            "ACR Appropriateness Criteria: Colorectal Cancer Screening. American College of Radiology; 2018.",
+            "Radiopaedia.org - Colorectal carcinoma"
+        ]
     },
     {
         id: "mesenteric-ischemia",
@@ -249,7 +291,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "SMA embolisi (%50 — AF, valvüler hastalık), SMA trombozu (%25 — ateroskleroz), SMV trombozu (%10 — hiperkoagülabilite), NOMI (%15 — düşük kardiyak output, vazopresör).",
         differentialDiagnosis: ["Akut Pankreatit (Epigastrik ağrı, amilaz artışı)", "Perfore Ülser (Serbest hava)", "İnflamatuar Bağırsak Hastalığı (Kronik — duvar kalınlaşması)", "Aort Diseksiyonu (SMA köken tıkanıklığı)"],
         goldStandard: "BT Anjiyografi (CTA — Duyarlılık %95+). Arteriyel + portal venöz faz: SMA/SMV dolum defekti + bağırsak duvar değişiklikleri.",
-        clinicalPearl: "'Pain out of proportion': Şiddetli karın ağrısı + normal fizik muayene = Mezenter iskemisi düşün! Pnömatozis intestinalis + Portal venöz gaz = Geç evre bulgusu → mortalite >%70. Laktat yüksekliği geç ve non-spesifik."
+        clinicalPearl: "'Pain out of proportion': Şiddetli karın ağrısı + normal fizik muayene = Mezenter iskemisi düşün! Pnömatozis intestinalis + Portal venöz gaz = Geç evre bulgusu → mortalite >%70. Laktat yüksekliği geç ve non-spesifik.",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "ACR Appropriateness Criteria: Acute Onset of Abdominal Pain and Suspicion of Mesenteric Ischemia. American College of Radiology; 2018.",
+            "Defined Defined",
+            "Radiopaedia.org - Acute mesenteric ischemia"
+        ]
     },
     {
         id: "intussusception",
@@ -279,7 +327,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "Çocuklarda: İdiyopatik (%90 — lenfoid hiperplazi, viral), Meckel divertikülü, polip. Erişkinlerde: Öncü lezyon (%90 — polip, lenfoma, lipom, metastaz). İleokolik tip en sık.",
         differentialDiagnosis: ["Appendisit (Sağ alt kadran ağrısı — çocuklarda ayırıcı)", "Midgut Volvülüs (Yenidoğan — malrotasyon)", "Henoch-Schönlein Purpurası (İntramural hematom)", "Kolon Kanseri (Erişkinde öncü lezyon)"],
         goldStandard: "USG (Çocuklarda ilk tercih — Duyarlılık %98+). Target sign (transvers) + Pseudokidney sign (longitudinal). Erişkinde: BT (öncü lezyon araştırması).",
-        clinicalPearl: "Çocuklarda klasik triad: Kolik karın ağrısı + Kusma + 'Çilek jölesi' dışkı (mukus + kan). Pnömatik veya hidrostatik redüksiyon: Çocuklarda ilk tedavi seçeneği. 3-3-3 kuralı: >3 yaş, >3 gün semptom, >3cm = Cerrahi daha olası."
+        clinicalPearl: "Çocuklarda klasik triad: Kolik karın ağrısı + Kusma + 'Çilek jölesi' dışkı (mukus + kan). Pnömatik veya hidrostatik redüksiyon: Çocuklarda ilk tedavi seçeneği. 3-3-3 kuralı: >3 yaş, >3 gün semptom, >3cm = Cerrahi daha olası.",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "Defined Defined",
+            "ACR Appropriateness Criteria: Acute Abdominal Pain in Children. American College of Radiology; 2020.",
+            "Radiopaedia.org - Intussusception"
+        ]
     },
     {
         id: "gist",
@@ -309,7 +363,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "KIT (CD117) mutasyonu (%75-80), PDGFRA mutasyonu (%10-15), SDH defisiensi (pediatrik GIST). Sporadik (en sık). Carney triadı, NF1 sendromu ilişkili olabilir.",
         differentialDiagnosis: ["Leiomyom (Benign — özofagus ve rektumda daha sık)", "Schwannom (GIS yerleşimli — nadir)", "Glomüs Tümörü (Mide — nadir)", "Mezenkimal Metastaz (Melanom — GIS metastazı sık)"],
         goldStandard: "BT (İV kontrast — arteriyel + portal faz). PET-CT tedavi yanıtı izleminde. EUS + FNA/Biyopsi: c-KIT (CD117) pozitifliği kesin tanı.",
-        clinicalPearl: "İmatinib (Gleevec) tedaviye yanıt: BT'de boyut küçülmesi + Hounsfield değerinde azalma (Choi kriterleri — RECIST'ten farklı!). Boyut değişmese bile tümör nekrozu = Yanıt. Risk sınıflaması: Boyut >5cm + Mitoz >5/50HPF = Yüksek risk."
+        clinicalPearl: "İmatinib (Gleevec) tedaviye yanıt: BT'de boyut küçülmesi + Hounsfield değerinde azalma (Choi kriterleri — RECIST'ten farklı!). Boyut değişmese bile tümör nekrozu = Yanıt. Risk sınıflaması: Boyut >5cm + Mitoz >5/50HPF = Yüksek risk.",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "Defined Defined",
+            "NCCN Clinical Practice Guidelines in Oncology: Gastrointestinal Stromal Tumors (GIST). National Comprehensive Cancer Network; 2023.",
+            "Radiopaedia.org - Gastrointestinal stromal tumor"
+        ]
     },
     {
         id: "liver-abscess",
@@ -347,7 +407,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "Bilier patoloji (kolanjit) en sık (%40-60). Portal ven (appendisit, divertikülit → pileflebit). Hematojen (endokardit, sepsis). Direkt yayılım (subfrenik apse). Kriptojenik (%15-20).",
         differentialDiagnosis: ["Amibik Apse (Tek, büyük, sağ lob — Entamoeba histolytica)", "Kistik Metastaz (Nekrotik — over, kolon Ca)", "Hidatik Kist (Kalsifik duvar, kız veziküller)", "Hepatoselüler Karsinom (Nekrotik — AFP artışı)"],
         goldStandard: "BT (İV kontrast — rim enhancement + cluster sign). USG rehberli perkütan aspirasyon/drenaj hem tanı hem tedavi. DWI apse tespitinde çok duyarlı.",
-        clinicalPearl: "Cluster sign: Küçük apselerin birleşme eğilimi → tek büyük kavite oluşumu. Double target sign: İç halka (granülasyon — kontrastlanır) + dış halka (ödem — kontrastlanmaz). DWI: Apse parlak (pü → kısıtlı difüzyon) vs nekrotik tümör (değişken)."
+        clinicalPearl: "Cluster sign: Küçük apselerin birleşme eğilimi → tek büyük kavite oluşumu. Double target sign: İç halka (granülasyon — kontrastlanır) + dış halka (ödem — kontrastlanmaz). DWI: Apse parlak (pü → kısıtlı difüzyon) vs nekrotik tümör (değişken).",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "Defined Defined",
+            "ACR Appropriateness Criteria: Acute Abdominal Pain - Fever or Suspected Abscess. American College of Radiology; 2018.",
+            "Radiopaedia.org - Pyogenic liver abscess"
+        ]
     },
     {
         id: "esophageal-carcinoma",
@@ -377,7 +443,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "SCC: Sigara, alkol, sıcak içecek (çay), akalazya, kostik madde. Adenokarsinom: Barrett özofagusu (kronik GÖRH), obezite, sigara. Adenokarsinom insidansı hızla artıyor.",
         differentialDiagnosis: ["Akalazya (Kuş gagası görünümü — benign)", "Özofageal Striktür (Koroziv veya peptik)", "Leiomyom (Submuköz kitle — en sık benign özofagus tümörü)", "Ekstrensek Bası (Mediasten kitlesi, aort anevrizması)"],
         goldStandard: "Endoskopi + Biyopsi (Kesin tanı). BT evreleme: Lokal invazyon, LAP, uzak metastaz. PET-CT: Uzak metastaz ve rekürrens tespitinde üstün.",
-        clinicalPearl: "Barrett özofagusu: >3cm uzunluk + intestinal metaplazi = Yüksek adenokarsinom riski → düzenli endoskopik surveyans. Endoskopik USG (EUS): T ve N evreleme doğruluğu BT'den üstün. Rat-tail sign: Baryumda düzensiz lümen daralması."
+        clinicalPearl: "Barrett özofagusu: >3cm uzunluk + intestinal metaplazi = Yüksek adenokarsinom riski → düzenli endoskopik surveyans. Endoskopik USG (EUS): T ve N evreleme doğruluğu BT'den üstün. Rat-tail sign: Baryumda düzensiz lümen daralması.",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "Defined Defined",
+            "NCCN Clinical Practice Guidelines in Oncology: Esophageal and Esophagogastric Junction Cancers. National Comprehensive Cancer Network; 2023.",
+            "Radiopaedia.org - Esophageal carcinoma"
+        ]
     },
     {
         id: "gastric-cancer",
@@ -425,7 +497,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "H. pylori enfeksiyonu (%90+), tuzlu/tütsülenmiş gıda, sigara, mide polipleri, önceki mide cerrahisi, aile öyküsü.",
         differentialDiagnosis: ["Mide Lenfoması (MALT — diffüz LAP, BT'de geniş duvar kalınlaşması)", "GIST (Egzofitik büyüme, mezenkimal)", "Gastrik Ülser (Benign — düzgün sınırlı, çevrede kıvrımlar)", "Metastatik Tutulum"],
         goldStandard: "Endoskopi + Biyopsi (Kesin tanı). BT: Evreleme (TNM). PET-CT: Uzak metastaz ve tedavi yanıtı. EUS: Mide duvarı katmanlarını gösterir (T evreleme).",
-        clinicalPearl: "Linitis plastica (Borrmann IV): Mide duvarının diffüz infiltrasyonu → 'deri torbası' mide → BT'de peristaltik kayıp. Krukenberg tümörü: Over metastazı = Evre IV. Virchow nodu (sol supraklavikuler LAP) = Uzak metastaz işareti."
+        clinicalPearl: "Linitis plastica (Borrmann IV): Mide duvarının diffüz infiltrasyonu → 'deri torbası' mide → BT'de peristaltik kayıp. Krukenberg tümörü: Over metastazı = Evre IV. Virchow nodu (sol supraklavikuler LAP) = Uzak metastaz işareti.",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "Defined Defined",
+            "NCCN Clinical Practice Guidelines in Oncology: Gastric Cancer. National Comprehensive Cancer Network; 2023.",
+            "Radiopaedia.org - Gastric adenocarcinoma"
+        ]
     },
     {
         id: "peptic-ulcer-perforation",
@@ -471,7 +549,13 @@ export const gastroPathologies: Pathology[] = [
         etiology: "H. pylori (%70-90), NSAİİ kullanımı, sigara, stres ülseri (yoğun bakım), Zollinger-Ellison sendromu.",
         differentialDiagnosis: ["Apse Rüptürü (Pnömoperitoneum yok, lokalize)", "Appendisit Perforasyonu (Sağ alt kadran)", "Hava Yutan (Aerofaji)", "İatrojenik (Endoskopi perforasyonu)"],
         goldStandard: "Ayakta ADKG (İlk tercih — serbest hava). BT (Duyarlılık %95+ — küçük hava miktarlarını gösterir). Endoskopi akut perforasyonda kontrendike!",
-        clinicalPearl: "Rigler sign: Bağırsak duvarının hem iç hem dış yüzeyinin hava ile görünmesi (double wall sign). %10-30 perforasyonda serbest hava görülmez → klinik şüphede BT. Duodenum ön yüz perforasyonu en sık → serbest hava sağ subfrenik bölgede."
+        clinicalPearl: "Rigler sign: Bağırsak duvarının hem iç hem dış yüzeyinin hava ile görünmesi (double wall sign). %10-30 perforasyonda serbest hava görülmez → klinik şüphede BT. Duodenum ön yüz perforasyonu en sık → serbest hava sağ subfrenik bölgede.",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "Defined Defined",
+            "ACR Appropriateness Criteria: Acute Abdominal Pain and Fever or Suspected Abdominal Abscess. American College of Radiology; 2018.",
+            "Radiopaedia.org - Peptic ulcer perforation"
+        ]
     },
     {
         id: "acute-cholecystitis-gi",
@@ -517,6 +601,12 @@ export const gastroPathologies: Pathology[] = [
         etiology: "Kolelitiyazis (%90-95). Akalkülöz: Kritik hastalık (TPN, sepsis, uzun ameliyat). Amfizemöz: Diyabet + anaerobik bakteri.",
         differentialDiagnosis: ["Bilier Kolik (Geçici ağrı — inflamasyon yok)", "Akut Kolanjit (Charcot triadı: Ateş + sarılık + sağ üst kadran ağrısı)", "Peptik Ülser (Epigastrik ağrı)", "Hepatit (Diffüz KC hassasiyeti)"],
         goldStandard: "USG (İlk tercih — Duyarlılık %95+). HIDA sintigrafisi: Sistik kanal obstrüksiyonunun kanıtlanması (4h dolmama = Pozitif). Şüpheli olgularda BT: Komplikasyonlar (gangrenöz, amfizemöz).",
-        clinicalPearl: "Sonografik Murphy işareti: Prob ile baskıda ağrı + taş + duvar kalınlaşması = Tanısal triad. WES triadı: Wall thickening + Edema + Sonographic Murphy = PPV %94. Amfizemöz kolesistit (intramural hava): Acil kolesistektomi — mortalite %15-25."
+        clinicalPearl: "Sonografik Murphy işareti: Prob ile baskıda ağrı + taş + duvar kalınlaşması = Tanısal triad. WES triadı: Wall thickening + Edema + Sonographic Murphy = PPV %94. Amfizemöz kolesistit (intramural hava): Acil kolesistektomi — mortalite %15-25.",
+        references: [
+            "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
+            "Defined Defined",
+            "ACR Appropriateness Criteria: Right Upper Quadrant Pain. American College of Radiology; 2018.",
+            "Radiopaedia.org - Acute cholecystitis"
+        ]
     }
 ];
