@@ -36,8 +36,6 @@ const tr: Record<string, string> = {
     // Learning Modes
     "mode.grid": "Kart Görünümü",
     "mode.list": "Liste Görünümü",
-    "mode.quiz": "Quiz Modu",
-    "mode.case": "Vaka Çalışması",
     "mode.diagnosis": "Tanı Sihirbazı",
     "mode.ai": "AI Asistan",
     "mode.swipe": "Swipe Modu",
@@ -116,15 +114,6 @@ const tr: Record<string, string> = {
     "ai.quickPrompts": "Hızlı Sorular",
     "ai.thinking": "Düşünüyor...",
 
-    // Quiz Mode
-    "quiz.title": "Quiz Modu",
-    "quiz.score": "Puan",
-    "quiz.streak": "Seri",
-    "quiz.question": "Bu görüntüde hangi patoloji var?",
-    "quiz.correct": "Doğru!",
-    "quiz.incorrect": "Yanlış!",
-    "quiz.next": "Sonraki Soru",
-
     // Diagnosis Wizard
     "diagnosis.title": "Tanı Sihirbazı",
     "diagnosis.selectOrgan": "Organ Seçin",
@@ -165,7 +154,6 @@ const tr: Record<string, string> = {
 
     // Hero Section
     "hero.aiPowered": "Yapay Zeka Destekli Radyoloji",
-    "hero.dailyCard": "Günün Kartı",
     "hero.cardMode": "Kart Modu",
 
     // View Modes
@@ -205,8 +193,6 @@ const en: Record<string, string> = {
     // Learning Modes
     "mode.grid": "Grid View",
     "mode.list": "List View",
-    "mode.quiz": "Quiz Mode",
-    "mode.case": "Case Study",
     "mode.diagnosis": "Diagnosis Wizard",
     "mode.ai": "AI Assistant",
     "mode.swipe": "Swipe Mode",
@@ -285,15 +271,6 @@ const en: Record<string, string> = {
     "ai.quickPrompts": "Quick Prompts",
     "ai.thinking": "Thinking...",
 
-    // Quiz Mode
-    "quiz.title": "Quiz Mode",
-    "quiz.score": "Score",
-    "quiz.streak": "Streak",
-    "quiz.question": "What pathology is shown in this image?",
-    "quiz.correct": "Correct!",
-    "quiz.incorrect": "Incorrect!",
-    "quiz.next": "Next Question",
-
     // Diagnosis Wizard
     "diagnosis.title": "Diagnosis Wizard",
     "diagnosis.selectOrgan": "Select Organ",
@@ -334,7 +311,6 @@ const en: Record<string, string> = {
 
     // Hero Section
     "hero.aiPowered": "AI-Powered Radiology",
-    "hero.dailyCard": "Daily Card",
     "hero.cardMode": "Card Mode",
 
     // View Modes
