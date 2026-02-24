@@ -131,8 +131,24 @@ export default function Home() {
       result = performSmartSearch(result, searchQuery);
     }
 
-    // Always Group by Category (Sort)
-    return [...result].sort((a, b) => a.category.localeCompare(b.category));
+    // Sort by clinical importance (category priority), then alphabetically by name
+    const getCategoryPriority = (cat: string) => {
+      const lower = cat.toLowerCase();
+      if (lower.includes('vasküler') || lower.includes('vascular')) return 1;
+      if (lower.includes('neoplast') || lower.includes('mass') || lower.includes('tümör')) return 2;
+      if (lower.includes('travma') || lower.includes('injury')) return 3;
+      if (lower.includes('enfeksiyon') || lower.includes('infect') || lower.includes('inflam')) return 4;
+      if (lower.includes('dejeneratif') || lower.includes('degener')) return 5;
+      if (lower.includes('demiyelinizan') || lower.includes('demyel')) return 6;
+      if (lower.includes('konjenital') || lower.includes('congeni')) return 7;
+      return 50;
+    };
+    return [...result].sort((a, b) => {
+      const pA = getCategoryPriority(a.category);
+      const pB = getCategoryPriority(b.category);
+      if (pA !== pB) return pA - pB;
+      return a.name.localeCompare(b.name, 'tr');
+    });
   }, [searchQuery, favorites, showFavoritesOnly, activeModule, searchGlobal]);
 
   // Prevent hydration mismatch by processing only after load
