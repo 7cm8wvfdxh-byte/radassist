@@ -6,7 +6,8 @@ import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/language-context";
 import {
     Check, X, Star, RotateCw,
-    Sparkles, Brain, Lightbulb, Activity, Layers, Scan, Radiation, Zap, FileText
+    Sparkles, Brain, Lightbulb, Activity, Layers, Scan, Radiation, Zap, FileText,
+    Flame, Target, Award, Stethoscope
 } from 'lucide-react';
 
 interface PathologyCardProps {
@@ -251,7 +252,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Back Content */}
-                    <div className="p-6 flex-1 overflow-y-auto space-y-6">
+                    <div className="p-6 flex-1 overflow-y-auto space-y-5">
 
                         {/* WHY? Section */}
                         {data.mechanism && (
@@ -260,17 +261,74 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                     <Lightbulb className="w-4 h-4 text-yellow-500" />
                                     {isEn ? "Why?" : "Neden Böyle Görünüyor?"}
                                 </h4>
-                                <div className="p-4 rounded-xl bg-yellow-500/5 border border-yellow-500/10 text-sm text-yellow-100/90 leading-relaxed font-serif italic">
+                                <div className="p-3 rounded-xl bg-yellow-500/5 border border-yellow-500/10 text-xs text-yellow-100/90 leading-relaxed font-serif italic">
                                     &ldquo;{data.mechanism}&rdquo;
                                 </div>
                             </div>
                         )}
 
-                        {/* Pearls Section */}
-                        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
+                        {/* Etiology Section */}
+                        {data.etiology && (
+                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-150">
+                                <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
+                                    <Flame className="w-4 h-4 text-orange-400" />
+                                    {isEn ? "Etiology" : "Etiyoloji"}
+                                </h4>
+                                <p className="text-xs text-zinc-400 leading-relaxed p-3 rounded-xl bg-orange-500/5 border border-orange-500/10">
+                                    {data.etiology}
+                                </p>
+                            </div>
+                        )}
+
+                        {/* Differential Diagnosis Section */}
+                        {data.differentialDiagnosis && data.differentialDiagnosis.length > 0 && (
+                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
+                                <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
+                                    <Target className="w-4 h-4 text-rose-400" />
+                                    {isEn ? "Differential Diagnosis" : "Ayırıcı Tanı"}
+                                </h4>
+                                <ul className="space-y-1.5">
+                                    {data.differentialDiagnosis.map((ddx, i) => (
+                                        <li key={i} className="flex gap-2 text-xs text-zinc-400">
+                                            <span className="text-rose-500 font-bold shrink-0">{i + 1}.</span>
+                                            <span className="leading-snug">{ddx}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+
+                        {/* Gold Standard Section */}
+                        {data.goldStandard && (
+                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-250">
+                                <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
+                                    <Award className="w-4 h-4 text-amber-400" />
+                                    {isEn ? "Gold Standard" : "Altın Standart"}
+                                </h4>
+                                <p className="text-xs text-zinc-400 leading-relaxed p-3 rounded-xl bg-amber-500/5 border border-amber-500/10">
+                                    {data.goldStandard}
+                                </p>
+                            </div>
+                        )}
+
+                        {/* Clinical Pearl Section */}
+                        {data.clinicalPearl && (
+                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
+                                <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
+                                    <Stethoscope className="w-4 h-4 text-emerald-400" />
+                                    {isEn ? "Clinical Pearl" : "Klinik İpucu"}
+                                </h4>
+                                <div className="p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/10 text-xs text-emerald-100/90 leading-relaxed font-medium">
+                                    {data.clinicalPearl}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Key Points Section */}
+                        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-350">
                             <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
                                 <Sparkles className="w-4 h-4 text-cyan-400" />
-                                {t("clinical_pearls")}
+                                {isEn ? "Key Points" : "Anahtar Noktalar"}
                             </h4>
                             <ul className="space-y-2">
                                 {displayKeyPoints.map((kp, i) => (

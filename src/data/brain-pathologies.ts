@@ -1036,23 +1036,6 @@ export const brainPathologies: Pathology[] = [
         ]
     },
     {
-        "id": "multiple_sclerosis",
-        "name": "Multipl Skleroz (MS)",
-        "category": "Demiyelinizan",
-        "findings": {
-            "mri": {
-                "t2_flair": "Periventriküler (Dawson Fingers), Jukstakortikal, İnfratentoryal ve Spinal kord yerleşimli hiperintens plaklar. 90 derece açılı yerleşim (venüller etrafında).",
-                "t1_c": "Aktif Plak: 'Open Ring' (Hilal) veya nodüler kontrastlanma. Kronik Plak: Kontrast tutmaz, 'Black Hole' (T1 Hipointens) akson kaybını gösterir.",
-                "sagittal": "Korpus kallozum tutulumu: Kallozal-septal bileşkede sinyal artışı."
-            }
-        },
-        "keyPoints": [
-            "Zamanda ve Mekanda yayılım (DIS/DIT) McDonald kriterleri ile tanı konur.",
-            "Santral ven (Central Vein Sign): T2*/SWI'da plak ortasında venül görülmesi MS için spesifiktir.",
-            "Optik Nörit: Optik sinirde T2 hiperintensitesi ve kontrastlanma."
-        ]
-    },
-    {
         "id": "pres",
         "name": "PRES (Posterior Reversible Encephalopathy Syndrome)",
         "category": "Vasküler / Metabolik",
