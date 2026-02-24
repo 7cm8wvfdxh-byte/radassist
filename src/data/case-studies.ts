@@ -14,18 +14,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 1,
                 title: "İlk Görüntüleme: Kontrastsız BT",
                 description: "Hasta acil servise gelişinin 30. dakikasında BT'ye alındı.",
-                imageUrl: "/images/real_ct_stroke_slice.png",
-                // Note: Using existing asset path from previous artifacts if available, otherwise placeholder. 
-                // I recall we have 'real_ct_stroke_slice_1768626558306.png' or similar. 
-                // Let's assume standard path mapping or use the one we copied before.
-                // Resetting to placeholder if not found, but I will try to map to what likely exists.
-                // Actually, I'll use the 'uploaded_image' ones if I renamed them, or just generic paths and ensure files exist.
-                // Based on previous context, we had 'real_ct_stroke_slice_1768626558306.png'.
-                // I will need to make sure this file exists in public/images/cases/ or root.
-                // Let's use a safe path 'real_ct_stroke_slice.png'? No, let's use what's in spine for now or existing placeholders? 
-                // Better: I will check file existence in next step or assume user puts them. 
-                // For now, I'll point to placeholders or re-use Brain ones.
-                // Re-using Brain Gallery images:
+                imageUrl: "/images/real_ct_stroke.png",
                 imageCaption: "Aksiyel Non-Kontrast BT",
                 question: "BT görüntüsüne dikkatli bakın. En olası bulgu nedir?",
                 options: [
@@ -42,7 +31,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 2,
                 title: "İleri Görüntüleme: Difüzyon MR (DWI)",
                 description: "Bulguları doğrulamak ve iskemi alanını görmek için Difüzyon MR çekildi.",
-                imageUrl: "/images/real_mri_stroke_dwi.png", // Reuse existing
+                imageUrl: "/images/real_mri_stroke.png",
                 imageCaption: "Aksiyel DWI (b1000)",
                 question: "Difüzyon ağırlıklı görüntülemede (DWI) izlenen parlaklık ne anlama gelir?",
                 options: [
@@ -59,7 +48,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 3,
                 title: "Tedavi Kararı",
                 description: "Hasta semptom başlangıcının 3. saatinde. Kanama yok. Geniş enfarkt alanı henüz oturmamış.",
-                imageUrl: "/images/mri_stroke_adc_map.png", // Reuse existing
+                imageUrl: "/images/mri_stroke_adc.png",
                 imageCaption: "ADC Haritası",
                 question: "En uygun acil tedavi yaklaşımı nedir?",
                 options: [
