@@ -30,6 +30,7 @@ import { useLanguage } from "@/context/language-context";
 import Link from "next/link"; // Need Link for navigation
 import { LogIn, LogOut, User, Bell, ShieldCheck } from "lucide-react"; // Icons
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { AdminNotifications } from "@/components/admin-notifications";
 
 export default function Home() {
   const { user, logout } = useAuth();
@@ -230,6 +231,8 @@ export default function Home() {
             </div>
             <span className="sr-only md:not-sr-only md:block text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">{t("nav.announcements")}</span>
           </Link>
+
+          <AdminNotifications />
 
           {user ? (
             <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md rounded-full pl-4 pr-2 py-1.5 border border-white/10 shadow-lg">
