@@ -52,7 +52,13 @@ export const spinePathologies: Pathology[] = [
         "etiology": "Dejeneratif (yaşlanma, tekrarlayan aksiyel yüklenme), Akut travma, Konjenital dar kanal, Genetik predispozisyon.",
         "differentialDiagnosis": ["Piriformis Sendromu (Ekstraforaminal, piriformis kasında patoloji)", "Faset Artropatisi (Posterior ağrı, ekstansiyonda artar)", "Spinal Stenoz (Bilateral nörojenik kladikasyo)", "Vertebral Metastaz (Gece ağrısı, T1 sinyal kaybı)"],
         "goldStandard": "MRI (Sagittal + Aksiyel T2): Kanal çapı, sinir kökü basısı, kord sinyali değerlendirmesi. BT myelografi: MRI çekilemez ise.",
-        "clinicalPearl": "L4-L5 herniasyonu → L5 kökü basısı (Ayak dorsifleksiyon zayıflığı). L5-S1 → S1 (Aşil refleks kaybı). İdrar retansiyonu + Eyer anestezi = Kauda Ekuina Acil!"
+        "clinicalPearl": "L4-L5 herniasyonu → L5 kökü basısı (Ayak dorsifleksiyon zayıflığı). L5-S1 → S1 (Aşil refleks kaybı). İdrar retansiyonu + Eyer anestezi = Kauda Ekuina Acil!",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Fardon DF et al. Lumbar disc nomenclature: version 2.0. Spine J. 2014;14(11):2525-2545.",
+            "ACR Appropriateness Criteria: Low Back Pain. American College of Radiology.",
+            "Radiopaedia.org - Lumbar disc herniation"
+        ]
     },
     {
         "id": "spinal_stenosis_lumbar",
@@ -89,7 +95,13 @@ export const spinePathologies: Pathology[] = [
             "AP canal diameter < 10mm (Relative), < 7mm (Absolute Stenosis).",
             "Can be Central, Lateral Recess, or Foraminal."
         ],
-        "mechanism": "Çoklu dejeneratif değişikliklerin birikmesi → kanal daralması. Disk yükseklik kaybı → faset ekleme artan yük → faset artrozu ve hipertrofi. Ligamentum flavum: Elastin kaybı → kollajen hipertrofisi (>4mm). Osteofitler + ligaman hipertrofisi + faset hipertrofisi = trifokal (trefoil) dar kanal. Öne eğilme sırasında kanal açılması nörojenik kladikasiyo ile bisiklete binebilme ayrımını açıklar."
+        "mechanism": "Çoklu dejeneratif değişikliklerin birikmesi → kanal daralması. Disk yükseklik kaybı → faset ekleme artan yük → faset artrozu ve hipertrofi. Ligamentum flavum: Elastin kaybı → kollajen hipertrofisi (>4mm). Osteofitler + ligaman hipertrofisi + faset hipertrofisi = trifokal (trefoil) dar kanal. Öne eğilme sırasında kanal açılması nörojenik kladikasiyo ile bisiklete binebilme ayrımını açıklar.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Low Back Pain. American College of Radiology.",
+            "Radiopaedia.org - Lumbar spinal stenosis"
+        ]
     },
     {
         "id": "spondylolisthesis",
@@ -132,7 +144,12 @@ export const spinePathologies: Pathology[] = [
             "Most common at L4-L5 (Degenerative) and L5-S1 (Isthmic/Lytic).",
             "Step-off deformity."
         ],
-        "mechanism": "İstmik tip: Tekrarlayan hiperextansiyon stresi (jimnastikçi, futbolcu) → pars interartikülaris stres kırığı (spondilolizis) → her iki tarafta kırık → vertebra kayması. Dejeneratif tip: Faset ve disk dejenerasyonu → posterior stabilizasyon kaybı → öne kayma. Travmatik tip: Akut yüksek enerjili travma → pars veya pedikül kırığı → ani kayma. Kayma derecesi arttıkça kanal ve foramen daralır."
+        "mechanism": "İstmik tip: Tekrarlayan hiperextansiyon stresi (jimnastikçi, futbolcu) → pars interartikülaris stres kırığı (spondilolizis) → her iki tarafta kırık → vertebra kayması. Dejeneratif tip: Faset ve disk dejenerasyonu → posterior stabilizasyon kaybı → öne kayma. Travmatik tip: Akut yüksek enerjili travma → pars veya pedikül kırığı → ani kayma. Kayma derecesi arttıkça kanal ve foramen daralır.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Spondylolisthesis"
+        ]
     },
     {
         "id": "spinal_metastasis",
@@ -173,7 +190,13 @@ export const spinePathologies: Pathology[] = [
             "Thoracic region is most frequently affected.",
             "CT is more sensitive if cortical destruction is present."
         ],
-        "mechanism": "Primer tümör hematojen yayılımla Batson pleksusundan (vertebral venöz pleksus) vertebra kemik iliğine ulaşır → trabeküler yıkım. Osteolitik (akciğer, böbrek, tiroid, melanom) vs osteoblastik (prostat, meme). Normal yağ iliği yerini tümör hücreleri aldığı için T1'de hipointens (yağ sinyali kaybolur). STIR sekansında su içeriği arttığı için parlak sinyal verir."
+        "mechanism": "Primer tümör hematojen yayılımla Batson pleksusundan (vertebral venöz pleksus) vertebra kemik iliğine ulaşır → trabeküler yıkım. Osteolitik (akciğer, böbrek, tiroid, melanom) vs osteoblastik (prostat, meme). Normal yağ iliği yerini tümör hücreleri aldığı için T1'de hipointens (yağ sinyali kaybolur). STIR sekansında su içeriği arttığı için parlak sinyal verir.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Back Pain — Cancer Suspected. American College of Radiology.",
+            "Radiopaedia.org - Spinal metastases"
+        ]
     },
     {
         "id": "spinal_trauma_burst",
@@ -218,7 +241,13 @@ export const spinePathologies: Pathology[] = [
             "High risk of neurological deficit.",
             "Distinction from compression fracture: Involvement of posterior wall and posterior column."
         ],
-        "mechanism": "Yüksek enerjili aksiyel yüklenme (suyun yüzeyine ayak dibi ile düşme, trafik kazası) → vertebra korpusunun santral çökmesi → her iki korteksin kırılması → kemik parçacıklarının spinal kanala retropulsiyonu. Dennis'in üç kolon modeli: Orta ve arka kolon birlikte tutulunca kord basısı ve nörolojik hasar riski artar; bu burst kırığını kompresyon kırığından ayırır."
+        "mechanism": "Yüksek enerjili aksiyel yüklenme (suyun yüzeyine ayak dibi ile düşme, trafik kazası) → vertebra korpusunun santral çökmesi → her iki korteksin kırılması → kemik parçacıklarının spinal kanala retropulsiyonu. Dennis'in üç kolon modeli: Orta ve arka kolon birlikte tutulunca kord basısı ve nörolojik hasar riski artar; bu burst kırığını kompresyon kırığından ayırır.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Suspected Spine Trauma. American College of Radiology.",
+            "Radiopaedia.org - Burst fracture"
+        ]
     },
     {
         "id": "cervical_disc_herniation",
@@ -264,7 +293,13 @@ export const spinePathologies: Pathology[] = [
             "Cord signal change on MRI: Indicates myelomalacia (poor prognosis).",
             "Differential diagnosis: OPLL (Ossification of Posterior Longitudinal Ligament), Cervical stenosis."
         ],
-        "mechanism": "Servikal bölgede disk dejenerasyonu → nükleus pulpozus herniyasyonu veya disk-osteofil kompleksi oluşumu → posterior/posterolateral bası → sinir kökü basısı (radikülopati) veya kord kompresyonu (miyelopati). Lomber disk hernisinden farklı olarak dar kanal alanı nedeniyle küçük bir herninin bile kord basısına yol açabileceği unutulmamalı. Unkovertebral artropati foraminal stenoza ek katkı sağlar."
+        "mechanism": "Servikal bölgede disk dejenerasyonu → nükleus pulpozus herniyasyonu veya disk-osteofil kompleksi oluşumu → posterior/posterolateral bası → sinir kökü basısı (radikülopati) veya kord kompresyonu (miyelopati). Lomber disk hernisinden farklı olarak dar kanal alanı nedeniyle küçük bir herninin bile kord basısına yol açabileceği unutulmamalı. Unkovertebral artropati foraminal stenoza ek katkı sağlar.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Fardon DF et al. Lumbar disc nomenclature: version 2.0. Spine J. 2014;14(11):2525-2545.",
+            "ACR Appropriateness Criteria: Myelopathy. American College of Radiology.",
+            "Radiopaedia.org - Cervical disc herniation"
+        ]
     },
     {
         "id": "schmorl_nodule",
@@ -306,7 +341,12 @@ export const spinePathologies: Pathology[] = [
             "Acute Schmorl node: Can be a source of pain.",
             "Scheuermann's disease: Multiple Schmorl nodes + kyphosis."
         ],
-        "mechanism": "Zayıflamış vertebral end-plate + aniden artan aksiyel yük → nükleus pulpozusun end-plate korteksini delerek vertebra spongioza dokusu içine herniyasyonu. End-plate kıkırdağının konjenital zayıflığı (Scheuermann hastalığı) ya da osteoporoz zemin hazırlar. Akut fazda çevre kemikte ödem/vasküler tepki (Modic Tip 1), kronik fazda reaktif skleroz (Modic Tip 3) oluşur."
+        "mechanism": "Zayıflamış vertebral end-plate + aniden artan aksiyel yük → nükleus pulpozusun end-plate korteksini delerek vertebra spongioza dokusu içine herniyasyonu. End-plate kıkırdağının konjenital zayıflığı (Scheuermann hastalığı) ya da osteoporoz zemin hazırlar. Akut fazda çevre kemikte ödem/vasküler tepki (Modic Tip 1), kronik fazda reaktif skleroz (Modic Tip 3) oluşur.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Schmorl node"
+        ]
     },
     {
         "id": "facet_arthropathy",
@@ -350,7 +390,13 @@ export const spinePathologies: Pathology[] = [
             "Synovial cyst: Can cause lateral recess stenosis and radiculopathy.",
             "Facet block and ablation: Used for diagnosis and treatment."
         ],
-        "mechanism": "Faset (zigapofiziyel) eklem artrozisi: Disk yüksekliği azaldıkça faset ekleme binen yük artar → kıkırdak dejenerasyonu → kemik subkondral değişiklikler → osteofitler → eklem kapsülü ve çevredeki sinoviyal membranın kalınlaşması. Sinoviyal kist: Kronik irritasyon → sinoviyal sıvının eklem kapsülü zayıf noktasından herniyasyonu → lateral recess veya foramene bası yapabilir."
+        "mechanism": "Faset (zigapofiziyel) eklem artrozisi: Disk yüksekliği azaldıkça faset ekleme binen yük artar → kıkırdak dejenerasyonu → kemik subkondral değişiklikler → osteofitler → eklem kapsülü ve çevredeki sinoviyal membranın kalınlaşması. Sinoviyal kist: Kronik irritasyon → sinoviyal sıvının eklem kapsülü zayıf noktasından herniyasyonu → lateral recess veya foramene bası yapabilir.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Low Back Pain. American College of Radiology.",
+            "Radiopaedia.org - Facet joint arthropathy"
+        ]
     },
     {
         "id": "spinal_ependymoma",
@@ -395,7 +441,12 @@ export const spinePathologies: Pathology[] = [
             "Myxopapillary ependymoma: Filum terminale, risk of CSF seeding.",
             "Surgery: Gross total resection is possible (well-defined)."
         ],
-        "mechanism": "Ependimal hücrelerden (spinal kanalın santral kanalını ve ventriküllerini döşeyen hücreler) köken alan WHO Grade 2 tümör. Tümöre ait kanama→hemosiderin birikimi (cap sign); polar kistler ependimal hasar ve BOS birikmesiyle oluşur. Konus ve filum terminale lokalizasyonu: Bu bölgelerde geniş ependimal hücre rezervuarı bulunur. İyi sınırlı yapısı cerrahi tam rezeksiyona olanak tanır."
+        "mechanism": "Ependimal hücrelerden (spinal kanalın santral kanalını ve ventriküllerini döşeyen hücreler) köken alan WHO Grade 2 tümör. Tümöre ait kanama→hemosiderin birikimi (cap sign); polar kistler ependimal hasar ve BOS birikmesiyle oluşur. Konus ve filum terminale lokalizasyonu: Bu bölgelerde geniş ependimal hücre rezervuarı bulunur. İyi sınırlı yapısı cerrahi tam rezeksiyona olanak tanır.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Spinal ependymoma"
+        ]
     },
     {
         "id": "spinal_schwannoma",
@@ -444,7 +495,12 @@ export const spinePathologies: Pathology[] = [
             "In NF2: Bilateral vestibular schwannomas + multiple spinal schwannomas.",
             "'Dumbbell' tumor: Extends both inside and outside the canal by widening the foramen."
         ],
-        "mechanism": "Schwann hücrelerinden köken alan benign tümör (WHO Grade 1). Spinal sinir köklerinde (dorsal > ventral) gelişir. Yavaş büyüme → foramen kemik remodelinge uğrar (genişler). Antoni A (hücresel, kompakt) ve Antoni B (miksoid, hücresiz) alanlar arası geçiş → T2 heterojenik hiperintensite ve target sign. NF2'de NF2 geninin (merlin proteini) bialelik inaktivasyonu → multipl schwannom."
+        "mechanism": "Schwann hücrelerinden köken alan benign tümör (WHO Grade 1). Spinal sinir köklerinde (dorsal > ventral) gelişir. Yavaş büyüme → foramen kemik remodelinge uğrar (genişler). Antoni A (hücresel, kompakt) ve Antoni B (miksoid, hücresiz) alanlar arası geçiş → T2 heterojenik hiperintensite ve target sign. NF2'de NF2 geninin (merlin proteini) bialelik inaktivasyonu → multipl schwannom.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Spinal schwannoma"
+        ]
     },
     {
         "id": "vertebral_osteomyelitis",
@@ -490,7 +546,12 @@ export const spinePathologies: Pathology[] = [
             "Lumbar region most common. Hematogenous spread (urinary, IV drugs).",
             "Complications: Epidural abscess, paraspinal abscess, pathologic fracture."
         ],
-        "mechanism": "Hematojen bakteriyemi (S. aureus, Klebsiella) → vertebral metafizer bölge arteriyollerinde tutulma → end-plate vasküler hasar → disk avasküleri nedeniyle disk başlangıçta korunur → ilerleme sonucu disk katılımı. İki komşu vertebranın end-plate'lerinin simetrik tutulumu tipiktir (disk ortak besleme alanı). Enfeksiyon ilerledikçe epidural/paraspinal apse oluşabilir."
+        "mechanism": "Hematojen bakteriyemi (S. aureus, Klebsiella) → vertebral metafizer bölge arteriyollerinde tutulma → end-plate vasküler hasar → disk avasküleri nedeniyle disk başlangıçta korunur → ilerleme sonucu disk katılımı. İki komşu vertebranın end-plate'lerinin simetrik tutulumu tipiktir (disk ortak besleme alanı). Enfeksiyon ilerledikçe epidural/paraspinal apse oluşabilir.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Vertebral osteomyelitis"
+        ]
     },
     {
         "id": "epidural_abscess_spine",

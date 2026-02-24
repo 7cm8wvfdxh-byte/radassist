@@ -64,7 +64,13 @@ export const liverPathologies: Pathology[] = [
         "etiology": "Kronik HBV/HCV enfeksiyonu (%70-80), Siroz (her etyoloji), Alkol, NASH, Aflatoksin B1 maruziyeti.",
         "differentialDiagnosis": ["Karaciğer Metastazı (Multipl, primer odak var)", "FNH (Hepatobilier fazda izointens/hiperintens)", "Hepatik Adenom (Genç kadın, OKS kullanımı)", "Kolanjiokarsinom (Periferal kontrastlanma, safra kanalı dilatasyonu)"],
         "goldStandard": "Dinamik BT veya MRI (LI-RADS 5): Arteriyel wash-in + Portal wash-out + Kapsül. Biyopsi: LI-RADS 3-4'te veya görüntüleme yetersizliğinde.",
-        "clinicalPearl": "Sirotik hastada ≥10mm nodül + LI-RADS 5 paterni (wash-in/wash-out/kapsül) = Biyopsisiz HCC tanısı."
+        "clinicalPearl": "Sirotik hastada ≥10mm nodül + LI-RADS 5 paterni (wash-in/wash-out/kapsül) = Biyopsisiz HCC tanısı.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "LI-RADS: ACR CT/MRI LI-RADS v2018. American College of Radiology.",
+            "American Association for the Study of Liver Diseases (AASLD) Practice Guideline: Management of Hepatocellular Carcinoma.",
+            "Radiopaedia.org - Hepatocellular carcinoma"
+        ]
     },
     {
         "id": "liver_metastasis",
@@ -118,7 +124,12 @@ export const liverPathologies: Pathology[] = [
         "etiology": "Primer kaynak: Kolon (%50), Meme, Akciğer, Pankreas, Mide. Hipervasküler: RCC, NET, Tiroid, Melanom.",
         "differentialDiagnosis": ["HCC (Sirotik zemin, AFP yüksek, wash-in/out)", "Karaciğer Apsesi (DWI kısıtlanma, ateş, klinik)", "Hepatik Hemanjiom (T2 ampul işareti, periferik dolum)", "FNH (Hepatobilier faz izointens)"],
         "goldStandard": "MRI (Hepatobilier ajan + DWI): Multimodal değerlendirme. PET-CT: Tedavi yanıtı ve evreleme.",
-        "clinicalPearl": "T2'de 'Target sign' (santral hipointens, periferal hiperintens) metastaz için yüksek spesifik. Kolondan disappearing metastaz = MRI şart."
+        "clinicalPearl": "T2'de 'Target sign' (santral hipointens, periferal hiperintens) metastaz için yüksek spesifik. Kolondan disappearing metastaz = MRI şart.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Hepatic metastases"
+        ]
     },
     {
         "id": "hepatic_hemangioma",
@@ -179,7 +190,12 @@ export const liverPathologies: Pathology[] = [
         "etiology": "Konjenital vasküler hamartom. Kadınlarda daha sık (%60-70). Östrojen büyümeyi hızlandırabilir.",
         "differentialDiagnosis": ["Flash-filling HCC (<2cm, sirotik zemin, washout)", "Metastaz (Hipervasküler: NET, RCC - T2 daha az parlak)", "FNH (Santral skar, homojen arteriyel kontrast)", "Hepatik Adenom (Yağ, kanama, hepatobilier faz hipointens)"],
         "goldStandard": "MRI T2: 'Ampul işareti' (BOS'tan parlak). Gecikmiş BT: Periferik nodüler → santripetal dolum (>5dk).",
-        "clinicalPearl": "T2'de BOS'tan bile parlak sinyal (ampul/lightbulb işareti) + Periferik nodüler dolum → %100'e yakın tanısal."
+        "clinicalPearl": "T2'de BOS'tan bile parlak sinyal (ampul/lightbulb işareti) + Periferik nodüler dolum → %100'e yakın tanısal.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Hepatic hemangioma"
+        ]
     },
     {
         "id": "focal_nodular_hyperplasia",
@@ -227,7 +243,12 @@ export const liverPathologies: Pathology[] = [
             "No treatment needed (benign), follow-up insufficient.",
             "Differential diagnosis: Fibrolamellar HCC (scar T2 hypointense, calcification)."
         ],
-        "mechanism": "Anormal arteryel beslenmeli odak → lokal hiperperfüzyon → hepatosit ve Kupffer hücre hiperplazisi. Normal karaciğer mimarisini içerdiğinden (hepatosit, safra duktulusu, Kupffer hücresi) hepatobilier ajanlara UPTAKE yapar → hepatobilier fazda iso/hiperintensite. Santral skar, artmış kan akımına sekonder fibröz değişimi yansıtır."
+        "mechanism": "Anormal arteryel beslenmeli odak → lokal hiperperfüzyon → hepatosit ve Kupffer hücre hiperplazisi. Normal karaciğer mimarisini içerdiğinden (hepatosit, safra duktulusu, Kupffer hücresi) hepatobilier ajanlara UPTAKE yapar → hepatobilier fazda iso/hiperintensite. Santral skar, artmış kan akımına sekonder fibröz değişimi yansıtır.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Focal nodular hyperplasia"
+        ]
     },
     {
         "id": "hepatic_adenoma",
@@ -275,7 +296,12 @@ export const liverPathologies: Pathology[] = [
             "Hypointense on hepatobiliary phase = Adenoma (FNH is iso/hyperintense).",
             "Subtypes: HNF1α-inactivated (fatty), β-catenin mutant (high malignancy risk), Inflammatory."
         ],
-        "mechanism": "Östrojen/androjen → hepatosit proliferasyonu ve apoptoz inhibisyonu → klonal hepatosit kitlesi. HNF1α inaktivasyonu: Yağ birikimi (steatotik adenom). β-catenin aktivasyonu: Hepatosit displazisi → malign transformasyon. Tümörde safra duktulusu ve Kupffer hücresi yoktur → hepatobilier fazda kontrast almaz (hipointens), FNH'den ayrım buradan yapılır."
+        "mechanism": "Östrojen/androjen → hepatosit proliferasyonu ve apoptoz inhibisyonu → klonal hepatosit kitlesi. HNF1α inaktivasyonu: Yağ birikimi (steatotik adenom). β-catenin aktivasyonu: Hepatosit displazisi → malign transformasyon. Tümörde safra duktulusu ve Kupffer hücresi yoktur → hepatobilier fazda kontrast almaz (hipointens), FNH'den ayrım buradan yapılır.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Hepatocellular adenoma"
+        ]
     },
     {
         "id": "liver_abscess",
@@ -331,7 +357,12 @@ export const liverPathologies: Pathology[] = [
             "'Double target sign' is characteristic for pyogenic abscess.",
             "Treatment: Percutaneous drainage + Antibiotics."
         ],
-        "mechanism": "Bakteriyel ajan (E. coli, Klebsiella, anaeroplar) → portal bakteremi veya doğrudan yayılım → hepatosit nekrozu → nötrofil infiltrasyonu → pü birikimi. Granülasyon dokusu ile çevrili merkez (double target iç halka kontrast alır). Visköz pü içeriği su moleküllerinin difüzyonunu kısıtlar → DWI'da yüksek sinyal (nekrotik tümörde periferik kısıtlanma, apse merkezinde tam kısıtlanma)."
+        "mechanism": "Bakteriyel ajan (E. coli, Klebsiella, anaeroplar) → portal bakteremi veya doğrudan yayılım → hepatosit nekrozu → nötrofil infiltrasyonu → pü birikimi. Granülasyon dokusu ile çevrili merkez (double target iç halka kontrast alır). Visköz pü içeriği su moleküllerinin difüzyonunu kısıtlar → DWI'da yüksek sinyal (nekrotik tümörde periferik kısıtlanma, apse merkezinde tam kısıtlanma).",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Pyogenic liver abscess"
+        ]
     },
     {
         "id": "liver_cirrhosis",
@@ -387,7 +418,13 @@ export const liverPathologies: Pathology[] = [
             "Non-siderotic dysplastic nodule: High risk of HCC transformation.",
             "Portal hypertension signs: Splenomegaly, ascites, varices, recanalized umbilical vein."
         ],
-        "mechanism": "Kronik karaciğer hasarı (alkol, viral hepatit, NASH) → hepatosit nekrozu → fibröz doku birikimi (HSC aktivasyonu, TGF-β) → rejeneratif nodül formasyonu. Bozulan portal akım → portal hipertansiyon → kollateral dolaşım açılımı (özofageal varisler, umbilikal ven). Nodüler doku arteryel neovaskülarizasyon kazanırsa → displastik nodül → HCC dönüşümü."
+        "mechanism": "Kronik karaciğer hasarı (alkol, viral hepatit, NASH) → hepatosit nekrozu → fibröz doku birikimi (HSC aktivasyonu, TGF-β) → rejeneratif nodül formasyonu. Bozulan portal akım → portal hipertansiyon → kollateral dolaşım açılımı (özofageal varisler, umbilikal ven). Nodüler doku arteryel neovaskülarizasyon kazanırsa → displastik nodül → HCC dönüşümü.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "LI-RADS: ACR CT/MRI LI-RADS v2018. American College of Radiology.",
+            "American Association for the Study of Liver Diseases (AASLD) Practice Guideline: Diagnosis and Management of Cirrhosis.",
+            "Radiopaedia.org - Liver cirrhosis"
+        ]
     },
     {
         "id": "hydatid_cyst",
@@ -445,7 +482,12 @@ export const liverPathologies: Pathology[] = [
             "Serology + Imaging = Diagnosis. Surgery or PAIR treatment.",
             "Type 3 (Daughter vesicle) and Type 2 (Membrane) are active."
         ],
-        "mechanism": "Echinococcus granulosus yumurtasının oral alınımı → bağırsakta larval formu (onkosfer) açılır → portal dolaşıma girer → karaciğerde yerleşir → hidatid kist gelişir. Kist üç tabakadan oluşur: Dış (perikist, konak fibröz doku), orta (germinal epiteli), iç (germinal tabaka, yavru kist üretir). Membran ayrışması → water lily sign; kalsifikasyon → inaktif evre."
+        "mechanism": "Echinococcus granulosus yumurtasının oral alınımı → bağırsakta larval formu (onkosfer) açılır → portal dolaşıma girer → karaciğerde yerleşir → hidatid kist gelişir. Kist üç tabakadan oluşur: Dış (perikist, konak fibröz doku), orta (germinal epiteli), iç (germinal tabaka, yavru kist üretir). Membran ayrışması → water lily sign; kalsifikasyon → inaktif evre.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "WHO Informal Working Group on Echinococcosis. International classification of ultrasound images in cystic echinococcosis.",
+            "Radiopaedia.org - Hepatic hydatid cyst"
+        ]
     },
     {
         "id": "acute_cholecystitis",
