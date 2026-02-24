@@ -36,9 +36,7 @@ const tr: Record<string, string> = {
     // Learning Modes
     "mode.grid": "Kart Görünümü",
     "mode.list": "Liste Görünümü",
-    "mode.diagnosis": "Tanı Sihirbazı",
     "mode.ai": "AI Asistan",
-    "mode.swipe": "Swipe Modu",
     "mode.toolbox": "Alet Çantası",
 
     // Organs
@@ -114,17 +112,6 @@ const tr: Record<string, string> = {
     "ai.quickPrompts": "Hızlı Sorular",
     "ai.thinking": "Düşünüyor...",
 
-    // Diagnosis Wizard
-    "diagnosis.title": "Tanı Sihirbazı",
-    "diagnosis.selectOrgan": "Organ Seçin",
-    "diagnosis.selectModality": "Modalite Seçin",
-    "diagnosis.selectFindings": "Bulguları Seçin",
-    "diagnosis.results": "Olası Tanılar",
-    "diagnosis.highProbability": "Yüksek Olasılık",
-    "diagnosis.mediumProbability": "Orta Olasılık",
-    "diagnosis.lowProbability": "Düşük Olasılık",
-    "diagnosis.generateReport": "Rapor Oluştur",
-
     // Toolbox
     "toolbox.title": "Alet Çantası",
     "toolbox.measurements": "Ölçümler",
@@ -154,7 +141,6 @@ const tr: Record<string, string> = {
 
     // Hero Section
     "hero.aiPowered": "Yapay Zeka Destekli Radyoloji",
-    "hero.cardMode": "Kart Modu",
 
     // View Modes
     "view.grid": "Izgara",
@@ -193,9 +179,7 @@ const en: Record<string, string> = {
     // Learning Modes
     "mode.grid": "Grid View",
     "mode.list": "List View",
-    "mode.diagnosis": "Diagnosis Wizard",
     "mode.ai": "AI Assistant",
-    "mode.swipe": "Swipe Mode",
     "mode.toolbox": "Toolbox",
 
     // Organs
@@ -271,17 +255,6 @@ const en: Record<string, string> = {
     "ai.quickPrompts": "Quick Prompts",
     "ai.thinking": "Thinking...",
 
-    // Diagnosis Wizard
-    "diagnosis.title": "Diagnosis Wizard",
-    "diagnosis.selectOrgan": "Select Organ",
-    "diagnosis.selectModality": "Select Modality",
-    "diagnosis.selectFindings": "Select Findings",
-    "diagnosis.results": "Possible Diagnoses",
-    "diagnosis.highProbability": "High Probability",
-    "diagnosis.mediumProbability": "Medium Probability",
-    "diagnosis.lowProbability": "Low Probability",
-    "diagnosis.generateReport": "Generate Report",
-
     // Toolbox
     "toolbox.title": "Toolbox",
     "toolbox.measurements": "Measurements",
@@ -311,7 +284,6 @@ const en: Record<string, string> = {
 
     // Hero Section
     "hero.aiPowered": "AI-Powered Radiology",
-    "hero.cardMode": "Card Mode",
 
     // View Modes
     "view.grid": "Grid",

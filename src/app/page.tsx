@@ -5,7 +5,6 @@ import { SearchBar } from "@/components/search-bar";
 import { PathologyCard } from "@/components/pathology-card";
 import { PathologyListItem } from "@/components/pathology-list-item";
 import { AIAssistant } from "@/components/ai-assistant";
-import { SwipeMode } from "@/components/swipe-mode";
 import { ToolboxMode } from "@/components/toolbox-mode";
 import { StructuredReporting } from "@/components/structured-reporting";
 import { ComparisonMode } from "@/components/comparison-mode";
@@ -22,8 +21,7 @@ import { breastPathologies } from "@/data/breast-pathologies";
 import { mskPathologies } from "@/data/msk-pathologies";
 import { gastroPathologies } from "@/data/gastro-pathologies";
 import { gynecologyPathologies } from "@/data/gynecology-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Wand2, Bot, Flame, Bean, Wind, Library, Wrench, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen } from "lucide-react";
-import { DiagnosisWizard } from "@/components/diagnosis-wizard";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Bot, Flame, Bean, Wind, Wrench, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen } from "lucide-react";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils"; // Ensure cn is imported
 import { performSmartSearch } from "@/lib/search-utils";
@@ -49,13 +47,13 @@ export default function Home() {
     return [];
   });
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-  const [viewMode, setViewMode] = useState<"grid" | "list" | "wizard" | "ai" | "swipe" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy">(() => {
+  const [viewMode, setViewMode] = useState<"grid" | "list" | "ai" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy">(() => {
     if (typeof window === 'undefined') return "grid";
     try {
       const savedView = localStorage.getItem("radassist-view-mode");
-      const validModes = ["grid", "list", "wizard", "ai", "swipe", "toolbox", "report", "compare", "emergency", "stats", "anatomy"];
+      const validModes = ["grid", "list", "ai", "toolbox", "report", "compare", "emergency", "stats", "anatomy"];
       if (savedView && validModes.includes(savedView)) {
-        return savedView as "grid" | "list" | "wizard" | "ai" | "swipe" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy";
+        return savedView as "grid" | "list" | "ai" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy";
       }
     } catch { /* ignore */ }
     return "grid";
@@ -160,32 +158,6 @@ export default function Home() {
 
         {/* Hero Actions Container */}
         <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
-          {/* Diagnosis Wizard Button */}
-          <button
-            onClick={() => {
-              setViewMode("wizard");
-              localStorage.setItem("radassist-view-mode", "wizard");
-            }}
-            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 border border-purple-500/20 hover:border-purple-500/40 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-200"
-          >
-            <div className="absolute inset-0 bg-purple-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
-            <Wand2 className="w-5 h-5 text-purple-400 group-hover:rotate-12 transition-transform" />
-            <span className="text-sm font-bold text-purple-200 group-hover:text-purple-100">{t("mode.diagnosis")}</span>
-          </button>
-
-          {/* Swipe Mode Button (Mobile First) */}
-          <button
-            onClick={() => {
-              setViewMode("swipe");
-              localStorage.setItem("radassist-view-mode", "swipe");
-            }}
-            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500/10 to-rose-500/10 border border-pink-500/20 hover:border-pink-500/40 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-300"
-          >
-            <div className="absolute inset-0 bg-pink-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
-            <Library className="w-5 h-5 text-pink-400 group-hover:scale-110 transition-transform" />
-            <span className="text-sm font-bold text-pink-200 group-hover:text-pink-100">{t("hero.cardMode")}</span>
-          </button>
-
           {/* Toolbox Mode Button */}
           <button
             onClick={() => {
@@ -291,7 +263,7 @@ export default function Home() {
         <div className="w-full max-w-3xl relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
 
           {/* Module Selector - 5 Organs */}
-          {viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
+          {viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
             <div className="flex justify-center mb-8">
               <div className="flex flex-wrap justify-center gap-1 p-1 bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-2xl relative">
                 <button
@@ -442,8 +414,8 @@ export default function Home() {
             </div>
           )}
 
-          {/* Hide Search Bar in Quiz Mode */}
-          {viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
+          {/* Search Bar */}
+          {viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
             <div className="relative group mb-4">
               <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
               <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl ring-1 ring-white/10 shadow-2xl flex flex-col">
@@ -528,16 +500,6 @@ export default function Home() {
               </button>
               <button
                 onClick={() => {
-                  setViewMode("wizard");
-                  localStorage.setItem("radassist-view-mode", "wizard");
-                }}
-                className={`p-1.5 rounded-full transition-all ${viewMode === "wizard" ? "bg-cyan-500 text-white shadow-lg ring-2 ring-cyan-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="Tanı & Rapor Sihirbazı"
-              >
-                <Wand2 className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => {
                   setViewMode("ai");
                   localStorage.setItem("radassist-view-mode", "ai");
                 }}
@@ -613,7 +575,7 @@ export default function Home() {
             </div>
 
             {/* Favorites Toggle */}
-            {viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
+            {viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
               <button
                 onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${showFavoritesOnly
@@ -632,7 +594,7 @@ export default function Home() {
             )}
           </div>
 
-          {viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
+          {viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
             <p className="mt-4 text-slate-500 text-xs">
               {activeModule === 'brain' ? (
                 <>Örn: <span className="text-slate-400 border-b border-indigo-500/30 mx-1">Glioblastom</span>, <span className="text-slate-400 border-b border-cyan-500/30 mx-1">İnme</span></>
@@ -648,16 +610,8 @@ export default function Home() {
       {/* Main Content Area */}
       <div className="max-w-[1600px] mx-auto px-6 pb-24">
 
-        {viewMode === "wizard" ? (
-          <DiagnosisWizard activeModule={activeModule} />
-        ) : viewMode === "ai" ? (
+        {viewMode === "ai" ? (
           <AIAssistant />
-        ) : viewMode === "swipe" ? (
-          <SwipeMode
-            pathologies={filteredPathologies}
-            onToggleFavorite={toggleFavorite}
-            onExit={() => setViewMode("grid")}
-          />
         ) : viewMode === "toolbox" ? (
           <ToolboxMode />
         ) : viewMode === "report" ? (
