@@ -171,7 +171,7 @@ export const caseStudies: CaseStudy[] = [
                 "order": 3,
                 "title": "Tedavi Kararı (TLICS Skoru)",
                 "description": "Özet: Burst kırığı + PLC hasarı + Nörolojik defisit yok.",
-                "imageUrl": "/images/placeholder-spine.png",
+                "imageUrl": "/images/spine/burst_fracture_ct.png",
                 "imageCaption": "Klinik Karar Anı",
                 "question": "TLICS (Thoracolumbar Injury Classification) skoruna göre önerilen tedavi?",
                 "options": [
@@ -202,7 +202,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 1,
                 title: "Dinamik BT: Arteryel Faz",
                 description: "Trifazik (dinamik) karaciğer BT çekildi. Arteryel faz görüntüsünü inceleyin.",
-                imageUrl: "/images/placeholder-liver.png",
+                imageUrl: "/images/liver/hcc_ct_arterial.png",
                 imageCaption: "Aksiyel Arteryel Faz BT",
                 question: "Karaciğer sağ lobda izlenen lezyonun arteryel fazdaki kontrastlanma paterni nedir?",
                 options: [
@@ -219,7 +219,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 2,
                 title: "Portal Venöz ve Geç Faz",
                 description: "Aynı lezyonun portal venöz ve geç fazlarını inceleyin.",
-                imageUrl: "/images/placeholder-liver.png",
+                imageUrl: "/images/liver/hcc_ct_portal.png",
                 imageCaption: "Portal Venöz Faz BT",
                 question: "LI-RADS 5 tanısı için arteryel faz hiperkontrastlanmaya ek olarak hangi özellik(ler) gereklidir?",
                 options: [
@@ -236,7 +236,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 3,
                 title: "LI-RADS Sınıflama ve Tedavi",
                 description: "Lezyon 32 mm, APHE (+), Washout (+), Kapsül (+). Siroz zemini mevcut.",
-                imageUrl: "/images/placeholder-liver.png",
+                imageUrl: "/images/liver/hcc_mri_t2.png",
                 imageCaption: "LI-RADS Algoritması",
                 question: "Bu lezyon için doğru LI-RADS kategorisi ve önerilen yaklaşım nedir?",
                 options: [
@@ -267,7 +267,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 1,
                 title: "Pulmoner BT Anjiyografi",
                 description: "Acil pulmoner BT anjiyografi (PBTA) çekildi.",
-                imageUrl: "/images/placeholder-lung.png",
+                imageUrl: "/images/lung/pe_ct_angio.png",
                 imageCaption: "Aksiyel PBTA",
                 question: "Pulmoner arterlerde izlenen düşük dansiteli alanlar ne anlama gelir?",
                 options: [
@@ -284,7 +284,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 2,
                 title: "Sağ Kalp Değerlendirmesi",
                 description: "Aynı BT'de kalp odacıkları değerlendirildi.",
-                imageUrl: "/images/placeholder-lung.png",
+                imageUrl: "/images/lung/pe_ct_angio.png",
                 imageCaption: "Aksiyel — Kalp Düzeyi",
                 question: "RV/LV oranı > 1.0 saptanması ne ifade eder?",
                 options: [
@@ -301,7 +301,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 3,
                 title: "Acil Tedavi Kararı",
                 description: "Bilateral masif PE + RV dilatasyonu + Hipotansiyon (Sistolik TA: 85 mmHg).",
-                imageUrl: "/images/placeholder-lung.png",
+                imageUrl: "/images/lung/pe_ct_angio.png",
                 imageCaption: "Klinik Karar",
                 question: "Hemodinamik olarak instabil, masif PE hastasında ilk basamak tedavi nedir?",
                 options: [
@@ -332,7 +332,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 1,
                 title: "Mammografi Değerlendirmesi",
                 description: "CC ve MLO mammografi görüntüleri değerlendirildi.",
-                imageUrl: "/images/placeholder-breast.png",
+                imageUrl: "/images/placeholder_source.png",
                 imageCaption: "MLO Mammografi",
                 question: "Sağ memede izlenen lezyonun en şüpheli özelliği nedir?",
                 options: [
@@ -349,7 +349,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 2,
                 title: "USG Korelasyonu",
                 description: "Mammografik bulgunun USG korelasyonu yapıldı.",
-                imageUrl: "/images/placeholder-breast.png",
+                imageUrl: "/images/placeholder_source.png",
                 imageCaption: "Meme USG",
                 question: "USG'de hangi bulgu malignite şüphesini en çok artırır?",
                 options: [
@@ -366,7 +366,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 3,
                 title: "BI-RADS Sınıflama",
                 description: "MMG: Spiküle kitle + mikrokalsifikasyon. USG: Dikey oryantasyonlu solid lezyon.",
-                imageUrl: "/images/placeholder-breast.png",
+                imageUrl: "/images/placeholder_source.png",
                 imageCaption: "BI-RADS Karar",
                 question: "Doğru BI-RADS kategorisi ve önerilen yaklaşım?",
                 options: [
@@ -397,7 +397,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 1,
                 title: "Kontrastsız Üriner BT",
                 description: "Hastaya kontrastsız (taşsız protokol) üriner BT çekildi.",
-                imageUrl: "/images/placeholder-kidney.png",
+                imageUrl: "/images/kidney/stone_ct.png",
                 imageCaption: "Aksiyel Kontrastsız BT",
                 question: "Sol üreterde izlenen hiperdens odak ne anlama gelir?",
                 options: [
@@ -414,7 +414,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 2,
                 title: "Sekonder Bulgular",
                 description: "Taşın proksimalindeki böbrek ve çevre dokular değerlendirildi.",
-                imageUrl: "/images/placeholder-kidney.png",
+                imageUrl: "/images/kidney/pyelonephritis_ct.png",
                 imageCaption: "Koronal BT",
                 question: "Sol böbrekte izlenen toplayıcı sistem genişlemesi ve perinefritik kirlenme (stranding) ne gösterir?",
                 options: [
@@ -431,7 +431,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 3,
                 title: "Tedavi Kararı",
                 description: "8 mm taş, sol distal üreterde. Grade 2 hidronefroz. Ateş ve enfeksiyon bulgusu yok.",
-                imageUrl: "/images/placeholder-kidney.png",
+                imageUrl: "/images/kidney/stone_usg_shadow.png",
                 imageCaption: "Tedavi Planlaması",
                 question: "> 6 mm üreter taşı için önerilen tedavi yaklaşımı nedir?",
                 options: [
@@ -462,7 +462,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 1,
                 title: "Diz MR: Sagittal Görüntü",
                 description: "Sol diz MR incelemesi yapıldı. Sagittal T2 ağırlıklı görüntü değerlendirildi.",
-                imageUrl: "/images/placeholder-msk.png",
+                imageUrl: "/images/placeholder_source.png",
                 imageCaption: "Sagittal PD-FS (Proton Yoğunluklu)",
                 question: "ACL yırtığının en güvenilir MR bulgusu nedir?",
                 options: [
@@ -479,7 +479,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 2,
                 title: "Kemik Kontüzyonu (Bone Bruise)",
                 description: "Sagittal ve koronal görüntülerde kemik iliği ödemi paterni değerlendirildi.",
-                imageUrl: "/images/placeholder-msk.png",
+                imageUrl: "/images/placeholder_source.png",
                 imageCaption: "Sagittal STIR — Kemik İliği",
                 question: "ACL yırtığında tipik bone bruise paterni nerededir?",
                 options: [
@@ -496,7 +496,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 3,
                 title: "Tedavi Planlaması",
                 description: "ACL tam yırtığı + Lateral menisküs bucket-handle yırtığı + Bone bruise. Aktif sporcu.",
-                imageUrl: "/images/placeholder-msk.png",
+                imageUrl: "/images/placeholder_source.png",
                 imageCaption: "Tedavi Kararı",
                 question: "Genç aktif sporcuda ACL tam yırtığı tedavisi nedir?",
                 options: [
@@ -527,7 +527,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 1,
                 title: "Kontrastlı Abdomen BT",
                 description: "İV kontrastlı abdomen BT çekildi. Sağ iliak fossa değerlendirildi.",
-                imageUrl: "/images/placeholder-gi.png",
+                imageUrl: "/images/gastro/appendicitis_ct.png",
                 imageCaption: "Aksiyel Kontrastlı BT",
                 question: "BT'de apandisite işaret eden en önemli bulgu nedir?",
                 options: [
@@ -544,7 +544,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 2,
                 title: "Komplikasyon Değerlendirmesi",
                 description: "Apendiks duvarı ve çevre doku detaylı incelendi.",
-                imageUrl: "/images/placeholder-gi.png",
+                imageUrl: "/images/gastro/appendicitis_ct.png",
                 imageCaption: "Aksiyel BT — Yakın Plan",
                 question: "Hangi bulgu perforasyonu düşündürür?",
                 options: [
@@ -561,7 +561,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 3,
                 title: "Tedavi Kararı",
                 description: "Akut non-perfore apandisit. Genel durum stabil.",
-                imageUrl: "/images/placeholder-gi.png",
+                imageUrl: "/images/gastro/pancreatitis_ct.png",
                 imageCaption: "Cerrahi Planlama",
                 question: "Standart tedavi yaklaşımı nedir?",
                 options: [
@@ -592,7 +592,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 1,
                 title: "Pelvis USG (Gray-scale)",
                 description: "Acil transvajinal USG yapıldı. Sol adneksiyal bölge değerlendirildi.",
-                imageUrl: "/images/placeholder-gyn.png",
+                imageUrl: "/images/gyn/endometrioma_mri.png",
                 imageCaption: "Transvajinal USG — Sol Over",
                 question: "Sol overde izlenen belirgin büyüme ve periferik foliküler dizilim ne anlama gelir?",
                 options: [
@@ -609,7 +609,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 2,
                 title: "Doppler USG Değerlendirmesi",
                 description: "Renkli ve spektral Doppler ile ovarian vaskülarite değerlendirildi.",
-                imageUrl: "/images/placeholder-gyn.png",
+                imageUrl: "/images/gyn/endometrioma_mri.png",
                 imageCaption: "Renkli Doppler USG",
                 question: "Sol overde arteriyel ve venöz akımın azalmış/kaybolmuş olması ne ifade eder?",
                 options: [
@@ -626,7 +626,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 3,
                 title: "Acil Müdahale",
                 description: "USG: Büyümüş ödemli over + dermoid kist + azalmış Doppler akımı. Klinik: Akut ağrı, bulantı.",
-                imageUrl: "/images/placeholder-gyn.png",
+                imageUrl: "/images/gyn/fibroid_mri.png",
                 imageCaption: "Cerrahi Karar",
                 question: "Over torsiyonunda doğru tedavi yaklaşımı nedir?",
                 options: [
@@ -657,7 +657,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 1,
                 title: "Kontrastlı Kranial MR",
                 description: "Kranial MR incelemesinde IVKM sonrası T1 ağırlıklı görüntüler değerlendirildi.",
-                imageUrl: "/images/placeholder-brain.png",
+                imageUrl: "/images/real_mri_gbm.png",
                 imageCaption: "Aksiyal T1+K MR",
                 question: "Sağ frontoparietal bölgede izlenen lezyonun en belirgin kontrastlanma paterni nedir?",
                 options: [
@@ -674,7 +674,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 2,
                 title: "İleri MR Sekansları",
                 description: "DWI, Perfüzyon MR ve MR Spektroskopi değerlendirildi.",
-                imageUrl: "/images/placeholder-brain.png",
+                imageUrl: "/images/mri_gbm_coronal.png",
                 imageCaption: "Perfüzyon MR (rCBV haritası)",
                 question: "GBM'de perfüzyon MR'da (rCBV) tipik olarak ne beklenir?",
                 options: [
@@ -691,7 +691,7 @@ export const caseStudies: CaseStudy[] = [
                 order: 3,
                 title: "Ayırıcı Tanı ve Planlama",
                 description: "Ring enhancement + nekroz + yüksek rCBV + peri-lezyone ödem. 55 yaş.",
-                imageUrl: "/images/placeholder-brain.png",
+                imageUrl: "/images/real_ct_gbm.png",
                 imageCaption: "Ayırıcı Tanı",
                 question: "Ring enhancement gösteren lezyonda en önemli ayırıcı tanı nedir?",
                 options: [
