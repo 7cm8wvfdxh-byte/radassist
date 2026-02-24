@@ -506,7 +506,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Sporadik (en sık). Risk: Retinoblastom (Rb mutasyonu), Li-Fraumeni (p53), Paget hastalığı, Radyasyon.",
         differentialDiagnosis: ["Ewing Sarkomu (Soğan zarı periosteal reaksiyon, diafizer, 5-15 yaş)", "Kondrosarkom (Kıkırdak matriksi, daha yaşlı hastalar)", "Osteomiyelit (Periosteal reaksiyon benzerliği)", "Anevrizmal Kemik Kisti (Sıvı-sıvı seviyeleri)"],
         goldStandard: "Röntgen (İlk değerlendirme — Codman üçgeni + sunburst). MRI lokal evreleme (skip metastaz, nörovasküler tutulum). BT akciğer metastaz taraması.",
-        clinicalPearl: "Osteosarkom üçgeni: Distal femur + Proksimal tibia + Proksimal humerus → tüm osteosarkomların %75'i. Neoadjuvan kemoterapi sonrası MRI'da nekroz oranı (%90+) = İyi prognoz (Huvos Grade III-IV)."
+        clinicalPearl: "Osteosarkom üçgeni: Distal femur + Proksimal tibia + Proksimal humerus → tüm osteosarkomların %75'i. Neoadjuvan kemoterapi sonrası MRI'da nekroz oranı (%90+) = İyi prognoz (Huvos Grade III-IV).",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Primary Bone Tumors. American College of Radiology; 2020.",
+            "Radiopaedia.org - Osteosarcoma"
+        ]
     },
     {
         id: "bone-metastasis",
@@ -556,7 +562,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Meme, Akciğer, Prostat, Böbrek, Tiroid (%80 vakası).",
         differentialDiagnosis: ["Multipl Miyelom (Yağmur damlası litik lezyonlar, M-spike)", "Lenfoma (Kemik tutulumu — ivory vertebra)", "Primer Kemik Tümörleri (Osteosarkom, Ewing)", "Fibröz Displazi (Benign — ground glass görünüm)"],
         goldStandard: "Tüm vücut MRI (DWIBS) veya PET-CT (Duyarlılık %95+). Omurga MRI T1-STIR: Normal yağlı kemik iliğinin replasmanı erken saptanır.",
-        clinicalPearl: "Litik: Akciğer, Böbrek, Tiroid ('Lobo Birası Tipi' — çok kanlı). Sklerotik: Prostat, Meme (nadir). Mirelsin skoru ≥9 = Profilaktik fiksasyon (Patolojik kırık riski yüksek)."
+        clinicalPearl: "Litik: Akciğer, Böbrek, Tiroid ('Lobo Birası Tipi' — çok kanlı). Sklerotik: Prostat, Meme (nadir). Mirelsin skoru ≥9 = Profilaktik fiksasyon (Patolojik kırık riski yüksek).",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Bone Metastases. American College of Radiology; 2020.",
+            "Radiopaedia.org - Bone metastases"
+        ]
     },
     {
         id: "acute-osteomyelitis",
@@ -606,7 +618,13 @@ export const mskPathologies: Pathology[] = [
         etiology: "Stafilokokus aureus (%90). MRSA giderek artan. Diyabetik ayak: Polimikrobiyal. Orak hücreli anemi: Salmonella.",
         differentialDiagnosis: ["Ewing Sarkomu (Soğan zarı periosteal reaksiyon — osteomiyeliti taklit eder!)", "Langerhans Hücre Histiyositozu", "Stres Kırığı (Kemik iliği ödemi)", "Charcot Artropatisi (Diyabetik ayak)"],
         goldStandard: "MRI (Duyarlılık %90-100). T1 hipointens kemik iliği + STIR hiperintens ödem + kontrastlı rim apse = Tanısal. Kemik biyopsi kültürü kesin tanı.",
-        clinicalPearl: "Penumbra sign (MRI): T1 kontrastlı — apse çeperinin iç kenarında hiperintens halka. Brodie apsesi: Subakut osteomiyelitin lokalize formu (metafizer sklerotik sınırlı lezyon). Diyabetik ayakta: T1 sinyal düşüklüğü kortkese ulaşmışsa osteomiyelit tanısaldır."
+        clinicalPearl: "Penumbra sign (MRI): T1 kontrastlı — apse çeperinin iç kenarında hiperintens halka. Brodie apsesi: Subakut osteomiyelitin lokalize formu (metafizer sklerotik sınırlı lezyon). Diyabetik ayakta: T1 sinyal düşüklüğü kortkese ulaşmışsa osteomiyelit tanısaldır.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "ACR Appropriateness Criteria: Suspected Osteomyelitis. American College of Radiology; 2020.",
+            "Radiopaedia.org - Acute osteomyelitis"
+        ]
     },
     {
         id: "plantar-fasciitis",
@@ -662,6 +680,12 @@ export const mskPathologies: Pathology[] = [
         etiology: "Uzun süre ayakta durma, koşu, obezite, pes planus/kavus, uygunsuz ayakkabı, kısa Aşil tendonu.",
         differentialDiagnosis: ["Kalkaneal Stres Kırığı (MRI'da bant şekilli ödem)", "Tarsal Tünel Sendromu (Tibial sinir sıkışması)", "Fat Pad Atrofisi (Topuk yağ yastığı incelmesi)", "Aşil Tendinopati (Posterior topuk ağrısı — farklı lokalizasyon)"],
         goldStandard: "USG (İlk tercih — Fasya kalınlığı >4mm + hipoekojenite = tanısal). MRI dirençli/atipik olgularda ve ayırıcı tanıda.",
-        clinicalPearl: "Plantar fasya kalınlığı: Normal <4mm, Patolojik >4mm. Kalkaneal spur (çıkıntı) = İnsidental bulgu, PF tanısı koymaz! Sabah ilk adımda şiddetli ağrı → gün içinde azalma = Tipik klinik patern."
+        clinicalPearl: "Plantar fasya kalınlığı: Normal <4mm, Patolojik >4mm. Kalkaneal spur (çıkıntı) = İnsidental bulgu, PF tanısı koymaz! Sabah ilk adımda şiddetli ağrı → gün içinde azalma = Tipik klinik patern.",
+        references: [
+            "Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Helms CA. Musculoskeletal MRI. 2nd ed. Saunders; 2008.",
+            "ACR Appropriateness Criteria: Chronic Foot Pain. American College of Radiology; 2018.",
+            "Radiopaedia.org - Plantar fasciitis"
+        ]
     }
 ];

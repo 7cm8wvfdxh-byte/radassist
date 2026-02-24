@@ -40,7 +40,13 @@ export const breastPathologies: Pathology[] = [
             "Radyal Skar (Spiküle, santral radyolusensi, stellat yapı)"
         ],
         goldStandard: "Mammografi (tarama) + USG (karakterizasyon) + MRI (evreleme): BI-RADS 5 → Kalın iğne (core) biyopsi ile histopatolojik doğrulama.",
-        clinicalPearl: "Spiküle kenar + posterior akustik gölgeleme + Tip 3 (washout) kinetik eğri = İnvaziv karsinom üçlüsü."
+        clinicalPearl: "Spiküle kenar + posterior akustik gölgeleme + Tip 3 (washout) kinetik eğri = İnvaziv karsinom üçlüsü.",
+        references: [
+            "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
+            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "ACR Appropriateness Criteria: Palpable Breast Masses. American College of Radiology.",
+            "Defined Defined Defined Defined Defined Defined"
+        ]
     },
     {
         id: "fibroadenoma",
@@ -81,7 +87,12 @@ export const breastPathologies: Pathology[] = [
             "Lenfoma (Düzgün sınırlı, belirgin hipoekoik, bilateral olabilir)"
         ],
         goldStandard: "USG: İlk değerlendirme (genç hastada). BI-RADS 3 → 6 ay takip veya core biyopsi. Mammografi: >30 yaş üstünde eklenir.",
-        clinicalPearl: "30 yaş altı kadında oval, düzgün sınırlı, mobil kitle = Fibroadenom düşün, BI-RADS 3 ile takip edilebilir."
+        clinicalPearl: "30 yaş altı kadında oval, düzgün sınırlı, mobil kitle = Fibroadenom düşün, BI-RADS 3 ile takip edilebilir.",
+        references: [
+            "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
+            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "Defined Defined Defined Defined Defined Defined Defined"
+        ]
     },
     {
         id: "cyst-simple",
@@ -116,7 +127,12 @@ export const breastPathologies: Pathology[] = [
             "Kistik Metastaz (Düzensiz duvar, solid komponent, klinik öykü)"
         ],
         goldStandard: "USG: Tanı için yeterli. Anekoik + ince duvar + posterior güçlenme = Basit kist (BI-RADS 2). Ek tetkik gerekmez.",
-        clinicalPearl: "Anekoik + ince düzgün duvar + posterior akustik güçlenme = Basit kist üçlüsü → BI-RADS 2, takip gerekmez."
+        clinicalPearl: "Anekoik + ince düzgün duvar + posterior akustik güçlenme = Basit kist üçlüsü → BI-RADS 2, takip gerekmez.",
+        references: [
+            "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
+            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "ACR Appropriateness Criteria: Evaluation of the Symptomatic Breast. American College of Radiology."
+        ]
     },
     {
         id: "complicated-cyst",
@@ -145,7 +161,12 @@ export const breastPathologies: Pathology[] = [
             "Apse (Kalın düzensiz duvar, klinik enfeksiyon bulguları, ateş)"
         ],
         goldStandard: "USG: İlk değerlendirme. Doppler negatif + homojen düşük ekolar = Komplike kist (BI-RADS 3). 6 ay takip USG veya aspirasyon.",
-        clinicalPearl: "Komplike kistte Doppler negatifliği anahtar bulgudur — solid komponentli intrakistik lezyonlardan ayırt eder."
+        clinicalPearl: "Komplike kistte Doppler negatifliği anahtar bulgudur — solid komponentli intrakistik lezyonlardan ayırt eder.",
+        references: [
+            "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
+            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "Defined Defined Defined Defined"
+        ]
     },
     {
         id: "intraductal-papilloma",
@@ -186,7 +207,13 @@ export const breastPathologies: Pathology[] = [
             "Galaktore (Bilateral süt benzeri akıntı, endokrin neden, solid lezyon yok)"
         ],
         goldStandard: "USG + Duktografi (galaktografi): Duktus içi dolum defekti. MRI: Kontrastlanan intraduktal lezyon. Kesin tanı: Eksizyonel biyopsi.",
-        clinicalPearl: "Tek taraflı, spontan, kanlı/seröz meme başı akıntısı olan kadında ilk düşünülecek tanı intraduktal papillomdur."
+        clinicalPearl: "Tek taraflı, spontan, kanlı/seröz meme başı akıntısı olan kadında ilk düşünülecek tanı intraduktal papillomdur.",
+        references: [
+            "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
+            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "ACR Appropriateness Criteria: Evaluation of Nipple Discharge. American College of Radiology.",
+            "Defined Defined Defined Defined"
+        ]
     },
     {
         id: "fat-necrosis",
@@ -221,7 +248,12 @@ export const breastPathologies: Pathology[] = [
             "Seroma (Cerrahi sonrası, saf sıvı koleksiyonu, solid komponent yok)"
         ],
         goldStandard: "Mammografi: Yağ kisti (radyolusen merkez + egg-shell kalsifikasyon) tanı koydurucudur. Şüpheli olgularda MRI veya biyopsi.",
-        clinicalPearl: "Mammografide radyolusen merkezli kitle + çevresel (egg-shell) kalsifikasyon + travma/cerrahi öyküsü = Yağ nekrozu, biyopsi gerekmez."
+        clinicalPearl: "Mammografide radyolusen merkezli kitle + çevresel (egg-shell) kalsifikasyon + travma/cerrahi öyküsü = Yağ nekrozu, biyopsi gerekmez.",
+        references: [
+            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
+            "Defined Defined Defined Defined Defined Defined"
+        ]
     },
     {
         id: "dcis",
@@ -278,7 +310,13 @@ export const breastPathologies: Pathology[] = [
             "Lobüler Karsinoma In Situ — LCIS (Genellikle görüntülemede okkült, insidental bulgu)"
         ],
         goldStandard: "Mammografi (mikrokalsifikasyon tespiti) + Stereotaktik vakum biyopsi. MRI: Hastalık yaygınlığının değerlendirilmesi ve cerrahi planlama.",
-        clinicalPearl: "Mammografide segmental/lineer dağılımlı ince pleomorfik mikrokalsifikasyonlar = DCIS'e kadar suçlu kabul et."
+        clinicalPearl: "Mammografide segmental/lineer dağılımlı ince pleomorfik mikrokalsifikasyonlar = DCIS'e kadar suçlu kabul et.",
+        references: [
+            "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
+            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "Defined Defined Defined Defined Defined Defined Defined",
+            "ACR Appropriateness Criteria: Breast Microcalcifications. American College of Radiology."
+        ]
     },
     {
         id: "phyllodes-tumor",
@@ -335,7 +373,12 @@ export const breastPathologies: Pathology[] = [
             "Dev Fibroadenom (>5 cm fibroadenom, kistik alan yok, homojen)"
         ],
         goldStandard: "USG + Kalın iğne (core) biyopsi: Stromal sellülarite değerlendirmesi. İnce iğne biyopsisi yetersiz! Kesin tanı ve grade: Eksizyonel biyopsi.",
-        clinicalPearl: "Hızla büyüyen büyük kitle + USG'de kistik boşluklar (yaprak yarıkları) = Filloides düşün; fibroadenom olarak takibe bırakma, core biyopsi yap."
+        clinicalPearl: "Hızla büyüyen büyük kitle + USG'de kistik boşluklar (yaprak yarıkları) = Filloides düşün; fibroadenom olarak takibe bırakma, core biyopsi yap.",
+        references: [
+            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
+            "Defined Defined Defined Defined"
+        ]
     },
     {
         id: "galactocele",
@@ -391,6 +434,12 @@ export const breastPathologies: Pathology[] = [
             "Laktasyonel Adenom (Solid kitle, emzirme döneminde, hipoekoik, vaskülarize)"
         ],
         goldStandard: "USG: Tanı için yeterli (laktasyon döneminde kistik lezyon + yağ-sıvı seviyesi). Aspirasyon: Hem tanısal (süt içeriği) hem terapötik.",
-        clinicalPearl: "Emziren kadında kistik kitle + yağ-sıvı seviyesi = Galaktosel, aspirasyonda süt gelir → tanı doğrulanır."
+        clinicalPearl: "Emziren kadında kistik kitle + yağ-sıvı seviyesi = Galaktosel, aspirasyonda süt gelir → tanı doğrulanır.",
+        references: [
+            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
+            "ACR Appropriateness Criteria: Breast Pain. American College of Radiology.",
+            "Defined Defined Defined Defined Defined Defined"
+        ]
     }
 ];

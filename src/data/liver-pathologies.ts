@@ -545,7 +545,12 @@ export const liverPathologies: Pathology[] = [
         "etiology": "Kolelitiyazis (%90-95). Akalkülöz: Kritik hastalık, TPN, uzun ameliyat, travma.",
         "differentialDiagnosis": ["Akut Hepatit (Diffüz duvar kalınlaşması, LAP)", "Safra Kesesi Karsinomu (Kitlesel lezyon, invazyon)", "Perikolesistik Apse (Postperforatif)", "Hipoalbüminemi (Diffüz asit-ödem ile birlikte)"],
         "goldStandard": "USG (ilk basamak). BT: Komplikasyon değerlendirmesi (gangrenöz, amfizemöz). HIDA sintigrafisi: Sistik kanal obstrüksiyonu kanıtı.",
-        "clinicalPearl": "Sonografik Murphy işareti: USG probu ile safra kesesi üzerine baskı uygulanınca ağrı — sistik kanal tıkanıklığını destekler, tanıda %85+ spesifiktir."
+        "clinicalPearl": "Sonografik Murphy işareti: USG probu ile safra kesesi üzerine baskı uygulanınca ağrı — sistik kanal tıkanıklığını destekler, tanıda %85+ spesifiktir.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Acute cholecystitis"
+        ]
     },
     {
         "id": "cholelithiasis",
@@ -601,7 +606,12 @@ export const liverPathologies: Pathology[] = [
         "etiology": "Obezite, gebelik, OKS kullanımı, hızlı kilo kaybı, hemolitik anemi, Crohn hastalığı, TPN.",
         "differentialDiagnosis": ["Safra Kesesi Polipleri (Taşın aksine yerini değiştirmez, gölge yok)", "Safra Çamuru (Akustik gölge yok, bağımlı sediman)", "Kolesterolozis (Duvar nodülleri)", "Safra Kesesi Karsinomu (Kitlesel lezyon)"],
         "goldStandard": "USG. MRCP: Koledokolitiyazis şüphesinde.",
-        "clinicalPearl": "BT'de 'negatif' safra kesesi = kolesterol taşı olabilir. Klinik kolik + USG negatifse MRCP iste."
+        "clinicalPearl": "BT'de 'negatif' safra kesesi = kolesterol taşı olabilir. Klinik kolik + USG negatifse MRCP iste.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Cholelithiasis"
+        ]
     },
     {
         "id": "nafld_fatty_liver",
@@ -658,7 +668,12 @@ export const liverPathologies: Pathology[] = [
         "etiology": "Obezite, tip 2 DM, hiperlipidemi, metabolik sendrom, hızlı kilo kaybı, TPN, bazı ilaçlar (kortikosteroid, metotreksat, tamoksifen).",
         "differentialDiagnosis": ["Fokal Steatoz (Fokal yağlanma — kitle ile karışabilir)", "Glikojen Depo Hastalığı (BT'de hiperdens karaciğer)", "Amiloidoz", "Wilson Hastalığı (Bakır birikimi)"],
         "goldStandard": "MR Spektroskopi veya Karaciğer Biyopsisi (>5% steatoz = NAFLD).",
-        "clinicalPearl": "BT'de karaciğer dansitesi dalaktan düşükse steatoz düşün. Fokal yağ tutulmaması (özellikle safra kesesi yatağı ve portal dal komşuluğu) tümör ile karışabilir — vasküler yapılar düzgün seyrediyorsa benign."
+        "clinicalPearl": "BT'de karaciğer dansitesi dalaktan düşükse steatoz düşün. Fokal yağ tutulmaması (özellikle safra kesesi yatağı ve portal dal komşuluğu) tümör ile karışabilir — vasküler yapılar düzgün seyrediyorsa benign.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "American Association for the Study of Liver Diseases (AASLD) Practice Guideline: Diagnosis and Management of Nonalcoholic Fatty Liver Disease.",
+            "Radiopaedia.org - Hepatic steatosis"
+        ]
     },
     {
         "id": "cholangiocarcinoma",
@@ -720,6 +735,11 @@ export const liverPathologies: Pathology[] = [
         "etiology": "Primer sklerozan kolanjit (PSK), Kolelitiyazis, Caroli hastalığı, koledokal kist, kronik HBV/HCV, Clonorchis sinensis enfeksiyonu.",
         "differentialDiagnosis": ["HCC (Arteryel wash-in, wash-out, AFP yüksek)", "Karaciğer Metastazı (Primer odak bilinen)", "Hepatik Apse (Ateş, lökositoz)", "FNH (Santral skar, hepatobilier faz hiperintens)"],
         "goldStandard": "Dinamik BT veya MRCP + MRI. Ca 19-9 > 100 U/mL destekler. Kesin: Biyopsi veya cerrahi patoloji.",
-        "clinicalPearl": "Obstrüktif sarılık + İntrahepatik safra dilatasyonu + Safra kanalı duvarında kalınlaşma → Kolanjiokarsinom şüphesi. Geç faz kontrastlanma (santripetal) HCC'den ayırt ettirir."
+        "clinicalPearl": "Obstrüktif sarılık + İntrahepatik safra dilatasyonu + Safra kanalı duvarında kalınlaşma → Kolanjiokarsinom şüphesi. Geç faz kontrastlanma (santripetal) HCC'den ayırt ettirir.",
+        "references": [
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Radiopaedia.org - Cholangiocarcinoma"
+        ]
     }
 ];

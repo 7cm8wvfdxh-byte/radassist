@@ -41,7 +41,13 @@ export const gynecologyPathologies: Pathology[] = [
         ],
         goldStandard: "MRI: T2 ağırlıklı sekanslarda hipointens kitle — leiomyom için en iyi karakterizasyon yöntemi.",
         clinicalPearl: "T2'de hipointens = fibrotik doku = leiomyom. Hiperintens ise dejenerasyon veya sellüler miyom düşün.",
-        mechanism: "Düz kas hücrelerinin klonal proliferasyonu → miyom oluşumu. Östrojen bağımlı büyüme: Premenopozal dönemde büyür, menopozdan sonra küçülür. MRI T2 hipointensitesi: Yoğun düz kas hücresi demetleri ve fibröz stroma → serbest su protonları az. Dejenerasyon türleri: Hyalin (%60, en sık), kistik, kırmızı (gebelikte trofoblastik kanamaya bağlı), müsinöz, kalsifik."
+        mechanism: "Düz kas hücrelerinin klonal proliferasyonu → miyom oluşumu. Östrojen bağımlı büyüme: Premenopozal dönemde büyür, menopozdan sonra küçülür. MRI T2 hipointensitesi: Yoğun düz kas hücresi demetleri ve fibröz stroma → serbest su protonları az. Dejenerasyon türleri: Hyalin (%60, en sık), kistik, kırmızı (gebelikte trofoblastik kanamaya bağlı), müsinöz, kalsifik.",
+        references: [
+            "Defined Defined Defined Defined Defined Defined Defined",
+            "ACR Appropriateness Criteria: Uterine Leiomyomata. American College of Radiology.",
+            "FIGO classification of causes of abnormal uterine bleeding. International Journal of Gynecology & Obstetrics. 2011;113(1):3-13.",
+            "Defined Defined Defined Defined"
+        ]
     },
     {
         id: "adenomyosis",
@@ -78,7 +84,12 @@ export const gynecologyPathologies: Pathology[] = [
         ],
         goldStandard: "MRI: T2 ağırlıklı sekanslarda JZ kalınlığı >12mm ölçümü — adenomiyozis için altın standart.",
         clinicalPearl: "JZ >12mm = adenomiyozis. Miyom keskin sınırlıdır, adenomiyozisin sınırları belirsizdir — bu ayrım en kritik noktadır.",
-        mechanism: "Endometrial bazal tabaka hücrelerinin miyometriuma doğru invaze olması → ektopik endometrial bezler ve stroma miyometrium içinde. İki hipotez: (1) Endometrial bazal tabakanın doğrudan invazyonu; (2) endometriyal kök hücre göçü. Ektopik endometrial doku her menstrüel siklustan etkilenir → lokal hemoraji → adenomyotik nodül/küçük kistler. Junction zone kalınlığı >12mm → tanısal MRI bulgusu."
+        mechanism: "Endometrial bazal tabaka hücrelerinin miyometriuma doğru invaze olması → ektopik endometrial bezler ve stroma miyometrium içinde. İki hipotez: (1) Endometrial bazal tabakanın doğrudan invazyonu; (2) endometriyal kök hücre göçü. Ektopik endometrial doku her menstrüel siklustan etkilenir → lokal hemoraji → adenomyotik nodül/küçük kistler. Junction zone kalınlığı >12mm → tanısal MRI bulgusu.",
+        references: [
+            "Defined Defined Defined Defined Defined Defined Defined",
+            "Defined Defined Defined Defined",
+            "ACR Appropriateness Criteria: Abnormal Uterine Bleeding. American College of Radiology."
+        ]
     },
     {
         id: "endometrioma",
@@ -120,7 +131,13 @@ export const gynecologyPathologies: Pathology[] = [
         ],
         goldStandard: "MRI: T1 hiperintens + fat-sat'ta baskılanmayan sinyal + T2 shading sign — endometrioma için altın standart tanı triadı.",
         clinicalPearl: "T1 parlak + fat-sat'ta baskılanmıyor = kan ürünü (endometrioma). T1 parlak + fat-sat'ta baskılanıyor = yağ (dermoid). Bu ayrım sınav klasiğidir.",
-        mechanism: "Retrograd menstrüasyon → ektopik endometrial dokunun over yüzeyine implante olması → over korteksine invazyon → tekrarlayan siklik kanama → eski kan ürünleri (methemoglobin, hemosiderin) birikimi. Methemoglobin (T1 parlak), artmış demir konsantrasyonu (T2 shading = giderek kararan sinyal). Dermoid kistlerde yağ baskılanır; endometriomada kan ürünleri yağ baskılamaya yanıt vermez (ayrım bu şekilde yapılır)."
+        mechanism: "Retrograd menstrüasyon → ektopik endometrial dokunun over yüzeyine implante olması → over korteksine invazyon → tekrarlayan siklik kanama → eski kan ürünleri (methemoglobin, hemosiderin) birikimi. Methemoglobin (T1 parlak), artmış demir konsantrasyonu (T2 shading = giderek kararan sinyal). Dermoid kistlerde yağ baskılanır; endometriomada kan ürünleri yağ baskılamaya yanıt vermez (ayrım bu şekilde yapılır).",
+        references: [
+            "O-RADS: ACR O-RADS MRI Risk Stratification System. American College of Radiology; 2020.",
+            "Defined Defined Defined Defined Defined Defined Defined",
+            "Defined Defined Defined Defined Defined Defined",
+            "Defined Defined Defined Defined"
+        ]
     },
     {
         id: "ovarian-dermoid",
@@ -165,7 +182,12 @@ export const gynecologyPathologies: Pathology[] = [
         ],
         goldStandard: "MRI: T1 hiperintens kitle + fat-sat'ta sinyal kaybı (yağ konfirmasyonu). BT'de yağ dansitesi (-20 ila -100 HU) de tanısaldır.",
         clinicalPearl: "Yağ + kalsifikasyon + kıl = dermoid triadı. Fat-sat'ta baskılanma endometriomadan ayırır. Malign transformasyon <%1 (skuamöz hücreli karsinom).",
-        mechanism: "Totipotent germ hücrelerinin (over primitif germ hücreleri) üç germ tabakasına diferansiyasyonu → ektoderm (kıl, deri, sebum), mezoderm (kemik, diş, yağ), endoderm (sindirim bezleri). Sebum (yağ) birikimi → kist içeriği. Yağ sinyal karakteri T1 parlak, fat-sat'ta baskılanan → benign dermoid tanısı (malign transformasyon nadir: <1%, skuamöz hücreli karsinom). Rokitansky nodülü: Kalsifikasyon, kıl, diş içeren solid yapı."
+        mechanism: "Totipotent germ hücrelerinin (over primitif germ hücreleri) üç germ tabakasına diferansiyasyonu → ektoderm (kıl, deri, sebum), mezoderm (kemik, diş, yağ), endoderm (sindirim bezleri). Sebum (yağ) birikimi → kist içeriği. Yağ sinyal karakteri T1 parlak, fat-sat'ta baskılanan → benign dermoid tanısı (malign transformasyon nadir: <1%, skuamöz hücreli karsinom). Rokitansky nodülü: Kalsifikasyon, kıl, diş içeren solid yapı.",
+        references: [
+            "O-RADS: ACR O-RADS MRI Risk Stratification System. American College of Radiology; 2020.",
+            "Defined Defined Defined Defined Defined Defined Defined",
+            "Defined Defined Defined Defined"
+        ]
     },
     {
         id: "ovarian-torsion",
@@ -208,7 +230,12 @@ export const gynecologyPathologies: Pathology[] = [
         ],
         goldStandard: "Doppler USG: Whirlpool sign + büyümüş ödemli over + periferik foliküller. Akım yokluğu tanıyı destekler ancak akım varlığı torsiyonu ekarte ettirmez.",
         clinicalPearl: "Doppler'da akım olması torsiyonu ekarte ettirmez! Kısmi torsiyonda arteriyel akım devam edebilir — klinik şüphe yüksekse cerrahi eksplorasyon gerekir.",
-        mechanism: "Overin kendi vasküler pedikülü etrafında dönmesi → önce venöz, ardından arteryel akım kesilmesi → over ödem ve iskemisi. Büyük over kitlesi (kist, dermoid) veya uzun infundibulo-pelvik ligaman predispozan faktördür. Foliküller ödemli overde perifere sıkışır ('string of pearls'). Whirlpool sign: Doppler'da dönen vasküler pedikül görüntüsü. Akım varlığı torsiyonu ekarte ettirmez (kısmi torsiyon, arteriyel akım devam edebilir)."
+        mechanism: "Overin kendi vasküler pedikülü etrafında dönmesi → önce venöz, ardından arteryel akım kesilmesi → over ödem ve iskemisi. Büyük over kitlesi (kist, dermoid) veya uzun infundibulo-pelvik ligaman predispozan faktördür. Foliküller ödemli overde perifere sıkışır ('string of pearls'). Whirlpool sign: Doppler'da dönen vasküler pedikül görüntüsü. Akım varlığı torsiyonu ekarte ettirmez (kısmi torsiyon, arteriyel akım devam edebilir).",
+        references: [
+            "Defined Defined Defined Defined Defined Defined Defined",
+            "ACR Appropriateness Criteria: Acute Pelvic Pain in the Reproductive Age Group. American College of Radiology.",
+            "Defined Defined Defined Defined"
+        ]
     },
     {
         id: "cervical-carcinoma",
@@ -241,7 +268,13 @@ export const gynecologyPathologies: Pathology[] = [
         ],
         goldStandard: "MRI: T2 ağırlıklı sekanslar — parametrial invazyon değerlendirmesi ve FIGO evrelemesi için altın standart.",
         clinicalPearl: "T2'de hipointens servikal stroma halkası bozulmuşsa = parametrial invazyon = Evre IIB = cerrahi kontraendike, kemoradyoterapi.",
-        mechanism: "HPV 16/18 enfeksiyonu → servikal transformasyon zonunda skuamöz hücre displazisi (CIN 1→2→3) → invaziv skuamöz hücreli karsinom. HPV onkoproteinleri (E6: TP53 inhibisyonu, E7: Rb inhibisyonu) → hücre döngüsü kontrolsüzlüğü. MRI'da servikal stroma (fibröz doku → T2 hipointens) tümör tarafından bozulur (T2 ara-yüksek sinyal). Parametriyal yağ invazyonu evre IIB → cerrahi kontraendike."
+        mechanism: "HPV 16/18 enfeksiyonu → servikal transformasyon zonunda skuamöz hücre displazisi (CIN 1→2→3) → invaziv skuamöz hücreli karsinom. HPV onkoproteinleri (E6: TP53 inhibisyonu, E7: Rb inhibisyonu) → hücre döngüsü kontrolsüzlüğü. MRI'da servikal stroma (fibröz doku → T2 hipointens) tümör tarafından bozulur (T2 ara-yüksek sinyal). Parametriyal yağ invazyonu evre IIB → cerrahi kontraendike.",
+        references: [
+            "FIGO Committee on Gynecologic Oncology. Revised FIGO staging for carcinoma of the cervix uteri. International Journal of Gynecology & Obstetrics. 2019;145(1):129-135.",
+            "Defined Defined Defined Defined Defined Defined Defined",
+            "ACR Appropriateness Criteria: Staging and Follow-up of Cervical Cancer. American College of Radiology.",
+            "Defined Defined Defined Defined"
+        ]
     },
     {
         id: "ovarian-carcinoma",
@@ -301,7 +334,13 @@ export const gynecologyPathologies: Pathology[] = [
         ],
         goldStandard: "BT: Evreleme ve peritoneal yayılım değerlendirmesi için altın standart. MRI: Lokal karakterizasyon ve belirsiz kitlelerde üstün.",
         clinicalPearl: "Omental caking (kek görünümü) + asit + bilateral kompleks over kitlesi = ileri evre over karsinomu klasik triadı.",
-        mechanism: "Yüzey epitel → malign transformasyon (seroz, müsinöz, endometrioid, berrak hücreli). En sık tip: Yüksek dereceli seroz karsinom (%70) — p53 mutasyonu, BRCA1/2 (herediter). Geç tanı: Pelvik periton → omentum → diyafragmatik periton yayılımı (FIGO III-IV). Asit oluşumu: Peritoneal tümör implantları → vasküler permeabilite artışı (VEGF)."
+        mechanism: "Yüzey epitel → malign transformasyon (seroz, müsinöz, endometrioid, berrak hücreli). En sık tip: Yüksek dereceli seroz karsinom (%70) — p53 mutasyonu, BRCA1/2 (herediter). Geç tanı: Pelvik periton → omentum → diyafragmatik periton yayılımı (FIGO III-IV). Asit oluşumu: Peritoneal tümör implantları → vasküler permeabilite artışı (VEGF).",
+        references: [
+            "O-RADS: ACR O-RADS MRI Risk Stratification System. American College of Radiology; 2020.",
+            "FIGO Committee on Gynecologic Oncology. FIGO staging for ovarian, fallopian tube, and peritoneal cancer. International Journal of Gynecology & Obstetrics. 2014;124(1):1-5.",
+            "Defined Defined Defined Defined Defined Defined Defined",
+            "Defined Defined Defined Defined"
+        ]
     },
     {
         id: "endometrial-carcinoma",
@@ -355,7 +394,13 @@ export const gynecologyPathologies: Pathology[] = [
         ],
         goldStandard: "MRI: Dinamik kontrastlı T1 + DWI — miyometrial invazyon derinliği ve FIGO evrelemesi için altın standart.",
         clinicalPearl: "Postmenopozal kanama + endometrial kalınlık >4mm = biyopsi şart. MRI'da JZ bütünlüğü korunuyorsa invazyon yok (Evre IA).",
-        mechanism: "Östrojen maruziyeti → endometrial hiperplazi → atipik hiperplazi → tip I (endometrioid, %80, iyi prognoz). Tip II: Seröz veya berrak hücreli (hormonal bağımsız, kötü prognoz). MRI'da tümör T2 orta-yüksek sinyal (yüksek hücrelük, geniş intersellüler su); normal endometrium daha hiperintens; junctional zone hipointens bariyer — tümör bu bariyer geçerse miyometrium invazyonu."
+        mechanism: "Östrojen maruziyeti → endometrial hiperplazi → atipik hiperplazi → tip I (endometrioid, %80, iyi prognoz). Tip II: Seröz veya berrak hücreli (hormonal bağımsız, kötü prognoz). MRI'da tümör T2 orta-yüksek sinyal (yüksek hücrelük, geniş intersellüler su); normal endometrium daha hiperintens; junctional zone hipointens bariyer — tümör bu bariyer geçerse miyometrium invazyonu.",
+        references: [
+            "FIGO Committee on Gynecologic Oncology. Revised FIGO staging for endometrial cancer. International Journal of Gynecology & Obstetrics. 2009;105(2):103-104.",
+            "Defined Defined Defined Defined Defined Defined Defined",
+            "ACR Appropriateness Criteria: Pretreatment Evaluation and Follow-up of Endometrial Cancer. American College of Radiology.",
+            "Defined Defined Defined Defined"
+        ]
     },
     {
         id: "ectopic-pregnancy",
@@ -415,7 +460,12 @@ export const gynecologyPathologies: Pathology[] = [
         ],
         goldStandard: "Transvajinal USG + serum βhCG: Boş uterus + βhCG >1500-2000 mIU/mL = ektopik gebelik tanısı için altın standart kombinasyon.",
         clinicalPearl: "βhCG >1500-2000 mIU/mL olmasına rağmen intrauterin gebelik görülmüyorsa ektopik gebelik suçlu bulunana kadar masumiyetini kanıtlamalıdır.",
-        mechanism: "Fallop tübüne implante olan embriyo → tüp büyümesi → distansiyon → rüptür (6-8. haftalar). En sık bölge: İstmus-ampulla bileşkesi. Ring of fire işareti: Trofoblastik doku periferal vaskülarite oluşturur. Salpenjit, tüp cerrahisi, OİU geçmişi risk faktörü. İntrauterin IUD varlığına rağmen tüp gebeliği olabilir (IUD uterusu korur, tübü değil)."
+        mechanism: "Fallop tübüne implante olan embriyo → tüp büyümesi → distansiyon → rüptür (6-8. haftalar). En sık bölge: İstmus-ampulla bileşkesi. Ring of fire işareti: Trofoblastik doku periferal vaskülarite oluşturur. Salpenjit, tüp cerrahisi, OİU geçmişi risk faktörü. İntrauterin IUD varlığına rağmen tüp gebeliği olabilir (IUD uterusu korur, tübü değil).",
+        references: [
+            "Defined Defined Defined Defined Defined Defined Defined",
+            "ACR Appropriateness Criteria: First Trimester Bleeding. American College of Radiology.",
+            "Defined Defined Defined Defined Defined Defined"
+        ]
     },
     {
         id: "tubo-ovarian-abscess",
@@ -477,7 +527,13 @@ export const gynecologyPathologies: Pathology[] = [
         ],
         goldStandard: "Kontrastlı BT: Rim kontrastlanması + fat stranding + pelvik kompleks kitle — TOA tanısı ve komplikasyon değerlendirmesi için altın standart.",
         clinicalPearl: "Apse içinde hava görülmesi = anaerobik enfeksiyon düşün = acil drenaj gerekebilir. DWI kısıtlanması apse ile nekrotik tümörü ayırmada yardımcıdır.",
-        mechanism: "Pelvik inflamatuar hastalık (PID) → salpenjit → adneksiyal bölgede mikroorganizma toplanması → abse oluşumu. En sık etkenler: N. gonorrhoeae, C. trachomatis, anaeroblar. Apse içindeki pü: Ölü lökositler, bakteri, fibrin → DWI'da kısıtlanma. Rüptür → peritonit → acil cerrahi."
+        mechanism: "Pelvik inflamatuar hastalık (PID) → salpenjit → adneksiyal bölgede mikroorganizma toplanması → abse oluşumu. En sık etkenler: N. gonorrhoeae, C. trachomatis, anaeroblar. Apse içindeki pü: Ölü lökositler, bakteri, fibrin → DWI'da kısıtlanma. Rüptür → peritonit → acil cerrahi.",
+        references: [
+            "Defined Defined Defined Defined Defined Defined Defined",
+            "ACR Appropriateness Criteria: Acute Pelvic Pain in the Reproductive Age Group. American College of Radiology.",
+            "Defined Defined Defined Defined Defined Defined",
+            "Defined Defined Defined Defined"
+        ]
     },
     {
         id: "pcos",
@@ -530,6 +586,11 @@ export const gynecologyPathologies: Pathology[] = [
         ],
         goldStandard: "Transvajinal USG: Over hacmi >10mL + ≥20 folikül (2-9mm)/over — Rotterdam morfolojik kriter. Klinik ve hormonal verilerle birleştirilmeli.",
         clinicalPearl: "PCOS tanısı sadece görüntüleme ile konmaz — Rotterdam kriterlerinden en az 2'si (oligo/anovülasyon, hiperandrojenizm, PCO morfolojisi) gereklidir.",
-        mechanism: "İnsülin direnci → Hiperinsulinemi → Over teka hücrelerinde androjen üretimi artışı (LH artışı) → FSH/LH oranı bozulur → folikül matürasyonu duraklar (anovülasyon) → foliküller küçük kalır ve birikir (PCO morfolojisi). LH pulsatilitesi artışı da katkıda bulunur. Sonuç: Kronik anovülasyon + hiperandrojenizm + infertilite döngüsü."
+        mechanism: "İnsülin direnci → Hiperinsulinemi → Over teka hücrelerinde androjen üretimi artışı (LH artışı) → FSH/LH oranı bozulur → folikül matürasyonu duraklar (anovülasyon) → foliküller küçük kalır ve birikir (PCO morfolojisi). LH pulsatilitesi artışı da katkıda bulunur. Sonuç: Kronik anovülasyon + hiperandrojenizm + infertilite döngüsü.",
+        references: [
+            "Defined Defined Defined Defined Defined Defined Defined",
+            "Defined Defined Defined Defined",
+            "ACR Appropriateness Criteria: Female Infertility. American College of Radiology."
+        ]
     }
 ];

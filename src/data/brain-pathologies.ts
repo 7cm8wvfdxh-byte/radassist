@@ -59,7 +59,13 @@ export const brainPathologies: Pathology[] = [
         "etiology": "Kardiyoembolik (%30): AF, Endokardit. Büyük damar ateroskleroz (%25). Küçük damar hastalığı (laküner, %25). Kriptojenik (%20). CADASIL, Vaskülit (Nadir).",
         "differentialDiagnosis": ["Beyin Tümörü (Subakut başlangıç, kitle etkisi, kontrast tutulumu)", "MS Plakı (Genç hasta, ovoid periventriküler lezyonlar)", "Beyin Apsesi (DWI pozitif ama klinik farklı: ateş)", "Hemiplejik Migren (Geri dönüşümlü, MR geçici bulgu)"],
         "goldStandard": "MRI DWI/ADC: Akut infarkt (DWI parlak/ADC karanlık). BT: İlk değerlendirme (kanama ekle). BT anjiyografi: Büyük damar oklüzyonu (LVO) tespiti.",
-        "clinicalPearl": "DWI parlak + ADC karanlık = Akut iskemi (İlk dakikalardan itibaren pozitif). BT ilk 6 saatte normal olabilir, DWI asla."
+        "clinicalPearl": "DWI parlak + ADC karanlık = Akut iskemi (İlk dakikalardan itibaren pozitif). BT ilk 6 saatte normal olabilir, DWI asla.",
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Cerebrovascular Diseases-Stroke. American College of Radiology; 2021.",
+            "Radiopaedia.org - Acute Ischemic Stroke",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
+        ]
     },
     {
         "id": "glioblastoma",
@@ -115,7 +121,13 @@ export const brainPathologies: Pathology[] = [
         "etiology": "Sporadik (%90+), Radyasyon maruziyeti, NF1/NF2 (Pediatrik GBM). WHO 2021: IDH-wildtype, TERT promoter mutasyonu, EGFR amplifikasyonu.",
         "differentialDiagnosis": ["Beyin Metastazı (Multipl, gri-beyaz madde bileşkesi, bilinen primer)", "Primer CNS Lenfoma (Santral derin yerleşim, üniform kontrastlanma)", "Anaplastik Astrositom (IDH mutant, daha az nekroz)", "Beyin Apses (DWI merkezi kısıtlanma, ateş)"],
         "goldStandard": "MRI T1+C + FLAIR + DWI + Perfüzyon + Spektroskopi. Stereotaktik biyopsi: Moleküler tanı için.",
-        "clinicalPearl": "Rim (çevresel) kontrastlanma + Merkezi nekroz + FLAIR ödem + Kelebek patern (korpus kallozum invazyonu) = GBM klasik triadı."
+        "clinicalPearl": "Rim (çevresel) kontrastlanma + Merkezi nekroz + FLAIR ödem + Kelebek patern (korpus kallozum invazyonu) = GBM klasik triadı.",
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Intracranial Neoplasms. American College of Radiology; 2020.",
+            "Radiopaedia.org - Glioblastoma (IDH-wildtype)",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019."
+        ]
     },
     {
         "id": "meningioma",
@@ -168,7 +180,13 @@ export const brainPathologies: Pathology[] = [
         "etiology": "Araknoid hücre kökenli. Radyasyon (iyonizan), NF2 mutasyonu (bilateral = NF2). Kadınlarda 2:1. Progesteron reseptörü pozitifliği büyümeyi etkiler.",
         "differentialDiagnosis": ["Dural Metastaz (İrregüler sınır, agresif yıkım, bilinen primer)", "Schwannom (Sinir kökenli, foramen genişlemesi, dumbbell)", "Hemanjiyoperisitom (Seri yenidenme, kemik yıkım)", "Lenfoma (Dural plak, uniform kontrast, BOS tutulumu)"],
         "goldStandard": "MRI T1+C: Homojen yoğun kontrastlanma + Dural tail. BT: Hiperostoz veya kemik yıkım değerlendirmesi.",
-        "clinicalPearl": "Dural tail + BOS yarığı (CSF cleft) + Homojen kontrastlanma + Ekstra-aksiyel = Menenjiyom. Kadın + Konveksite yerleşimi en sık."
+        "clinicalPearl": "Dural tail + BOS yarığı (CSF cleft) + Homojen kontrastlanma + Ekstra-aksiyel = Menenjiyom. Kadın + Konveksite yerleşimi en sık.",
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Intracranial Neoplasms. American College of Radiology; 2020.",
+            "Radiopaedia.org - Meningioma",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
+        ]
     },
     {
         "id": "multiple_sclerosis",
@@ -212,6 +230,12 @@ export const brainPathologies: Pathology[] = [
             "Dissemination in Time (DIT) and Space (DIS).",
             "McDonald Criteria used for diagnosis.",
             "Normal white matter exists between lesions."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Multiple Sclerosis. American College of Radiology; 2019.",
+            "Radiopaedia.org - Multiple Sclerosis",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
         ]
     },
     {
@@ -252,6 +276,12 @@ export const brainPathologies: Pathology[] = [
             "Venous origin (bridging veins).",
             "Common in elderly and alcoholics (due to atrophy stretching veins).",
             "Acute-on-chronic SDH: Mixed density on CT."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Head Trauma. American College of Radiology; 2020.",
+            "Radiopaedia.org - Subdural Hematoma",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019."
         ]
     },
     {
@@ -294,6 +324,12 @@ export const brainPathologies: Pathology[] = [
             "Arterial origin (Usually Middle Meningeal Artery).",
             "Lucid interval (regaining consciousness then deteriorating) is classic but not always present.",
             "Neurosurgical emergency if significant mass effect."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Head Trauma. American College of Radiology; 2020.",
+            "Radiopaedia.org - Epidural Hematoma",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019."
         ]
     },
     {
@@ -336,6 +372,12 @@ export const brainPathologies: Pathology[] = [
             "Sudden onset severe headache ('Worst headache of my life').",
             "Most common cause is trauma; non-traumatic cause is aneurysm rupture.",
             "Complications: Vasospasm, Hydrocephalus."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Cerebrovascular Diseases-Stroke. American College of Radiology; 2021.",
+            "Radiopaedia.org - Subarachnoid Hemorrhage",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
         ]
     },
     {
@@ -379,6 +421,12 @@ export const brainPathologies: Pathology[] = [
         "keyPointsEn": [
             "Ring enhancing lesion DDx: 'MAGICAL DR' (Metastasis, Abscess, GBM, Infarct, Contusion, AIDS, Lymphoma, Demyelination, Radiation).",
             "Restricted diffusion (DWI) is key to differentiate from necrotic tumors (usually facilitated)."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Focal Neurologic Deficit. American College of Radiology; 2020.",
+            "Radiopaedia.org - Cerebral Abscess",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
         ]
     },
     {
@@ -422,6 +470,12 @@ export const brainPathologies: Pathology[] = [
             "Arises from vestibular branch of 8th cranial nerve.",
             "Sensorineural hearing loss.",
             "Bilateral involvement suggests NF2 disease."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Hearing Loss and/or Vertigo. American College of Radiology; 2018.",
+            "Radiopaedia.org - Vestibular Schwannoma",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
         ]
     },
     {
@@ -462,6 +516,12 @@ export const brainPathologies: Pathology[] = [
             "Optic chiasm compression (bitemporal hemianopsia).",
             "Can be Functional (Prolactinoma, GH-secreting) or Non-functional.",
             "Pituitary apoplexy is a medical emergency."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Neuroendocrine Imaging. American College of Radiology; 2019.",
+            "Radiopaedia.org - Pituitary Adenoma",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019."
         ]
     },
     {
@@ -509,6 +569,12 @@ export const brainPathologies: Pathology[] = [
             "Most common intracranial tumor in adults.",
             "Gray-white matter junction is the typical location.",
             "Lung, Breast, Melanoma, Kidney and Colon are the most common primary sources."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Intracranial Neoplasms. American College of Radiology; 2020.",
+            "Radiopaedia.org - Cerebral Metastasis",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019."
         ]
     },
     {
@@ -533,6 +599,12 @@ export const brainPathologies: Pathology[] = [
             "Anjiyografik olarak görülmez (düşük akımlı/okült).",
             "Ailesel vakalarda çokludur (Multipl) (CCM genleri).",
             "Kanama riski taşır."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
+            "Radiopaedia.org - Cavernous Malformation",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
         ]
     },
     {
@@ -553,6 +625,12 @@ export const brainPathologies: Pathology[] = [
             "Rotasyonel hızlanma/yavaşlama yaralanması.",
             "Klinik-Radyolojik uyumsuzluk (GKS düşük ama BT normal olabilir).",
             "SWI en duyarlı sekanstır."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Head Trauma. American College of Radiology; 2022.",
+            "Radiopaedia.org - Diffuse Axonal Injury",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
         ]
     },
     {
@@ -573,6 +651,12 @@ export const brainPathologies: Pathology[] = [
             "Doğurganlık çağındaki obez kadınlar.",
             "Papilödem, Baş ağrısı, Görme bozuklukları.",
             "Venöz Sinüs Trombozu mutlaka dışlanmalıdır."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Headache. American College of Radiology; 2019.",
+            "Radiopaedia.org - Idiopathic Intracranial Hypertension",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019."
         ]
     },
     {
@@ -591,6 +675,11 @@ export const brainPathologies: Pathology[] = [
         "keyPoints": [
             "Klasik Triad: Yürüme bozukluğu ('manyetik yürüyüş'), Demans, İdrar inkontinansı.",
             "Orantısız genişlemiş subaraknoid mesafeli hidrosefali (DESH) bulguları."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Radiopaedia.org - Normal Pressure Hydrocephalus",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
         ]
     },
     {
@@ -610,6 +699,12 @@ export const brainPathologies: Pathology[] = [
             "Epilepsi, Cilt lezyonları (adenom sebaseum).",
             "Renal AML (Anjiyomiyolipom), Kardiyak Rabdomyomlar.",
             "SEGA gelişimi açısından takip gereklidir."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Radiopaedia.org - Tuberous Sclerosis Complex",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
         ]
     },
     {
@@ -632,6 +727,12 @@ export const brainPathologies: Pathology[] = [
             "Kapiller yatak olmaksızın konjenital şant.",
             "Yüksek akımlı lezyon.",
             "Cerrahi risk için Spetzler-Martin derecelendirmesi."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
+            "Radiopaedia.org - Arteriovenous Malformation",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
         ]
     },
     {
@@ -652,6 +753,12 @@ export const brainPathologies: Pathology[] = [
         "keyPoints": [
             "Hiperkoagülasyon durumları (OKS kullanımı, gebelik, Faktör V Leiden).",
             "Arteriyel sulama alanlarına uymayan hemorajik infarktlar."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
+            "Radiopaedia.org - Cerebral Venous Sinus Thrombosis",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019."
         ]
     },
     {
@@ -673,6 +780,12 @@ export const brainPathologies: Pathology[] = [
             "HSV-1 etkenidir. Limbik sistemi tutar.",
             "Bazal ganglionlar korunur (MCA infarktının aksine).",
             "Yüksek mortalite - Şüphe anında hemen Asiklovir başlanmalı."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: CNS Infections. American College of Radiology; 2020.",
+            "Radiopaedia.org - Herpes Simplex Encephalitis",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
         ]
     },
     {
@@ -694,6 +807,11 @@ export const brainPathologies: Pathology[] = [
             "Orta kraniyal çukur (temporal/Sylvian) en sık yerleşim yeridir.",
             "Genellikle insidentaldir (tesadüfen bulunur).",
             "Galassi sınıflaması kullanılır."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Radiopaedia.org - Arachnoid Cyst",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019."
         ]
     },
     {
@@ -718,6 +836,12 @@ export const brainPathologies: Pathology[] = [
             "Steroidlere dramatik yanıt verir ('Hayalet tümör' - Ghost tumor). Biyopsi öncesi steroid VERİLMEMELİDİR.",
             "Genellikle B-hücreli lenfomadır.",
             "İmmün sistemi baskılanmış hastalarda (EBV ilişkili) görünüm çok farklıdır (nekrotik, halkasal)."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Cerebral Neoplasm. American College of Radiology; 2020.",
+            "Radiopaedia.org - Primary CNS Lymphoma",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
         ]
     },
     {
@@ -743,6 +867,12 @@ export const brainPathologies: Pathology[] = [
             "Genç hastada lobar kanama: Amiloid anjiyopati, AVM, kavernom düşün.",
             "BT anjiyoda 'Spot sign': Hematom genişlemesi riski yüksek.",
             "Kanama kronolojisi MRI'da T1/T2 sinyal değişimleriyle takip edilir."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
+            "Radiopaedia.org - Intracerebral Hemorrhage",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019."
         ]
     },
     {
@@ -770,6 +900,12 @@ export const brainPathologies: Pathology[] = [
             "Rüptür riski: Boyut >7mm, posterior sirkülasyon, irregüler şekil, 'daughter sac'.",
             "PHASES skoru rüptür riskini tahmin eder.",
             "Polikistik böbrek hastalığı, Ehlers-Danlos, aile öyküsü: Tarama endikasyonu."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
+            "Radiopaedia.org - Cerebral Aneurysm",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
         ]
     },
     {
@@ -795,6 +931,12 @@ export const brainPathologies: Pathology[] = [
             "Genellikle genç erişkinlerde (30-40 yaş), epilepsi ile prezentasyon.",
             "Frontal ve temporal loblar en sık yerleşim.",
             "'T2-FLAIR mismatch': Astrositom için spesifik (T2'de hiperintens, FLAIR'de santral hipointens)."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Cerebral Neoplasm. American College of Radiology; 2020.",
+            "Radiopaedia.org - Low Grade Glioma",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019."
         ]
     },
     {
@@ -819,6 +961,12 @@ export const brainPathologies: Pathology[] = [
             "Non-fonksiyonel: Kitle etkisi ile semptom (Bitemporal hemianopsi - optik kiazma basısı).",
             "Hipofizer apopleksi: Ani kanama/nekroz - Acil nöroşirürji konsültasyonu.",
             "Prolaktinoma tedavisi: Önce medikal (Dopamin agonisti), cerrahi ikinci seçenek."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
+            "ACR Appropriateness Criteria: Pituitary Adenoma. American College of Radiology; 2021.",
+            "Radiopaedia.org - Pituitary Macroadenoma"
         ]
     },
     {
@@ -843,6 +991,12 @@ export const brainPathologies: Pathology[] = [
             "Adamantinomatöz tip (çocuk): Kalsifiye, kistik. Papiller tip (erişkin): Daha solid.",
             "Ayırıcı tanı: Rathke yarığı kisti (kalsifikasyon yok, daha küçük), Dermoid kist, Hipofiz adenomu.",
             "Tedavi zorluğu: Hipotalamus yapışıklığı nedeniyle subtotal rezeksiyon."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "Radiopaedia.org - Craniopharyngioma"
         ]
     },
     {
@@ -868,6 +1022,12 @@ export const brainPathologies: Pathology[] = [
             "Lenfoma vs Toksoplazmoz: DWI (Lenfoma = kısıtlanma), Perfüzyon, Thal skalası.",
             "Eksantrik hedef işareti toksoplazmoz için yüksek spesifik.",
             "Empirik tedavi (2 hafta): Yanıt varsa tanı doğrulanır, yoksa biyopsi."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: HIV-Associated Central Nervous System Disease. American College of Radiology; 2022.",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
+            "Radiopaedia.org - Cerebral Toxoplasmosis"
         ]
     },
     {
@@ -893,6 +1053,12 @@ export const brainPathologies: Pathology[] = [
             "4 evre: Veziküler → Kolloidal → Granüler → Kalsifiye.",
             "Skoleks görülmesi patognomonik ('solucan başı').",
             "Racemoz form: Bazal sisternalarda üzüm salkımı şeklinde kistler."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Central Nervous System Infections. American College of Radiology; 2021.",
+            "Radiopaedia.org - Neurocysticercosis"
         ]
     },
     {
@@ -916,6 +1082,12 @@ export const brainPathologies: Pathology[] = [
             "Siringomiyeli %25-70 eşlik eder.",
             "Chiari 0: Tonsil herniasyonu yok ama BOS akım bozukluğu var.",
             "Cerrahi: Posterior fossa dekompresyonu (BOS akımını düzeltmek için)."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "ACR Appropriateness Criteria: Chiari Malformations. American College of Radiology; 2020.",
+            "Radiopaedia.org - Chiari I Malformation"
         ]
     },
     {
@@ -939,6 +1111,12 @@ export const brainPathologies: Pathology[] = [
             "Mega cisterna magna: Vermis normal, sadece büyük sisterna - Ayırıcı tanı.",
             "%70-90 hidrosefali eşliği.",
             "Diğer anomaliler eşlik edebilir: Korpus kallozum agenezisi, heterotopiler."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Dandy-Walker Malformation"
         ]
     },
     {
@@ -962,6 +1140,12 @@ export const brainPathologies: Pathology[] = [
             "Lipom (interhemisferik) %50 eşlik eder.",
             "Sendromik: Aicardi sendromu (kızlarda), ACC+Koriyoretinal lakünler+İnfantil spazm.",
             "Asemptomatik olabilir veya gelişimsel gecikme ile prezente."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
+            "Radiopaedia.org - Agenesis of the Corpus Callosum"
         ]
     },
     {
@@ -985,6 +1169,12 @@ export const brainPathologies: Pathology[] = [
             "Monofazik seyir (MS'den fark). Relaps: MS veya MDEM düşündürür.",
             "Deep gray matter tutulumu (talamus, bazal ganglia) ADEM için tipik, MS'de nadir.",
             "Difüz, kötü sınırlı lezyonlar - MS'de oval, iyi sınırlı Dawson parmakları."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "ACR Appropriateness Criteria: Demyelinating Disease. American College of Radiology; 2021.",
+            "Radiopaedia.org - Acute Disseminated Encephalomyelitis (ADEM)"
         ]
     },
     {
@@ -1009,6 +1199,12 @@ export const brainPathologies: Pathology[] = [
             "Lokasyon: Çocukta VERMIS (midline), Erişkinde HEMİSFER (lateral).",
             "DWI kısıtlaması: Pilocytic astrositom ve ependimomdan ayırıcı (onlarda kısıtlanma yok).",
             "Staging: Tüm nöroaksis MR + LP (leptomeningeal yayılım)."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "ACR Appropriateness Criteria: Pediatric Cerebellar Neoplasm. American College of Radiology; 2020.",
+            "Radiopaedia.org - Medulloblastoma"
         ]
     },
     {
@@ -1033,6 +1229,12 @@ export const brainPathologies: Pathology[] = [
             "WHO Grade 1 - Excellent prognoz, cerrahi küratif.",
             "Lokasyonlar: Serebellum > Optik yolak (NF1) > Hipotalamus.",
             "'Kist + mural nodül' paterni klasik ama %50 solid olabilir."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Pilocytic Astrocytoma"
         ]
     },
     {
@@ -1051,6 +1253,12 @@ export const brainPathologies: Pathology[] = [
             "Klinik: Baş ağrısı, nöbet, görme bozukluğu, mental durum değişikliği.",
             "Etyoloji: Hipertansiyon, Eklampsi, İmmünsupresif ilaçlar (Siklosporin).",
             "Genellikle reversibldir, ancak tedavi edilmezse infarkta ilerler."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
+            "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
+            "Radiopaedia.org - Posterior Reversible Encephalopathy Syndrome (PRES)"
         ]
     },
     {
@@ -1073,6 +1281,12 @@ export const brainPathologies: Pathology[] = [
             "Spetzler-Martin skoru cerrahi riski belirler.",
             "Yıllık kanama riski %2-4.",
             "Nidus içinde anevrizma olması kanama riskini artırır."
+        ],
+        "references": [
+            "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
+            "Radiopaedia.org - Arteriovenous Malformation (Brain)"
         ]
     }
 ];

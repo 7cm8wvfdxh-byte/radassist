@@ -599,7 +599,12 @@ export const spinePathologies: Pathology[] = [
             "DWI is the most important sequence: Restriction = pus confirmation.",
             "Risk factors: IV drug use, DM, immunosuppression, recent spinal procedure."
         ],
-        "mechanism": "Hematojen yayılım veya komşu vertebra osteomiyelitinden direkt yayılım → epidural mesafede pü birikimi. Visköz pü → su moleküllerinin hareketi kısıtlanır → DWI'da parlak, ADC düşük. Epidural mesafedeki artan basınç → spinal kord ve sinir köklerine kompresyon ve vasküler ischemi → nörolojik hasar. Torasik bölgede kanal dardır, küçük koleksiyonlar bile nörolojik defisit yapabilir."
+        "mechanism": "Hematojen yayılım veya komşu vertebra osteomiyelitinden direkt yayılım → epidural mesafede pü birikimi. Visköz pü → su moleküllerinin hareketi kısıtlanır → DWI'da parlak, ADC düşük. Epidural mesafedeki artan basınç → spinal kord ve sinir köklerine kompresyon ve vasküler ischemi → nörolojik hasar. Torasik bölgede kanal dardır, küçük koleksiyonlar bile nörolojik defisit yapabilir.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Spinal epidural abscess"
+        ]
     },
     {
         "id": "pott_disease",
@@ -645,7 +650,12 @@ export const spinePathologies: Pathology[] = [
             "'Cold abscess': Abscess without classic signs of inflammation.",
             "Gibbus (angular kyphosis) is pathognomonic for chronic Pott disease."
         ],
-        "mechanism": "M. tuberculosis hematojen yayılım → vertebral ön elemanlar (cisimler) tutulur → yavaş granülomatöz yıkım. Disk enzim salabilecek nötrofil içermediğinden (tüberküloz granülomatöz inflamasyon) disk ileri aşamaya kadar korunur (piyojenik enfeksiyondan fark). Anterior subligamentöz yayılım → multipl vertebra tutulumu. Vertebra ön yüzünde çöküş → kyphosis (gibbus deformitesi). Soğuk apse: Düşük ateş/belirgin inflamasyon yok çünkü granülomatöz tepki lokalize eder."
+        "mechanism": "M. tuberculosis hematojen yayılım → vertebral ön elemanlar (cisimler) tutulur → yavaş granülomatöz yıkım. Disk enzim salabilecek nötrofil içermediğinden (tüberküloz granülomatöz inflamasyon) disk ileri aşamaya kadar korunur (piyojenik enfeksiyondan fark). Anterior subligamentöz yayılım → multipl vertebra tutulumu. Vertebra ön yüzünde çöküş → kyphosis (gibbus deformitesi). Soğuk apse: Düşük ateş/belirgin inflamasyon yok çünkü granülomatöz tepki lokalize eder.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Tuberculous spondylitis (Pott disease)"
+        ]
     },
     {
         "id": "spinal_discitis_osteomyelitis",
@@ -685,7 +695,12 @@ export const spinePathologies: Pathology[] = [
             "Most common agent is S. aureus.",
             "Tuberculosis (Pott disease): Gibbus deformity, large psoas abscesses, disc relatively preserved (Skip lesions)."
         ],
-        "mechanism": "S. aureus hematojen yayılım → vertebral end-plate damarlanması (ağırlıklı olarak diskin beslendiği alanlar) tıkanır → end-plate nekrozu → diskitis. İnfeksiyonun diskte ilerlemesiyle disk yüksekliği azalır ve sinyal artar. Epidural apse: Enfeksiyonun posterior epidural mesafeye yayılması ile oluşur. Piyojenik enfeksiyonun potttan farkı: Disk erken tutulur, nötrofil kökenli proteolitik enzimler diski hızla yıkar."
+        "mechanism": "S. aureus hematojen yayılım → vertebral end-plate damarlanması (ağırlıklı olarak diskin beslendiği alanlar) tıkanır → end-plate nekrozu → diskitis. İnfeksiyonun diskte ilerlemesiyle disk yüksekliği azalır ve sinyal artar. Epidural apse: Enfeksiyonun posterior epidural mesafeye yayılması ile oluşur. Piyojenik enfeksiyonun potttan farkı: Disk erken tutulur, nötrofil kökenli proteolitik enzimler diski hızla yıkar.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Spondylodiscitis"
+        ]
     },
     {
         "id": "modic_changes",
@@ -715,7 +730,12 @@ export const spinePathologies: Pathology[] = [
             "Type 1 Modic changes are strongly associated with low back pain.",
             "Distinction from infection: Disc signal is normal or only degenerative (Disc is bright in discitis)."
         ],
-        "mechanism": "Disk dejenerasyonu ve biyomekanik stres → vertebral end-plate mikro-hasarı → reaktif kemik iliği değişiklikleri. Tip 1 (akut/subakut): End-plate kırığı/nekroz + vasküler granülasyon dokusu → T1 hipointens, T2 hiperintens. Tip 2 (kronik): Granülasyon dokusu yerini yağlı ilik dönüşümüne bırakır → T1 hiperintens (yağ sinyali). Tip 3 (ileri kronik): Reaktif kemik sklerozu → T1 ve T2 hipointens."
+        "mechanism": "Disk dejenerasyonu ve biyomekanik stres → vertebral end-plate mikro-hasarı → reaktif kemik iliği değişiklikleri. Tip 1 (akut/subakut): End-plate kırığı/nekroz + vasküler granülasyon dokusu → T1 hipointens, T2 hiperintens. Tip 2 (kronik): Granülasyon dokusu yerini yağlı ilik dönüşümüne bırakır → T1 hiperintens (yağ sinyali). Tip 3 (ileri kronik): Reaktif kemik sklerozu → T1 ve T2 hipointens.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Modic changes"
+        ]
     },
     {
         "id": "spondylolysis",
@@ -755,7 +775,13 @@ export const spinePathologies: Pathology[] = [
             "Spondylolisthesis: Slippage.",
             "Canal widens in Isthmic (Lytic) type, narrows in Degenerative type."
         ],
-        "mechanism": "Tekrarlayan hiperextansiyon ve rotasyon kuvvetleri → pars interartikülaris'te stres kırığı (spondilolizis). Pars, hem faset eklemi hem de disk dejenerasyonunun yükünü taşıyan narin bir kemik köprüdür. İki taraflı pars kırığı → vertebra korpusunun posterior elementlerden ayrışması → anteriorlistezis (kayma). İstmik tipte: Kırık parçalar arasındaki mesafe artar ve spinal kanal genişler (dejeneratif stenozdaki daralmanın aksine)."
+        "mechanism": "Tekrarlayan hiperextansiyon ve rotasyon kuvvetleri → pars interartikülaris'te stres kırığı (spondilolizis). Pars, hem faset eklemi hem de disk dejenerasyonunun yükünü taşıyan narin bir kemik köprüdür. İki taraflı pars kırığı → vertebra korpusunun posterior elementlerden ayrışması → anteriorlistezis (kayma). İstmik tipte: Kırık parçalar arasındaki mesafe artar ve spinal kanal genişler (dejeneratif stenozdaki daralmanın aksine).",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Low Back Pain. American College of Radiology.",
+            "Radiopaedia.org - Spondylolysis"
+        ]
     },
     {
         "id": "transverse_myelitis",
@@ -797,7 +823,13 @@ export const spinePathologies: Pathology[] = [
         "etiology": "İdiyopatik, NMOSD (AQP4-IgG), MS, MOG-IgG ilişkili hastalık, Post-enfeksiyöz (EBV, Coxsackie, HSV), SLE, Sjögren sendromu, Paraneoplastik.",
         "differentialDiagnosis": ["MS (Kısa lezyon, periferik, beyin lezyonları)", "Spinal Kord İskemisi (DWI kısıtlanma, ani başlangıç)", "Spinal Kord Tümörü (Kitlesel, kontrastlanma)", "Servikal Miyelopati (Dejeneratif, disk hernisi eşliği)"],
         "goldStandard": "MRI (sagittal T2 + T1+K + DWI). Seroloji: AQP4-IgG, MOG-IgG, MS paneli. BOS: Oligoklonal bant.",
-        "clinicalPearl": "Uzun T2 lezyonu (≥3 segment) = NMOSD şüphesi → AQP4-IgG test et. Kısa lezyon = MS olası. İkisi de farklı tedavi gerektirir!"
+        "clinicalPearl": "Uzun T2 lezyonu (≥3 segment) = NMOSD şüphesi → AQP4-IgG test et. Kısa lezyon = MS olası. İkisi de farklı tedavi gerektirir!",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Myelopathy. American College of Radiology.",
+            "Radiopaedia.org - Transverse myelitis"
+        ]
     },
     {
         "id": "syringomyelia",
@@ -839,6 +871,11 @@ export const spinePathologies: Pathology[] = [
         "etiology": "Chiari Tip I Malformasyonu (en sık), Post-travmatik araknoid adezyon, İntramedüller tümör (ependimom, astrositom), Post-enfeksiyöz araknoidit, İdiyopatik.",
         "differentialDiagnosis": ["İntramedüller Tümör (Gadolinium tutan nodül/kitle)", "Hidromiyelik Kavite (Normal kanal genişlemesi)", "Dilate Santral Kanal (Normal varyant <2mm)", "MS Lezyonu (Periferik, gadolinium +, kistik değil)"],
         "goldStandard": "Sagittal + Aksiyel T1, T2 MRI. T1+K: Neoplastik bileşen ekartasyonu. Faz kontrast MRI: BOS akım dinamiği (Chiari'de akım bozulması).",
-        "clinicalPearl": "Servikal sirinx gördüğünde MUTLAKA kraniyoservikal bileşkeyi değerlendir — Chiari varlığını dışla. Kraniovertebrasyonel bileşkede herniasyon + sirinx = Chiari cerrahisi planı."
+        "clinicalPearl": "Servikal sirinx gördüğünde MUTLAKA kraniyoservikal bileşkeyi değerlendir — Chiari varlığını dışla. Kraniovertebrasyonel bileşkede herniasyon + sirinx = Chiari cerrahisi planı.",
+        "references": [
+            "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Radiopaedia.org - Syringomyelia"
+        ]
     }
 ];
