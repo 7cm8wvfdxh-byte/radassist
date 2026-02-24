@@ -62,9 +62,9 @@ export const brainPathologies: Pathology[] = [
         "clinicalPearl": "DWI parlak + ADC karanlık = Akut iskemi (İlk dakikalardan itibaren pozitif). BT ilk 6 saatte normal olabilir, DWI asla.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
+            "Powers WJ et al. Guidelines for the Early Management of Patients With Acute Ischemic Stroke. Stroke. 2019;50:e344-e418.",
             "ACR Appropriateness Criteria: Cerebrovascular Diseases-Stroke. American College of Radiology; 2021.",
-            "Radiopaedia.org - Acute Ischemic Stroke",
-            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016."
+            "Radiopaedia.org - Acute ischaemic stroke (https://radiopaedia.org/articles/acute-ischaemic-stroke)"
         ]
     },
     {
@@ -124,7 +124,7 @@ export const brainPathologies: Pathology[] = [
         "clinicalPearl": "Rim (çevresel) kontrastlanma + Merkezi nekroz + FLAIR ödem + Kelebek patern (korpus kallozum invazyonu) = GBM klasik triadı.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
-            "ACR Appropriateness Criteria: Intracranial Neoplasms. American College of Radiology; 2020.",
+            "Louis DN et al. The 2021 WHO Classification of Tumors of the Central Nervous System. Neuro Oncol. 2021;23(8):1231-1251.",
             "Radiopaedia.org - Glioblastoma (IDH-wildtype)",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019."
         ]
@@ -934,7 +934,7 @@ export const brainPathologies: Pathology[] = [
         ],
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
-            "ACR Appropriateness Criteria: Cerebral Neoplasm. American College of Radiology; 2020.",
+            "Louis DN et al. The 2021 WHO Classification of Tumors of the Central Nervous System. Neuro Oncol. 2021;23(8):1231-1251.",
             "Radiopaedia.org - Low Grade Glioma",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019."
         ]
@@ -995,7 +995,7 @@ export const brainPathologies: Pathology[] = [
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
-            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "ACR Appropriateness Criteria: Neuroendocrine Imaging. American College of Radiology; 2019.",
             "Radiopaedia.org - Craniopharyngioma"
         ]
     },
@@ -1085,7 +1085,7 @@ export const brainPathologies: Pathology[] = [
         ],
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
-            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
             "ACR Appropriateness Criteria: Chiari Malformations. American College of Radiology; 2020.",
             "Radiopaedia.org - Chiari I Malformation"
         ]
@@ -1114,7 +1114,7 @@ export const brainPathologies: Pathology[] = [
         ],
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
-            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Radiopaedia.org - Dandy-Walker Malformation"
         ]
@@ -1143,7 +1143,7 @@ export const brainPathologies: Pathology[] = [
         ],
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
-            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
             "Radiopaedia.org - Agenesis of the Corpus Callosum"
         ]
@@ -1172,7 +1172,7 @@ export const brainPathologies: Pathology[] = [
         ],
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
-            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
             "ACR Appropriateness Criteria: Demyelinating Disease. American College of Radiology; 2021.",
             "Radiopaedia.org - Acute Disseminated Encephalomyelitis (ADEM)"
         ]
@@ -1202,7 +1202,7 @@ export const brainPathologies: Pathology[] = [
         ],
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
-            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "Louis DN et al. The 2021 WHO Classification of Tumors of the Central Nervous System. Neuro Oncol. 2021;23(8):1231-1251.",
             "ACR Appropriateness Criteria: Pediatric Cerebellar Neoplasm. American College of Radiology; 2020.",
             "Radiopaedia.org - Medulloblastoma"
         ]
@@ -1232,7 +1232,7 @@ export const brainPathologies: Pathology[] = [
         ],
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
-            "Blaser SI, et al. Pediatric neuroimaging references where applicable.",
+            "Louis DN et al. The 2021 WHO Classification of Tumors of the Central Nervous System. Neuro Oncol. 2021;23(8):1231-1251.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Radiopaedia.org - Pilocytic Astrocytoma"
         ]
