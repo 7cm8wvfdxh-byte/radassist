@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, FormEvent } from 'react';
-import { Send, Bot, User, Sparkles, Loader2, Trash2 } from 'lucide-react';
+import { Send, Search, User, Database, Loader2, Trash2 } from 'lucide-react';
 import DOMPurify from 'dompurify';
 import { useLanguage } from '@/context/language-context';
 
@@ -12,17 +12,17 @@ interface ChatMessage {
 }
 
 const QUICK_PROMPTS_TR = [
-    { icon: '🧠', text: 'Glioblastom için tipik MR bulguları nedir?' },
-    { icon: '🩺', text: 'MS ile ADEM ayrımı nasıl yapılır?' },
-    { icon: '🦴', text: 'Disk hernisi sınıflandırması nedir?' },
-    { icon: '📝', text: 'Rapor örneği: Akut iskemik inme' },
+    { icon: '🧠', text: 'Glioblastom' },
+    { icon: '🩺', text: 'Multiple Skleroz' },
+    { icon: '🦴', text: 'Disk hernisi' },
+    { icon: '🫁', text: 'Pulmoner emboli' },
 ];
 
 const QUICK_PROMPTS_EN = [
-    { icon: '🧠', text: 'What are typical MRI findings for Glioblastoma?' },
-    { icon: '🩺', text: 'How to differentiate MS from ADEM?' },
-    { icon: '🦴', text: 'What is disc herniation classification?' },
-    { icon: '📝', text: 'Report example: Acute ischemic stroke' },
+    { icon: '🧠', text: 'Glioblastoma' },
+    { icon: '🩺', text: 'Multiple Sclerosis' },
+    { icon: '🦴', text: 'Disc herniation' },
+    { icon: '🫁', text: 'Pulmonary embolism' },
 ];
 
 export function AIAssistant() {
@@ -131,7 +131,7 @@ export function AIAssistant() {
             <div className="flex items-center justify-between p-4 border-b border-white/10">
                 <div className="flex items-center gap-3">
                     <div className="p-2 rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-500/30">
-                        <Bot className="w-6 h-6 text-purple-400" />
+                        <Database className="w-6 h-6 text-purple-400" />
                     </div>
                     <div>
                         <h2 className="text-lg font-semibold text-white">{t("ai.title")}</h2>
@@ -154,16 +154,16 @@ export function AIAssistant() {
                 {showWelcome && messages.length === 0 && (
                     <div className="flex flex-col items-center justify-center h-full text-center space-y-6">
                         <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20">
-                            <Sparkles className="w-12 h-12 text-purple-400" />
+                            <Database className="w-12 h-12 text-purple-400" />
                         </div>
                         <div>
                             <h3 className="text-xl font-semibold text-white mb-2">
-                                {language === 'tr' ? 'Merhaba! Ben RadAsist AI' : 'Hello! I am RadAsist AI'}
+                                {language === 'tr' ? 'Patoloji Arama Asistanı' : 'Pathology Search Assistant'}
                             </h3>
                             <p className="text-gray-400 max-w-md">
                                 {language === 'tr'
-                                    ? 'Radyoloji konusunda sorularınızı yanıtlayabilir, tanı desteği sağlayabilir ve rapor yazmada yardımcı olabilirim.'
-                                    : 'I can answer your radiology questions, provide diagnostic support, and help with report writing.'}
+                                    ? '9 organ sistemindeki patoloji veritabanından arama yapabilirsiniz. Hastalık adı, bulgu veya anahtar kelime yazın.'
+                                    : 'Search across 9 organ system pathology databases. Type a disease name, finding, or keyword.'}
                             </p>
                         </div>
 
@@ -192,7 +192,7 @@ export function AIAssistant() {
                         {message.role === 'assistant' && (
                             <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20 
                                             border border-purple-500/30 flex items-center justify-center">
-                                <Bot className="w-4 h-4 text-purple-400" />
+                                <Search className="w-4 h-4 text-purple-400" />
                             </div>
                         )}
                         <div
@@ -232,7 +232,7 @@ export function AIAssistant() {
                     <div className="flex gap-3">
                         <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20 
                                         border border-purple-500/30 flex items-center justify-center">
-                            <Bot className="w-4 h-4 text-purple-400" />
+                            <Search className="w-4 h-4 text-purple-400" />
                         </div>
                         <div className="bg-white/5 border border-white/10 rounded-2xl px-4 py-3">
                             <div className="flex items-center gap-2 text-gray-400">
@@ -277,8 +277,8 @@ export function AIAssistant() {
                 </div>
                 <p className="text-xs text-gray-500 mt-2 text-center">
                     {language === 'tr'
-                        ? '⚠️ AI yanıtları bilgilendirme amaçlıdır, kesin tanı için klinik korelasyon gereklidir.'
-                        : '⚠️ AI responses are for informational purposes only, clinical correlation is required for definitive diagnosis.'}
+                        ? '⚠️ Yanıtlar veritabanı aramasına dayalıdır ve bilgilendirme amaçlıdır. Kesin tanı için klinik korelasyon gereklidir.'
+                        : '⚠️ Responses are based on database search and are for informational purposes only. Clinical correlation is required for definitive diagnosis.'}
                 </p>
             </form>
         </div>

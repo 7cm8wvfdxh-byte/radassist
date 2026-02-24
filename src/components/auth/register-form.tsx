@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/context/auth-context";
 import { Mail, Lock, User, Stethoscope, ArrowRight, Loader2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -10,6 +10,7 @@ import { useLanguage } from "@/context/language-context";
 
 export function RegisterForm() {
     const { t } = useLanguage();
+    const { register } = useAuth();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [specialty, setSpecialty] = useState("Radyoloji Asistanı");
@@ -23,46 +24,15 @@ export function RegisterForm() {
         setIsLoading(true);
         setError("");
 
-        try {
-            // 1. Sign up user
-            const { data: authData, error: authError } = await supabase.auth.signUp({
-                email,
-                password,
-                options: {
-                    data: {
-                        name,
-                        specialty
-                    }
-                }
-            });
+        const result = await register(email, password, name, specialty);
 
-            if (authError) throw authError;
-
-            if (authData.user) {
-                // 2. Create profile in 'profiles' table (using the user ID from auth)
-                const { error: profileError } = await supabase
-                    .from('profiles')
-                    .insert({
-                        id: authData.user.id,
-                        name,
-                        specialty,
-                        email
-                    });
-
-                if (profileError) {
-                    console.error("Profile creation error:", profileError);
-                    // Don't block registration success, profiles can be created on login
-                }
-
-                router.push("/");
-                router.refresh();
-            }
-
-        } catch (err: unknown) {
-            setError(err instanceof Error ? err.message : "Kayıt olurken bir hata oluştu.");
-        } finally {
-            setIsLoading(false);
+        if (result.success) {
+            router.push("/");
+        } else {
+            setError(result.error || "Kayıt olurken bir hata oluştu.");
         }
+
+        setIsLoading(false);
     };
 
     return (

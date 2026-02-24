@@ -33,9 +33,9 @@ const searchFindings = (findings: ModalityFindings | null | undefined, query: st
 const ALL_DATABASES: { data: Pathology[]; label: string; icon: string }[] = [
     { data: brainPathologies, label: 'Beyin', icon: '🧠' },
     { data: spinePathologies, label: 'Omurga', icon: '🦴' },
-    { data: liverPathologies, label: 'Karaciğer', icon: '🫁' },
+    { data: liverPathologies, label: 'Karaciğer', icon: '🟤' },
     { data: kidneyPathologies, label: 'Böbrek', icon: '🫘' },
-    { data: lungPathologies, label: 'Akciğer', icon: '🌬️' },
+    { data: lungPathologies, label: 'Akciğer', icon: '🫁' },
     { data: breastPathologies, label: 'Meme', icon: '🩺' },
     { data: mskPathologies, label: 'Kas-İskelet', icon: '💪' },
     { data: gastroPathologies, label: 'GIS', icon: '🍽️' },
@@ -43,9 +43,37 @@ const ALL_DATABASES: { data: Pathology[]; label: string; icon: string }[] = [
 ];
 
 export async function POST(req: Request) {
-    const { messages } = await req.json();
-    const lastMessage = messages[messages.length - 1].content;
-    const query = normalize(lastMessage);
+    // Input validation
+    let body: unknown;
+    try {
+        body = await req.json();
+    } catch {
+        return new Response(
+            JSON.stringify({ error: 'Geçersiz istek formatı.' }),
+            { status: 400, headers: { 'Content-Type': 'application/json' } }
+        );
+    }
+
+    const { messages } = body as { messages?: Array<{ role: string; content: string }> };
+
+    if (!Array.isArray(messages) || messages.length === 0) {
+        return new Response(
+            JSON.stringify({ error: 'Mesaj listesi boş veya geçersiz.' }),
+            { status: 400, headers: { 'Content-Type': 'application/json' } }
+        );
+    }
+
+    const lastMessage = messages[messages.length - 1]?.content;
+    if (typeof lastMessage !== 'string' || !lastMessage.trim()) {
+        return new Response(
+            JSON.stringify({ error: 'Mesaj içeriği boş.' }),
+            { status: 400, headers: { 'Content-Type': 'application/json' } }
+        );
+    }
+
+    // Limit query length to prevent abuse
+    const trimmedMessage = lastMessage.trim().slice(0, 500);
+    const query = normalize(trimmedMessage);
 
     // 1. SEARCH ALL ORGAN DATABASES
     let foundPathology: Pathology | undefined;
@@ -182,36 +210,36 @@ export async function POST(req: Request) {
             foundPathology.differentialDiagnosis.forEach(dd => responseText += `- ${dd}\n`);
         }
 
-        responseText += `\n\n*(RadAssist: 9 organ veritabanından getirildi — ${category} modülü)*`;
+        responseText += `\n\n*(RadAsist: 9 organ veritabanından getirildi — ${category} modülü)*`;
 
     } else {
         // List all available pathologies count
         const totalCount = ALL_DATABASES.reduce((sum, db) => sum + db.data.length, 0);
 
         if (query.includes('merhaba') || query.includes('selam') || query.includes('hello') || query.includes('hi')) {
-            responseText = `Merhaba! Ben RadAssist AI Asistanıyım. 👋\n\n`;
+            responseText = `Merhaba! Ben RadAsist Patoloji Arama Asistanıyım. 👋\n\n`;
             responseText += `**9 organ sistemi** ve **${totalCount}+ patoloji** veritabanından bilgi sağlayabilirim:\n\n`;
             ALL_DATABASES.forEach(db => {
                 responseText += `${db.icon} **${db.label}** — ${db.data.length} patoloji\n`;
             });
-            responseText += `\nBana bir hastalık adı, bulgu veya tanı sormayı dene!\n`;
+            responseText += `\nBir hastalık adı, bulgu veya tanı yazarak arama yapabilirsiniz.\n`;
             responseText += `Örnek: "Glioblastom", "HCC", "Pulmoner Emboli", "Disk Hernisi", "Rotator Cuff"`;
         } else if (query.includes('listele') || query.includes('hangi') || query.includes('neler var')) {
-            responseText = `**RadAssist Veritabanı İçeriği:**\n\n`;
+            responseText = `**RadAsist Veritabanı İçeriği:**\n\n`;
             ALL_DATABASES.forEach(db => {
                 responseText += `${db.icon} **${db.label}:**\n`;
                 db.data.forEach(p => responseText += `  - ${p.name}\n`);
                 responseText += `\n`;
             });
         } else {
-            responseText = `Üzgünüm, veritabanımda **"${lastMessage}"** ile ilgili bir kayıt bulamadım.\n\n`;
-            responseText += `${totalCount}+ patoloji arasından arayabilirim. Lütfen hastalık adı veya bulgu yazarak tekrar deneyin.\n\n`;
+            responseText = `Veritabanında **"${trimmedMessage}"** ile ilgili bir kayıt bulunamadı.\n\n`;
+            responseText += `${totalCount}+ patoloji arasından arama yapabilirsiniz. Lütfen hastalık adı veya bulgu yazarak tekrar deneyin.\n\n`;
             responseText += `**Örnek sorgular:**\n`;
             responseText += `- Glioblastom\n- Hepatosellüler karsinom\n- Pulmoner emboli\n- Menisküs yırtığı\n- Disk hernisi\n- Meme kanseri\n- Endometriozis\n- Apandisit`;
         }
     }
 
-    // 4. STREAM RESPONSE (Simulated typing)
+    // 4. STREAM RESPONSE
     const encoder = new TextEncoder();
     const customStream = new ReadableStream({
         async start(controller) {

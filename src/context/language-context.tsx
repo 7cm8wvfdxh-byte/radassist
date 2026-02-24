@@ -105,12 +105,12 @@ const tr: Record<string, string> = {
     "auth.hasAccount": "Zaten hesabınız var mı?",
     "auth.forgotPassword": "Şifremi unuttum",
 
-    // AI Assistant
-    "ai.title": "AI Asistan",
-    "ai.subtitle": "Radyoloji sorularınızı sorun",
-    "ai.placeholder": "Sorunuzu yazın...",
-    "ai.quickPrompts": "Hızlı Sorular",
-    "ai.thinking": "Düşünüyor...",
+    // Pathology Search Assistant
+    "ai.title": "Patoloji Arama",
+    "ai.subtitle": "9 organ veritabanında arama yapın",
+    "ai.placeholder": "Hastalık adı veya bulgu yazın...",
+    "ai.quickPrompts": "Hızlı Aramalar",
+    "ai.thinking": "Aranıyor...",
 
     // Toolbox
     "toolbox.title": "Alet Çantası",
@@ -248,12 +248,12 @@ const en: Record<string, string> = {
     "auth.hasAccount": "Already have an account?",
     "auth.forgotPassword": "Forgot password",
 
-    // AI Assistant
-    "ai.title": "AI Assistant",
-    "ai.subtitle": "Ask your radiology questions",
-    "ai.placeholder": "Type your question...",
-    "ai.quickPrompts": "Quick Prompts",
-    "ai.thinking": "Thinking...",
+    // Pathology Search Assistant
+    "ai.title": "Pathology Search",
+    "ai.subtitle": "Search across 9 organ databases",
+    "ai.placeholder": "Type a disease name or finding...",
+    "ai.quickPrompts": "Quick Searches",
+    "ai.thinking": "Searching...",
 
     // Toolbox
     "toolbox.title": "Toolbox",

@@ -8,6 +8,7 @@ import { CreatePostModal } from "@/components/community/create-post-modal";
 import { Search, Plus, TrendingUp, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { AdminNotifications } from "@/components/admin-notifications";
 
 export default function CommunityPage() {
     const { posts } = useForum();
@@ -77,6 +78,7 @@ export default function CommunityPage() {
                                 className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                             />
                         </div>
+                        <AdminNotifications />
                         <button
                             onClick={() => setIsModalOpen(true)}
                             className="flex items-center gap-2 px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl font-bold shadow-lg shadow-cyan-500/20 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
