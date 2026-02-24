@@ -31,7 +31,16 @@ export const breastPathologies: Pathology[] = [
             mri: {
                 t1_c_dynamic: "Type 3 (Washout) kinetic curve. Heterogeneous enhancement. Rim (peripheral) enhancement."
             }
-        }
+        },
+        etiology: "Genetik mutasyonlar (BRCA1/2, TP53, HER2 amplifikasyonu). Risk faktörleri: Aile öyküsü, erken menarş, geç menopoz, nulliparite, uzun süreli HRT, obezite, radyasyon maruziyeti.",
+        differentialDiagnosis: [
+            "Fibroadenom (Düzgün sınırlı, oval, wider-than-tall, mobil)",
+            "Yağ Nekrozu (Travma öyküsü, yağ kisti, egg-shell kalsifikasyon)",
+            "Granüler Hücreli Tümör (Spiküle kenar, benign ancak maligniteyi taklit eder)",
+            "Radyal Skar (Spiküle, santral radyolusensi, stellat yapı)"
+        ],
+        goldStandard: "Mammografi (tarama) + USG (karakterizasyon) + MRI (evreleme): BI-RADS 5 → Kalın iğne (core) biyopsi ile histopatolojik doğrulama.",
+        clinicalPearl: "Spiküle kenar + posterior akustik gölgeleme + Tip 3 (washout) kinetik eğri = İnvaziv karsinom üçlüsü."
     },
     {
         id: "fibroadenoma",
@@ -63,7 +72,16 @@ export const breastPathologies: Pathology[] = [
             mri: {
                 t1_c_dynamic: "Type 1 (Persistent) or Type 2 (Plateau) kinetic curve. Non-enhancing septations (Dark internal septations)."
             }
-        }
+        },
+        etiology: "Östrojene bağımlı fibroepitelyal neoplazi. Puberte ve gebelikte büyüyebilir, menopoz sonrası involüsyon gösterir. Genetik: MED12 mutasyonu sık.",
+        differentialDiagnosis: [
+            "Filloides Tümör (Hızlı büyüme, >5 cm, kistik alanlar, yaş >35)",
+            "İnvaziv Karsinom (Spiküle kenar, posterior gölgeleme, Tip 3 kinetik)",
+            "Papillom (İntraduktal lokalizasyon, kanlı akıntı)",
+            "Lenfoma (Düzgün sınırlı, belirgin hipoekoik, bilateral olabilir)"
+        ],
+        goldStandard: "USG: İlk değerlendirme (genç hastada). BI-RADS 3 → 6 ay takip veya core biyopsi. Mammografi: >30 yaş üstünde eklenir.",
+        clinicalPearl: "30 yaş altı kadında oval, düzgün sınırlı, mobil kitle = Fibroadenom düşün, BI-RADS 3 ile takip edilebilir."
     },
     {
         id: "cyst-simple",
@@ -89,7 +107,16 @@ export const breastPathologies: Pathology[] = [
             mammography: {
                 description: "Round/Oval shaped opacity. Halo sign."
             }
-        }
+        },
+        etiology: "Hormonal dalgalanmalar (östrojen/progesteron) ve lobüler involüsyon. Perimenapozal dönemde en sık. Terminal duktal lobüler ünitede (TDLU) sekresyon birikimi.",
+        differentialDiagnosis: [
+            "Komplike Kist (İç ekolar, debris, BI-RADS 3)",
+            "Galaktosel (Laktasyon döneminde, yağ-sıvı seviyesi)",
+            "Kistik Papillom (Kist duvarında solid nodül, Doppler pozitif)",
+            "Kistik Metastaz (Düzensiz duvar, solid komponent, klinik öykü)"
+        ],
+        goldStandard: "USG: Tanı için yeterli. Anekoik + ince duvar + posterior güçlenme = Basit kist (BI-RADS 2). Ek tetkik gerekmez.",
+        clinicalPearl: "Anekoik + ince düzgün duvar + posterior akustik güçlenme = Basit kist üçlüsü → BI-RADS 2, takip gerekmez."
     },
     {
         id: "complicated-cyst",
@@ -109,7 +136,16 @@ export const breastPathologies: Pathology[] = [
             usg: {
                 description: "Homogeneous low-level echoes. Mobile debris. No wall thickening. Vascularity (Doppler) negative."
             }
-        }
+        },
+        etiology: "Basit kistin içine kanama (spontan veya travmatik), enfeksiyon veya yüksek proteinli sekresyon birikimi. Hormonal değişiklikler zemin hazırlar.",
+        differentialDiagnosis: [
+            "Basit Kist (Anekoik, iç eko yok, BI-RADS 2)",
+            "İntrakistik Papillom (Doppler pozitif solid nodül, kist duvarında kitle)",
+            "Kistik Karsinom (Düzensiz duvar, solid komponent, vaskülarite mevcut)",
+            "Apse (Kalın düzensiz duvar, klinik enfeksiyon bulguları, ateş)"
+        ],
+        goldStandard: "USG: İlk değerlendirme. Doppler negatif + homojen düşük ekolar = Komplike kist (BI-RADS 3). 6 ay takip USG veya aspirasyon.",
+        clinicalPearl: "Komplike kistte Doppler negatifliği anahtar bulgudur — solid komponentli intrakistik lezyonlardan ayırt eder."
     },
     {
         id: "intraductal-papilloma",
@@ -141,7 +177,16 @@ export const breastPathologies: Pathology[] = [
             mri: {
                 t1_c: "Enhancing nodule within the duct. Extension along the duct track."
             }
-        }
+        },
+        etiology: "Duktus epitelinin fibrovasküler çekirdek etrafında papiller proliferasyonu. Santral (soliter): Büyük retroareolar duktus, 40-50 yaş. Periferik (multipl): Küçük periferik duktuslar, malignite riski daha yüksek.",
+        differentialDiagnosis: [
+            "DCIS (Mikrokalsifikasyonlar, non-mass enhancement, duktal dağılım)",
+            "İnvaziv Papiller Karsinom (Düzensiz kenar, stromal invazyon, yaşlı hasta)",
+            "Duktus Ektazisi (Duktus dilatasyonu var ama intraluminal solid kitle yok)",
+            "Galaktore (Bilateral süt benzeri akıntı, endokrin neden, solid lezyon yok)"
+        ],
+        goldStandard: "USG + Duktografi (galaktografi): Duktus içi dolum defekti. MRI: Kontrastlanan intraduktal lezyon. Kesin tanı: Eksizyonel biyopsi.",
+        clinicalPearl: "Tek taraflı, spontan, kanlı/seröz meme başı akıntısı olan kadında ilk düşünülecek tanı intraduktal papillomdur."
     },
     {
         id: "fat-necrosis",
@@ -167,7 +212,16 @@ export const breastPathologies: Pathology[] = [
             mammography: {
                 description: "Oil cyst (Radiolucent center). Egg-shell calcification. Dystrophic calcifications."
             }
-        }
+        },
+        etiology: "Travma (en sık), meme cerrahisi (lumpektomi, redüksiyon), radyoterapi, biyopsi sonrası. Obez hastalarda ve büyük memeli kadınlarda daha sık.",
+        differentialDiagnosis: [
+            "İnvaziv Karsinom (Spiküle kenar, posterior gölgeleme, klinik sert kitle)",
+            "Yağ İçeren Lezyon — Hamartom (Yağ + fibroglandüler doku karışımı, kapsüllü)",
+            "Granülomatöz Mastit (Düzensiz hipoekoik alan, bilateral olabilir, tüberküloz/sarkoidoz)",
+            "Seroma (Cerrahi sonrası, saf sıvı koleksiyonu, solid komponent yok)"
+        ],
+        goldStandard: "Mammografi: Yağ kisti (radyolusen merkez + egg-shell kalsifikasyon) tanı koydurucudur. Şüpheli olgularda MRI veya biyopsi.",
+        clinicalPearl: "Mammografide radyolusen merkezli kitle + çevresel (egg-shell) kalsifikasyon + travma/cerrahi öyküsü = Yağ nekrozu, biyopsi gerekmez."
     },
     {
         id: "dcis",
@@ -216,7 +270,15 @@ export const breastPathologies: Pathology[] = [
             }
         },
         mechanism: "Epitelyal hücreler lümen içinde prolifere olur, bazal membran sağlamdır. Komedo nekroz (yüksek grade): Nekrotik merkez + kalsifikasyon → mammografide mikrokalsifikasyonlar. MRI'da non-mass enhancement: Duktal sistem boyunca yayılım, kitlesel karsinom oluşturmaz.",
-        etiology: "Yaş (50+ sık), aile öyküsü, BRCA1/2, yoğun meme dokusu, hormon tedavisi."
+        etiology: "Yaş (50+ sık), aile öyküsü, BRCA1/2, yoğun meme dokusu, hormon tedavisi.",
+        differentialDiagnosis: [
+            "Fibrokistik Değişiklikler (Yaygın kalsifikasyonlar, bilateral, yuvarlak/amorf)",
+            "Sklerozan Adenozis (Gruplu kalsifikasyonlar, lobüler dağılım, benign)",
+            "İnvaziv Duktal Karsinom (Kitle mevcut, spiküle kenar, bazal membran aşılmış)",
+            "Lobüler Karsinoma In Situ — LCIS (Genellikle görüntülemede okkült, insidental bulgu)"
+        ],
+        goldStandard: "Mammografi (mikrokalsifikasyon tespiti) + Stereotaktik vakum biyopsi. MRI: Hastalık yaygınlığının değerlendirilmesi ve cerrahi planlama.",
+        clinicalPearl: "Mammografide segmental/lineer dağılımlı ince pleomorfik mikrokalsifikasyonlar = DCIS'e kadar suçlu kabul et."
     },
     {
         id: "phyllodes-tumor",
@@ -265,7 +327,15 @@ export const breastPathologies: Pathology[] = [
             }
         },
         mechanism: "İntralobüler stromal hücre proliferasyonu + epitelyal komponent → fibroepitelyal tümör. 'Yaprak' görünümü (phyllodes = yaprak): Belirgin stromal büyüme epiepitelyal duktus içine doğru itmesi. Malign: Stromal sarkomatöz transformasyon → Hematojen metastaz (akciğer sık). Lenfatik metastaz nadirdir (malign mezankimal tümör).",
-        etiology: "Orta yaş kadın (35-50). Fibroadenomdan dönüşüm tartışmalı."
+        etiology: "Orta yaş kadın (35-50). Fibroadenomdan dönüşüm tartışmalı.",
+        differentialDiagnosis: [
+            "Fibroadenom (Yavaş büyüme, daha küçük, kistik alan yok, genç yaş)",
+            "İnvaziv Karsinom (Spiküle kenar, posterior gölgeleme, lenfadenopati)",
+            "Meme Sarkomu (Benzer büyüme paterni, ancak epitelyal komponent yok)",
+            "Dev Fibroadenom (>5 cm fibroadenom, kistik alan yok, homojen)"
+        ],
+        goldStandard: "USG + Kalın iğne (core) biyopsi: Stromal sellülarite değerlendirmesi. İnce iğne biyopsisi yetersiz! Kesin tanı ve grade: Eksizyonel biyopsi.",
+        clinicalPearl: "Hızla büyüyen büyük kitle + USG'de kistik boşluklar (yaprak yarıkları) = Filloides düşün; fibroadenom olarak takibe bırakma, core biyopsi yap."
     },
     {
         id: "galactocele",
@@ -313,6 +383,14 @@ export const breastPathologies: Pathology[] = [
             }
         },
         mechanism: "Emzirme döneminde duktal obstrüksiyon (bükülme, inflamasyon, tıkanma) → süt birikimi → kistik genişleme. Süt içeriği zaman içinde değişir: Dilüe süt (anekoik) → kremsi madde (hipoekoik) → pıhtılaşmış protein (kompleks). Yağ-sıvı seviyesi: Yağ üstte (az yoğun), sıvı altta (fazla yoğun) — patognomonik.",
-        etiology: "Laktasyon döneminde (emzirme) veya emzirme bitimi sonrasında. Duktal obstrüksiyon, travma, enflamasyon."
+        etiology: "Laktasyon döneminde (emzirme) veya emzirme bitimi sonrasında. Duktal obstrüksiyon, travma, enflamasyon.",
+        differentialDiagnosis: [
+            "Basit Kist (Laktasyon dışı dönemde, anekoik, yağ-sıvı seviyesi yok)",
+            "Meme Apsesi (Kalın düzensiz duvar, ateş, eritem, Doppler periferal vaskülarite)",
+            "Yağ Nekrozu (Travma öyküsü, laktasyon dışı, yağ kisti + kalsifikasyon)",
+            "Laktasyonel Adenom (Solid kitle, emzirme döneminde, hipoekoik, vaskülarize)"
+        ],
+        goldStandard: "USG: Tanı için yeterli (laktasyon döneminde kistik lezyon + yağ-sıvı seviyesi). Aspirasyon: Hem tanısal (süt içeriği) hem terapötik.",
+        clinicalPearl: "Emziren kadında kistik kitle + yağ-sıvı seviyesi = Galaktosel, aspirasyonda süt gelir → tanı doğrulanır."
     }
 ];
