@@ -4,8 +4,6 @@ import { useState, useMemo, useEffect } from "react";
 import { SearchBar } from "@/components/search-bar";
 import { PathologyCard } from "@/components/pathology-card";
 import { PathologyListItem } from "@/components/pathology-list-item";
-import { QuizMode } from "@/components/quiz-mode";
-import { CaseStudyMode } from "@/components/case-study-mode";
 import { AIAssistant } from "@/components/ai-assistant";
 import { SwipeMode } from "@/components/swipe-mode";
 import { ToolboxMode } from "@/components/toolbox-mode";
@@ -24,9 +22,8 @@ import { breastPathologies } from "@/data/breast-pathologies";
 import { mskPathologies } from "@/data/msk-pathologies";
 import { gastroPathologies } from "@/data/gastro-pathologies";
 import { gynecologyPathologies } from "@/data/gynecology-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, GraduationCap, Bone, Stethoscope, Wand2, Bot, Flame, Bean, Wind, Trophy, Library, Wrench, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen } from "lucide-react";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Wand2, Bot, Flame, Bean, Wind, Library, Wrench, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen } from "lucide-react";
 import { DiagnosisWizard } from "@/components/diagnosis-wizard";
-import { DailyCaseModal } from "@/components/daily-case-modal";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils"; // Ensure cn is imported
 import { performSmartSearch } from "@/lib/search-utils";
@@ -52,13 +49,13 @@ export default function Home() {
     return [];
   });
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-  const [viewMode, setViewMode] = useState<"grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy">(() => {
+  const [viewMode, setViewMode] = useState<"grid" | "list" | "wizard" | "ai" | "swipe" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy">(() => {
     if (typeof window === 'undefined') return "grid";
     try {
       const savedView = localStorage.getItem("radassist-view-mode");
-      const validModes = ["grid", "list", "quiz", "case", "wizard", "ai", "swipe", "toolbox", "report", "compare", "emergency", "stats", "anatomy"];
+      const validModes = ["grid", "list", "wizard", "ai", "swipe", "toolbox", "report", "compare", "emergency", "stats", "anatomy"];
       if (savedView && validModes.includes(savedView)) {
-        return savedView as "grid" | "list" | "quiz" | "case" | "wizard" | "ai" | "swipe" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy";
+        return savedView as "grid" | "list" | "wizard" | "ai" | "swipe" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy";
       }
     } catch { /* ignore */ }
     return "grid";
@@ -75,7 +72,6 @@ export default function Home() {
     return "brain";
   });
   const [selectedPathology, setSelectedPathology] = useState<Pathology | null>(null);
-  const [showDailyModal, setShowDailyModal] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Mark as loaded after client hydration (intentional setState-in-effect for hydration detection)
@@ -164,17 +160,6 @@ export default function Home() {
 
         {/* Hero Actions Container */}
         <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
-          {/* Daily Challenge Button */}
-          <button
-            onClick={() => setShowDailyModal(true)}
-            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 hover:border-amber-500/40 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-150"
-          >
-            <div className="absolute inset-0 bg-amber-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
-            <Trophy className="w-5 h-5 text-amber-500 group-hover:animate-bounce" />
-            <span className="text-sm font-bold text-amber-200 group-hover:text-amber-100">{t("hero.dailyCard")}</span>
-            <span className="bg-amber-500 text-black text-[10px] font-bold px-1.5 py-0.5 rounded ml-1 animate-pulse">{t("general.new")}</span>
-          </button>
-
           {/* Diagnosis Wizard Button */}
           <button
             onClick={() => {
@@ -306,7 +291,7 @@ export default function Home() {
         <div className="w-full max-w-3xl relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
 
           {/* Module Selector - 5 Organs */}
-          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
+          {viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
             <div className="flex justify-center mb-8">
               <div className="flex flex-wrap justify-center gap-1 p-1 bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-2xl relative">
                 <button
@@ -458,7 +443,7 @@ export default function Home() {
           )}
 
           {/* Hide Search Bar in Quiz Mode */}
-          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
+          {viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
             <div className="relative group mb-4">
               <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
               <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl ring-1 ring-white/10 shadow-2xl flex flex-col">
@@ -540,26 +525,6 @@ export default function Home() {
                 title="Liste Görünümü"
               >
                 <List className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => {
-                  setViewMode("quiz");
-                  localStorage.setItem("radassist-view-mode", "quiz");
-                }}
-                className={`p-1.5 rounded-full transition-all ${viewMode === "quiz" ? "bg-indigo-500 text-white shadow-lg ring-2 ring-indigo-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="Quiz Modu"
-              >
-                <GraduationCap className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => {
-                  setViewMode("case");
-                  localStorage.setItem("radassist-view-mode", "case");
-                }}
-                className={`p-1.5 rounded-full transition-all ${viewMode === "case" ? "bg-emerald-500 text-white shadow-lg ring-2 ring-emerald-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="Vaka Modu (Grand Rounds)"
-              >
-                <Stethoscope className="w-4 h-4" />
               </button>
               <button
                 onClick={() => {
@@ -647,8 +612,8 @@ export default function Home() {
               </button>
             </div>
 
-            {/* Favorites Toggle (Hide in Quiz) */}
-            {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
+            {/* Favorites Toggle */}
+            {viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
               <button
                 onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${showFavoritesOnly
@@ -667,7 +632,7 @@ export default function Home() {
             )}
           </div>
 
-          {viewMode !== "quiz" && viewMode !== "case" && viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
+          {viewMode !== "wizard" && viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
             <p className="mt-4 text-slate-500 text-xs">
               {activeModule === 'brain' ? (
                 <>Örn: <span className="text-slate-400 border-b border-indigo-500/30 mx-1">Glioblastom</span>, <span className="text-slate-400 border-b border-cyan-500/30 mx-1">İnme</span></>
@@ -683,16 +648,7 @@ export default function Home() {
       {/* Main Content Area */}
       <div className="max-w-[1600px] mx-auto px-6 pb-24">
 
-        {viewMode === "quiz" ? (
-          // Pass only active module pathologies to Quiz if needed, or keeping it global?
-          // Let's modify QuizMode later to support modules. Ideally it uses the currently active store.
-          // For now, QuizMode imports 'brainPathologies' directly. We might need to prop drill or update Context.
-          // Updating QuizMode to accept data prop would be best. 
-          // But for this step let's just show Brain Quiz for now or update it next step.
-          <QuizMode />
-        ) : viewMode === "case" ? (
-          <CaseStudyMode />
-        ) : viewMode === "wizard" ? (
+        {viewMode === "wizard" ? (
           <DiagnosisWizard activeModule={activeModule} />
         ) : viewMode === "ai" ? (
           <AIAssistant />
@@ -784,8 +740,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* Daily Case Modal */}
-      <DailyCaseModal isOpen={showDailyModal} onClose={() => setShowDailyModal(false)} />
     </div>
   );
 }
