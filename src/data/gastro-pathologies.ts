@@ -330,5 +330,138 @@ export const gastroPathologies: Pathology[] = [
             }
         },
         mechanism: "Skuamöz hücreli karsinom (üst/orta 1/3): Sigara, alkol, sıcak içecek → skuamöz epitel kronik hasarı → displazi → SCC. Adenokarsinom (alt 1/3): Kronik GÖRH → Barrett metaplazisi (kolumnar epitel) → intestinal metaplazi → displazi → adenokarsinom. Her iki tip çevresel (sirkumferensiyel) büyüme ile lümeni daraltır; mediasten yakınlığı erken damar ve sinir invazyonuna yol açar."
+    },
+    {
+        id: "gastric-cancer",
+        name: "Mide Kanseri (Gastrik Adenokarsinom)",
+        nameEn: "Gastric Cancer (Gastric Adenocarcinoma)",
+        category: "Neoplastik",
+        categoryEn: "Neoplastic",
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "BT - Mide Duvarı Kalınlaşması", modality: "CT" },
+            { url: "/images/placeholder_source.png", caption: "MRI - Lokal Yayılım Değerlendirmesi", modality: "MRI" }
+        ],
+        findings: {
+            ct: {
+                contrast: "Mide duvarı kalınlaşması (>5mm) ve kontrast tutan irregüler kitle. Sirkumferensiyel duvar kalınlaşması (linitis plastica — Borrmann IV). Perigastrik yağ invazyonu. Perigastrik LAP. Karaciğer metastazı. Peritoneal implantlar + asit (Evre IV). Krukenberg tümörü: Over metastazı (bilateral solid over kitlesi)."
+            },
+            mri: {
+                t2: "Mide duvarı katmanları: T2 hipointens muskularis propria invazyonu → T3 evre.",
+                dwi: "Solid tümör kısıtlanır. Peritoneal implantlar DWI'da görülebilir.",
+                t1_c: "Erken arteryel kontrastlanma (mukoza tutulumu). Lokal evreleme (T1-T4)."
+            }
+        },
+        findingsEn: {
+            ct: {
+                contrast: "Gastric wall thickening (>5mm) and enhancing irregular mass. Circumferential wall thickening (linitis plastica — Borrmann IV). Perigastric fat invasion. Perigastric LAP. Liver metastasis. Peritoneal implants + ascites (Stage IV). Krukenberg tumor: Ovarian metastasis (bilateral solid ovarian mass)."
+            },
+            mri: {
+                t2: "Gastric wall layers: T2 hypointense muscularis propria invasion → T3 stage.",
+                dwi: "Solid tumor restricts. Peritoneal implants visible on DWI.",
+                t1_c: "Early arterial enhancement (mucosal involvement). Local staging (T1-T4)."
+            }
+        },
+        keyPoints: [
+            "BT: Lokal invazyon (T evresi) + Lenf nodu (N evresi) + Metastaz (M evresi) değerlendirmesi.",
+            "Linitis plastica (Borrmann IV): Diffüz duvar kalınlaşması → 'deri torbası' mide görünümü.",
+            "Krukenberg tümörü: Mide Ca'nın over metastazı — bilateral solid over kitlesi.",
+            "Lauren sınıflaması: İntestinal tip (H. pylori) vs Diffüz tip (CDH1 mutasyonu)."
+        ],
+        keyPointsEn: [
+            "CT: Local invasion (T stage) + Lymph node (N stage) + Metastasis (M stage).",
+            "Linitis plastica (Borrmann IV): Diffuse wall thickening → 'leather bottle' stomach.",
+            "Krukenberg tumor: Ovarian metastasis of gastric Ca — bilateral solid ovarian mass.",
+            "Lauren classification: Intestinal type (H. pylori) vs Diffuse type (CDH1 mutation)."
+        ],
+        mechanism: "Helicobacter pylori → kronik gastrit → intestinal metaplazi → displazi → adenokarsinom (intestinal tip). Diffüz tip: CDH1 (E-kaderin) mutasyonu → hücre adhezyonu kaybı → diffüz infiltrasyon (linitis plastica). Peritona yayılım: Küçük kurvatura, kesiyle temas, implantasyon. Lenfatik: Perigastrik → çölyak → para-aortik. Hematojen: Karaciğer → akciğer → kemik.",
+        etiology: "H. pylori enfeksiyonu (%90+), tuzlu/tütsülenmiş gıda, sigara, mide polipleri, önceki mide cerrahisi, aile öyküsü.",
+        differentialDiagnosis: ["Mide Lenfoması (MALT — diffüz LAP, BT'de geniş duvar kalınlaşması)", "GIST (Egzofitik büyüme, mezenkimal)", "Gastrik Ülser (Benign — düzgün sınırlı, çevrede kıvrımlar)", "Metastatik Tutulum"]
+    },
+    {
+        id: "peptic-ulcer-perforation",
+        name: "Peptik Ülser Perforasyonu",
+        nameEn: "Peptic Ulcer Perforation",
+        category: "Acil",
+        categoryEn: "Emergency",
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "Ayakta Direkt Karın Grafisi - Serbest Hava", modality: "X-Ray" },
+            { url: "/images/placeholder_source.png", caption: "BT - Pnömoperitoneum + Periulseröz Değişiklik", modality: "CT" }
+        ],
+        findings: {
+            xray: {
+                description: "Ayakta Direkt Karın Grafisi (ADKG): Karaciğer ile diyafram arasında ince hava çizgisi (serbest intraperitoneal hava = PNÖMOPERİTONEUM). Miktarı az olduğunda görülmeyebilir. Sol lateral dekübit grafi: Daha küçük hava miktarlarını gösterir."
+            },
+            ct: {
+                non_contrast: "Serbest intraperitoneal hava (pnömoperitoneum): Karaciğer altı, falciform ligament yanında, pelvis. Perihepatik serbest sıvı.",
+                contrast: "Periulseröz yağ kirlenme (ülser bölgesi → inflamasyon + perforasyon). Mide/duodenum duvarında defekt. Kontrastın extravasasyonu (aktif kaçak — nadir). Peritonit bulguları (omental sıvı, mezenter kalınlaşma)."
+            }
+        },
+        findingsEn: {
+            xray: {
+                description: "Upright Abdominal X-ray (ADKG): Thin air line between liver and diaphragm (free intraperitoneal air = PNEUMOPERITONEUM). May not be visible with small amounts. Left lateral decubitus: Shows smaller amounts of air."
+            },
+            ct: {
+                non_contrast: "Free intraperitoneal air (pneumoperitoneum): Subhepatic, alongside falciform ligament, pelvis. Perihepatic free fluid.",
+                contrast: "Periulcerative fat stranding (ulcer site → inflammation + perforation). Gastric/duodenal wall defect. Contrast extravasation (active leak — rare). Peritonitis findings (omental fluid, mesenteric thickening)."
+            }
+        },
+        keyPoints: [
+            "ADKG: Diyafram altı serbest hava = Pnömoperitoneum = Acil cerrahi!",
+            "BT: Serbest havanın miktarı ve kaynağını tespit eder (mide/duodenum ön yüzü en sık).",
+            "Pnömoperitoneum olmayabilir! (%10-30 yalancı negatif) — klinik şüphede BT tercih et.",
+            "Duodenum ön yüz perforasyonu en sık bölge (H. pylori + NSAİİ)."
+        ],
+        keyPointsEn: [
+            "AXR: Free air under diaphragm = Pneumoperitoneum = Emergency surgery!",
+            "CT: Determines amount and source of free air (anterior gastric/duodenal wall most common).",
+            "Pneumoperitoneum may be absent! (10-30% false negative) — CT preferred in clinical suspicion.",
+            "Anterior duodenal wall perforation most common (H. pylori + NSAIDs)."
+        ],
+        mechanism: "Peptik ülser → mide/duodenum mukozasının tam kat delinmesi → intraperitoneal hava ve içerik sızması → kimyasal peritonit (duodenal sıvı sterildir ilk 6 saatte). H. pylori duodenum ön yüzünde ülser oluşturur; NSAİİ koruyucu mukusı azaltır. Serbest hava subfrenik boşluğa yükselir → ADKG'de görülür. Perikumferansiyel BT kesitlerde 'oral/IV kontrast extravasasyonu' = Aktif sızıntı (ameliyathane!).",
+        etiology: "H. pylori (%70-90), NSAİİ kullanımı, sigara, stres ülseri (yoğun bakım), Zollinger-Ellison sendromu.",
+        differentialDiagnosis: ["Apse Rüptürü (Pnömoperitoneum yok, lokalize)", "Appendisit Perforasyonu (Sağ alt kadran)", "Hava Yutan (Aerofaji)", "İatrojenik (Endoskopi perforasyonu)"]
+    },
+    {
+        id: "acute-cholecystitis-gi",
+        name: "Akut Kolesistit (Safra Taşına Bağlı)",
+        nameEn: "Acute Calculous Cholecystitis",
+        category: "İnflamatuar",
+        categoryEn: "Inflammatory",
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "USG - Murphy İşareti + Taş", modality: "USG" },
+            { url: "/images/placeholder_source.png", caption: "BT - Perikolesistik Stranding", modality: "CT" }
+        ],
+        findings: {
+            usg: {
+                description: "Safra kesesi taşı (hiperekojenik + akustik gölge). Safra kesesi distansiyonu. Duvar kalınlaşması >3mm. Perikolesistik sıvı. Sonografik Murphy işareti: Prob ile baskı → ağrı. Gangrenöz: İntralüminal membranlar.",
+                doppler: "Artmış mural vaskülarite (inflamasyon)."
+            },
+            ct: {
+                contrast: "Mural kalınlaşma + kontrastlanma. Perikolesistik yağ kirlenme (fat stranding). Akalkülöz: Taş yok, klinikle değerlendir. Gangrenöz: Mural defekt, intralüminal hava. Amfizemöz: İntramural hava (acil)."
+            }
+        },
+        findingsEn: {
+            usg: {
+                description: "Gallstones (hyperechoic + acoustic shadow). GB distension. Wall thickening >3mm. Pericholecystic fluid. Sonographic Murphy's sign: Press with probe → pain. Gangrenous: Intraluminal membranes.",
+                doppler: "Increased mural vascularity (inflammation)."
+            },
+            ct: {
+                contrast: "Mural thickening + enhancement. Pericholecystic fat stranding. Acalculous: No stone, correlate clinically. Gangrenous: Mural defect, intraluminal gas. Emphysematous: Intramural gas (emergency)."
+            }
+        },
+        keyPoints: [
+            "USG: İlk tercih — Sonografik Murphy + Duvar kalınlaşması + Taş = Tanısal.",
+            "Gangrenöz Kolesistit: Duvar devamlılık kaybı → Acil laparoskopik kolesistektomi.",
+            "Amfizemöz Kolesistit: İntramural hava → Diyabetik, klostridiyum → Acil!",
+            "HIDA sintigrafisi: Sistik kanal tıkanıklığını kanıtlar (altın standart scintigraphy)."
+        ],
+        keyPointsEn: [
+            "USG: First choice — Sonographic Murphy + Wall thickening + Stone = Diagnostic.",
+            "Gangrenous Cholecystitis: Wall discontinuity → Emergency laparoscopic cholecystectomy.",
+            "Emphysematous Cholecystitis: Intramural gas → Diabetic, clostridium → Emergency!",
+            "HIDA scintigraphy: Proves cystic duct obstruction (gold standard scintigraphy)."
+        ],
+        mechanism: "İmpakte kalküler sistik kanalda → obstrüksiyon → safra kesesi distansiyonu → duvar iskemisi → inflamasyon. Sekonder bakteri kolonizasyonu (E. coli, Klebsiella). Gangrenöz: Transmural nekroz → perforasyon riski. Amfizemöz (gaz üreten bakteri — Clostridium, E. coli) → intramural hava → diyabetik hastalarda sık.",
+        etiology: "Kolelitiyazis (%90-95). Akalkülöz: Kritik hastalık (TPN, sepsis, uzun ameliyat). Amfizemöz: Diyabet + anaerobik bakteri."
     }
 ];

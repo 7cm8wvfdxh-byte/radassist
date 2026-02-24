@@ -330,5 +330,199 @@ export const mskPathologies: Pathology[] = [
                 other_sequences: "MR Arthrography: Labral tear better visualized with intra-articular gadolinium. Cam/Pincer deformity (FAI) with joint space loss."
             }
         }
+    },
+    {
+        id: "osteosarcoma",
+        name: "Osteosarkom",
+        nameEn: "Osteosarcoma",
+        category: "Neoplastik",
+        categoryEn: "Neoplastic",
+        keyPoints: [
+            "En sık primer kemik malignitesi (miyelom hariç) — 10-20 yaş ve >60 yaş bimodal.",
+            "Metafizer yerleşim (distal femur, proksimal tibia, proksimal humerus — 'osteosarkom üçgeni').",
+            "Codman üçgeni + güneş ışını paterni (sunburst) = PATOGNOMONİK röntgen bulgusu.",
+            "MRI: Tümör sınırlarını, nörovasküler yapı ilişkisini ve skip metastazı gösterir."
+        ],
+        keyPointsEn: [
+            "Most common primary bone malignancy (excluding myeloma) — bimodal 10-20 and >60 years.",
+            "Metaphyseal location (distal femur, proximal tibia, proximal humerus — 'osteosarcoma triangle').",
+            "Codman triangle + sunburst pattern = PATHOGNOMONIC X-ray finding.",
+            "MRI: Shows tumor extent, neurovascular involvement and skip metastases."
+        ],
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "Röntgen - Codman Üçgeni + Sunburst", modality: "X-Ray" },
+            { url: "/images/placeholder_source.png", caption: "MRI - Tümör Sınırları", modality: "MRI" }
+        ],
+        findings: {
+            xray: {
+                description: "Metafizer yerleşimli kemik yıkımı (litik) + yeni kemik oluşumu (sklerotik). Codman üçgeni: Periost kaldırılmış, tümör kenarda periost reaksiyonu. Sunburst (güneş ışını): İğne benzeri periosteal reaksiyon. Korteks destrüksiyonu + yumuşak doku kitlesi."
+            },
+            mri: {
+                t1: "Tümör T1 düşük-orta sinyal (medullar kanal tutulumu). Kemik iliği invazyonu.",
+                t2: "Heterojen yüksek sinyal (ödem + tümör + nekroz). Yumuşak doku bileşeni.",
+                t1_c: "Heterojen kontrastlanma. Nekrotik alanlar kontrastlanmaz (tedavi yanıtı değerlendirmesinde önemli).",
+                other_sequences: "Tüm vücut MRI veya PET-CT: Skip metastaz, uzak metastaz."
+            }
+        },
+        findingsEn: {
+            xray: {
+                description: "Metaphyseal bone destruction (lytic) + new bone formation (sclerotic). Codman triangle: Elevated periosteum, periosteal reaction at tumor edge. Sunburst: Needle-like periosteal reaction. Cortical destruction + soft tissue mass."
+            },
+            mri: {
+                t1: "Tumor T1 low-intermediate signal (medullary canal involvement). Bone marrow invasion.",
+                t2: "Heterogeneous high signal (edema + tumor + necrosis). Soft tissue component.",
+                t1_c: "Heterogeneous enhancement. Necrotic areas do not enhance (important for treatment response).",
+                other_sequences: "Whole body MRI or PET-CT: Skip metastasis, distant metastasis."
+            }
+        },
+        mechanism: "Mezenşimal hücre malign transformasyonu → osteoid / kemik üreten tümör. En sık konvansiyonel osteosarkom (yüksek grade). Metafizer lokalizasyon: Büyüme plaklarına yakın aktif hücre proliferasyonu bölgesi. Codman üçgeni: Periost tümör tarafından kaldırılır, kenarda yeni periost kemik oluşturur. Akciğer metastazı hematojen yolla (en sık metastaz bölgesi).",
+        etiology: "Sporadik (en sık). Risk: Retinoblastom (Rb mutasyonu), Li-Fraumeni (p53), Paget hastalığı, Radyasyon."
+    },
+    {
+        id: "bone-metastasis",
+        name: "Kemik Metastazı",
+        nameEn: "Bone Metastasis",
+        category: "Neoplastik",
+        categoryEn: "Neoplastic",
+        keyPoints: [
+            "En sık malign kemik lezyonu (primer kemik tümörlerinden çok daha sık).",
+            "Aksiyel iskelet (omurga, pelvis, kot, sternum) + proksimal humerus/femur tutulumu sık.",
+            "Litik: Akciğer, böbrek, tiroid. Sklerotik: Prostat, meme (nadir). Mixt: Meme, akciğer.",
+            "MRI kemik iliği tutulumunu diğer yöntemlerden çok önce gösterir."
+        ],
+        keyPointsEn: [
+            "Most common malignant bone lesion (far more common than primary bone tumors).",
+            "Axial skeleton (spine, pelvis, rib, sternum) + proximal humerus/femur common.",
+            "Lytic: Lung, kidney, thyroid. Sclerotic: Prostate, breast (rare). Mixed: Breast, lung.",
+            "MRI shows bone marrow involvement much earlier than other modalities."
+        ],
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "Röntgen - Litik Kemik Metastazı", modality: "X-Ray" },
+            { url: "/images/placeholder_source.png", caption: "MRI - Kemik İliği Tutulumu", modality: "MRI" }
+        ],
+        findings: {
+            xray: {
+                description: "Litik metastaz: Korteks destrüksiyonu + içi boş görünüm. Sklerotik: Yoğun (fildişi) kemik alanları. Patolojik kırık riski: Korteksin >50% tutulumu veya femurda >2.5cm lezyon."
+            },
+            mri: {
+                t1: "T1 hipointens (normal yağlı kemik iliğinin yerini alır). Diffüz veya fokal tutulum.",
+                t2: "T2 hiperintens (ödem, tümör). STIR: En hassas kemik iliği ödemi gösterimi.",
+                t1_c: "Kontrastlanma (hipervasküler metastazlar: Böbrek, tiroid, meme).",
+                dwi: "Diffüz kemik metastazında kısıtlanma. Tedavi yanıtı izleminde (ADC artışı → yanıt)."
+            }
+        },
+        findingsEn: {
+            xray: {
+                description: "Lytic metastasis: Cortical destruction + hollow appearance. Sclerotic: Dense (ivory) bone areas. Pathologic fracture risk: >50% cortical involvement or >2.5cm femoral lesion."
+            },
+            mri: {
+                t1: "T1 hypointense (replaces normal fatty bone marrow). Diffuse or focal involvement.",
+                t2: "T2 hyperintense (edema, tumor). STIR: Most sensitive for bone marrow edema.",
+                t1_c: "Enhancement (hypervascular metastases: Kidney, thyroid, breast).",
+                dwi: "Restriction in diffuse bone metastasis. Treatment response monitoring (ADC increase → response)."
+            }
+        },
+        mechanism: "Primer tümör → hematojen yayılım → kırmızı kemik iliği (omurga, sternum, pelvis) tutulumu. Batson pleksusu: Prostat ve göğüs kanserinin omurgaya direkt venöz yayılımını kolaylaştıran paravertebral venöz ağ. Litik metastaz: Osteoklast aktivasyonu (tümör sitokinleri → RANKL artışı). Sklerotik: Osteoblast uyarımı (prostat PSA, endotelin-1). Patolojik kırık: Korteksin destekleyici kapasitesi kaybedilir.",
+        etiology: "Meme, Akciğer, Prostat, Böbrek, Tiroid (%80 vakası)."
+    },
+    {
+        id: "acute-osteomyelitis",
+        name: "Akut Osteomiyelit",
+        nameEn: "Acute Osteomyelitis",
+        category: "Enfeksiyöz",
+        categoryEn: "Infectious",
+        keyPoints: [
+            "MRI erken tanıda altın standarttır — röntgen normal iken MRI pozitif olabilir (48-72 saat).",
+            "T1 hipointens + STIR/T2 hiperintens kemik iliği = Osteomiyelit paterni.",
+            "Çocukta: Metafizer tutulum, Stafilokokus aureus.",
+            "Diyabetik ayak osteomiyelit: MRI'da kemik yüzeyi ile yumuşak doku ilişkisi kritik."
+        ],
+        keyPointsEn: [
+            "MRI is gold standard for early diagnosis — X-ray may be normal when MRI is positive (48-72h).",
+            "T1 hypointense + STIR/T2 hyperintense bone marrow = Osteomyelitis pattern.",
+            "Child: Metaphyseal involvement, Staphylococcus aureus.",
+            "Diabetic foot osteomyelitis: Bone surface-soft tissue relationship critical on MRI."
+        ],
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "Röntgen - Periost Reaksiyonu (Geç)", modality: "X-Ray" },
+            { url: "/images/placeholder_source.png", caption: "MRI STIR - Kemik İliği Ödemi", modality: "MRI" }
+        ],
+        findings: {
+            xray: {
+                description: "Erken (ilk 10-14 gün): Normal veya hafif yumuşak doku şişliği. Geç: Kemik yıkımı, periost reaksiyonu, skleroz. Kronik: Sequestr (nekrotik kemik) + involukrum (yeni periost kemiği)."
+            },
+            mri: {
+                t1: "Kemik iliği T1 hipointens (normal yağ iliği sinyal kaybı). En hassas erken bulgu.",
+                t2: "STIR/T2 hiperintens (ödem). Yumuşak doku tutulumu (selülit, miyozit).",
+                t1_c: "Rim kontrastlı apse (santral düşük, rim yüksek kontrastlanma). Kemik yüzey devamlılık kaybı.",
+                other_sequences: "DWI: Apse içeriğinde kısıtlanma. Diyabetik ayak: T1 hipointensi kortekse ulaşmışsa osteomiyelit tanısaldır."
+            }
+        },
+        findingsEn: {
+            xray: {
+                description: "Early (first 10-14 days): Normal or mild soft tissue swelling. Late: Bone destruction, periosteal reaction, sclerosis. Chronic: Sequestrum (necrotic bone) + involucrum (new periosteal bone)."
+            },
+            mri: {
+                t1: "Bone marrow T1 hypointense (loss of normal fatty marrow signal). Most sensitive early finding.",
+                t2: "STIR/T2 hyperintense (edema). Soft tissue involvement (cellulitis, myositis).",
+                t1_c: "Rim-enhancing abscess (low central, high rim enhancement). Cortical surface discontinuity.",
+                other_sequences: "DWI: Restriction in abscess content. Diabetic foot: If T1 hypointensity reaches cortex, osteomyelitis is diagnostic."
+            }
+        },
+        mechanism: "Bakteriyel kemik enfeksiyonu: Hematojen (çocuk, metafiz) veya direkt inokülasyon (diyabet, travma, cerrahi). Metafizde gelişimi: Yavaş akımla zengin sinüzoidal kapillerler → bakteriyel yerleşim. İltihabi yanıt → vasküler tromboz → korteks perforasyon → subperiosteal apse → sinus trakt. Kronik: Avasküler kemik (sequestr) etrafında yeni kemik (involukrum).",
+        etiology: "Stafilokokus aureus (%90). MRSA giderek artan. Diyabetik ayak: Polimikrobiyal. Orak hücreli anemi: Salmonella."
+    },
+    {
+        id: "plantar-fasciitis",
+        name: "Plantar Fasiit",
+        nameEn: "Plantar Fasciitis",
+        category: "Tendon/Fasya",
+        categoryEn: "Tendon/Fascia",
+        keyPoints: [
+            "En sık ayak ağrısı nedeni — topuk ağrısı, sabah ilk adımda en şiddetli.",
+            "USG: Plantar fasya kalınlığı >4mm + eko heterojenitesi = Tanısal.",
+            "Röntgen: Kalkaneal spur (çoğunlukla insidental, PF'ye özgü değil).",
+            "MRI: Şiddetli/atipik olgularda ve ayırıcı tanıda (stres kırığı, tümör)."
+        ],
+        keyPointsEn: [
+            "Most common cause of heel pain — worst with first steps in the morning.",
+            "USG: Plantar fascia thickness >4mm + echo heterogeneity = Diagnostic.",
+            "X-ray: Calcaneal spur (mostly incidental, not specific to PF).",
+            "MRI: For severe/atypical cases and differential diagnosis (stress fracture, tumor)."
+        ],
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "USG - Plantar Fasya Kalınlaşması", modality: "USG" },
+            { url: "/images/placeholder_source.png", caption: "MRI STIR - Fasyal Ödem", modality: "MRI" }
+        ],
+        findings: {
+            usg: {
+                description: "Plantar fasyanın kalkaneal insertio'sunda kalınlık artışı (>4mm, normal <4mm). İnternal ekojenite azalması (hypoechoic) — ödem/dejenerasyon. Fasyal fibrilerde devamlılık bozukluğu (parsiyel yırtık). Power Doppler: Neovaskülarizasyon (kronik degeneratif değişiklik).",
+                doppler: "Kronik olgularda neovaskülariasyon artışı (kronik tendinopati paterni)."
+            },
+            xray: {
+                description: "Kalkaneal spur (inferoanterior): İnsidental bulgu, PF'ye spesifik değil. Kortikal erozyon (ileri evre)."
+            },
+            mri: {
+                t2: "STIR: Plantar fasyanın kalkaneal insertio'sunda hiperintensite (ödem). Perifer fasyal ödem.",
+                t1_c: "Kontrastlanma: Aktif inflamasyon.",
+                other_sequences: "Kalkaneal stres kırığı ekartasyonu: T1 hipointens + STIR hiperintens bant (kırık hattı). Tümör ekartasyonu."
+            }
+        },
+        findingsEn: {
+            usg: {
+                description: "Thickness increase at calcaneal insertion of plantar fascia (>4mm, normal <4mm). Decreased internal echogenicity (hypoechoic) — edema/degeneration. Discontinuity of fascial fibers (partial tear). Power Doppler: Neovascularization (chronic degenerative change).",
+                doppler: "Increased neovascularization in chronic cases (chronic tendinopathy pattern)."
+            },
+            xray: {
+                description: "Calcaneal spur (inferoanterior): Incidental finding, not specific to PF. Cortical erosion (advanced stage)."
+            },
+            mri: {
+                t2: "STIR: Hyperintensity at calcaneal insertion of plantar fascia (edema). Perifascial edema.",
+                t1_c: "Enhancement: Active inflammation.",
+                other_sequences: "Calcaneal stress fracture exclusion: T1 hypointense + STIR hyperintense band (fracture line). Tumor exclusion."
+            }
+        },
+        mechanism: "Tekrarlayan mikrotravma → plantar fasyanın kalkaneal insersiyonunda dejeneratif değişiklikler (Tendinozis: Kollajen deorganizasyonu, neovaskülariasyon, makrofaj infiltrasyonu — gerçek inflamasyon yok!). Sabah ağrısı: Gece istirahati → fasya kısalır → ilk adımda fasya gerilir → ağrı. Şişman, düz ayak (pes planus) veya yüksek ark (pes kavus): Risk arttırır.",
+        etiology: "Uzun süre ayakta durma, koşu, obezite, pes planus/kavus, uygunsuz ayakkabı, kısa Aşil tendonu."
     }
 ];

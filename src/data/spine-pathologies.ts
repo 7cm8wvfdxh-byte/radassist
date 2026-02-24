@@ -695,5 +695,89 @@ export const spinePathologies: Pathology[] = [
             "Canal widens in Isthmic (Lytic) type, narrows in Degenerative type."
         ],
         "mechanism": "Tekrarlayan hiperextansiyon ve rotasyon kuvvetleri → pars interartikülaris'te stres kırığı (spondilolizis). Pars, hem faset eklemi hem de disk dejenerasyonunun yükünü taşıyan narin bir kemik köprüdür. İki taraflı pars kırığı → vertebra korpusunun posterior elementlerden ayrışması → anteriorlistezis (kayma). İstmik tipte: Kırık parçalar arasındaki mesafe artar ve spinal kanal genişler (dejeneratif stenozdaki daralmanın aksine)."
+    },
+    {
+        "id": "transverse_myelitis",
+        "name": "Transvers Miyelit",
+        "nameEn": "Transverse Myelitis",
+        "category": "İnflamatuar",
+        "categoryEn": "Inflammatory",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "MRI Sagittal T2 - Kord İçi Hiperintensite", "modality": "MRI" },
+            { "url": "/images/placeholder_source.png", "caption": "MRI Aksiyel T2 - Merkezi Lezyon", "modality": "MRI" }
+        ],
+        "findings": {
+            "mri": {
+                "t2": "Spinal kord içinde T2 hiperintens lezyon: Longitüdinal uzanım ≥3 vertebra segmenti (LETM — Longitudinally Extensive Transverse Myelitis) → Nöromiyelitis Optika Spektrumu (NMOSD) şüphesi. Kısa (<2 seg): Multipl Skleroz, MS lezyonu. Santral tutulum: Gri madde ağırlıklı (NMO, MS). Periferik tutulum: Vasküler etiyoloji.",
+                "t1_c": "Aktif evrede kontrast tutulumu (açık lezyon = gadolinium +). Genellikle lezyon kord şişmesi ile birliktedir.",
+                "other_sequences": "DWI: Vasküler miyelopati ayırımında (iskemik → kısıtlanma var). Beyin MRI: MS veya NMO ayrımı için mutlaka değerlendir."
+            }
+        },
+        "findingsEn": {
+            "mri": {
+                "t2": "T2 hyperintense lesion within spinal cord: Longitudinal extension ≥3 vertebral segments (LETM) → Neuromyelitis Optica Spectrum Disorder (NMOSD) suspicion. Short (<2 seg): Multiple Sclerosis lesion. Central involvement: Gray matter predominant (NMO, MS). Peripheral: Vascular etiology.",
+                "t1_c": "Gadolinium enhancement in active phase (open lesion = gadolinium +). Usually with cord swelling.",
+                "other_sequences": "DWI: Distinguishing vascular myelopathy (ischemic → restriction present). Brain MRI: Must evaluate for MS vs NMO differentiation."
+            }
+        },
+        "keyPoints": [
+            "LETM (≥3 segment): NMOSD (Nöromiyelitis Optika) → AQP4-IgG veya MOG-IgG test et.",
+            "Kısa lezyon (<2 segment): Multipl Skleroz plaği.",
+            "Lezyon santral gri maddede: NMO, iskemik. Periferik beyaz maddede: MS.",
+            "Kontrast tutulumu: Aktif lezyon — high dose steroid tedavisi."
+        ],
+        "keyPointsEn": [
+            "LETM (≥3 segments): NMOSD → Test AQP4-IgG or MOG-IgG.",
+            "Short lesion (<2 segments): Multiple Sclerosis plaque.",
+            "Central gray matter lesion: NMO, ischemic. Peripheral white matter: MS.",
+            "Gadolinium enhancement: Active lesion — high dose steroid treatment."
+        ],
+        "mechanism": "İnflamatuar/otoimmün saldırı → spinal kord demyelinizasyonu ve aksonal hasar. NMOSD: AQP4 (aquaporin-4) su kanalı antikorları astrositlere saldırır → kord ödemi + nekroz (LETM). MS: Oligodendrositler hedef → fokal kısa demyelinik plaklar. İdiyopatik: Post-enfeksiyöz (viral/bakteriyel), paraneoplastik, vaskülit. T2 hiperintensite: Ödem + demiyelinizasyon + aksonal hasar.",
+        "etiology": "İdiyopatik, NMOSD (AQP4-IgG), MS, MOG-IgG ilişkili hastalık, Post-enfeksiyöz (EBV, Coxsackie, HSV), SLE, Sjögren sendromu, Paraneoplastik.",
+        "differentialDiagnosis": ["MS (Kısa lezyon, periferik, beyin lezyonları)", "Spinal Kord İskemisi (DWI kısıtlanma, ani başlangıç)", "Spinal Kord Tümörü (Kitlesel, kontrastlanma)", "Servikal Miyelopati (Dejeneratif, disk hernisi eşliği)"],
+        "goldStandard": "MRI (sagittal T2 + T1+K + DWI). Seroloji: AQP4-IgG, MOG-IgG, MS paneli. BOS: Oligoklonal bant.",
+        "clinicalPearl": "Uzun T2 lezyonu (≥3 segment) = NMOSD şüphesi → AQP4-IgG test et. Kısa lezyon = MS olası. İkisi de farklı tedavi gerektirir!"
+    },
+    {
+        "id": "syringomyelia",
+        "name": "Siringomiyeli",
+        "nameEn": "Syringomyelia",
+        "category": "Yapısal",
+        "categoryEn": "Structural",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "MRI Sagittal T2 - İntramedüller Kistik Kavite", "modality": "MRI" },
+            { "url": "/images/placeholder_source.png", "caption": "MRI Aksiyel T2 - Kord İçi Sirinks", "modality": "MRI" }
+        ],
+        "findings": {
+            "mri": {
+                "t2": "Spinal kord içinde uzun, silindirik, T2 hiperintens (BOS ile izointens) kavite. Servikal ve torakal kord en sık. Sirinks genişliği ve uzunluğu değerlendirmesi. Kord atrofisi (kronik vakalar).",
+                "t1": "Sirinkin içeriği T1 hipointens (BOS gibi). Gadolinium sonrası kontrast tutmaz (neoplastik kist tutabilir — önemli ayırıcı).",
+                "other_sequences": "Chiari malformasyonu: Tonsilar herniasyon (>5mm foramen magnumdan aşağı). Tümör: Eşlik eden kontrast tutan nodül. Faz kontrast (Flow MRI): Sirinks içi BOS akım dinamiği."
+            }
+        },
+        "findingsEn": {
+            "mri": {
+                "t2": "Long, cylindrical, T2 hyperintense (isointense with CSF) cavity within spinal cord. Cervical and thoracic cord most common. Assessment of syrinx width and length. Cord atrophy (chronic cases).",
+                "t1": "Syrinx content T1 hypointense (like CSF). No gadolinium enhancement (neoplastic cyst may enhance — important differential).",
+                "other_sequences": "Chiari malformation: Tonsillar herniation (>5mm below foramen magnum). Tumor: Accompanying enhancing nodule. Phase contrast (Flow MRI): CSF flow dynamics within syrinx."
+            }
+        },
+        "keyPoints": [
+            "MRI: Kord içi uzun kistik kavite. T1/T2 BOS ile eş sinyal = Sirinx (tümör içermez).",
+            "En sık neden: Chiari Tip I — servikal sirinx + tonsilar herniasyon.",
+            "Gadolinium tutulumu: Neoplastik kist (ependimom, astrositom) — her zaman kontrastlı incele!",
+            "Tedavi: Altta yatan nedene yönelik (Chiari cerrahisi, tümör eksizyonu, araknoid plastiği)."
+        ],
+        "keyPointsEn": [
+            "MRI: Long cystic cavity within cord. T1/T2 isointense with CSF = Syrinx (non-tumoral).",
+            "Most common cause: Chiari Type I — cervical syrinx + tonsillar herniation.",
+            "Gadolinium enhancement: Neoplastic cyst (ependymoma, astrocytoma) — always use contrast!",
+            "Treatment: Address underlying cause (Chiari surgery, tumor resection, arachnoid plasty)."
+        ],
+        "mechanism": "BOS akım dinamiği bozulması → spinal kord içinde basınç dalgalanmaları → interstisyel sıvının kord içinde birikmesi → sirinx oluşumu. Chiari malformasyonu: Tonsilar herniasyon → foramen magnum BOS akımını engeller → valsin etkisi → sirinx. Post-travmatik: Araknoid adhezyon → BOS akım bloğu. Tümör ilişkili: İntramedüller tümör sekresyonu veya BOS akım distorsiyonu. İdiyopatik: BOS akım anormalliği.",
+        "etiology": "Chiari Tip I Malformasyonu (en sık), Post-travmatik araknoid adezyon, İntramedüller tümör (ependimom, astrositom), Post-enfeksiyöz araknoidit, İdiyopatik.",
+        "differentialDiagnosis": ["İntramedüller Tümör (Gadolinium tutan nodül/kitle)", "Hidromiyelik Kavite (Normal kanal genişlemesi)", "Dilate Santral Kanal (Normal varyant <2mm)", "MS Lezyonu (Periferik, gadolinium +, kistik değil)"],
+        "goldStandard": "Sagittal + Aksiyel T1, T2 MRI. T1+K: Neoplastik bileşen ekartasyonu. Faz kontrast MRI: BOS akım dinamiği (Chiari'de akım bozulması).",
+        "clinicalPearl": "Servikal sirinx gördüğünde MUTLAKA kraniyoservikal bileşkeyi değerlendir — Chiari varlığını dışla. Kraniovertebrasyonel bileşkede herniasyon + sirinx = Chiari cerrahisi planı."
     }
 ];

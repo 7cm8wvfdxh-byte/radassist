@@ -446,5 +446,238 @@ export const liverPathologies: Pathology[] = [
             "Type 3 (Daughter vesicle) and Type 2 (Membrane) are active."
         ],
         "mechanism": "Echinococcus granulosus yumurtasının oral alınımı → bağırsakta larval formu (onkosfer) açılır → portal dolaşıma girer → karaciğerde yerleşir → hidatid kist gelişir. Kist üç tabakadan oluşur: Dış (perikist, konak fibröz doku), orta (germinal epiteli), iç (germinal tabaka, yavru kist üretir). Membran ayrışması → water lily sign; kalsifikasyon → inaktif evre."
+    },
+    {
+        "id": "acute_cholecystitis",
+        "name": "Akut Kolesistit",
+        "nameEn": "Acute Cholecystitis",
+        "category": "İnflamatuar",
+        "categoryEn": "Inflammatory",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "USG - Safra Kesesi Duvar Kalınlaşması", "modality": "USG" },
+            { "url": "/images/placeholder_source.png", "caption": "BT - Perikolesistik Sıvı", "modality": "CT" }
+        ],
+        "findings": {
+            "ultrasound": {
+                "description": "Safra kesesi duvar kalınlaşması (>3mm). Murphy işareti pozitif (prob baskısında ağrı). Perikolesistik sıvı. Safra kesesi distansiyonu (>5cm transvers). İmpakte boyun taşı.",
+                "doppler": "Duvar hipervaskülaritesi (Renkli Doppler'de artmış sinyal). Gangrenöz kolesistitte akım azalabilir."
+            },
+            "ct": {
+                "non_contrast": "Safra kesesi distansiyonu. İntralüminal hiperdens taşlar (kalsifik).",
+                "contrast": "Duvar kalınlaşması ve kontrastlanması. Perikolesistik yağ kirlenme (fat stranding). Perikolesistik sıvı. Gangrenöz: Duvar devamlılık kaybı, intralüminal membranlar. Amfizemöz: İntramural/intralüminal hava (acil!)."
+            },
+            "mri": {
+                "t2": "Safra kesesi çevresinde T2 hiperintens ödem/sıvı. Duvar ödemi.",
+                "t1_c": "Duvar kontrastlanması ve kalınlaşması.",
+                "other_sequences": "MRCP: Safra kanalı değerlendirmesi, koledokolitiyazis ekartasyonu."
+            }
+        },
+        "findingsEn": {
+            "ultrasound": {
+                "description": "Gallbladder wall thickening (>3mm). Positive sonographic Murphy's sign. Pericholecystic fluid. GB distension (>5cm transverse). Impacted stone at neck.",
+                "doppler": "Wall hypervascularity (increased signal on color Doppler). Reduced flow in gangrenous cholecystitis."
+            },
+            "ct": {
+                "non_contrast": "Gallbladder distension. Intraluminal hyperdense calcified stones.",
+                "contrast": "Wall thickening and enhancement. Pericholecystic fat stranding. Pericholecystic fluid. Gangrenous: Wall discontinuity, intraluminal membranes. Emphysematous: Intramural/intraluminal gas (emergency!)."
+            },
+            "mri": {
+                "t2": "T2 hyperintense edema/fluid around gallbladder. Wall edema.",
+                "t1_c": "Wall enhancement and thickening.",
+                "other_sequences": "MRCP: Bile duct evaluation, exclusion of choledocholithiasis."
+            }
+        },
+        "keyPoints": [
+            "USG ilk görüntüleme yöntemidir: Duvar kalınlaşması >3mm + Murphy işareti = Tanısal.",
+            "Gangrenöz kolesistit: Duvar devamlılık kaybı, intralüminal membranlar → Acil cerrahi.",
+            "Amfizemöz kolesistit: İntramural hava → Diyabetik hastalarda sık, acil!",
+            "Akalkülöz kolesistit: Taşsız, yoğun bakım hastalarında görülür."
+        ],
+        "keyPointsEn": [
+            "USG is first imaging: Wall thickening >3mm + Murphy's sign = Diagnostic.",
+            "Gangrenous cholecystitis: Wall discontinuity, intraluminal membranes → Emergency surgery.",
+            "Emphysematous cholecystitis: Intramural gas → Common in diabetics, emergency!",
+            "Acalculous cholecystitis: Without stones, seen in ICU patients."
+        ],
+        "mechanism": "İmpakte safra taşı → sistik kanal obstrüksiyonu → safra kesesi içi basınç artışı → duvar iskemisi → inflamasyon. Safra asitleri ve lizolesitin direkt mukozal hasar yapar. İkincil bakteri kolonizasyonu (E. coli, Klebsiella). Gangrenöz kolesistit: Transmural nekroz → perforasyon riski. Amfizemöz kolesistit: Klostridyum türleri → intramural gaz.",
+        "etiology": "Kolelitiyazis (%90-95). Akalkülöz: Kritik hastalık, TPN, uzun ameliyat, travma.",
+        "differentialDiagnosis": ["Akut Hepatit (Diffüz duvar kalınlaşması, LAP)", "Safra Kesesi Karsinomu (Kitlesel lezyon, invazyon)", "Perikolesistik Apse (Postperforatif)", "Hipoalbüminemi (Diffüz asit-ödem ile birlikte)"],
+        "goldStandard": "USG (ilk basamak). BT: Komplikasyon değerlendirmesi (gangrenöz, amfizemöz). HIDA sintigrafisi: Sistik kanal obstrüksiyonu kanıtı.",
+        "clinicalPearl": "Sonografik Murphy işareti: USG probu ile safra kesesi üzerine baskı uygulanınca ağrı — sistik kanal tıkanıklığını destekler, tanıda %85+ spesifiktir."
+    },
+    {
+        "id": "cholelithiasis",
+        "name": "Kolelitiyazis (Safra Taşı)",
+        "nameEn": "Cholelithiasis (Gallstones)",
+        "category": "Bilier",
+        "categoryEn": "Biliary",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "USG - Taş + Akustik Gölge", "modality": "USG" },
+            { "url": "/images/placeholder_source.png", "caption": "BT - Kalsifik Safra Taşları", "modality": "CT" }
+        ],
+        "findings": {
+            "ultrasound": {
+                "description": "Hiperekojenik odak + Posterior akustik gölge = PATOGNOMONİK. Pozisyon değişimi ile yer değiştirme (taşlar bağımlı konuma geçer). WES triadı: Duvar-Eko-Gölge. Kolesistitis bulguları eşlik edebilir.",
+                "doppler": "Twinkle artefakt: Taş posterior yüzeyinde renkli Doppler'de titreşim artefaktı."
+            },
+            "ct": {
+                "non_contrast": "Kalsifik taşlar (%20): Hiperdens. Kolesterol taşları (%80): İzodens veya hipodens (BT'de görülmeyebilir!). Nadir: Mezbilit (safra taşı ileusa bağlı barsakta taş).",
+                "contrast": "Taş kontrastlanmaz. Safra kesesi duvarı ve çevre değerlendirmesi."
+            },
+            "mri": {
+                "t2": "Taşlar tüm sekanslarda sinyal vermeyen koyuluk (void) olarak görülür. T2 sekanslarda safra (hiperintens) içinde hipointens taşlar belirgin.",
+                "other_sequences": "MRCP: Koledokolitiyazis değerlendirmesi için ideal. İntraduktal dolum defekti (santral, düzgün konturlu)."
+            }
+        },
+        "findingsEn": {
+            "ultrasound": {
+                "description": "Hyperechoic focus + Posterior acoustic shadow = PATHOGNOMONIC. Mobile with position change. WES triad: Wall-Echo-Shadow. Cholecystitis signs may accompany.",
+                "doppler": "Twinkle artifact: Oscillating color Doppler signal posterior to stone."
+            },
+            "ct": {
+                "non_contrast": "Calcified stones (20%): Hyperdense. Cholesterol stones (80%): Isodense or hypodense (may not be seen on CT!). Rare: Mirizzi (stone in cystic duct causing CHD compression).",
+                "contrast": "Stones do not enhance. Evaluation of GB wall and surroundings."
+            },
+            "mri": {
+                "t2": "Stones appear as signal voids (dark) on all sequences. Hypointense stones stand out in T2 hyperintense bile.",
+                "other_sequences": "MRCP: Ideal for choledocholithiasis. Intraluminal filling defect (central, smooth contour)."
+            }
+        },
+        "keyPoints": [
+            "USG altın standarttır: Sensitivite %95+. Posterior akustik gölge = tanısal.",
+            "Kolesterol taşları BT'de görülmeyebilir → USG daha değerli!",
+            "MRCP: Koledokolitiyazis (ana safra kanalı taşı) için tercih.",
+            "5F: Fat, Female, Forty, Fertile, Fair (risk faktörleri)."
+        ],
+        "keyPointsEn": [
+            "USG is gold standard: Sensitivity 95%+. Posterior acoustic shadow = diagnostic.",
+            "Cholesterol stones may not be visible on CT → USG more valuable!",
+            "MRCP: Preferred for choledocholithiasis (common bile duct stone).",
+            "5F: Fat, Female, Forty, Fertile, Fair (risk factors)."
+        ],
+        "mechanism": "Safranın kolesterol ile aşırı doyması (supersatürasyon) → nükleasyon → kristal büyümesi → taş oluşumu. Kolesterol taşları (%80): Safranın kolesterol/safra asidi/lesitin dengesizliği. Pigment taşları (%20): Hemoliz (siyah) veya enfeksiyon (kahverengi). Safra kesesi hipomotilitesi ve mukus hipersekresyonu nükleasyonu kolaylaştırır.",
+        "etiology": "Obezite, gebelik, OKS kullanımı, hızlı kilo kaybı, hemolitik anemi, Crohn hastalığı, TPN.",
+        "differentialDiagnosis": ["Safra Kesesi Polipleri (Taşın aksine yerini değiştirmez, gölge yok)", "Safra Çamuru (Akustik gölge yok, bağımlı sediman)", "Kolesterolozis (Duvar nodülleri)", "Safra Kesesi Karsinomu (Kitlesel lezyon)"],
+        "goldStandard": "USG. MRCP: Koledokolitiyazis şüphesinde.",
+        "clinicalPearl": "BT'de 'negatif' safra kesesi = kolesterol taşı olabilir. Klinik kolik + USG negatifse MRCP iste."
+    },
+    {
+        "id": "nafld_fatty_liver",
+        "name": "Yağlı Karaciğer (NAFLD/NASH)",
+        "nameEn": "Fatty Liver (NAFLD/NASH)",
+        "category": "Metabolik",
+        "categoryEn": "Metabolic",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "USG - Hiperekojenik Karaciğer", "modality": "USG" },
+            { "url": "/images/placeholder_source.png", "caption": "BT - Karaciğer Dansite Azalması", "modality": "CT" },
+            { "url": "/images/placeholder_source.png", "caption": "MRI Yağ Baskılama (Out-of-Phase)", "modality": "MRI" }
+        ],
+        "findings": {
+            "ultrasound": {
+                "description": "Artmış ekojenite ('parlak karaciğer'). Karaciğer-böbrek kontrast artışı (normalde eşit). Derin yapıların görüntülenemesi (arka atenüasyon). Portal ven duvar ekojenitesi azalır (kontrast kaybı).",
+                "doppler": "Normal hepatik vasküler akım (erken evrede). Siroza ilerlerse portal hipertansiyon bulguları."
+            },
+            "ct": {
+                "non_contrast": "Karaciğer dansite < Dalak dansite = Steatoz. Karaciğer <40 HU = Belirgin steatoz. Damarlar karaciğere göre görece hiperdans görünür ('ters kontrast').",
+                "contrast": "Fokal yağlanma veya fokal yağ tutulmaması alanları: Yuvarlak/coğrafik sınır, kitle etkisi yok, damar yıkımı yok."
+            },
+            "mri": {
+                "t1": "In-phase/Out-of-phase (Çift eko): Yağ → Out-of-phase'de sinyal düşüşü (sinyal kaybı = yağlı). Chemical shift imaging altın standart.",
+                "other_sequences": "MR Spektroskopi: Yağ fraksiyonunu sayısal olarak ölçer (>5% = Steatoz). Fibrozis için MR Elastografi."
+            }
+        },
+        "findingsEn": {
+            "ultrasound": {
+                "description": "Increased echogenicity ('bright liver'). Increased liver-kidney contrast (normally equal). Poor visualization of deep structures (posterior attenuation). Reduced portal vein wall echogenicity.",
+                "doppler": "Normal hepatic vascular flow (early stage). Portal hypertension findings if cirrhosis develops."
+            },
+            "ct": {
+                "non_contrast": "Liver density < Spleen density = Steatosis. Liver <40 HU = Significant steatosis. Vessels appear relatively hyperdense ('reverse contrast').",
+                "contrast": "Focal fat deposition or focal fat sparing: Round/geographic borders, no mass effect, no vessel displacement."
+            },
+            "mri": {
+                "t1": "In-phase/Out-of-phase (Dual echo): Fat → signal drop on out-of-phase (signal loss = fatty). Chemical shift imaging is gold standard.",
+                "other_sequences": "MR Spectroscopy: Quantifies fat fraction (>5% = Steatosis). MR Elastography for fibrosis."
+            }
+        },
+        "keyPoints": [
+            "USG: Karaciğer > böbrek ekojenitesi = Steatoz.",
+            "BT: Karaciğer <40 HU (kontrastsız) veya Karaciğer-Dalak farkı <-10 HU = Belirgin steatoz.",
+            "MRI Out-of-Phase: Sinyal kaybı = Yağ depositi (en hassas yöntem).",
+            "NAFLD → NASH → Fibrozis → Siroz → HCC progresyonu mümkündür."
+        ],
+        "keyPointsEn": [
+            "USG: Liver > kidney echogenicity = Steatosis.",
+            "CT: Liver <40 HU (non-contrast) or Liver-Spleen difference <-10 HU = Significant steatosis.",
+            "MRI Out-of-Phase: Signal drop = Fat deposition (most sensitive method).",
+            "NAFLD → NASH → Fibrosis → Cirrhosis → HCC progression is possible."
+        ],
+        "mechanism": "İnsülin direnci → hepatik lipogenez artışı ve yağ asidi oksidasyonu azalması → hepatosit içinde trigliserid birikimi (steatoz). NASH'ta ek olarak oksidatif stres ve sitokin aktivasyonu → inflamasyon + hepatosit hasarı → fibrozis. Görüntülemede steatoz: Yağ protonları X-ray'i daha az atenüe eder (CT'de düşük dansite), USG'de akustik saçılmayı artırır (hiperekojeni), MRI'da su ve yağ protonlarının çift eko tekniğinde faz farkı oluşturur.",
+        "etiology": "Obezite, tip 2 DM, hiperlipidemi, metabolik sendrom, hızlı kilo kaybı, TPN, bazı ilaçlar (kortikosteroid, metotreksat, tamoksifen).",
+        "differentialDiagnosis": ["Fokal Steatoz (Fokal yağlanma — kitle ile karışabilir)", "Glikojen Depo Hastalığı (BT'de hiperdens karaciğer)", "Amiloidoz", "Wilson Hastalığı (Bakır birikimi)"],
+        "goldStandard": "MR Spektroskopi veya Karaciğer Biyopsisi (>5% steatoz = NAFLD).",
+        "clinicalPearl": "BT'de karaciğer dansitesi dalaktan düşükse steatoz düşün. Fokal yağ tutulmaması (özellikle safra kesesi yatağı ve portal dal komşuluğu) tümör ile karışabilir — vasküler yapılar düzgün seyrediyorsa benign."
+    },
+    {
+        "id": "cholangiocarcinoma",
+        "name": "Kolanjiokarsinom (Safra Yolu Kanseri)",
+        "nameEn": "Cholangiocarcinoma (Bile Duct Cancer)",
+        "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
+        "gallery": [
+            { "url": "/images/placeholder_source.png", "caption": "BT - Periferal Kitle (İCC)", "modality": "CT" },
+            { "url": "/images/placeholder_source.png", "caption": "MRCP - Safra Kanalı Darlığı", "modality": "MRI" }
+        ],
+        "findings": {
+            "ultrasound": {
+                "description": "Periferal tip (İCC): Hipoekojenik kitle ± uydu nodüller. Hiler tip (Klatskin): Konfluens düzeyinde genişlemiş intrahepatik safra kanalları (genişlemiş ama safra kesesi küçük). Distal tip: Ortak safra kanalında kitle.",
+                "doppler": "Genellikle hipovasküler (HCC'den farkı). Periferik rim kontrastlanması."
+            },
+            "ct": {
+                "non_contrast": "Hipodens kitle. Çevresinde satellit nodüller. İntrahepatik safra kanalı dilatasyonu (tıkanmanın proksimalinde).",
+                "contrast": "Erken faz: Periferal ince rim kontrastlanması. Geç faz: Santripetal dolum (fibröz stroma → yavaş kontrastlanma). HCC'nin tersine wash-out yok. Kapsüler retraksiyona neden olabilir (fibröz tümör).",
+                "cta": "Safra kanalı obstrüksiyon seviyesi ve portohepatik ven invazyonu (cerrahi planlamada kritik)."
+            },
+            "mri": {
+                "t2": "Hafif hiperintens kitle. Peritümöral safra kanalı dilatasyonu. Fibröz stroma → T2 hipointens bileşen.",
+                "t1_c": "Gecikmiş kontrastlanma (fibröz stroma yavaş dolar). Santripetal patern.",
+                "dwi": "Kısıtlanma mevcut. ADC değeri düşük.",
+                "other_sequences": "MRCP: Safra kanalı darlığı/tıkanması ve proksimal dilatasyon düzeyini gösterir. Hepatobilier faz: İCC hipodens (hepatosit kaybı)."
+            }
+        },
+        "findingsEn": {
+            "ultrasound": {
+                "description": "Peripheral type (ICC): Hypoechoic mass ± satellite nodules. Hilar type (Klatskin): Dilated intrahepatic bile ducts at confluence (dilated but small GB). Distal type: Mass in common bile duct.",
+                "doppler": "Usually hypovascular (distinguishing from HCC). Peripheral rim enhancement."
+            },
+            "ct": {
+                "non_contrast": "Hypodense mass. Surrounding satellite nodules. Intrahepatic bile duct dilation (upstream from obstruction).",
+                "contrast": "Early phase: Peripheral thin rim enhancement. Delayed phase: Centripetal fill-in (fibrous stroma → slow enhancement). No wash-out unlike HCC. May cause capsular retraction (fibrotic tumor).",
+                "cta": "Bile duct obstruction level and portovenous invasion (critical for surgical planning)."
+            },
+            "mri": {
+                "t2": "Mildly hyperintense mass. Peritumoral bile duct dilation. Fibrous stroma → T2 hypointense component.",
+                "t1_c": "Delayed enhancement (fibrous stroma fills slowly). Centripetal pattern.",
+                "dwi": "Diffusion restriction present. Low ADC.",
+                "other_sequences": "MRCP: Shows bile duct stricture/obstruction and proximal dilation level. Hepatobiliary phase: ICC hypointense (hepatocyte loss)."
+            }
+        },
+        "keyPoints": [
+            "Klatskin tümörü: Hiler kolanjiokarsinom — konfluenste obstrüksiyon, Bismuth-Corlette sınıflaması.",
+            "BT: Geç faz kontrastlanma (fibröz stroma) HCC'den ayırır.",
+            "MRCP: Safra kanalı darlığı + proksimal dilatasyon düzeyini gösterir.",
+            "Ca 19-9 yüksekliği + görüntüleme = tanı için biyopsi gerekmeyebilir."
+        ],
+        "keyPointsEn": [
+            "Klatskin tumor: Hilar cholangiocarcinoma — obstruction at confluence, Bismuth-Corlette classification.",
+            "CT: Delayed enhancement (fibrous stroma) distinguishes from HCC.",
+            "MRCP: Shows bile duct stricture + proximal dilation level.",
+            "Elevated Ca 19-9 + imaging = biopsy may not be needed."
+        ],
+        "mechanism": "Safra kanalı epiteli (kolanjiositler) malign transformasyonu → kolanjiokarsinom. Kronik inflamasyon (PSK, taş, enfeksiyon, toksin) → DNA hasarı → KRAS, IDH1/2, FGFR2 mutasyonları. Fibröz stroma üretimi tümörün geç faz kontrastlanma özelliğini açıklar. Hiler tip en sık (%50-60), periferal (intahepatik) tip ikinci sık, distal tip en az sık.",
+        "etiology": "Primer sklerozan kolanjit (PSK), Kolelitiyazis, Caroli hastalığı, koledokal kist, kronik HBV/HCV, Clonorchis sinensis enfeksiyonu.",
+        "differentialDiagnosis": ["HCC (Arteryel wash-in, wash-out, AFP yüksek)", "Karaciğer Metastazı (Primer odak bilinen)", "Hepatik Apse (Ateş, lökositoz)", "FNH (Santral skar, hepatobilier faz hiperintens)"],
+        "goldStandard": "Dinamik BT veya MRCP + MRI. Ca 19-9 > 100 U/mL destekler. Kesin: Biyopsi veya cerrahi patoloji.",
+        "clinicalPearl": "Obstrüktif sarılık + İntrahepatik safra dilatasyonu + Safra kanalı duvarında kalınlaşma → Kolanjiokarsinom şüphesi. Geç faz kontrastlanma (santripetal) HCC'den ayırt ettirir."
     }
 ];

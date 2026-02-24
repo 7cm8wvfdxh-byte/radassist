@@ -168,5 +168,151 @@ export const breastPathologies: Pathology[] = [
                 description: "Oil cyst (Radiolucent center). Egg-shell calcification. Dystrophic calcifications."
             }
         }
+    },
+    {
+        id: "dcis",
+        name: "Duktal Karsinoma In Situ (DCIS)",
+        nameEn: "Ductal Carcinoma In Situ (DCIS)",
+        category: "Malign",
+        categoryEn: "Malignant",
+        keyPoints: [
+            "İnvaziv olmayan meme kanseri — bazal membranı geçmez.",
+            "Mammografi: Segmental/lineer ince pleomorfik mikrokalsifikasyonlar = Klasik bulgu.",
+            "MRI: Non-mass enhancement (NME) — duktal/segmental dağılım.",
+            "Tedavisiz invaziv kansere ilerleyebilir (%30-50)."
+        ],
+        keyPointsEn: [
+            "Non-invasive breast cancer — does not cross basement membrane.",
+            "Mammography: Segmental/linear fine pleomorphic microcalcifications = Classic finding.",
+            "MRI: Non-mass enhancement (NME) — ductal/segmental distribution.",
+            "May progress to invasive cancer without treatment (30-50%)."
+        ],
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "Mammografi - Mikrokalsifikasyonlar", modality: "Mammography" },
+            { url: "/images/placeholder_source.png", caption: "MRI - Duktal Non-Mass Tutulum", modality: "MRI" }
+        ],
+        findings: {
+            mammography: {
+                description: "Segmental veya lineer dağılımlı ince pleomorfik/lineer mikrokalsifikasyonlar (BI-RADS 4-5). Düzensiz sınırlı kitle (komedo tip). Asimetri."
+            },
+            usg: {
+                description: "DCIS USG'de görülmeyebilir (%50-60). Düzensiz hipoekoik alan. Mikrokalsifikasyonlar: Hiperekojenik noktacıklar. Duktal genişleme."
+            },
+            mri: {
+                t1_c: "Non-mass enhancement (NME): Segmental, duktal veya lineer dağılım. Kinetik: Plateau veya wash-out paterni. Kitlesel lezyon daha az sık.",
+                other_sequences: "DWI: ADC değeri düşük (invaziv kanserle örtüşebilir)."
+            }
+        },
+        findingsEn: {
+            mammography: {
+                description: "Fine pleomorphic/linear microcalcifications in segmental or linear distribution (BI-RADS 4-5). Irregular-bordered mass (comedo type). Asymmetry."
+            },
+            usg: {
+                description: "DCIS may not be visualized on USG (50-60%). Irregular hypoechoic area. Microcalcifications: Hyperechoic punctate foci. Ductal dilatation."
+            },
+            mri: {
+                t1_c: "Non-mass enhancement (NME): Segmental, ductal or linear distribution. Kinetics: Plateau or wash-out pattern. Mass lesion less common.",
+                other_sequences: "DWI: Low ADC value (may overlap with invasive cancer)."
+            }
+        },
+        mechanism: "Epitelyal hücreler lümen içinde prolifere olur, bazal membran sağlamdır. Komedo nekroz (yüksek grade): Nekrotik merkez + kalsifikasyon → mammografide mikrokalsifikasyonlar. MRI'da non-mass enhancement: Duktal sistem boyunca yayılım, kitlesel karsinom oluşturmaz.",
+        etiology: "Yaş (50+ sık), aile öyküsü, BRCA1/2, yoğun meme dokusu, hormon tedavisi."
+    },
+    {
+        id: "phyllodes-tumor",
+        name: "Filloides Tümör (Sistadenofibrom)",
+        nameEn: "Phyllodes Tumor",
+        category: "Nadir",
+        categoryEn: "Rare",
+        keyPoints: [
+            "Fibroepitelyal tümör — benign/borderline/malign olabilir.",
+            "Büyük, hızlı büyüyen kitle (kısa sürede >5cm) — Fibroadenomu taklit eder.",
+            "USG: Düzgün sınırlı, lobüle hipoekoik kitle + internal kistik alanlar.",
+            "Malign filloides: Lokal nüks sık, metastaz akciğere (lenf nodu değil!)."
+        ],
+        keyPointsEn: [
+            "Fibroepithelial tumor — can be benign/borderline/malignant.",
+            "Large, rapidly growing mass (>5cm in short time) — mimics fibroadenoma.",
+            "USG: Well-defined, lobular hypoechoic mass + internal cystic areas.",
+            "Malignant phyllodes: Frequent local recurrence, metastasis to lung (not lymph node!)."
+        ],
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "USG - Büyük Lobüle Kitle + Kistik Alan", modality: "USG" },
+            { url: "/images/placeholder_source.png", caption: "MRI - Heterojen Filloides Tümör", modality: "MRI" }
+        ],
+        findings: {
+            usg: {
+                description: "Büyük, düzgün sınırlı, lobüle hipoekoik kitle. İçinde kistik alanlar (yırtılmış yaprak benzeri boşluklar). Posterior akustik güçlenme. Hızlı büyüme öyküsü."
+            },
+            mammography: {
+                description: "Büyük, oval/lobüle, düzgün sınırlı, yoğun kitle. Kalsifikasyon genellikle yok (fibroadenomdan farkı). BI-RADS 3-4."
+            },
+            mri: {
+                t2: "Yoğun heterojen kitle, içinde T2 hiperintens kistik boşluklar ('yaprak' görünümü). T1+K: Heterojen kontrastlanma. Hızlı wash-in (malign bileşen).",
+                dwi: "ADC değeri: Benign > malign (grade ile ters korelasyon)."
+            }
+        },
+        findingsEn: {
+            usg: {
+                description: "Large, well-defined, lobular hypoechoic mass. Internal cystic spaces (leaf-like clefts). Posterior acoustic enhancement. History of rapid growth."
+            },
+            mammography: {
+                description: "Large, oval/lobular, well-defined, dense mass. Usually no calcifications (differs from fibroadenoma). BI-RADS 3-4."
+            },
+            mri: {
+                t2: "Dense heterogeneous mass with T2 hyperintense cystic spaces ('leaf' appearance). T1+C: Heterogeneous enhancement. Rapid wash-in (malignant component).",
+                dwi: "ADC value: Benign > malignant (inversely correlated with grade)."
+            }
+        },
+        mechanism: "İntralobüler stromal hücre proliferasyonu + epitelyal komponent → fibroepitelyal tümör. 'Yaprak' görünümü (phyllodes = yaprak): Belirgin stromal büyüme epiepitelyal duktus içine doğru itmesi. Malign: Stromal sarkomatöz transformasyon → Hematojen metastaz (akciğer sık). Lenfatik metastaz nadirdir (malign mezankimal tümör).",
+        etiology: "Orta yaş kadın (35-50). Fibroadenomdan dönüşüm tartışmalı."
+    },
+    {
+        id: "galactocele",
+        name: "Galaktosel",
+        nameEn: "Galactocele",
+        category: "Benign",
+        categoryEn: "Benign",
+        keyPoints: [
+            "Emzirme döneminde obstrükte duktal sistemde süt birikimi.",
+            "USG: İçeriğe göre anekoik/hipoekoik/kompleks. Yağ-sıvı seviyesi görülebilir.",
+            "Mammografi: Yağ içeriği varsa hipolüsent (lucent) — 'oil cyst' benzeri.",
+            "Genellikle kendiliğinden geriler; semptomluysa aspirasyon."
+        ],
+        keyPointsEn: [
+            "Milk retention cyst due to obstructed ductal system during lactation.",
+            "USG: Anechoic/hypoechoic/complex depending on content. Fat-fluid level may be seen.",
+            "Mammography: Hypodense (lucent) if fat-containing — resembles 'oil cyst'.",
+            "Usually resolves spontaneously; aspiration if symptomatic."
+        ],
+        gallery: [
+            { url: "/images/placeholder_source.png", caption: "USG - Hipoekoik Kistik Lezyon (Laktasyon)", modality: "USG" }
+        ],
+        findings: {
+            usg: {
+                description: "Laktasyon/emzirme döneminde, iyi sınırlı kistik lezyon. İçeriğe göre: Anekoik (sıvı süt), hipoekoik (kremsi içerik), kompleks (pıhtılaşmış süt). Yağ-sıvı seviyesi patognomonik. Posterior akustik güçlenme."
+            },
+            mammography: {
+                description: "Yağ içeriği yüksekse hipolüsent (koyu). Kalsiyum içeriği yüksekse hiperdans. Miks: 'Hamada sign' — içeride yağ-sıvı seviyesi. Düzgün sınırlı, oval/yuvarlak kitle."
+            },
+            mri: {
+                t1: "Yüksek T1 sinyal (yağ/protein içerik). İçerik farklılığına göre sinyal değişir.",
+                t2: "T2 hiperintens (sıvı bileşen). Yağ-sıvı ayrışımı."
+            }
+        },
+        findingsEn: {
+            usg: {
+                description: "During lactation/breastfeeding, well-defined cystic lesion. Content-dependent: Anechoic (liquid milk), hypoechoic (creamy content), complex (curdled milk). Fat-fluid level pathognomonic. Posterior acoustic enhancement."
+            },
+            mammography: {
+                description: "Hypodense (dark) if high fat content. Hyperdense if high calcium content. Mixed: 'Hamada sign' — fat-fluid level within lesion. Well-defined, oval/round mass."
+            },
+            mri: {
+                t1: "High T1 signal (fat/protein content). Signal varies with content.",
+                t2: "T2 hyperintense (fluid component). Fat-fluid separation."
+            }
+        },
+        mechanism: "Emzirme döneminde duktal obstrüksiyon (bükülme, inflamasyon, tıkanma) → süt birikimi → kistik genişleme. Süt içeriği zaman içinde değişir: Dilüe süt (anekoik) → kremsi madde (hipoekoik) → pıhtılaşmış protein (kompleks). Yağ-sıvı seviyesi: Yağ üstte (az yoğun), sıvı altta (fazla yoğun) — patognomonik.",
+        etiology: "Laktasyon döneminde (emzirme) veya emzirme bitimi sonrasında. Duktal obstrüksiyon, travma, enflamasyon."
     }
 ];
