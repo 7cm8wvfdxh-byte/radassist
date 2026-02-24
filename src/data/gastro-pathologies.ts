@@ -28,7 +28,11 @@ export const gastroPathologies: Pathology[] = [
                 contrast: "Dilated (>6 mm) appendix. Wall enhancement and thickening. Periappendiceal fat stranding. Thickening at the cecal base (Arrowhead sign)."
             }
         },
-        mechanism: "Appendiks lümeninin fekalit, lenfoid hiperplazi veya parazit ile obstrüksiyonu → mukus birikimi → lümen içi basınç artışı → venöz drenaj bozulması → iskemi → bakteriyel aşırı büyüme (E. coli, Bacteroides) → transmural inflamasyon → perforasyon riski. Çap >6mm obstrüksiyona işaret eder; periappendiküler yağ kirlenmesi (fat stranding) inflamasyonun yayıldığını gösterir."
+        mechanism: "Appendiks lümeninin fekalit, lenfoid hiperplazi veya parazit ile obstrüksiyonu → mukus birikimi → lümen içi basınç artışı → venöz drenaj bozulması → iskemi → bakteriyel aşırı büyüme (E. coli, Bacteroides) → transmural inflamasyon → perforasyon riski. Çap >6mm obstrüksiyona işaret eder; periappendiküler yağ kirlenmesi (fat stranding) inflamasyonun yayıldığını gösterir.",
+        etiology: "Fekalit obstrüksiyonu (en sık), lenfoid hiperplazi (çocuklarda), parazitler, appendiküler tümör (karsinoid — nadir). Genç erişkinlerde pik insidans (10-30 yaş).",
+        differentialDiagnosis: ["Mezenterik Lenfadenit (Viral — çocuklarda)", "Over Kist Rüptürü/Torsiyonu (Kadınlarda)", "Crohn Hastalığı (Terminal ileit)", "Sağ Üreter Taşı (Kolik ağrı)"],
+        goldStandard: "BT (Duyarlılık %95+). Çocuklarda ve hamilelerde: USG ilk tercih (Graded compression tekniği).",
+        clinicalPearl: "Arrowhead sign: Çekum tabanında kontrastlanan fokal kalınlaşma → obstrükte appendiks orifisi. Appendikolit varlığı perforasyon riskini artırır (%50+)."
     },
     {
         id: "acute-diverticulitis",
@@ -54,7 +58,11 @@ export const gastroPathologies: Pathology[] = [
                 description: "Hypoechoic outpouching from colon wall (diverticulum). Surrounding hyperechoic fat halo (inflammation)."
             }
         },
-        mechanism: "Düşük lifli diyet → uzun geçiş süresi → artmış intralüminal basınç → kolon duvarının zayıf noktalarında (vasküler geçiş noktaları) mukozanın herniyasyonu → divertikül oluşumu. Fekalit ile tıkanan divertikül → mikroperfürasyon → perikolik inflamasyon. Komplikasyon: Perforasyon (Hinchey 1-4), apse, fistül, obstrüksiyon."
+        mechanism: "Düşük lifli diyet → uzun geçiş süresi → artmış intralüminal basınç → kolon duvarının zayıf noktalarında (vasküler geçiş noktaları) mukozanın herniyasyonu → divertikül oluşumu. Fekalit ile tıkanan divertikül → mikroperfürasyon → perikolik inflamasyon. Komplikasyon: Perforasyon (Hinchey 1-4), apse, fistül, obstrüksiyon.",
+        etiology: "Düşük lifli diyet, yaşlanma (>60 yaş %50+), obezite, sedanter yaşam. Sigmoid kolon en sık tutulan bölge (%95 Batı toplumları). Sağ kolon: Asya toplumlarında daha sık.",
+        differentialDiagnosis: ["Kolon Kanseri (Kronik divertikülit kanser riskini artırır!)", "Crohn Hastalığı (Segmental tutulum — benzer görünüm)", "Epiploik Appendajit (Fokal yağ nekrozu)", "Over Patolojisi (Sol taraf — kadınlarda)"],
+        goldStandard: "BT (IV kontrast — Duyarlılık %95+). Kolonoskopi akut dönemde kontrendike (perforasyon riski), 6-8 hafta sonra yapılmalı.",
+        clinicalPearl: "Hinchey sınıflaması: I = Perikolik apse, II = Pelvik apse, III = Purülan peritonit, IV = Fekal peritonit. Hinchey III-IV = Acil cerrahi. 'Sol tarafın apandisiti' olarak bilinir."
     },
     {
         id: "acute-pancreatitis",
@@ -89,7 +97,11 @@ export const gastroPathologies: Pathology[] = [
                 t2: "Better visualization of fluid collections and main pancreatic duct (MRCP)."
             }
         },
-        mechanism: "Safra taşı veya alkol → pankreatik asiner hücrelerde tripsinojeni erken aktive eden mekanizmalar → tripsin içeride birikimine bağlı oto-sindirim. Hafif: Ödem ve peripankreatik sıvı (ödematöz pankreatit). Ağır: Pankreas parankiminin transmural nekrozu → damar hasarı → sepsis. BT'de kontrast almayan alanlar nekrozu yansıtır; erken çekilirse (72h) olduğundan hafif görünebilir."
+        mechanism: "Safra taşı veya alkol → pankreatik asiner hücrelerde tripsinojeni erken aktive eden mekanizmalar → tripsin içeride birikimine bağlı oto-sindirim. Hafif: Ödem ve peripankreatik sıvı (ödematöz pankreatit). Ağır: Pankreas parankiminin transmural nekrozu → damar hasarı → sepsis. BT'de kontrast almayan alanlar nekrozu yansıtır; erken çekilirse (72h) olduğundan hafif görünebilir.",
+        etiology: "Safra taşı (%40), alkol (%30), hipertrigliseridemi, post-ERCP, ilaçlar (azatioprin, valproik asit), idiyopatik (%15-20).",
+        differentialDiagnosis: ["Perfore Peptik Ülser (Serbest hava)", "SMA Trombozu (Mezenter iskemisi)", "Pankreas Karsinomu (Fokal kitle — PK'yi taklit edebilir)", "Otoimmün Pankreatit (IgG4 — 'sosis pankreas')"],
+        goldStandard: "BT (İV kontrast, pankreatik faz — 72 saat sonra optimal). Balthazar/CTSI skoru ciddiyeti belirler. MRI/MRCP safra taşı etiyolojisinde üstün.",
+        clinicalPearl: "Erken BT (<72h) nekrozu hafife alır! BT 72-96. saatte çekilmeli. Nekroz >%30 = Ciddi pankreatit. Walled-off nekroz (WON): 4 hafta sonra enkapsüle olur → perkütan/endoskopik drenaj zamanlaması."
     },
     {
         id: "pancreatic-adenocarcinoma",
@@ -117,7 +129,11 @@ export const gastroPathologies: Pathology[] = [
                 other_sequences: "MRCP: 'Double Duct Sign'. Abrupt cutoff."
             }
         },
-        mechanism: "KRAS mutasyonu (%90+) → ERK/MAPK sinyal aktivasyonu → pankreas duktal epitelinde kontrolsüz proliferasyon. Desmoplastik stroma oluşumu → tümör hipovaskülerdir (Yoğun fibrotik doku kontrast geçişini engeller → BT'de hipodens). Pankreas başı lokalizasyonu → erken safra kanalı ve Wirsung kanalı kompresyonu → painless obstrüktif sarılık + double duct sign."
+        mechanism: "KRAS mutasyonu (%90+) → ERK/MAPK sinyal aktivasyonu → pankreas duktal epitelinde kontrolsüz proliferasyon. Desmoplastik stroma oluşumu → tümör hipovaskülerdir (Yoğun fibrotik doku kontrast geçişini engeller → BT'de hipodens). Pankreas başı lokalizasyonu → erken safra kanalı ve Wirsung kanalı kompresyonu → painless obstrüktif sarılık + double duct sign.",
+        etiology: "Sigara (%25 risk artışı), kronik pankreatit, diyabet (yeni başlangıçlı), aile öyküsü, BRCA2 mutasyonu, Lynch sendromu. Ortalama tanı yaşı 70.",
+        differentialDiagnosis: ["Kronik Pankreatit (Kalsifikasyonlar + atrofi)", "Otoimmün Pankreatit (IgG4 — steroid yanıtı)", "Nöroendokrin Tümör (Hipervasküler — arteriyel fazda kontrast tutar)", "Metastaz (Böbrek, melanom)"],
+        goldStandard: "Pankreas protokolü BT (Çift fazlı — arteriyel + portal venöz). MRCP double duct sign'ı net gösterir. EUS + FNA kesin tanı.",
+        clinicalPearl: "Hipovasküler kitle = Adenokarsinom, Hipervasküler kitle = NET/Adacık hücre tümörü. SMA/SMV tutulumu >180° = Unresectable (Borderline resectable: 90-180°). Courvoisier yasası: Ağrısız sarılık + palpabl safra kesesi = Pankreas başı Ca."
     },
     {
         id: "crohn-disease",
@@ -143,7 +159,11 @@ export const gastroPathologies: Pathology[] = [
                 other_sequences: "MR Enterography: Wall thickening, T2 hyperintensity (edema), Ulcers, Fistula tracts and Abscesses."
             }
         },
-        mechanism: "Anormal Th1/Th17 immün yanıt + bağırsak mikrobiyom disregülasyonu → mukozal bariyer bozulması → transmural granülomatöz inflamasyon (tüm katmanlar tutulur). Skip lezyonlar (atlayıcı tutulum) Crohn'a özgüdür. Kronik inflamasyon: Fibroz ve darlık, fistül/apse oluşumu. Comb sign: Aktif inflamasyonun besleyici mezenterik damarların artmasına yol açması."
+        mechanism: "Anormal Th1/Th17 immün yanıt + bağırsak mikrobiyom disregülasyonu → mukozal bariyer bozulması → transmural granülomatöz inflamasyon (tüm katmanlar tutulur). Skip lezyonlar (atlayıcı tutulum) Crohn'a özgüdür. Kronik inflamasyon: Fibroz ve darlık, fistül/apse oluşumu. Comb sign: Aktif inflamasyonun besleyici mezenterik damarların artmasına yol açması.",
+        etiology: "Multifaktöriyel: Genetik (NOD2/CARD15), çevresel (sigara riski artırır!), mikrobiyom disregülasyonu, otoimmün. Genç erişkinlerde pik (15-30 yaş). Kuzey Avrupa/Yahudi kökenli daha sık.",
+        differentialDiagnosis: ["Ülseratif Kolit (Sadece mukozal, rektumdan başlar, sürekli tutulum)", "Bağırsak Tüberkülozu (Çekum — kazeöz granülom)", "Behçet Hastalığı (İleoçekal ülserler)", "İskemik Kolit (Yaşlı, watershed bölgeler)"],
+        goldStandard: "MR Enterografi (MRE — Duyarlılık %85-90). Radyasyon yok, genç hastalarda ideal. BT Enterografi akut değerlendirmede alternatif.",
+        clinicalPearl: "Creeping fat: Crohn'a özgü — mezenter yağı bağırsağı sarar. Comb sign: Aktif inflamasyon → vasa recta belirginleşmesi (BT/MRI'da 'tarak' görünümü). String sign: İleri fibrotik darlık → baryumda ince lümen."
     },
     {
         id: "bowel-obstruction",
@@ -169,7 +189,11 @@ export const gastroPathologies: Pathology[] = [
                 contrast: "Dilatation in proximal segments (>2.5-3cm), collapse distally (Transition point). Small Bowel Feces Sign: Feces-like appearance immediately proximal to obstruction."
             }
         },
-        mechanism: "Mekanik engel (yapışıklık, herni, tümör, volvülüs) → bağırsak lümeninin tıkanması → proksimalde gaz ve sıvı birikimi → distansiyon → mukozal iskemi → bakteri translokasyonu. Strangülasyon (kapalı loop): Venöz drenaj + arteriyel beslenme bozulması → hızlı nekroz ve perforasyon (acil!). BT'de geçiş noktası (transition zone) tıkanan yeri, small bowel feces sign ise kronik parsiyel obstrüksiyonu gösterir."
+        mechanism: "Mekanik engel (yapışıklık, herni, tümör, volvülüs) → bağırsak lümeninin tıkanması → proksimalde gaz ve sıvı birikimi → distansiyon → mukozal iskemi → bakteri translokasyonu. Strangülasyon (kapalı loop): Venöz drenaj + arteriyel beslenme bozulması → hızlı nekroz ve perforasyon (acil!). BT'de geçiş noktası (transition zone) tıkanan yeri, small bowel feces sign ise kronik parsiyel obstrüksiyonu gösterir.",
+        etiology: "Yapışıklıklar/brid (%60-75 — önceki cerrahi), inguinal herni (%15), tümör (%10), Crohn hastalığı, volvülüs. Kolon obstrüksiyonunda en sık neden: Kolorektal kanser.",
+        differentialDiagnosis: ["Paralitik İleus (Fonksiyonel — postoperatif, elektrolit bozukluğu)", "Oğmentöz Pseudo-Obstrüksiyon (Ogilvie)", "Mezenter İskemisi (Vasküler acil)", "İnternal Herni (Bariatrik cerrahi sonrası)"],
+        goldStandard: "BT (İV kontrast — Duyarlılık %95+). Transition point (geçiş noktası) ve strangülasyon bulgularını (duvar kontrastlanma kaybı, mezenter ödem) gösterir.",
+        clinicalPearl: "Small bowel feces sign: Tıkanıklığın hemen proksimalinde bağırsak içeriğinin feçes benzeri görünmesi → geçiş noktasının yakınında olduğunu işaret eder. Closed loop: Bağırsak segmentinin her iki ucundan tıkanması → hızlı strangülasyon → acil cerrahi!"
     },
     {
         id: "colorectal-carcinoma",
@@ -195,7 +219,11 @@ export const gastroPathologies: Pathology[] = [
                 other_sequences: "Rectal MRI: Tumor layering (T1-T3 stage), mesorectal fascia invasion (MRF+/-), lymph node morphology. Diffusion (DWI) clarifies tumor margins."
             }
         },
-        mechanism: "APC, KRAS, TP53 mutasyonlarının birikimi → kolorektal karsinom gelişim basamakları (Adenoma-karsinom sekansı). Hiperplastik polip → adenom → yüksek grade displazi → invaziv karsinom (10-15 yıl). MSI (mikrosatellit instabilite): Lynch sendromu → farklı mutasyon yolu. Tümör desmoplastik büyüme ile lümeni daralttıkça apple-core görünümü oluşur."
+        mechanism: "APC, KRAS, TP53 mutasyonlarının birikimi → kolorektal karsinom gelişim basamakları (Adenoma-karsinom sekansı). Hiperplastik polip → adenom → yüksek grade displazi → invaziv karsinom (10-15 yıl). MSI (mikrosatellit instabilite): Lynch sendromu → farklı mutasyon yolu. Tümör desmoplastik büyüme ile lümeni daralttıkça apple-core görünümü oluşur.",
+        etiology: "Sporadik (%70-80): Yaş >50, düşük lifli diyet, kırmızı et, obezite, sigara. Herediter: Lynch sendromu (MSI — %5), FAP (APC mutasyonu — %1). İnflamatuar: Uzun süreli ÜK/Crohn → displazi → kanser.",
+        differentialDiagnosis: ["Divertikülit (Segmental kalınlaşma — akut inflamasyon)", "Lenfoma (Diffüz kalınlaşma, anevrizmik dilatasyon)", "Endometriozis (Rektosigmoid — siklik semptomlar)", "Kolon Metastazı (Nadir — melanom, meme)"],
+        goldStandard: "Kolonoskopi + Biyopsi (Kesin tanı). BT evreleme (T, N, M). Rektal kanser: MRI lokal evreleme standardı (mezorektal fasya invazyonu).",
+        clinicalPearl: "Apple core sign: Baryumda veya BT'de lümenin konsantrik daralması → CRC için klasik. Rektal MRI'da CRM (Circumferential Resection Margin) >1mm = Negatif → cerrahi prognoz iyi. 50 yaş altı CRC artıyor → 'erken başlangıçlı CRC' farkındalığı."
     },
     {
         id: "mesenteric-ischemia",
@@ -217,7 +245,11 @@ export const gastroPathologies: Pathology[] = [
                 non_contrast: "Hyperdense thrombus in mesenteric vessels may be visible."
             }
         },
-        mechanism: "SMA embolisi (%50, kardiyak kaynaklı) veya trombüs → mezenterik arteriyel akım kaybı → bağırsak iskemisi → mukoza nekrozu → transmural hasar → pnömatozis intestinalis (duvar içi gaz). Venöz tromboz (SMV): Venöz konjesyon → arteriyel yetmezlik. Geç aşamada: Bağırsak perforasyonu → peritonit. Portal venöz gaz = Kritik iskemi/nekroz (Çok kötü prognoz işareti)."
+        mechanism: "SMA embolisi (%50, kardiyak kaynaklı) veya trombüs → mezenterik arteriyel akım kaybı → bağırsak iskemisi → mukoza nekrozu → transmural hasar → pnömatozis intestinalis (duvar içi gaz). Venöz tromboz (SMV): Venöz konjesyon → arteriyel yetmezlik. Geç aşamada: Bağırsak perforasyonu → peritonit. Portal venöz gaz = Kritik iskemi/nekroz (Çok kötü prognoz işareti).",
+        etiology: "SMA embolisi (%50 — AF, valvüler hastalık), SMA trombozu (%25 — ateroskleroz), SMV trombozu (%10 — hiperkoagülabilite), NOMI (%15 — düşük kardiyak output, vazopresör).",
+        differentialDiagnosis: ["Akut Pankreatit (Epigastrik ağrı, amilaz artışı)", "Perfore Ülser (Serbest hava)", "İnflamatuar Bağırsak Hastalığı (Kronik — duvar kalınlaşması)", "Aort Diseksiyonu (SMA köken tıkanıklığı)"],
+        goldStandard: "BT Anjiyografi (CTA — Duyarlılık %95+). Arteriyel + portal venöz faz: SMA/SMV dolum defekti + bağırsak duvar değişiklikleri.",
+        clinicalPearl: "'Pain out of proportion': Şiddetli karın ağrısı + normal fizik muayene = Mezenter iskemisi düşün! Pnömatozis intestinalis + Portal venöz gaz = Geç evre bulgusu → mortalite >%70. Laktat yüksekliği geç ve non-spesifik."
     },
     {
         id: "intussusception",
@@ -243,7 +275,11 @@ export const gastroPathologies: Pathology[] = [
                 contrast: "Bowel-within-bowel appearance. Invaginated mesenteric fat and vessels (Leading point). Bowel investigation for primary mass lesion."
             }
         },
-        mechanism: "Öncü lezyon (polip, Meckel divertikülü, lenfoma) veya idiyopatik peristaltik anomali → bir bağırsak segmentinin bir sonrakinin içine teleskop gibi girişi → venöz staz → mukoza ödemi → arteryel yetmezlik → nekroz. Çocuklarda (%90 idiyopatik): Lenfoid hipertrofi (viral enfeksiyon sonrası) öncü lezyon görevi görür. Target sign: İç içe geçmiş bağırsak duvarlarının aksiyel kesitteki halka görüntüsüdür."
+        mechanism: "Öncü lezyon (polip, Meckel divertikülü, lenfoma) veya idiyopatik peristaltik anomali → bir bağırsak segmentinin bir sonrakinin içine teleskop gibi girişi → venöz staz → mukoza ödemi → arteryel yetmezlik → nekroz. Çocuklarda (%90 idiyopatik): Lenfoid hipertrofi (viral enfeksiyon sonrası) öncü lezyon görevi görür. Target sign: İç içe geçmiş bağırsak duvarlarının aksiyel kesitteki halka görüntüsüdür.",
+        etiology: "Çocuklarda: İdiyopatik (%90 — lenfoid hiperplazi, viral), Meckel divertikülü, polip. Erişkinlerde: Öncü lezyon (%90 — polip, lenfoma, lipom, metastaz). İleokolik tip en sık.",
+        differentialDiagnosis: ["Appendisit (Sağ alt kadran ağrısı — çocuklarda ayırıcı)", "Midgut Volvülüs (Yenidoğan — malrotasyon)", "Henoch-Schönlein Purpurası (İntramural hematom)", "Kolon Kanseri (Erişkinde öncü lezyon)"],
+        goldStandard: "USG (Çocuklarda ilk tercih — Duyarlılık %98+). Target sign (transvers) + Pseudokidney sign (longitudinal). Erişkinde: BT (öncü lezyon araştırması).",
+        clinicalPearl: "Çocuklarda klasik triad: Kolik karın ağrısı + Kusma + 'Çilek jölesi' dışkı (mukus + kan). Pnömatik veya hidrostatik redüksiyon: Çocuklarda ilk tedavi seçeneği. 3-3-3 kuralı: >3 yaş, >3 gün semptom, >3cm = Cerrahi daha olası."
     },
     {
         id: "gist",
@@ -269,7 +305,11 @@ export const gastroPathologies: Pathology[] = [
                 t2: "Heterogeneous signal intensity (necrotic areas are T2 hyperintense). Capsule usually intact."
             }
         },
-        mechanism: "KIT (CD117) veya PDGFRA onkogen aktivasyon mutasyonu → Cajal hücrelerinden köken alan interstisyel pacemaker hücreleri kontrolsüz prolifere olur → GİST oluşumu. c-KIT mutasyonu (%75): İmatinib tedavisine yanıt verir. Ekzofitik büyüme: Kas tabakasından kaynaklanan tümör dışa doğru büyür, lümene geç uzanır (bu nedenle obstrüksiyon geç olur). Büyüdükçe merkezi nekroz/kavitasyon gelişir."
+        mechanism: "KIT (CD117) veya PDGFRA onkogen aktivasyon mutasyonu → Cajal hücrelerinden köken alan interstisyel pacemaker hücreleri kontrolsüz prolifere olur → GİST oluşumu. c-KIT mutasyonu (%75): İmatinib tedavisine yanıt verir. Ekzofitik büyüme: Kas tabakasından kaynaklanan tümör dışa doğru büyür, lümene geç uzanır (bu nedenle obstrüksiyon geç olur). Büyüdükçe merkezi nekroz/kavitasyon gelişir.",
+        etiology: "KIT (CD117) mutasyonu (%75-80), PDGFRA mutasyonu (%10-15), SDH defisiensi (pediatrik GIST). Sporadik (en sık). Carney triadı, NF1 sendromu ilişkili olabilir.",
+        differentialDiagnosis: ["Leiomyom (Benign — özofagus ve rektumda daha sık)", "Schwannom (GIS yerleşimli — nadir)", "Glomüs Tümörü (Mide — nadir)", "Mezenkimal Metastaz (Melanom — GIS metastazı sık)"],
+        goldStandard: "BT (İV kontrast — arteriyel + portal faz). PET-CT tedavi yanıtı izleminde. EUS + FNA/Biyopsi: c-KIT (CD117) pozitifliği kesin tanı.",
+        clinicalPearl: "İmatinib (Gleevec) tedaviye yanıt: BT'de boyut küçülmesi + Hounsfield değerinde azalma (Choi kriterleri — RECIST'ten farklı!). Boyut değişmese bile tümör nekrozu = Yanıt. Risk sınıflaması: Boyut >5cm + Mitoz >5/50HPF = Yüksek risk."
     },
     {
         id: "liver-abscess",
@@ -303,7 +343,11 @@ export const gastroPathologies: Pathology[] = [
                 dwi: "Marked diffusion restriction due to pus content."
             }
         },
-        mechanism: "Bilier sistem enfeksiyonu (kolanjit → portal bakteremi) veya hematojen yayılım → karaciğerde fokal bakteriyel enfeksiyon → merkezi likefaksiyon nekrozu → pü birikimi → apse kavitesi. Granülasyon dokusu çeperinin BT'de iç halka kontrastlanması, çevre ödem dış halkayı oluşturur (double target sign). DWI parlak: Pü yüksek viskoziteli → difüzyon kısıtlı."
+        mechanism: "Bilier sistem enfeksiyonu (kolanjit → portal bakteremi) veya hematojen yayılım → karaciğerde fokal bakteriyel enfeksiyon → merkezi likefaksiyon nekrozu → pü birikimi → apse kavitesi. Granülasyon dokusu çeperinin BT'de iç halka kontrastlanması, çevre ödem dış halkayı oluşturur (double target sign). DWI parlak: Pü yüksek viskoziteli → difüzyon kısıtlı.",
+        etiology: "Bilier patoloji (kolanjit) en sık (%40-60). Portal ven (appendisit, divertikülit → pileflebit). Hematojen (endokardit, sepsis). Direkt yayılım (subfrenik apse). Kriptojenik (%15-20).",
+        differentialDiagnosis: ["Amibik Apse (Tek, büyük, sağ lob — Entamoeba histolytica)", "Kistik Metastaz (Nekrotik — over, kolon Ca)", "Hidatik Kist (Kalsifik duvar, kız veziküller)", "Hepatoselüler Karsinom (Nekrotik — AFP artışı)"],
+        goldStandard: "BT (İV kontrast — rim enhancement + cluster sign). USG rehberli perkütan aspirasyon/drenaj hem tanı hem tedavi. DWI apse tespitinde çok duyarlı.",
+        clinicalPearl: "Cluster sign: Küçük apselerin birleşme eğilimi → tek büyük kavite oluşumu. Double target sign: İç halka (granülasyon — kontrastlanır) + dış halka (ödem — kontrastlanmaz). DWI: Apse parlak (pü → kısıtlı difüzyon) vs nekrotik tümör (değişken)."
     },
     {
         id: "esophageal-carcinoma",
@@ -329,7 +373,11 @@ export const gastroPathologies: Pathology[] = [
                 other_sequences: "Local staging: Adventitia involvement (T3), adjacent structure invasion (T4). Diffusion (DWI) shows tumor activity."
             }
         },
-        mechanism: "Skuamöz hücreli karsinom (üst/orta 1/3): Sigara, alkol, sıcak içecek → skuamöz epitel kronik hasarı → displazi → SCC. Adenokarsinom (alt 1/3): Kronik GÖRH → Barrett metaplazisi (kolumnar epitel) → intestinal metaplazi → displazi → adenokarsinom. Her iki tip çevresel (sirkumferensiyel) büyüme ile lümeni daraltır; mediasten yakınlığı erken damar ve sinir invazyonuna yol açar."
+        mechanism: "Skuamöz hücreli karsinom (üst/orta 1/3): Sigara, alkol, sıcak içecek → skuamöz epitel kronik hasarı → displazi → SCC. Adenokarsinom (alt 1/3): Kronik GÖRH → Barrett metaplazisi (kolumnar epitel) → intestinal metaplazi → displazi → adenokarsinom. Her iki tip çevresel (sirkumferensiyel) büyüme ile lümeni daraltır; mediasten yakınlığı erken damar ve sinir invazyonuna yol açar.",
+        etiology: "SCC: Sigara, alkol, sıcak içecek (çay), akalazya, kostik madde. Adenokarsinom: Barrett özofagusu (kronik GÖRH), obezite, sigara. Adenokarsinom insidansı hızla artıyor.",
+        differentialDiagnosis: ["Akalazya (Kuş gagası görünümü — benign)", "Özofageal Striktür (Koroziv veya peptik)", "Leiomyom (Submuköz kitle — en sık benign özofagus tümörü)", "Ekstrensek Bası (Mediasten kitlesi, aort anevrizması)"],
+        goldStandard: "Endoskopi + Biyopsi (Kesin tanı). BT evreleme: Lokal invazyon, LAP, uzak metastaz. PET-CT: Uzak metastaz ve rekürrens tespitinde üstün.",
+        clinicalPearl: "Barrett özofagusu: >3cm uzunluk + intestinal metaplazi = Yüksek adenokarsinom riski → düzenli endoskopik surveyans. Endoskopik USG (EUS): T ve N evreleme doğruluğu BT'den üstün. Rat-tail sign: Baryumda düzensiz lümen daralması."
     },
     {
         id: "gastric-cancer",
@@ -375,7 +423,9 @@ export const gastroPathologies: Pathology[] = [
         ],
         mechanism: "Helicobacter pylori → kronik gastrit → intestinal metaplazi → displazi → adenokarsinom (intestinal tip). Diffüz tip: CDH1 (E-kaderin) mutasyonu → hücre adhezyonu kaybı → diffüz infiltrasyon (linitis plastica). Peritona yayılım: Küçük kurvatura, kesiyle temas, implantasyon. Lenfatik: Perigastrik → çölyak → para-aortik. Hematojen: Karaciğer → akciğer → kemik.",
         etiology: "H. pylori enfeksiyonu (%90+), tuzlu/tütsülenmiş gıda, sigara, mide polipleri, önceki mide cerrahisi, aile öyküsü.",
-        differentialDiagnosis: ["Mide Lenfoması (MALT — diffüz LAP, BT'de geniş duvar kalınlaşması)", "GIST (Egzofitik büyüme, mezenkimal)", "Gastrik Ülser (Benign — düzgün sınırlı, çevrede kıvrımlar)", "Metastatik Tutulum"]
+        differentialDiagnosis: ["Mide Lenfoması (MALT — diffüz LAP, BT'de geniş duvar kalınlaşması)", "GIST (Egzofitik büyüme, mezenkimal)", "Gastrik Ülser (Benign — düzgün sınırlı, çevrede kıvrımlar)", "Metastatik Tutulum"],
+        goldStandard: "Endoskopi + Biyopsi (Kesin tanı). BT: Evreleme (TNM). PET-CT: Uzak metastaz ve tedavi yanıtı. EUS: Mide duvarı katmanlarını gösterir (T evreleme).",
+        clinicalPearl: "Linitis plastica (Borrmann IV): Mide duvarının diffüz infiltrasyonu → 'deri torbası' mide → BT'de peristaltik kayıp. Krukenberg tümörü: Over metastazı = Evre IV. Virchow nodu (sol supraklavikuler LAP) = Uzak metastaz işareti."
     },
     {
         id: "peptic-ulcer-perforation",
@@ -419,7 +469,9 @@ export const gastroPathologies: Pathology[] = [
         ],
         mechanism: "Peptik ülser → mide/duodenum mukozasının tam kat delinmesi → intraperitoneal hava ve içerik sızması → kimyasal peritonit (duodenal sıvı sterildir ilk 6 saatte). H. pylori duodenum ön yüzünde ülser oluşturur; NSAİİ koruyucu mukusı azaltır. Serbest hava subfrenik boşluğa yükselir → ADKG'de görülür. Perikumferansiyel BT kesitlerde 'oral/IV kontrast extravasasyonu' = Aktif sızıntı (ameliyathane!).",
         etiology: "H. pylori (%70-90), NSAİİ kullanımı, sigara, stres ülseri (yoğun bakım), Zollinger-Ellison sendromu.",
-        differentialDiagnosis: ["Apse Rüptürü (Pnömoperitoneum yok, lokalize)", "Appendisit Perforasyonu (Sağ alt kadran)", "Hava Yutan (Aerofaji)", "İatrojenik (Endoskopi perforasyonu)"]
+        differentialDiagnosis: ["Apse Rüptürü (Pnömoperitoneum yok, lokalize)", "Appendisit Perforasyonu (Sağ alt kadran)", "Hava Yutan (Aerofaji)", "İatrojenik (Endoskopi perforasyonu)"],
+        goldStandard: "Ayakta ADKG (İlk tercih — serbest hava). BT (Duyarlılık %95+ — küçük hava miktarlarını gösterir). Endoskopi akut perforasyonda kontrendike!",
+        clinicalPearl: "Rigler sign: Bağırsak duvarının hem iç hem dış yüzeyinin hava ile görünmesi (double wall sign). %10-30 perforasyonda serbest hava görülmez → klinik şüphede BT. Duodenum ön yüz perforasyonu en sık → serbest hava sağ subfrenik bölgede."
     },
     {
         id: "acute-cholecystitis-gi",
@@ -462,6 +514,9 @@ export const gastroPathologies: Pathology[] = [
             "HIDA scintigraphy: Proves cystic duct obstruction (gold standard scintigraphy)."
         ],
         mechanism: "İmpakte kalküler sistik kanalda → obstrüksiyon → safra kesesi distansiyonu → duvar iskemisi → inflamasyon. Sekonder bakteri kolonizasyonu (E. coli, Klebsiella). Gangrenöz: Transmural nekroz → perforasyon riski. Amfizemöz (gaz üreten bakteri — Clostridium, E. coli) → intramural hava → diyabetik hastalarda sık.",
-        etiology: "Kolelitiyazis (%90-95). Akalkülöz: Kritik hastalık (TPN, sepsis, uzun ameliyat). Amfizemöz: Diyabet + anaerobik bakteri."
+        etiology: "Kolelitiyazis (%90-95). Akalkülöz: Kritik hastalık (TPN, sepsis, uzun ameliyat). Amfizemöz: Diyabet + anaerobik bakteri.",
+        differentialDiagnosis: ["Bilier Kolik (Geçici ağrı — inflamasyon yok)", "Akut Kolanjit (Charcot triadı: Ateş + sarılık + sağ üst kadran ağrısı)", "Peptik Ülser (Epigastrik ağrı)", "Hepatit (Diffüz KC hassasiyeti)"],
+        goldStandard: "USG (İlk tercih — Duyarlılık %95+). HIDA sintigrafisi: Sistik kanal obstrüksiyonunun kanıtlanması (4h dolmama = Pozitif). Şüpheli olgularda BT: Komplikasyonlar (gangrenöz, amfizemöz).",
+        clinicalPearl: "Sonografik Murphy işareti: Prob ile baskıda ağrı + taş + duvar kalınlaşması = Tanısal triad. WES triadı: Wall thickening + Edema + Sonographic Murphy = PPV %94. Amfizemöz kolesistit (intramural hava): Acil kolesistektomi — mortalite %15-25."
     }
 ];
