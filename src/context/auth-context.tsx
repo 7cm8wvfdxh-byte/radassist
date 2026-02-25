@@ -80,12 +80,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     is_admin: false
                 });
             } else if (data) {
+                console.log('Profile data from Supabase:', JSON.stringify(data));
+                const isAdmin = data.is_admin === true || data.is_admin === 'true' || data.is_admin === 1;
+                console.log('is_admin value:', data.is_admin, 'type:', typeof data.is_admin, 'resolved:', isAdmin);
                 setUser({
                     id: data.id,
                     email: supabaseUser.email!,
                     name: data.name,
                     specialty: data.specialty,
-                    is_admin: data.is_admin === true
+                    is_admin: isAdmin
                 });
             }
         } catch (error) {
