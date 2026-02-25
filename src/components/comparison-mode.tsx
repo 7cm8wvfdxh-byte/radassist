@@ -13,44 +13,63 @@ import { gastroPathologies } from '@/data/gastro-pathologies';
 import { gynecologyPathologies } from '@/data/gynecology-pathologies';
 import { Pathology, ModalityFindings } from '@/types';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/context/language-context';
 
-const ALL_PATHOLOGIES: (Pathology & { organ: string })[] = [
-    ...brainPathologies.map(p => ({ ...p, organ: 'Beyin' })),
-    ...spinePathologies.map(p => ({ ...p, organ: 'Omurga' })),
-    ...liverPathologies.map(p => ({ ...p, organ: 'Karaciğer' })),
-    ...kidneyPathologies.map(p => ({ ...p, organ: 'Böbrek' })),
-    ...lungPathologies.map(p => ({ ...p, organ: 'Akciğer' })),
-    ...breastPathologies.map(p => ({ ...p, organ: 'Meme' })),
-    ...mskPathologies.map(p => ({ ...p, organ: 'Kas-İskelet' })),
-    ...gastroPathologies.map(p => ({ ...p, organ: 'GIS' })),
-    ...gynecologyPathologies.map(p => ({ ...p, organ: 'Jinekoloji' })),
+const ORGAN_NAMES_TR: Record<string, string> = {
+    brain: 'Beyin', spine: 'Omurga', liver: 'Karaciğer', kidney: 'Böbrek',
+    lung: 'Akciğer', breast: 'Meme', msk: 'Kas-İskelet', gastro: 'GIS', gynecology: 'Jinekoloji',
+};
+const ORGAN_NAMES_EN: Record<string, string> = {
+    brain: 'Brain', spine: 'Spine', liver: 'Liver', kidney: 'Kidney',
+    lung: 'Lung', breast: 'Breast', msk: 'MSK', gastro: 'GI', gynecology: 'Gynecology',
+};
+
+const ALL_PATHOLOGIES: (Pathology & { organKey: string })[] = [
+    ...brainPathologies.map(p => ({ ...p, organKey: 'brain' })),
+    ...spinePathologies.map(p => ({ ...p, organKey: 'spine' })),
+    ...liverPathologies.map(p => ({ ...p, organKey: 'liver' })),
+    ...kidneyPathologies.map(p => ({ ...p, organKey: 'kidney' })),
+    ...lungPathologies.map(p => ({ ...p, organKey: 'lung' })),
+    ...breastPathologies.map(p => ({ ...p, organKey: 'breast' })),
+    ...mskPathologies.map(p => ({ ...p, organKey: 'msk' })),
+    ...gastroPathologies.map(p => ({ ...p, organKey: 'gastro' })),
+    ...gynecologyPathologies.map(p => ({ ...p, organKey: 'gynecology' })),
 ];
 
 // Common confusing pairs for quick comparison
-const COMMON_PAIRS: { left: string; right: string; label: string }[] = [
-    { left: 'glioblastoma', right: 'brain_metastasis', label: 'GBM vs Metastaz' },
-    { left: 'multiple_sclerosis', right: 'acute_ischemic_stroke', label: 'MS vs İnme' },
-    { left: 'hcc', right: 'liver_hemangioma', label: 'HCC vs Hemanjiyom' },
-    { left: 'meningioma', right: 'glioblastoma', label: 'Meninjiom vs GBM' },
-    { left: 'epidural_hematoma', right: 'subdural_hematoma', label: 'EDH vs SDH' },
-    { left: 'renal_cell_carcinoma', right: 'angiomyolipoma', label: 'RCC vs AML' },
-    { left: 'rotator_cuff_tear', right: 'shoulder_impingement', label: 'Rotator Cuff Yırtığı vs İmpingement' },
-    { left: 'lumbar_disc_herniation', right: 'spinal_stenosis_lumbar', label: 'Disk Hernisi vs Spinal Stenoz' },
+const COMMON_PAIRS: { left: string; right: string; labelTr: string; labelEn: string }[] = [
+    { left: 'glioblastoma', right: 'brain_metastasis', labelTr: 'GBM vs Metastaz', labelEn: 'GBM vs Metastasis' },
+    { left: 'multiple_sclerosis', right: 'acute_ischemic_stroke', labelTr: 'MS vs İnme', labelEn: 'MS vs Stroke' },
+    { left: 'hcc', right: 'liver_hemangioma', labelTr: 'HCC vs Hemanjiyom', labelEn: 'HCC vs Hemangioma' },
+    { left: 'meningioma', right: 'glioblastoma', labelTr: 'Meninjiom vs GBM', labelEn: 'Meningioma vs GBM' },
+    { left: 'epidural_hematoma', right: 'subdural_hematoma', labelTr: 'EDH vs SDH', labelEn: 'EDH vs SDH' },
+    { left: 'renal_cell_carcinoma', right: 'angiomyolipoma', labelTr: 'RCC vs AML', labelEn: 'RCC vs AML' },
+    { left: 'rotator_cuff_tear', right: 'shoulder_impingement', labelTr: 'Rotator Cuff Yırtığı vs İmpingement', labelEn: 'Rotator Cuff Tear vs Impingement' },
+    { left: 'lumbar_disc_herniation', right: 'spinal_stenosis_lumbar', labelTr: 'Disk Hernisi vs Spinal Stenoz', labelEn: 'Disc Herniation vs Spinal Stenosis' },
 ];
 
-function extractFindings(findings: ModalityFindings): { modality: string; key: string; value: string }[] {
+function extractFindings(findings: ModalityFindings, isEn: boolean): { modality: string; key: string; value: string }[] {
     const result: { modality: string; key: string; value: string }[] = [];
-    const modalityNames: Record<string, string> = {
-        ct: 'BT', mri: 'MR', ultrasound: 'USG', usg: 'USG', xray: 'X-Ray', pet: 'PET', mammography: 'Mamografi', dsa: 'DSA'
-    };
-    const keyNames: Record<string, string> = {
-        t1: 'T1', t2: 'T2', t2_flair: 'T2 FLAIR', t1_c: 'T1+K', dwi: 'DWI', adc: 'ADC', swi: 'SWI',
-        non_contrast: 'Kontrastsız', contrast: 'Kontrastlı', description: 'Tanım', doppler: 'Doppler',
-        stir: 'STIR', mra: 'MRA', mrv: 'MRV', perfusion: 'Perfüzyon', spectroscopy: 'Spektroskopi',
-        cta: 'BT Anjiyo', bone_window: 'Kemik Pencere', sagittal: 'Sagittal', coronal: 'Koronal', axial: 'Aksiyal',
-        cc_view: 'CC Görünüm', mlo_view: 'MLO Görünüm', suv_max: 'SUV Max', tomosynthesis: 'Tomosintez',
-        t1_c_dynamic: 'T1+K Dinamik', tof_mra: 'TOF MRA', t1_t2: 'T1/T2',
-    };
+    const modalityNames: Record<string, string> = isEn
+        ? { ct: 'CT', mri: 'MRI', ultrasound: 'US', usg: 'US', xray: 'X-Ray', pet: 'PET', mammography: 'Mammography', dsa: 'DSA' }
+        : { ct: 'BT', mri: 'MR', ultrasound: 'USG', usg: 'USG', xray: 'X-Ray', pet: 'PET', mammography: 'Mamografi', dsa: 'DSA' };
+    const keyNames: Record<string, string> = isEn
+        ? {
+            t1: 'T1', t2: 'T2', t2_flair: 'T2 FLAIR', t1_c: 'T1+C', dwi: 'DWI', adc: 'ADC', swi: 'SWI',
+            non_contrast: 'Non-contrast', contrast: 'Contrast', description: 'Description', doppler: 'Doppler',
+            stir: 'STIR', mra: 'MRA', mrv: 'MRV', perfusion: 'Perfusion', spectroscopy: 'Spectroscopy',
+            cta: 'CT Angio', bone_window: 'Bone Window', sagittal: 'Sagittal', coronal: 'Coronal', axial: 'Axial',
+            cc_view: 'CC View', mlo_view: 'MLO View', suv_max: 'SUV Max', tomosynthesis: 'Tomosynthesis',
+            t1_c_dynamic: 'T1+C Dynamic', tof_mra: 'TOF MRA', t1_t2: 'T1/T2',
+        }
+        : {
+            t1: 'T1', t2: 'T2', t2_flair: 'T2 FLAIR', t1_c: 'T1+K', dwi: 'DWI', adc: 'ADC', swi: 'SWI',
+            non_contrast: 'Kontrastsız', contrast: 'Kontrastlı', description: 'Tanım', doppler: 'Doppler',
+            stir: 'STIR', mra: 'MRA', mrv: 'MRV', perfusion: 'Perfüzyon', spectroscopy: 'Spektroskopi',
+            cta: 'BT Anjiyo', bone_window: 'Kemik Pencere', sagittal: 'Sagittal', coronal: 'Koronal', axial: 'Aksiyal',
+            cc_view: 'CC Görünüm', mlo_view: 'MLO Görünüm', suv_max: 'SUV Max', tomosynthesis: 'Tomosintez',
+            t1_c_dynamic: 'T1+K Dinamik', tof_mra: 'TOF MRA', t1_t2: 'T1/T2',
+        };
 
     for (const [modality, modalityData] of Object.entries(findings)) {
         if (!modalityData || typeof modalityData !== 'object') continue;
@@ -67,37 +86,60 @@ function extractFindings(findings: ModalityFindings): { modality: string; key: s
     return result;
 }
 
+// Helper to get display fields for a pathology based on language
+function getDisplayFields(p: Pathology, isEn: boolean) {
+    return {
+        name: isEn ? (p.nameEn || p.name) : p.name,
+        category: isEn ? (p.categoryEn || p.category) : p.category,
+        keyPoints: isEn ? (p.keyPointsEn || p.keyPoints) : p.keyPoints,
+        mechanism: isEn ? (p.mechanismEn || p.mechanism) : p.mechanism,
+        etiology: isEn ? (p.etiologyEn || p.etiology) : p.etiology,
+        goldStandard: isEn ? (p.goldStandardEn || p.goldStandard) : p.goldStandard,
+        clinicalPearl: isEn ? (p.clinicalPearlEn || p.clinicalPearl) : p.clinicalPearl,
+        differentialDiagnosis: isEn ? (p.differentialDiagnosisEn || p.differentialDiagnosis) : p.differentialDiagnosis,
+        findings: isEn ? (p.findingsEn || p.findings) : p.findings,
+    };
+}
+
 function PathologySelector({
     selected,
     onSelect,
-    side
+    side,
+    isEn,
 }: {
     selected: Pathology | null;
     onSelect: (p: Pathology) => void;
     side: 'left' | 'right';
+    isEn: boolean;
 }) {
     const [search, setSearch] = useState('');
     const [isOpen, setIsOpen] = useState(false);
 
+    const organNames = isEn ? ORGAN_NAMES_EN : ORGAN_NAMES_TR;
+
     const filtered = useMemo(() => {
         if (!search.trim()) return ALL_PATHOLOGIES.slice(0, 20);
         const q = search.toLowerCase();
-        return ALL_PATHOLOGIES.filter(p =>
-            p.name.toLowerCase().includes(q) || p.organ.toLowerCase().includes(q)
-        ).slice(0, 20);
-    }, [search]);
+        return ALL_PATHOLOGIES.filter(p => {
+            const name = isEn ? (p.nameEn || p.name) : p.name;
+            const organ = organNames[p.organKey] || '';
+            return name.toLowerCase().includes(q) || organ.toLowerCase().includes(q);
+        }).slice(0, 20);
+    }, [search, isEn, organNames]);
 
     const organIcons: Record<string, React.ReactNode> = {
-        'Beyin': <Brain className="w-3 h-3" />,
-        'Omurga': <Bone className="w-3 h-3" />,
-        'Karaciğer': <Flame className="w-3 h-3" />,
-        'Böbrek': <Bean className="w-3 h-3" />,
-        'Akciğer': <Wind className="w-3 h-3" />,
-        'Meme': <Scan className="w-3 h-3" />,
-        'Kas-İskelet': <Dumbbell className="w-3 h-3" />,
-        'GIS': <Utensils className="w-3 h-3" />,
-        'Jinekoloji': <Heart className="w-3 h-3" />,
+        brain: <Brain className="w-3 h-3" />,
+        spine: <Bone className="w-3 h-3" />,
+        liver: <Flame className="w-3 h-3" />,
+        kidney: <Bean className="w-3 h-3" />,
+        lung: <Wind className="w-3 h-3" />,
+        breast: <Scan className="w-3 h-3" />,
+        msk: <Dumbbell className="w-3 h-3" />,
+        gastro: <Utensils className="w-3 h-3" />,
+        gynecology: <Heart className="w-3 h-3" />,
     };
+
+    const selectedName = selected ? (isEn ? (selected.nameEn || selected.name) : selected.name) : '';
 
     return (
         <div className="relative">
@@ -113,7 +155,7 @@ function PathologySelector({
                 )}
             >
                 <span className="font-medium text-sm">
-                    {selected ? selected.name : 'Patoloji Seçin...'}
+                    {selected ? selectedName : (isEn ? 'Select Pathology...' : 'Patoloji Seçin...')}
                 </span>
                 {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
             </button>
@@ -127,24 +169,28 @@ function PathologySelector({
                                 type="text"
                                 value={search}
                                 onChange={e => setSearch(e.target.value)}
-                                placeholder="Patoloji ara..."
+                                placeholder={isEn ? "Search pathology..." : "Patoloji ara..."}
                                 className="w-full pl-9 pr-3 py-2 rounded-lg bg-zinc-800 border border-zinc-700 text-sm text-zinc-200 focus:border-zinc-500 outline-none"
                                 autoFocus
                             />
                         </div>
                     </div>
                     <div className="max-h-60 overflow-y-auto">
-                        {filtered.map(p => (
-                            <button
-                                key={p.id}
-                                onClick={() => { onSelect(p); setIsOpen(false); setSearch(''); }}
-                                className="w-full px-4 py-2.5 text-left hover:bg-zinc-800 transition-colors flex items-center gap-2 text-sm border-b border-zinc-800/50 last:border-0"
-                            >
-                                <span className="text-zinc-500">{organIcons[p.organ]}</span>
-                                <span className="text-zinc-200">{p.name}</span>
-                                <span className="text-[10px] text-zinc-500 ml-auto">{p.organ}</span>
-                            </button>
-                        ))}
+                        {filtered.map(p => {
+                            const pName = isEn ? (p.nameEn || p.name) : p.name;
+                            const pOrgan = organNames[p.organKey] || '';
+                            return (
+                                <button
+                                    key={p.id}
+                                    onClick={() => { onSelect(p); setIsOpen(false); setSearch(''); }}
+                                    className="w-full px-4 py-2.5 text-left hover:bg-zinc-800 transition-colors flex items-center gap-2 text-sm border-b border-zinc-800/50 last:border-0"
+                                >
+                                    <span className="text-zinc-500">{organIcons[p.organKey]}</span>
+                                    <span className="text-zinc-200">{pName}</span>
+                                    <span className="text-[10px] text-zinc-500 ml-auto">{pOrgan}</span>
+                                </button>
+                            );
+                        })}
                     </div>
                 </div>
             )}
@@ -153,6 +199,9 @@ function PathologySelector({
 }
 
 export function ComparisonMode() {
+    const { language } = useLanguage();
+    const isEn = language === 'en';
+
     const [leftPathology, setLeftPathology] = useState<Pathology | null>(null);
     const [rightPathology, setRightPathology] = useState<Pathology | null>(null);
     const [expandedSections, setExpandedSections] = useState<string[]>(['findings', 'keypoints', 'differential']);
@@ -176,32 +225,39 @@ export function ComparisonMode() {
         setRightPathology(temp);
     };
 
-    const leftFindings = leftPathology ? extractFindings(leftPathology.findings) : [];
-    const rightFindings = rightPathology ? extractFindings(rightPathology.findings) : [];
+    const left = leftPathology ? getDisplayFields(leftPathology, isEn) : null;
+    const right = rightPathology ? getDisplayFields(rightPathology, isEn) : null;
+
+    const leftFindings = left ? extractFindings(left.findings, isEn) : [];
+    const rightFindings = right ? extractFindings(right.findings, isEn) : [];
 
     return (
         <div className="max-w-7xl mx-auto animate-in fade-in duration-500">
             <div className="mb-6">
                 <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-amber-400 bg-clip-text text-transparent flex items-center gap-2">
                     <ArrowLeftRight className="w-7 h-7 text-blue-400" />
-                    Patoloji Karşılaştırma
+                    {isEn ? 'Pathology Comparison' : 'Patoloji Karşılaştırma'}
                 </h2>
                 <p className="text-sm text-zinc-400 mt-1">
-                    İki patolojiyi yan yana karşılaştırarak ayırıcı tanı farklarını görün.
+                    {isEn
+                        ? 'Compare two pathologies side by side to see differential diagnosis differences.'
+                        : 'İki patolojiyi yan yana karşılaştırarak ayırıcı tanı farklarını görün.'}
                 </p>
             </div>
 
             {/* Quick Pairs */}
             <div className="mb-6">
-                <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2">Sık Karşılaştırılan Çiftler</p>
+                <p className="text-xs font-bold text-zinc-500 uppercase tracking-wider mb-2">
+                    {isEn ? 'Commonly Compared Pairs' : 'Sık Karşılaştırılan Çiftler'}
+                </p>
                 <div className="flex flex-wrap gap-2">
                     {COMMON_PAIRS.map(pair => (
                         <button
-                            key={pair.label}
+                            key={pair.labelTr}
                             onClick={() => loadPair(pair.left, pair.right)}
                             className="px-3 py-1.5 rounded-full bg-zinc-800/50 border border-zinc-700/50 text-xs text-zinc-400 hover:text-white hover:border-zinc-500 transition-all"
                         >
-                            {pair.label}
+                            {isEn ? pair.labelEn : pair.labelTr}
                         </button>
                     ))}
                 </div>
@@ -210,39 +266,39 @@ export function ComparisonMode() {
             {/* Selector Row */}
             <div className="flex items-center gap-3 mb-6">
                 <div className="flex-1">
-                    <p className="text-xs font-bold text-blue-400 mb-1">SOL</p>
-                    <PathologySelector selected={leftPathology} onSelect={setLeftPathology} side="left" />
+                    <p className="text-xs font-bold text-blue-400 mb-1">{isEn ? 'LEFT' : 'SOL'}</p>
+                    <PathologySelector selected={leftPathology} onSelect={setLeftPathology} side="left" isEn={isEn} />
                 </div>
                 <button
                     onClick={swapSides}
                     className="mt-5 p-2 rounded-full bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 transition-colors"
-                    title="Tarafları değiştir"
+                    title={isEn ? "Swap sides" : "Tarafları değiştir"}
                 >
                     <ArrowLeftRight className="w-4 h-4 text-zinc-400" />
                 </button>
                 <div className="flex-1">
-                    <p className="text-xs font-bold text-amber-400 mb-1">SAĞ</p>
-                    <PathologySelector selected={rightPathology} onSelect={setRightPathology} side="right" />
+                    <p className="text-xs font-bold text-amber-400 mb-1">{isEn ? 'RIGHT' : 'SAĞ'}</p>
+                    <PathologySelector selected={rightPathology} onSelect={setRightPathology} side="right" isEn={isEn} />
                 </div>
             </div>
 
             {/* Comparison Content */}
-            {leftPathology && rightPathology ? (
+            {left && right ? (
                 <div className="space-y-4">
                     {/* Summary Row */}
                     <div className="grid grid-cols-2 gap-3">
                         <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
-                            <h3 className="font-bold text-blue-300 text-lg">{leftPathology.name}</h3>
-                            <p className="text-xs text-zinc-400">{leftPathology.category}</p>
-                            {leftPathology.mechanism && (
-                                <p className="text-xs text-zinc-400 mt-2 line-clamp-2">{leftPathology.mechanism}</p>
+                            <h3 className="font-bold text-blue-300 text-lg">{left.name}</h3>
+                            <p className="text-xs text-zinc-400">{left.category}</p>
+                            {left.mechanism && (
+                                <p className="text-xs text-zinc-400 mt-2 line-clamp-2">{left.mechanism}</p>
                             )}
                         </div>
                         <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-4">
-                            <h3 className="font-bold text-amber-300 text-lg">{rightPathology.name}</h3>
-                            <p className="text-xs text-zinc-400">{rightPathology.category}</p>
-                            {rightPathology.mechanism && (
-                                <p className="text-xs text-zinc-400 mt-2 line-clamp-2">{rightPathology.mechanism}</p>
+                            <h3 className="font-bold text-amber-300 text-lg">{right.name}</h3>
+                            <p className="text-xs text-zinc-400">{right.category}</p>
+                            {right.mechanism && (
+                                <p className="text-xs text-zinc-400 mt-2 line-clamp-2">{right.mechanism}</p>
                             )}
                         </div>
                     </div>
@@ -253,29 +309,27 @@ export function ComparisonMode() {
                             onClick={() => toggleSection('findings')}
                             className="w-full px-4 py-3 flex items-center justify-between hover:bg-zinc-800/50 transition-colors"
                         >
-                            <span className="text-sm font-bold text-zinc-300">Görüntüleme Bulguları</span>
+                            <span className="text-sm font-bold text-zinc-300">{isEn ? 'Imaging Findings' : 'Görüntüleme Bulguları'}</span>
                             {expandedSections.includes('findings') ? <ChevronUp className="w-4 h-4 text-zinc-500" /> : <ChevronDown className="w-4 h-4 text-zinc-500" />}
                         </button>
                         {expandedSections.includes('findings') && (
                             <div className="border-t border-zinc-800">
                                 <div className="grid grid-cols-2 divide-x divide-zinc-800">
-                                    {/* Left Findings */}
                                     <div className="p-4 space-y-2">
                                         {leftFindings.length > 0 ? leftFindings.map((f, i) => (
                                             <div key={i} className="text-xs">
                                                 <span className="text-blue-400 font-bold">{f.modality} {f.key}: </span>
                                                 <span className="text-zinc-300">{f.value}</span>
                                             </div>
-                                        )) : <p className="text-xs text-zinc-500">Bulgu verisi yok</p>}
+                                        )) : <p className="text-xs text-zinc-500">{isEn ? 'No findings data' : 'Bulgu verisi yok'}</p>}
                                     </div>
-                                    {/* Right Findings */}
                                     <div className="p-4 space-y-2">
                                         {rightFindings.length > 0 ? rightFindings.map((f, i) => (
                                             <div key={i} className="text-xs">
                                                 <span className="text-amber-400 font-bold">{f.modality} {f.key}: </span>
                                                 <span className="text-zinc-300">{f.value}</span>
                                             </div>
-                                        )) : <p className="text-xs text-zinc-500">Bulgu verisi yok</p>}
+                                        )) : <p className="text-xs text-zinc-500">{isEn ? 'No findings data' : 'Bulgu verisi yok'}</p>}
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +342,7 @@ export function ComparisonMode() {
                             onClick={() => toggleSection('keypoints')}
                             className="w-full px-4 py-3 flex items-center justify-between hover:bg-zinc-800/50 transition-colors"
                         >
-                            <span className="text-sm font-bold text-zinc-300">Anahtar Noktalar</span>
+                            <span className="text-sm font-bold text-zinc-300">{isEn ? 'Key Points' : 'Anahtar Noktalar'}</span>
                             {expandedSections.includes('keypoints') ? <ChevronUp className="w-4 h-4 text-zinc-500" /> : <ChevronDown className="w-4 h-4 text-zinc-500" />}
                         </button>
                         {expandedSections.includes('keypoints') && (
@@ -296,7 +350,7 @@ export function ComparisonMode() {
                                 <div className="grid grid-cols-2 divide-x divide-zinc-800">
                                     <div className="p-4">
                                         <ul className="space-y-1.5">
-                                            {leftPathology.keyPoints.map((kp, i) => (
+                                            {left.keyPoints.map((kp, i) => (
                                                 <li key={i} className="text-xs text-zinc-300 flex items-start gap-1.5">
                                                     <span className="text-blue-400 mt-0.5 shrink-0">•</span>
                                                     {kp}
@@ -306,7 +360,7 @@ export function ComparisonMode() {
                                     </div>
                                     <div className="p-4">
                                         <ul className="space-y-1.5">
-                                            {rightPathology.keyPoints.map((kp, i) => (
+                                            {right.keyPoints.map((kp, i) => (
                                                 <li key={i} className="text-xs text-zinc-300 flex items-start gap-1.5">
                                                     <span className="text-amber-400 mt-0.5 shrink-0">•</span>
                                                     {kp}
@@ -325,36 +379,36 @@ export function ComparisonMode() {
                             onClick={() => toggleSection('differential')}
                             className="w-full px-4 py-3 flex items-center justify-between hover:bg-zinc-800/50 transition-colors"
                         >
-                            <span className="text-sm font-bold text-zinc-300">Ayırıcı Tanı / Ek Bilgi</span>
+                            <span className="text-sm font-bold text-zinc-300">{isEn ? 'Differential Diagnosis / Additional Info' : 'Ayırıcı Tanı / Ek Bilgi'}</span>
                             {expandedSections.includes('differential') ? <ChevronUp className="w-4 h-4 text-zinc-500" /> : <ChevronDown className="w-4 h-4 text-zinc-500" />}
                         </button>
                         {expandedSections.includes('differential') && (
                             <div className="border-t border-zinc-800">
                                 <div className="grid grid-cols-2 divide-x divide-zinc-800">
                                     <div className="p-4 space-y-3">
-                                        {leftPathology.etiology && (
+                                        {left.etiology && (
                                             <div>
-                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">Etiyoloji</p>
-                                                <p className="text-xs text-zinc-300">{leftPathology.etiology}</p>
+                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">{isEn ? 'Etiology' : 'Etiyoloji'}</p>
+                                                <p className="text-xs text-zinc-300">{left.etiology}</p>
                                             </div>
                                         )}
-                                        {leftPathology.goldStandard && (
+                                        {left.goldStandard && (
                                             <div>
-                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">Altın Standart</p>
-                                                <p className="text-xs text-blue-300">{leftPathology.goldStandard}</p>
+                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">{isEn ? 'Gold Standard' : 'Altın Standart'}</p>
+                                                <p className="text-xs text-blue-300">{left.goldStandard}</p>
                                             </div>
                                         )}
-                                        {leftPathology.clinicalPearl && (
+                                        {left.clinicalPearl && (
                                             <div>
-                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">Klinik İpucu</p>
-                                                <p className="text-xs text-emerald-300">{leftPathology.clinicalPearl}</p>
+                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">{isEn ? 'Clinical Pearl' : 'Klinik İpucu'}</p>
+                                                <p className="text-xs text-emerald-300">{left.clinicalPearl}</p>
                                             </div>
                                         )}
-                                        {leftPathology.differentialDiagnosis && (
+                                        {left.differentialDiagnosis && (
                                             <div>
-                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">Ayırıcı Tanılar</p>
+                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">{isEn ? 'Differential Diagnosis' : 'Ayırıcı Tanılar'}</p>
                                                 <div className="flex flex-wrap gap-1 mt-1">
-                                                    {leftPathology.differentialDiagnosis.map((dd, i) => (
+                                                    {left.differentialDiagnosis.map((dd, i) => (
                                                         <span key={i} className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20">
                                                             {dd}
                                                         </span>
@@ -364,29 +418,29 @@ export function ComparisonMode() {
                                         )}
                                     </div>
                                     <div className="p-4 space-y-3">
-                                        {rightPathology.etiology && (
+                                        {right.etiology && (
                                             <div>
-                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">Etiyoloji</p>
-                                                <p className="text-xs text-zinc-300">{rightPathology.etiology}</p>
+                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">{isEn ? 'Etiology' : 'Etiyoloji'}</p>
+                                                <p className="text-xs text-zinc-300">{right.etiology}</p>
                                             </div>
                                         )}
-                                        {rightPathology.goldStandard && (
+                                        {right.goldStandard && (
                                             <div>
-                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">Altın Standart</p>
-                                                <p className="text-xs text-amber-300">{rightPathology.goldStandard}</p>
+                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">{isEn ? 'Gold Standard' : 'Altın Standart'}</p>
+                                                <p className="text-xs text-amber-300">{right.goldStandard}</p>
                                             </div>
                                         )}
-                                        {rightPathology.clinicalPearl && (
+                                        {right.clinicalPearl && (
                                             <div>
-                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">Klinik İpucu</p>
-                                                <p className="text-xs text-emerald-300">{rightPathology.clinicalPearl}</p>
+                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">{isEn ? 'Clinical Pearl' : 'Klinik İpucu'}</p>
+                                                <p className="text-xs text-emerald-300">{right.clinicalPearl}</p>
                                             </div>
                                         )}
-                                        {rightPathology.differentialDiagnosis && (
+                                        {right.differentialDiagnosis && (
                                             <div>
-                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">Ayırıcı Tanılar</p>
+                                                <p className="text-[10px] font-bold text-zinc-500 uppercase">{isEn ? 'Differential Diagnosis' : 'Ayırıcı Tanılar'}</p>
                                                 <div className="flex flex-wrap gap-1 mt-1">
-                                                    {rightPathology.differentialDiagnosis.map((dd, i) => (
+                                                    {right.differentialDiagnosis.map((dd, i) => (
                                                         <span key={i} className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">
                                                             {dd}
                                                         </span>
@@ -402,36 +456,38 @@ export function ComparisonMode() {
 
                     {/* Key Differentiator Box */}
                     <div className="bg-gradient-to-r from-blue-500/5 via-zinc-900 to-amber-500/5 border border-zinc-700 rounded-xl p-4">
-                        <p className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Ayırıcı Tanıda Kritik Farklar</p>
+                        <p className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">
+                            {isEn ? 'Critical Differentiators' : 'Ayırıcı Tanıda Kritik Farklar'}
+                        </p>
                         <div className="overflow-x-auto">
                             <table className="w-full text-xs">
                                 <thead>
                                     <tr className="border-b border-zinc-800">
-                                        <th className="text-left py-2 px-2 text-zinc-500 font-medium">Özellik</th>
-                                        <th className="text-left py-2 px-2 text-blue-400 font-medium">{leftPathology.name}</th>
-                                        <th className="text-left py-2 px-2 text-amber-400 font-medium">{rightPathology.name}</th>
+                                        <th className="text-left py-2 px-2 text-zinc-500 font-medium">{isEn ? 'Feature' : 'Özellik'}</th>
+                                        <th className="text-left py-2 px-2 text-blue-400 font-medium">{left.name}</th>
+                                        <th className="text-left py-2 px-2 text-amber-400 font-medium">{right.name}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr className="border-b border-zinc-800/50">
-                                        <td className="py-2 px-2 text-zinc-500">Kategori</td>
-                                        <td className="py-2 px-2 text-zinc-300">{leftPathology.category}</td>
-                                        <td className="py-2 px-2 text-zinc-300">{rightPathology.category}</td>
+                                        <td className="py-2 px-2 text-zinc-500">{isEn ? 'Category' : 'Kategori'}</td>
+                                        <td className="py-2 px-2 text-zinc-300">{left.category}</td>
+                                        <td className="py-2 px-2 text-zinc-300">{right.category}</td>
                                     </tr>
                                     <tr className="border-b border-zinc-800/50">
-                                        <td className="py-2 px-2 text-zinc-500">Mekanizma</td>
-                                        <td className="py-2 px-2 text-zinc-300">{leftPathology.mechanism || '—'}</td>
-                                        <td className="py-2 px-2 text-zinc-300">{rightPathology.mechanism || '—'}</td>
+                                        <td className="py-2 px-2 text-zinc-500">{isEn ? 'Mechanism' : 'Mekanizma'}</td>
+                                        <td className="py-2 px-2 text-zinc-300">{left.mechanism || '—'}</td>
+                                        <td className="py-2 px-2 text-zinc-300">{right.mechanism || '—'}</td>
                                     </tr>
                                     <tr className="border-b border-zinc-800/50">
-                                        <td className="py-2 px-2 text-zinc-500">Altın Standart</td>
-                                        <td className="py-2 px-2 text-blue-300">{leftPathology.goldStandard || '—'}</td>
-                                        <td className="py-2 px-2 text-amber-300">{rightPathology.goldStandard || '—'}</td>
+                                        <td className="py-2 px-2 text-zinc-500">{isEn ? 'Gold Standard' : 'Altın Standart'}</td>
+                                        <td className="py-2 px-2 text-blue-300">{left.goldStandard || '—'}</td>
+                                        <td className="py-2 px-2 text-amber-300">{right.goldStandard || '—'}</td>
                                     </tr>
                                     <tr>
-                                        <td className="py-2 px-2 text-zinc-500">Klinik İpucu</td>
-                                        <td className="py-2 px-2 text-emerald-300">{leftPathology.clinicalPearl || '—'}</td>
-                                        <td className="py-2 px-2 text-emerald-300">{rightPathology.clinicalPearl || '—'}</td>
+                                        <td className="py-2 px-2 text-zinc-500">{isEn ? 'Clinical Pearl' : 'Klinik İpucu'}</td>
+                                        <td className="py-2 px-2 text-emerald-300">{left.clinicalPearl || '—'}</td>
+                                        <td className="py-2 px-2 text-emerald-300">{right.clinicalPearl || '—'}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -441,8 +497,12 @@ export function ComparisonMode() {
             ) : (
                 <div className="flex flex-col items-center justify-center py-20 text-zinc-600">
                     <ArrowLeftRight className="w-16 h-16 mb-4 opacity-20" />
-                    <p className="text-lg font-medium">İki patoloji seçerek karşılaştırmaya başlayın</p>
-                    <p className="text-sm mt-1">veya yukarıdaki hızlı çiftlerden birini tıklayın</p>
+                    <p className="text-lg font-medium">
+                        {isEn ? 'Select two pathologies to start comparing' : 'İki patoloji seçerek karşılaştırmaya başlayın'}
+                    </p>
+                    <p className="text-sm mt-1">
+                        {isEn ? 'or click one of the quick pairs above' : 'veya yukarıdaki hızlı çiftlerden birini tıklayın'}
+                    </p>
                 </div>
             )}
         </div>

@@ -49,10 +49,15 @@ export const spinePathologies: Pathology[] = [
             "Emergency: Cauda Equina Syndrome (Urinary retention, saddle anesthesia)."
         ],
         "mechanism": "Yaşlanma veya tekrarlayan travma → anulus fibrozus kollajen liflerinin yıkımı → nükleus pulpozus su kaybı (T2 sinyal azalması) → disk yüksekliği azalması → anular yırtık → nükleus pulpozus materyalinin kanal/foramene herniyasyonu. Mekanik bası + kimyasal enflamasyon (fosfolipaz A2 salınımı) → sinir kökü ödemi ve radikülopati.",
+        "mechanismEn": "Aging or repetitive trauma → destruction of annulus fibrosus collagen fibers → nucleus pulposus water loss (T2 signal decrease) → disc height loss → annular tear → herniation of nucleus pulposus material into the canal/foramen. Mechanical compression + chemical inflammation (phospholipase A2 release) → nerve root edema and radiculopathy.",
         "etiology": "Dejeneratif (yaşlanma, tekrarlayan aksiyel yüklenme), Akut travma, Konjenital dar kanal, Genetik predispozisyon.",
+        "etiologyEn": "Degenerative (aging, repetitive axial loading), Acute trauma, Congenital narrow canal, Genetic predisposition.",
         "differentialDiagnosis": ["Piriformis Sendromu (Ekstraforaminal, piriformis kasında patoloji)", "Faset Artropatisi (Posterior ağrı, ekstansiyonda artar)", "Spinal Stenoz (Bilateral nörojenik kladikasyo)", "Vertebral Metastaz (Gece ağrısı, T1 sinyal kaybı)"],
+        "differentialDiagnosisEn": ["Piriformis Syndrome (Extraforaminal, piriformis muscle pathology)", "Facet Arthropathy (Posterior pain, worsens with extension)", "Spinal Stenosis (Bilateral neurogenic claudication)", "Vertebral Metastasis (Night pain, T1 signal loss)"],
         "goldStandard": "MRI (Sagittal + Aksiyel T2): Kanal çapı, sinir kökü basısı, kord sinyali değerlendirmesi. BT myelografi: MRI çekilemez ise.",
+        "goldStandardEn": "MRI (Sagittal + Axial T2): Canal diameter, nerve root compression, cord signal evaluation. CT myelography: If MRI cannot be performed.",
         "clinicalPearl": "L4-L5 herniasyonu → L5 kökü basısı (Ayak dorsifleksiyon zayıflığı). L5-S1 → S1 (Aşil refleks kaybı). İdrar retansiyonu + Eyer anestezi = Kauda Ekuina Acil!",
+        "clinicalPearlEn": "L4-L5 herniation → L5 root compression (Foot dorsiflexion weakness). L5-S1 → S1 (Achilles reflex loss). Urinary retention + Saddle anesthesia = Cauda Equina Emergency!",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Fardon DF et al. Lumbar disc nomenclature: version 2.0. Spine J. 2014;14(11):2525-2545.",
@@ -100,6 +105,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Vasküler Kladikasyo (Nabız kaybı, ABI düşük, yürüyünce artan ağrı dinlenmekle geçer)", "Disk Hernisi (Tek kök tutulumu, Lasègue +)", "Spinal Tümör/Metastaz (Gece ağrısı, kilo kaybı, T1 sinyal kaybı)", "Periferik Nöropati (Diyabet, simetrik, çorap-eldiven)"],
         "goldStandard": "MRI (Aksiyel + Sagittal T2): Kanal çapı, ligamentum flavum kalınlığı, foraminal stenoz. Yonca yaprağı (trefoil) görünümü. BT myelografi: MRI kontrendike ise.",
         "clinicalPearl": "Nörojenik kladikasyo: Yürürken artan bilateral bacak ağrısı, öne eğilince (market arabası pozisyonu) rahatlar. Vasküler kladikasyoda ise dinlenmekle geçer ancak postür önemli değildir.",
+        "mechanismEn": "Accumulation of multiple degenerative changes → canal narrowing. Disc height loss → increased load on facet joints → facet arthrosis and hypertrophy. Ligamentum flavum: Elastin loss → collagen hypertrophy (>4mm). Osteophytes + ligament hypertrophy + facet hypertrophy = trifocal (trefoil) narrow canal. Canal widening during forward flexion explains the distinction between neurogenic claudication and ability to ride a bicycle.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -153,6 +159,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Spinal Stenoz (Dar kanal, kayma olmadan)", "Disk Hernisi (Tek seviye, kayma olmadan, kök basısı)", "Vertebral Kompresyon Kırığı (Yükseklik kaybı, kayma yok)", "Ankilozan Spondilit (Andersson lezyonu, psödoartroz)"],
         "goldStandard": "BT (Sagittal + Aksiyel): Pars defekti ve kayma derecesi. MRI: Sinir kökü basısı, disk patolojisi, kord değerlendirmesi. Fleksiyon-Ekstansiyon grafisi: Dinamik instabilite.",
         "clinicalPearl": "Genç sporcu (jimnastikçi) + bel ağrısı + L5-S1 pars defekti = İstmik spondilolistezis. Yaşlı hasta + L4-L5 + dar kanal = Dejeneratif spondilolistezis. Meyerding Grade ≥3 = Cerrahi endikasyon.",
+        "mechanismEn": "Isthmic type: Repetitive hyperextension stress (gymnast, football player) → pars interarticularis stress fracture (spondylolysis) → bilateral fracture → vertebral slippage. Degenerative type: Facet and disc degeneration → posterior stabilization loss → anterior slippage. Traumatic type: Acute high-energy trauma → pars or pedicle fracture → sudden slippage. As slip grade increases, canal and foramen narrow.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -203,6 +210,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Osteoporotik Kompresyon Kırığı (T1 normal sinyal korunur, posterior eleman sağlam)", "Vertebral Osteomiyelit/Spondilodiskit (Disk tutulumu, end-plate erozyonu, klinik enfeksiyon)", "Multipl Miyelom (Yaygın T1 hipointensite, 'rain drop skull', M-protein)", "Lenfoma (DWI kısıtlanma belirgin, homojen infiltrasyon)", "Hemanjiom (T1 VE T2 hiperintens, polka dot)"],
         "goldStandard": "MRI Tüm Omurga (Sagittal T1, T2, STIR, T1+K): Multipl lezyonlar, pedikül tutulumu, epidural uzanım. BT: Kortikal destrüksiyon. PET-BT: Evreleme ve tedavi yanıtı.",
         "clinicalPearl": "Vertebra T1 hipointens + pedikül kaybı (Winking Owl) + gece ağrısı = Metastaz düşün. Osteoporotik kırıktan ayırt: Metastazda posterior eleman tutulumu ve konveks posterior duvar bulgusu var, STIR'da sinyal artışı belirgin.",
+        "mechanismEn": "Primary tumor reaches vertebral bone marrow through hematogenous spread via Batson plexus (vertebral venous plexus) → trabecular destruction. Osteolytic (lung, kidney, thyroid, melanoma) vs osteoblastic (prostate, breast). T1 hypointense because tumor cells replace normal fatty marrow (fat signal lost). STIR shows bright signal due to increased water content.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -258,6 +266,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Kompresyon Kırığı (Yalnızca ön kolon tutulumu, arka duvar sağlam)", "Chance Kırığı (Fleksiyon-distraksiyon, horizontal kırık hattı, emniyet kemeri)", "Patolojik Kırık (Altta yatan tümör/metastaz, minimal travma)", "Osteoporotik Kırık (Yaşlı, düşük enerjili, arka duvar genellikle sağlam)"],
         "goldStandard": "BT (Sagittal + Aksiyel + Koronal reformat): Kırık hattı, retropulsiyon, kanal daralma oranı. MRI: PLC hasarı (STIR), kord kontüzyonu (T2). TLICS skoru cerrahi karar için kullanılır.",
         "clinicalPearl": "Burst kırığında arka duvar retropulsiyonu + PLC hasarı (MRI STIR'da hiperintensite) = İnstabil kırık → cerrahi. TLICS skoru ≥5 = Cerrahi endikasyon. Kompresyon kırığından farkı: Arka duvar kırığı ve retropulsiyon varlığıdır.",
+        "mechanismEn": "High-energy axial loading (feet-first fall onto water surface, traffic accident) → central collapse of vertebral body → fracture of both cortices → retropulsion of bone fragments into spinal canal. Denis three-column model: When middle and posterior columns are involved together, risk of cord compression and neurological damage increases; this distinguishes burst fracture from compression fracture.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -314,6 +323,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["OPLL — Posterior Longitudinal Ligaman Ossifikasyonu (BT'de kalsifikasyon, Asyalılarda sık)", "Servikal Spondilotik Miyelopati (Yaygın spondiloz, multipl seviye)", "Servikal İntramedüller Tümör (Kord ekspansiyonu, kontrastlanma)", "Transvers Miyelit (İnflamatuvar, BOS bulguları)", "Brakiyal Pleksopati (Pancoast tümörü, travma — Servikal MRI normal)"],
         "goldStandard": "MRI (Sagittal + Aksiyel T2, T1, T2*GRE): Disk hernisi, kord basısı, miyelopati sinyal değişikliği. BT: Kalsifiye disk (sert disk) ve OPLL değerlendirmesi. EMG: Radikülopati konfirmasyonu.",
         "clinicalPearl": "Servikal miyelopati bulguları (el beceriksizliği, yürüme bozukluğu, hiperrefleksi, Babinski +) = Cerrahi endikasyon. Kord içi T2 sinyal artışı = Miyelomalazi (kötü prognoz, geri dönüşümsüz). C5-C6: C6 kökü (başparmak uyuşması, biseps zayıflığı), C6-C7: C7 kökü (orta parmak, triseps zayıflığı).",
+        "mechanismEn": "Disc degeneration in the cervical region → nucleus pulposus herniation or disc-osteophyte complex formation → posterior/posterolateral compression → nerve root compression (radiculopathy) or cord compression (myelopathy). Unlike lumbar disc herniation, even a small herniation can cause cord compression due to the narrow canal area. Uncovertebral arthropathy contributes additionally to foraminal stenosis.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Fardon DF et al. Lumbar disc nomenclature: version 2.0. Spine J. 2014;14(11):2525-2545.",
@@ -366,6 +376,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Modic Değişiklikleri (End-plate'e sınırlı sinyal değişikliği, disk hernisi yok)", "Vertebral Metastaz (Fokal kitle, T1 hipointens, kortikal destrüksiyon)", "Spondilodiskit (Disk tutulumu, iki komşu vertebra, kontrastlanma)", "Limbus Vertebra (Anterior end-plate köşe defekti, dejeneratif)"],
         "goldStandard": "MRI (Sagittal T1, T2, STIR): End-plate defekti ve çevre ödem değerlendirmesi. BT: End-plate irregülaritesi ve sklerotik halka. Akut vs kronik ayrımı STIR ile yapılır.",
         "clinicalPearl": "Çoğu insidental ve asemptomatik — raporda not et, panik yapma. STIR'da çevre ödem varsa = Akut Schmorl nodülü (ağrı kaynağı olabilir). Multipl Schmorl nodülleri + kifoz + düzensiz end-plate = Scheuermann hastalığı düşün.",
+        "mechanismEn": "Weakened vertebral end-plate + suddenly increased axial load → herniation of nucleus pulposus through the end-plate cortex into vertebral cancellous bone tissue. Congenital weakness of end-plate cartilage (Scheuermann disease) or osteoporosis predisposes. In acute phase, surrounding bone edema/vascular reaction (Modic Type 1) occurs; in chronic phase, reactive sclerosis (Modic Type 3) develops.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -419,6 +430,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Disk Hernisi (Radiküler ağrı, fleksiyonda artar, SLR +)", "Sakroiliak Eklem Disfonksiyonu (FABER testi +, SI bölgede hassasiyet)", "Lomber Spinal Stenoz (Bilateral kladikasyo, disk + faset + ligaman)", "Piriformis Sendromu (Gluteal ağrı, piriformis germe testi +)", "Vertebral Kompresyon Kırığı (Akut ağrı, osteoporoz)"],
         "goldStandard": "MRI (Aksiyel + Sagittal T2): Faset hipertrofisi, effüzyon, sinoviyal kist. BT: Faset sklerozisi, osteofit, vakum fenomeni. Tanısal faset blokajı: Ağrı kaynağı konfirmasyonu.",
         "clinicalPearl": "Bel ağrısı + ekstansiyonda artış + fleksiyonda rahatlama + paraspinal hassasiyet = Faset artropatisi düşün. Sinoviyal kist lateral resess stenozu yapıyorsa radikülopati olabilir — disk hernisi ile karışabilir.",
+        "mechanismEn": "Facet (zygapophyseal) joint arthrosis: As disc height decreases, load on facet joints increases → cartilage degeneration → bony subchondral changes → osteophytes → thickening of joint capsule and surrounding synovial membrane. Synovial cyst: Chronic irritation → herniation of synovial fluid through a weak point of the joint capsule → can compress the lateral recess or foramen.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -474,6 +486,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Spinal Astrositom (İnfiltratif, sınırları belirsiz, eksantrik, heterojen kontrastlanma)", "Hemanjioblastom (Mural nodül + kist, Von Hippel-Lindau sendromu)", "Metastaz (Multipl, hızlı büyüme, kord dışı tutulum baskın)", "Gangliogliom (Nadir, kalsifikasyon olabilir, genç yaş)"],
         "goldStandard": "Kontrastlı MRI (Sagittal + Aksiyel T1+K, T2): Santral, iyi sınırlı, homojen kontrastlanan kitle + cap sign + polar kistler. T2* GRE: Hemosiderin (cap sign) duyarlılığı artırır.",
         "clinicalPearl": "'Cap sign' (hemosiderin) gördüğünde ependimom düşün — astrositomda bu bulgu yoktur. Homojen kontrastlanma + iyi sınırlı = Ependimom (cerrahi rezeksiyon uygun). Heterojen + infiltratif = Astrositom (cerrahi zor).",
+        "mechanismEn": "WHO Grade 2 tumor originating from ependymal cells (cells lining the central canal and ventricles of the spinal canal). Tumor-related hemorrhage → hemosiderin deposition (cap sign); polar cysts form from ependymal damage and CSF accumulation. Conus and filum terminale location: These regions harbor a large ependymal cell reservoir. Its well-defined structure allows complete surgical resection.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -532,6 +545,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Nörofibrom (Fusiform, sinir merkezinde, NF1 ilişkili, kontrastlanma homojen)", "Menenjiyom (Geniş tabanlı dural temas, dural tail, torasik dominant)", "Spinal Metastaz (Multipl, hızlı büyüme, destrüktif)", "Paragangliom (Filum terminale, vasküler, 'salt and pepper')"],
         "goldStandard": "Kontrastlı MRI (Aksiyel + Sagittal T1+K, T2): Foraminal genişleme + dumbbell konfigürasyon + heterojen T2 hiperintensite + yoğun kontrastlanma. BT: Foramen genişlemesi.",
         "clinicalPearl": "Foraminal genişleme + dumbbell şekil + T2 heterojen hiperintensite (target sign) + yoğun kontrastlanma = Schwannom. Nörofibromda sinir merkezinden (fusiform) büyür; schwannomda sinir eksentrik olarak itilir. Multipl schwannom = NF2 düşün.",
+        "mechanismEn": "Benign tumor (WHO Grade 1) originating from Schwann cells. Develops on spinal nerve roots (dorsal > ventral). Slow growth → foramen undergoes bone remodeling (widening). Transition between Antoni A (cellular, compact) and Antoni B (myxoid, acellular) areas → T2 heterogeneous hyperintensity and target sign. In NF2, biallelic inactivation of NF2 gene (merlin protein) → multiple schwannomas.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -587,6 +601,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Modic Tip 1 Değişiklikleri (Disk sinyali normal/dejeneratif, DWI kısıtlanma yok, kontrastlanma difüz)", "Vertebral Metastaz (Disk korunur, pedikül tutulumu, kilo kaybı)", "Tüberküloz Spondiliti (Disk korunmuş, paraspinal soğuk apse, gibbus, subligamentöz yayılım)", "Nöropatik Artropati — Charcot Spine (DM/Siringomiyeli zemininde, debris, vakum fenomeni)"],
         "goldStandard": "MRI (Sagittal T1, T2, STIR, T1+K, DWI): End-plate erozyonu + disk tutulumu + kontrastlanma + DWI kısıtlanma (apse). BT rehberliğinde biyopsi: Kültür ve duyarlılık testi.",
         "clinicalPearl": "İki komşu vertebrada end-plate erozyonu + disk tutulumu + paraspinal koleksiyon = Spondilodiskit. Modic Tip 1'den farkı: DWI kısıtlanma (apse), disk T2 hiperintens (enfeksiyon), klinik enfeksiyon bulguları (ateş, CRP yüksek).",
+        "mechanismEn": "Hematogenous bacteremia (S. aureus, Klebsiella) → entrapment in vertebral metaphyseal arterioles → end-plate vascular damage → disc initially spared due to avascularity → disc involvement with progression. Symmetric involvement of end-plates of two adjacent vertebrae is typical (shared disc vascular supply). Epidural/paraspinal abscess may form as infection progresses.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -644,6 +659,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Epidural Hematom (Antikoagülan, T1 hiperintens subakut, DWI kısıtlanma yok)", "Disk Hernisi (Disk aralığı düzeyinde, kontrastlanma yok, ateş yok)", "Epidural Metastaz (Kemik destrüksiyonu, kontrastlanma solid, DWI farklı)", "Epidural Lipomatozis (Yağ sinyali, steroid kullanımı)"],
         "goldStandard": "ACİL MRI (Sagittal + Aksiyel T1+K + DWI): Halka kontrastlanma + DWI kısıtlanma = Apse konfirme. BT rehberliğinde aspirasyon/drenaj: Kültür ve duyarlılık testi.",
         "clinicalPearl": "Ateş + sırt ağrısı + nörolojik defisit = Spinal epidural apse şüphesi → ACİL MRI iste. DWI kısıtlanma (parlak) pü içeriğini gösterir. 24 saat içinde cerrahi yapılmazsa kalıcı parapleji riski yüksek!",
+        "mechanismEn": "Hematogenous spread or direct extension from adjacent vertebral osteomyelitis → pus accumulation in epidural space. Viscous pus → restricted water molecule movement → bright on DWI, low ADC. Increased pressure in epidural space → compression and vascular ischemia of spinal cord and nerve roots → neurological damage. In the thoracic region, the canal is narrow; even small collections can cause neurological deficits.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -699,6 +715,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Piyojenik Spondilodiskit (Disk erken tutulur, hızlı seyir, yüksek ateş, nötrofil yoğun)", "Brusella Spondiliti (Endemik bölge, düşük ateş, L4-L5 sık, 'parrot beak' osteofitler)", "Vertebral Metastaz (Disk korunur ama posterior element tutulumu var, hızlı seyir)", "Fungal Spondiliti (İmmunosupresyon, yavaş seyir, nadir)"],
         "goldStandard": "MRI (Sagittal T1, T2, STIR, T1+K): Vertebra anterior tutulumu + disk korunmuş + paraspinal soğuk apse + subligamentöz yayılım. BT rehberliğinde biyopsi: ARB boyama, kültür, PCR (Xpert MTB/RIF).",
         "clinicalPearl": "Disk KORUNMUŞ + paraspinal büyük apse + subligamentöz multipl vertebra tutulumu + gibbus = Pott hastalığı (TB spondilit). Piyojenikte disk ERKEN tutulur ve hızlı seyreder. Psoas apsesi TB'de karakteristik — kasık bölgesine yayılabilir.",
+        "mechanismEn": "M. tuberculosis hematogenous spread → anterior vertebral elements (bodies) are involved → slow granulomatous destruction. Disc is spared until advanced stages because tuberculosis (granulomatous inflammation) lacks neutrophils that can release enzymes (difference from pyogenic infection). Anterior subligamentous spread → multiple vertebra involvement. Anterior vertebral collapse → kyphosis (gibbus deformity). Cold abscess: Low fever/no significant inflammation because granulomatous reaction localizes the infection.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -748,6 +765,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Modic Tip 1 Değişiklikleri (Disk normal/dejeneratif, enfeksiyon klinik bulguları yok, DWI kısıtlanma yok)", "Tüberküloz Spondiliti (Disk korunmuş, paraspinal soğuk apse, gibbus, yavaş seyir)", "Nöropatik Artropati (Charcot Spine) (DM zemininde, debris, vakum fenomeni, ağrısız)", "Dejeneratif Disk Hastalığı (End-plate düzenli, disk vakum fenomeni, ateş/CRP yok)"],
         "goldStandard": "MRI (T1, T2, STIR, T1+K, DWI): İki komşu vertebra end-plate tutulumu + disk sinyal artışı + kontrastlanma. DWI: Apse kısıtlanma gösterir. BT rehberliğinde biyopsi: Kültür (altın standart etiyolojik tanı).",
         "clinicalPearl": "MRI'da iki komşu vertebra end-plate'inde erozyon + aradaki diskte T2 sinyal artışı + paraspinal koleksiyon = Spondilodiskit. 'Mirror image' end-plate erozyonu karakteristik. DWI kısıtlanma varsa apse düşün. Modic Tip 1'den ayırt: Disk T2 parlak + klinik enfeksiyon = Spondilodiskit.",
+        "mechanismEn": "S. aureus hematogenous spread → vertebral end-plate vasculature (areas primarily supplying the disc) becomes occluded → end-plate necrosis → discitis. As infection progresses in the disc, disc height decreases and signal increases. Epidural abscess: Forms from extension of infection to posterior epidural space. Difference from Pott disease: Disc is involved early, neutrophil-derived proteolytic enzymes rapidly destroy the disc.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -787,6 +805,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Spondilodiskit (Disk T2 hiperintens + end-plate erozyon + kontrastlanma + ateş/CRP)", "Vertebral Metastaz (Fokal kitle, pedikül tutulumu, kortikal destrüksiyon)", "Vertebral Hemanjiom (T1 VE T2 hiperintens, polka dot)", "Paget Hastalığı (Vertebra genişlemesi, kalın korteks, 'picture frame')"],
         "goldStandard": "MRI (Sagittal T1, T2): End-plate sinyal değişiklikleri paterni (Tip 1/2/3). Kontrastlı MRI: Tip 1 kontrastlanabilir — enfeksiyonla karışabilir, DWI ve klinik korelasyon gerekir. BT: End-plate sklerozisi (Tip 3).",
         "clinicalPearl": "Modic Tip 1 (T1 karanlık, T2 parlak) = Aktif inflamasyon = Bel ağrısı ile en çok ilişkili tip. Spondilodiskitten ayırt: Modic'te disk sinyali NORMAL veya dejeneratif, spondilodiskitte disk T2'de PARLAK. Tip 1→Tip 2→Tip 3 doğal seyir olabilir (akut→kronik).",
+        "mechanismEn": "Disc degeneration and biomechanical stress → vertebral end-plate micro-damage → reactive bone marrow changes. Type 1 (acute/subacute): End-plate fracture/necrosis + vascular granulation tissue → T1 hypointense, T2 hyperintense. Type 2 (chronic): Granulation tissue is replaced by fatty marrow conversion → T1 hyperintense (fat signal). Type 3 (advanced chronic): Reactive bone sclerosis → T1 and T2 hypointense.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -836,6 +855,7 @@ export const spinePathologies: Pathology[] = [
         "differentialDiagnosis": ["Faset Artropatisi (Faset hipertrofisi, posterior ağrı, kayma yok)", "Lomber Strain (Kas-ligaman yaralanması, MRI'da pars defekti yok)", "Lomber Disk Hernisi (Radiküler semptomlar, pars sağlam)", "Spinal Tümör (Gece ağrısı, kemik destrüksiyonu, kilo kaybı)", "Spondilolistezis (Pars defektine sekonder kayma — ek tanı)"],
         "goldStandard": "BT (İnce kesit aksiyel + sagittal reformat): Pars interartikülaris defekti ('İskoç köpeği boyun kırığı'). MRI (STIR/T2): Pars çevresinde kemik ödemi (akut stres reaksiyonu). SPECT/BT: Aktif kemik metabolizması tespiti (stres reaksiyonu vs kronik defekt).",
         "clinicalPearl": "Genç sporcu (jimnastik, futbol) + bel ağrısı + hiperextansiyonda artan ağrı + L5 pars defekti = Spondilolizis. Oblik grafide 'İskoç köpeği boyun kırığı' görünümü. Aktif stres reaksiyonu (MRI ödemi +) = İstirahat ve breys ile iyileşme şansı var. Kronik defekt = İyileşme beklenmez.",
+        "mechanismEn": "Repetitive hyperextension and rotation forces → stress fracture of the pars interarticularis (spondylolysis). The pars is a delicate bony bridge that bears the load of both facet joint and disc degeneration. Bilateral pars fracture → separation of vertebral body from posterior elements → anterolisthesis (slippage). In isthmic type: Distance between fracture fragments increases and spinal canal widens (unlike the narrowing in degenerative stenosis).",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -880,10 +900,15 @@ export const spinePathologies: Pathology[] = [
             "Gadolinium enhancement: Active lesion — high dose steroid treatment."
         ],
         "mechanism": "İnflamatuar/otoimmün saldırı → spinal kord demyelinizasyonu ve aksonal hasar. NMOSD: AQP4 (aquaporin-4) su kanalı antikorları astrositlere saldırır → kord ödemi + nekroz (LETM). MS: Oligodendrositler hedef → fokal kısa demyelinik plaklar. İdiyopatik: Post-enfeksiyöz (viral/bakteriyel), paraneoplastik, vaskülit. T2 hiperintensite: Ödem + demiyelinizasyon + aksonal hasar.",
+        "mechanismEn": "Inflammatory/autoimmune attack → spinal cord demyelination and axonal damage. NMOSD: AQP4 (aquaporin-4) water channel antibodies attack astrocytes → cord edema + necrosis (LETM). MS: Oligodendrocytes are targeted → focal short demyelinating plaques. Idiopathic: Post-infectious (viral/bacterial), paraneoplastic, vasculitis. T2 hyperintensity: Edema + demyelination + axonal damage.",
         "etiology": "İdiyopatik, NMOSD (AQP4-IgG), MS, MOG-IgG ilişkili hastalık, Post-enfeksiyöz (EBV, Coxsackie, HSV), SLE, Sjögren sendromu, Paraneoplastik.",
+        "etiologyEn": "Idiopathic, NMOSD (AQP4-IgG), MS, MOG-IgG associated disease, Post-infectious (EBV, Coxsackie, HSV), SLE, Sjogren syndrome, Paraneoplastic.",
         "differentialDiagnosis": ["MS (Kısa lezyon, periferik, beyin lezyonları)", "Spinal Kord İskemisi (DWI kısıtlanma, ani başlangıç)", "Spinal Kord Tümörü (Kitlesel, kontrastlanma)", "Servikal Miyelopati (Dejeneratif, disk hernisi eşliği)"],
+        "differentialDiagnosisEn": ["MS (Short lesion, peripheral, brain lesions)", "Spinal Cord Ischemia (DWI restriction, sudden onset)", "Spinal Cord Tumor (Mass-like, enhancement)", "Cervical Myelopathy (Degenerative, associated disc herniation)"],
         "goldStandard": "MRI (sagittal T2 + T1+K + DWI). Seroloji: AQP4-IgG, MOG-IgG, MS paneli. BOS: Oligoklonal bant.",
+        "goldStandardEn": "MRI (sagittal T2 + T1+C + DWI). Serology: AQP4-IgG, MOG-IgG, MS panel. CSF: Oligoclonal bands.",
         "clinicalPearl": "Uzun T2 lezyonu (≥3 segment) = NMOSD şüphesi → AQP4-IgG test et. Kısa lezyon = MS olası. İkisi de farklı tedavi gerektirir!",
+        "clinicalPearlEn": "Long T2 lesion (≥3 segments) = NMOSD suspicion → test AQP4-IgG. Short lesion = MS likely. Both require different treatments!",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -928,10 +953,15 @@ export const spinePathologies: Pathology[] = [
             "Treatment: Address underlying cause (Chiari surgery, tumor resection, arachnoid plasty)."
         ],
         "mechanism": "BOS akım dinamiği bozulması → spinal kord içinde basınç dalgalanmaları → interstisyel sıvının kord içinde birikmesi → sirinx oluşumu. Chiari malformasyonu: Tonsilar herniasyon → foramen magnum BOS akımını engeller → valsin etkisi → sirinx. Post-travmatik: Araknoid adhezyon → BOS akım bloğu. Tümör ilişkili: İntramedüller tümör sekresyonu veya BOS akım distorsiyonu. İdiyopatik: BOS akım anormalliği.",
+        "mechanismEn": "CSF flow dynamics disruption → pressure fluctuations within spinal cord → interstitial fluid accumulation within cord → syrinx formation. Chiari malformation: Tonsillar herniation → obstructs foramen magnum CSF flow → valve effect → syrinx. Post-traumatic: Arachnoid adhesion → CSF flow block. Tumor-related: Intramedullary tumor secretion or CSF flow distortion. Idiopathic: CSF flow abnormality.",
         "etiology": "Chiari Tip I Malformasyonu (en sık), Post-travmatik araknoid adezyon, İntramedüller tümör (ependimom, astrositom), Post-enfeksiyöz araknoidit, İdiyopatik.",
+        "etiologyEn": "Chiari Type I Malformation (most common), Post-traumatic arachnoid adhesion, Intramedullary tumor (ependymoma, astrocytoma), Post-infectious arachnoiditis, Idiopathic.",
         "differentialDiagnosis": ["İntramedüller Tümör (Gadolinium tutan nodül/kitle)", "Hidromiyelik Kavite (Normal kanal genişlemesi)", "Dilate Santral Kanal (Normal varyant <2mm)", "MS Lezyonu (Periferik, gadolinium +, kistik değil)"],
+        "differentialDiagnosisEn": ["Intramedullary Tumor (Gadolinium-enhancing nodule/mass)", "Hydromyelic Cavity (Normal canal dilation)", "Dilated Central Canal (Normal variant <2mm)", "MS Lesion (Peripheral, gadolinium +, not cystic)"],
         "goldStandard": "Sagittal + Aksiyel T1, T2 MRI. T1+K: Neoplastik bileşen ekartasyonu. Faz kontrast MRI: BOS akım dinamiği (Chiari'de akım bozulması).",
+        "goldStandardEn": "Sagittal + Axial T1, T2 MRI. T1+C: Neoplastic component exclusion. Phase contrast MRI: CSF flow dynamics (flow disruption in Chiari).",
         "clinicalPearl": "Servikal sirinx gördüğünde MUTLAKA kraniyoservikal bileşkeyi değerlendir — Chiari varlığını dışla. Kraniovertebrasyonel bileşkede herniasyon + sirinx = Chiari cerrahisi planı.",
+        "clinicalPearlEn": "When a cervical syrinx is seen, ALWAYS evaluate the craniocervical junction — exclude Chiari. Herniation + syrinx at the craniovertebral junction = Chiari surgery plan.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -955,10 +985,15 @@ export const spinePathologies: Pathology[] = [
         "keyPoints": ["Sakroiliit BİLATERAL ve SİMETRİK (RA'dan farklı).", "Bamboo spine: Yaygın sindesmofitler → ankiloz.", "Romanus lezyonu: Vertebra köşesinde inflamasyon (parlak köşe bulgusu).", "Andersson lezyonu: Discovertebral destrüksiyon (psödoartroz)."],
         "keyPointsEn": ["Sacroiliitis BILATERAL and SYMMETRIC (unlike RA).", "Bamboo spine: Extensive syndesmophytes → ankylosis.", "Romanus lesion: Inflammation at vertebral corner (shiny corner sign).", "Andersson lesion: Discovertebral destruction (pseudoarthrosis)."],
         "etiology": "Otoimmün. HLA-B27 pozitifliği (%90+). Genetik yatkınlık + çevresel tetikleyiciler.",
+        "etiologyEn": "Autoimmune. HLA-B27 positivity (90%+). Genetic susceptibility + environmental triggers.",
         "mechanism": "Entezis (ligaman-kemik bileşkesi) inflamasyonu → kemik erozyonu → reaktif kemik oluşumu → ankiloz.",
+        "mechanismEn": "Enthesitis (ligament-bone junction) inflammation → bone erosion → reactive bone formation → ankylosis.",
         "differentialDiagnosis": ["DISH (osteofitler anterolateral, SI eklem korunur)", "Psöriatik artrit (asimetrik sindesmofitler)", "Reaktif artrit (asimetrik SI tutulum)", "Enfeksiyöz sakroiliit (unilateral)"],
+        "differentialDiagnosisEn": ["DISH (anterolateral osteophytes, SI joints spared)", "Psoriatic arthritis (asymmetric syndesmophytes)", "Reactive arthritis (asymmetric SI involvement)", "Infectious sacroiliitis (unilateral)"],
         "goldStandard": "MRI (erken tanı): STIR'da sakroiliak kemik iliği ödemi. Radyografi: İleri evre (bambu kamışı, SI füzyon).",
+        "goldStandardEn": "MRI (early diagnosis): Sacroiliac bone marrow edema on STIR. Radiography: Advanced stage (bamboo spine, SI fusion).",
         "clinicalPearl": "Genç erkek + kronik bel ağrısı + sabah tutukluğu + bilateral sakroiliit = Ankilozan spondilit. MRI STIR aktif inflamasyonu erken gösterir.",
+        "clinicalPearlEn": "Young male + chronic low back pain + morning stiffness + bilateral sacroiliitis = Ankylosing spondylitis. MRI STIR shows active inflammation early.",
         "references": ["Defined approach in Defined. Radiographics AS imaging.", "Radiopaedia.org - Ankylosing spondylitis"]
     },
     {
@@ -978,10 +1013,15 @@ export const spinePathologies: Pathology[] = [
         "keyPoints": ["T1 VE T2'de birlikte hiperintensite = Tipik vertebral hemanjiom.", "BT'de polka dot (aksiyel) ve corduroy (sagittal) PATOGNOMONİK.", "Agresif hemanjiom: T1 hipointens (az yağ), epidural uzanım, kortikal ekspansiyon.", "Çoğu insidental ve asemptomatik — tedavi gerektirmez."],
         "keyPointsEn": ["Hyperintensity on BOTH T1 and T2 = Typical vertebral hemangioma.", "CT polka dot (axial) and corduroy (sagittal) PATHOGNOMONIC.", "Aggressive hemangioma: T1 hypointense (less fat), epidural extension, cortical expansion.", "Most incidental and asymptomatic — no treatment needed."],
         "etiology": "Vasküler hamartom. En sık torasik vertebra. İnsidans: %10-12 (otopsi). Kadınlarda daha sık.",
+        "etiologyEn": "Vascular hamartoma. Most common in thoracic vertebra. Incidence: 10-12% (autopsy). More common in females.",
         "mechanism": "Vasküler malformasyon → trabeküler kemik rezorbsiyonu → vertikaler trabeküller kalınlaşır, horizontaller rezorbe olur → polka dot/corduroy paterni.",
+        "mechanismEn": "Vascular malformation → trabecular bone resorption → vertical trabeculae thicken, horizontal ones are resorbed → polka dot/corduroy pattern.",
         "differentialDiagnosis": ["Metastaz (T1 hipointens, T2 hiperintens — hemanjiomda her iki sekans parlak)", "Lenfoma (T1 hipointens, DWI kısıtlanma)", "Paget hastalığı (kortikal kalınlaşma, genişleme)", "Yağlı dejenerasyon (T1 parlak ama T2'de yağ baskılanır)"],
+        "differentialDiagnosisEn": ["Metastasis (T1 hypointense, T2 hyperintense — in hemangioma both sequences are bright)", "Lymphoma (T1 hypointense, DWI restriction)", "Paget disease (cortical thickening, expansion)", "Fatty degeneration (T1 bright but fat suppressed on T2)"],
         "goldStandard": "MRI: T1+T2 hiperintensite. BT: Polka dot/corduroy. Agresif ise kontrastlı MRI.",
+        "goldStandardEn": "MRI: T1+T2 hyperintensity. CT: Polka dot/corduroy. Contrast MRI if aggressive.",
         "clinicalPearl": "MRI'da vertebrada T1 VE T2 parlak = Hemanjiom. T1 karanlık ise metastaz veya agresif hemanjiom düşün. Çoğu insidental, raporda belirtip geç.",
+        "clinicalPearlEn": "Vertebra bright on BOTH T1 AND T2 on MRI = Hemangioma. If T1 dark, consider metastasis or aggressive hemangioma. Most are incidental, mention in report and move on.",
         "references": ["Defined approach in Defined. Vertebral hemangioma imaging.", "Radiopaedia.org - Vertebral hemangioma"]
     },
     {
@@ -1001,10 +1041,15 @@ export const spinePathologies: Pathology[] = [
         "keyPoints": ["'Honda sign' (H harfi): Bilateral sakral ala + horizontal kırık PATOGNOMONİK.", "Osteoporoz, radyoterapi, steroid kullanımı risk faktörleri.", "Direkt grafide sıklıkla GÖZDen kaçar → MRI veya BT ile tanı.", "Yaşlı kadın + bel/kalça ağrısı + osteoporoz = Sakral yetmezlik kırığı düşün."],
         "keyPointsEn": ["'Honda sign' (H letter): Bilateral sacral ala + horizontal fracture PATHOGNOMONIC.", "Osteoporosis, radiotherapy, steroid use are risk factors.", "Often MISSED on plain radiographs → diagnosed by MRI or CT.", "Elderly woman + low back/hip pain + osteoporosis = Consider sacral insufficiency fracture."],
         "etiology": "Osteoporoz (en sık), radyoterapi (pelvik), uzun süreli steroid kullanımı, romatoid artrit, Paget hastalığı.",
+        "etiologyEn": "Osteoporosis (most common), radiotherapy (pelvic), prolonged steroid use, rheumatoid arthritis, Paget disease.",
         "mechanism": "Zayıflamış kemik (osteoporotik) + normal fizyolojik yüklenme → sakral aladaki stres konsantrasyonu → kırık.",
+        "mechanismEn": "Weakened bone (osteoporotic) + normal physiological loading → stress concentration in the sacral ala → fracture.",
         "differentialDiagnosis": ["Sakral metastaz (fokal kitle, kortikal destrüksiyon)", "Sakroiliit (SI eklem tutulumu, inflamatuvar)", "Sakral fraktür (yüksek enerjili travma)"],
+        "differentialDiagnosisEn": ["Sacral metastasis (focal mass, cortical destruction)", "Sacroiliitis (SI joint involvement, inflammatory)", "Sacral fracture (high-energy trauma)"],
         "goldStandard": "MRI STIR: Kemik iliği ödemi + Honda sign. BT: Sklerotik kırık hatları. Sintigrafi: H-patern (sensitif ama nonspesifik).",
+        "goldStandardEn": "MRI STIR: Bone marrow edema + Honda sign. CT: Sclerotic fracture lines. Scintigraphy: H-pattern (sensitive but nonspecific).",
         "clinicalPearl": "Yaşlı osteoporotik hasta + bel/sakral ağrı + normal grafi = MRI iste. Honda sign (H) = Sakral yetmezlik kırığı.",
+        "clinicalPearlEn": "Elderly osteoporotic patient + low back/sacral pain + normal radiograph = Order MRI. Honda sign (H) = Sacral insufficiency fracture.",
         "references": ["Defined approach in Defined. Sacral insufficiency fractures imaging.", "Radiopaedia.org - Sacral insufficiency fracture"]
     },
     {
@@ -1024,10 +1069,15 @@ export const spinePathologies: Pathology[] = [
         "keyPoints": ["İntradural ekstramedüller tümörlerin 2. en sığı (schwannomdan sonra).", "Torasik segment en sık (%80). Kadınlarda belirgin dominans.", "Dural tail + homojen kontrastlanma + geniş tabanlı dural temas = Menenjiyom.", "Schwannomdan ayırım: Menenjiyom geniş tabanlı, schwannom foraminal uzanım gösterir."],
         "keyPointsEn": ["2nd most common intradural extramedullary tumor (after schwannoma).", "Thoracic segment most common (80%). Female predominance.", "Dural tail + homogeneous enhancement + broad dural base = Meningioma.", "Differentiation from schwannoma: Meningioma broad-based, schwannoma shows foraminal extension."],
         "etiology": "Araknoid kap hücrelerinden kökenli. Kadınlarda sık (hormonal ilişki). Nörofibromatozis tip 2'de multipl olabilir.",
+        "etiologyEn": "Originates from arachnoid cap cells. Common in females (hormonal association). May be multiple in Neurofibromatosis type 2.",
         "mechanism": "Araknoid kap hücreleri → yavaş büyüyen intradural ekstramedüller kitle → spinal kord kompresyonu → progresif myelopati.",
+        "mechanismEn": "Arachnoid cap cells → slow-growing intradural extramedullary mass → spinal cord compression → progressive myelopathy.",
         "differentialDiagnosis": ["Schwannom (foraminal uzanım, dumbbell şekli)", "Nörofibrom (pleksiform, NF1)", "Metastaz (multipl, hızlı büyüme)", "Spinal hemanjiyoblastom (mural nodül, kist)"],
+        "differentialDiagnosisEn": ["Schwannoma (foraminal extension, dumbbell shape)", "Neurofibroma (plexiform, NF1)", "Metastasis (multiple, rapid growth)", "Spinal hemangioblastoma (mural nodule, cyst)"],
         "goldStandard": "Kontrastlı MRI: Yoğun homojen kontrastlanma + dural tail + intradural ekstramedüller pozisyon.",
+        "goldStandardEn": "Contrast MRI: Intense homogeneous enhancement + dural tail + intradural extramedullary position.",
         "clinicalPearl": "Orta yaş kadın + progresif myelopati + torasik intradural ekstramedüller kitle + dural tail = Spinal menenjiyom.",
+        "clinicalPearlEn": "Middle-aged female + progressive myelopathy + thoracic intradural extramedullary mass + dural tail = Spinal meningioma.",
         "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Spinal meningioma"]
     },
     {
@@ -1047,10 +1097,15 @@ export const spinePathologies: Pathology[] = [
         "keyPoints": ["Posterior epidural alan en sık lokalizasyon (epidural venöz pleksus).", "Antikoagülan kullanımı en önemli risk faktörü.", "Acil cerrahi dekompresyon: 24-48 saat içinde yapılmazsa kalıcı nörolojik hasar.", "Akut parapleji + antikoagülan = Spinal epidural hematom düşün → ACİL MRI."],
         "keyPointsEn": ["Posterior epidural space most common location (epidural venous plexus).", "Anticoagulant use most important risk factor.", "Emergency surgical decompression: Permanent neurological damage if not done within 24-48h.", "Acute paraplegia + anticoagulant = Think spinal epidural hematoma → EMERGENT MRI."],
         "etiology": "Antikoagülan tedavi, koagülopati, travma, spinal cerrahi/girişim sonrası, vasküler malformasyon. Spontan (hipertansiyon).",
+        "etiologyEn": "Anticoagulant therapy, coagulopathy, trauma, post-spinal surgery/procedure, vascular malformation. Spontaneous (hypertension).",
         "mechanism": "Epidural venöz pleksus kanaması → epidural hematom → spinal kord kompresyonu → akut myelopati.",
+        "mechanismEn": "Epidural venous plexus hemorrhage → epidural hematoma → spinal cord compression → acute myelopathy.",
         "differentialDiagnosis": ["Epidural abse (ateş, lökositoz, rim kontrastlanma)", "Disk herniasyonu (disk aralığı düzeyinde)", "Spinal tümör (kontrastlanma, destrüksiyon)", "Epidural lipomatozis (yağ sinyali)"],
+        "differentialDiagnosisEn": ["Epidural abscess (fever, leukocytosis, rim enhancement)", "Disc herniation (at disc space level)", "Spinal tumor (enhancement, destruction)", "Epidural lipomatosis (fat signal)"],
         "goldStandard": "ACİL MRI: T1+T2 sagittal ve aksiyel. Cerrahi karar 24-48 saat içinde.",
+        "goldStandardEn": "EMERGENT MRI: T1+T2 sagittal and axial. Surgical decision within 24-48 hours.",
         "clinicalPearl": "Antikoagülan alan hasta + akut sırt ağrısı + progresif parapleji = ACİL MRI. Posterior epidural T1 hiperintens koleksiyon = Hematom.",
+        "clinicalPearlEn": "Patient on anticoagulants + acute back pain + progressive paraplegia = EMERGENT MRI. Posterior epidural T1 hyperintense collection = Hematoma.",
         "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Spinal epidural hematoma"]
     },
     {
@@ -1068,10 +1123,15 @@ export const spinePathologies: Pathology[] = [
         "keyPoints": ["Konus medullaris L2-L3 altında = Gergin omurilik.", "Kalın filum terminale (>2mm) + filum içinde yağ KARAKTERİSTİK.", "Çocuklarda: Üriner inkontinans, ayak deformitesi, skolyoz.", "Yetişkin tethered cord: Geç başlangıç, progresif nörolojik bozulma."],
         "keyPointsEn": ["Conus medullaris below L2-L3 = Tethered cord.", "Thickened filum terminale (>2mm) + fat within filum CHARACTERISTIC.", "Children: Urinary incontinence, foot deformity, scoliosis.", "Adult tethered cord: Late onset, progressive neurological deterioration."],
         "etiology": "Konjenital: Spinal disrafizm spektrumu (okkült veya açık). Postoperatif: Miyelomeningosel onarımı sonrası yapışıklık.",
+        "etiologyEn": "Congenital: Spinal dysraphism spectrum (occult or open). Postoperative: Adhesion after myelomeningocele repair.",
         "mechanism": "Filum terminale kalınlaşması veya interspinal lipom → konus medullarisin aşağıda sabitlenmesi → büyümeyle kord gerilimi → nörolojik hasar.",
+        "mechanismEn": "Filum terminale thickening or intraspinal lipoma → fixation of conus medullaris in a low position → cord tethering with growth → neurological damage.",
         "differentialDiagnosis": ["Normal konus varyantı (L2-L3 sınırında, filum normal)", "Spinal lipom (yağ kitlesi, konus düzeyi değişken)", "Diastematomiyeli (kord bölünmesi, kemik spur)"],
+        "differentialDiagnosisEn": ["Normal conus variant (at L2-L3 border, normal filum)", "Spinal lipoma (fat mass, variable conus level)", "Diastematomyelia (cord splitting, bony spur)"],
         "goldStandard": "MRI: Konus düzeyi + filum kalınlığı + eşlik eden anomaliler. Sagittal T1 + T2 + aksiyel kesitler.",
+        "goldStandardEn": "MRI: Conus level + filum thickness + associated anomalies. Sagittal T1 + T2 + axial sections.",
         "clinicalPearl": "Çocukta üriner inkontinans + cilt bulgusu (dimple, kıllanma, lipom) + MRI'da düşük konus = Tethered cord. Filum içinde yağ doğrular.",
+        "clinicalPearlEn": "Urinary incontinence in child + skin findings (dimple, hair tuft, lipoma) + low conus on MRI = Tethered cord. Fat within filum confirms diagnosis.",
         "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Tethered cord"]
     },
     {
@@ -1089,10 +1149,15 @@ export const spinePathologies: Pathology[] = [
         "keyPoints": ["Kord yüzeyinde serpentin flow voidler + kord T2 hiperintensitesi = Spinal dural AV fistül.", "En sık spinal vasküler malformasyon (Tip I: Dural AV fistül).", "Progresif myelopati + inkontinans (orta yaş erkek).", "DSA (spinal anjiyografi): Kesin tanı ve tedavi planlaması."],
         "keyPointsEn": ["Serpentine flow voids on cord surface + cord T2 hyperintensity = Spinal dural AV fistula.", "Most common spinal vascular malformation (Type I: Dural AV fistula).", "Progressive myelopathy + incontinence (middle-aged male).", "DSA (spinal angiography): Definitive diagnosis and treatment planning."],
         "etiology": "Edinsel (Tip I dural AV fistül, en sık). Konjenital (Tip II-IV, nadir). Orta yaş erkek dominant.",
+        "etiologyEn": "Acquired (Type I dural AV fistula, most common). Congenital (Type II-IV, rare). Middle-aged male predominance.",
         "mechanism": "Dural düzeyde arteriyovenöz şant → perimedüller venlerde basınç artışı → venöz konjesyon → kord iskemisi ve myelopati.",
+        "mechanismEn": "Arteriovenous shunt at dural level → increased pressure in perimedullary veins → venous congestion → cord ischemia and myelopathy.",
         "differentialDiagnosis": ["Spinal kord tümörü (fokal kitle, kontrastlanma)", "Transvers myelit (akut, enflamatuvar)", "MS (plak benzeri lezyonlar)", "Sarkoidoz (menengeal kontrastlanma)"],
+        "differentialDiagnosisEn": ["Spinal cord tumor (focal mass, enhancement)", "Transverse myelitis (acute, inflammatory)", "MS (plaque-like lesions)", "Sarcoidosis (meningeal enhancement)"],
         "goldStandard": "Spinal DSA (anjiyografi): Fistül lokalizasyonu ve besleyici arter. MRI: İlk tarama.",
+        "goldStandardEn": "Spinal DSA (angiography): Fistula localization and feeding artery. MRI: Initial screening.",
         "clinicalPearl": "Orta yaşlı erkek + progresif myelopati + kord yüzeyinde flow void = Spinal dural AV fistül. DSA ile kesin tanı ve embolizasyon/cerrahi tedavi.",
+        "clinicalPearlEn": "Middle-aged male + progressive myelopathy + flow voids on cord surface = Spinal dural AV fistula. Definitive diagnosis with DSA and embolization/surgical treatment.",
         "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Spinal dural arteriovenous fistula"]
     },
     {
@@ -1112,10 +1177,15 @@ export const spinePathologies: Pathology[] = [
         "keyPoints": ["ACİL: Cerrahi dekompresyon 24-48 saat içinde → kalıcı nörolojik hasar riski.", "Saddle anestezi + üriner retansiyon/inkontinans + bilateral alt ekstremite güçsüzlük.", "Büyük disk herniasyonu EN SIK neden.", "ACİL MRI endikasyonu: Saddle anestezi + sfinkter disfonksiyonu."],
         "keyPointsEn": ["EMERGENCY: Surgical decompression within 24-48h → risk of permanent neurological damage.", "Saddle anesthesia + urinary retention/incontinence + bilateral lower extremity weakness.", "Large disc herniation MOST COMMON cause.", "EMERGENT MRI indication: Saddle anesthesia + sphincter dysfunction."],
         "etiology": "Büyük disk herniasyonu (en sık), spinal stenoz, tümör, epidural abse, epidural hematom, travma.",
+        "etiologyEn": "Large disc herniation (most common), spinal stenosis, tumor, epidural abscess, epidural hematoma, trauma.",
         "mechanism": "L1-2 altında spinal kanalda kauda equina liflerinin kompresyonu → alt motor nöron lezyonu → bilateral radikülöpati + sfinkter disfonksiyonu.",
+        "mechanismEn": "Compression of cauda equina fibers in the spinal canal below L1-2 → lower motor neuron lesion → bilateral radiculopathy + sphincter dysfunction.",
         "differentialDiagnosis": ["Konus medullaris sendromu (üst motor nöron bulguları, erken sfinkter)", "Bilateral lumbosakral radikülöpati (asimetrik olabilir)", "Spinal kord kompresyonu (üst seviye, üst motor nöron)"],
+        "differentialDiagnosisEn": ["Conus medullaris syndrome (upper motor neuron signs, early sphincter involvement)", "Bilateral lumbosacral radiculopathy (may be asymmetric)", "Spinal cord compression (higher level, upper motor neuron)"],
         "goldStandard": "ACİL MRI: Kauda equina kompresyonu + etiyolojik lezyon tespiti. Sagittal + aksiyel T1, T2.",
+        "goldStandardEn": "EMERGENT MRI: Cauda equina compression + etiological lesion identification. Sagittal + axial T1, T2.",
         "clinicalPearl": "Saddle anestezi + üriner retansiyon + büyük disk = Kauda equina sendromu → ACİL MRI ve cerrahi. 24-48 saat gecikme kalıcı sfinkter hasarına yol açar.",
+        "clinicalPearlEn": "Saddle anesthesia + urinary retention + large disc = Cauda equina syndrome → EMERGENT MRI and surgery. 24-48 hour delay leads to permanent sphincter damage.",
         "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Cauda equina syndrome"]
     },
     {
@@ -1135,10 +1205,15 @@ export const spinePathologies: Pathology[] = [
         "keyPoints": ["Sakral foramenlerde BOS sinyalinde kistik lezyonlar.", "Çoğu ASEMPTOMATİK ve insidental.", "Büyük kistler: Sakral ağrı, radikülopati, sfinkter semptomları.", "Sinir kök lifleri kist DUVARINDA bulunur (diğer kistlerden ayırıcı)."],
         "keyPointsEn": ["CSF-signal cystic lesions in sacral foramina.", "Most ASYMPTOMATIC and incidental.", "Large cysts: Sacral pain, radiculopathy, sphincter symptoms.", "Nerve root fibers found in cyst WALL (differentiates from other cysts)."],
         "etiology": "Konjenital (meningeal divertikül). Travma ve BOS basınç değişiklikleri kist büyümesini tetikleyebilir.",
+        "etiologyEn": "Congenital (meningeal diverticulum). Trauma and CSF pressure changes may trigger cyst growth.",
         "mechanism": "Posterior kök gangliyonu düzeyinde araknoid proliferasyon → BOS birikimi → kist oluşumu. Kronik bası → kemik remodellingi.",
+        "mechanismEn": "Arachnoid proliferation at the posterior root ganglion level → CSF accumulation → cyst formation. Chronic pressure → bone remodeling.",
         "differentialDiagnosis": ["Meningeal divertikül (sinir kök lifleri kist içinde değil)", "Araknoid kist (perinöral değil)", "Schwannom (solid komponent, kontrastlanma)", "Ependimal kist (intramedüller)"],
+        "differentialDiagnosisEn": ["Meningeal diverticulum (nerve root fibers not within cyst)", "Arachnoid cyst (not perineural)", "Schwannoma (solid component, enhancement)", "Ependymal cyst (intramedullary)"],
         "goldStandard": "MRI: BOS sinyalinde sakral kist + kist duvarında sinir kök lifleri.",
+        "goldStandardEn": "MRI: CSF-signal sacral cyst + nerve root fibers in the cyst wall.",
         "clinicalPearl": "Sakral MRI'da insidental BOS sinyalinde kistler = Tarlov kisti. Çoğu tedavi gerektirmez. Semptomatik büyük kistlerde perkütan aspirasyon veya cerrahi.",
+        "clinicalPearlEn": "Incidental CSF-signal cysts on sacral MRI = Tarlov cyst. Most do not require treatment. Percutaneous aspiration or surgery for symptomatic large cysts.",
         "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Tarlov cyst"]
     },
     {
@@ -1156,10 +1231,15 @@ export const spinePathologies: Pathology[] = [
         "keyPoints": ["'Owl eyes' (baykuş gözü): Aksiyelde bilateral anterior horn tutulumu PATOGNOMONİK.", "Anterior spinal arter sendromu en sık (%75).", "Aort cerrahisi/anjiyografi sonrası en sık etiyoloji.", "DWI erken tanıda T2'den daha sensitif."],
         "keyPointsEn": ["'Owl eyes': Bilateral anterior horn involvement on axial PATHOGNOMONIC.", "Anterior spinal artery syndrome most common (75%).", "Most common etiology after aortic surgery/angiography.", "DWI more sensitive than T2 for early diagnosis."],
         "etiology": "Aort cerrahisi/aortik klemp, aort diseksiyonu, ateroskleroz, vaskülit, hipotansiyon, fibrokartilajenöz embolizm.",
+        "etiologyEn": "Aortic surgery/aortic clamping, aortic dissection, atherosclerosis, vasculitis, hypotension, fibrocartilaginous embolism.",
         "mechanism": "Anterior spinal arter oklüzyonu → anterior 2/3 kord iskemisi → bilateral motor + ağrı/ısı kaybı (spinotalamik) AMA dorsal kolon korunur (propriyosepsiyon sağlam).",
+        "mechanismEn": "Anterior spinal artery occlusion → anterior 2/3 cord ischemia → bilateral motor + pain/temperature loss (spinothalamic) BUT dorsal columns spared (proprioception intact).",
         "differentialDiagnosis": ["Transvers myelit (daha simetrik, inflamatuvar belirteçler)", "MS akut atağı (asimetrik, periferik plaklar)", "Nöromiyelitis optika (NMOSD - uzun segment, optik sinir tutulumu)", "Spinal kord kompresyonu (dış bası bulguları)"],
+        "differentialDiagnosisEn": ["Transverse myelitis (more symmetric, inflammatory markers)", "MS acute attack (asymmetric, peripheral plaques)", "Neuromyelitis optica (NMOSD - long segment, optic nerve involvement)", "Spinal cord compression (external compression findings)"],
         "goldStandard": "ACİL MRI: DWI + T2 (owl eyes + anterior kord tutulumu). Aort görüntüleme (etiyoloji).",
+        "goldStandardEn": "EMERGENT MRI: DWI + T2 (owl eyes + anterior cord involvement). Aortic imaging (etiology).",
         "clinicalPearl": "Aort cerrahisi sonrası akut parapleji + ağrı/ısı kaybı + propriyosepsiyon korunmuş = Anterior spinal arter sendromu. MRI DWI owl eyes paterni doğrular.",
+        "clinicalPearlEn": "Acute paraplegia after aortic surgery + pain/temperature loss + preserved proprioception = Anterior spinal artery syndrome. MRI DWI owl eyes pattern confirms.",
         "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Spinal cord infarction"]
     }
 ];

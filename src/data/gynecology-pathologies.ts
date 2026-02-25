@@ -33,15 +33,25 @@ export const gynecologyPathologies: Pathology[] = [
             }
         },
         etiology: "Östrojen bağımlı düz kas hücre proliferasyonu. Reprodüktif çağda en sık görülür; menopoz sonrası küçülür.",
+        etiologyEn: "Estrogen-dependent smooth muscle cell proliferation. Most common during reproductive age; regresses after menopause.",
         differentialDiagnosis: [
             "Adenomiyozis (Diffüz miyometriyal kalınlaşma, sınırları belirsiz, JZ >12mm)",
             "Endometrial Polip (Fokal endometriyal kalınlaşma, ince saplı, kavite içi)",
             "Uterus Sarkomu (Hızlı büyüme, postmenopozal, T2'de heterojen yüksek sinyal)",
             "Adenomiyom (Adenomiyozisin fokal formu, miyomdan daha belirsiz sınırlı)"
         ],
+        differentialDiagnosisEn: [
+            "Adenomyosis (Diffuse myometrial thickening, ill-defined margins, JZ >12mm)",
+            "Endometrial Polyp (Focal endometrial thickening, thin pedicle, intracavitary)",
+            "Uterine Sarcoma (Rapid growth, postmenopausal, heterogeneous high signal on T2)",
+            "Adenomyoma (Focal form of adenomyosis, more ill-defined margins than leiomyoma)"
+        ],
         goldStandard: "MRI: T2 ağırlıklı sekanslarda hipointens kitle — leiomyom için en iyi karakterizasyon yöntemi.",
+        goldStandardEn: "MRI: Hypointense mass on T2-weighted sequences — best characterization method for leiomyoma.",
         clinicalPearl: "T2'de hipointens = fibrotik doku = leiomyom. Hiperintens ise dejenerasyon veya sellüler miyom düşün.",
+        clinicalPearlEn: "Hypointense on T2 = fibrotic tissue = leiomyoma. If hyperintense, consider degeneration or cellular leiomyoma.",
         mechanism: "Düz kas hücrelerinin klonal proliferasyonu → miyom oluşumu. Östrojen bağımlı büyüme: Premenopozal dönemde büyür, menopozdan sonra küçülür. MRI T2 hipointensitesi: Yoğun düz kas hücresi demetleri ve fibröz stroma → serbest su protonları az. Dejenerasyon türleri: Hyalin (%60, en sık), kistik, kırmızı (gebelikte trofoblastik kanamaya bağlı), müsinöz, kalsifik.",
+        mechanismEn: "Clonal proliferation of smooth muscle cells → fibroid formation. Estrogen-dependent growth: Grows during premenopausal period, shrinks after menopause. MRI T2 hypointensity: Dense smooth muscle cell bundles and fibrous stroma → few free water protons. Types of degeneration: Hyaline (60%, most common), cystic, red (due to trophoblastic hemorrhage during pregnancy), mucinous, calcific.",
         references: [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Uterine Leiomyomata. American College of Radiology.",
@@ -76,15 +86,25 @@ export const gynecologyPathologies: Pathology[] = [
             }
         },
         etiology: "Endometrial bazal tabakanın miyometriuma doğru invazyonu. Multiparitenin, uterin cerrahinin ve kronik östrojen maruziyetinin rolü vardır.",
+        etiologyEn: "Invasion of the endometrial basal layer into the myometrium. Multiparity, uterine surgery, and chronic estrogen exposure play a role.",
         differentialDiagnosis: [
             "Uterin Leiomyom (Keskin sınırlı, T2 hipointens, miyometriumdan ayrı kitle)",
             "Endometrial Karsinom (Endometriyal kavitede kitle, DWI kısıtlanması, JZ'yi bozar)",
             "Miyometrial Kontraksiyon (Geçici, tekrarlayan MRI'da kaybolur, JZ kalınlaşması yok)",
             "Adenomiyom (Fokal adenomiyozis formu, sınırları belirsiz miyometrial kitle)"
         ],
+        differentialDiagnosisEn: [
+            "Uterine Leiomyoma (Well-defined, T2 hypointense, separate mass from myometrium)",
+            "Endometrial Carcinoma (Mass in endometrial cavity, DWI restriction, disrupts JZ)",
+            "Myometrial Contraction (Transient, disappears on repeat MRI, no JZ thickening)",
+            "Adenomyoma (Focal form of adenomyosis, ill-defined myometrial mass)"
+        ],
         goldStandard: "MRI: T2 ağırlıklı sekanslarda JZ kalınlığı >12mm ölçümü — adenomiyozis için altın standart.",
+        goldStandardEn: "MRI: JZ thickness >12mm on T2-weighted sequences — gold standard for adenomyosis.",
         clinicalPearl: "JZ >12mm = adenomiyozis. Miyom keskin sınırlıdır, adenomiyozisin sınırları belirsizdir — bu ayrım en kritik noktadır.",
+        clinicalPearlEn: "JZ >12mm = adenomyosis. Fibroids are well-defined, adenomyosis has ill-defined margins — this distinction is the most critical point.",
         mechanism: "Endometrial bazal tabaka hücrelerinin miyometriuma doğru invaze olması → ektopik endometrial bezler ve stroma miyometrium içinde. İki hipotez: (1) Endometrial bazal tabakanın doğrudan invazyonu; (2) endometriyal kök hücre göçü. Ektopik endometrial doku her menstrüel siklustan etkilenir → lokal hemoraji → adenomyotik nodül/küçük kistler. Junction zone kalınlığı >12mm → tanısal MRI bulgusu.",
+        mechanismEn: "Invasion of endometrial basal layer cells into the myometrium → ectopic endometrial glands and stroma within the myometrium. Two hypotheses: (1) Direct invasion of the endometrial basal layer; (2) endometrial stem cell migration. Ectopic endometrial tissue is affected by each menstrual cycle → local hemorrhage → adenomyotic nodules/small cysts. Junction zone thickness >12mm → diagnostic MRI finding.",
         references: [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Radiopaedia.org - Gynecological imaging",
@@ -123,15 +143,25 @@ export const gynecologyPathologies: Pathology[] = [
             }
         },
         etiology: "Retrograd menstrüasyon sonucu ektopik endometrial dokunun over yüzeyine implantasyonu. Endometriozisle doğrudan ilişkilidir.",
+        etiologyEn: "Implantation of ectopic endometrial tissue onto the ovarian surface due to retrograde menstruation. Directly associated with endometriosis.",
         differentialDiagnosis: [
             "Dermoid Kist (T1 parlak ancak fat-sat'ta baskılanır, endometriomada baskılanmaz)",
             "Hemorajik Kist (T1 parlak, ancak shading sign yok, spontan rezolüsyon gösterir)",
             "Over Karsinomu (Solid komponent ve kontrastlanma belirgin, DWI kısıtlanması)",
             "Müsinöz Kistadenoma (Multiloküler, T1'de değişken sinyal, shading yok)"
         ],
+        differentialDiagnosisEn: [
+            "Dermoid Cyst (T1 bright but suppresses on fat-sat, endometrioma does not suppress)",
+            "Hemorrhagic Cyst (T1 bright, but no shading sign, shows spontaneous resolution)",
+            "Ovarian Carcinoma (Prominent solid component and enhancement, DWI restriction)",
+            "Mucinous Cystadenoma (Multilocular, variable signal on T1, no shading)"
+        ],
         goldStandard: "MRI: T1 hiperintens + fat-sat'ta baskılanmayan sinyal + T2 shading sign — endometrioma için altın standart tanı triadı.",
+        goldStandardEn: "MRI: T1 hyperintense + non-suppressing signal on fat-sat + T2 shading sign — gold standard diagnostic triad for endometrioma.",
         clinicalPearl: "T1 parlak + fat-sat'ta baskılanmıyor = kan ürünü (endometrioma). T1 parlak + fat-sat'ta baskılanıyor = yağ (dermoid). Bu ayrım sınav klasiğidir.",
+        clinicalPearlEn: "T1 bright + does not suppress on fat-sat = blood product (endometrioma). T1 bright + suppresses on fat-sat = fat (dermoid). This distinction is an exam classic.",
         mechanism: "Retrograd menstrüasyon → ektopik endometrial dokunun over yüzeyine implante olması → over korteksine invazyon → tekrarlayan siklik kanama → eski kan ürünleri (methemoglobin, hemosiderin) birikimi. Methemoglobin (T1 parlak), artmış demir konsantrasyonu (T2 shading = giderek kararan sinyal). Dermoid kistlerde yağ baskılanır; endometriomada kan ürünleri yağ baskılamaya yanıt vermez (ayrım bu şekilde yapılır).",
+        mechanismEn: "Retrograde menstruation → implantation of ectopic endometrial tissue onto the ovarian surface → invasion into ovarian cortex → recurrent cyclic hemorrhage → accumulation of old blood products (methemoglobin, hemosiderin). Methemoglobin (T1 bright), increased iron concentration (T2 shading = progressively darkening signal). In dermoid cysts fat suppresses; in endometrioma blood products do not respond to fat suppression (this is how the distinction is made).",
         references: [
             "O-RADS: ACR O-RADS MRI Risk Stratification System. American College of Radiology; 2020.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -174,15 +204,25 @@ export const gynecologyPathologies: Pathology[] = [
             }
         },
         etiology: "Totipotent over germ hücrelerinin üç germ tabakasına (ektoderm, mezoderm, endoderm) diferansiyasyonu sonucu oluşur. Genç kadınlarda en sık over neoplazmıdır.",
+        etiologyEn: "Arises from differentiation of totipotent ovarian germ cells into three germ layers (ectoderm, mesoderm, endoderm). Most common ovarian neoplasm in young women.",
         differentialDiagnosis: [
             "Endometrioma (T1 parlak ancak fat-sat'ta baskılanmaz, shading sign pozitif)",
             "Hemorajik Kist (T1 parlak, fat-sat'ta baskılanmaz, yağ-sıvı seviyesi yok)",
             "Lipoleiomyom (Uterin yerleşimli, yağ içeren miyometrial kitle)",
             "Over Karsinomu (Solid kontrastlanan komponent baskın, kalsifikasyon nadir)"
         ],
+        differentialDiagnosisEn: [
+            "Endometrioma (T1 bright but does not suppress on fat-sat, shading sign positive)",
+            "Hemorrhagic Cyst (T1 bright, does not suppress on fat-sat, no fat-fluid level)",
+            "Lipoleiomyoma (Uterine location, fat-containing myometrial mass)",
+            "Ovarian Carcinoma (Dominant enhancing solid component, calcification rare)"
+        ],
         goldStandard: "MRI: T1 hiperintens kitle + fat-sat'ta sinyal kaybı (yağ konfirmasyonu). BT'de yağ dansitesi (-20 ila -100 HU) de tanısaldır.",
+        goldStandardEn: "MRI: T1 hyperintense mass + signal loss on fat-sat (fat confirmation). Fat density (-20 to -100 HU) on CT is also diagnostic.",
         clinicalPearl: "Yağ + kalsifikasyon + kıl = dermoid triadı. Fat-sat'ta baskılanma endometriomadan ayırır. Malign transformasyon <%1 (skuamöz hücreli karsinom).",
+        clinicalPearlEn: "Fat + calcification + hair = dermoid triad. Suppression on fat-sat distinguishes from endometrioma. Malignant transformation <1% (squamous cell carcinoma).",
         mechanism: "Totipotent germ hücrelerinin (over primitif germ hücreleri) üç germ tabakasına diferansiyasyonu → ektoderm (kıl, deri, sebum), mezoderm (kemik, diş, yağ), endoderm (sindirim bezleri). Sebum (yağ) birikimi → kist içeriği. Yağ sinyal karakteri T1 parlak, fat-sat'ta baskılanan → benign dermoid tanısı (malign transformasyon nadir: <1%, skuamöz hücreli karsinom). Rokitansky nodülü: Kalsifikasyon, kıl, diş içeren solid yapı.",
+        mechanismEn: "Differentiation of totipotent germ cells (ovarian primitive germ cells) into three germ layers → ectoderm (hair, skin, sebum), mesoderm (bone, teeth, fat), endoderm (digestive glands). Sebum (fat) accumulation → cyst content. Fat signal characteristics: T1 bright, suppresses on fat-sat → benign dermoid diagnosis (malignant transformation rare: <1%, squamous cell carcinoma). Rokitansky nodule: Solid structure containing calcification, hair, and teeth.",
         references: [
             "O-RADS: ACR O-RADS MRI Risk Stratification System. American College of Radiology; 2020.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -222,15 +262,25 @@ export const gynecologyPathologies: Pathology[] = [
             }
         },
         etiology: "Overin kendi vasküler pedikülü etrafında dönmesi. En sık predispozan faktör: Over kitlesi (dermoid, kist >5cm). Uzun utero-ovarian ligaman da risk faktörüdür.",
+        etiologyEn: "Rotation of the ovary around its own vascular pedicle. Most common predisposing factor: Ovarian mass (dermoid, cyst >5cm). Long utero-ovarian ligament is also a risk factor.",
         differentialDiagnosis: [
             "Rüptüre Over Kisti (Akut ağrı, serbest sıvı, ancak over boyutu normal, whirlpool yok)",
             "Ektopik Gebelik (Pozitif βhCG, adneksiyal ring sign, boş uterus)",
             "Apandisit (Sağ alt kadran ağrısı, ancak over normal, appendiks duvar kalınlaşması)",
             "Tubo-Ovarian Apse (Ateş, lökositoz, kompleks kitle, periferik folikül dizilimi yok)"
         ],
+        differentialDiagnosisEn: [
+            "Ruptured Ovarian Cyst (Acute pain, free fluid, but normal ovarian size, no whirlpool)",
+            "Ectopic Pregnancy (Positive βhCG, adnexal ring sign, empty uterus)",
+            "Appendicitis (Right lower quadrant pain, but normal ovary, appendiceal wall thickening)",
+            "Tubo-Ovarian Abscess (Fever, leukocytosis, complex mass, no peripheral follicle arrangement)"
+        ],
         goldStandard: "Doppler USG: Whirlpool sign + büyümüş ödemli over + periferik foliküller. Akım yokluğu tanıyı destekler ancak akım varlığı torsiyonu ekarte ettirmez.",
+        goldStandardEn: "Doppler USG: Whirlpool sign + enlarged edematous ovary + peripheral follicles. Absence of flow supports diagnosis but presence of flow does not exclude torsion.",
         clinicalPearl: "Doppler'da akım olması torsiyonu ekarte ettirmez! Kısmi torsiyonda arteriyel akım devam edebilir — klinik şüphe yüksekse cerrahi eksplorasyon gerekir.",
+        clinicalPearlEn: "Presence of flow on Doppler does not exclude torsion! In partial torsion, arterial flow may persist — if clinical suspicion is high, surgical exploration is required.",
         mechanism: "Overin kendi vasküler pedikülü etrafında dönmesi → önce venöz, ardından arteryel akım kesilmesi → over ödem ve iskemisi. Büyük over kitlesi (kist, dermoid) veya uzun infundibulo-pelvik ligaman predispozan faktördür. Foliküller ödemli overde perifere sıkışır ('string of pearls'). Whirlpool sign: Doppler'da dönen vasküler pedikül görüntüsü. Akım varlığı torsiyonu ekarte ettirmez (kısmi torsiyon, arteriyel akım devam edebilir).",
+        mechanismEn: "Rotation of the ovary around its own vascular pedicle → first venous, then arterial flow compromise → ovarian edema and ischemia. Large ovarian mass (cyst, dermoid) or long infundibulopelvic ligament is a predisposing factor. Follicles are pushed to the periphery in the edematous ovary ('string of pearls'). Whirlpool sign: Rotating vascular pedicle appearance on Doppler. Presence of flow does not exclude torsion (partial torsion, arterial flow may persist).",
         references: [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Acute Pelvic Pain in the Reproductive Age Group. American College of Radiology.",
@@ -260,15 +310,25 @@ export const gynecologyPathologies: Pathology[] = [
             }
         },
         etiology: "HPV 16/18 enfeksiyonu sonucu servikal transformasyon zonunda displazi gelişimi (CIN I→II→III → invaziv karsinom). En sık skuamöz hücreli karsinom (%80).",
+        etiologyEn: "Dysplasia development in the cervical transformation zone following HPV 16/18 infection (CIN I→II→III → invasive carcinoma). Most common is squamous cell carcinoma (80%).",
         differentialDiagnosis: [
             "Servikal Polip (Benign, saplı, kontrastlanan, stroma bütünlüğü korunur)",
             "Nabothian Kist (T2 hiperintens basit kist, solid komponent yok, DWI kısıtlanması yok)",
             "Endometrial Karsinom (Servikse yayılmış — kaviteden köken alır, primer servikal değil)",
             "Servisit (Diffüz kontrastlanma, ama fokal kitle yok, DWI kısıtlanması minimal)"
         ],
+        differentialDiagnosisEn: [
+            "Cervical Polyp (Benign, pedunculated, enhancing, stromal integrity preserved)",
+            "Nabothian Cyst (T2 hyperintense simple cyst, no solid component, no DWI restriction)",
+            "Endometrial Carcinoma (Spread to cervix — originates from cavity, not primary cervical)",
+            "Cervicitis (Diffuse enhancement, but no focal mass, minimal DWI restriction)"
+        ],
         goldStandard: "MRI: T2 ağırlıklı sekanslar — parametrial invazyon değerlendirmesi ve FIGO evrelemesi için altın standart.",
+        goldStandardEn: "MRI: T2-weighted sequences — gold standard for parametrial invasion assessment and FIGO staging.",
         clinicalPearl: "T2'de hipointens servikal stroma halkası bozulmuşsa = parametrial invazyon = Evre IIB = cerrahi kontraendike, kemoradyoterapi.",
+        clinicalPearlEn: "If the hypointense cervical stromal ring is disrupted on T2 = parametrial invasion = Stage IIB = surgery contraindicated, chemoradiation.",
         mechanism: "HPV 16/18 enfeksiyonu → servikal transformasyon zonunda skuamöz hücre displazisi (CIN 1→2→3) → invaziv skuamöz hücreli karsinom. HPV onkoproteinleri (E6: TP53 inhibisyonu, E7: Rb inhibisyonu) → hücre döngüsü kontrolsüzlüğü. MRI'da servikal stroma (fibröz doku → T2 hipointens) tümör tarafından bozulur (T2 ara-yüksek sinyal). Parametriyal yağ invazyonu evre IIB → cerrahi kontraendike.",
+        mechanismEn: "HPV 16/18 infection → squamous cell dysplasia in the cervical transformation zone (CIN 1→2→3) → invasive squamous cell carcinoma. HPV oncoproteins (E6: TP53 inhibition, E7: Rb inhibition) → loss of cell cycle control. On MRI, cervical stroma (fibrous tissue → T2 hypointense) is disrupted by tumor (T2 intermediate-high signal). Parametrial fat invasion = Stage IIB → surgery contraindicated.",
         references: [
             "FIGO Committee on Gynecologic Oncology. Revised FIGO staging for carcinoma of the cervix uteri. International Journal of Gynecology & Obstetrics. 2019;145(1):129-135.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -325,6 +385,7 @@ export const gynecologyPathologies: Pathology[] = [
             }
         },
         etiology: "BRCA1/2 mutasyonu (herediter), endometriozis, nulliparite, obezite. Koruyucu: OKS kullanımı, emzirme, tüp ligasyonu.",
+        etiologyEn: "BRCA1/2 mutation (hereditary), endometriosis, nulliparity, obesity. Protective: OCP use, breastfeeding, tubal ligation.",
         differentialDiagnosis: [
             "Borderline Over Tümörü (Papiller projeksiyonlar var ama invazyon yok, genç yaş)",
             "Tubo-Ovarian Apse (Ateş, lökositoz, rim kontrastlanma, peritoneal implant yok)",
@@ -332,9 +393,19 @@ export const gynecologyPathologies: Pathology[] = [
             "Metastatik Over Tümörü / Krukenberg (Bilateral, solid baskın, primer GİS araştır)",
             "Pedünküle Miyom (Uterin kökenli, over ayrı görülebilir, bridging vessel sign)"
         ],
+        differentialDiagnosisEn: [
+            "Borderline Ovarian Tumor (Papillary projections present but no invasion, young age)",
+            "Tubo-Ovarian Abscess (Fever, leukocytosis, rim enhancement, no peritoneal implants)",
+            "Endometrioma (T1 bright, T2 shading, no solid component — suspect malignancy if mural nodule)",
+            "Metastatic Ovarian Tumor / Krukenberg (Bilateral, solid dominant, investigate primary GI source)",
+            "Pedunculated Fibroid (Uterine origin, ovary may be seen separately, bridging vessel sign)"
+        ],
         goldStandard: "BT: Evreleme ve peritoneal yayılım değerlendirmesi için altın standart. MRI: Lokal karakterizasyon ve belirsiz kitlelerde üstün.",
+        goldStandardEn: "CT: Gold standard for staging and peritoneal spread assessment. MRI: Superior for local characterization and indeterminate masses.",
         clinicalPearl: "Omental caking (kek görünümü) + asit + bilateral kompleks over kitlesi = ileri evre over karsinomu klasik triadı.",
+        clinicalPearlEn: "Omental caking + ascites + bilateral complex ovarian mass = classic triad of advanced stage ovarian carcinoma.",
         mechanism: "Yüzey epitel → malign transformasyon (seroz, müsinöz, endometrioid, berrak hücreli). En sık tip: Yüksek dereceli seroz karsinom (%70) — p53 mutasyonu, BRCA1/2 (herediter). Geç tanı: Pelvik periton → omentum → diyafragmatik periton yayılımı (FIGO III-IV). Asit oluşumu: Peritoneal tümör implantları → vasküler permeabilite artışı (VEGF).",
+        mechanismEn: "Surface epithelium → malignant transformation (serous, mucinous, endometrioid, clear cell). Most common type: High-grade serous carcinoma (70%) — p53 mutation, BRCA1/2 (hereditary). Late diagnosis: Pelvic peritoneum → omentum → diaphragmatic peritoneal spread (FIGO III-IV). Ascites formation: Peritoneal tumor implants → increased vascular permeability (VEGF).",
         references: [
             "O-RADS: ACR O-RADS MRI Risk Stratification System. American College of Radiology; 2020.",
             "FIGO Committee on Gynecologic Oncology. FIGO staging for ovarian, fallopian tube, and peritoneal cancer. International Journal of Gynecology & Obstetrics. 2014;124(1):1-5.",
@@ -385,6 +456,7 @@ export const gynecologyPathologies: Pathology[] = [
             }
         },
         etiology: "Tip I: Obezite, DM, HTN, PCOS, östrojen tedavisi, tamoksifen. Tip II: Atrofi zemininde, Lynch sendromu.",
+        etiologyEn: "Type I: Obesity, DM, HTN, PCOS, estrogen therapy, tamoxifen. Type II: On background of atrophy, Lynch syndrome.",
         differentialDiagnosis: [
             "Endometrial Polip (Benign, ince saplı, T2'de fibröz çekirdek hipointens, DWI kısıtlanması yok)",
             "Submüköz Miyom (T2 hipointens, endometrial kaviteye protrüzyon, miyometriumdan köken)",
@@ -392,9 +464,19 @@ export const gynecologyPathologies: Pathology[] = [
             "Servikal Karsinom (Serviksten köken alır, endometrial kavite normal olabilir)",
             "Hematokolpos/Hematometre (Sıvı koleksiyonu, solid komponent yok, kontrastlanma yok)"
         ],
+        differentialDiagnosisEn: [
+            "Endometrial Polyp (Benign, thin pedicle, hypointense fibrous core on T2, no DWI restriction)",
+            "Submucosal Fibroid (T2 hypointense, protrusion into endometrial cavity, originates from myometrium)",
+            "Endometrial Hyperplasia (Diffuse thickening, no focal mass, no significant DWI restriction)",
+            "Cervical Carcinoma (Originates from cervix, endometrial cavity may be normal)",
+            "Hematocolpos/Hematometra (Fluid collection, no solid component, no enhancement)"
+        ],
         goldStandard: "MRI: Dinamik kontrastlı T1 + DWI — miyometrial invazyon derinliği ve FIGO evrelemesi için altın standart.",
+        goldStandardEn: "MRI: Dynamic contrast-enhanced T1 + DWI — gold standard for myometrial invasion depth and FIGO staging.",
         clinicalPearl: "Postmenopozal kanama + endometrial kalınlık >4mm = biyopsi şart. MRI'da JZ bütünlüğü korunuyorsa invazyon yok (Evre IA).",
+        clinicalPearlEn: "Postmenopausal bleeding + endometrial thickness >4mm = biopsy mandatory. If JZ integrity is preserved on MRI, no invasion (Stage IA).",
         mechanism: "Östrojen maruziyeti → endometrial hiperplazi → atipik hiperplazi → tip I (endometrioid, %80, iyi prognoz). Tip II: Seröz veya berrak hücreli (hormonal bağımsız, kötü prognoz). MRI'da tümör T2 orta-yüksek sinyal (yüksek hücrelük, geniş intersellüler su); normal endometrium daha hiperintens; junctional zone hipointens bariyer — tümör bu bariyer geçerse miyometrium invazyonu.",
+        mechanismEn: "Estrogen exposure → endometrial hyperplasia → atypical hyperplasia → type I (endometrioid, 80%, good prognosis). Type II: Serous or clear cell (hormone-independent, poor prognosis). On MRI, tumor shows T2 intermediate-high signal (high cellularity, wide intercellular water); normal endometrium is more hyperintense; junctional zone is hypointense barrier — if tumor breaches this barrier, myometrial invasion.",
         references: [
             "FIGO Committee on Gynecologic Oncology. Revised FIGO staging for endometrial cancer. International Journal of Gynecology & Obstetrics. 2009;105(2):103-104.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -451,6 +533,7 @@ export const gynecologyPathologies: Pathology[] = [
             }
         },
         etiology: "Önceki PID/salpenjit, tüp cerrahisi, ektopik gebelik öyküsü, OİU, sigaracılık, IVF.",
+        etiologyEn: "Previous PID/salpingitis, tubal surgery, history of ectopic pregnancy, IUD, smoking, IVF.",
         differentialDiagnosis: [
             "Korpus Luteum Kisti (βhCG negatif veya düşük, ring of fire pozitif olabilir, IUP eşlik edebilir)",
             "Over Torsiyonu (Büyümüş ödemli over, βhCG negatif, whirlpool sign)",
@@ -458,9 +541,19 @@ export const gynecologyPathologies: Pathology[] = [
             "Apandisit (Sağ alt kadran, βhCG negatif, USG'de appendiks duvar kalınlaşması)",
             "Heterotopik Gebelik (IVF sonrası, IUP mevcut + eşzamanlı ektopik — nadir ama önemli)"
         ],
+        differentialDiagnosisEn: [
+            "Corpus Luteum Cyst (βhCG negative or low, ring of fire may be positive, IUP may coexist)",
+            "Ovarian Torsion (Enlarged edematous ovary, βhCG negative, whirlpool sign)",
+            "Ruptured Hemorrhagic Cyst (Acute pain + free fluid, βhCG negative)",
+            "Appendicitis (Right lower quadrant, βhCG negative, appendiceal wall thickening on USG)",
+            "Heterotopic Pregnancy (Post-IVF, IUP present + concurrent ectopic — rare but important)"
+        ],
         goldStandard: "Transvajinal USG + serum βhCG: Boş uterus + βhCG >1500-2000 mIU/mL = ektopik gebelik tanısı için altın standart kombinasyon.",
+        goldStandardEn: "Transvaginal USG + serum βhCG: Empty uterus + βhCG >1500-2000 mIU/mL = gold standard combination for ectopic pregnancy diagnosis.",
         clinicalPearl: "βhCG >1500-2000 mIU/mL olmasına rağmen intrauterin gebelik görülmüyorsa ektopik gebelik suçlu bulunana kadar masumiyetini kanıtlamalıdır.",
+        clinicalPearlEn: "If βhCG >1500-2000 mIU/mL yet no intrauterine pregnancy is seen, ectopic pregnancy is guilty until proven innocent.",
         mechanism: "Fallop tübüne implante olan embriyo → tüp büyümesi → distansiyon → rüptür (6-8. haftalar). En sık bölge: İstmus-ampulla bileşkesi. Ring of fire işareti: Trofoblastik doku periferal vaskülarite oluşturur. Salpenjit, tüp cerrahisi, OİU geçmişi risk faktörü. İntrauterin IUD varlığına rağmen tüp gebeliği olabilir (IUD uterusu korur, tübü değil).",
+        mechanismEn: "Embryo implanting in the fallopian tube → tubal growth → distension → rupture (weeks 6-8). Most common site: Isthmic-ampullary junction. Ring of fire sign: Trophoblastic tissue creates peripheral vascularity. Salpingitis, tubal surgery, IUD history are risk factors. Tubal pregnancy can occur despite intrauterine IUD presence (IUD protects the uterus, not the tube).",
         references: [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: First Trimester Bleeding. American College of Radiology.",
@@ -518,6 +611,7 @@ export const gynecologyPathologies: Pathology[] = [
             }
         },
         etiology: "Cinsel yolla bulaşan enfeksiyon (Gonore, Klamidya), IUD, jinekolojik işlem sonrası, Crohn hastalığı.",
+        etiologyEn: "Sexually transmitted infection (Gonorrhea, Chlamydia), IUD, post-gynecologic procedure, Crohn's disease.",
         differentialDiagnosis: [
             "Over Karsinomu (Solid kontrastlanan komponent, peritoneal implantlar, ateş/lökositoz yok)",
             "Endometrioma (T1 parlak, T2 shading, DWI kısıtlanması yok, klinik enfeksiyon bulgusu yok)",
@@ -525,9 +619,19 @@ export const gynecologyPathologies: Pathology[] = [
             "Apandisit / Periapandiküler Apse (Sağ alt kadran, appendiks kökenli, over normal)",
             "Pelvik Hematom (Cerrahi/travma öyküsü, kontrastlanma yok, ateş genellikle yok)"
         ],
+        differentialDiagnosisEn: [
+            "Ovarian Carcinoma (Enhancing solid component, peritoneal implants, no fever/leukocytosis)",
+            "Endometrioma (T1 bright, T2 shading, no DWI restriction, no clinical infection signs)",
+            "Ectopic Pregnancy (Positive βhCG, ring of fire, no fever, no pus content)",
+            "Appendicitis / Periappendiceal Abscess (Right lower quadrant, appendiceal origin, normal ovary)",
+            "Pelvic Hematoma (History of surgery/trauma, no enhancement, usually no fever)"
+        ],
         goldStandard: "Kontrastlı BT: Rim kontrastlanması + fat stranding + pelvik kompleks kitle — TOA tanısı ve komplikasyon değerlendirmesi için altın standart.",
+        goldStandardEn: "Contrast-enhanced CT: Rim enhancement + fat stranding + pelvic complex mass — gold standard for TOA diagnosis and complication assessment.",
         clinicalPearl: "Apse içinde hava görülmesi = anaerobik enfeksiyon düşün = acil drenaj gerekebilir. DWI kısıtlanması apse ile nekrotik tümörü ayırmada yardımcıdır.",
+        clinicalPearlEn: "Gas within abscess = consider anaerobic infection = emergent drainage may be needed. DWI restriction is helpful in differentiating abscess from necrotic tumor.",
         mechanism: "Pelvik inflamatuar hastalık (PID) → salpenjit → adneksiyal bölgede mikroorganizma toplanması → abse oluşumu. En sık etkenler: N. gonorrhoeae, C. trachomatis, anaeroblar. Apse içindeki pü: Ölü lökositler, bakteri, fibrin → DWI'da kısıtlanma. Rüptür → peritonit → acil cerrahi.",
+        mechanismEn: "Pelvic inflammatory disease (PID) → salpingitis → accumulation of microorganisms in the adnexal region → abscess formation. Most common agents: N. gonorrhoeae, C. trachomatis, anaerobes. Pus within abscess: Dead leukocytes, bacteria, fibrin → DWI restriction. Rupture → peritonitis → emergency surgery.",
         references: [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Acute Pelvic Pain in the Reproductive Age Group. American College of Radiology.",
@@ -577,6 +681,7 @@ export const gynecologyPathologies: Pathology[] = [
             }
         },
         etiology: "Genetik yatkınlık (ailesel) + Metabolik faktörler (obezite, insülin direnci). İnsülin duyarlaştırıcı tedavi (metformin) etkili.",
+        etiologyEn: "Genetic predisposition (familial) + Metabolic factors (obesity, insulin resistance). Insulin-sensitizing therapy (metformin) is effective.",
         differentialDiagnosis: [
             "Multifoliküler Overler (Foliküller periferal değil dağınık, stroma normal, over hacmi normal)",
             "Over Hiperstimülasyonu (İatrojenik, gonadotropin tedavisi sonrası, masif over büyümesi + asit)",
@@ -584,9 +689,19 @@ export const gynecologyPathologies: Pathology[] = [
             "Cushing Sendromu (Santral obezite, striae, kortizol yüksek, overlerde sekonder değişiklik)",
             "Androjen Salgılayan Tümör (Tek taraflı over kitlesi, çok yüksek testosteron, hızlı virilizasyon)"
         ],
+        differentialDiagnosisEn: [
+            "Multifollicular Ovaries (Follicles scattered not peripheral, normal stroma, normal ovarian volume)",
+            "Ovarian Hyperstimulation (Iatrogenic, post-gonadotropin therapy, massive ovarian enlargement + ascites)",
+            "Congenital Adrenal Hyperplasia (Androgen elevated but adrenal origin, 17-OH progesterone elevated)",
+            "Cushing Syndrome (Central obesity, striae, elevated cortisol, secondary ovarian changes)",
+            "Androgen-Secreting Tumor (Unilateral ovarian mass, very high testosterone, rapid virilization)"
+        ],
         goldStandard: "Transvajinal USG: Over hacmi >10mL + ≥20 folikül (2-9mm)/over — Rotterdam morfolojik kriter. Klinik ve hormonal verilerle birleştirilmeli.",
+        goldStandardEn: "Transvaginal USG: Ovarian volume >10mL + ≥20 follicles (2-9mm)/ovary — Rotterdam morphologic criterion. Must be combined with clinical and hormonal data.",
         clinicalPearl: "PCOS tanısı sadece görüntüleme ile konmaz — Rotterdam kriterlerinden en az 2'si (oligo/anovülasyon, hiperandrojenizm, PCO morfolojisi) gereklidir.",
+        clinicalPearlEn: "PCOS diagnosis cannot be made by imaging alone — at least 2 of the Rotterdam criteria (oligo/anovulation, hyperandrogenism, PCO morphology) are required.",
         mechanism: "İnsülin direnci → Hiperinsulinemi → Over teka hücrelerinde androjen üretimi artışı (LH artışı) → FSH/LH oranı bozulur → folikül matürasyonu duraklar (anovülasyon) → foliküller küçük kalır ve birikir (PCO morfolojisi). LH pulsatilitesi artışı da katkıda bulunur. Sonuç: Kronik anovülasyon + hiperandrojenizm + infertilite döngüsü.",
+        mechanismEn: "Insulin resistance → Hyperinsulinemia → Increased androgen production in ovarian theca cells (LH elevation) → FSH/LH ratio disrupted → follicle maturation arrested (anovulation) → follicles remain small and accumulate (PCO morphology). Increased LH pulsatility also contributes. Result: Chronic anovulation + hyperandrogenism + infertility cycle.",
         references: [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Radiopaedia.org - Gynecological imaging",
@@ -634,7 +749,9 @@ export const gynecologyPathologies: Pathology[] = [
             "Can be bilateral (10-15%)"
         ],
         etiology: "Ovarian yüzey epiteli (seröz tip) kaynaklı benign neoplazm. Müllerian diferansiyasyon gösterir.",
+        etiologyEn: "Benign neoplasm arising from ovarian surface epithelium (serous type). Shows Müllerian differentiation.",
         mechanism: "Over yüzey epitelinden veya kortikal inklüzyon kistlerinden köken alır → Seröz sıvı salgılayan tek katlı kuboid/kolumnar epitel ile döşeli kist oluşumu → Genellikle yavaş büyüme.",
+        mechanismEn: "Originates from ovarian surface epithelium or cortical inclusion cysts → Cyst formation lined by single-layer cuboidal/columnar epithelium secreting serous fluid → Generally slow growth.",
         differentialDiagnosis: [
             "Fonksiyonel Over Kisti (Genellikle <5cm, 6-8 haftada regrese olur)",
             "Müsinöz Kistadenom (Multiloküler, daha büyük, heterojen iç eko)",
@@ -642,8 +759,17 @@ export const gynecologyPathologies: Pathology[] = [
             "Paraovarian Kist (Overden ayrı lokalizasyon, broad ligament)",
             "Seröz Kistadenokarsinom (Kalın septalar, solid komponent, papiller projeksiyon, asit)"
         ],
+        differentialDiagnosisEn: [
+            "Functional Ovarian Cyst (Generally <5cm, regresses in 6-8 weeks)",
+            "Mucinous Cystadenoma (Multilocular, larger, heterogeneous internal echo)",
+            "Hydrosalpinx (Tubular shape, incomplete septum, waist sign)",
+            "Paraovarian Cyst (Location separate from ovary, broad ligament)",
+            "Serous Cystadenocarcinoma (Thick septa, solid component, papillary projections, ascites)"
+        ],
         goldStandard: "Histopatolojik inceleme — Seröz sıvı içeren, tek katlı benign seröz epitel ile döşeli kist.",
+        goldStandardEn: "Histopathologic examination — Cyst lined by single-layer benign serous epithelium containing serous fluid.",
         clinicalPearl: "O-RADS US 2 (basit kist >10cm) veya O-RADS 3 (ince septasyonlu) sınıflamasına girer. Basit, anekoik, ince duvarlı kistler neredeyse her zaman benigndir.",
+        clinicalPearlEn: "Falls under O-RADS US 2 (simple cyst >10cm) or O-RADS 3 (thin septations) classification. Simple, anechoic, thin-walled cysts are almost always benign.",
         references: [
             "Defined Ultrasound Protocols. ACR Practice Parameters; 2023.",
             "Radiopaedia.org - Serous cystadenoma of the ovary",
@@ -689,7 +815,9 @@ export const gynecologyPathologies: Pathology[] = [
             "Risk of pseudomyxoma peritonei if ruptured"
         ],
         etiology: "Over yüzey epitelinden (müsinöz tip) kaynaklı benign neoplazm. GI-tip ve endoservikal tip alt grupları vardır.",
+        etiologyEn: "Benign neoplasm arising from ovarian surface epithelium (mucinous type). GI-type and endocervical-type subtypes exist.",
         mechanism: "Over epitelinden müsin salgılayan kolumnar hücrelerin proliferasyonu → Multiloküler kistik yapı → Her lokül farklı konsantrasyonda müsin içerir → Görüntülemede heterojen sinyal/eko.",
+        mechanismEn: "Proliferation of mucin-secreting columnar cells from ovarian epithelium → Multilocular cystic structure → Each locule contains mucin of different concentration → Heterogeneous signal/echo on imaging.",
         differentialDiagnosis: [
             "Seröz Kistadenom (Uniloküler, homojen sıvı, daha küçük)",
             "Matür Kistik Teratom (Yağ-sıvı seviyesi, kalsifikasyon, Rokitansky nodülü)",
@@ -697,8 +825,17 @@ export const gynecologyPathologies: Pathology[] = [
             "Endometrioma (Homojen 'ground glass', T1 hiperintens)",
             "Apendiks Müsosel (Sağ alt kadran, tübüler yapı, appendiks ile ilişkili)"
         ],
+        differentialDiagnosisEn: [
+            "Serous Cystadenoma (Unilocular, homogeneous fluid, smaller)",
+            "Mature Cystic Teratoma (Fat-fluid level, calcification, Rokitansky nodule)",
+            "Mucinous Cystadenocarcinoma (Thick irregular septa, solid component, ascites)",
+            "Endometrioma (Homogeneous 'ground glass', T1 hyperintense)",
+            "Appendiceal Mucocele (Right lower quadrant, tubular structure, associated with appendix)"
+        ],
         goldStandard: "Histopatoloji — Müsin salgılayan tek katlı kolumnar epitel ile döşeli multiloküler kist, stromal invazyon yok.",
+        goldStandardEn: "Histopathology — Multilocular cyst lined by single-layer mucin-secreting columnar epithelium, no stromal invasion.",
         clinicalPearl: "Müsinöz over tümörü saptandığında appendiks mutlaka değerlendirilmelidir — primer appendiks müsinöz neoplazmı over metastazı yapabilir (Pseudomyxoma peritonei kaynağı).",
+        clinicalPearlEn: "When a mucinous ovarian tumor is identified, the appendix must be evaluated — primary appendiceal mucinous neoplasm can metastasize to the ovary (source of pseudomyxoma peritonei).",
         references: [
             "Defined Ultrasound Protocols. ACR Practice Parameters; 2023.",
             "Radiopaedia.org - Mucinous cystadenoma of the ovary",
@@ -746,7 +883,9 @@ export const gynecologyPathologies: Pathology[] = [
             "Benign — malignant transformation very rare"
         ],
         etiology: "Over stromasından (fibroblastlar/kollajen) kaynaklı benign tümör. Sex-cord stromal tümör grubunda.",
+        etiologyEn: "Benign tumor arising from ovarian stroma (fibroblasts/collagen). In the sex-cord stromal tumor group.",
         mechanism: "Over stromal fibroblastlarının proliferasyonu → Yoğun kollajen biriktiren solid kitle → T2 hipointensite → Peritoneal irritasyon/lenfatik drenaj bozukluğu → Asit → Diyafragma aracılığıyla plevral efüzyon (Meigs sendromu).",
+        mechanismEn: "Proliferation of ovarian stromal fibroblasts → Solid mass accumulating dense collagen → T2 hypointensity → Peritoneal irritation/lymphatic drainage dysfunction → Ascites → Pleural effusion via diaphragm (Meigs syndrome).",
         differentialDiagnosis: [
             "Brenner Tümörü (Solid, kalsifikasyon, benzer T2 hipointensite)",
             "Pedünküllü Uterin Leiomyom (Uterus ile bağlantı, T2 hipointens)",
@@ -754,8 +893,17 @@ export const gynecologyPathologies: Pathology[] = [
             "Over Metastazı (Bilateral, irregüler, asit)",
             "Tekoma (Lipid içerir, T1'de hafif hiperintens olabilir)"
         ],
+        differentialDiagnosisEn: [
+            "Brenner Tumor (Solid, calcification, similar T2 hypointensity)",
+            "Pedunculated Uterine Leiomyoma (Connection to uterus, T2 hypointense)",
+            "Granulosa Cell Tumor (Solid-cystic, heterogeneous on T2, produces estrogen)",
+            "Ovarian Metastasis (Bilateral, irregular, ascites)",
+            "Thecoma (Contains lipid, may be mildly hyperintense on T1)"
+        ],
         goldStandard: "Histopatoloji — Kollajen üreten iğsi hücreler (fibroblastlar), storiform patern, mitotik aktivite düşük.",
+        goldStandardEn: "Histopathology — Collagen-producing spindle cells (fibroblasts), storiform pattern, low mitotic activity.",
         clinicalPearl: "MR'da T2 hipointens solid over kitlesi + asit + plevral efüzyon üçlüsü görüldüğünde Meigs sendromu (over fibromu) akla gelmelidir. Asit ve efüzyon cerrahiden sonra rezolüsyon gösterir.",
+        clinicalPearlEn: "When T2 hypointense solid ovarian mass + ascites + pleural effusion triad is seen on MRI, Meigs syndrome (ovarian fibroma) should be considered. Ascites and effusion resolve after surgery.",
         references: [
             "Defined Ultrasound Protocols. ACR Practice Parameters; 2023.",
             "Radiopaedia.org - Ovarian fibroma",
@@ -801,15 +949,25 @@ export const gynecologyPathologies: Pathology[] = [
             "Benign (95%+), malignant/borderline variant rare"
         ],
         etiology: "Over yüzey epitelinden kaynaklı transisyonel (ürotelyal) tipte epitelyal tümör. Walthard hücre artıklarından geliştiği düşünülür.",
+        etiologyEn: "Transitional (urothelial) type epithelial tumor arising from ovarian surface epithelium. Thought to develop from Walthard cell rests.",
         mechanism: "Over yüzey epitelinden transisyonel hücre nesleri → Yoğun fibröz stroma içinde transisyonel epitel adaları (Walthard cell nests) → Distrofik kalsifikasyon → Solid, kalsifiye kitle.",
+        mechanismEn: "Transitional cell nests from ovarian surface epithelium → Transitional epithelial islands within dense fibrous stroma (Walthard cell nests) → Dystrophic calcification → Solid, calcified mass.",
         differentialDiagnosis: [
             "Over Fibromu (Kalsifikasyon daha az, T2 hipointens benzer)",
             "Kalsifiye Fibroma (Benzer görünüm, histoloji ayırıcı)",
             "Matür Teratom (Yağ, kıl, diş — heterojen, kalsifikasyon farklı patern)",
             "Pedünküllü Kalsifiye Leiomyom (Uterin kökenli, geniş ligament bağlantısı)"
         ],
+        differentialDiagnosisEn: [
+            "Ovarian Fibroma (Less calcification, similar T2 hypointensity)",
+            "Calcified Fibroma (Similar appearance, histology is differentiating)",
+            "Mature Teratoma (Fat, hair, teeth — heterogeneous, different calcification pattern)",
+            "Pedunculated Calcified Leiomyoma (Uterine origin, broad ligament connection)"
+        ],
         goldStandard: "Histopatoloji — Fibröz stroma içinde transisyonel epitel adaları ('coffee bean' nükleus), Walthard hücre nesleri.",
+        goldStandardEn: "Histopathology — Transitional epithelial islands within fibrous stroma ('coffee bean' nucleus), Walthard cell nests.",
         clinicalPearl: "Kalsifiye solid over kitlesi + eşlik eden müsinöz kistik lezyon görüldüğünde Brenner tümörü akla gelmelidir. Genellikle insidental saptanır.",
+        clinicalPearlEn: "When a calcified solid ovarian mass + accompanying mucinous cystic lesion is seen, Brenner tumor should be considered. Usually an incidental finding.",
         references: [
             "WHO Classification of Tumours: Female Genital Tumours. 5th ed. IARC; 2020.",
             "Radiopaedia.org - Brenner tumor",
@@ -857,7 +1015,9 @@ export const gynecologyPathologies: Pathology[] = [
             "Differentiation from pyosalpinx important (clinical + DWI)"
         ],
         etiology: "PID (en sık), endometriozis, cerrahi sonrası yapışıklıklar, tübal ligasyon sonrası. Distal tüp obstrüksiyonu sonucu sıvı birikimi.",
+        etiologyEn: "PID (most common), endometriosis, post-surgical adhesions, post-tubal ligation. Fluid accumulation due to distal tubal obstruction.",
         mechanism: "Enfeksiyon/inflamasyon → Distal tuba uterina (fimbrial uç) obstrüksiyonu → Tüp lümeninde seröz sıvı birikimi → Tüp dilatasyonu → Kronik hidrosalpinks → Mukozal hasar → İnfertilite.",
+        mechanismEn: "Infection/inflammation → Distal fallopian tube (fimbrial end) obstruction → Serous fluid accumulation in tubal lumen → Tubal dilatation → Chronic hydrosalpinx → Mucosal damage → Infertility.",
         differentialDiagnosis: [
             "Paraovarian Kist (Yuvarlak, tübüler değil, septum yok)",
             "Peritoneal İnklüzyon Kisti (Overi sarar, kompartmanlı sıvı)",
@@ -865,8 +1025,17 @@ export const gynecologyPathologies: Pathology[] = [
             "İntestinal Loop (Peristaltizm, mukozal katlantılar farklı)",
             "Apendiks Müsosel (Sağ alt kadran, kör uçlu, appendiks ile bağlantılı)"
         ],
+        differentialDiagnosisEn: [
+            "Paraovarian Cyst (Round, not tubular, no septum)",
+            "Peritoneal Inclusion Cyst (Surrounds ovary, compartmentalized fluid)",
+            "Pyosalpinx (Thick wall, internal debris, DWI positive, fever)",
+            "Intestinal Loop (Peristalsis, different mucosal fold pattern)",
+            "Appendiceal Mucocele (Right lower quadrant, blind-ended, associated with appendix)"
+        ],
         goldStandard: "HSG (Histerosalpingografi) — Distal tüp obstrüksiyonu ve tüp dilatasyonunu gösterir. USG ve MR tanıyı destekler.",
+        goldStandardEn: "HSG (Hysterosalpingography) — Demonstrates distal tubal obstruction and tubal dilatation. USG and MRI support the diagnosis.",
         clinicalPearl: "İnfertilite değerlendirmesinde adneksiyal tübüler yapı saptandığında hidrosalpinks düşünülmelidir. IVF öncesi hidrosalpinks tedavisi (salpinjektomi) implantasyon oranlarını artırır.",
+        clinicalPearlEn: "When an adnexal tubular structure is identified during infertility evaluation, hydrosalpinx should be considered. Treatment of hydrosalpinx before IVF (salpingectomy) improves implantation rates.",
         references: [
             "Defined Ultrasound Protocols. ACR Practice Parameters; 2023.",
             "Radiopaedia.org - Hydrosalpinx",
@@ -912,7 +1081,9 @@ export const gynecologyPathologies: Pathology[] = [
             "Abnormal uterine bleeding most common symptom"
         ],
         etiology: "Endometrial gland ve stromanın fokal aşırı büyümesi. Östrojen bağımlı. Tamoxifen kullanımı risk artırır.",
+        etiologyEn: "Focal overgrowth of endometrial glands and stroma. Estrogen-dependent. Tamoxifen use increases risk.",
         mechanism: "Östrojen stimülasyonu → Endometrial gland ve stromanın lokal hiperplazisi → Pediküllü veya sesil polipoid kitle oluşumu → İntrakaviter büyüme → Kanama (yüzeyel vasküler yapıların mekanik irritasyonu).",
+        mechanismEn: "Estrogen stimulation → Local hyperplasia of endometrial glands and stroma → Pedunculated or sessile polypoid mass formation → Intracavitary growth → Bleeding (mechanical irritation of superficial vascular structures).",
         differentialDiagnosis: [
             "Endometrial Hiperplazi (Diffüz kalınlaşma, fokal değil)",
             "Submuköz Leiomyom (Hipoekoik, endometriumdan farklı eko, feeding vessel farklı patern)",
@@ -920,8 +1091,17 @@ export const gynecologyPathologies: Pathology[] = [
             "Kan Pıhtısı (Doppler'de vaskülarite yok, kontrol USG'de kaybolur)",
             "Endometrial Adhesyon (Asherman) (Endometrial kavite obliterasyonu, SIS'te sıvı geçişi engeli)"
         ],
+        differentialDiagnosisEn: [
+            "Endometrial Hyperplasia (Diffuse thickening, not focal)",
+            "Submucosal Leiomyoma (Hypoechoic, different echo from endometrium, different feeding vessel pattern)",
+            "Endometrial Carcinoma (Irregular contour, myometrial invasion, heterogeneous)",
+            "Blood Clot (No vascularity on Doppler, disappears on follow-up USG)",
+            "Endometrial Adhesion (Asherman) (Endometrial cavity obliteration, fluid passage obstruction on SIS)"
+        ],
         goldStandard: "Histeroskopi + Biyopsi — Polip direkt vizüalizasyonu ve patolojik inceleme. SIS en iyi noninvaziv görüntüleme.",
+        goldStandardEn: "Hysteroscopy + Biopsy — Direct polyp visualization and pathologic examination. SIS is the best noninvasive imaging.",
         clinicalPearl: "Postmenopozal kanamada endometrial polip saptandığında biyopsi şarttır — %1-3 malign transformasyon riski vardır. Tamoxifen kullanan hastalarda polip prevalansı %30-60'a yükselir.",
+        clinicalPearlEn: "Biopsy is mandatory when an endometrial polyp is detected in postmenopausal bleeding — 1-3% malignant transformation risk exists. Polyp prevalence rises to 30-60% in patients using tamoxifen.",
         references: [
             "Defined Ultrasound Protocols. ACR Practice Parameters; 2023.",
             "Radiopaedia.org - Endometrial polyp",
@@ -967,7 +1147,9 @@ export const gynecologyPathologies: Pathology[] = [
             "Post-evacuation β-hCG follow-up mandatory (choriocarcinoma risk)"
         ],
         etiology: "Komplet mol: 46,XX (paternal dizomi — tüm kromozomlar babadan). Parsiyel mol: 69,XXY (triploid — ek paternal haploid set). Anormal fertilizasyon sonucu.",
+        etiologyEn: "Complete mole: 46,XX (paternal disomy — all chromosomes from father). Partial mole: 69,XXY (triploid — extra paternal haploid set). Result of abnormal fertilization.",
         mechanism: "Anormal konsepsiyon → Trofoblast hiperplazisi + vilöz ödem (hidropik şişme) → β-hCG aşırı üretimi → Uterus kavitesinde kistik vilöz doku birikimi → 'Üzüm salkımı'. Yüksek hCG → Over hiperstimülasyonu → Tekoluteın kistleri.",
+        mechanismEn: "Abnormal conception → Trophoblast hyperplasia + villous edema (hydropic swelling) → Excessive β-hCG production → Cystic villous tissue accumulation in uterine cavity → 'Cluster of grapes'. High hCG → Ovarian hyperstimulation → Theca-lutein cysts.",
         differentialDiagnosis: [
             "Missed Abortus (β-hCG düşük, fetal yapılar mevcut, kistik değişiklik daha az)",
             "İnkomplet Abortus (Heterojen intrakaviter materyal, klinik uyumlu)",
@@ -975,8 +1157,17 @@ export const gynecologyPathologies: Pathology[] = [
             "Dejenere Myom (Kistik alanlar ama intramural, β-hCG normal)",
             "Plasental Mezenkimal Displazi (Plasentada kistik alanlar, normal karyotip, fetus normal)"
         ],
+        differentialDiagnosisEn: [
+            "Missed Abortion (Low β-hCG, fetal structures present, less cystic change)",
+            "Incomplete Abortion (Heterogeneous intracavitary material, clinically compatible)",
+            "Choriocarcinoma (Post-molar, myometrial invasion, metastasis, persistently elevated β-hCG)",
+            "Degenerated Fibroid (Cystic areas but intramural, normal β-hCG)",
+            "Placental Mesenchymal Dysplasia (Cystic areas in placenta, normal karyotype, normal fetus)"
+        ],
         goldStandard: "Histopatoloji (küretaj materyali) — Vilöz hidropik şişme, trofoblast hiperplazisi. Komplet: p57 negatif. Parsiyel: p57 pozitif.",
+        goldStandardEn: "Histopathology (curettage material) — Villous hydropic swelling, trophoblast hyperplasia. Complete: p57 negative. Partial: p57 positive.",
         clinicalPearl: "Birinci trimesterde uterusta 'kar fırtınası' görünümü + aşırı yüksek β-hCG + bilateral over kistleri üçlüsü mol hidatidiform için klasik triaddır. Evakuasyon sonrası β-hCG 0'a düşene kadar haftalık takip gerekir.",
+        clinicalPearlEn: "First trimester 'snowstorm' appearance in uterus + extremely high β-hCG + bilateral ovarian cysts triad is classic for hydatidiform mole. Weekly follow-up required until β-hCG drops to 0 after evacuation.",
         references: [
             "Defined Ultrasound Protocols. ACR Practice Parameters; 2023.",
             "Radiopaedia.org - Hydatidiform mole",
@@ -1022,15 +1213,25 @@ export const gynecologyPathologies: Pathology[] = [
             "Early diagnosis life-saving — high rupture risk"
         ],
         etiology: "Önceki sezaryen insizyonu skar dokusuna blastosist implantasyonu. Sezaryen sayısı arttıkça risk artar.",
+        etiologyEn: "Blastocyst implantation into the scar tissue of a previous cesarean incision. Risk increases with number of cesarean sections.",
         mechanism: "Sezaryen skarında myometrial defekt (niş) → Blastosist skar dokusuna implante olur → Trofoblast invazyonu desidua yerine skar dokusuna → İnce myometrium → Vasküler invazyon riski → Kontrolsüz büyüme → Uterin rüptür ve masif kanama riski.",
+        mechanismEn: "Myometrial defect (niche) at the cesarean scar → Blastocyst implants into scar tissue → Trophoblast invasion into scar tissue instead of decidua → Thin myometrium → Risk of vascular invasion → Uncontrolled growth → Risk of uterine rupture and massive hemorrhage.",
         differentialDiagnosis: [
             "Servikal Ektopik Gebelik (Kese servikste, skar bölgesinden daha aşağıda)",
             "Servikoisthmik Gebelik (Geçiş bölgesi, normal myometrium kalınlığı)",
             "İnkomplet Abortus (Retansiyon materyali, β-hCG düşüyor)",
             "Normal İntrauterin Gebelik (Kese fundus/korpusta, skar bölgesinde değil)"
         ],
+        differentialDiagnosisEn: [
+            "Cervical Ectopic Pregnancy (Sac in cervix, lower than scar site)",
+            "Cervicoisthmic Pregnancy (Transition zone, normal myometrial thickness)",
+            "Incomplete Abortion (Retained products, β-hCG decreasing)",
+            "Normal Intrauterine Pregnancy (Sac in fundus/corpus, not at scar site)"
+        ],
         goldStandard: "Transvajinal USG — Skar nişinde gestasyonel kese, boş uterin kavite, ince anterior myometrium (<5mm). Doppler ile periferik hipervaskülarite.",
+        goldStandardEn: "Transvaginal USG — Gestational sac in scar niche, empty uterine cavity, thin anterior myometrium (<5mm). Peripheral hypervascularity on Doppler.",
         clinicalPearl: "Sezaryen öyküsü olan hastada birinci trimesterde alt segment anterior duvarda gestasyonel kese saptandığında sezaryen skar ektopik gebelik mutlaka ekarte edilmelidir. İsthmik-servikal bölge dışında kese internal os üzerinde ise normal gebelik olabilir.",
+        clinicalPearlEn: "When a gestational sac is identified at the lower segment anterior wall in the first trimester in a patient with cesarean history, cesarean scar ectopic pregnancy must be excluded. If the sac is above the internal os outside the isthmic-cervical region, it may be a normal pregnancy.",
         references: [
             "Defined Ultrasound Protocols. ACR Practice Parameters; 2023.",
             "Radiopaedia.org - Caesarean section scar ectopic pregnancy",
@@ -1074,15 +1275,25 @@ export const gynecologyPathologies: Pathology[] = [
             "'Spoke wheel' ovarian appearance typical"
         ],
         etiology: "İatrojenik — IVF/ART tedavisi sırasında gonadotropin stimülasyonu sonrası hCG tetikleyicisi. Risk faktörleri: Genç yaş, düşük BMI, PCOS, yüksek folikül sayısı.",
+        etiologyEn: "Iatrogenic — hCG trigger following gonadotropin stimulation during IVF/ART treatment. Risk factors: Young age, low BMI, PCOS, high follicle count.",
         mechanism: "Eksojen gonadotropin + hCG → Over foliküllerinde aşırı stimülasyon → VEGF ve diğer vazoaktif maddelerin salınımı → Kapiller permeabilite artışı → İntravasküler sıvının üçüncü boşluğa kaçışı (asit, plevral efüzyon) → Hemokonsentrasyon → Tromboembolizm riski.",
+        mechanismEn: "Exogenous gonadotropin + hCG → Excessive stimulation of ovarian follicles → Release of VEGF and other vasoactive substances → Increased capillary permeability → Third-space fluid shift (ascites, pleural effusion) → Hemoconcentration → Thromboembolism risk.",
         differentialDiagnosis: [
             "PCOS (Foliküller küçük 2-9mm, asit yok, iatrojenik stimülasyon yok)",
             "Bilateral Over Kistleri (Stimülasyon öyküsü yok, asit yok)",
             "Over Torsiyonu (Unilateral ağrı, Doppler'de akım kaybı, tek taraflı)",
             "Bilateral Over Metastazı (Solid komponent, irregüler, asit olabilir)"
         ],
+        differentialDiagnosisEn: [
+            "PCOS (Small follicles 2-9mm, no ascites, no iatrogenic stimulation)",
+            "Bilateral Ovarian Cysts (No stimulation history, no ascites)",
+            "Ovarian Torsion (Unilateral pain, loss of flow on Doppler, unilateral)",
+            "Bilateral Ovarian Metastasis (Solid component, irregular, ascites may be present)"
+        ],
         goldStandard: "Klinik tanı — IVF/ART öyküsü + bilateral over büyümesi + asit + hemokonsentrasyon. USG tanıyı destekler ve ciddiyeti değerlendirir.",
+        goldStandardEn: "Clinical diagnosis — IVF/ART history + bilateral ovarian enlargement + ascites + hemoconcentration. USG supports diagnosis and assesses severity.",
         clinicalPearl: "OHSS self-limitingdir ancak ciddi olgularda tromboembolizm ve renal yetmezlik ölümcül olabilir. Over torsiyonu riski artar (büyük, ağır overler). IVF hastaında bilateral büyük overler + asit = OHSS tanısı koydurur.",
+        clinicalPearlEn: "OHSS is self-limiting but in severe cases thromboembolism and renal failure can be fatal. Ovarian torsion risk increases (large, heavy ovaries). Bilateral enlarged ovaries + ascites in an IVF patient = confirms OHSS diagnosis.",
         references: [
             "Defined Ultrasound Protocols. ACR Practice Parameters; 2023.",
             "Radiopaedia.org - Ovarian hyperstimulation syndrome",
@@ -1128,15 +1339,25 @@ export const gynecologyPathologies: Pathology[] = [
             "Associated with estrogen excess"
         ],
         etiology: "Karşılanmamış östrojen etkisi — Anovülasyon, HRT (sadece östrojen), obezite, PCOS, tamoxifen, östrojen üreten tümör.",
+        etiologyEn: "Unopposed estrogen effect — Anovulation, HRT (estrogen only), obesity, PCOS, tamoxifen, estrogen-producing tumor.",
         mechanism: "Kronik karşılanmamış östrojen → Endometrial gland ve stromanın diffüz proliferasyonu → Progesteron antagonizması olmadan sürekli büyüme → Basit → Kompleks → Atipik hiperplazi → Karsinom sekansı.",
+        mechanismEn: "Chronic unopposed estrogen → Diffuse proliferation of endometrial glands and stroma → Continuous growth without progesterone antagonism → Simple → Complex → Atypical hyperplasia → Carcinoma sequence.",
         differentialDiagnosis: [
             "Endometrial Karsinom (İrregüler kontur, myometrial invazyon, DWI pozitif, heterojen enhancement)",
             "Endometrial Polip (Fokal, pediküllü, feeding vessel)",
             "Submuköz Leiomyom (Hipoekoik, myometriumdan kökenli, endometriumu iter)",
             "Sekretuar Faz Endometriumu (Normal siklus, kalınlaşma fizyolojik, anamnez önemli)"
         ],
+        differentialDiagnosisEn: [
+            "Endometrial Carcinoma (Irregular contour, myometrial invasion, DWI positive, heterogeneous enhancement)",
+            "Endometrial Polyp (Focal, pedunculated, feeding vessel)",
+            "Submucosal Leiomyoma (Hypoechoic, originates from myometrium, displaces endometrium)",
+            "Secretory Phase Endometrium (Normal cycle, physiologic thickening, history important)"
+        ],
         goldStandard: "Endometrial biyopsi (Pipelle veya küretaj) — Histopatolojik değerlendirme: Atipili/atipsiz, basit/kompleks sınıflama.",
+        goldStandardEn: "Endometrial biopsy (Pipelle or curettage) — Histopathologic evaluation: With/without atypia, simple/complex classification.",
         clinicalPearl: "Postmenopozal kanamada endometrium >4-5mm ise biyopsi endikasyonu vardır. Atipik endometrial hiperplazinin %30-40'ında eşzamanlı karsinom saptanabilir — histerektomi düşünülmelidir.",
+        clinicalPearlEn: "If endometrium >4-5mm in postmenopausal bleeding, biopsy is indicated. Concurrent carcinoma can be detected in 30-40% of atypical endometrial hyperplasia — hysterectomy should be considered.",
         references: [
             "Defined Ultrasound Protocols. ACR Practice Parameters; 2023.",
             "Radiopaedia.org - Endometrial hyperplasia",
@@ -1186,15 +1407,25 @@ export const gynecologyPathologies: Pathology[] = [
             "Curettage contraindicated (risk of massive hemorrhage)"
         ],
         etiology: "Konjenital (nadir — gerçek AVM) veya edinsel (sık — önceki küretaj, sezaryen, uterus cerrahisi sonrası). Gestasyonel trofoblastik hastalık sonrası.",
+        etiologyEn: "Congenital (rare — true AVM) or acquired (common — post-curettage, cesarean section, uterine surgery). Post-gestational trophoblastic disease.",
         mechanism: "Konjenital: Vasküler gelişim anomalisi → Kapiller yatak olmadan arteriyel-venöz bağlantı. Edinsel: Cerrahi travma → Myometrial vasküler hasar → Anormal AV iletişim → Yüksek akımlı şant → Masif kanama potansiyeli.",
+        mechanismEn: "Congenital: Vascular developmental anomaly → Arteriovenous connection without capillary bed. Acquired: Surgical trauma → Myometrial vascular injury → Abnormal AV communication → High-flow shunt → Massive hemorrhage potential.",
         differentialDiagnosis: [
             "Retained Products of Conception (β-hCG pozitif, gebelik öyküsü, vaskülarite daha az)",
             "Gestasyonel Trofoblastik Hastalık (β-hCG çok yüksek, intrakaviter kitle)",
             "Endometrial Karsinom (Solid kitle, vaskülarite farklı patern)",
             "Myometrial Konjesyon (Postpartum fizyolojik, kendiliğinden geriler)"
         ],
+        differentialDiagnosisEn: [
+            "Retained Products of Conception (β-hCG positive, pregnancy history, less vascularity)",
+            "Gestational Trophoblastic Disease (Very high β-hCG, intracavitary mass)",
+            "Endometrial Carcinoma (Solid mass, different vascularity pattern)",
+            "Myometrial Congestion (Postpartum physiologic, self-resolving)"
+        ],
         goldStandard: "Dijital Subtraksiyon Anjiyografi (DSA) — Arteryel besleyiciler, nidus ve erken venöz drenaj gösterilir. Tedavide embolizasyon yapılabilir.",
+        goldStandardEn: "Digital Subtraction Angiography (DSA) — Demonstrates arterial feeders, nidus, and early venous drainage. Embolization can be performed for treatment.",
         clinicalPearl: "Anormal vajinal kanamada myometriumda Doppler'de düşük RI yüksek akım saptandığında uterin AVM düşünülmelidir. Küretaj yapılmamalıdır — masif kanama riski! Embolizasyon tedavisi hem tanısal hem terapötiktir.",
+        clinicalPearlEn: "When low RI high-flow is detected in the myometrium on Doppler in abnormal vaginal bleeding, uterine AVM should be considered. Curettage must not be performed — risk of massive hemorrhage! Embolization is both diagnostic and therapeutic.",
         references: [
             "Defined Ultrasound Protocols. ACR Practice Parameters; 2023.",
             "Radiopaedia.org - Uterine arteriovenous malformation",
@@ -1236,7 +1467,9 @@ export const gynecologyPathologies: Pathology[] = [
             "Cause of infertility and recurrent miscarriage"
         ],
         etiology: "Embriyonik dönemde Müllerian kanalların (paramesonefrik duktus) füzyon, kanalizasyon veya rezorbsiyon bozuklukları. ASRM sınıflaması: Class I-VII.",
+        etiologyEn: "Fusion, canalization, or resorption defects of Müllerian ducts (paramesonephric ducts) during embryonic period. ASRM classification: Class I-VII.",
         mechanism: "Embriyogenezde Müllerian kanal füzyonu bozulursa (bikornat/didelfis) veya septum rezorbsiyonu tamamlanmazsa (septat) → Farklı morfolojik anomaliler. Septat uterus en sık → Septumun vasküler desteği yetersiz → İmplantasyon bozulur → Tekrarlayan düşük.",
+        mechanismEn: "If Müllerian duct fusion is disrupted during embryogenesis (bicornuate/didelphys) or septum resorption is incomplete (septate) → Different morphologic anomalies. Septate uterus is most common → Inadequate vascular support of septum → Impaired implantation → Recurrent miscarriage.",
         differentialDiagnosis: [
             "Septat Uterus (Düz fundal kontur, intrakaviter septum — en sık anomali)",
             "Bikornat Uterus (Fundal çentik >10mm, iki ayrı kavite)",
@@ -1244,8 +1477,17 @@ export const gynecologyPathologies: Pathology[] = [
             "Arkuat Uterus (Minimal fundal çentik, normal varyant, klinik önemi az)",
             "T-Shaped Uterus (DES maruziyeti, dar tübüler kavite)"
         ],
+        differentialDiagnosisEn: [
+            "Septate Uterus (Flat fundal contour, intracavitary septum — most common anomaly)",
+            "Bicornuate Uterus (Fundal indentation >10mm, two separate cavities)",
+            "Unicornuate Uterus (Single cornu, rudimentary horn may be present)",
+            "Arcuate Uterus (Minimal fundal indentation, normal variant, little clinical significance)",
+            "T-Shaped Uterus (DES exposure, narrow tubular cavity)"
+        ],
         goldStandard: "MRI — T2 ağırlıklı koronal ve aksiyel görüntülerde uterin morfoloji, junctional zone, fundal kontur ve kavite değerlendirmesi. ASRM sınıflamasına göre tiplenme.",
+        goldStandardEn: "MRI — Uterine morphology, junctional zone, fundal contour, and cavity assessment on T2-weighted coronal and axial images. Classification according to ASRM system.",
         clinicalPearl: "Septat uterus en sık Müllerian anomalidir ve histeroskopik septum rezeksiyonu ile tedavi edilir. Bikornat uterus cerrahisi ise daha invazivdir (Strassman metroplasti). Bu ayrım tedaviyi temelden değiştirir — MRI ile kesin tanı şarttır.",
+        clinicalPearlEn: "Septate uterus is the most common Müllerian anomaly and is treated with hysteroscopic septum resection. Bicornuate uterus surgery is more invasive (Strassman metroplasty). This distinction fundamentally changes treatment — definitive diagnosis with MRI is essential.",
         references: [
             "ASRM Müllerian Anomalies Classification 2021. Fertility and Sterility.",
             "Radiopaedia.org - Müllerian duct anomalies",
@@ -1295,7 +1537,9 @@ export const gynecologyPathologies: Pathology[] = [
             "Late recurrence possible (even 10-20 years later)"
         ],
         etiology: "Over granüloza hücrelerinden (sex-cord stromal tümör grubu) kaynaklı malign potansiyelli tümör. Erişkin ve jüvenil tipler.",
+        etiologyEn: "Tumor with malignant potential arising from ovarian granulosa cells (sex-cord stromal tumor group). Adult and juvenile types.",
         mechanism: "Over granüloza hücrelerinin neoplastik proliferasyonu → Östrojen salgılayan tümör → Endometrial hiperplazi (karşılanmamış östrojen) → Postmenopozal kanama → Endometrial karsinom riski artar. Tümör büyümesi: Solid-kistik yapı, hemoraji sık.",
+        mechanismEn: "Neoplastic proliferation of ovarian granulosa cells → Estrogen-secreting tumor → Endometrial hyperplasia (unopposed estrogen) → Postmenopausal bleeding → Increased endometrial carcinoma risk. Tumor growth: Solid-cystic structure, hemorrhage frequent.",
         differentialDiagnosis: [
             "Endometrioma (Homojen 'ground glass', T1 hiperintens, östrojen üretimi yok)",
             "Over Fibromu/Tekoma (Solid, T2 hipointens, östrojen etkisi az)",
@@ -1303,8 +1547,17 @@ export const gynecologyPathologies: Pathology[] = [
             "Hemorajik Kist (Retrakte pıhtı, fibrin ağı, takipte rezolüsyon)",
             "Sertoli-Leydig Hücreli Tümör (Androjen üreten, virilizasyon)"
         ],
+        differentialDiagnosisEn: [
+            "Endometrioma (Homogeneous 'ground glass', T1 hyperintense, no estrogen production)",
+            "Ovarian Fibroma/Thecoma (Solid, T2 hypointense, minimal estrogen effect)",
+            "Epithelial Ovarian Carcinoma (Papillary projections, ascites, elevated CA-125)",
+            "Hemorrhagic Cyst (Retracted clot, fibrin strands, resolution on follow-up)",
+            "Sertoli-Leydig Cell Tumor (Androgen-producing, virilization)"
+        ],
         goldStandard: "Histopatoloji — Call-Exner body'ler (granüloza hücrelerinin rozetler oluşturması), 'coffee bean' çentikli nükleus. İmmunohistokimya: İnhibin (+), kalretinin (+).",
+        goldStandardEn: "Histopathology — Call-Exner bodies (rosette formation by granulosa cells), 'coffee bean' grooved nucleus. Immunohistochemistry: Inhibin (+), calretinin (+).",
         clinicalPearl: "Postmenopozal hastada solid-kistik over kitlesi + endometrial kalınlaşma + anormal kanama üçlüsü granüloza hücreli tümör için uyarıcıdır. İnhibin B takip markeri olarak kullanılır — geç rekürrenslere dikkat.",
+        clinicalPearlEn: "Solid-cystic ovarian mass + endometrial thickening + abnormal bleeding triad in a postmenopausal patient is suggestive of granulosa cell tumor. Inhibin B is used as a follow-up marker — beware of late recurrences.",
         references: [
             "WHO Classification of Tumours: Female Genital Tumours. 5th ed. IARC; 2020.",
             "Radiopaedia.org - Granulosa cell tumor",
@@ -1352,7 +1605,9 @@ export const gynecologyPathologies: Pathology[] = [
             "Differentiation from primary ovarian carcinoma critical"
         ],
         etiology: "En sık GIS kaynaklı (mide %70+), kolon, meme, apendiks. Hematojen veya transperitoneal yayılım. Müsinöz signet ring hücreli karsinom tipik histoloji.",
+        etiologyEn: "Most commonly GI origin (stomach 70%+), colon, breast, appendix. Hematogenous or transperitoneal spread. Mucinous signet ring cell carcinoma is the typical histology.",
         mechanism: "Primer tümörden (genellikle mide) → Hematojen veya peritoneal yayılım → Over stromasına implantasyon → Bilateral over tutulumu → Müsin üreten signet ring hücreleri over stromasında proliferasyon → Solid-kistik kitle. Over'in zengin vasküler yapısı metastaza yatkınlık sağlar.",
+        mechanismEn: "From primary tumor (usually stomach) → Hematogenous or peritoneal spread → Implantation into ovarian stroma → Bilateral ovarian involvement → Mucin-producing signet ring cells proliferate in ovarian stroma → Solid-cystic mass. The rich vascular structure of the ovary predisposes to metastasis.",
         differentialDiagnosis: [
             "Primer Epitelyal Over Karsinomu (Genellikle unilateral başlar, papiller projeksiyon baskın)",
             "Bilateral Endometrioma (Homojen 'ground glass', T1 hiperintens, solid komponent yok)",
@@ -1360,8 +1615,17 @@ export const gynecologyPathologies: Pathology[] = [
             "Lenfoma (Bilateral solid, homojen, şekil korunmuş olabilir)",
             "Fibroma/Tekoma Bilateral (T2 hipointens solid kitleler, asit — Meigs sendromu)"
         ],
+        differentialDiagnosisEn: [
+            "Primary Epithelial Ovarian Carcinoma (Usually starts unilateral, papillary projections dominant)",
+            "Bilateral Endometrioma (Homogeneous 'ground glass', T1 hyperintense, no solid component)",
+            "Bilateral Mature Teratoma (Fat, calcification, Rokitansky nodule)",
+            "Lymphoma (Bilateral solid, homogeneous, shape may be preserved)",
+            "Bilateral Fibroma/Thecoma (T2 hypointense solid masses, ascites — Meigs syndrome)"
+        ],
         goldStandard: "Histopatoloji — Signet ring hücreleri (müsin dolu, çekirdeği kenara iten hücreler), over stroması içinde. İmmunohistokimya: CK20+, CDX2+ (GIS köken).",
+        goldStandardEn: "Histopathology — Signet ring cells (mucin-filled cells displacing nucleus to periphery), within ovarian stroma. Immunohistochemistry: CK20+, CDX2+ (GI origin).",
         clinicalPearl: "Bilateral over kitlesi + asit saptandığında primer over karsinomu ile Krukenberg tümörü ayrımı için üst GIS (mide) mutlaka değerlendirilmelidir. Bilateral tutulum, genç yaş ve müsinöz komponent Krukenberg lehine ipuçlarıdır.",
+        clinicalPearlEn: "When bilateral ovarian mass + ascites is detected, the upper GI tract (stomach) must be evaluated to differentiate primary ovarian carcinoma from Krukenberg tumor. Bilateral involvement, young age, and mucinous component are clues favoring Krukenberg.",
         references: [
             "WHO Classification of Tumours: Female Genital Tumours. 5th ed. IARC; 2020.",
             "Radiopaedia.org - Krukenberg tumor",

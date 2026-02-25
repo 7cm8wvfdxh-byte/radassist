@@ -88,8 +88,11 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     const displayCategory = isEn ? (data.categoryEn || data.category) : data.category;
     const displayFindings = isEn ? (data.findingsEn || data.findings) : data.findings;
     const displayKeyPoints = isEn ? (data.keyPointsEn || data.keyPoints) : data.keyPoints;
-    // Mechanism is currently only TR in some items, fallback to TR if EN missing (should be handled in data later)
-    // For now assuming mechanism is same or handled
+    const displayMechanism = isEn ? (data.mechanismEn || data.mechanism) : data.mechanism;
+    const displayEtiology = isEn ? (data.etiologyEn || data.etiology) : data.etiology;
+    const displayDifferentialDiagnosis = isEn ? (data.differentialDiagnosisEn || data.differentialDiagnosis) : data.differentialDiagnosis;
+    const displayGoldStandard = isEn ? (data.goldStandardEn || data.goldStandard) : data.goldStandard;
+    const displayClinicalPearl = isEn ? (data.clinicalPearlEn || data.clinicalPearl) : data.clinicalPearl;
 
     const [activeTab, setActiveTab] = useState<TabType>("summary");
     const [activeImage, setActiveImage] = useState<number | null>(null);
@@ -316,40 +319,40 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     <div className="p-6 flex-1 overflow-y-auto space-y-5 overscroll-contain">
 
                         {/* WHY? Section */}
-                        {data.mechanism && (
+                        {displayMechanism && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
                                 <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
                                     <Lightbulb className="w-4 h-4 text-yellow-500" />
                                     {isEn ? "Why?" : "Neden Böyle Görünüyor?"}
                                 </h4>
                                 <div className="p-3 rounded-xl bg-yellow-500/5 border border-yellow-500/10 text-xs text-yellow-100/90 leading-relaxed font-serif italic">
-                                    &ldquo;{data.mechanism}&rdquo;
+                                    &ldquo;{displayMechanism}&rdquo;
                                 </div>
                             </div>
                         )}
 
                         {/* Etiology Section */}
-                        {data.etiology && (
+                        {displayEtiology && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-150">
                                 <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
                                     <Flame className="w-4 h-4 text-orange-400" />
                                     {isEn ? "Etiology" : "Etiyoloji"}
                                 </h4>
                                 <p className="text-xs text-zinc-400 leading-relaxed p-3 rounded-xl bg-orange-500/5 border border-orange-500/10">
-                                    {data.etiology}
+                                    {displayEtiology}
                                 </p>
                             </div>
                         )}
 
                         {/* Differential Diagnosis Section */}
-                        {data.differentialDiagnosis && data.differentialDiagnosis.length > 0 && (
+                        {displayDifferentialDiagnosis && displayDifferentialDiagnosis.length > 0 && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
                                 <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
                                     <Target className="w-4 h-4 text-rose-400" />
                                     {isEn ? "Differential Diagnosis" : "Ayırıcı Tanı"}
                                 </h4>
                                 <ul className="space-y-1.5">
-                                    {data.differentialDiagnosis.map((ddx, i) => (
+                                    {displayDifferentialDiagnosis.map((ddx, i) => (
                                         <li key={i} className="flex gap-2 text-xs text-zinc-400">
                                             <span className="text-rose-500 font-bold shrink-0">{i + 1}.</span>
                                             <span className="leading-snug">{ddx}</span>
@@ -360,27 +363,27 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         )}
 
                         {/* Gold Standard Section */}
-                        {data.goldStandard && (
+                        {displayGoldStandard && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-250">
                                 <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
                                     <Award className="w-4 h-4 text-amber-400" />
                                     {isEn ? "Gold Standard" : "Altın Standart"}
                                 </h4>
                                 <p className="text-xs text-zinc-400 leading-relaxed p-3 rounded-xl bg-amber-500/5 border border-amber-500/10">
-                                    {data.goldStandard}
+                                    {displayGoldStandard}
                                 </p>
                             </div>
                         )}
 
                         {/* Clinical Pearl Section */}
-                        {data.clinicalPearl && (
+                        {displayClinicalPearl && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
                                 <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
                                     <Stethoscope className="w-4 h-4 text-emerald-400" />
                                     {isEn ? "Clinical Pearl" : "Klinik İpucu"}
                                 </h4>
                                 <div className="p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/10 text-xs text-emerald-100/90 leading-relaxed font-medium">
-                                    {data.clinicalPearl}
+                                    {displayClinicalPearl}
                                 </div>
                             </div>
                         )}

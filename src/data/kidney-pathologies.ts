@@ -58,10 +58,15 @@ export const kidneyPathologies: Pathology[] = [
             "'Small renal mass' (<4cm): Watch & Wait vs Ablation vs Surgery."
         ],
         "mechanism": "VHL gen mutasyonu (clear cell) → HIF-1α stabilizasyonu → VEGF ve eritropoietin artışı → tümör neovaskülarizasyonu (hipervasküleri açıklar). Proksimal tübüler hücrelerden köken. Papiller tip: MET mutasyonu, daha az vasküler. Kromofob: İnterskal hücrelerden köken, daha az agresif. Clear cell'de T2 hiperintensitesi lipid/glikojen içeriğiyle ilişkilidir.",
+        "mechanismEn": "VHL gene mutation (clear cell) → HIF-1α stabilization → increased VEGF and erythropoietin → tumor neovascularization (explains hypervascularity). Originates from proximal tubular cells. Papillary type: MET mutation, less vascular. Chromophobe: Originates from intercalated cells, less aggressive. T2 hyperintensity in clear cell is related to lipid/glycogen content.",
         "etiology": "Sigara, Obezite, Hipertansiyon, Diyaliz hastası böbrek kistleri. VHL sendromu: Bilateral, multisentrik RCC. Herediter papiller RCC: MET mutasyonu.",
+        "etiologyEn": "Smoking, Obesity, Hypertension, Acquired cystic kidney disease in dialysis patients. VHL syndrome: Bilateral, multicentric RCC. Hereditary papillary RCC: MET mutation.",
         "differentialDiagnosis": ["Anjiyomiyolipom (Makroskopik yağ <-10HU = Kesin AML)", "Onkositom (Santral yıldız skar, benign ama görüntülemeyle ayrılamaz)", "Ürotelyal Ca (Santral, lümene uzanır, kontürü bozmaz)", "Abse (DWI kısıtlanma, ateş, klinik)"],
+        "differentialDiagnosisEn": ["Angiomyolipoma (Macroscopic fat <-10HU = Definitive AML)", "Oncocytoma (Central stellate scar, benign but indistinguishable by imaging)", "Urothelial Ca (Central, extends into lumen, does not distort contour)", "Abscess (DWI restriction, fever, clinical)"],
         "goldStandard": "Multifazik BT (Kortikomedüller + Nefrogenik + Geç faz): RCC karakterizasyonu. MRI: Yağ tespiti, IVC değerlendirmesi.",
+        "goldStandardEn": "Multiphasic CT (Corticomedullary + Nephrographic + Delayed phase): RCC characterization. MRI: Fat detection, IVC evaluation.",
         "clinicalPearl": "Clear cell RCC: T2 hiperintens + Chemical shift pozitif (yağ içeriği). >15-20HU kontrastlanma artışı = Solid kitle (malignite şüpheli).",
+        "clinicalPearlEn": "Clear cell RCC: T2 hyperintense + Chemical shift positive (fat content). >15-20HU enhancement increase = Solid mass (suspicious for malignancy).",
         "references": [
             "Israel GM, Bosniak MA. Renal imaging for diagnosis and staging of renal cell carcinoma. Urol Clin North Am. 2003;30(3):499-514.",
             "ACR Appropriateness Criteria: Renal Cell Carcinoma Staging. American College of Radiology.",
@@ -126,6 +131,7 @@ export const kidneyPathologies: Pathology[] = [
         "differentialDiagnosis": ["Renal Hücreli Karsinom (Fat-poor AML ile karışabilir; yağ yoksa BT ile ayrılamaz)", "Onkositom (Solid, homojen kontrastlanma)", "Renal lipom/liposarkom (Çok nadir, tamamen yağ)", "Wilms tümörü (Çocuk, yağ içermez)"],
         "goldStandard": "Non-kontrast BT: Makroskopik yağ tespiti (<-10 HU = kesin AML). Fat-poor AML: MRI chemical shift, biyopsi veya cerrahi gerekebilir.",
         "clinicalPearl": "BT'de <-10 HU yağ dokusu = AML kesin tanı, biyopsiye gerek yok. >4 cm AML'de spontan kanama riski artar → profilaktik embolizasyon düşün. TSC'li hastada bilateral AML'ler beklenir.",
+        "mechanismEn": "mTOR pathway activation (TSC1/TSC2 mutation or sporadic) → abnormal mesodermal differentiation → hamartoma composed of a mixture of fat tissue, smooth muscle, and abnormal vessels. Abnormal vessels lack elastic walls (aneurysm risk) → Wunderlich syndrome (spontaneous retroperitoneal hemorrhage). Fat-poor AML: Smooth muscle dominant, frequent TSC association.",
         "references": [
             "Israel GM, Bosniak MA. Renal imaging for diagnosis and staging of renal cell carcinoma. Urol Clin North Am. 2003;30(3):499-514.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -189,6 +195,7 @@ export const kidneyPathologies: Pathology[] = [
         "differentialDiagnosis": ["Hiperdens kist (Bosniak II, >20 HU ama kontrastlanma yok)", "Parapelvik kist (Sinüs yerleşimli, hidronefroz ile karışabilir)", "Kistik RCC (Bosniak III-IV, septum/duvar kontrastlanması)", "ADPKD (Multipl bilateral kistler, büyük böbrekler, aile öyküsü)"],
         "goldStandard": "USG: İlk basamak, basit kist kriterleri (anekoik, ince duvar, posterior güçlenme). BT: Bosniak sınıflaması ile karakterizasyon.",
         "clinicalPearl": "USG'de 4 kriter: Anekoik + ince pürüzsüz duvar + posterior akustik güçlenme + internal eko yok = Bosniak I basit kist, takip gereksiz. Atipik özellik varsa BT/MRI ile Bosniak sınıflaması yap.",
+        "mechanismEn": "Focal dilation and obstruction of renal tubule → fluid accumulation → cystic structure. Acquired cysts: Develop due to tubular atrophy and fibrous tissue compression in chronic renal disease. Since the fluid is pure transudate (protein-free), it measures 0-20 HU and gives CSF-like very bright signal on T2. Absence of enhancement, normal wall and content = benign.",
         "references": [
             "Silverman SG et al. Bosniak Classification of Cystic Renal Masses, Version 2019. Radiology. 2019;292(2):475-488.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -242,6 +249,7 @@ export const kidneyPathologies: Pathology[] = [
         "differentialDiagnosis": ["Basit kist (Bosniak I, kontrastlanma yok)", "Hemorajik kist (Bosniak II, >20 HU ama kontrastlanma yok)", "Kistik RCC (Bosniak III-IV, solid kontrastlanan komponent)", "Multilokuler kistik nefroma (Bosniak III, pelvise herniasyon)", "Kist enfeksiyonu (Kalın duvar, klinik bulgular)"],
         "goldStandard": "Kontrastlı BT (multifazik): Bosniak sınıflaması altın standardı. MRI: Septum ve duvar kontrastlanmasında BT'den daha sensitif (2019 güncellemesiyle MRI bulguları da dahil edildi).",
         "clinicalPearl": "Bosniak IIF: Takip gerekli (yıllık BT, 5 yıl). Bosniak III-IV: Cerrahi. 2019 güncellemesinde MRI bulguları eklendi ve IIF kategorisi netleştirildi. Septum kalınlığı ve kontrastlanması en kritik parametrelerdir.",
+        "mechanismEn": "Complications arising from simple cysts (hemorrhage, infection, dysplasia) → wall thickening, septation, calcification, or solid component. Bosniak classification stratifies malignancy risk based on cyst wall and content characteristics. Solid enhancing component (Bosniak IV) carries high risk (90%) for cystic RCC.",
         "references": [
             "Bosniak MA. The Bosniak Renal Cyst Classification: 25 Years Later. Radiology. 2012;262(3):781-785.",
             "Silverman SG et al. Bosniak Classification of Cystic Renal Masses, Version 2019. Radiology. 2019;292(2):475-488.",
@@ -306,6 +314,7 @@ export const kidneyPathologies: Pathology[] = [
         "differentialDiagnosis": ["Renal infarkt (Kama şekilli ama kontrastlanmaz; ateş/lökositoz genellikle yok)", "Renal lenfoma (Multipl, bilateral, hipovasküler)", "Renal apse (Halka kontrastlanma, lokalize koleksiyon)", "Akut tübüler nekroz (Bilateral, diffüz, klinik bağlam farklı)", "Fokal piyelonefrit vs RCC (Fokal hipoperfüze alan kitle ile karışabilir — takip BT ile ayrım)"],
         "goldStandard": "Klinik tanı (ateş + kostovertebral hassasiyet + piyüri). Kontrastlı BT: Komplikasyon şüphesinde (apse, amfizematöz piyelonefrit, obstrüksiyon). DWI-MRI: Radyasyon kaygısında alternatif.",
         "clinicalPearl": "Antibiyotik tedavisine 72 saat yanıtsızlık → kontrastlı BT çek (apse? obstrüksiyon?). Amfizematöz piyelonefrit (intraparankimal gaz) = acil cerrahi/drenaj, genellikle diyabetik hastada. USG %70 normal olabilir — normal USG piyelonefriti dışlamaz.",
+        "mechanismEn": "E. coli (80%+) ascending infection from lower urinary tract to renal pelvis → tubular epithelial involvement → neutrophil infiltration and edema. Tubular edema slows contrast transit through tubules on contrast-enhanced CT → striated nephrogram (radial stripe pattern of hypoperfused and normally perfused areas). Emphysematous type: Gas-producing bacteria (Klebsiella, E. coli) + diabetic microvascular damage → intraparenchymal gas accumulation.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Acute Pyelonephritis. American College of Radiology.",
@@ -367,6 +376,7 @@ export const kidneyPathologies: Pathology[] = [
         "differentialDiagnosis": ["Flebolit (Pelvik ven kalsifikasyonu, 'comet tail' bulgusu, rim sign yok)", "Vasküler kalsifikasyon (Tübüler, damar seyrine uyumlu)", "Renal arter anevrizması (Kalsifiye, hilum komşuluğunda)", "Appendikolit (Sağ alt kadran, klinik bağlam)", "Tüberküloz kalsifikasyonu (Parankimal, düzensiz)"],
         "goldStandard": "Non-kontrast BT: Altın standart (sensitivite %95-98, spesifisite %96-100). USG: Çocuklarda ve gebelerde ilk tercih. Dual-energy BT: Taş kompozisyonu tayini (ürik asit vs kalsiyum ayrımı).",
         "clinicalPearl": "Ürik asit taşları BT'de nispeten düşük HU (<600) gösterir ve alkali idrar tedavisine yanıt verir — cerrahi gerekmeyebilir. Struvit taşları staghorn konfigürasyonu gösterir ve tedavisiz tekrarlar. Dual-energy BT taş tipini non-invaziv ayırt edebilir.",
+        "mechanismEn": "Urine supersaturation → crystal nucleation → stone growth. Calcium oxalate: Hyperoxaluria or hypercalciuria. Uric acid: Acidic urine (pH <5.5) + hyperuricemia. Struvite (magnesium ammonium phosphate): Urease-producing bacterial infection (Proteus, Klebsiella) → ammonia → alkaline urine. Cystine: Tubular reabsorption defect in cystinopathy. HU value on CT reflects stone composition.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Acute Onset Flank Pain — Suspicion of Stone Disease. American College of Radiology.",
@@ -384,6 +394,7 @@ export const kidneyPathologies: Pathology[] = [
         "differentialDiagnosis": ["Renal Hücreli Karsinom (En önemli ayırıcı; görüntüleme ile kesin ayrım çoğu zaman mümkün değil)", "Kromofob RCC (Onkositomla histolojik benzerlik, spoke-wheel olabilir)", "Fat-poor AML (Homojen solid kitle, yağ saptanamaz)", "Renal adenom (Küçük, <1 cm, insidental)"],
         "goldStandard": "Kontrastlı BT/MRI: Santral skar + spoke-wheel kontrastlanma paterni şüphe uyandırır ama kesin tanı koydurmaz. Kesin tanı: Cerrahi eksizyon + histopatoloji. Biyopsi güvenilirliği sınırlıdır.",
         "clinicalPearl": "Santral yıldız skar + spoke-wheel kontrastlanma paterni onkositomu düşündürür ama RCC'yi dışlamaz — %30-50'sinde skar yoktur. Görüntüleme ile kesin tanı konamadığından çoğu olguda parsiyel nefrektomi yapılır ve tanı patolojik olarak konur.",
+        "mechanismEn": "Benign epithelial tumor originating from proximal tubular intercalated cells (oncocytes). Mitochondria-rich eosinophilic cells form compact nests. The central stellate scar results from fibrotic stromal accumulation.",
         "findings": {
             "ct": {
                 "contrast": "RCC ile ayrımı zordur. Santral skar (Yıldızvari hipodansite) klasik bulgusudur (%30-50). Spoke-wheel (tekerlek) tarzı kontrastlanma."
@@ -429,6 +440,7 @@ export const kidneyPathologies: Pathology[] = [
         "differentialDiagnosis": ["Renal Hücreli Karsinom (Kortikal kökenli, böbrek konturunu bozar, hipervasküler)", "Kan pıhtısı (Dolum defekti ama kontrastlanma yok, pozisyonla değişebilir)", "Fungus topu (İmmunsuprese hasta, antifungal tedaviye yanıt)", "Fibroepitelyal polip (Nadir, üreter yerleşimli benign tümör)", "Renal pelvis taşı (Hiperdens, akustik gölge)"],
         "goldStandard": "BT Ürografi (boşaltım fazı): Dolum defekti tespitinde altın standart. Üreterorenoskopi + biyopsi: Histopatolojik tanı. Sitoloji: Yüksek grade tümörlerde yardımcı.",
         "clinicalPearl": "Ağrısız makroskopik hematüri + BT ürografide dolum defekti + böbrek konturu normal = Ürotelyal karsinom düşün. Field effect nedeniyle TÜM ürotelyumu (bilateral böbrekler + üreterler + mesane) tara. Sigara öyküsü risk artırır.",
+        "mechanismEn": "Chronic urothelial irritation (smoking, aromatic amine exposure) → DNA damage → Transitional epithelial dysplasia → Carcinoma. Multifocal due to 'field effect' affecting the entire urothelium; synchronous bladder tumor is common.",
         "findings": {
             "ct": {
                 "contrast": "Renal pelviste santral yerleşimli yumuşak doku kitlesi. Dolum defekti. Kalisiyel dilatasyon (Tümör obstrüksiyonuna bağlı).",
@@ -518,10 +530,15 @@ export const kidneyPathologies: Pathology[] = [
             "Suspected pyonephrosis (fever + obstruction): Urgent decompression (DJ stent/nephrostomy)."
         ],
         "mechanism": "Üriner sistem obstrüksiyonu → toplayıcı sistemde basınç artışı → kalikslerin genişlemesi → renal parankimde atrofi (kronik). Akut obstrüksiyon: Ağrı, renal fonksiyon bozulması. Kronik: Sessiz → ciddi parankimal kayıp. Çocuklarda en sık neden: UPJ (Üreteropelvik bileşke) darlığı. Erişkinde: Taş > kitle > dıştan bası (retroperitoneal fibrozis, tümör).",
+        "mechanismEn": "Urinary system obstruction → increased pressure in collecting system → calyceal dilation → renal parenchymal atrophy (chronic). Acute obstruction: Pain, renal function impairment. Chronic: Silent → severe parenchymal loss. Most common cause in children: UPJ (Ureteropelvic junction) stenosis. In adults: Stone > mass > extrinsic compression (retroperitoneal fibrosis, tumor).",
         "etiology": "Taş (üreteral), Ürotelyal tümör, Dıştan bası (over/uterus tümörü, retroperitoneal kitle), UPJ darlığı, Prostat hipertrofisi/karsinomu, Retroperitoneal fibrozis.",
+        "etiologyEn": "Stone (ureteral), Urothelial tumor, Extrinsic compression (ovarian/uterine tumor, retroperitoneal mass), UPJ stenosis, Prostatic hypertrophy/carcinoma, Retroperitoneal fibrosis.",
         "differentialDiagnosis": ["Parapelvik Kist (USG'de anekojenik — ama kaliksler normal)", "Megakaliks (Anatomik varyasyon)", "Yalancı Hidronefroz (Dolu mesane, aşırı hidrasyon)"],
+        "differentialDiagnosisEn": ["Parapelvic Cyst (Anechoic on USG — but calyces normal)", "Megacalyx (Anatomic variant)", "False Hydronephrosis (Full bladder, excessive hydration)"],
         "goldStandard": "USG (ilk basamak) + BT Ürografi (etiyoloji). Fonksiyon değerlendirmesi: DMSA/MAG3 sintigrafisi.",
+        "goldStandardEn": "USG (first-line) + CT Urography (etiology). Functional assessment: DMSA/MAG3 scintigraphy.",
         "clinicalPearl": "USG'de toplayıcı sistem genişlemesi görüldüğünde MUTLAKA üreter ve mesane değerlendir — taşı kaçırma. RI >0.70 obstrüksiyonu kanıtlar.",
+        "clinicalPearlEn": "When collecting system dilation is seen on USG, ALWAYS evaluate the ureter and bladder — do not miss a stone. RI >0.70 proves obstruction.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Acute Onset Flank Pain — Suspicion of Stone Disease. American College of Radiology.",
@@ -581,10 +598,15 @@ export const kidneyPathologies: Pathology[] = [
             "TKV (Total Kidney Volume): Disease progression marker — for Tolvaptan treatment selection."
         ],
         "mechanism": "PKD1 (polisistin-1) veya PKD2 (polisistin-2) mutasyonu → tübüler epitel hücre proliferasyonu ve sıvı sekresyonu → kistik dilatasyon → böbrek büyümesi → renal kompresyon → kronik böbrek hastalığı. Her iki alelin bozulması (two-hit hipotezi): Germline mutasyon + somatik ikinci mutasyon → kist oluşumu. Karaciğerde de biliyer epitel aynı protein eksprese eder → hepatik kistler.",
+        "mechanismEn": "PKD1 (polycystin-1) or PKD2 (polycystin-2) mutation → tubular epithelial cell proliferation and fluid secretion → cystic dilation → kidney enlargement → renal compression → chronic kidney disease. Disruption of both alleles (two-hit hypothesis): Germline mutation + somatic second mutation → cyst formation. Biliary epithelium in the liver also expresses the same protein → hepatic cysts.",
         "etiology": "PKD1 gen mutasyonu (kr. 16) %85; PKD2 (kr. 4) %15. PKD1: Daha ağır hastalık, erken ESRD.",
+        "etiologyEn": "PKD1 gene mutation (chr. 16) 85%; PKD2 (chr. 4) 15%. PKD1: More severe disease, early ESRD.",
         "differentialDiagnosis": ["Otozomal Resesif PKD (Çocukluk, daha ağır)", "Von Hippel-Lindau (RCC + nöroblastom + hemanjioblastom)", "Multipl Basit Kistler (ADPKD'ye göre sayıca az, böbrek boyutu normal)", "Medüller Kistik Böbrek (Farklı genetik, küçük böbrek)"],
+        "differentialDiagnosisEn": ["Autosomal Recessive PKD (Childhood, more severe)", "Von Hippel-Lindau (RCC + neuroblastoma + hemangioblastoma)", "Multiple Simple Cysts (Fewer in number compared to ADPKD, normal kidney size)", "Medullary Cystic Kidney (Different genetics, small kidney)"],
         "goldStandard": "Aile öyküsü + USG (Ravine kriterleri). Genetik test: Tanı belirsizliğinde (PKD1/2 dizi analizi).",
+        "goldStandardEn": "Family history + USG (Ravine criteria). Genetic testing: When diagnosis is uncertain (PKD1/2 sequence analysis).",
         "clinicalPearl": "Genç hipertansif hasta + bilateral büyümüş böbrekler + karaciğer kistleri = ADPKD. Aile öyküsünde intrakraniyal anevrizma varsa MRA taraması yap.",
+        "clinicalPearlEn": "Young hypertensive patient + bilateral enlarged kidneys + liver cysts = ADPKD. If family history of intracranial aneurysm, perform MRA screening.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Silverman SG et al. Bosniak Classification of Cystic Renal Masses, Version 2019. Radiology. 2019;292(2):475-488.",
@@ -644,10 +666,15 @@ export const kidneyPathologies: Pathology[] = [
             "Etiology: AF/cardiac embolism, aortic dissection, thrombosis, vasculitis."
         ],
         "mechanism": "Renal arterde embolizm veya tromboz → renal parankime kan akışı kesilir → iskemik nekroz. Kama şekli: Arteriyel besleme bölgesel (kama şeklinde) → infarkt alanı bu anatomiye uyar. Korteks işareti: Kapsüler ve periüreteral arterler kapsülü besler → kapsüler rim korunur. DWI kısıtlanması: İskemik hücreler (sitotoksik ödem) su difüzyonunu kısıtlar.",
+        "mechanismEn": "Embolism or thrombosis in renal artery → blood flow to renal parenchyma is interrupted → ischemic necrosis. Wedge shape: Arterial supply is regional (wedge-shaped) → infarct area corresponds to this anatomy. Cortical rim sign: Capsular and periureteral arteries supply the capsule → capsular rim is preserved. DWI restriction: Ischemic cells (cytotoxic edema) restrict water diffusion.",
         "etiology": "Atriyal fibrilasyon (kardiyoembolik), Aort diseksiyonu, Trombotik hastalıklar (antifosfolipid sendromu), Vaskülit, Travma, İatrojenik (anjiyografi komplikasyonu).",
+        "etiologyEn": "Atrial fibrillation (cardioembolic), Aortic dissection, Thrombotic diseases (antiphospholipid syndrome), Vasculitis, Trauma, Iatrogenic (angiography complication).",
         "differentialDiagnosis": ["Pyelonefrit (Stranding + ateş, kama şekilli ama kontrastlanır)", "Renal Hücreli Karsinom (Kitlesel, heterojen kontrastlanma)", "Lenfoma (Difüz parankimal tutulum)"],
+        "differentialDiagnosisEn": ["Pyelonephritis (Stranding + fever, wedge-shaped but enhances)", "Renal Cell Carcinoma (Mass-like, heterogeneous enhancement)", "Lymphoma (Diffuse parenchymal involvement)"],
         "goldStandard": "BT Anjiografi: İnfarkt alanı + renal arterin değerlendirmesi. DWI + MRA: Radyasyon kullanmak istenmediğinde.",
+        "goldStandardEn": "CT Angiography: Infarct area + renal artery evaluation. DWI + MRA: When avoiding radiation.",
         "clinicalPearl": "AF öyküsü + ani yan ağrısı + idrarda kan + BT'de kama defekti = Renal emboli. Korteks işareti subakut evrede izlenir (acil BT'de olmayabilir).",
+        "clinicalPearlEn": "AF history + sudden flank pain + hematuria + wedge-shaped defect on CT = Renal embolism. Cortical rim sign is seen in the subacute phase (may not be present on emergency CT).",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Renal Vascular Disease. American College of Radiology.",
@@ -661,7 +688,9 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Enfeksiyon",
         "categoryEn": "Infection",
         "mechanism": "Akut piyelonefritin ilerlemesiyle renal parankimde likefaksiyon nekrozu → lokalize pürülan koleksiyon. Hematojen yolla da oluşabilir (S. aureus bakteriyemisi). Nötrofil infiltrasyonu ve doku yıkımı → kalın fibröz kapsül oluşumu. DWI'da kısıtlanma: Visköz pürülan materyal (yüksek hücresel içerik) su difüzyonunu kısıtlar. Perinefritik apse: Renal kapsülü aşarak perirenal alana yayılım.",
+        "mechanismEn": "Liquefactive necrosis in renal parenchyma due to progression of acute pyelonephritis → localized purulent collection. Can also occur hematogenously (S. aureus bacteremia). Neutrophil infiltration and tissue destruction → thick fibrous capsule formation. DWI restriction: Viscous purulent material (high cellular content) restricts water diffusion. Perinephric abscess: Spread to perirenal space by crossing the renal capsule.",
         "etiology": "Komplike piyelonefrit (en sık), hematojen yayılım (S. aureus), obstrüktif üropati, diyabet, immunsupresyon, renal taş hastalığı.",
+        "etiologyEn": "Complicated pyelonephritis (most common), hematogenous spread (S. aureus), obstructive uropathy, diabetes, immunosuppression, renal stone disease.",
         "findings": {
             "ct": {
                 "non_contrast": "Renal parankimde hipodens koleksiyon. Perinefritik yağ dokusu kirlilik artışı (stranding). Böbrek boyutunda artış.",
@@ -703,8 +732,11 @@ export const kidneyPathologies: Pathology[] = [
             ">3 cm abscess: Indication for percutaneous drainage."
         ],
         "differentialDiagnosis": ["Kistik/nekrotik RCC (Kontrastlanan solid komponent, DWI daha az kısıtlanma)", "Enfekte kist (Daha ince duvar, klinik bağlam)", "Renal hematom (Travma öyküsü, akut evrede hiperdens)"],
+        "differentialDiagnosisEn": ["Cystic/necrotic RCC (Enhancing solid component, less DWI restriction)", "Infected cyst (Thinner wall, clinical context)", "Renal hematoma (Trauma history, hyperdense in acute phase)"],
         "goldStandard": "Kontrastlı BT: Apse tespiti ve boyut değerlendirmesi. DWI: Nekrotik tümörden ayrım. Perkütan aspirasyon: Tanısal ve terapötik.",
+        "goldStandardEn": "Contrast-enhanced CT: Abscess detection and size assessment. DWI: Differentiation from necrotic tumor. Percutaneous aspiration: Diagnostic and therapeutic.",
         "clinicalPearl": "Piyelonefrit tedavisine 72 saatte yanıt yoksa BT çek — apse gelişmiş olabilir. DWI kısıtlanması apseyi nekrotik tümörden ayırır.",
+        "clinicalPearlEn": "If no response to pyelonephritis treatment within 72 hours, obtain CT — abscess may have developed. DWI restriction differentiates abscess from necrotic tumor.",
         "references": [
             "Kawashima A et al. Imaging of renal inflammatory disease. Radiol Clin North Am. 2000;38(5):1067-1089.",
             "ACR Appropriateness Criteria: Acute Pyelonephritis. American College of Radiology.",
@@ -719,7 +751,9 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Enfeksiyon",
         "categoryEn": "Infection",
         "mechanism": "Kronik obstrüksiyon (genellikle staghorn kalkülüs) + kronik enfeksiyon (Proteus, E. coli) → makrofaj infiltrasyonu → lipid yüklü köpüksü makrofajlar (ksantom hücreleri) → granülomatöz doku yıkımı. Renal parankimi yıkarak pelvis ve kalikslerden perinefritik alana yayılır. Bear's paw (ayı pençesi) görünümü: Dilate kaliksler çevresinde düşük dansiteli inflamatuar doku birikimi.",
+        "mechanismEn": "Chronic obstruction (usually staghorn calculus) + chronic infection (Proteus, E. coli) → macrophage infiltration → lipid-laden foamy macrophages (xanthoma cells) → granulomatous tissue destruction. Destroys renal parenchyma and spreads from pelvis and calyces to the perinephric space. Bear's paw appearance: Accumulation of low-density inflammatory tissue surrounding dilated calyces.",
         "etiology": "Staghorn kalkülüs + kronik enfeksiyon (Proteus mirabilis en sık). Risk faktörleri: Diyabet, obstrüktif üropati, immunsupresyon. Kadınlarda daha sık.",
+        "etiologyEn": "Staghorn calculus + chronic infection (Proteus mirabilis most common). Risk factors: Diabetes, obstructive uropathy, immunosuppression. More common in women.",
         "findings": {
             "ct": {
                 "non_contrast": "Staghorn kalkülüs (santral hiperdens taş). Böbrek büyümüş, parankim yıkılmış. Dilate kaliksler çevresinde düşük dansiteli materyal.",
@@ -761,8 +795,11 @@ export const kidneyPathologies: Pathology[] = [
             "Treatment: Nephrectomy (antibiotics alone insufficient)."
         ],
         "differentialDiagnosis": ["Renal hücreli karsinom (Fokal XGP, kitle benzeri görünüm)", "Tüberküloz piyelonefrit (Kalsifikasyon, autonephrectomy)", "Renal apse (Lokalize, ring enhancement)"],
+        "differentialDiagnosisEn": ["Renal cell carcinoma (Focal XGP, mass-like appearance)", "Tuberculous pyelonephritis (Calcification, autonephrectomy)", "Renal abscess (Localized, ring enhancement)"],
         "goldStandard": "Kontrastlı BT: Staghorn kalkülüs + bear's paw paterni tanısaldır. Kesin tanı: Histopatoloji (köpüksü makrofajlar).",
+        "goldStandardEn": "Contrast-enhanced CT: Staghorn calculus + bear's paw pattern is diagnostic. Definitive diagnosis: Histopathology (foamy macrophages).",
         "clinicalPearl": "Orta yaşlı kadın + staghorn taş + büyümüş non-fonksiyone böbrek + BT'de bear's paw = XGP. Fokal form RCC'yi taklit eder — dikkat!",
+        "clinicalPearlEn": "Middle-aged woman + staghorn stone + enlarged nonfunctioning kidney + bear's paw on CT = XGP. Focal form mimics RCC — caution!",
         "references": [
             "Craig WD et al. Xanthogranulomatous pyelonephritis: Imaging findings. AJR Am J Roentgenol. 2008;190(4):917-923.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -776,7 +813,9 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Travma",
         "categoryEn": "Trauma",
         "mechanism": "Künt veya penetran travma → renal parankimal laserasyon, subkapsüler/perinefritik hematom, vasküler hasar. AAST derecelendirmesi hasarın ciddiyetini belirler. Grade I-III: Konservatif tedavi. Grade IV-V: Cerrahi veya anjiyografik embolizasyon. Vasküler pediküler hasar (Grade V): Renal arter intiması yırtılır → tromboz → global iskemi.",
+        "mechanismEn": "Blunt or penetrating trauma → renal parenchymal laceration, subcapsular/perinephric hematoma, vascular injury. AAST grading determines injury severity. Grade I-III: Conservative management. Grade IV-V: Surgery or angiographic embolization. Vascular pedicle injury (Grade V): Renal artery intimal tear → thrombosis → global ischemia.",
         "etiology": "Künt travma (%80-90): Motorlu araç kazası, düşme, spor yaralanması. Penetran travma (%10-20): Bıçak, ateşli silah. Predispozan: Hidronefrotik böbrek, böbrek kisti/tümör (minör travmayla bile hasar).",
+        "etiologyEn": "Blunt trauma (80-90%): Motor vehicle accident, fall, sports injury. Penetrating trauma (10-20%): Stab wound, gunshot. Predisposing: Hydronephrotic kidney, renal cyst/tumor (injury even with minor trauma).",
         "findings": {
             "ct": {
                 "non_contrast": "Perinefritik/subkapsüler hematom (hiperdens, 40-70 HU). Parankimal heterojenite. Retroperitoneal serbest sıvı.",
@@ -818,8 +857,11 @@ export const kidneyPathologies: Pathology[] = [
             "Active bleeding: Contrast extravasation in arterial phase → angioembolization."
         ],
         "differentialDiagnosis": ["Pre-existing patoloji (Tümör, kist — travmayla komplike)", "Spontan perinefritik hematom (Wunderlich sendromu — AML rüptürü)"],
+        "differentialDiagnosisEn": ["Pre-existing pathology (Tumor, cyst — complicated by trauma)", "Spontaneous perinephric hematoma (Wunderlich syndrome — AML rupture)"],
         "goldStandard": "Multifazik kontrastlı BT (arteriyel + portovenöz + gecikmiş faz): AAST evreleme ve komplikasyon tespiti. BT anjiyografi: Vasküler hasar değerlendirmesi.",
+        "goldStandardEn": "Multiphasic contrast-enhanced CT (arterial + portovenous + delayed phase): AAST staging and complication detection. CT angiography: Vascular injury assessment.",
         "clinicalPearl": "Travma BT'de GECİKMİŞ FAZ çekmeyi unutma — toplayıcı sistem hasarı (ürinom) sadece gecikmiş fazda görülür. Hemodinamik stabil Grade IV-V: Selektif anjiyoembolizasyon.",
+        "clinicalPearlEn": "Do not forget to obtain DELAYED PHASE on trauma CT — collecting system injury (urinoma) is only visible on delayed phase. Hemodynamically stable Grade IV-V: Selective angioembolization.",
         "references": [
             "Buckley JC, McAninch JW. Revision of current American Association for the Surgery of Trauma Renal Injury grading system. J Trauma. 2011;70(1):35-37.",
             "ACR Appropriateness Criteria: Renal Trauma. American College of Radiology.",
@@ -833,7 +875,9 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Vasküler",
         "categoryEn": "Vascular",
         "mechanism": "İki ana etiyoloji: 1) Ateroskleroz (%90): Proksimal renal arterde (ostium/proksimal 1/3) plak birikimi → lümen daralması → renal hipoperfüzyon → RAAS aktivasyonu → renovasküler hipertansiyon. 2) Fibromusküler displazi (FMD) (%10): Medial fibroplazi → arter duvarında segmenter daralma ve dilatasyon → 'tespih dizisi' (string of beads) görünümü. Renal arter %60-70'den fazla daraldığında hemodinamik olarak anlamlı → tardus-parvus paterni Doppler'da izlenir.",
+        "mechanismEn": "Two main etiologies: 1) Atherosclerosis (90%): Plaque accumulation in proximal renal artery (ostium/proximal 1/3) → luminal narrowing → renal hypoperfusion → RAAS activation → renovascular hypertension. 2) Fibromuscular dysplasia (FMD) (10%): Medial fibroplasia → segmental narrowing and dilation of arterial wall → 'string of beads' appearance. When renal artery is narrowed >60-70%, it becomes hemodynamically significant → tardus-parvus pattern seen on Doppler.",
         "etiology": "Ateroskleroz (%90): Yaşlı, erkek, sigara, DM, hiperlipidemi. Fibromusküler displazi (%10): Genç kadın, bilateral olabilir. Nadir: Nörofibromatozis, Takayasu arteriti, radyasyon.",
+        "etiologyEn": "Atherosclerosis (90%): Elderly, male, smoking, DM, hyperlipidemia. Fibromuscular dysplasia (10%): Young woman, may be bilateral. Rare: Neurofibromatosis, Takayasu arteritis, radiation.",
         "findings": {
             "ct": {
                 "non_contrast": "Böbrek boyut asimetrisi (etkilenen taraf küçük). Aortik ateroskleroz/kalsifikasyon.",
@@ -875,8 +919,11 @@ export const kidneyPathologies: Pathology[] = [
             "Young woman + resistant hypertension = Consider FMD."
         ],
         "differentialDiagnosis": ["Renal arter anevrizması (Fokal dilatasyon)", "Renal arter diseksiyonu (İntimal flep, çift lümen)", "Takayasu arteriti (Büyük damar vasküliti, genç kadın)"],
+        "differentialDiagnosisEn": ["Renal artery aneurysm (Focal dilation)", "Renal artery dissection (Intimal flap, double lumen)", "Takayasu arteritis (Large vessel vasculitis, young woman)"],
         "goldStandard": "Dijital Subtraksiyon Anjiyografi (DSA): Altın standart (invaziv). BT Anjiyografi: Non-invaziv alternatif, yüksek doğruluk. Doppler USG: İlk basamak tarama.",
+        "goldStandardEn": "Digital Subtraction Angiography (DSA): Gold standard (invasive). CT Angiography: Non-invasive alternative, high accuracy. Doppler USG: First-line screening.",
         "clinicalPearl": "Dirençli hipertansiyon + böbrek boyut asimetrisi + Doppler'da tardus-parvus = Renal arter stenozu. Genç kadında FMD düşün (tespih dizisi, distal stenoz).",
+        "clinicalPearlEn": "Resistant hypertension + renal size asymmetry + tardus-parvus on Doppler = Renal artery stenosis. Consider FMD in young woman (string of beads, distal stenosis).",
         "references": [
             "Defined RG et al. Renal artery stenosis. Radiol Clin North Am. 2015;53(2):217-231.",
             "ACR Appropriateness Criteria: Renovascular Hypertension. American College of Radiology.",
@@ -891,7 +938,9 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Vasküler",
         "categoryEn": "Vascular",
         "mechanism": "Renal ven lümeninde trombüs oluşumu → venöz dönüş bozulması → böbrekte konjesyon, ödem ve boyut artışı → kortikomedüller diferansiasyon kaybı. Akut: Böbrek şişer, hemorajik infarkt riski. Kronik: Kollateral venöz drenaj gelişir, böbrek küçülür. Nefrotik sendrom: Protein kaybı → antitrombin III azalması → hiperkoagülabilite. RCC: Tümör trombusu renal vene ve İVC'ye uzanabilir.",
+        "mechanismEn": "Thrombus formation in renal vein lumen → venous return impairment → renal congestion, edema, and size increase → loss of corticomedullary differentiation. Acute: Kidney swells, hemorrhagic infarction risk. Chronic: Collateral venous drainage develops, kidney shrinks. Nephrotic syndrome: Protein loss → antithrombin III decrease → hypercoagulability. RCC: Tumor thrombus can extend to renal vein and IVC.",
         "etiology": "Nefrotik sendrom (en sık yetişkin), membranöz nefropati, RCC (tümör trombusu), dehidratasyon (yenidoğan), travma, dıştan bası. Yenidoğan: Dehidratasyon + sepsis.",
+        "etiologyEn": "Nephrotic syndrome (most common in adults), membranous nephropathy, RCC (tumor thrombus), dehydration (neonate), trauma, extrinsic compression. Neonate: Dehydration + sepsis.",
         "findings": {
             "ct": {
                 "non_contrast": "Böbrek boyutunda artış. Renal ven hiperdens (akut trombüs). Perinefritik stranding.",
@@ -933,8 +982,11 @@ export const kidneyPathologies: Pathology[] = [
             "In newborn: Dehydration + hematuria + large kidney = RVT."
         ],
         "differentialDiagnosis": ["RCC tümör trombusu (Kontrastlanan trombüs, böbrek kitlesi)", "İVC trombozu (Alt ekstremite ödemi, bilateral)", "Renal arter stenozu (Küçük böbrek, Doppler farklı)"],
+        "differentialDiagnosisEn": ["RCC tumor thrombus (Enhancing thrombus, renal mass)", "IVC thrombosis (Lower extremity edema, bilateral)", "Renal artery stenosis (Small kidney, different Doppler)"],
         "goldStandard": "Kontrastlı BT/MR Venografi: Trombüs tespiti ve uzanım değerlendirmesi. Doppler USG: İlk basamak, renal ven akımı değerlendirmesi.",
+        "goldStandardEn": "Contrast-enhanced CT/MR Venography: Thrombus detection and extension assessment. Doppler USG: First-line, renal vein flow evaluation.",
         "clinicalPearl": "Nefrotik sendrom + ani yan ağrısı + hematüri + proteinüri artışı = RVT düşün. Doppler'da renal vende akım kaybı + böbrek şişmesi tanı koydurur.",
+        "clinicalPearlEn": "Nephrotic syndrome + sudden flank pain + hematuria + increased proteinuria = Consider RVT. Loss of flow in renal vein on Doppler + kidney swelling establishes diagnosis.",
         "references": [
             "Asghar M, Ahmed K, Shah SS et al. Renal vein thrombosis. Eur J Vasc Endovasc Surg. 2007;34(2):217-223.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -948,7 +1000,9 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Benign/Malign",
         "categoryEn": "Benign/Malignant",
         "mechanism": "Nadir benign kistik renal neoplazm. Bimodal yaş dağılımı: Çocuk (erkek, <5 yaş) ve yetişkin (kadın, >40 yaş). İyi sınırlı, multiloküle kistik kitle, fibröz septumlarla ayrılmış kistik boşluklardan oluşur. Solid komponent içermez (saf kistik). Renal pelvise herniasyon (protrüzyon) karakteristik bulgudur. Bosniak III veya IV olarak sınıflandırılabilir → cerrahi gerektirir.",
+        "mechanismEn": "Rare benign cystic renal neoplasm. Bimodal age distribution: Children (male, <5 years) and adults (female, >40 years). Well-defined, multiloculated cystic mass composed of cystic spaces separated by fibrous septa. Contains no solid component (purely cystic). Herniation (protrusion) into renal pelvis is a characteristic finding. May be classified as Bosniak III or IV → requires surgery.",
         "etiology": "Etiyolojisi tam bilinmemektedir. Metanefrik blastom veya Wolffian kanal artıklarından köken aldığı düşünülmektedir. Bimodal dağılım: Erkek çocuk (<5 yaş) ve yetişkin kadın (>40 yaş).",
+        "etiologyEn": "Etiology is not fully understood. Thought to originate from metanephric blastoma or Wolffian duct remnants. Bimodal distribution: Male children (<5 years) and adult women (>40 years).",
         "findings": {
             "ct": {
                 "non_contrast": "İyi sınırlı, multiloküle kistik kitle. Septumlar izo-hiperdens olabilir. Kalsifikasyon septum veya duvarda görülebilir.",
@@ -990,8 +1044,11 @@ export const kidneyPathologies: Pathology[] = [
             "May be difficult to distinguish from cystic RCC — definitive diagnosis by histopathology."
         ],
         "differentialDiagnosis": ["Kistik RCC (Solid kontrastlanan komponent, düzensiz duvar)", "Multilokuler kistik renal tümör (MCRT — düşük grade clear cell RCC)", "Mikst epitelyal-stromal tümör (Kadın, solid+kistik)", "Kistik nefroblastom (Çocuk, solid komponent eşlik eder)"],
+        "differentialDiagnosisEn": ["Cystic RCC (Solid enhancing component, irregular wall)", "Multilocular cystic renal tumor (MCRT — low-grade clear cell RCC)", "Mixed epithelial-stromal tumor (Female, solid+cystic)", "Cystic nephroblastoma (Child, solid component present)"],
         "goldStandard": "Kontrastlı BT/MRI: Bosniak sınıflaması. Kesin tanı: Cerrahi eksizyon + histopatoloji.",
+        "goldStandardEn": "Contrast-enhanced CT/MRI: Bosniak classification. Definitive diagnosis: Surgical excision + histopathology.",
         "clinicalPearl": "Multiloküle kistik kitle + pelvise herniasyon + solid komponent yokluğu = Kistik nefroma. Çocukta erkek, yetişkinde kadın dominant — bimodal dağılımı hatırla.",
+        "clinicalPearlEn": "Multiloculated cystic mass + herniation into pelvis + absence of solid component = Cystic nephroma. Male dominant in children, female dominant in adults — remember the bimodal distribution.",
         "references": [
             "Castillo OA et al. Multilocular cystic nephroma: A systematic review. Urology. 2016;90:22-27.",
             "Silverman SG et al. Bosniak Classification of Cystic Renal Masses, Version 2019. Radiology. 2019;292(2):475-488.",
@@ -1005,7 +1062,9 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Konjenital",
         "categoryEn": "Congenital",
         "mechanism": "Toplayıcı kanalların (Bellini kanalları) medüller piramitlerde kistik dilatasyonu → medüller nefrokalsinoz. Dilate kanallar idrar stazına yol açar → kalsiyum tuzu çökelmesi → nefrokalsinoz ve nefrolitiyazis. Sporadik, genellikle bilateral ve tüm piramitleri tutar. Etiyoloji tam bilinmemekle birlikte gelişimsel bir anomali olarak kabul edilir.",
+        "mechanismEn": "Cystic dilation of collecting ducts (ducts of Bellini) in medullary pyramids → medullary nephrocalcinosis. Dilated ducts cause urinary stasis → calcium salt precipitation → nephrocalcinosis and nephrolithiasis. Sporadic, usually bilateral and involves all pyramids. Etiology not fully known but is considered a developmental anomaly.",
         "etiology": "Etiyolojisi kesin bilinmemektedir. Gelişimsel anomali (toplayıcı kanal ektazisi). Sporadik vakaların çoğunluğu. Nadiren otozomal dominant kalıtım bildirilmiştir. İlişkili durumlar: Ehlers-Danlos sendromu, Beckwith-Wiedemann sendromu.",
+        "etiologyEn": "Etiology is not definitively known. Developmental anomaly (collecting duct ectasia). Majority are sporadic cases. Rarely autosomal dominant inheritance has been reported. Associated conditions: Ehlers-Danlos syndrome, Beckwith-Wiedemann syndrome.",
         "findings": {
             "ct": {
                 "non_contrast": "MEDÜLLERNEFROKALSİNOZ: Renal piramitlerde bilateral, simetrik kalsifikasyonlar. 'Paintbrush appearance' (boya fırçası görünümü): Medüller piramitlerde lineer kalsifikasyonlar. Papillalarda küçük taşlar (1-3 mm).",
@@ -1047,8 +1106,11 @@ export const kidneyPathologies: Pathology[] = [
             "Renal function usually preserved (minimal cortical damage)."
         ],
         "differentialDiagnosis": ["Hiperparatiroidizm (Medüller nefrokalsinoz ama metabolik neden)", "Renal tübüler asidoz (Medüller nefrokalsinoz + metabolik asidoz)", "Papiller nekroz (Kaviter lezyonlar, farklı klinik)", "ADPKD (Kortikal kistler baskın, medüller değil)"],
+        "differentialDiagnosisEn": ["Hyperparathyroidism (Medullary nephrocalcinosis but metabolic cause)", "Renal tubular acidosis (Medullary nephrocalcinosis + metabolic acidosis)", "Papillary necrosis (Cavitary lesions, different clinical presentation)", "ADPKD (Cortical cysts predominant, not medullary)"],
         "goldStandard": "Non-kontrast BT: Medüller nefrokalsinoz tespiti. İVP (İntravenöz Pyelografi): Klasik 'paintbrush/bouquet of flowers' görünümü — artık nadiren kullanılır, BT ve BT ürografi tercih edilir.",
+        "goldStandardEn": "Non-contrast CT: Medullary nephrocalcinosis detection. IVP (Intravenous Pyelography): Classic 'paintbrush/bouquet of flowers' appearance — rarely used now, CT and CT urography preferred.",
         "clinicalPearl": "Tekrarlayan taş oluşumu + bilateral medüller nefrokalsinoz + normal böbrek fonksiyonu = Medüller sünger böbrek. Genellikle insidental saptanır.",
+        "clinicalPearlEn": "Recurrent stone formation + bilateral medullary nephrocalcinosis + normal renal function = Medullary sponge kidney. Usually incidentally detected.",
         "references": [
             "Gambaro G et al. Medullary sponge kidney. Curr Opin Nephrol Hypertens. 2013;22(4):421-426.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -1062,7 +1124,9 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Konjenital",
         "categoryEn": "Congenital",
         "mechanism": "Embriyolojik gelişim sırasında üreterik tomurcuğun erken bifurkasyonu veya çift üreterik tomurcuk oluşumu → çift toplayıcı sistem. Komplet duplikasyon: İki ayrı üreter mesaneye ayrı ayrı açılır. Weigert-Meyer kuralı: Üst pol üreteri mesaneye aşağıda ve medialde açılır (ektopik, obstrüksiyon riski), alt pol üreteri normalde açılır (VUR riski). Üst pol üreterosel ve ektopik üreter → obstrüksiyon → 'drooping lily' bulgusu.",
+        "mechanismEn": "Early bifurcation of the ureteric bud or formation of double ureteric buds during embryological development → duplex collecting system. Complete duplication: Two separate ureters open into the bladder independently. Weigert-Meyer rule: Upper pole ureter opens into the bladder inferiorly and medially (ectopic, obstruction risk), lower pole ureter opens normally (VUR risk). Upper pole ureterocele and ectopic ureter → obstruction → 'drooping lily' sign.",
         "etiology": "Konjenital: Üreterik tomurcuk anomalisi. En sık üriner sistem anomalisi (%0.8 genel popülasyon). Kadınlarda daha sık. Komplet vs inkomplet duplikasyon.",
+        "etiologyEn": "Congenital: Ureteric bud anomaly. Most common urinary system anomaly (0.8% general population). More common in women. Complete vs incomplete duplication.",
         "findings": {
             "ct": {
                 "non_contrast": "İki ayrı renal pelvis ve kalikslerin görülmesi. Üst pol: Obstrüksiyon varsa dilatasyon/hidronefroz.",
@@ -1104,8 +1168,11 @@ export const kidneyPathologies: Pathology[] = [
             "MR urography: Preferred for radiation-free evaluation in children."
         ],
         "differentialDiagnosis": ["Üst pol kist (Ayrı pelvis yok, tek üreter)", "Cross-fused ektopi (Böbrekler aynı tarafta)", "Hidronefroz (Tek sistem, global dilatasyon)"],
+        "differentialDiagnosisEn": ["Upper pole cyst (No separate pelvis, single ureter)", "Cross-fused ectopia (Kidneys on the same side)", "Hydronephrosis (Single system, global dilation)"],
         "goldStandard": "BT Ürografi: Komplet anatomik değerlendirme. MR Ürografi: Çocuklarda tercih (radyasyonsuz). Voiding sistoüretrografi (VCUG): VUR değerlendirmesi.",
+        "goldStandardEn": "CT Urography: Complete anatomic evaluation. MR Urography: Preferred in children (radiation-free). Voiding cystourethrography (VCUG): VUR evaluation.",
         "clinicalPearl": "Tekrarlayan ÜSY + üst pol hidronefrozu = Duplex sistem + ektopik üreterosel düşün. Weigert-Meyer kuralını hatırla: Üst = obstrüksiyon, Alt = reflü.",
+        "clinicalPearlEn": "Recurrent UTIs + upper pole hydronephrosis = Consider duplex system + ectopic ureterocele. Remember the Weigert-Meyer rule: Upper = obstruction, Lower = reflux.",
         "references": [
             "Fernbach SK et al. Ureteral duplication and its complications. Radiographics. 1997;17(1):109-127.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -1119,7 +1186,9 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Konjenital",
         "categoryEn": "Congenital",
         "mechanism": "Embriyolojik gelişim sırasında (4-6. hafta) metanefrik blastomların alt pollerinin orta hatta füzyonu → istmus oluşumu (genellikle alt polleri birleştirir). İnferior mezenterik arter (İMA) istmusun önünden geçer → böbreklerin normal kranial migrasyonunu engeller → böbrekler normal pozisyonlarından aşağıda kalır (ektopik). Malrotasyon: Renal pelvisler anteriora veya laterale bakar (normal medial yerine). Üreteropelvik bileşke obstrüksiyonu riski artar.",
+        "mechanismEn": "Fusion of lower poles of metanephric blastemas at midline during embryological development (weeks 4-6) → isthmus formation (usually connects lower poles). Inferior mesenteric artery (IMA) passes anterior to the isthmus → prevents normal cranial migration of kidneys → kidneys remain lower than normal position (ectopic). Malrotation: Renal pelves face anteriorly or laterally (instead of normal medial). Ureteropelvic junction obstruction risk increases.",
         "etiology": "Konjenital füzyon anomalisi. İnsidans: ~1/400-600. Erkeklerde 2 kat daha sık. İlişkili anomaliler: Turner sendromu, trizomi 18, trizomi 21. UPJ obstrüksiyonu, VUR, nefrolitiyazis riski artmış.",
+        "etiologyEn": "Congenital fusion anomaly. Incidence: ~1/400-600. 2 times more common in males. Associated anomalies: Turner syndrome, trisomy 18, trisomy 21. Increased risk of UPJ obstruction, VUR, nephrolithiasis.",
         "findings": {
             "ct": {
                 "non_contrast": "İSTMUS: İki böbreğin alt pollerini birleştiren parankimal veya fibröz bant (aorta ve İVC önünde). Düşük pozisyon: Böbrekler L3-L5 seviyesinde (normal L1-L3). Malrotasyon: Renal pelvisler anteriora/laterale dönük.",
@@ -1161,8 +1230,11 @@ export const kidneyPathologies: Pathology[] = [
             "Increased risk of UPJ obstruction, nephrolithiasis, and Wilms tumor."
         ],
         "differentialDiagnosis": ["Cross-fused renal ektopi (Asimetrik füzyon, tek tarafta)", "Pelvik ektopik böbrek (Füzyon yok)", "Renal agenezi (Tek böbrek, kontralateral kompansatris hipertrofi)"],
+        "differentialDiagnosisEn": ["Cross-fused renal ectopia (Asymmetric fusion, on one side)", "Pelvic ectopic kidney (No fusion)", "Renal agenesis (Single kidney, contralateral compensatory hypertrophy)"],
         "goldStandard": "BT/BT Ürografi: İstmus, vasküler anatomi, toplayıcı sistem değerlendirmesi. MR Ürografi: Çocuklarda tercih.",
+        "goldStandardEn": "CT/CT Urography: Isthmus, vascular anatomy, collecting system evaluation. MR Urography: Preferred in children.",
         "clinicalPearl": "BT'de aorta önünde pre-aortik parankim bandı = At nalı böbrek istmusu. Cerrahi öncesi vasküler anatomi değerlendirmesi kritik (multiple renal arterler sık).",
+        "clinicalPearlEn": "Pre-aortic parenchymal band anterior to aorta on CT = Horseshoe kidney isthmus. Pre-surgical vascular anatomy evaluation is critical (multiple renal arteries common).",
         "references": [
             "Glodny B et al. Kidney fusion anomalies revisited: Clinical and imaging features. AJR Am J Roentgenol. 2012;199(5):W589-W597.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -1176,7 +1248,9 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Obstrüksiyon",
         "categoryEn": "Obstruction",
         "mechanism": "Böbrekte oluşan taşın üretere migrasyonu → üreteral lümen obstrüksiyonu → proksimalde hidroüreter ve hidronefroz. Üç anatomik darlık noktasında takılma olasılığı yüksek: 1) Üreteropelvik bileşke (UPJ), 2) İliak damarların çaprazladığı yer, 3) Üreterovezikal bileşke (UVJ — en sık). Üreteral spazm + mukozal ödem → akut renal kolik (ciddi aralıklı ağrı).",
+        "mechanismEn": "Migration of stone formed in kidney to ureter → ureteral lumen obstruction → proximal hydroureter and hydronephrosis. High probability of impaction at three anatomic narrowing points: 1) Ureteropelvic junction (UPJ), 2) Iliac vessel crossing, 3) Ureterovesical junction (UVJ — most common). Ureteral spasm + mucosal edema → acute renal colic (severe intermittent pain).",
         "etiology": "Kalsiyum oksalat taşları en sık (%80). Ürik asit, struvit, sistin. Risk faktörleri: Dehidratasyon, hiperkalsiüri, hiperoksalüri, hiperürisemi, düşük idrar hacmi. Tekrarlayan taş oluşumunda metabolik değerlendirme gerekli.",
+        "etiologyEn": "Calcium oxalate stones most common (80%). Uric acid, struvite, cystine. Risk factors: Dehydration, hypercalciuria, hyperoxaluria, hyperuricemia, low urine volume. Metabolic evaluation required for recurrent stone formation.",
         "findings": {
             "ct": {
                 "non_contrast": "NON-KONTRAST BT ALTIN STANDART (Sensitivite %95-100). Üreter lümeninde hiperdens taş. TİSSUE RİM SIGN: Taş çevresinde yumuşak doku halkası (mukozal ödem). Proksimalde hidroüreter ve hidronefroz. Perinefritik/periüreteral stranding. Sekonder bulgular: Böbrek boyutu artışı, perinefritik sıvı.",
@@ -1218,8 +1292,11 @@ export const kidneyPathologies: Pathology[] = [
             "USG: First-line (children, pregnant); absent ureteral jet suggests obstruction."
         ],
         "differentialDiagnosis": ["Flebolit (Pelviste, daha yuvarlak, 'comet tail' bulgusu, rim sign yok)", "Vasküler kalsifikasyon (Tübüler, damar seyrine uyumlu)", "Appendikolit (Sağ alt kadran, klinik bağlam)"],
+        "differentialDiagnosisEn": ["Phlebolith (Pelvic, more round, 'comet tail' sign, no rim sign)", "Vascular calcification (Tubular, follows vessel course)", "Appendicolith (Right lower quadrant, clinical context)"],
         "goldStandard": "Non-kontrast BT: Taş tespiti ve lokalizasyonu. USG: Çocuk ve gebelerde ilk basamak. BT ürografi: Anatomik varyasyon ve komplikasyon değerlendirmesi.",
+        "goldStandardEn": "Non-contrast CT: Stone detection and localization. USG: First-line in children and pregnant patients. CT urography: Anatomic variant and complication evaluation.",
         "clinicalPearl": "Akut renal kolik + non-kontrast BT'de hiperdens taş + tissue rim sign + proksimal dilatasyon = Üreter taşı kesin tanı. Fleboliti dışlamak için rim sign'a dikkat et.",
+        "clinicalPearlEn": "Acute renal colic + hyperdense stone on non-contrast CT + tissue rim sign + proximal dilation = Definitive diagnosis of ureteral stone. Pay attention to rim sign to exclude phlebolith.",
         "references": [
             "Smith RC et al. Acute flank pain: Comparison of non-contrast-enhanced CT and intravenous urography. Radiology. 1995;194(3):789-794.",
             "ACR Appropriateness Criteria: Acute Onset Flank Pain — Suspicion of Stone Disease. American College of Radiology.",
@@ -1271,10 +1348,15 @@ export const kidneyPathologies: Pathology[] = [
             "More common in young, thin patients."
         ],
         "etiology": "Sol renal venin SMA ve aorta arasında kompresyonu. Zayıf hastalarda retroperitoneal yağ azlığı predispozan.",
+        "etiologyEn": "Compression of left renal vein between SMA and aorta. Lack of retroperitoneal fat in thin patients is predisposing.",
         "mechanism": "Sol renal ven kompresyonu → venöz hipertansiyon → hematüri + sol gonadal ven reflüsü → varikosel.",
+        "mechanismEn": "Left renal vein compression → venous hypertension → hematuria + left gonadal vein reflux → varicocele.",
         "differentialDiagnosis": ["IgA nefropatisi (hematüri, biyopsi ile ayırım)", "Sol renal ven trombozu (akut, dolum defekti)", "SMA sendromu (duodenum kompresyonu)"],
+        "differentialDiagnosisEn": ["IgA nephropathy (hematuria, differentiation by biopsy)", "Left renal vein thrombosis (acute, filling defect)", "SMA syndrome (duodenal compression)"],
         "goldStandard": "BT/MR Anjiyografi: Aortomezenterik açı ve mesafe ölçümü. Doppler USG ilk basamak.",
+        "goldStandardEn": "CT/MR Angiography: Aortomesenteric angle and distance measurement. Doppler USG first-line.",
         "clinicalPearl": "Genç zayıf hasta + açıklanamayan hematüri + sol varikosel = Nutcracker sendromu. BT'de aortomezenterik açı <35° doğrular.",
+        "clinicalPearlEn": "Young thin patient + unexplained hematuria + left varicocele = Nutcracker syndrome. Aortomesenteric angle <35° on CT confirms.",
         "references": [
             "Kurklinsky AK, Rooke TW. Mayo Clin Proc. 2010;85(6):552-559.",
             "Radiopaedia.org - Nutcracker syndrome"
@@ -1329,10 +1411,15 @@ export const kidneyPathologies: Pathology[] = [
             "Usually renal involvement of systemic NHL."
         ],
         "etiology": "Genellikle sekonder (sistemik NHL renal tutulumu). Primer renal lenfoma çok nadir.",
+        "etiologyEn": "Usually secondary (renal involvement of systemic NHL). Primary renal lymphoma is very rare.",
         "mechanism": "Lenfomatöz infiltrasyon → multipl nodüler/diffüz renal tutulum. Hipovasküler yapı.",
+        "mechanismEn": "Lymphomatous infiltration → multiple nodular/diffuse renal involvement. Hypovascular structure.",
         "differentialDiagnosis": ["RCC (hipervasküler, belirgin kontrastlanma)", "Metastaz (heterojen kontrastlanma)", "Renal abse (klinik bulgular)"],
+        "differentialDiagnosisEn": ["RCC (hypervascular, prominent enhancement)", "Metastasis (heterogeneous enhancement)", "Renal abscess (clinical findings)"],
         "goldStandard": "BT + Biyopsi. DWI-MRI tedavi yanıtı değerlendirmesinde kullanışlı.",
+        "goldStandardEn": "CT + Biopsy. DWI-MRI useful for treatment response evaluation.",
         "clinicalPearl": "Bilateral hipovasküler renal kitleler + retroperitoneal LAP + belirgin DWI kısıtlanma = Lenfoma. RCC aksine kontrastlanma çok azdır.",
+        "clinicalPearlEn": "Bilateral hypovascular renal masses + retroperitoneal LAP + marked DWI restriction = Lymphoma. Unlike RCC, enhancement is very minimal.",
         "references": [
             "Urban BA, Fishman EK. Radiographics. 2000;20(1):197-212.",
             "Radiopaedia.org - Renal lymphoma"
@@ -1383,10 +1470,15 @@ export const kidneyPathologies: Pathology[] = [
             "MAG3 scintigraphy: Obstruction confirmation + split function."
         ],
         "etiology": "Konjenital (intrinsik aperistaltik segment veya ekstrinsik çaprazlayan damar) veya edinsel (taş, cerrahi sonrası).",
+        "etiologyEn": "Congenital (intrinsic aperistaltic segment or extrinsic crossing vessel) or acquired (stone, post-surgical).",
         "mechanism": "UPJ'de intrinsik stenoz veya ekstrinsik bası → renal pelvis dilatasyonu → parankimal atrofi.",
+        "mechanismEn": "Intrinsic stenosis or extrinsic compression at UPJ → renal pelvis dilation → parenchymal atrophy.",
         "differentialDiagnosis": ["Konjenital megakaliks (pelvis normal, parankim normal)", "VUR (üreter dilate)", "Posterior üretral valv (bilateral)"],
+        "differentialDiagnosisEn": ["Congenital megacalyx (pelvis normal, parenchyma normal)", "VUR (ureter dilated)", "Posterior urethral valve (bilateral)"],
         "goldStandard": "USG + MAG3 diüretik renografi. BT/MR ürografi: Anatomi ve çaprazlayan damar.",
+        "goldStandardEn": "USG + MAG3 diuretic renography. CT/MR urography: Anatomy and crossing vessel.",
         "clinicalPearl": "Yenidoğan USG'de pelviektazi + normal üreter = UPJ. MAG3'te T1/2 >20 dk = obstrüksiyon.",
+        "clinicalPearlEn": "Pelvicaliectasis on neonatal USG + normal ureter = UPJ. T1/2 >20 min on MAG3 = obstruction.",
         "references": [
             "Fernbach SK, Maizels M, Conway JJ. Pediatr Radiol. 1993;23(6):478-480.",
             "Radiopaedia.org - UPJ obstruction"
@@ -1439,10 +1531,15 @@ export const kidneyPathologies: Pathology[] = [
             "Bilateral involvement → acute renal failure."
         ],
         "etiology": "DIC, abruptio plasenta, eklampsi, septik şok, hemorajik şok, HÜS.",
+        "etiologyEn": "DIC, abruptio placentae, eclampsia, septic shock, hemorrhagic shock, HUS.",
         "mechanism": "Kortikal arterlerde vazospazm + mikrotrombüs → kortikal iskemi → nekroz. Medüller kan akımı korunur.",
+        "mechanismEn": "Vasospasm + microthrombi in cortical arteries → cortical ischemia → necrosis. Medullary blood flow is preserved.",
         "differentialDiagnosis": ["ATN (korteks kontrastlanır, geçici)", "Renal ven trombozu (unilateral olabilir)", "Renal infarkt (segmental)"],
+        "differentialDiagnosisEn": ["ATN (cortex enhances, transient)", "Renal vein thrombosis (may be unilateral)", "Renal infarction (segmental)"],
         "goldStandard": "Kontrastlı BT: Reverse rim sign. Non-kontrast BT (geç): Tram-track kalsifikasyon.",
+        "goldStandardEn": "Contrast-enhanced CT: Reverse rim sign. Non-contrast CT (late): Tram-track calcification.",
         "clinicalPearl": "Obstetrik acil sonrası bilateral böbrek yetmezliği + korteks kontrastlanmıyor = Kortikal nekroz.",
+        "clinicalPearlEn": "Bilateral renal failure after obstetric emergency + cortex does not enhance = Cortical necrosis.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Radiopaedia.org - Renal cortical necrosis"
@@ -1493,10 +1590,15 @@ export const kidneyPathologies: Pathology[] = [
             "Drainage/nephrectomy → hypertension resolves."
         ],
         "etiology": "Travma, AML rüptürü, renal biyopsi komplikasyonu, antikoagülan kullanımı.",
+        "etiologyEn": "Trauma, AML rupture, renal biopsy complication, anticoagulant use.",
         "mechanism": "Subkapsüler hematom → renal hipoperfüzyon → RAAS aktivasyonu → renovasküler hipertansiyon.",
+        "mechanismEn": "Subcapsular hematoma → renal hypoperfusion → RAAS activation → renovascular hypertension.",
         "differentialDiagnosis": ["Perinefritik hematom (kapsül dışı, bası yapmaz)", "Renal abse (ateş, lökositoz)", "Ürinoma (idrar kaçağı)"],
+        "differentialDiagnosisEn": ["Perinephric hematoma (extracapsular, no compression)", "Renal abscess (fever, leukocytosis)", "Urinoma (urine leak)"],
         "goldStandard": "Kontrastlı BT + klinik korelasyon (yeni hipertansiyon).",
+        "goldStandardEn": "Contrast-enhanced CT + clinical correlation (new-onset hypertension).",
         "clinicalPearl": "Travma sonrası yeni başlayan hipertansiyon + subkapsüler hematom = Page böbrek.",
+        "clinicalPearlEn": "New-onset hypertension after trauma + subcapsular hematoma = Page kidney.",
         "references": [
             "Dopson SJ, et al. Kidney Int Rep. 2017;2(3):501-503.",
             "Radiopaedia.org - Page kidney"
@@ -1549,10 +1651,15 @@ export const kidneyPathologies: Pathology[] = [
             "Detached papilla may cause ureteral obstruction."
         ],
         "etiology": "POSTCARDS mnemonik: Pyelonefrit, Obstrüksiyon, Orak hücreli anemi, Tbc, Siroz, Analjezik, Renal transplant, DM, Vaskülit.",
+        "etiologyEn": "POSTCARDS mnemonic: Pyelonephritis, Obstruction, Sickle cell disease, Tuberculosis, Cirrhosis, Analgesic, Renal transplant, Diabetes Mellitus, Systemic vasculitis.",
         "mechanism": "Papiller bölgenin düşük oksijen basıncı + vasküler hasar → iskemi → nekroz.",
+        "mechanismEn": "Low oxygen tension in papillary region + vascular damage → ischemia → necrosis.",
         "differentialDiagnosis": ["Renal tüberküloz (kaliks deformitesi, kalsifikasyon)", "Medüller sünger böbrek (kistik ektazi)", "Kronik pyelonefrit (kortikal skar)"],
+        "differentialDiagnosisEn": ["Renal tuberculosis (calyceal deformity, calcification)", "Medullary sponge kidney (cystic ectasia)", "Chronic pyelonephritis (cortical scarring)"],
         "goldStandard": "BT ürografi: Papiller kavitasyonlar + 'egg in a cup'.",
+        "goldStandardEn": "CT urography: Papillary cavitations + 'egg in a cup'.",
         "clinicalPearl": "DM + NSAİD + hematüri + papiller kavitasyon = Papiller nekroz. POSTCARDS mnemonik ile risk hatırla.",
+        "clinicalPearlEn": "DM + NSAID + hematuria + papillary cavitation = Papillary necrosis. Remember risks with the POSTCARDS mnemonic.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Radiopaedia.org - Renal papillary necrosis"
@@ -1605,10 +1712,15 @@ export const kidneyPathologies: Pathology[] = [
             "ADPKD: Large kidneys, ACKD: Small atrophic kidneys."
         ],
         "etiology": "SDBY + uzun süreli hemodiyaliz. Tübüler obstrüksiyon + büyüme faktörleri → kistogenez.",
+        "etiologyEn": "ESRD + long-term hemodialysis. Tubular obstruction + growth factors → cystogenesis.",
         "mechanism": "Tübüler obstrüksiyon → epitel proliferasyonu → kist → displazi → RCC gelişme riski.",
+        "mechanismEn": "Tubular obstruction → epithelial proliferation → cyst → dysplasia → risk of RCC development.",
         "differentialDiagnosis": ["ADPKD (büyük böbrekler, aile öyküsü)", "VHL (kist + RCC + organ tutulumları)", "Multipl basit kistler (yaşlı, SDBY yok)"],
+        "differentialDiagnosisEn": ["ADPKD (large kidneys, family history)", "VHL (cysts + RCC + organ involvement)", "Multiple simple cysts (elderly, no ESRD)"],
         "goldStandard": "BT/MRI: SDBY zemininde bilateral multipl kistler + solid komponent taraması. Yıllık USG önerilir.",
+        "goldStandardEn": "CT/MRI: Bilateral multiple cysts in ESRD setting + solid component screening. Annual USG recommended.",
         "clinicalPearl": "Diyaliz hastasında küçük böbreklerde multipl kist + yeni solid komponent = ACKD + RCC. ADPKD'den farklı: böbrekler KÜÇÜKTÜR.",
+        "clinicalPearlEn": "Multiple cysts in small kidneys in dialysis patient + new solid component = ACKD + RCC. Different from ADPKD: kidneys are SMALL.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Radiopaedia.org - Acquired cystic kidney disease"

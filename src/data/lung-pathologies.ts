@@ -48,10 +48,15 @@ export const lungPathologies: Pathology[] = [
             "Ground-glass + solid = Part-solid nodule = Suspicious for Adenocarcinoma."
         ],
         "mechanism": "Sigara karsinojenleri veya genetik mutasyonlar (EGFR, ALK, KRAS) → bronşiyal epitelde DNA hasarı → onkogen aktivasyonu / tümör supresör kaybı → kontrolsüz hücre proliferasyonu. Adenokarsinom subplevral asinerlerde gelişir (EGFR mutasyonu sık); skuamöz tip santral bronşlarda gelişir (skvamöz metaplazi → displazi → CIS → invaziv). SCLC nöroendokrin kökenden kaynaklanır, çok hızlı büyür.",
+        "mechanismEn": "Cigarette carcinogens or genetic mutations (EGFR, ALK, KRAS) → DNA damage in bronchial epithelium → oncogene activation / tumor suppressor loss → uncontrolled cell proliferation. Adenocarcinoma develops in subpleural acini (EGFR mutation common); squamous type develops in central bronchi (squamous metaplasia → dysplasia → CIS → invasive). SCLC originates from neuroendocrine cells, grows very rapidly.",
         "etiology": "Sigara (%85-90 risk faktörü), Radon gazı, Asbest, Mesleki karsinojenler (nikel, krom). EGFR mutasyonu: Sigara içmeyenler, Asya kökenli.",
+        "etiologyEn": "Smoking (85-90% risk factor), Radon gas, Asbestos, Occupational carcinogens (nickel, chromium). EGFR mutation: Non-smokers, Asian descent.",
         "differentialDiagnosis": ["Pnömoni (Ateş, CRP artışı, antibiyotiğe yanıt)", "Granülom (TB, histoplazma - kalsifikasyon)", "Karsinoid Tümör (Santral, düşük grade)", "Metastaz (Multipl nodüller, bilinen primer)"],
+        "differentialDiagnosisEn": ["Pneumonia (Fever, elevated CRP, response to antibiotics)", "Granuloma (TB, histoplasmosis - calcification)", "Carcinoid Tumor (Central, low grade)", "Metastasis (Multiple nodules, known primary)"],
         "goldStandard": "BT-PET: Evreleme ve biyopsi kılavuzluğu. PET-CT: Mediastinal ve uzak metastaz değerlendirmesi. Biyopsi: Histolojik tip ve moleküler belirteç.",
+        "goldStandardEn": "CT-PET: Staging and biopsy guidance. PET-CT: Mediastinal and distant metastasis evaluation. Biopsy: Histological type and molecular markers.",
         "clinicalPearl": "Spiküle kenar + Plevral çekme + Hiler adenopati = Akciğer kanseri. 'Satellite nodule' + Nodül >3cm = T2 evre.",
+        "clinicalPearlEn": "Spiculated margin + Pleural retraction + Hilar adenopathy = Lung cancer. 'Satellite nodule' + Nodule >3cm = T2 stage.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "NCCN Clinical Practice Guidelines in Oncology: Non-Small Cell Lung Cancer. National Comprehensive Cancer Network; 2023.",
@@ -106,10 +111,15 @@ export const lungPathologies: Pathology[] = [
             "'Saddle embolus': Main pulmonary artery bifurcation - Massive PE."
         ],
         "mechanism": "Derin ven trombozu (DVT) → trombus kopması → sağ kalbe geçiş → pulmoner artere embolizasyon → damar tıkanması → perfüzyon azalması (ventilasyon korunur: V/Q uyumsuzluğu → hipoksi). Büyük tıkanmada sağ ventrikül afterload artar → RV dilatasyonu → sol kalp dolumu azalır → kardiyojenik şok. Pulmoner infarkt: Distal arterlerde tam tıkanma + yetersiz bronşiyal kollateral → wedge şekilli konsolidasyon (Hampton's hump).",
+        "mechanismEn": "Deep vein thrombosis (DVT) → thrombus detachment → passage to right heart → embolization to pulmonary artery → vessel occlusion → decreased perfusion (ventilation preserved: V/Q mismatch → hypoxia). In large occlusion, right ventricular afterload increases → RV dilation → left heart filling decreases → cardiogenic shock. Pulmonary infarction: Complete occlusion of distal arteries + insufficient bronchial collateral → wedge-shaped consolidation (Hampton's hump).",
         "etiology": "DVT (Virchow triadı: Staz, Hiperkoagülabilite, Damar hasarı). Risk: Uzun yolculuk, Malignansi, OKS, Cerrahi sonrası, İmmobilizasyon.",
+        "etiologyEn": "DVT (Virchow's triad: Stasis, Hypercoagulability, Vessel damage). Risk: Long travel, Malignancy, OCP, Post-surgical, Immobilization.",
         "differentialDiagnosis": ["Pnömoni (Ateş, produktif öksürük, konsolidasyon)", "Pnömotoraks (Ani dispne, plevral hat X-ray)", "Akut koroner sendrom (EKG değişikliği, troponin)", "KOAH alevlenmesi (Kronik zemin, wheezing)"],
+        "differentialDiagnosisEn": ["Pneumonia (Fever, productive cough, consolidation)", "Pneumothorax (Sudden dyspnea, pleural line on X-ray)", "Acute coronary syndrome (ECG changes, troponin)", "COPD exacerbation (Chronic background, wheezing)"],
         "goldStandard": "BT Pulmoner Anjiografi (BTPA): Altın standart, duyarlılık >%90. V/Q sintigrafi: BT kontrendike ise (hamile, böbrek yetmezliği).",
+        "goldStandardEn": "CT Pulmonary Angiography (CTPA): Gold standard, sensitivity >90%. V/Q scintigraphy: When CT is contraindicated (pregnancy, renal failure).",
         "clinicalPearl": "Polo mint sign (aksiyel) + Railway track sign (koronal) = PE. RV/LV >1 = Masif/submasif PE, kötü prognoz.",
+        "clinicalPearlEn": "Polo mint sign (axial) + Railway track sign (coronal) = PE. RV/LV >1 = Massive/submassive PE, poor prognosis.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -163,6 +173,7 @@ export const lungPathologies: Pathology[] = [
         "differentialDiagnosis": ["Pulmoner Ödem (Kardiyomegali, bilateral perihiler, sefalizasyon)", "Pulmoner Hemoraji (Hemoptizi, diffüz GGO, anemi)", "Organize Pnömoni (COP — periferik konsolidasyon, reverse halo)", "Eozinofilik Pnömoni (Periferal konsolidasyon, eozinofili)", "Akciğer Kanseri (Obstrüktif pnömoni, persistan infiltrat)"],
         "goldStandard": "Göğüs grafisi: İlk basamak tanı. BT toraks: Komplikasyon (apse, ampiyem) ve ayırıcı tanıda. Balgam kültürü ve kan kültürü: Etken tespiti.",
         "clinicalPearl": "Lober konsolidasyon + air-bronchogram + ateş = Bakteriyel pnömoni. Antibiyotiğe 48-72 saatte yanıt yoksa BT çek → apse, ampiyem veya altta yatan obstrüktif lezyon (tümör) araştır.",
+        "mechanismEn": "Bacterial: Pathogen reaches lower respiratory tract → insufficient clearance by alveolar macrophages → bacterial proliferation → neutrophil response → exudate-filled alveoli (consolidation). Viral/COVID-19: Cellular immune response and cytokine storm → diffuse alveolar damage → type II pneumocyte injury → surfactant loss → alveolar collapse → ground-glass opacities, crazy-paving. Necrotizing: Vasculitis and thrombosis → lung parenchymal necrosis → cavitation.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -218,6 +229,7 @@ export const lungPathologies: Pathology[] = [
         "differentialDiagnosis": ["Granülom (Kalsifiye, stabil boyut, santral/lameller/popcorn kalsifikasyon)", "Hamartom (Yağ + kalsifikasyon, düzgün kenar)", "Metastaz (Multipl, bilinen primer)", "Karsinoid Tümör (Santral, vasküler kontrastlanma)", "İntrapulmoner Lenf Nodu (Subplevral, <12mm, alt lob)"],
         "goldStandard": "İnce kesit BT (≤1mm): Nodül morfolojisi ve dansitesi. PET-BT: >8mm solid nodüllerde metabolik aktivite. Lung-RADS ve Fleischner kriterleri: Takip algoritması. Biyopsi: Büyüyen veya şüpheli nodüllerde.",
         "clinicalPearl": "Spiküle kenar + büyüme + PET pozitiflik = Malign. Stabil >2 yıl + düzgün kenar + kalsifikasyon = Benign. Part-solid nodülde solid komponent >6mm ise malignite riski çok yüksek — hemen biyopsi veya rezeksiyon planla.",
+        "mechanismEn": "Solid nodule: Complete solid tissue proliferation — granuloma (infectious: TB, histoplasmosis), carcinoid, metastasis or primary malignancy. Subsolid/ground-glass nodule: Partial alveolar filling with air preservation — atypical adenomatous hyperplasia (AAH) → adenocarcinoma in situ (AIS) → minimally invasive adenocarcinoma (MIA) → invasive adenocarcinoma malignancy spectrum. As solid component increases, invasion increases.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -276,6 +288,7 @@ export const lungPathologies: Pathology[] = [
         "differentialDiagnosis": ["Büllöz Amfizem (Dev bül, pnömotoraks taklidi — BT ile ayırt)", "Pnömomediastinum (Mediastinal hava, subkutan amfizem)", "Diyafragma Rüptürü (Travma, abdominal organ herniasyonu)", "Plevral Effüzyon (Opak hemitoraks, menisküs)", "Dev Bül (İnce duvar, çevresinde normal parankim)"],
         "goldStandard": "BT toraks: En hassas yöntem, küçük pnömotoraksları tespit eder. Akciğer grafisi (PA inspiryum): İlk basamak tanı. USG (eFAST): Acil yatak başı tanıda, lung sliding kaybı ve lung point.",
         "clinicalPearl": "Supin hastada pnömotoraks anterior birikir → PA grafide görülmeyebilir → 'deep sulcus sign' araştır. USG'de lung sliding yokluğu + barcode sign + lung point = Pnömotoraks kesin tanı. Tansiyon pnömotoraks klinik tanıdır — görüntüleme bekleme, hemen iğne dekompresyon!",
+        "mechanismEn": "Disruption of visceral or parietal pleura integrity → air leak into pleural space → lung collapse due to elastic recoil force. Primary spontaneous: Apical subpleural bleb rupture (weak mesothelial tissue in young, tall males). Tension: One-way valve mechanism → air enters during inspiration, cannot exit during expiration → progressively increasing pressure → mediastinal shift → compression of contralateral lung and venous return → cardiovascular collapse.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -331,6 +344,7 @@ export const lungPathologies: Pathology[] = [
         "differentialDiagnosis": ["NSIP (Ground-glass baskın, honeycombing az/yok, daha iyi prognoz)", "Hipersensitivite Pnömonisi (Üst/orta lob, mozaik atenüasyon, antijen maruziyeti)", "Sarkoidoz (Perilenfatik nodüller, hiler LAP)", "Asbestoz (Asbest öyküsü, plevral plaklar, bazal fibrozis)", "İlaca Bağlı Pnömoni (İlaç öyküsü, çekilince düzelme)"],
         "goldStandard": "HRCT toraks (1-2mm ince kesit): UIP/NSIP/COP patern tanıma. Multidisipliner değerlendirme (radyoloji + pulmonoloji + patoloji): Kesin tanı. Cerrahi akciğer biyopsisi: HRCT belirsiz ise.",
         "clinicalPearl": "HRCT'de baziler honeycombing + traksiyon bronşektazi + retiküler opasite + minimal GGO = UIP → biyopsi gerekmeden IPF tanısı konabilir. GGO baskınsa NSIP düşün — steroid yanıtı daha iyidir ve prognoz UIP'ten belirgin olarak daha iyidir.",
+        "mechanismEn": "Chronic alveolar epithelial damage (type II pneumocyte) → abnormal wound healing → fibroblast activation (TGF-beta, PDGF) → excessive ECM deposition → disruption of lung parenchymal architecture. Basilar/subpleural involvement: Related to susceptibility to mechanical stress in these regions. Honeycombing: Alveolar groups filling with fibrous tissue and clustering to form cystic air spaces.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -368,6 +382,7 @@ export const lungPathologies: Pathology[] = [
         "differentialDiagnosis": ["NSIP (GGO baskın, honeycombing yok/az, bazal/subplevral, daha iyi prognoz)", "Kronik Hipersensitivite Pnömonisi (Üst/orta lob fibrozis, mozaik atenüasyon, antijen öyküsü)", "Asbestoz (Asbest maruziyeti, plevral plaklar)", "Kollajen Vasküler Hastalık İlişkili ILD (Genç kadın, otoimmün belirteçler)", "İlaca Bağlı Fibrozis (Amiodaron, bleomisin öyküsü)"],
         "goldStandard": "HRCT toraks: UIP paterni (kesin, olası, belirsiz). ATS/ERS/JRS/ALAT 2022 kılavuzu: Kesin UIP paterni + klinik uyum = Biyopsisiz IPF tanısı. Cerrahi akciğer biyopsisi: Belirsiz HRCT paterninde.",
         "clinicalPearl": "Yaşlı erkek + progresif dispne + kuru öksürük + bilateral bazal Velcro ralleri + HRCT'de kesin UIP paterni = IPF tanısı biyopsisiz konur. Medyan sağkalım 3-5 yıl. Antifibrotik tedavi (pirfenidon, nintedanib) progresyonu yavaşlatır ama iyileştirmez.",
+        "mechanismEn": "Unknown trigger → repetitive epithelial micro-injuries → TGF-beta mediated fibroblast activation → conversion to myofibroblasts → collagen deposition. Alveolar surface decreases → gas exchange impaired → restrictive pattern. Basilar subpleural involvement is explained by the susceptibility of these regions to stretch forces during respiration.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -411,6 +426,7 @@ export const lungPathologies: Pathology[] = [
         "differentialDiagnosis": ["Bronşiektazi (Dilate bronşlar, signet ring, duvar kalınlaşması)", "Langerhans Hücreli Histiyositoz (Üst lob kistler, düzensiz şekil, genç sigara içen)", "Lenfanjiyoleyomiyomatozis — LAM (Genç kadın, diffüz ince duvarlı kistler)", "Pneumocystis Pnömonisi (HIV, bilateral GGO + kistler)", "Honeycombing/UIP (Bazal, subplevral, kalın duvarlı kistler)"],
         "goldStandard": "HRCT toraks: Amfizem tipi (sentrilobüler, panasiner, paraseptal), dağılımı ve şiddeti. İnspirasyon/ekspirasyon BT: Hava hapsi değerlendirmesi. SFT (Spirometri): FEV1/FVC <0.70 (obstrüktif patern).",
         "clinicalPearl": "Sentrilobüler (üst lob) = Sigara. Panasiner (alt lob) = Alfa-1 antitripsin eksikliği → <45 yaş amfizemde alfa-1 antitripsin düzeyi iste! Paraseptal amfizem spontan pnömotoraks riski taşır. PA çapı >29mm ise kor pulmonale gelişimini düşün.",
+        "mechanismEn": "Cigarette smoke or alpha-1 antitrypsin deficiency → protease/antiprotease imbalance (increased neutrophil elastase, decreased alpha-1 antitrypsin) → alveolar wall destruction → air space enlargement → decreased lung elasticity → air trapping. Centrilobular emphysema: Smoking-related, central acinar damage. Panacinar: Entire acinar destruction. Hyperinflation and flattening diaphragm reflect this air trapping mechanism.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -473,10 +489,15 @@ export const lungPathologies: Pathology[] = [
             "Light's Criteria: Exudate vs transudate differentiation (clinical-lab)."
         ],
         "mechanism": "Plevral sıvı oluşumu: Parietal plevradan sıvı üretimi > visseral plevradan emilim. Transüda: Hidrostatik basınç artışı (KKY) veya onkotik basınç azalması (hipoalbüminemi) → osmotik kuvvetler bozulur. Eksüda: İnflamasyon/tümör → kapiller geçirgenlik artışı → protein ve hücre kaçışı. Hematotoraks: Travma/kanama. Şilotoraks: Torasik duktus hasarı.",
+        "mechanismEn": "Pleural fluid formation: Fluid production from parietal pleura > absorption from visceral pleura. Transudate: Increased hydrostatic pressure (CHF) or decreased oncotic pressure (hypoalbuminemia) → osmotic forces disrupted. Exudate: Inflammation/tumor → increased capillary permeability → protein and cell leakage. Hemothorax: Trauma/bleeding. Chylothorax: Thoracic duct injury.",
         "etiology": "Transüda: KKY, siroz, nefrotik sendrom, perikardit. Eksüda: Pnömoni, tüberküloz, malignite, PE, pankreatit. Hematotoraks: Travma, aort diseksiyonu.",
+        "etiologyEn": "Transudate: CHF, cirrhosis, nephrotic syndrome, pericarditis. Exudate: Pneumonia, tuberculosis, malignancy, PE, pancreatitis. Hemothorax: Trauma, aortic dissection.",
         "differentialDiagnosis": ["Pnömoni (Konsolidasyon, ateş)", "Atelektazi (Volüm kaybı)", "Diyafragma Elevasyonu", "Plevral Kitle (Nodüler, kalın)"],
+        "differentialDiagnosisEn": ["Pneumonia (Consolidation, fever)", "Atelectasis (Volume loss)", "Diaphragmatic Elevation", "Pleural Mass (Nodular, thick)"],
         "goldStandard": "USG (tanı + torasentez kılavuzluğu). BT: Etiyoloji ve komplikasyon değerlendirmesi.",
+        "goldStandardEn": "USG (diagnosis + thoracentesis guidance). CT: Etiology and complication evaluation.",
         "clinicalPearl": "Masif efüzyon + kontralateral mediastinal yer değiştirme = Serbest efüzyon. İpsilateral yer değiştirme YOK = Atelektazi veya malign mezotelyoma (plevral tutulum akciğeri sabitler).",
+        "clinicalPearlEn": "Massive effusion + contralateral mediastinal shift = Free-flowing effusion. NO ipsilateral shift = Atelectasis or malignant mesothelioma (pleural involvement fixes the lung).",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -534,10 +555,15 @@ export const lungPathologies: Pathology[] = [
             "Miliary TB: Hematogenous spread, common in immunosuppressed patients."
         ],
         "mechanism": "Mycobacterium tuberculosis inhalasyonu → alveolar makrofajlarca fagosite edilir → granülom oluşumu (Langhans dev hücreli). Primer infeksiyonda: Alt/orta lob tutulumu, hiler LAP (Ghon kompleksi). İmmün kontrol altında latent kalır. Reaktivasyon: İmmünsüpresyon → üst lob apikal bölgeye hematojenik yayılım (yüksek O2 gerilimi) → kazeöz nekroz → kavite → endobronşial yayılım (tree-in-bud). Hematojenik yayılım → milyer TB (karaciğer, dalak, meninks, kemik).",
+        "mechanismEn": "Mycobacterium tuberculosis inhalation → phagocytosis by alveolar macrophages → granuloma formation (Langhans giant cells). In primary infection: Lower/middle lobe involvement, hilar LAP (Ghon complex). Remains latent under immune control. Reactivation: Immunosuppression → hematogenous spread to upper lobe apical region (high O2 tension) → caseous necrosis → cavity → endobronchial spread (tree-in-bud). Hematogenous spread → miliary TB (liver, spleen, meninges, bone).",
         "etiology": "Mycobacterium tuberculosis. Risk: HIV, immünsüpresyon, DM, kronik böbrek hastalığı, malnütrisyon, kalabalık ortam.",
+        "etiologyEn": "Mycobacterium tuberculosis. Risk: HIV, immunosuppression, DM, chronic kidney disease, malnutrition, crowded environment.",
         "differentialDiagnosis": ["Akciğer Kanseri (Üst lob kitle, spiküle)", "Fungal Enfeksiyon (Aspergilloz, Kavite + halo)", "Sarkoidoz (Hiler LAP, üst lob nodüller)", "Bakteriyel Pnömoni (Alt lob, akut klinik)"],
+        "differentialDiagnosisEn": ["Lung Cancer (Upper lobe mass, spiculated)", "Fungal Infection (Aspergillosis, Cavity + halo)", "Sarcoidosis (Hilar LAP, upper lobe nodules)", "Bacterial Pneumonia (Lower lobe, acute presentation)"],
         "goldStandard": "Balgam ARB + Kültür (Löwenstein-Jensen). Moleküler: GeneXpert MTB/RIF (hızlı tanı). Görüntüleme destekleyicidir.",
+        "goldStandardEn": "Sputum AFB + Culture (Lowenstein-Jensen). Molecular: GeneXpert MTB/RIF (rapid diagnosis). Imaging is supportive.",
         "clinicalPearl": "Üst lob + kavite + tree-in-bud = Aktif TB ekarte edilmeli. Nekrotik LAP'ta rim kontrastlanma TB'e özgüdür — lenfoma ve metastazdan ayırır.",
+        "clinicalPearlEn": "Upper lobe + cavity + tree-in-bud = Active TB must be ruled out. Rim enhancement in necrotic LAP is specific for TB — differentiates from lymphoma and metastasis.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -595,10 +621,15 @@ export const lungPathologies: Pathology[] = [
             "Antibiotic response (4-6 weeks) or failure → Percutaneous/surgical drainage."
         ],
         "mechanism": "Pulmoner parankim nekrozu → kavite oluşumu. Aspirasyon (en sık): Bilinç bozukluğu, disfaji, periodontal hastalık → anaerobik bakteri (Bacteroides, Fusobacterium). Pnömoni komplikasyonu: Stafilokokal, Klebsiella nekrotizan pnömoni. Septik emboli: Sağ kalp endokarditi → pulmoner emboli → infarkt → kavitasyon.",
+        "mechanismEn": "Pulmonary parenchymal necrosis → cavity formation. Aspiration (most common): Altered consciousness, dysphagia, periodontal disease → anaerobic bacteria (Bacteroides, Fusobacterium). Pneumonia complication: Staphylococcal, Klebsiella necrotizing pneumonia. Septic emboli: Right-sided endocarditis → pulmonary embolism → infarction → cavitation.",
         "etiology": "Aspirasyon (en sık), nekrotizan pnömoni, septik emboli, pulmoner infarkt. Risk: Alkolizm, epilepsi, anestezi, disfaji.",
+        "etiologyEn": "Aspiration (most common), necrotizing pneumonia, septic emboli, pulmonary infarction. Risk: Alcoholism, epilepsy, anesthesia, dysphagia.",
         "differentialDiagnosis": ["Kaviter Akciğer Kanseri (DWI kısıtlanma yok, ince düzgün duvar)", "TB Kavitesi (Üst lob, tree-in-bud)", "Wegener/GPA (Bilateral, multipl)", "Bül/Amfizematöz Kavite (İnce duvar, sıvı yok)"],
+        "differentialDiagnosisEn": ["Cavitary Lung Cancer (No DWI restriction, thin smooth wall)", "TB Cavity (Upper lobe, tree-in-bud)", "Wegener/GPA (Bilateral, multiple)", "Bulla/Emphysematous Cavity (Thin wall, no fluid)"],
         "goldStandard": "BT + Balgam kültürü/bronkoskopi. DWI → apse içeriğini tümörden ayırır.",
+        "goldStandardEn": "CT + Sputum culture/bronchoscopy. DWI → differentiates abscess content from tumor.",
         "clinicalPearl": "DWI'da apse içeriği kısıtlanır (parlak), nekrotik tümör kısıtlanmaz → BT'de kavitasyon gördüğünde MRI-DWI yapmanın değeri büyüktür.",
+        "clinicalPearlEn": "Abscess content restricts on DWI (bright), necrotic tumor does not restrict → when cavitation is seen on CT, MRI-DWI has great value.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -652,10 +683,15 @@ export const lungPathologies: Pathology[] = [
             "Cardiac sarcoidosis: LGE MRI → risk of arrhythmic sudden death."
         ],
         "mechanism": "Antijen (mikobakteri, mantar veya organik partiküller?) → CD4+ T-hücre aktivasyonu → granülom oluşumu (non-kazeöz, epiteloid histiyositler + Langhans dev hücreleri). Perilenfatik dağılım: Granülomlar lenfatik damarlar boyunca yayılır → bronchovasküler kılıf, interlobüler septa ve plevra boyunca nodüler yapılar. Fibrozis gelişirse (Evre IV): Üst lob büzüşmesi, bronşiektazi, çekme bronşiektazisi.",
+        "mechanismEn": "Antigen (mycobacteria, fungi, or organic particles?) → CD4+ T-cell activation → granuloma formation (non-caseating, epithelioid histiocytes + Langhans giant cells). Perilymphatic distribution: Granulomas spread along lymphatic vessels → nodular structures along bronchovascular sheaths, interlobular septa, and pleura. If fibrosis develops (Stage IV): Upper lobe contraction, bronchiectasis, traction bronchiectasis.",
         "etiology": "Bilinmeyen (genetik yatkınlık + antijenik uyaran). HLA-DRB1 ilişkisi. Meslek maruziyeti (tarım, itfaiyecilik) sıklaştırabilir.",
+        "etiologyEn": "Unknown (genetic susceptibility + antigenic stimulus). HLA-DRB1 association. Occupational exposure (agriculture, firefighting) may increase incidence.",
         "differentialDiagnosis": ["Lenfoma (Anterior mediastinal, asimetrik LAP)", "Tüberküloz (Nekrotik LAP, üst lob kavite)", "Pnömokonyoz (Mesleki öykü, üst lob)", "Metastatik Hastalık (Bilinen primer, heterojen)"],
+        "differentialDiagnosisEn": ["Lymphoma (Anterior mediastinal, asymmetric LAP)", "Tuberculosis (Necrotic LAP, upper lobe cavity)", "Pneumoconiosis (Occupational history, upper lobe)", "Metastatic Disease (Known primary, heterogeneous)"],
         "goldStandard": "Doku biyopsisi (BAL veya transbronşial biyopsi): Non-kazeöz epiteloid granülom. ACE düzeyi destekleyici.",
+        "goldStandardEn": "Tissue biopsy (BAL or transbronchial biopsy): Non-caseating epithelioid granuloma. ACE level supportive.",
         "clinicalPearl": "Bilateral hiler LAP + nefes darlığı + eritema nodozum + artralji = Löfgren Sendromu (iyi prognozlu akut sarkoidoz).",
+        "clinicalPearlEn": "Bilateral hilar LAP + dyspnea + erythema nodosum + arthralgia = Lofgren Syndrome (acute sarcoidosis with good prognosis).",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -702,10 +738,15 @@ export const lungPathologies: Pathology[] = [
             "Cystic fibrosis: Bilateral upper lobe + severe bronchiectasis + pancreatic involvement."
         ],
         "mechanism": "Tekrarlayan veya kronik enfeksiyon/inflamasyon → bronş duvarı harabiyeti (elastin ve kas kaybı) → kalıcı bronş dilatasyonu → sekresyon birikimi → daha fazla enfeksiyon (kısır döngü). Konjenital: Kistik fibrozis, primer siliyer diskinezi. Edinsel: Post-enfeksiyöz (TB, boğmaca), obstrüktif, immün yetmezlik, ABPA (santral bronşiektazi).",
+        "mechanismEn": "Recurrent or chronic infection/inflammation → bronchial wall destruction (elastin and muscle loss) → permanent bronchial dilation → secretion accumulation → more infection (vicious cycle). Congenital: Cystic fibrosis, primary ciliary dyskinesia. Acquired: Post-infectious (TB, pertussis), obstructive, immunodeficiency, ABPA (central bronchiectasis).",
         "etiology": "Kistik fibrozis (genç), TB (üst lob), Primer siliyer diskinezi, ABPA (santral, üst lob), İmmün yetmezlik (alt lob), Post-obstrüktif.",
+        "etiologyEn": "Cystic fibrosis (young), TB (upper lobe), Primary ciliary dyskinesia, ABPA (central, upper lobe), Immunodeficiency (lower lobe), Post-obstructive.",
         "differentialDiagnosis": ["Amfizem (Duvar yok, hava alanı genişlemesi)", "Kaviter Lezyon (TB, apse — daha kalın duvar)", "Pulmoner Kist (Konjenital)", "ABPA (Santral bronşiektazi + mukoid impaksiyon)"],
+        "differentialDiagnosisEn": ["Emphysema (No wall, air space enlargement)", "Cavitary Lesion (TB, abscess — thicker wall)", "Pulmonary Cyst (Congenital)", "ABPA (Central bronchiectasis + mucoid impaction)"],
         "goldStandard": "HRCT toraksi: Signet ring işareti + bronş/arter oranı. Altta yatan etiyoloji araştırması: Ter testi (CF), siliyer motilite testi, immün panel.",
+        "goldStandardEn": "HRCT thorax: Signet ring sign + bronchus/artery ratio. Underlying etiology investigation: Sweat test (CF), ciliary motility test, immune panel.",
         "clinicalPearl": "Günlük pürülan balgam + kronik öksürük + HRCT'de signet ring = Bronşiektazi. Santral tutulum → ABPA ekarte et (IgE, Aspergillus seroloji).",
+        "clinicalPearlEn": "Daily purulent sputum + chronic cough + signet ring on HRCT = Bronchiectasis. Central involvement → rule out ABPA (IgE, Aspergillus serology).",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -729,10 +770,15 @@ export const lungPathologies: Pathology[] = [
         "keyPoints": ["Multipl bilateral nodüller + bilinen primer = Metastaz.", "Alt lob baskın (hematojen) veya lenfanjitik patern (septal kalınlaşma).", "Kavitasyon: Skuamöz hücreli primer düşündürür.", "'Cannonball' metastaz: Büyük yuvarlak nodüller (renal, kolon)."],
         "keyPointsEn": ["Multiple bilateral nodules + known primary = Metastasis.", "Lower lobe predominant (hematogenous) or lymphangitic pattern.", "Cavitation: Suggests squamous cell primary.", "'Cannonball' metastasis: Large round nodules (renal, colon)."],
         "etiology": "Hematojen yayılım en sık. Primer: Meme, kolon, renal, melanom, tiroid.",
+        "etiologyEn": "Hematogenous spread most common. Primary: Breast, colon, renal, melanoma, thyroid.",
         "mechanism": "Primer tümörden hematojen embolizasyon → pulmoner kapillerlerde tutulum → nodül büyümesi.",
+        "mechanismEn": "Hematogenous embolization from primary tumor → entrapment in pulmonary capillaries → nodule growth.",
         "differentialDiagnosis": ["Granülomlar (TB, fungal — kalsifiye)", "Septin emboliler (kaviter, periferal)", "Sarkoidoz (perilenfatik, hiler LAP)", "Multipl hamartomlar (yağ + kalsifikasyon)"],
+        "differentialDiagnosisEn": ["Granulomas (TB, fungal — calcified)", "Septic emboli (cavitary, peripheral)", "Sarcoidosis (perilymphatic, hilar LAP)", "Multiple hamartomas (fat + calcification)"],
         "goldStandard": "BT toraks: Nodül tespiti. PET-BT: Metabolik aktivite. Biyopsi: Primer bilinmiyorsa.",
+        "goldStandardEn": "CT thorax: Nodule detection. PET-CT: Metabolic activity. Biopsy: If primary unknown.",
         "clinicalPearl": "Bilinen kanser + yeni multipl pulmoner nodüller = Metastaz. Kavitasyon varsa skuamöz hücreli, kalsifikasyon varsa osteojenik primer düşün.",
+        "clinicalPearlEn": "Known cancer + new multiple pulmonary nodules = Metastasis. If cavitation, consider squamous cell; if calcification, consider osteogenic primary.",
         "references": ["Webb WR. Thoracic Imaging. 3rd ed. Lippincott Williams & Wilkins; 2017.", "Radiopaedia.org - Pulmonary metastasis"]
     },
     {
@@ -752,10 +798,15 @@ export const lungPathologies: Pathology[] = [
         "keyPoints": ["Kardiyojenik: Kardiyomegali + sefalizasyon + bat-wing + efüzyon.", "Non-kardiyojenik (ARDS): Kardiyomegali YOK, periferal dağılım.", "Kerley B çizgileri: İnterlobüler septal kalınlaşma (1-2cm horizontal çizgiler).", "Hızlı değişim: Tedaviye hızlı yanıt (diüretik sonrası)."],
         "keyPointsEn": ["Cardiogenic: Cardiomegaly + cephalization + bat-wing + effusion.", "Non-cardiogenic (ARDS): NO cardiomegaly, peripheral distribution.", "Kerley B lines: Interlobular septal thickening.", "Rapid change: Rapid response to treatment (after diuretics)."],
         "etiology": "Kardiyojenik (sol kalp yetmezliği en sık). Non-kardiyojenik: ARDS, böbrek yetmezliği, sıvı yüklenmesi, nörojenik.",
+        "etiologyEn": "Cardiogenic (left heart failure most common). Non-cardiogenic: ARDS, renal failure, fluid overload, neurogenic.",
         "mechanism": "Kardiyojenik: Sol ventrikül yetmezliği → pulmoner venöz basınç artışı → kapiller sızıntı → alveolar ve interstisyel ödem.",
+        "mechanismEn": "Cardiogenic: Left ventricular failure → increased pulmonary venous pressure → capillary leakage → alveolar and interstitial edema.",
         "differentialDiagnosis": ["Pnömoni (asimetrik, konsolidasyon, ateş)", "Pulmoner hemoraji (hemoptizi, diffüz GGO)", "Lenfanjitik karsinomatozis (unilateral olabilir, LAP)"],
+        "differentialDiagnosisEn": ["Pneumonia (asymmetric, consolidation, fever)", "Pulmonary hemorrhage (hemoptysis, diffuse GGO)", "Lymphangitic carcinomatosis (may be unilateral, LAP)"],
         "goldStandard": "Göğüs grafisi: Hızlı tanı. BT: Ayırıcı tanıda yardımcı. Ekokardiyografi: Kardiyak fonksiyon.",
+        "goldStandardEn": "Chest X-ray: Rapid diagnosis. CT: Helpful in differential diagnosis. Echocardiography: Cardiac function.",
         "clinicalPearl": "Bilateral bat-wing opasiteler + kardiyomegali + sefalizasyon + plevral efüzyon = Kardiyojenik pulmoner ödem. Diüretik sonrası hızlı düzelme tanıyı doğrular.",
+        "clinicalPearlEn": "Bilateral bat-wing opacities + cardiomegaly + cephalization + pleural effusion = Cardiogenic pulmonary edema. Rapid improvement after diuretics confirms the diagnosis.",
         "references": ["Webb WR. Thoracic Imaging. 3rd ed. 2017.", "Radiopaedia.org - Pulmonary edema"]
     },
     {
@@ -775,10 +826,15 @@ export const lungPathologies: Pathology[] = [
         "keyPoints": ["Asbest maruziyeti EN ÖNEMLİ risk faktörü (20-40 yıl latent dönem).", "Unilateral nodüler plevral kalınlaşma + mediastinal tutulum + fissürel kalınlaşma.", "Hemitoraks küçülmesi (çekilme) metastatik plevral hastalıktan AYIRICI.", "Sirkumferensiyal plevral tutulum + asbest öyküsü = Mezotelyoma düşün."],
         "keyPointsEn": ["Asbestos exposure MOST IMPORTANT risk factor (20-40 year latent period).", "Unilateral nodular pleural thickening + mediastinal involvement + fissural thickening.", "Hemithorax shrinkage differentiates from metastatic pleural disease.", "Circumferential pleural involvement + asbestos history = Consider mesothelioma."],
         "etiology": "Asbest maruziyeti (%80). Latent dönem 20-40 yıl. Erkeklerde daha sık.",
+        "etiologyEn": "Asbestos exposure (80%). Latent period 20-40 years. More common in males.",
         "mechanism": "Asbest lifleri → plevral mezoteliyal hücrelerde kronik inflamasyon ve DNA hasarı → malign transformasyon.",
+        "mechanismEn": "Asbestos fibers → chronic inflammation and DNA damage in pleural mesothelial cells → malignant transformation.",
         "differentialDiagnosis": ["Metastatik plevral hastalık (bilinen primer, hemitoraks genişlemiş)", "Plevral plaklar (benign, kalsifiye, nodüler değil)", "Organize efüzyon/ampiyem (enfeksiyon öyküsü)", "Soliter fibröz tümör (pedünküllü, plevral)"],
+        "differentialDiagnosisEn": ["Metastatic pleural disease (known primary, expanded hemithorax)", "Pleural plaques (benign, calcified, not nodular)", "Organized effusion/empyema (history of infection)", "Solitary fibrous tumor (pedunculated, pleural)"],
         "goldStandard": "BT + Plevral biyopsi (torakoskopik). İmmünohistokimya: Calretinin +, WT1 +.",
+        "goldStandardEn": "CT + Pleural biopsy (thoracoscopic). Immunohistochemistry: Calretinin +, WT1 +.",
         "clinicalPearl": "Asbest maruziyeti + unilateral nodüler plevral kalınlaşma + hemitoraks küçülmesi = Mezotelyoma. Plevral biyopsi zorunlu.",
+        "clinicalPearlEn": "Asbestos exposure + unilateral nodular pleural thickening + hemithorax shrinkage = Mesothelioma. Pleural biopsy mandatory.",
         "references": ["Webb WR. Thoracic Imaging. 3rd ed. 2017.", "Radiopaedia.org - Mesothelioma"]
     },
     {
@@ -798,10 +854,15 @@ export const lungPathologies: Pathology[] = [
         "keyPoints": ["Anterior mediastenin EN SIK primer tümörü (erişkinde).", "Myastenia gravis ilişkisi: %30-50 timoma hastasında MG.", "'4T' anterior mediasten: Timoma, Teratom, Tiroid, Terrible (lenfoma).", "Plevral drop metastaz: Plevral yüzeyde metastaz nodülleri."],
         "keyPointsEn": ["MOST COMMON primary tumor of anterior mediastinum (in adults).", "Myasthenia gravis association: MG in 30-50% of thymoma patients.", "'4T' anterior mediastinum: Thymoma, Teratoma, Thyroid, Terrible (lymphoma).", "Pleural drop metastasis: Metastatic nodules on pleural surface."],
         "etiology": "Timik epitel kökenli. Masaoka-Koga evreleme: I (kapsüllü) - IVb (uzak metastaz). Paraneoplastik sendromlar: MG, saf kırmızı hücre aplazisi, hipogammaglobulinemi.",
+        "etiologyEn": "Thymic epithelial origin. Masaoka-Koga staging: I (encapsulated) - IVb (distant metastasis). Paraneoplastic syndromes: MG, pure red cell aplasia, hypogammaglobulinemia.",
         "mechanism": "Timik epitelyal hücreler → neoplastik proliferasyon → anterior mediastinal kitle. T-lenfosit matürasyonu ile ilişki → otoimmün fenomenler (MG).",
+        "mechanismEn": "Thymic epithelial cells → neoplastic proliferation → anterior mediastinal mass. Relationship with T-lymphocyte maturation → autoimmune phenomena (MG).",
         "differentialDiagnosis": ["Lenfoma (genç, LAP, homojen, FDG avid)", "Germ hücreli tümör (teratom: yağ + kalsifikasyon)", "Tiroid guatr (servikal uzanım, iyot avidite)", "Timik kist (su dansitesinde, kontrastlanma yok)"],
+        "differentialDiagnosisEn": ["Lymphoma (young, LAP, homogeneous, FDG avid)", "Germ cell tumor (teratoma: fat + calcification)", "Thyroid goiter (cervical extension, iodine avidity)", "Thymic cyst (water density, no enhancement)"],
         "goldStandard": "BT: Anterior mediastinal kitle karakterizasyonu. MRI: İnvazyon değerlendirmesi. Biyopsi veya cerrahi.",
+        "goldStandardEn": "CT: Anterior mediastinal mass characterization. MRI: Invasion assessment. Biopsy or surgery.",
         "clinicalPearl": "Anterior mediastinal kitle + myastenia gravis = Timoma. Plevral drop metastaz invaziv timomada görülür.",
+        "clinicalPearlEn": "Anterior mediastinal mass + myasthenia gravis = Thymoma. Pleural drop metastasis is seen in invasive thymoma.",
         "references": ["Webb WR. Thoracic Imaging. 3rd ed. 2017.", "Radiopaedia.org - Thymoma"]
     },
     {
@@ -819,10 +880,15 @@ export const lungPathologies: Pathology[] = [
         "keyPoints": ["Bilateral periferal GGO en tipik bulgu.", "Crazy paving: GGO + retiküler kalınlaşma.", "CO-RADS sınıflaması: 1-5 (şüphe derecesi).", "Pulmoner emboli riski artmış (D-dimer takibi)."],
         "keyPointsEn": ["Bilateral peripheral GGO most typical finding.", "Crazy paving: GGO + reticular thickening.", "CO-RADS classification: 1-5 (suspicion level).", "Increased risk of pulmonary embolism."],
         "etiology": "SARS-CoV-2 virüs enfeksiyonu. ACE2 reseptör aracılı giriş.",
+        "etiologyEn": "SARS-CoV-2 viral infection. ACE2 receptor-mediated entry.",
         "mechanism": "SARS-CoV-2 → tip II pnömosit hasarı → diffüz alveoler hasar → GGO/konsolidasyon. İmmün yanıt → sitokin fırtınası → ARDS.",
+        "mechanismEn": "SARS-CoV-2 → type II pneumocyte injury → diffuse alveolar damage → GGO/consolidation. Immune response → cytokine storm → ARDS.",
         "differentialDiagnosis": ["Diğer viral pnömoniler (influenza, CMV)", "Organize pnömoni (COP)", "PCP (Pneumocystis — HIV)", "Pulmoner ödem (kardiyomegali, sefalizasyon)"],
+        "differentialDiagnosisEn": ["Other viral pneumonias (influenza, CMV)", "Organizing pneumonia (COP)", "PCP (Pneumocystis — HIV)", "Pulmonary edema (cardiomegaly, cephalization)"],
         "goldStandard": "PCR (tanı). BT: Klinik evreleme ve komplikasyon tespiti. BT anjiyografi: PE şüphesinde.",
+        "goldStandardEn": "PCR (diagnosis). CT: Clinical staging and complication detection. CT angiography: If PE suspected.",
         "clinicalPearl": "Bilateral periferal GGO + alt lob dominansı + ateş + PCR pozitif = COVID-19 pnömonisi. D-dimer yüksekse pulmoner emboli dışla.",
+        "clinicalPearlEn": "Bilateral peripheral GGO + lower lobe dominance + fever + positive PCR = COVID-19 pneumonia. If D-dimer elevated, rule out pulmonary embolism.",
         "references": ["Defined approach in Simpson S et al. Radiographics. 2020;40(6):E199-E217.", "Radiopaedia.org - COVID-19"]
     },
     {
@@ -842,10 +908,15 @@ export const lungPathologies: Pathology[] = [
         "keyPoints": ["Ana PA çapı >29mm veya aortadan büyük = PH şüphesi.", "RV/LV oranı >1 = Sağ ventrikül dilatasyonu.", "CTEPH: Organize trombüs + mozaik perfüzyon → endarterektomi ile tedavi edilebilir.", "Septum düzleşmesi/bowing: Sağ ventrikül basınç yüklenmesi."],
         "keyPointsEn": ["Main PA >29mm or larger than aorta = PH suspicion.", "RV/LV ratio >1 = RV dilation.", "CTEPH: Organized thrombus + mosaic perfusion → treatable with endarterectomy.", "Septal flattening/bowing: RV pressure overload."],
         "etiology": "WHO Grup 1 (PAH), Grup 2 (sol kalp), Grup 3 (akciğer hastalığı), Grup 4 (CTEPH), Grup 5 (diğer).",
+        "etiologyEn": "WHO Group 1 (PAH), Group 2 (left heart), Group 3 (lung disease), Group 4 (CTEPH), Group 5 (other).",
         "mechanism": "Pulmoner vasküler rezistans artışı → PA basınç artışı → sağ ventrikül afterload artışı → RV hipertrofi/dilatasyon → sağ kalp yetmezliği.",
+        "mechanismEn": "Increased pulmonary vascular resistance → PA pressure increase → right ventricular afterload increase → RV hypertrophy/dilation → right heart failure.",
         "differentialDiagnosis": ["Pulmoner emboli (akut, dolum defekti)", "Sol kalp yetmezliği (sol ventrikül dilate)", "İdiyopatik PA dilatasyonu (basınç normal)"],
+        "differentialDiagnosisEn": ["Pulmonary embolism (acute, filling defect)", "Left heart failure (left ventricle dilated)", "Idiopathic PA dilation (pressure normal)"],
         "goldStandard": "Ekokardiyografi (tarama). Sağ kalp kateterizasyonu (kesin tanı): mPAP ≥20 mmHg. BT: CTEPH değerlendirmesi.",
+        "goldStandardEn": "Echocardiography (screening). Right heart catheterization (definitive diagnosis): mPAP >=20 mmHg. CT: CTEPH evaluation.",
         "clinicalPearl": "Efor dispnesi + PA >29mm + RV/LV >1 = PH. CTEPH dışla (organize trombüs) çünkü cerrahi ile tedavi edilebilir.",
+        "clinicalPearlEn": "Exertional dyspnea + PA >29mm + RV/LV >1 = PH. Rule out CTEPH (organized thrombus) because it is surgically treatable.",
         "references": ["Webb WR. Thoracic Imaging. 3rd ed. 2017.", "Radiopaedia.org - Pulmonary hypertension"]
     },
     {
@@ -863,10 +934,15 @@ export const lungPathologies: Pathology[] = [
         "keyPoints": ["'Comet tail' sign PATOGNOMONİK: Kitleye giren kıvrımlı damarlar.", "Asbest ilişkili plevral hastalık en sık neden.", "Akciğer kanseri veya metastazla karışabilir — comet tail ayırır.", "Boyutu değişmez (stabil): FDG avidite gösterebilir (FP!)."],
         "keyPointsEn": ["'Comet tail' sign PATHOGNOMONIC: Curved vessels entering the mass.", "Asbestos-related pleural disease most common cause.", "May be confused with lung cancer or metastasis — comet tail differentiates.", "Size unchanged (stable): May show FDG avidity (false positive!)."],
         "etiology": "Asbest maruziyeti (en sık). Plevral efüzyon, enfeksiyon, cerrahi sonrası.",
+        "etiologyEn": "Asbestos exposure (most common). Pleural effusion, infection, post-surgical.",
         "mechanism": "Plevral kalınlaşma/efüzyon → viseral plevra invaginasyonu → komşu akciğer parankimi katlanarak atelektatik kitle oluşturur.",
+        "mechanismEn": "Pleural thickening/effusion → visceral pleural invagination → adjacent lung parenchyma folds to form an atelectatic mass.",
         "differentialDiagnosis": ["Akciğer kanseri (spiküle, LAP, büyüme)", "Metastaz (multipl, bilinen primer)", "Organize pnömoni (periferik, reverse halo)"],
+        "differentialDiagnosisEn": ["Lung cancer (spiculated, LAP, growth)", "Metastasis (multiple, known primary)", "Organizing pneumonia (peripheral, reverse halo)"],
         "goldStandard": "BT: Comet tail sign + plevral kalınlaşma + stabil boyut. Şüphede PET-BT veya biyopsi.",
+        "goldStandardEn": "CT: Comet tail sign + pleural thickening + stable size. PET-CT or biopsy if in doubt.",
         "clinicalPearl": "Plevral kalınlaşma komşuluğunda yuvarlak kitle + comet tail sign = Yuvarlak atelektazi. Biyopsi gerektirmez ama FDG-PET yanlış pozitif verebilir.",
+        "clinicalPearlEn": "Round mass adjacent to pleural thickening + comet tail sign = Round atelectasis. Biopsy not required but FDG-PET may give false positive.",
         "references": ["Webb WR. Thoracic Imaging. 3rd ed. 2017.", "Radiopaedia.org - Round atelectasis"]
     }
 ];

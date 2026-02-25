@@ -61,10 +61,15 @@ export const liverPathologies: Pathology[] = [
             "Portal vein thrombus: Arterial enhancement = Tumor thrombus (No enhancement in bland thrombus)."
         ],
         "mechanism": "Kronik karaciğer hasarı (siroz, viral hepatit B/C, aflatoksin) → hepatosit DNA hasarı → tümör süpresör gen kaybı (TP53, CTNNB1 mutasyonu) → klonal hepatosit proliferasyonu → HCC. Tümör neoanjiyogenezi (VEGF artışı) arteryel hipervaskülarite sağlar; bu wash-in/wash-out paterninin temelidir.",
+        "mechanismEn": "Chronic liver injury (cirrhosis, viral hepatitis B/C, aflatoxin) → hepatocyte DNA damage → tumor suppressor gene loss (TP53, CTNNB1 mutation) → clonal hepatocyte proliferation → HCC. Tumor neoangiogenesis (VEGF increase) provides arterial hypervascularity; this is the basis of the wash-in/wash-out pattern.",
         "etiology": "Kronik HBV/HCV enfeksiyonu (%70-80), Siroz (her etyoloji), Alkol, NASH, Aflatoksin B1 maruziyeti.",
+        "etiologyEn": "Chronic HBV/HCV infection (70-80%), Cirrhosis (any etiology), Alcohol, NASH, Aflatoxin B1 exposure.",
         "differentialDiagnosis": ["Karaciğer Metastazı (Multipl, primer odak var)", "FNH (Hepatobilier fazda izointens/hiperintens)", "Hepatik Adenom (Genç kadın, OKS kullanımı)", "Kolanjiokarsinom (Periferal kontrastlanma, safra kanalı dilatasyonu)"],
+        "differentialDiagnosisEn": ["Liver Metastasis (Multiple, primary source present)", "FNH (Isointense/hyperintense in hepatobiliary phase)", "Hepatic Adenoma (Young female, OCP use)", "Cholangiocarcinoma (Peripheral enhancement, bile duct dilation)"],
         "goldStandard": "Dinamik BT veya MRI (LI-RADS 5): Arteriyel wash-in + Portal wash-out + Kapsül. Biyopsi: LI-RADS 3-4'te veya görüntüleme yetersizliğinde.",
+        "goldStandardEn": "Dynamic CT or MRI (LI-RADS 5): Arterial wash-in + Portal wash-out + Capsule. Biopsy: In LI-RADS 3-4 or when imaging is insufficient.",
         "clinicalPearl": "Sirotik hastada ≥10mm nodül + LI-RADS 5 paterni (wash-in/wash-out/kapsül) = Biyopsisiz HCC tanısı.",
+        "clinicalPearlEn": "In cirrhotic patient, ≥10mm nodule + LI-RADS 5 pattern (wash-in/wash-out/capsule) = HCC diagnosis without biopsy.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "LI-RADS: ACR CT/MRI LI-RADS v2018. American College of Radiology.",
@@ -121,10 +126,15 @@ export const liverPathologies: Pathology[] = [
             "Lesion disappeared after chemo: 'Disappearing liver metastasis' - MRI follow-up is mandatory."
         ],
         "mechanism": "Primer tümör hücreleri portal dolaşım veya lenfatik yol ile karaciğere ulaşır → sinüzoidal endotele tutunur → ekstravasasyon → tümör mikroçevresi oluşturur. Hipovasküler metastazlar (kolon, pankreas) tıkayıcı büyüme paterni gösterirken; hipervasküler metastazlar (RCC, NET, tiroid) zengin neovaskülarizasyonla arteriyel fazda kontrast tutar.",
+        "mechanismEn": "Primary tumor cells reach the liver via portal circulation or lymphatic pathway → attach to sinusoidal endothelium → extravasation → form tumor microenvironment. Hypovascular metastases (colon, pancreas) show obstructive growth pattern; hypervascular metastases (RCC, NET, thyroid) enhance in arterial phase with rich neovascularization.",
         "etiology": "Primer kaynak: Kolon (%50), Meme, Akciğer, Pankreas, Mide. Hipervasküler: RCC, NET, Tiroid, Melanom.",
+        "etiologyEn": "Primary source: Colon (50%), Breast, Lung, Pancreas, Stomach. Hypervascular: RCC, NET, Thyroid, Melanoma.",
         "differentialDiagnosis": ["HCC (Sirotik zemin, AFP yüksek, wash-in/out)", "Karaciğer Apsesi (DWI kısıtlanma, ateş, klinik)", "Hepatik Hemanjiom (T2 ampul işareti, periferik dolum)", "FNH (Hepatobilier faz izointens)"],
+        "differentialDiagnosisEn": ["HCC (Cirrhotic background, elevated AFP, wash-in/out)", "Liver Abscess (DWI restriction, fever, clinical findings)", "Hepatic Hemangioma (T2 lightbulb sign, peripheral filling)", "FNH (Hepatobiliary phase isointense)"],
         "goldStandard": "MRI (Hepatobilier ajan + DWI): Multimodal değerlendirme. PET-CT: Tedavi yanıtı ve evreleme.",
+        "goldStandardEn": "MRI (Hepatobiliary agent + DWI): Multimodal evaluation. PET-CT: Treatment response and staging.",
         "clinicalPearl": "T2'de 'Target sign' (santral hipointens, periferal hiperintens) metastaz için yüksek spesifik. Kolondan disappearing metastaz = MRI şart.",
+        "clinicalPearlEn": "T2 'Target sign' (central hypointense, peripheral hyperintense) is highly specific for metastasis. Disappearing metastasis from colon = MRI is essential.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Sahani DV, Samir AE. Abdominal Imaging. 2nd ed. Elsevier; 2017.",
@@ -187,10 +197,15 @@ export const liverPathologies: Pathology[] = [
             "'Flash-filling hemangioma': <2cm, rapid homogeneous filling - Distinguish from HCC."
         ],
         "mechanism": "Konjenital vasküler malformasyon → sinüzoidal kan havuzu oluşumu. Endotelyal hücrelerle döşeli, yavaş akan kan içeren kavernöz boşluklar arası fibröz septalar → periferik nodüler kontrast tutulumu, yavaş santripetal dolum. Yavaş akım nedeniyle T2'de serbest su gibi çok parlak sinyal (BOS benzeri T2 hiperintensitesi).",
+        "mechanismEn": "Congenital vascular malformation → sinusoidal blood pool formation. Fibrous septa between cavernous spaces lined by endothelial cells containing slowly flowing blood → peripheral nodular contrast uptake, slow centripetal filling. Very bright signal on T2 like free water due to slow flow (CSF-like T2 hyperintensity).",
         "etiology": "Konjenital vasküler hamartom. Kadınlarda daha sık (%60-70). Östrojen büyümeyi hızlandırabilir.",
+        "etiologyEn": "Congenital vascular hamartoma. More common in females (60-70%). Estrogen may accelerate growth.",
         "differentialDiagnosis": ["Flash-filling HCC (<2cm, sirotik zemin, washout)", "Metastaz (Hipervasküler: NET, RCC - T2 daha az parlak)", "FNH (Santral skar, homojen arteriyel kontrast)", "Hepatik Adenom (Yağ, kanama, hepatobilier faz hipointens)"],
+        "differentialDiagnosisEn": ["Flash-filling HCC (<2cm, cirrhotic background, washout)", "Metastasis (Hypervascular: NET, RCC - T2 less bright)", "FNH (Central scar, homogeneous arterial enhancement)", "Hepatic Adenoma (Fat, hemorrhage, hepatobiliary phase hypointense)"],
         "goldStandard": "MRI T2: 'Ampul işareti' (BOS'tan parlak). Gecikmiş BT: Periferik nodüler → santripetal dolum (>5dk).",
+        "goldStandardEn": "MRI T2: 'Lightbulb sign' (brighter than CSF). Delayed CT: Peripheral nodular → centripetal filling (>5min).",
         "clinicalPearl": "T2'de BOS'tan bile parlak sinyal (ampul/lightbulb işareti) + Periferik nodüler dolum → %100'e yakın tanısal.",
+        "clinicalPearlEn": "Signal brighter than CSF on T2 (lightbulb sign) + Peripheral nodular filling → Nearly 100% diagnostic.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Sahani DV, Samir AE. Abdominal Imaging. 2nd ed. Elsevier; 2017.",
@@ -248,6 +263,7 @@ export const liverPathologies: Pathology[] = [
         "differentialDiagnosis": ["Hepatik Adenom (Hepatobilier fazda HİPOİNTENS, yağ/kanama, OKS ilişkili)", "Fibrolamellar HCC (Santral skar T2 HİPOİNTENS, kalsifikasyon, genç hasta)", "HCC (Sirotik zemin, wash-out, AFP yüksek)", "Flash-filling Hemanjiyom (<2cm, T2 ampul işareti)", "Hipervasküler Metastaz (NET, RCC — multipl, primer odak)"],
         "goldStandard": "MRI Hepatobilier faz (Gd-EOB-DTPA): İzo/hiperintens = FNH (korunmuş hepatosit fonksiyonu). Santral skar T2 hiperintens + geç faz kontrastlanması tanıyı destekler.",
         "clinicalPearl": "Hepatobilier fazda İZO/HİPERİNTENS = FNH (Adenom ve metastaz HİPOİNTENS). Santral skar T2 hiperintens ise FNH, T2 hipointens ise fibrolamellar HCC düşün.",
+        "mechanismEn": "Abnormal arterial supply focus → local hyperperfusion → hepatocyte and Kupffer cell hyperplasia. Because it contains normal liver architecture (hepatocytes, bile ductules, Kupffer cells) it takes up hepatobiliary agents → iso/hyperintensity in hepatobiliary phase. Central scar reflects fibrous changes secondary to increased blood flow.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Sahani DV, Samir AE. Abdominal Imaging. 2nd ed. Elsevier; 2017.",
@@ -305,6 +321,7 @@ export const liverPathologies: Pathology[] = [
         "differentialDiagnosis": ["FNH (Hepatobilier fazda İZO/HİPERİNTENS, santral skar, tedavi gereksiz)", "HCC (Sirotik zemin, wash-in/wash-out, AFP yüksek)", "Hipervasküler Metastaz (Multipl, primer odak bilinen, T2 daha parlak)", "Fokal Nodüler Steatoz (Kitle etkisi yok, vasküler yapılar düzgün)", "Hemanjiyom (T2 ampul işareti, periferik nodüler dolum)"],
         "goldStandard": "MRI Hepatobilier faz (Gd-EOB-DTPA): HİPOİNTENS (Kupffer hücresi ve safra duktulusu yok). Chemical shift: HNF1α tipinde yağ saptanır. Biyopsi: β-catenin pozitifliği malignite riski gösterir.",
         "clinicalPearl": "Genç kadın + OKS kullanımı + hepatobilier fazda hipointens lezyon + intralezyonel yağ veya kanama = Hepatik Adenom. >5cm → rezeksiyon (kanama + malignite riski). β-catenin mutant: Erkeklerde bile malignite riski yüksek.",
+        "mechanismEn": "Estrogen/androgen → hepatocyte proliferation and apoptosis inhibition → clonal hepatocyte mass. HNF1-alpha inactivation: Fat accumulation (steatotic adenoma). Beta-catenin activation: Hepatocyte dysplasia → malignant transformation. Tumor lacks bile ductules and Kupffer cells → no uptake in hepatobiliary phase (hypointense), this differentiates from FNH.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Sahani DV, Samir AE. Abdominal Imaging. 2nd ed. Elsevier; 2017.",
@@ -370,6 +387,7 @@ export const liverPathologies: Pathology[] = [
         "differentialDiagnosis": ["Nekrotik Metastaz (Periferal DWI kısıtlanma, santral serbest difüzyon)", "Amebik Apse (Tek, büyük, sağ lob, çikolata renkli içerik, seyahat öyküsü)", "Hidatik Kist (Kız veziküller, kalsifikasyon, DWI kısıtlanma yok)", "İnfekte Basit Kist (Öncesinde bilinen kist)", "Hepatik İnfarkt (Kama şekilli, safra kanalı normal)"],
         "goldStandard": "Kontrastlı BT: Double target sign + cluster sign. MRI DWI: Merkezi difüzyon kısıtlanması (nekrotik tümörden ayırımda kritik). Perkütan aspirasyon: Tanı + tedavi.",
         "clinicalPearl": "Apse vs Nekrotik Tümör: Apse merkezinde DWI kısıtlanma (pü viskozitesi), nekrotik tümörde merkez DWI serbest (likefaksiyon). Double target sign piyojenik apse için karakteristik.",
+        "mechanismEn": "Bacterial agent (E. coli, Klebsiella, anaerobes) → portal bacteremia or direct spread → hepatocyte necrosis → neutrophil infiltration → pus accumulation. Center surrounded by granulation tissue (double target inner ring enhances). Viscous pus content restricts water molecule diffusion → high signal on DWI (peripheral restriction in necrotic tumor, complete central restriction in abscess).",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Sahani DV, Samir AE. Abdominal Imaging. 2nd ed. Elsevier; 2017.",
@@ -435,6 +453,7 @@ export const liverPathologies: Pathology[] = [
         "differentialDiagnosis": ["Hepatik Steatoz (Homojen yağlanma, nodüler yüzey yok)", "Konjenital Hepatik Fibrozis (Genç yaş, portal HT erken, hepatosit fonksiyonu korunmuş)", "Budd-Chiari (Kaudat lob hipertrofisi, hepatik ven trombozu)", "Nodüler Rejeneratif Hiperplazi (NRH — portal HT var ama fibrozis minimal)", "Sarkoidoz (Granülomlar, hepatosplenomegali, LAP)"],
         "goldStandard": "MR Elastografi veya Transient Elastografi (FibroScan): Fibrozis evrelemesi non-invaziv. Biyopsi: Altın standart (METAVIR F4). MRI: Nodül karakterizasyonu, HCC taraması (LI-RADS).",
         "clinicalPearl": "Nodüler karaciğer yüzeyi + kaudat lob hipertrofisi + sağ lob atrofisi + splenomegali = Siroz. Rejeneratif nodül (siderotik) T1/T2 hipointens → HCC riski düşük. Non-siderotik displastik nodül T1 hiperintens → HCC transformasyonu yüksek risk.",
+        "mechanismEn": "Chronic liver injury (alcohol, viral hepatitis, NASH) → hepatocyte necrosis → fibrous tissue accumulation (HSC activation, TGF-beta) → regenerative nodule formation. Disrupted portal flow → portal hypertension → collateral circulation development (esophageal varices, umbilical vein). If nodular tissue acquires arterial neovascularization → dysplastic nodule → HCC transformation.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "LI-RADS: ACR CT/MRI LI-RADS v2018. American College of Radiology.",
@@ -503,6 +522,7 @@ export const liverPathologies: Pathology[] = [
         "differentialDiagnosis": ["Basit Hepatik Kist (İnce düzgün duvar, septasyon/kız vezikül yok)", "Karaciğer Apsesi (Kalın duvar, DWI kısıtlanma, ateş, lökositoz)", "Biliyer Kistadenom/Kistadenokarsinom (Septasyon, mural nodül, kontrastlanma)", "Kistik Metastaz (Düzensiz duvar, solid komponent, primer odak)", "Travmatik Kist/Bilioma (Travma öyküsü, düzensiz şekil)"],
         "goldStandard": "USG (ilk basamak, WHO-IWGE sınıflaması CE1-CE5). BT: Kist morfolojisi, kalsifikasyon, kız veziküller detayı. MRI/MRCP: Safra kanalı ilişkisi ve komplikasyonlar (rüptür). Seroloji (IHA, ELISA): Destekleyici.",
         "clinicalPearl": "Water lily sign (yüzen membran) = Hidatik kist PATOGNOMONİK. CE1-CE3a aktif (tedavi gerekir), CE4-CE5 inaktif (izlem). Rüptür → anafilaksi riski: Aspirasyon öncesi albendazol başla ve PAIR protokolüne uy.",
+        "mechanismEn": "Oral ingestion of Echinococcus granulosus eggs → larval form (oncosphere) hatches in intestine → enters portal circulation → settles in liver → hydatid cyst develops. Cyst consists of three layers: outer (pericyst, host fibrous tissue), middle (germinal epithelium), inner (germinal layer, produces daughter cysts). Membrane detachment → water lily sign; calcification → inactive stage.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "WHO Informal Working Group on Echinococcosis. International classification of ultrasound images in cystic echinococcosis.",
@@ -562,10 +582,15 @@ export const liverPathologies: Pathology[] = [
             "Acalculous cholecystitis: Without stones, seen in ICU patients."
         ],
         "mechanism": "İmpakte safra taşı → sistik kanal obstrüksiyonu → safra kesesi içi basınç artışı → duvar iskemisi → inflamasyon. Safra asitleri ve lizolesitin direkt mukozal hasar yapar. İkincil bakteri kolonizasyonu (E. coli, Klebsiella). Gangrenöz kolesistit: Transmural nekroz → perforasyon riski. Amfizemöz kolesistit: Klostridyum türleri → intramural gaz.",
+        "mechanismEn": "Impacted gallstone → cystic duct obstruction → increased intraluminal gallbladder pressure → wall ischemia → inflammation. Bile acids and lysolecithin cause direct mucosal damage. Secondary bacterial colonization (E. coli, Klebsiella). Gangrenous cholecystitis: Transmural necrosis → perforation risk. Emphysematous cholecystitis: Clostridium species → intramural gas.",
         "etiology": "Kolelitiyazis (%90-95). Akalkülöz: Kritik hastalık, TPN, uzun ameliyat, travma.",
+        "etiologyEn": "Cholelithiasis (90-95%). Acalculous: Critical illness, TPN, prolonged surgery, trauma.",
         "differentialDiagnosis": ["Akut Hepatit (Diffüz duvar kalınlaşması, LAP)", "Safra Kesesi Karsinomu (Kitlesel lezyon, invazyon)", "Perikolesistik Apse (Postperforatif)", "Hipoalbüminemi (Diffüz asit-ödem ile birlikte)"],
+        "differentialDiagnosisEn": ["Acute Hepatitis (Diffuse wall thickening, lymphadenopathy)", "Gallbladder Carcinoma (Mass lesion, invasion)", "Pericholecystic Abscess (Post-perforation)", "Hypoalbuminemia (With diffuse ascites-edema)"],
         "goldStandard": "USG (ilk basamak). BT: Komplikasyon değerlendirmesi (gangrenöz, amfizemöz). HIDA sintigrafisi: Sistik kanal obstrüksiyonu kanıtı.",
+        "goldStandardEn": "USG (first-line). CT: Complication assessment (gangrenous, emphysematous). HIDA scintigraphy: Evidence of cystic duct obstruction.",
         "clinicalPearl": "Sonografik Murphy işareti: USG probu ile safra kesesi üzerine baskı uygulanınca ağrı — sistik kanal tıkanıklığını destekler, tanıda %85+ spesifiktir.",
+        "clinicalPearlEn": "Sonographic Murphy sign: Pain on probe pressure over the gallbladder — supports cystic duct obstruction, >85% specificity for diagnosis.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Right Upper Quadrant Pain. American College of Radiology; 2018.",
@@ -623,10 +648,15 @@ export const liverPathologies: Pathology[] = [
             "5F: Fat, Female, Forty, Fertile, Fair (risk factors)."
         ],
         "mechanism": "Safranın kolesterol ile aşırı doyması (supersatürasyon) → nükleasyon → kristal büyümesi → taş oluşumu. Kolesterol taşları (%80): Safranın kolesterol/safra asidi/lesitin dengesizliği. Pigment taşları (%20): Hemoliz (siyah) veya enfeksiyon (kahverengi). Safra kesesi hipomotilitesi ve mukus hipersekresyonu nükleasyonu kolaylaştırır.",
+        "mechanismEn": "Bile supersaturation with cholesterol → nucleation → crystal growth → stone formation. Cholesterol stones (80%): Bile cholesterol/bile acid/lecithin imbalance. Pigment stones (20%): Hemolysis (black) or infection (brown). Gallbladder hypomotility and mucus hypersecretion facilitate nucleation.",
         "etiology": "Obezite, gebelik, OKS kullanımı, hızlı kilo kaybı, hemolitik anemi, Crohn hastalığı, TPN.",
+        "etiologyEn": "Obesity, pregnancy, OCP use, rapid weight loss, hemolytic anemia, Crohn disease, TPN.",
         "differentialDiagnosis": ["Safra Kesesi Polipleri (Taşın aksine yerini değiştirmez, gölge yok)", "Safra Çamuru (Akustik gölge yok, bağımlı sediman)", "Kolesterolozis (Duvar nodülleri)", "Safra Kesesi Karsinomu (Kitlesel lezyon)"],
+        "differentialDiagnosisEn": ["Gallbladder Polyps (Unlike stones, does not change position, no shadow)", "Biliary Sludge (No acoustic shadow, dependent sediment)", "Cholesterolosis (Wall nodules)", "Gallbladder Carcinoma (Mass lesion)"],
         "goldStandard": "USG. MRCP: Koledokolitiyazis şüphesinde.",
+        "goldStandardEn": "USG. MRCP: When choledocholithiasis is suspected.",
         "clinicalPearl": "BT'de 'negatif' safra kesesi = kolesterol taşı olabilir. Klinik kolik + USG negatifse MRCP iste.",
+        "clinicalPearlEn": "'Negative' gallbladder on CT = may be cholesterol stone. If clinical colic + negative USG, order MRCP.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Right Upper Quadrant Pain. American College of Radiology; 2018.",
@@ -685,10 +715,15 @@ export const liverPathologies: Pathology[] = [
             "NAFLD → NASH → Fibrosis → Cirrhosis → HCC progression is possible."
         ],
         "mechanism": "İnsülin direnci → hepatik lipogenez artışı ve yağ asidi oksidasyonu azalması → hepatosit içinde trigliserid birikimi (steatoz). NASH'ta ek olarak oksidatif stres ve sitokin aktivasyonu → inflamasyon + hepatosit hasarı → fibrozis. Görüntülemede steatoz: Yağ protonları X-ray'i daha az atenüe eder (CT'de düşük dansite), USG'de akustik saçılmayı artırır (hiperekojeni), MRI'da su ve yağ protonlarının çift eko tekniğinde faz farkı oluşturur.",
+        "mechanismEn": "Insulin resistance → increased hepatic lipogenesis and decreased fatty acid oxidation → intracellular triglyceride accumulation in hepatocytes (steatosis). In NASH, additional oxidative stress and cytokine activation → inflammation + hepatocyte injury → fibrosis. Imaging of steatosis: Fat protons attenuate X-rays less (low density on CT), increase acoustic scattering on USG (hyperechogenicity), create phase difference in dual-echo technique between water and fat protons on MRI.",
         "etiology": "Obezite, tip 2 DM, hiperlipidemi, metabolik sendrom, hızlı kilo kaybı, TPN, bazı ilaçlar (kortikosteroid, metotreksat, tamoksifen).",
+        "etiologyEn": "Obesity, type 2 DM, hyperlipidemia, metabolic syndrome, rapid weight loss, TPN, certain medications (corticosteroids, methotrexate, tamoxifen).",
         "differentialDiagnosis": ["Fokal Steatoz (Fokal yağlanma — kitle ile karışabilir)", "Glikojen Depo Hastalığı (BT'de hiperdens karaciğer)", "Amiloidoz", "Wilson Hastalığı (Bakır birikimi)"],
+        "differentialDiagnosisEn": ["Focal Steatosis (Focal fat deposition — may mimic a mass)", "Glycogen Storage Disease (Hyperdense liver on CT)", "Amyloidosis", "Wilson Disease (Copper accumulation)"],
         "goldStandard": "MR Spektroskopi veya Karaciğer Biyopsisi (>5% steatoz = NAFLD).",
+        "goldStandardEn": "MR Spectroscopy or Liver Biopsy (>5% steatosis = NAFLD).",
         "clinicalPearl": "BT'de karaciğer dansitesi dalaktan düşükse steatoz düşün. Fokal yağ tutulmaması (özellikle safra kesesi yatağı ve portal dal komşuluğu) tümör ile karışabilir — vasküler yapılar düzgün seyrediyorsa benign.",
+        "clinicalPearlEn": "If liver density is lower than spleen on CT, consider steatosis. Focal fat sparing (especially at the gallbladder fossa and portal vein vicinity) may mimic a tumor — if vascular structures course normally, it is benign.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "American Association for the Study of Liver Diseases (AASLD) Practice Guideline: Diagnosis and Management of Nonalcoholic Fatty Liver Disease.",
@@ -752,10 +787,15 @@ export const liverPathologies: Pathology[] = [
             "Elevated Ca 19-9 + imaging = biopsy may not be needed."
         ],
         "mechanism": "Safra kanalı epiteli (kolanjiositler) malign transformasyonu → kolanjiokarsinom. Kronik inflamasyon (PSK, taş, enfeksiyon, toksin) → DNA hasarı → KRAS, IDH1/2, FGFR2 mutasyonları. Fibröz stroma üretimi tümörün geç faz kontrastlanma özelliğini açıklar. Hiler tip en sık (%50-60), periferal (intahepatik) tip ikinci sık, distal tip en az sık.",
+        "mechanismEn": "Malignant transformation of bile duct epithelium (cholangiocytes) → cholangiocarcinoma. Chronic inflammation (PSC, stones, infection, toxins) → DNA damage → KRAS, IDH1/2, FGFR2 mutations. Fibrous stroma production explains the delayed phase enhancement characteristic of the tumor. Hilar type is most common (50-60%), peripheral (intrahepatic) type second, distal type least common.",
         "etiology": "Primer sklerozan kolanjit (PSK), Kolelitiyazis, Caroli hastalığı, koledokal kist, kronik HBV/HCV, Clonorchis sinensis enfeksiyonu.",
+        "etiologyEn": "Primary sclerosing cholangitis (PSC), Cholelithiasis, Caroli disease, choledochal cyst, chronic HBV/HCV, Clonorchis sinensis infection.",
         "differentialDiagnosis": ["HCC (Arteryel wash-in, wash-out, AFP yüksek)", "Karaciğer Metastazı (Primer odak bilinen)", "Hepatik Apse (Ateş, lökositoz)", "FNH (Santral skar, hepatobilier faz hiperintens)"],
+        "differentialDiagnosisEn": ["HCC (Arterial wash-in, wash-out, elevated AFP)", "Liver Metastasis (Known primary source)", "Hepatic Abscess (Fever, leukocytosis)", "FNH (Central scar, hyperintense in hepatobiliary phase)"],
         "goldStandard": "Dinamik BT veya MRCP + MRI. Ca 19-9 > 100 U/mL destekler. Kesin: Biyopsi veya cerrahi patoloji.",
+        "goldStandardEn": "Dynamic CT or MRCP + MRI. Ca 19-9 > 100 U/mL supportive. Definitive: Biopsy or surgical pathology.",
         "clinicalPearl": "Obstrüktif sarılık + İntrahepatik safra dilatasyonu + Safra kanalı duvarında kalınlaşma → Kolanjiokarsinom şüphesi. Geç faz kontrastlanma (santripetal) HCC'den ayırt ettirir.",
+        "clinicalPearlEn": "Obstructive jaundice + Intrahepatic bile duct dilation + Bile duct wall thickening → Suspect cholangiocarcinoma. Delayed phase enhancement (centripetal) distinguishes from HCC.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Sahani DV, Samir AE. Abdominal Imaging. 2nd ed. Elsevier; 2017.",
@@ -813,10 +853,15 @@ export const liverPathologies: Pathology[] = [
             "Acute abdomen + hepatomegaly + ascites + hepatic vein thrombus = Budd-Chiari."
         ],
         "etiology": "Hiperkoagülabilite (myeloproliferatif hastalıklar, PNH, antifosfolipid sendromu, OKS, gebelik). Web/membran (Asya). İdiyopatik (%20).",
+        "etiologyEn": "Hypercoagulability (myeloproliferative disorders, PNH, antiphospholipid syndrome, OCP, pregnancy). Web/membrane (Asia). Idiopathic (20%).",
         "mechanism": "Hepatik ven veya IVC tıkanıklığı → hepatik venöz konjesyon → sinüzoidal basınç artışı → hepatosit nekrozu. Kaudat lob korunur (IVC'ye direkt drenaj).",
+        "mechanismEn": "Hepatic vein or IVC obstruction → hepatic venous congestion → increased sinusoidal pressure → hepatocyte necrosis. Caudate lobe is spared (direct IVC drainage).",
         "differentialDiagnosis": ["Konjestif hepatopati (sağ kalp yetmezliği, hepatik venler açık)", "VOD/SOS (sinüzoidal obstrüksiyon, KIT sonrası)", "Karaciğer sirozu (nodüler yüzey, hepatik ven trombozu yok)", "Hepatik ven web (membranöz obstrüksiyon)"],
+        "differentialDiagnosisEn": ["Congestive hepatopathy (Right heart failure, hepatic veins patent)", "VOD/SOS (Sinusoidal obstruction, post-HSCT)", "Liver cirrhosis (Nodular surface, no hepatic vein thrombosis)", "Hepatic vein web (Membranous obstruction)"],
         "goldStandard": "Doppler USG (ilk basamak) + Kontrastlı BT/MRI (konfirmasyon). DSA: TIPS planlaması için.",
+        "goldStandardEn": "Doppler USG (first-line) + Contrast-enhanced CT/MRI (confirmation). DSA: For TIPS planning.",
         "clinicalPearl": "Akut karın + asit + hepatomegali + Doppler'da hepatik vende akım yok = Budd-Chiari. Kaudat lob hipertrofisi patognomonik.",
+        "clinicalPearlEn": "Acute abdomen + ascites + hepatomegaly + no hepatic vein flow on Doppler = Budd-Chiari. Caudate lobe hypertrophy is pathognomonic.",
         "references": [
             "Defined approach in DeLeve LD et al. Hepatology. 2009;49(5):1729-1764.",
             "Radiopaedia.org - Budd-Chiari syndrome"
@@ -871,10 +916,15 @@ export const liverPathologies: Pathology[] = [
             "Complicated cyst: Hemorrhage, infection → signal/density changes."
         ],
         "etiology": "Gelişimsel (biliyer mikro-hamartom artıkları). Prevalans: %2.5-18. Yaşla artar. Kadınlarda daha sık.",
+        "etiologyEn": "Developmental (biliary microhamartoma remnants). Prevalence: 2.5-18%. Increases with age. More common in females.",
         "mechanism": "Biliyer duktus artıkları → kistik dilatasyon → seröz sıvı birikimi. Biliyer sistemle bağlantısı yoktur.",
+        "mechanismEn": "Biliary ductus remnants → cystic dilation → serous fluid accumulation. No connection to the biliary system.",
         "differentialDiagnosis": ["Hidatik kist (duvar kalsifikasyonu, kız veziküller)", "Biliyer kistadenom (septasyon, kontrastlanma)", "Kistik metastaz (düzensiz duvar, solid komponent)", "Abse (duvar kalın, klinik bulgular)"],
+        "differentialDiagnosisEn": ["Hydatid cyst (Wall calcification, daughter vesicles)", "Biliary cystadenoma (Septation, enhancement)", "Cystic metastasis (Irregular wall, solid component)", "Abscess (Thick wall, clinical findings)"],
         "goldStandard": "USG genellikle yeterli. Atipik lezyonlarda MRI.",
+        "goldStandardEn": "USG is usually sufficient. MRI for atypical lesions.",
         "clinicalPearl": "USG'de anekoik + posterior güçlenme + duvar yok = Basit kist, ileri tetkik gereksiz. İçerik yoğunluğu artmışsa veya duvar düzensizse komplike/neoplastik düşün.",
+        "clinicalPearlEn": "Anechoic + posterior enhancement + no wall on USG = Simple cyst, no further workup needed. If content density is increased or wall is irregular, consider complicated/neoplastic.",
         "references": [
             "Defined approach in Defined. Abdominal imaging approach to cystic liver lesions.",
             "Radiopaedia.org - Simple hepatic cyst"
@@ -927,10 +977,15 @@ export const liverPathologies: Pathology[] = [
             "Gastroesophageal varices bleeding risk: Varix diameter >5mm + red signs."
         ],
         "etiology": "Prehepatik (portal/splenik ven trombozu), hepatik (siroz EN SIK, şistosomiyaz), posthepatik (Budd-Chiari, sağ kalp yetmezliği).",
+        "etiologyEn": "Prehepatic (portal/splenic vein thrombosis), hepatic (cirrhosis MOST COMMON, schistosomiasis), posthepatic (Budd-Chiari, right heart failure).",
         "mechanism": "İntrahepatik rezistans artışı (siroz) → portal venöz basınç >10-12 mmHg → portosistemik kollateral gelişimi + splenomegali + asit.",
+        "mechanismEn": "Increased intrahepatic resistance (cirrhosis) → portal venous pressure >10-12 mmHg → portosystemic collateral development + splenomegaly + ascites.",
         "differentialDiagnosis": ["Sağ kalp yetmezliği (IVC ve hepatik ven dilate)", "Portal ven trombozu (akut, dolum defekti)", "Budd-Chiari (hepatik ven trombozu)"],
+        "differentialDiagnosisEn": ["Right heart failure (IVC and hepatic veins dilated)", "Portal vein thrombosis (Acute, filling defect)", "Budd-Chiari (Hepatic vein thrombosis)"],
         "goldStandard": "Doppler USG (ilk basamak). BT/MRI: Varis haritalaması ve siroz değerlendirmesi. HVPG (hepatik venöz basınç gradiyenti) >10 mmHg: Klinik anlamlı portal HT.",
+        "goldStandardEn": "Doppler USG (first-line). CT/MRI: Variceal mapping and cirrhosis assessment. HVPG (hepatic venous pressure gradient) >10 mmHg: Clinically significant portal HT.",
         "clinicalPearl": "Siroz + portal ven >13mm + splenomegali + hepatofugal akım = Portal HT kesin. Gastroözofageal varisler acil kanama riski taşır.",
+        "clinicalPearlEn": "Cirrhosis + portal vein >13mm + splenomegaly + hepatofugal flow = Definite portal HT. Gastroesophageal varices carry emergent bleeding risk.",
         "references": [
             "Defined approach in Garcia-Tsao G et al. Hepatology. 2017;65(1):310-335.",
             "Radiopaedia.org - Portal hypertension"
@@ -979,10 +1034,15 @@ export const liverPathologies: Pathology[] = [
             "Cholangiocarcinoma risk: 10-15% (lifetime)."
         ],
         "etiology": "Otoimmün. Genetik yatkınlık + çevresel tetikleyiciler. HLA-B8, DR3 ilişkili. Erkeklerde daha sık.",
+        "etiologyEn": "Autoimmune. Genetic predisposition + environmental triggers. HLA-B8, DR3 associated. More common in males.",
         "mechanism": "Biliyer kanal epiteli inflamasyonu → periduktüler fibrozis → multifokal striktür → biliyer staz → sekonder biliyer siroz.",
+        "mechanismEn": "Biliary duct epithelial inflammation → periductal fibrosis → multifocal strictures → biliary stasis → secondary biliary cirrhosis.",
         "differentialDiagnosis": ["Kolanjiokarsinom (dominant striktür, CA 19-9 yüksek)", "IgG4 ilişkili kolanjit (uzun segment, IgG4 yüksek, steroid yanıtı)", "AIDS kolanjiopatisi (immünsuprese)", "Rekürren piyojenik kolanjit (Doğu Asya, taş)"],
+        "differentialDiagnosisEn": ["Cholangiocarcinoma (Dominant stricture, elevated CA 19-9)", "IgG4-related cholangitis (Long segment, elevated IgG4, steroid response)", "AIDS cholangiopathy (Immunosuppressed)", "Recurrent pyogenic cholangitis (East Asia, stones)"],
         "goldStandard": "MRCP: Multifokal striktür ve dilatasyon (beaded). ERCP artık tanısal değil, terapötik. Biyopsi: Periduktüler 'onion skin' fibrozis.",
+        "goldStandardEn": "MRCP: Multifocal strictures and dilation (beaded). ERCP no longer diagnostic, therapeutic. Biopsy: Periductal 'onion skin' fibrosis.",
         "clinicalPearl": "Ülseratif kolit hastasında kaşıntı + ALP yüksekliği + MRCP'de boncuk dizisi = PSK. Dominant striktür varsa kolanjiokarsinom dışla.",
+        "clinicalPearlEn": "Pruritus + elevated ALP + beaded appearance on MRCP in ulcerative colitis patient = PSC. If dominant stricture is present, rule out cholangiocarcinoma.",
         "references": [
             "Defined approach in Defined. AASLD Practice Guidelines for PSC.",
             "Radiopaedia.org - Primary sclerosing cholangitis"
@@ -1033,10 +1093,15 @@ export const liverPathologies: Pathology[] = [
             "Delayed complications: Biliary injury (bilioma), pseudoaneurysm."
         ],
         "etiology": "Künt travma (motorlu araç kazası en sık). Penetran travma (bıçak, ateşli silah). Sağ lob en sık etkilenir.",
+        "etiologyEn": "Blunt trauma (motor vehicle accident most common). Penetrating trauma (knife, firearm). Right lobe most commonly affected.",
         "mechanism": "Künt kuvvet → parankimal kompresyon/deselerasyon → laserasyon, hematom, vasküler hasar.",
+        "mechanismEn": "Blunt force → parenchymal compression/deceleration → laceration, hematoma, vascular injury.",
         "differentialDiagnosis": ["Spontan karaciğer rüptürü (HELLP sendromu, adenoma)", "Tümör rüptürü (HCC, adenom kanama)"],
+        "differentialDiagnosisEn": ["Spontaneous liver rupture (HELLP syndrome, adenoma)", "Tumor rupture (HCC, adenoma hemorrhage)"],
         "goldStandard": "Çok fazlı kontrastlı BT: Laserasyon, hematom, aktif kanama ve vasküler hasar tespiti.",
+        "goldStandardEn": "Multiphasic contrast-enhanced CT: Detection of laceration, hematoma, active bleeding and vascular injury.",
         "clinicalPearl": "Künt travma + hemodinamik instabilite + FAST pozitif = Acil BT. Kontrast ekstravazasyonu = Aktif kanama → anjiyoembolizasyon veya cerrahi.",
+        "clinicalPearlEn": "Blunt trauma + hemodynamic instability + positive FAST = Emergent CT. Contrast extravasation = Active bleeding → angioembolization or surgery.",
         "references": [
             "Defined AAST Liver Injury Scale revision.",
             "Radiopaedia.org - Hepatic trauma"
@@ -1089,10 +1154,15 @@ export const liverPathologies: Pathology[] = [
             "Portal vein thrombosis in cirrhosis = Affects liver transplant planning."
         ],
         "etiology": "Siroz (en sık), HCC (tümör trombusu), myeloproliferatif hastalıklar, pankreatit, abdominal enfeksiyon/cerrahi. Yenidoğan: Umbilikal kateterizasyon.",
+        "etiologyEn": "Cirrhosis (most common), HCC (tumor thrombus), myeloproliferative disorders, pancreatitis, abdominal infection/surgery. Neonatal: Umbilical catheterization.",
         "mechanism": "Virchow triadı: Staz (siroz, portal HT) + endotel hasarı + hiperkoagülabilite → trombüs oluşumu.",
+        "mechanismEn": "Virchow triad: Stasis (cirrhosis, portal HT) + endothelial injury + hypercoagulability → thrombus formation.",
         "differentialDiagnosis": ["Tümör trombusu (HCC, kontrastlanır)", "Portal hipertansiyon (trombüs olmadan)", "SMV trombozu (barsak iskemisi)"],
+        "differentialDiagnosisEn": ["Tumor thrombus (HCC, enhances)", "Portal hypertension (Without thrombus)", "SMV thrombosis (Bowel ischemia)"],
         "goldStandard": "Doppler USG (ilk basamak). Kontrastlı BT/MRI: Trombüs uzanımı ve tümör/bland ayırımı.",
+        "goldStandardEn": "Doppler USG (first-line). Contrast-enhanced CT/MRI: Thrombus extent and tumor/bland differentiation.",
         "clinicalPearl": "Siroz + yeni asit + portal vende dolum defekti = PVT. Trombüs kontrastlanıyorsa HCC tümör trombusu düşün (LI-RADS TIV).",
+        "clinicalPearlEn": "Cirrhosis + new ascites + filling defect in portal vein = PVT. If thrombus enhances, consider HCC tumor thrombus (LI-RADS TIV).",
         "references": [
             "Defined approach in DeLeve LD et al. Hepatology portal vein thrombosis guidelines.",
             "Radiopaedia.org - Portal vein thrombosis"
@@ -1145,10 +1215,15 @@ export const liverPathologies: Pathology[] = [
             "Increased cholangiocarcinoma risk (7%)."
         ],
         "etiology": "Konjenital (otozomal resesif). PKHD1 gen mutasyonu. Duktal plak malformasyonu → büyük intrahepatik safra kanallarının sakküler dilatasyonu.",
+        "etiologyEn": "Congenital (autosomal recessive). PKHD1 gene mutation. Ductal plate malformation → saccular dilation of large intrahepatic bile ducts.",
         "mechanism": "Duktal plak remodeling defekti → intrahepatik safra kanalları sakküler dilate → staz → taş oluşumu + enfeksiyon + malignite riski.",
+        "mechanismEn": "Ductal plate remodeling defect → saccular dilation of intrahepatic bile ducts → stasis → stone formation + infection + malignancy risk.",
         "differentialDiagnosis": ["Obstrüktif biliyer dilatasyon (proksimalde dilatasyon, distal darlık)", "Polikistik karaciğer hastalığı (biliyer sistemle bağlantısız)", "Primer sklerozan kolanjit (striktür + dilatasyon, edinsel)"],
+        "differentialDiagnosisEn": ["Obstructive biliary dilation (Proximal dilation, distal stricture)", "Polycystic liver disease (No connection to biliary system)", "Primary sclerosing cholangitis (Stricture + dilation, acquired)"],
         "goldStandard": "MRCP: Sakküler biliyer dilatasyonlar + central dot sign. BT: Central dot sign kontrastlı serilerde.",
+        "goldStandardEn": "MRCP: Saccular biliary dilations + central dot sign. CT: Central dot sign on contrast-enhanced series.",
         "clinicalPearl": "Genç hastada tekrarlayan kolanjit + intrahepatik sakküler biliyer dilatasyonlar + central dot sign = Caroli hastalığı.",
+        "clinicalPearlEn": "Recurrent cholangitis + intrahepatic saccular biliary dilations + central dot sign in a young patient = Caroli disease.",
         "references": [
             "Defined approach in Defined. Caroli disease imaging review.",
             "Radiopaedia.org - Caroli disease"
@@ -1195,10 +1270,15 @@ export const liverPathologies: Pathology[] = [
             "Very poor prognosis: Most widespread at diagnosis, median survival <6 months."
         ],
         "etiology": "Thorotrast (eski kontrast maddesi), vinil klorür, arsenik, anabolik steroidler. İdiyopatik de olabilir.",
+        "etiologyEn": "Thorotrast (former contrast agent), vinyl chloride, arsenic, anabolic steroids. May be idiopathic.",
         "mechanism": "Hepatik sinüzoid endotel hücrelerinden kökenli malign tümör → vasküler yapılar oluşturur → hızlı büyüme ve metastaz.",
+        "mechanismEn": "Malignant tumor originating from hepatic sinusoidal endothelial cells → forms vascular structures → rapid growth and metastasis.",
         "differentialDiagnosis": ["Hemanjiyom (düzgün progresif kontrastlanma, stabil)", "HCC (arteriyel wash-in/wash-out, AFP yüksek)", "Metastaz (primer odak bilinen)", "Epitheloid hemangioendotelyom (multifokal, daha yavaş)"],
+        "differentialDiagnosisEn": ["Hemangioma (Smooth progressive enhancement, stable)", "HCC (Arterial wash-in/wash-out, elevated AFP)", "Metastasis (Known primary source)", "Epithelioid hemangioendothelioma (Multifocal, slower)"],
         "goldStandard": "BT/MRI + Biyopsi (dikkatli — yüksek kanama riski). CD31, CD34 immünohistokimya.",
+        "goldStandardEn": "CT/MRI + Biopsy (careful — high bleeding risk). CD31, CD34 immunohistochemistry.",
         "clinicalPearl": "Hızlı büyüyen heterojen hepatik kitle + düzensiz kontrastlanma + spontan kanama = Anjiyosarkom. Hemanjiyomdan farklı: Düzensiz, hızlı ve kanama.",
+        "clinicalPearlEn": "Rapidly growing heterogeneous hepatic mass + irregular enhancement + spontaneous hemorrhage = Angiosarcoma. Unlike hemangioma: Irregular, rapid and hemorrhagic.",
         "references": [
             "Defined approach in Defined. Hepatic angiosarcoma imaging.",
             "Radiopaedia.org - Hepatic angiosarcoma"
@@ -1251,10 +1331,15 @@ export const liverPathologies: Pathology[] = [
             "NASH: NAFLD + inflammation + hepatocyte injury (ballooning) → fibrosis → cirrhosis."
         ],
         "etiology": "Metabolik sendrom (obezite, DM tip 2, dislipidemi, hipertansiyon). Genetik yatkınlık (PNPLA3 polimorfizmi).",
+        "etiologyEn": "Metabolic syndrome (obesity, type 2 DM, dyslipidemia, hypertension). Genetic predisposition (PNPLA3 polymorphism).",
         "mechanism": "NAFLD spektrumu: Basit steatoz → NASH (inflamasyon + balonlaşma) → fibrozis → siroz → HCC. 'İki vuruş' hipotezi: 1) Steatoz, 2) Oksidatif stres + inflamasyon.",
+        "mechanismEn": "NAFLD spectrum: Simple steatosis → NASH (inflammation + ballooning) → fibrosis → cirrhosis → HCC. 'Two-hit' hypothesis: 1) Steatosis, 2) Oxidative stress + inflammation.",
         "differentialDiagnosis": ["Alkolik hepatit (alkol öyküsü)", "Hemokromatozis (demir birikimi, T2* sinyal kaybı)", "Fokal yağlanma (psödolezyon)"],
+        "differentialDiagnosisEn": ["Alcoholic hepatitis (Alcohol history)", "Hemochromatosis (Iron deposition, T2* signal loss)", "Focal fat deposition (Pseudolesion)"],
         "goldStandard": "MR PDFF + MR Elastografi (non-invaziv). Biyopsi: Kesin NASH tanısı (NAS skoru ≥5).",
+        "goldStandardEn": "MR PDFF + MR Elastography (non-invasive). Biopsy: Definitive NASH diagnosis (NAS score >=5).",
         "clinicalPearl": "Obez + DM + karaciğer yağlanması + transaminaz yüksekliği = NASH şüphesi. MR PDFF steatozu, MR elastografi fibrozu non-invaziv ölçer.",
+        "clinicalPearlEn": "Obese + DM + hepatic steatosis + elevated transaminases = Suspect NASH. MR PDFF measures steatosis, MR elastography measures fibrosis non-invasively.",
         "references": [
             "Defined approach in Defined. AASLD NAFLD Practice Guidance.",
             "Radiopaedia.org - NASH"
@@ -1305,10 +1390,15 @@ export const liverPathologies: Pathology[] = [
             "Complications: Cholangitis (Charcot triad), pancreatitis."
         ],
         "etiology": "Safra kesesi taşının migrasyonu (sekonder, en sık). Primer CBD taşı (staz, enfeksiyon — pigment taş).",
+        "etiologyEn": "Gallstone migration from gallbladder (secondary, most common). Primary CBD stone (stasis, infection — pigment stone).",
         "mechanism": "Safra taşı koledoka migrasyon → lümen obstrüksiyonu → safra stazı → biliyer dilatasyon → sarılık. Enfeksiyon eklenmesi → kolanjit.",
+        "mechanismEn": "Gallstone migration to common bile duct → luminal obstruction → biliary stasis → biliary dilation → jaundice. Superimposed infection → cholangitis.",
         "differentialDiagnosis": ["Koledok striktürü (düzgün daralma, PSK veya malign)", "Kolanjiokarsinom (düzensiz, kontrastlanan)", "Ampulla tümörü (distal obstrüksiyon, kontrastlanma)", "Mirizzi sendromu (safra kesesi taşı dıştan bası)"],
+        "differentialDiagnosisEn": ["CBD stricture (Smooth narrowing, PSC or malignant)", "Cholangiocarcinoma (Irregular, enhancing)", "Ampullary tumor (Distal obstruction, enhancement)", "Mirizzi syndrome (Gallstone extrinsic compression)"],
         "goldStandard": "MRCP: Non-invaziv, yüksek duyarlılık. ERCP: Tanı + terapötik (sfinkterotomi + taş çıkarma). USG: İlk basamak tarama.",
+        "goldStandardEn": "MRCP: Non-invasive, high sensitivity. ERCP: Diagnostic + therapeutic (sphincterotomy + stone extraction). USG: First-line screening.",
         "clinicalPearl": "Sarılık + dilate CBD + MRCP'de dolum defekti = Koledokolitiyazis. Ateş + sarılık + ağrı (Charcot triadı) = Kolanjit → acil ERCP.",
+        "clinicalPearlEn": "Jaundice + dilated CBD + filling defect on MRCP = Choledocholithiasis. Fever + jaundice + pain (Charcot triad) = Cholangitis → emergent ERCP.",
         "references": [
             "ASGE Standards of Practice: Role of endoscopy in biliary stone disease.",
             "Radiopaedia.org - Choledocholithiasis"
@@ -1361,10 +1451,15 @@ export const liverPathologies: Pathology[] = [
             "Spontaneous rupture and hemorrhage risk: Life-threatening."
         ],
         "etiology": "İlaç (anabolik steroidler, OKS, azatiyoprin, tamoksifen). Enfeksiyon (Bartonella henselae — HIV). Hematolojik maligniteler. Organ transplantasyonu.",
+        "etiologyEn": "Drugs (anabolic steroids, OCP, azathioprine, tamoxifen). Infection (Bartonella henselae — HIV). Hematologic malignancies. Organ transplantation.",
         "mechanism": "Sinüzoidal endotel hasarı → sinüzoidal dilatasyon → kanla dolu laküner boşluklar → hepatik parankimde multipl kistik lezyonlar.",
+        "mechanismEn": "Sinusoidal endothelial injury → sinusoidal dilation → blood-filled lacunar spaces → multiple cystic lesions in hepatic parenchyma.",
         "differentialDiagnosis": ["Hemanjiyom (soliter, klasik kontrastlanma)", "Metastaz (multipl, heterojen)", "Hepatik abse (ateş, rim kontrastlanma)", "Hepatosellüler adenom (soliter, yağ/kanama)"],
+        "differentialDiagnosisEn": ["Hemangioma (Solitary, classic enhancement)", "Metastasis (Multiple, heterogeneous)", "Hepatic abscess (Fever, rim enhancement)", "Hepatocellular adenoma (Solitary, fat/hemorrhage)"],
         "goldStandard": "BT/MRI: Multipl küçük lezyonlar + progresif kontrastlanma. Biyopsi dikkatli (kanama riski). Kesin tanı histopatoloji.",
+        "goldStandardEn": "CT/MRI: Multiple small lesions + progressive enhancement. Biopsy with caution (bleeding risk). Definitive diagnosis by histopathology.",
         "clinicalPearl": "Anabolik steroid/OKS kullanan + multipl küçük hepatik lezyonlar + hemanjiyom benzeri kontrastlanma = Peliyozis. İlaç kesilmesi ile regresyon olabilir.",
+        "clinicalPearlEn": "Anabolic steroid/OCP use + multiple small hepatic lesions + hemangioma-like enhancement = Peliosis. Regression may occur with drug cessation.",
         "references": [
             "Defined approach in Defined. Peliosis hepatis imaging review.",
             "Radiopaedia.org - Peliosis hepatis"
