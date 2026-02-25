@@ -783,6 +783,10 @@ export const spinePathologies: Pathology[] = [
             "Distinction from infection: Disc signal is normal or only degenerative (Disc is bright in discitis)."
         ],
         "mechanism": "Disk dejenerasyonu ve biyomekanik stres → vertebral end-plate mikro-hasarı → reaktif kemik iliği değişiklikleri. Tip 1 (akut/subakut): End-plate kırığı/nekroz + vasküler granülasyon dokusu → T1 hipointens, T2 hiperintens. Tip 2 (kronik): Granülasyon dokusu yerini yağlı ilik dönüşümüne bırakır → T1 hiperintens (yağ sinyali). Tip 3 (ileri kronik): Reaktif kemik sklerozu → T1 ve T2 hipointens.",
+        "etiology": "Dejeneratif disk hastalığına sekonder end-plate mikro-hasarı. Biyomekanik stres ve aksiyel yüklenme. Disk dejenerasyonu → end-plate mikro-kırıkları → reaktif kemik iliği değişiklikleri. Lomber bölge en sık (L4-L5, L5-S1).",
+        "differentialDiagnosis": ["Spondilodiskit (Disk T2 hiperintens + end-plate erozyon + kontrastlanma + ateş/CRP)", "Vertebral Metastaz (Fokal kitle, pedikül tutulumu, kortikal destrüksiyon)", "Vertebral Hemanjiom (T1 VE T2 hiperintens, polka dot)", "Paget Hastalığı (Vertebra genişlemesi, kalın korteks, 'picture frame')"],
+        "goldStandard": "MRI (Sagittal T1, T2): End-plate sinyal değişiklikleri paterni (Tip 1/2/3). Kontrastlı MRI: Tip 1 kontrastlanabilir — enfeksiyonla karışabilir, DWI ve klinik korelasyon gerekir. BT: End-plate sklerozisi (Tip 3).",
+        "clinicalPearl": "Modic Tip 1 (T1 karanlık, T2 parlak) = Aktif inflamasyon = Bel ağrısı ile en çok ilişkili tip. Spondilodiskitten ayırt: Modic'te disk sinyali NORMAL veya dejeneratif, spondilodiskitte disk T2'de PARLAK. Tip 1→Tip 2→Tip 3 doğal seyir olabilir (akut→kronik).",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -828,6 +832,10 @@ export const spinePathologies: Pathology[] = [
             "Canal widens in Isthmic (Lytic) type, narrows in Degenerative type."
         ],
         "mechanism": "Tekrarlayan hiperextansiyon ve rotasyon kuvvetleri → pars interartikülaris'te stres kırığı (spondilolizis). Pars, hem faset eklemi hem de disk dejenerasyonunun yükünü taşıyan narin bir kemik köprüdür. İki taraflı pars kırığı → vertebra korpusunun posterior elementlerden ayrışması → anteriorlistezis (kayma). İstmik tipte: Kırık parçalar arasındaki mesafe artar ve spinal kanal genişler (dejeneratif stenozdaki daralmanın aksine).",
+        "etiology": "Stres kırığı: Tekrarlayan hiperextansiyon (jimnastik, futbol, halter). L5 en sık tutulan vertebra (%90). Genetik predispozisyon (ailesel yatkınlık). Genç sporcularda (10-15 yaş) en sık sırt ağrısı nedenlerinden biri.",
+        "differentialDiagnosis": ["Faset Artropatisi (Faset hipertrofisi, posterior ağrı, kayma yok)", "Lomber Strain (Kas-ligaman yaralanması, MRI'da pars defekti yok)", "Lomber Disk Hernisi (Radiküler semptomlar, pars sağlam)", "Spinal Tümör (Gece ağrısı, kemik destrüksiyonu, kilo kaybı)", "Spondilolistezis (Pars defektine sekonder kayma — ek tanı)"],
+        "goldStandard": "BT (İnce kesit aksiyel + sagittal reformat): Pars interartikülaris defekti ('İskoç köpeği boyun kırığı'). MRI (STIR/T2): Pars çevresinde kemik ödemi (akut stres reaksiyonu). SPECT/BT: Aktif kemik metabolizması tespiti (stres reaksiyonu vs kronik defekt).",
+        "clinicalPearl": "Genç sporcu (jimnastik, futbol) + bel ağrısı + hiperextansiyonda artan ağrı + L5 pars defekti = Spondilolizis. Oblik grafide 'İskoç köpeği boyun kırığı' görünümü. Aktif stres reaksiyonu (MRI ödemi +) = İstirahat ve breys ile iyileşme şansı var. Kronik defekt = İyileşme beklenmez.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
