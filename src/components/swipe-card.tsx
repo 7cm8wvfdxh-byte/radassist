@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Pathology } from "@/types";
 import { Brain, Info, RotateCw } from "lucide-react";
 import { clsx } from "clsx";
+import { useLanguage } from "@/context/language-context";
 
 interface SwipeCardProps {
     data: Pathology;
@@ -13,8 +14,16 @@ interface SwipeCardProps {
 }
 
 export function SwipeCard({ data, onSwipeRight, onSwipeLeft, isFront }: SwipeCardProps) {
+    const { language } = useLanguage();
+    const isEn = language === "en";
     const [isFlipped, setIsFlipped] = useState(false);
     const controls = useAnimation();
+
+    // Language-aware content
+    const displayName = isEn ? (data.nameEn || data.name) : data.name;
+    const displayCategory = isEn ? (data.categoryEn || data.category) : data.category;
+    const displayKeyPoints = isEn ? (data.keyPointsEn || data.keyPoints) : data.keyPoints;
+    const displayFindings = isEn ? (data.findingsEn || data.findings) : data.findings;
 
     // Motion Values for Dragging
     const x = useMotionValue(0);
@@ -70,7 +79,7 @@ export function SwipeCard({ data, onSwipeRight, onSwipeLeft, isFront }: SwipeCar
                         {coverImage ? (
                             <Image
                                 src={coverImage}
-                                alt={data.name}
+                                alt={displayName}
                                 fill
                                 className="object-cover pointer-events-none"
                             />
@@ -90,7 +99,7 @@ export function SwipeCard({ data, onSwipeRight, onSwipeLeft, isFront }: SwipeCar
                         {/* Category Badge */}
                         <div className="absolute top-4 left-4">
                             <span className="px-3 py-1 rounded-full text-xs font-bold bg-black/60 backdrop-blur-md text-white border border-white/10 shadow-lg">
-                                {data.category}
+                                {displayCategory}
                             </span>
                         </div>
                     </div>
@@ -100,11 +109,11 @@ export function SwipeCard({ data, onSwipeRight, onSwipeLeft, isFront }: SwipeCar
                         <div className="flex items-end justify-between">
                             <div>
                                 <h2 className="text-3xl font-bold text-white mb-1 leading-tight drop-shadow-md">
-                                    {data.name}
+                                    {displayName}
                                 </h2>
                                 <p className="text-zinc-400 text-sm font-medium flex items-center gap-1">
                                     <Info className="w-3 h-3" />
-                                    Detay için dokun
+                                    {isEn ? "Tap for details" : "Detay için dokun"}
                                 </p>
                             </div>
                         </div>
@@ -117,11 +126,11 @@ export function SwipeCard({ data, onSwipeRight, onSwipeLeft, isFront }: SwipeCar
                     style={{ transform: "rotateY(180deg)" }}
                 >
                     <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
-                        <h3 className="text-xl font-bold text-indigo-400">{data.name}</h3>
+                        <h3 className="text-xl font-bold text-indigo-400">{displayName}</h3>
                         <button
                             onClick={(e) => { e.stopPropagation(); setIsFlipped(false); }}
                             className="p-2 bg-white/5 rounded-full"
-                            aria-label="Kartı çevir"
+                            aria-label={isEn ? "Flip card" : "Kartı çevir"}
                             type="button"
                         >
                             <RotateCw className="w-4 h-4 text-zinc-400" />
@@ -130,16 +139,20 @@ export function SwipeCard({ data, onSwipeRight, onSwipeLeft, isFront }: SwipeCar
 
                     <div className="space-y-6">
                         <div>
-                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-wider mb-2">Tanım</h4>
+                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-wider mb-2">
+                                {isEn ? "Description" : "Tanım"}
+                            </h4>
                             <p className="text-zinc-200 leading-relaxed font-medium">
-                                {data.findings?.ct?.non_contrast || data.findings?.mri?.t2 || "Detaylı açıklama bulunmuyor."}
+                                {displayFindings?.ct?.non_contrast || displayFindings?.mri?.t2 || (isEn ? "No detailed description available." : "Detaylı açıklama bulunmuyor.")}
                             </p>
                         </div>
 
                         <div>
-                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-wider mb-2">Anahtar Noktalar</h4>
+                            <h4 className="text-sm font-bold text-zinc-500 uppercase tracking-wider mb-2">
+                                {isEn ? "Key Points" : "Anahtar Noktalar"}
+                            </h4>
                             <ul className="space-y-2">
-                                {data.keyPoints.map((kp, i) => (
+                                {displayKeyPoints.map((kp, i) => (
                                     <li key={i} className="flex gap-3 text-sm text-zinc-300">
                                         <div className="mt-1 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0" />
                                         {kp}

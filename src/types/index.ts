@@ -78,10 +78,15 @@ export interface Pathology {
     references?: string[];
     // Flashcard / Cube Data
     etiology?: string; // Cause/Origin
+    etiologyEn?: string; // English Etiology
     mechanism?: string; // Pathophysiology explained (The "WHY" behind imaging)
+    mechanismEn?: string; // English Mechanism
     differentialDiagnosis?: string[]; // DDx list
+    differentialDiagnosisEn?: string[]; // English DDx list
     goldStandard?: string; // Best imaging modality/sequence
+    goldStandardEn?: string; // English Gold Standard
     clinicalPearl?: string; // "Classic triad", specific sign etc.
+    clinicalPearlEn?: string; // English Clinical Pearl
     gallery?: {
         url: string;
         caption: string; // e.g., "T2 FLAIR", "DWI"
