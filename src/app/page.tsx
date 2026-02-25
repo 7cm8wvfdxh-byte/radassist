@@ -24,13 +24,39 @@ import { gynecologyPathologies } from "@/data/gynecology-pathologies";
 import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Flame, Bean, Wind, Wrench, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen } from "lucide-react";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils"; // Ensure cn is imported
-import { performSmartSearch } from "@/lib/search-utils";
+import { performScoredSearch, getDidYouMeanSuggestions, addRecentSearch, SearchResult } from "@/lib/search-utils";
 import { useAuth } from "@/context/auth-context";
 import { useLanguage } from "@/context/language-context";
 import Link from "next/link"; // Need Link for navigation
 import { LogIn, LogOut, User, Bell, ShieldCheck } from "lucide-react"; // Icons
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { AdminNotifications } from "@/components/admin-notifications";
+
+// Alan adı formatı - arama sonucu bağlam göstergesi
+function formatFieldName(fieldName: string, lang: string): string {
+  const tr: Record<string, string> = {
+    name: "İsim", nameEn: "İsim (EN)", category: "Kategori", categoryEn: "Kategori (EN)",
+    organ: "Organ", clinicalPearl: "Klinik İpucu", goldStandard: "Altın Standart",
+    etiology: "Etiyoloji", mechanism: "Mekanizma",
+  };
+  const en: Record<string, string> = {
+    name: "Name", nameEn: "Name (EN)", category: "Category", categoryEn: "Category (EN)",
+    organ: "Organ", clinicalPearl: "Clinical Pearl", goldStandard: "Gold Standard",
+    etiology: "Etiology", mechanism: "Mechanism",
+  };
+  const labels = lang === "tr" ? tr : en;
+
+  if (labels[fieldName]) return labels[fieldName];
+  if (fieldName.startsWith("keyPoint")) return lang === "tr" ? "Anahtar Nokta" : "Key Point";
+  if (fieldName.startsWith("ddx")) return lang === "tr" ? "Ayırıcı Tanı" : "DDx";
+  if (fieldName.startsWith("ct.")) return `BT (${fieldName.split(".")[1]})`;
+  if (fieldName.startsWith("mri.")) return `MR (${fieldName.split(".")[1]})`;
+  if (fieldName.startsWith("usg.")) return `USG`;
+  if (fieldName.startsWith("xray.")) return `X-Ray`;
+  if (fieldName.startsWith("pet.")) return `PET`;
+  if (fieldName.startsWith("mammography.")) return lang === "tr" ? "Mamografi" : "Mammography";
+  return fieldName;
+}
 
 export default function Home() {
   const { user, logout } = useAuth();
@@ -91,48 +117,60 @@ export default function Home() {
 
   const [searchGlobal, setSearchGlobal] = useState(false); // Global search toggle
 
-  const filteredPathologies = useMemo(() => {
-    let result: Pathology[] = [];
+  // Tüm patolojileri birleştir (öneri sistemi için)
+  const allPathologies = useMemo(() => [
+    ...brainPathologies.map(p => ({ ...p, organ: p.organ || 'Beyin' })),
+    ...spinePathologies.map(p => ({ ...p, organ: p.organ || 'Omurga' })),
+    ...liverPathologies.map(p => ({ ...p, organ: p.organ || 'Karaciğer' })),
+    ...kidneyPathologies.map(p => ({ ...p, organ: p.organ || 'Böbrek' })),
+    ...lungPathologies.map(p => ({ ...p, organ: p.organ || 'Akciğer' })),
+    ...breastPathologies.map(p => ({ ...p, organ: p.organ || 'Meme' })),
+    ...mskPathologies.map(p => ({ ...p, organ: p.organ || 'Kas-İskelet' })),
+    ...gastroPathologies.map(p => ({ ...p, organ: p.organ || 'Gastrointestinal' })),
+    ...gynecologyPathologies.map(p => ({ ...p, organ: p.organ || 'Jinekoloji' }))
+  ], []);
+
+  const { filteredPathologies, searchResults, didYouMeanSuggestions } = useMemo(() => {
+    let pool: Pathology[] = [];
 
     if (searchGlobal) {
-      // Combine ALL modules if global search is on
-      result = [
-        ...brainPathologies.map(p => ({ ...p, organ: 'Beyin' })),
-        ...spinePathologies.map(p => ({ ...p, organ: 'Omurga' })),
-        ...liverPathologies.map(p => ({ ...p, organ: 'Karaciğer' })),
-        ...kidneyPathologies.map(p => ({ ...p, organ: 'Böbrek' })),
-        ...lungPathologies.map(p => ({ ...p, organ: 'Akciğer' })),
-        ...breastPathologies.map(p => ({ ...p, organ: 'Meme' })),
-        ...mskPathologies.map(p => ({ ...p, organ: 'Kas-İskelet' })),
-        ...gastroPathologies.map(p => ({ ...p, organ: 'Gastrointestinal' })),
-        ...gynecologyPathologies.map(p => ({ ...p, organ: 'Jinekoloji' }))
-      ];
+      pool = allPathologies;
     } else {
-      // Select data source based on active module
       switch (activeModule) {
-        case "brain": result = brainPathologies; break;
-        case "spine": result = spinePathologies; break;
-        case "liver": result = liverPathologies; break;
-        case "kidney": result = kidneyPathologies; break;
-        case "lung": result = lungPathologies; break;
-        case "breast": result = breastPathologies; break;
-        case "msk": result = mskPathologies; break;
-        case "gi": result = gastroPathologies; break;
-        case "gyn": result = gynecologyPathologies; break;
+        case "brain": pool = brainPathologies; break;
+        case "spine": pool = spinePathologies; break;
+        case "liver": pool = liverPathologies; break;
+        case "kidney": pool = kidneyPathologies; break;
+        case "lung": pool = lungPathologies; break;
+        case "breast": pool = breastPathologies; break;
+        case "msk": pool = mskPathologies; break;
+        case "gi": pool = gastroPathologies; break;
+        case "gyn": pool = gynecologyPathologies; break;
       }
     }
 
-    // Filter by Favorites if toggle is active
+    // Favorites filter
     if (showFavoritesOnly) {
-      result = result.filter(p => favorites.includes(p.id));
+      pool = pool.filter(p => favorites.includes(p.id));
     }
 
     if (searchQuery.trim()) {
-      // Use the new Smart Search utility
-      result = performSmartSearch(result, searchQuery);
+      // Skorlu arama kullan
+      const scored = performScoredSearch(pool, searchQuery);
+
+      // Sonuç yoksa "bunu mu demek istediniz?" önerileri
+      const dymSuggestions = scored.length === 0
+        ? getDidYouMeanSuggestions(pool, searchQuery)
+        : [];
+
+      return {
+        filteredPathologies: scored.map(r => r.pathology),
+        searchResults: scored,
+        didYouMeanSuggestions: dymSuggestions,
+      };
     }
 
-    // Sort by clinical importance (category priority), then alphabetically by name
+    // Arama yoksa kategori sıralaması uygula
     const getCategoryPriority = (cat: string) => {
       const lower = cat.toLowerCase();
       if (lower.includes('vasküler') || lower.includes('vascular')) return 1;
@@ -144,13 +182,31 @@ export default function Home() {
       if (lower.includes('konjenital') || lower.includes('congeni')) return 7;
       return 50;
     };
-    return [...result].sort((a, b) => {
+
+    const sorted = [...pool].sort((a, b) => {
       const pA = getCategoryPriority(a.category);
       const pB = getCategoryPriority(b.category);
       if (pA !== pB) return pA - pB;
       return a.name.localeCompare(b.name, 'tr');
     });
-  }, [searchQuery, favorites, showFavoritesOnly, activeModule, searchGlobal]);
+
+    return {
+      filteredPathologies: sorted,
+      searchResults: [] as SearchResult[],
+      didYouMeanSuggestions: [] as string[],
+    };
+  }, [searchQuery, favorites, showFavoritesOnly, activeModule, searchGlobal, allPathologies]);
+
+  // Son aramayı kaydet (debounced)
+  useEffect(() => {
+    if (!searchQuery.trim()) return;
+    const timer = setTimeout(() => {
+      if (searchQuery.trim().length >= 2) {
+        addRecentSearch(searchQuery.trim());
+      }
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
   // Prevent hydration mismatch by processing only after load
   if (!isLoaded) return null;
@@ -435,6 +491,9 @@ export default function Home() {
                       ? t("search.allModules")
                       : `${t(`organ.${activeModule === 'gi' ? 'gastro' : activeModule === 'gyn' ? 'gynecology' : activeModule}`)} ${t("search.inModule")}`
                   }
+                  pathologies={searchGlobal ? allPathologies : filteredPathologies}
+                  didYouMean={didYouMeanSuggestions}
+                  resultCount={searchQuery.trim() ? filteredPathologies.length : undefined}
                 />
 
                 {/* Global Search Toggle */}
@@ -636,19 +695,72 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center py-32 text-slate-600 animate-in fade-in zoom-in duration-500">
             <Search className="w-16 h-16 mb-4 opacity-20" />
             <p className="text-lg font-medium">
-              {showFavoritesOnly ? "Henüz favori eklenmemiş." : "Sonuç bulunamadı"}
+              {showFavoritesOnly
+                ? (language === 'tr' ? "Henüz favori eklenmemiş." : "No favorites added yet.")
+                : (language === 'tr' ? "Sonuç bulunamadı" : "No results found")}
             </p>
+            {searchQuery.trim() && !showFavoritesOnly && (
+              <p className="text-sm text-slate-500 mt-2 max-w-md text-center">
+                {language === 'tr'
+                  ? "Arama ipucu: Kısaltmalar (BT, MR), halk dili (parlak, koyu) veya teknik terimler (hiperintens) kullanabilirsiniz."
+                  : "Search tip: Try abbreviations (CT, MRI), colloquial terms, or technical terms (hyperintense)."}
+              </p>
+            )}
             {showFavoritesOnly && (
               <button
                 onClick={() => setShowFavoritesOnly(false)}
                 className="mt-4 text-indigo-400 hover:text-indigo-300 text-sm underline underline-offset-4"
               >
-                Tümünü Göster
+                {language === 'tr' ? 'Tümünü Göster' : 'Show All'}
+              </button>
+            )}
+            {!showFavoritesOnly && searchQuery.trim() && (
+              <button
+                onClick={() => {
+                  setSearchGlobal(!searchGlobal);
+                }}
+                className="mt-4 text-indigo-400 hover:text-indigo-300 text-sm underline underline-offset-4"
+              >
+                {searchGlobal
+                  ? (language === 'tr' ? 'Sadece bu modülde ara' : 'Search in current module only')
+                  : (language === 'tr' ? 'Tüm modüllerde ara' : 'Search all modules')}
               </button>
             )}
           </div>
         ) : (
           viewMode === "grid" ? (
+            <div>
+            {/* Search context strip */}
+            {searchQuery.trim() && searchResults.length > 0 && (
+              <div className="flex flex-wrap items-center gap-2 mb-4 px-1 animate-in fade-in duration-300">
+                <span className="text-xs text-slate-500">
+                  {language === 'tr' ? 'Eşleşme:' : 'Matched by:'}
+                </span>
+                {searchResults.some(r => r.matchType === "exact") && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-green-500/15 text-green-400 border border-green-500/20">
+                    {language === 'tr' ? 'Tam eşleşme' : 'Exact match'}
+                  </span>
+                )}
+                {searchResults.some(r => r.matchType === "synonym") && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/15 text-blue-400 border border-blue-500/20">
+                    {language === 'tr' ? 'Eş anlamlı' : 'Synonym'}
+                  </span>
+                )}
+                {searchResults.some(r => r.matchType === "fuzzy") && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/20">
+                    {language === 'tr' ? 'Yakın eşleşme' : 'Fuzzy match'}
+                  </span>
+                )}
+                {searchResults.length > 0 && searchResults[0].matchedFields.length > 0 && (
+                  <span className="text-[10px] text-slate-600 ml-2">
+                    {language === 'tr' ? 'En iyi eşleşme:' : 'Best match:'}{' '}
+                    <span className="text-slate-400">
+                      {formatFieldName(searchResults[0].matchedFields[0].fieldName, language)}
+                    </span>
+                  </span>
+                )}
+              </div>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
               {filteredPathologies.map((pathology) => (
                 <PathologyCard
@@ -659,6 +771,7 @@ export default function Home() {
                   highlightQuery={searchQuery} // Pass highlight query
                 />
               ))}
+            </div>
             </div>
           ) : (
             <div className="max-w-4xl mx-auto flex flex-col gap-2 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">

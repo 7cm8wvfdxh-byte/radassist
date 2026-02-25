@@ -157,6 +157,16 @@ const tr: Record<string, string> = {
     "search.allModules": "Tüm modüllerde (Beyin, Omurga, Karaciğer, Meme, MSK...) ara...",
     "search.inModule": "patolojisi ara...",
     "search.searchAllModules": "Tüm Modüllerde Ara",
+    "search.placeholder": "Patoloji, bulgu veya sekans ara...",
+    "search.clear": "Temizle",
+    "search.resultsFound": "sonuç bulundu",
+    "search.noResults": "Sonuç bulunamadı",
+    "search.didYouMean": "Bunu mu demek istediniz?",
+    "search.recentSearches": "Son Aramalar",
+    "search.clearAll": "Temizle",
+    "search.navigate": "gezin",
+    "search.select": "seç",
+    "search.close": "kapat",
 };
 
 // English translations
@@ -303,6 +313,16 @@ const en: Record<string, string> = {
     "search.allModules": "Search all modules (Brain, Spine, Liver, Breast, MSK...)",
     "search.inModule": "Search pathology...",
     "search.searchAllModules": "Search All Modules",
+    "search.placeholder": "Search pathology, finding, or sequence...",
+    "search.clear": "Clear",
+    "search.resultsFound": "results found",
+    "search.noResults": "No results found",
+    "search.didYouMean": "Did you mean?",
+    "search.recentSearches": "Recent Searches",
+    "search.clearAll": "Clear",
+    "search.navigate": "navigate",
+    "search.select": "select",
+    "search.close": "close",
 };
 
 const translations: Record<Language, Record<string, string>> = { tr, en };

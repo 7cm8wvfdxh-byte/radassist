@@ -1,8 +1,6 @@
 import { Pathology } from "@/types";
 
 // --- Radyolojik Eş Anlamlılar Sözlüğü ---
-// Kullanıcının "halk dili" veya "kısaltma" ile aradığı terimleri
-// teknik karşılıklarına eşler.
 const RADIOLOGY_SYNONYMS: Record<string, string[]> = {
     // Parlaklık / Artış
     "parlak": ["hiperintens", "hiperdens", "hiperekoik", "artmış", "yüksek sinyal", "restriksiyon"],
@@ -35,28 +33,163 @@ const RADIOLOGY_SYNONYMS: Record<string, string[]> = {
     "baskı": ["bası", "kompresyon", "indentasyon"],
     "ödem": ["vazojenik", "sitotoksik", "şişlik", "t2 hiper"],
     "yaygın": ["diffüz", "dissemine"],
+
+    // --- YENİ: Genişletilmiş Klinik Terimler ---
+    "anevrizma": ["anevrizmal", "sakküler", "fusiform", "subaraknoid"],
+    "metastaz": ["metastatik", "sekonder", "yayılım"],
+    "damar": ["vasküler", "arter", "ven", "damarsal"],
+    "sinir": ["nöral", "nörojenik", "nöropati"],
+    "kemik": ["osseöz", "kemik iliği", "korteks", "trabeküler"],
+    "tıkanıklık": ["oklüzyon", "stenoz", "darlık", "obstrüksiyon"],
+    "yırtık": ["rüptür", "laserasyon", "perforasyon"],
+    "büyüme": ["hipertrofi", "hiperplazi", "genişleme"],
+    "küçülme": ["atrofi", "involüsyon", "dejenerasyon"],
+    "ağrı": ["akut", "kronik", "semptom"],
+    "kırık": ["fraktür", "kompresyon", "avülsiyon"],
+    "kanamak": ["hemoraji", "hematom", "kanama"],
+    "şişlik": ["ödem", "efüzyon", "kitle etkisi"],
+    "düğüm": ["nodül", "nodüler", "lenfadenopati"],
+    "akut karın": ["apandisit", "volvulus", "invajinasyon", "perforasyon", "peritonit"],
 };
 
-/**
- * Sorgu içindeki tokenları genişleterek eş anlamlılarını da içeren
- * bir "aranacak kelimeler" seti oluşturur.
- */
+// --- Ters Sözlük (Teknik → Halk dili + diğer teknik) ---
+let _reverseSynonyms: Record<string, string[]> | null = null;
+function getReverseSynonyms(): Record<string, string[]> {
+    if (_reverseSynonyms) return _reverseSynonyms;
+    _reverseSynonyms = {};
+    for (const [key, values] of Object.entries(RADIOLOGY_SYNONYMS)) {
+        for (const val of values) {
+            const lower = val.toLowerCase();
+            if (!_reverseSynonyms[lower]) _reverseSynonyms[lower] = [];
+            if (!_reverseSynonyms[lower].includes(key)) {
+                _reverseSynonyms[lower].push(key);
+            }
+            // Diğer eş anlamlıları da ekle
+            for (const otherVal of values) {
+                if (otherVal !== val && !_reverseSynonyms[lower].includes(otherVal.toLowerCase())) {
+                    _reverseSynonyms[lower].push(otherVal.toLowerCase());
+                }
+            }
+        }
+    }
+    return _reverseSynonyms;
+}
+
+// --- Modalite Algılama ---
+const MODALITY_PATTERNS: { pattern: RegExp; modality: string; fieldPrefix: string }[] = [
+    { pattern: /\b(?:mr['\u2019]?(?:da|de|ı|i)?|mri['\u2019]?(?:da|de)?|manyetik)\b/i, modality: "mri", fieldPrefix: "mri" },
+    { pattern: /\b(?:bt['\u2019]?(?:de|da|si)?|ct['\u2019]?(?:de|da)?|tomografi)\b/i, modality: "ct", fieldPrefix: "ct" },
+    { pattern: /\b(?:usg['\u2019]?(?:de|da)?|ultrason|doppler)\b/i, modality: "usg", fieldPrefix: "usg" },
+    { pattern: /\b(?:röntgen|x[- ]?ray|direkt\s*grafi)\b/i, modality: "xray", fieldPrefix: "xray" },
+    { pattern: /\b(?:pet['\u2019]?(?:te|ta|bt)?)\b/i, modality: "pet", fieldPrefix: "pet" },
+    { pattern: /\b(?:mamografi|mammografi|mamo)\b/i, modality: "mammography", fieldPrefix: "mammography" },
+    // MR sekansları
+    { pattern: /\bt1['\u2019]?(?:de|da)?\b/i, modality: "mri", fieldPrefix: "mri" },
+    { pattern: /\bt2['\u2019]?(?:de|da)?\b/i, modality: "mri", fieldPrefix: "mri" },
+    { pattern: /\b(?:flair|dwi|adc|swi|stir)\b/i, modality: "mri", fieldPrefix: "mri" },
+];
+
+export interface ModalityContext {
+    modality: string | null;
+    fieldPrefix: string | null;
+    cleanedQuery: string;
+}
+
+export function detectModalityContext(query: string): ModalityContext {
+    let detected: { modality: string; fieldPrefix: string } | null = null;
+    let cleanedQuery = query;
+
+    for (const { pattern, modality, fieldPrefix } of MODALITY_PATTERNS) {
+        const match = query.match(pattern);
+        if (match) {
+            detected = { modality, fieldPrefix };
+            // Sekans isimleri (t1, t2, dwi vb) query'den çıkarılmasın, arama terimi olarak kalsın
+            const isSequence = /^(t1|t2|flair|dwi|adc|swi|stir)$/i.test(match[0]);
+            if (!isSequence) {
+                cleanedQuery = cleanedQuery.replace(match[0], "").trim();
+            }
+            break;
+        }
+    }
+
+    return {
+        modality: detected?.modality || null,
+        fieldPrefix: detected?.fieldPrefix || null,
+        cleanedQuery,
+    };
+}
+
+// --- Levenshtein Distance (Fuzzy Matching) ---
+function levenshteinDistance(a: string, b: string): number {
+    const matrix: number[][] = [];
+    const aLen = a.length;
+    const bLen = b.length;
+
+    if (aLen === 0) return bLen;
+    if (bLen === 0) return aLen;
+
+    for (let i = 0; i <= aLen; i++) matrix[i] = [i];
+    for (let j = 0; j <= bLen; j++) matrix[0][j] = j;
+
+    for (let i = 1; i <= aLen; i++) {
+        for (let j = 1; j <= bLen; j++) {
+            const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+            matrix[i][j] = Math.min(
+                matrix[i - 1][j] + 1,
+                matrix[i][j - 1] + 1,
+                matrix[i - 1][j - 1] + cost
+            );
+        }
+    }
+
+    return matrix[aLen][bLen];
+}
+
+function isFuzzyMatch(token: string, target: string, maxDistance: number = 1): boolean {
+    if (token.length < 4) return token === target;
+    if (target.includes(token) || token.includes(target)) return true;
+
+    // Kelime bazında kontrol
+    const words = target.split(/\s+/);
+    for (const word of words) {
+        if (word.length >= 3 && levenshteinDistance(token, word) <= maxDistance) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// --- Token Genişletme (Bidirectional) ---
 export function expandQueryTokens(query: string): string[] {
     const rawTokens = query.toLowerCase().split(/\s+/).filter(t => t.length > 0);
     const expandedTokens = new Set<string>(rawTokens);
 
+    const reverseSynonyms = getReverseSynonyms();
+
     rawTokens.forEach(token => {
-        // Tam eşleşme kontrolü
+        // İleri yönlü: Halk dili -> Tıbbi
         if (RADIOLOGY_SYNONYMS[token]) {
-            RADIOLOGY_SYNONYMS[token].forEach(syn => expandedTokens.add(syn));
+            RADIOLOGY_SYNONYMS[token].forEach(syn => expandedTokens.add(syn.toLowerCase()));
         }
 
-        // Kısmi eşleşme (örn: "hiper" yazınca da yakalasın)
-        // Çok agresif olmaması için sadece en az 3 karakterli olanlarda
+        // Geri yönlü: Tıbbi -> Halk dili + diğer teknik terimler
+        if (reverseSynonyms[token]) {
+            reverseSynonyms[token].forEach(syn => expandedTokens.add(syn.toLowerCase()));
+        }
+
+        // Kısmi eşleşme (en az 3 karakter)
         if (token.length >= 3) {
             Object.keys(RADIOLOGY_SYNONYMS).forEach(key => {
                 if (key.includes(token) || token.includes(key)) {
-                    RADIOLOGY_SYNONYMS[key].forEach(syn => expandedTokens.add(syn));
+                    RADIOLOGY_SYNONYMS[key].forEach(syn => expandedTokens.add(syn.toLowerCase()));
+                    expandedTokens.add(key);
+                }
+            });
+            // Ters sözlükte de kısmi eşleşme
+            Object.keys(reverseSynonyms).forEach(key => {
+                if (key.includes(token) || token.includes(key)) {
+                    reverseSynonyms[key].forEach(syn => expandedTokens.add(syn.toLowerCase()));
+                    expandedTokens.add(key);
                 }
             });
         }
@@ -65,67 +198,402 @@ export function expandQueryTokens(query: string): string[] {
     return Array.from(expandedTokens);
 }
 
-/**
- * Bir patoloji nesnesini aranabilir tek bir metin bloğuna dönüştürür.
- * (Cache için optimize edilebilir ama şimdilik dinamik)
- */
-function getSearchableText(p: Pathology): string {
-    return [
-        p.name,
-        p.category,
-        p.organ || "",
-        p.etiology || "",
-        p.clinicalPearl || "",
-        p.goldStandard || "",
-        ...(p.keyPoints || []),
-        ...(p.differentialDiagnosis || []),
-        // Findings object recursive search
-        ...Object.values(p.findings.ct || {}),
-        ...Object.values(p.findings.mri || {}),
-        ...Object.values(p.findings.usg || {}),
-        ...Object.values(p.findings.xray || {}),
-        ...Object.values(p.findings.pet || {}),
-        // Keys
-        ...Object.keys(p.findings.ct || {}),
-        ...Object.keys(p.findings.mri || {})
-    ].join(" ").toLowerCase();
+// --- Aranabilir Alanlar (Weighted) ---
+interface SearchField {
+    text: string;
+    weight: number;
+    fieldName: string;
 }
 
-/**
- * Akıllı arama algoritması
- */
+function getSearchableFields(p: Pathology): SearchField[] {
+    const fields: SearchField[] = [];
+
+    // İsim (en yüksek ağırlık)
+    fields.push({ text: p.name.toLowerCase(), weight: 10, fieldName: "name" });
+    if (p.nameEn) fields.push({ text: p.nameEn.toLowerCase(), weight: 10, fieldName: "nameEn" });
+
+    // Kategori
+    fields.push({ text: p.category.toLowerCase(), weight: 8, fieldName: "category" });
+    if (p.categoryEn) fields.push({ text: p.categoryEn.toLowerCase(), weight: 8, fieldName: "categoryEn" });
+
+    // Organ
+    if (p.organ) fields.push({ text: p.organ.toLowerCase(), weight: 7, fieldName: "organ" });
+
+    // Klinik Pearl & Gold Standard (yüksek önem)
+    if (p.clinicalPearl) fields.push({ text: p.clinicalPearl.toLowerCase(), weight: 6, fieldName: "clinicalPearl" });
+    if (p.goldStandard) fields.push({ text: p.goldStandard.toLowerCase(), weight: 6, fieldName: "goldStandard" });
+
+    // Key Points
+    (p.keyPoints || []).forEach((kp, i) => {
+        fields.push({ text: kp.toLowerCase(), weight: 5, fieldName: `keyPoint_${i}` });
+    });
+
+    // Etiology & Mechanism
+    if (p.etiology) fields.push({ text: p.etiology.toLowerCase(), weight: 4, fieldName: "etiology" });
+    if (p.mechanism) fields.push({ text: p.mechanism.toLowerCase(), weight: 4, fieldName: "mechanism" });
+
+    // Differential Diagnosis
+    (p.differentialDiagnosis || []).forEach((dd, i) => {
+        fields.push({ text: dd.toLowerCase(), weight: 3, fieldName: `ddx_${i}` });
+    });
+
+    // Findings (modalite bazlı)
+    const addFindingsFields = (findings: Record<string, string | undefined> | undefined, prefix: string, weight: number) => {
+        if (!findings) return;
+        Object.entries(findings).forEach(([key, val]) => {
+            if (val && typeof val === 'string') {
+                fields.push({ text: val.toLowerCase(), weight, fieldName: `${prefix}.${key}` });
+            }
+        });
+    };
+
+    addFindingsFields(p.findings.ct as Record<string, string | undefined>, "ct", 3);
+    addFindingsFields(p.findings.mri as Record<string, string | undefined>, "mri", 3);
+    addFindingsFields(p.findings.usg as Record<string, string | undefined>, "usg", 3);
+    addFindingsFields(p.findings.xray as Record<string, string | undefined>, "xray", 3);
+    addFindingsFields(p.findings.pet as Record<string, string | undefined>, "pet", 3);
+    addFindingsFields(p.findings.mammography as Record<string, string | undefined>, "mammography", 3);
+
+    return fields;
+}
+
+// Eski uyumluluk için basit text oluşturucu (HighlightedText tarafından kullanılıyor)
+function getSearchableText(p: Pathology): string {
+    return getSearchableFields(p).map(f => f.text).join(" ");
+}
+
+// --- Arama Sonucu Tipi ---
+export interface SearchResult {
+    pathology: Pathology;
+    score: number;
+    matchedFields: { fieldName: string; snippet: string; weight: number }[];
+    matchType: "exact" | "synonym" | "fuzzy";
+}
+
+// --- Context Snippet Oluşturucu ---
+function extractSnippet(text: string, token: string, contextLength: number = 60): string {
+    const lowerText = text.toLowerCase();
+    const idx = lowerText.indexOf(token.toLowerCase());
+    if (idx === -1) return text.slice(0, contextLength * 2) + (text.length > contextLength * 2 ? "..." : "");
+
+    const start = Math.max(0, idx - contextLength);
+    const end = Math.min(text.length, idx + token.length + contextLength);
+    let snippet = text.slice(start, end);
+    if (start > 0) snippet = "..." + snippet;
+    if (end < text.length) snippet = snippet + "...";
+    return snippet;
+}
+
+// --- Ana Akıllı Arama (Geliştirilmiş, Skorlu) ---
 export function performSmartSearch(pathologies: Pathology[], query: string): Pathology[] {
     if (!query.trim()) return pathologies;
 
-    const rawTokens = query.toLowerCase().split(/\s+/).filter(t => t.length > 0);
-
-    // Gelişmiş strateji:
-    // Kullanıcının yazdığı HER kelime (veya eş anlamlısı) 
-    // sonucun içinde geçmelidir (AND Logic).
-    // Ancak her bir kelime için eş anlamlılar OR mantığıyla çalışır.
-    // Örnek: "Parlak Kitle" -> (Parlak OR Hiperintens OR ...) AND (Kitle OR Tümör OR ...)
-
-    return pathologies.filter(p => {
-        const text = getSearchableText(p);
-
-        return rawTokens.every(token => {
-            // Bu token için olası tüm varyasyonları bul
-            let possibleVariations = [token];
-
-            // Sözlükten bak
-            if (RADIOLOGY_SYNONYMS[token]) {
-                possibleVariations = [...possibleVariations, ...RADIOLOGY_SYNONYMS[token]];
-            }
-            // Veya sözlükteki anahtarlardan biri bu token'ı içeriyor mu? (Tersine arama)
-            /* 
-               Kullanıcı "hiperintens" yazdıysa, sözlükteki "parlak" anahtarı bunu içeriyor.
-               Ama biz "parlak"ı aramalı mıyız? Belki.
-               Genelde spesifik teknik terim yazdıysa daha genel olanı aramak gürültü yaratabilir.
-               Şimdilik tek yönlü (Halk dili -> Tıbbi) daha güvenli.
-            */
-
-            // Token metnin içinde geçiyor mu? (Varyasyonlardan EN AZ BİRİ)
-            return possibleVariations.some(variation => text.includes(variation));
-        });
-    });
+    const results = performScoredSearch(pathologies, query);
+    return results.map(r => r.pathology);
 }
+
+export function performScoredSearch(pathologies: Pathology[], query: string): SearchResult[] {
+    if (!query.trim()) return pathologies.map(p => ({
+        pathology: p,
+        score: 0,
+        matchedFields: [],
+        matchType: "exact" as const,
+    }));
+
+    // Modalite bağlamını algıla
+    const modalityCtx = detectModalityContext(query);
+    const effectiveQuery = modalityCtx.cleanedQuery || query;
+
+    const rawTokens = effectiveQuery.toLowerCase().split(/\s+/).filter(t => t.length > 0);
+    if (rawTokens.length === 0) return pathologies.map(p => ({
+        pathology: p, score: 0, matchedFields: [], matchType: "exact" as const,
+    }));
+
+    const results: SearchResult[] = [];
+
+    for (const p of pathologies) {
+        let fields = getSearchableFields(p);
+
+        // Modalite bağlamı varsa, o modaliteye ait alanlara bonus ağırlık ver
+        if (modalityCtx.modality) {
+            fields = fields.map(f => {
+                if (f.fieldName.startsWith(modalityCtx.fieldPrefix!)) {
+                    return { ...f, weight: f.weight + 4 }; // Modalite bonus
+                }
+                return f;
+            });
+        }
+
+        let totalScore = 0;
+        let allTokensMatched = true;
+        const matchedFields: SearchResult["matchedFields"] = [];
+        let bestMatchType: SearchResult["matchType"] = "exact";
+
+        for (const token of rawTokens) {
+            // Token varyasyonlarını oluştur
+            let possibleVariations = [token];
+            if (RADIOLOGY_SYNONYMS[token]) {
+                possibleVariations = [...possibleVariations, ...RADIOLOGY_SYNONYMS[token].map(s => s.toLowerCase())];
+            }
+            // Ters sözlük
+            const reverseSynonyms = getReverseSynonyms();
+            if (reverseSynonyms[token]) {
+                possibleVariations = [...possibleVariations, ...reverseSynonyms[token].map(s => s.toLowerCase())];
+            }
+
+            let tokenMatched = false;
+            let tokenBestScore = 0;
+
+            for (const field of fields) {
+                // Exact / substring match
+                for (const variation of possibleVariations) {
+                    if (field.text.includes(variation)) {
+                        tokenMatched = true;
+                        const isOriginalToken = variation === token;
+                        const matchScore = isOriginalToken ? field.weight * 2 : field.weight;
+                        if (!isOriginalToken && bestMatchType === "exact") bestMatchType = "synonym";
+
+                        if (matchScore > tokenBestScore) {
+                            tokenBestScore = matchScore;
+                        }
+
+                        matchedFields.push({
+                            fieldName: field.fieldName,
+                            snippet: extractSnippet(field.text, variation),
+                            weight: field.weight,
+                        });
+                        break; // Bir field'da birden fazla variation bulunamaz, devam et
+                    }
+                }
+            }
+
+            // Fuzzy match (bulunamadıysa)
+            if (!tokenMatched && token.length >= 4) {
+                for (const field of fields) {
+                    if (isFuzzyMatch(token, field.text, token.length <= 5 ? 1 : 2)) {
+                        tokenMatched = true;
+                        tokenBestScore = field.weight * 0.5; // Fuzzy match daha düşük skor
+                        bestMatchType = "fuzzy";
+                        matchedFields.push({
+                            fieldName: field.fieldName,
+                            snippet: extractSnippet(field.text, token),
+                            weight: field.weight,
+                        });
+                        break;
+                    }
+                }
+            }
+
+            if (!tokenMatched) {
+                allTokensMatched = false;
+                break;
+            }
+
+            totalScore += tokenBestScore;
+        }
+
+        if (allTokensMatched && totalScore > 0) {
+            // İsim tam eşleşme bonusu
+            const nameLower = p.name.toLowerCase();
+            if (rawTokens.some(t => nameLower.includes(t))) {
+                totalScore *= 1.5;
+            }
+            // Tam isim eşleşmesi
+            if (rawTokens.length > 0 && nameLower.includes(rawTokens.join(" "))) {
+                totalScore *= 2;
+            }
+
+            // Deduplicate matchedFields
+            const seen = new Set<string>();
+            const uniqueFields = matchedFields.filter(f => {
+                const key = f.fieldName;
+                if (seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            });
+
+            results.push({
+                pathology: p,
+                score: totalScore,
+                matchedFields: uniqueFields.slice(0, 3), // En fazla 3 snippet
+                matchType: bestMatchType,
+            });
+        }
+    }
+
+    // Skora göre sırala (yüksek → düşük)
+    results.sort((a, b) => b.score - a.score);
+
+    return results;
+}
+
+// --- Otomatik Tamamlama Önerileri ---
+export interface SearchSuggestion {
+    text: string;
+    type: "pathology" | "term" | "recent";
+    category?: string;
+    organ?: string;
+}
+
+export function getSearchSuggestions(
+    pathologies: Pathology[],
+    query: string,
+    recentSearches: string[] = [],
+    maxResults: number = 8
+): SearchSuggestion[] {
+    if (!query.trim()) {
+        // Query boşsa son aramaları göster
+        return recentSearches.slice(0, maxResults).map(s => ({
+            text: s,
+            type: "recent" as const,
+        }));
+    }
+
+    const lower = query.toLowerCase().trim();
+    const suggestions: SearchSuggestion[] = [];
+    const seen = new Set<string>();
+
+    // 1. Patoloji isimleri
+    for (const p of pathologies) {
+        const name = p.name.toLowerCase();
+        const nameEn = p.nameEn?.toLowerCase() || "";
+        if (name.includes(lower) || nameEn.includes(lower)) {
+            if (!seen.has(p.name)) {
+                seen.add(p.name);
+                suggestions.push({
+                    text: p.name,
+                    type: "pathology",
+                    category: p.category,
+                    organ: p.organ,
+                });
+            }
+        }
+        if (suggestions.length >= maxResults) break;
+    }
+
+    // 2. Fuzzy patoloji isimleri (eğer az sonuç bulunduysa)
+    if (suggestions.length < 3 && lower.length >= 3) {
+        for (const p of pathologies) {
+            if (seen.has(p.name)) continue;
+            const nameWords = p.name.toLowerCase().split(/[\s()/,-]+/);
+            for (const word of nameWords) {
+                if (word.length >= 3 && levenshteinDistance(lower, word) <= 2) {
+                    seen.add(p.name);
+                    suggestions.push({
+                        text: p.name,
+                        type: "pathology",
+                        category: p.category,
+                        organ: p.organ,
+                    });
+                    break;
+                }
+            }
+            if (suggestions.length >= maxResults) break;
+        }
+    }
+
+    // 3. Sözlük terimleri
+    const allTerms = [
+        ...Object.keys(RADIOLOGY_SYNONYMS),
+        ...Object.values(RADIOLOGY_SYNONYMS).flat(),
+    ];
+    const uniqueTerms = Array.from(new Set(allTerms.map(t => t.toLowerCase())));
+
+    for (const term of uniqueTerms) {
+        if (suggestions.length >= maxResults) break;
+        if (seen.has(term)) continue;
+        if (term.includes(lower) || lower.includes(term)) {
+            seen.add(term);
+            suggestions.push({
+                text: term.charAt(0).toUpperCase() + term.slice(1),
+                type: "term",
+            });
+        }
+    }
+
+    return suggestions.slice(0, maxResults);
+}
+
+// --- "Bunu mu demek istediniz?" Önerileri ---
+export function getDidYouMeanSuggestions(
+    pathologies: Pathology[],
+    query: string,
+    maxResults: number = 3
+): string[] {
+    const lower = query.toLowerCase().trim();
+    if (lower.length < 2) return [];
+
+    const candidates: { text: string; distance: number }[] = [];
+
+    // Patoloji isimleri
+    for (const p of pathologies) {
+        const nameWords = p.name.toLowerCase().split(/[\s()/,-]+/).filter(w => w.length >= 3);
+        for (const word of nameWords) {
+            const dist = levenshteinDistance(lower, word);
+            if (dist <= 3 && dist > 0) {
+                candidates.push({ text: word, distance: dist });
+            }
+        }
+    }
+
+    // Sözlük terimleri
+    for (const key of Object.keys(RADIOLOGY_SYNONYMS)) {
+        const dist = levenshteinDistance(lower, key);
+        if (dist <= 2 && dist > 0) {
+            candidates.push({ text: key, distance: dist });
+        }
+    }
+
+    // Sırala ve deduplicate
+    candidates.sort((a, b) => a.distance - b.distance);
+    const seen = new Set<string>();
+    const results: string[] = [];
+    for (const c of candidates) {
+        if (!seen.has(c.text) && c.text !== lower) {
+            seen.add(c.text);
+            results.push(c.text);
+        }
+        if (results.length >= maxResults) break;
+    }
+
+    return results;
+}
+
+// --- Son Aramalar Yönetimi ---
+const RECENT_SEARCHES_KEY = "radassist-recent-searches";
+const MAX_RECENT_SEARCHES = 10;
+
+export function getRecentSearches(): string[] {
+    if (typeof window === "undefined") return [];
+    try {
+        const stored = localStorage.getItem(RECENT_SEARCHES_KEY);
+        if (stored) {
+            const parsed = JSON.parse(stored);
+            if (Array.isArray(parsed)) return parsed;
+        }
+    } catch { /* ignore */ }
+    return [];
+}
+
+export function addRecentSearch(query: string): void {
+    if (typeof window === "undefined") return;
+    const trimmed = query.trim();
+    if (!trimmed || trimmed.length < 2) return;
+
+    try {
+        const searches = getRecentSearches().filter(s => s !== trimmed);
+        searches.unshift(trimmed);
+        localStorage.setItem(
+            RECENT_SEARCHES_KEY,
+            JSON.stringify(searches.slice(0, MAX_RECENT_SEARCHES))
+        );
+    } catch { /* ignore */ }
+}
+
+export function clearRecentSearches(): void {
+    if (typeof window === "undefined") return;
+    try { localStorage.removeItem(RECENT_SEARCHES_KEY); } catch { /* ignore */ }
+}
+
+// Eski API uyumluluğu için getSearchableText export
+export { getSearchableText };
