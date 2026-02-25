@@ -159,6 +159,10 @@ export const lungPathologies: Pathology[] = [
             "Necrotizing pneumonia: Multiple cavitation, Klebsiella, S. aureus."
         ],
         "mechanism": "Bakteriyel: Patojenin alt solunum yollarına ulaşması → alveolar makrofajların yetersiz temizliği → bakteri proliferasyonu → nötrofil yanıtı → eksüda dolu alveoller (konsolidasyon). Viral/COVID-19: Hücresel immün yanıt ve sitokin fırtınası → difüz alveolar hasar → tip II pnömosit hasarı → surfaktan kaybı → alveoler kollaps → ground-glass opasiteler, crazy-paving. Nekrotizan: Vaskülit ve tromboz → akciğer parankimi nekrozu → kavitasyon.",
+        "etiology": "Bakteriyel: S. pneumoniae (en sık toplum kökenli), H. influenzae, S. aureus, Klebsiella (alkolikler). Atipik: Mycoplasma, Legionella, Chlamydia. Viral: İnfluenza, RSV, SARS-CoV-2. Risk faktörleri: İleri yaş, immünsüpresyon, KOAH, sigara, aspirasyon.",
+        "differentialDiagnosis": ["Pulmoner Ödem (Kardiyomegali, bilateral perihiler, sefalizasyon)", "Pulmoner Hemoraji (Hemoptizi, diffüz GGO, anemi)", "Organize Pnömoni (COP — periferik konsolidasyon, reverse halo)", "Eozinofilik Pnömoni (Periferal konsolidasyon, eozinofili)", "Akciğer Kanseri (Obstrüktif pnömoni, persistan infiltrat)"],
+        "goldStandard": "Göğüs grafisi: İlk basamak tanı. BT toraks: Komplikasyon (apse, ampiyem) ve ayırıcı tanıda. Balgam kültürü ve kan kültürü: Etken tespiti.",
+        "clinicalPearl": "Lober konsolidasyon + air-bronchogram + ateş = Bakteriyel pnömoni. Antibiyotiğe 48-72 saatte yanıt yoksa BT çek → apse, ampiyem veya altta yatan obstrüktif lezyon (tümör) araştır.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -210,6 +214,10 @@ export const lungPathologies: Pathology[] = [
             "PET-CT: Recommended for metabolic evaluation of >8mm solid nodules."
         ],
         "mechanism": "Solid nodül: Tam solid doku proliferasyonu — granülom (enfeksiyöz: TB, histoplazma), karsinoid, metastaz veya primer malignite. Subsolid/ground-glass nodül: Kısmi alveol dolumu ile birlikte hava korunumu — atipik adenomatöz hiperplazi (AAH) → in situ adenokarsinom (AIS) → minimal invaziv adenokarsinom (MIA) → invaziv adenokarsinom malignisite spektrumu. Solid komponent arttıkça invazyon artmaktadır.",
+        "etiology": "Benign: Granülom (TB, histoplazmoz), hamartom (en sık benign tümör — yağ + popcorn kalsifikasyon), intrapulmoner lenf nodu. Malign: Primer akciğer kanseri (adenokarsinom en sık), metastaz, karsinoid tümör. Premalign: AAH, AIS.",
+        "differentialDiagnosis": ["Granülom (Kalsifiye, stabil boyut, santral/lameller/popcorn kalsifikasyon)", "Hamartom (Yağ + kalsifikasyon, düzgün kenar)", "Metastaz (Multipl, bilinen primer)", "Karsinoid Tümör (Santral, vasküler kontrastlanma)", "İntrapulmoner Lenf Nodu (Subplevral, <12mm, alt lob)"],
+        "goldStandard": "İnce kesit BT (≤1mm): Nodül morfolojisi ve dansitesi. PET-BT: >8mm solid nodüllerde metabolik aktivite. Lung-RADS ve Fleischner kriterleri: Takip algoritması. Biyopsi: Büyüyen veya şüpheli nodüllerde.",
+        "clinicalPearl": "Spiküle kenar + büyüme + PET pozitiflik = Malign. Stabil >2 yıl + düzgün kenar + kalsifikasyon = Benign. Part-solid nodülde solid komponent >6mm ise malignite riski çok yüksek — hemen biyopsi veya rezeksiyon planla.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -264,6 +272,10 @@ export const lungPathologies: Pathology[] = [
             "USG is as sensitive as CT in bedside diagnosis (eFAST)."
         ],
         "mechanism": "Visseral veya pariyetal plevra bütünlüğünün bozulması → plevral boşluğa hava kaçışı → akciğer elastik geri çekim kuvveti ile çöküş. Primer spontan: Apikal subplevral bleb rüptürü (genç, uzun erkeklerde zayıf mezoteliyal doku). Tansiyon: Tek yönlü valf mekanizması → inspirasyonda hava girer, ekspirasyonda çıkamaz → giderek artan basınç → mediastinal şift → karşı akciğer ve venöz dönüş baskılanması → kardiyovasküler kollaps.",
+        "etiology": "Primer spontan: Apikal bleb rüptürü (genç, uzun, zayıf erkek, sigara). Sekonder spontan: KOAH/amfizem, kistik fibrozis, Langerhans hücreli histiyositoz, LAM, Pneumocystis pnömonisi. Travmatik: Künt/penetran göğüs travması, kot fraktürü. İyatrojenik: Santral venöz kateter, torasentez, mekanik ventilasyon (barotravma).",
+        "differentialDiagnosis": ["Büllöz Amfizem (Dev bül, pnömotoraks taklidi — BT ile ayırt)", "Pnömomediastinum (Mediastinal hava, subkutan amfizem)", "Diyafragma Rüptürü (Travma, abdominal organ herniasyonu)", "Plevral Effüzyon (Opak hemitoraks, menisküs)", "Dev Bül (İnce duvar, çevresinde normal parankim)"],
+        "goldStandard": "BT toraks: En hassas yöntem, küçük pnömotoraksları tespit eder. Akciğer grafisi (PA inspiryum): İlk basamak tanı. USG (eFAST): Acil yatak başı tanıda, lung sliding kaybı ve lung point.",
+        "clinicalPearl": "Supin hastada pnömotoraks anterior birikir → PA grafide görülmeyebilir → 'deep sulcus sign' araştır. USG'de lung sliding yokluğu + barcode sign + lung point = Pnömotoraks kesin tanı. Tansiyon pnömotoraks klinik tanıdır — görüntüleme bekleme, hemen iğne dekompresyon!",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -315,6 +327,10 @@ export const lungPathologies: Pathology[] = [
             "HRCT: 1-2mm slice thickness, high resolution required."
         ],
         "mechanism": "Kronik alveolar epitelyal hasar (tip II pnömosit) → anormal yara iyileşmesi → fibroblast aktivasyonu (TGF-β, PDGF) → aşırı ECM depolanması → akciğer parankim mimarisinin bozulması. Baziler/subplevral tutulum: Bu bölgelerdeki mekanik strese duyarlılık ile ilişkilidir. Honeycombing: Alveol gruplarının fibröz doku ile dolması ve birbirine yapışarak kistik hava boşlukları oluşturması.",
+        "etiology": "İdiyopatik: IPF (UIP paterni), NSIP, COP, AIP, DIP, RB-ILD, LIP. Otoimmün/kollajen vasküler: Romatoid artrit, skleroderma, SLE, dermatomiyozit. Çevresel/mesleki: Hipersensitivite pnömonisi (kuş besleyici, çiftçi akciğeri), pnömokonyozlar (asbestoz, silikoz). İlaca bağlı: Metotreksat, amiodaron, bleomisin, nitrofurantoin.",
+        "differentialDiagnosis": ["NSIP (Ground-glass baskın, honeycombing az/yok, daha iyi prognoz)", "Hipersensitivite Pnömonisi (Üst/orta lob, mozaik atenüasyon, antijen maruziyeti)", "Sarkoidoz (Perilenfatik nodüller, hiler LAP)", "Asbestoz (Asbest öyküsü, plevral plaklar, bazal fibrozis)", "İlaca Bağlı Pnömoni (İlaç öyküsü, çekilince düzelme)"],
+        "goldStandard": "HRCT toraks (1-2mm ince kesit): UIP/NSIP/COP patern tanıma. Multidisipliner değerlendirme (radyoloji + pulmonoloji + patoloji): Kesin tanı. Cerrahi akciğer biyopsisi: HRCT belirsiz ise.",
+        "clinicalPearl": "HRCT'de baziler honeycombing + traksiyon bronşektazi + retiküler opasite + minimal GGO = UIP → biyopsi gerekmeden IPF tanısı konabilir. GGO baskınsa NSIP düşün — steroid yanıtı daha iyidir ve prognoz UIP'ten belirgin olarak daha iyidir.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
@@ -348,6 +364,10 @@ export const lungPathologies: Pathology[] = [
             "Honeycombing appearance (3-10mm cysts) is a sign of poor prognosis."
         ],
         "mechanism": "Bilinmeyen tetikleyici → tekrarlayan epitelyal mikro-hasarlar → TGF-β mediated fibroblast aktivasyonu → miyofibroblastlara dönüşüm → kollajen birikimi. Alveolar yüzey azalır → gaz değişimi bozulur → restriktif patern. Baziler subplevral tutulum, bu bölgelerin solunum sırasındaki gerilme kuvvetlerine olan duyarlılığıyla açıklanır.",
+        "etiology": "İdiyopatik (tanım gereği nedeni bilinmez). Risk faktörleri: Sigara (en güçlü risk), ileri yaş (>60), erkek cinsiyet, gastroözofageal reflü (mikroaspirasyon), genetik yatkınlık (MUC5B, TERT mutasyonları). Ailesel formlar: Telomeraz mutasyonları.",
+        "differentialDiagnosis": ["NSIP (GGO baskın, honeycombing yok/az, bazal/subplevral, daha iyi prognoz)", "Kronik Hipersensitivite Pnömonisi (Üst/orta lob fibrozis, mozaik atenüasyon, antijen öyküsü)", "Asbestoz (Asbest maruziyeti, plevral plaklar)", "Kollajen Vasküler Hastalık İlişkili ILD (Genç kadın, otoimmün belirteçler)", "İlaca Bağlı Fibrozis (Amiodaron, bleomisin öyküsü)"],
+        "goldStandard": "HRCT toraks: UIP paterni (kesin, olası, belirsiz). ATS/ERS/JRS/ALAT 2022 kılavuzu: Kesin UIP paterni + klinik uyum = Biyopsisiz IPF tanısı. Cerrahi akciğer biyopsisi: Belirsiz HRCT paterninde.",
+        "clinicalPearl": "Yaşlı erkek + progresif dispne + kuru öksürük + bilateral bazal Velcro ralleri + HRCT'de kesin UIP paterni = IPF tanısı biyopsisiz konur. Medyan sağkalım 3-5 yıl. Antifibrotik tedavi (pirfenidon, nintedanib) progresyonu yavaşlatır ama iyileştirmez.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",

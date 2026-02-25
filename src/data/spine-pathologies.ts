@@ -96,6 +96,10 @@ export const spinePathologies: Pathology[] = [
             "Can be Central, Lateral Recess, or Foraminal."
         ],
         "mechanism": "Çoklu dejeneratif değişikliklerin birikmesi → kanal daralması. Disk yükseklik kaybı → faset ekleme artan yük → faset artrozu ve hipertrofi. Ligamentum flavum: Elastin kaybı → kollajen hipertrofisi (>4mm). Osteofitler + ligaman hipertrofisi + faset hipertrofisi = trifokal (trefoil) dar kanal. Öne eğilme sırasında kanal açılması nörojenik kladikasiyo ile bisiklete binebilme ayrımını açıklar.",
+        "etiology": "Dejeneratif (en sık): Disk protrüzyonu, faset hipertrofisi, ligamentum flavum kalınlaşması. Konjenital dar kanal (kısa pediküller). Spondilolistezis. Postoperatif (epidural fibrozis).",
+        "differentialDiagnosis": ["Vasküler Kladikasyo (Nabız kaybı, ABI düşük, yürüyünce artan ağrı dinlenmekle geçer)", "Disk Hernisi (Tek kök tutulumu, Lasègue +)", "Spinal Tümör/Metastaz (Gece ağrısı, kilo kaybı, T1 sinyal kaybı)", "Periferik Nöropati (Diyabet, simetrik, çorap-eldiven)"],
+        "goldStandard": "MRI (Aksiyel + Sagittal T2): Kanal çapı, ligamentum flavum kalınlığı, foraminal stenoz. Yonca yaprağı (trefoil) görünümü. BT myelografi: MRI kontrendike ise.",
+        "clinicalPearl": "Nörojenik kladikasyo: Yürürken artan bilateral bacak ağrısı, öne eğilince (market arabası pozisyonu) rahatlar. Vasküler kladikasyoda ise dinlenmekle geçer ancak postür önemli değildir.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -145,6 +149,10 @@ export const spinePathologies: Pathology[] = [
             "Step-off deformity."
         ],
         "mechanism": "İstmik tip: Tekrarlayan hiperextansiyon stresi (jimnastikçi, futbolcu) → pars interartikülaris stres kırığı (spondilolizis) → her iki tarafta kırık → vertebra kayması. Dejeneratif tip: Faset ve disk dejenerasyonu → posterior stabilizasyon kaybı → öne kayma. Travmatik tip: Akut yüksek enerjili travma → pars veya pedikül kırığı → ani kayma. Kayma derecesi arttıkça kanal ve foramen daralır.",
+        "etiology": "İstmik/Litik: Pars interartikülaris stres kırığı (genç sporcular). Dejeneratif: Faset ve disk dejenerasyonu (yaşlılar, L4-L5). Travmatik: Akut kırık. Patolojik: Tümör/enfeksiyon. Displastik: Konjenital faset anomalisi.",
+        "differentialDiagnosis": ["Spinal Stenoz (Dar kanal, kayma olmadan)", "Disk Hernisi (Tek seviye, kayma olmadan, kök basısı)", "Vertebral Kompresyon Kırığı (Yükseklik kaybı, kayma yok)", "Ankilozan Spondilit (Andersson lezyonu, psödoartroz)"],
+        "goldStandard": "BT (Sagittal + Aksiyel): Pars defekti ve kayma derecesi. MRI: Sinir kökü basısı, disk patolojisi, kord değerlendirmesi. Fleksiyon-Ekstansiyon grafisi: Dinamik instabilite.",
+        "clinicalPearl": "Genç sporcu (jimnastikçi) + bel ağrısı + L5-S1 pars defekti = İstmik spondilolistezis. Yaşlı hasta + L4-L5 + dar kanal = Dejeneratif spondilolistezis. Meyerding Grade ≥3 = Cerrahi endikasyon.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -191,6 +199,10 @@ export const spinePathologies: Pathology[] = [
             "CT is more sensitive if cortical destruction is present."
         ],
         "mechanism": "Primer tümör hematojen yayılımla Batson pleksusundan (vertebral venöz pleksus) vertebra kemik iliğine ulaşır → trabeküler yıkım. Osteolitik (akciğer, böbrek, tiroid, melanom) vs osteoblastik (prostat, meme). Normal yağ iliği yerini tümör hücreleri aldığı için T1'de hipointens (yağ sinyali kaybolur). STIR sekansında su içeriği arttığı için parlak sinyal verir.",
+        "etiology": "Hematojen yayılım (Batson venöz pleksusu): Meme, Prostat, Akciğer, Böbrek, Tiroid (en sık 5 kaynak). Osteolitik: Akciğer, Böbrek, Tiroid, Melanom. Osteoblastik: Prostat, Meme (tedavi sonrası).",
+        "differentialDiagnosis": ["Osteoporotik Kompresyon Kırığı (T1 normal sinyal korunur, posterior eleman sağlam)", "Vertebral Osteomiyelit/Spondilodiskit (Disk tutulumu, end-plate erozyonu, klinik enfeksiyon)", "Multipl Miyelom (Yaygın T1 hipointensite, 'rain drop skull', M-protein)", "Lenfoma (DWI kısıtlanma belirgin, homojen infiltrasyon)", "Hemanjiom (T1 VE T2 hiperintens, polka dot)"],
+        "goldStandard": "MRI Tüm Omurga (Sagittal T1, T2, STIR, T1+K): Multipl lezyonlar, pedikül tutulumu, epidural uzanım. BT: Kortikal destrüksiyon. PET-BT: Evreleme ve tedavi yanıtı.",
+        "clinicalPearl": "Vertebra T1 hipointens + pedikül kaybı (Winking Owl) + gece ağrısı = Metastaz düşün. Osteoporotik kırıktan ayırt: Metastazda posterior eleman tutulumu ve konveks posterior duvar bulgusu var, STIR'da sinyal artışı belirgin.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -242,6 +254,10 @@ export const spinePathologies: Pathology[] = [
             "Distinction from compression fracture: Involvement of posterior wall and posterior column."
         ],
         "mechanism": "Yüksek enerjili aksiyel yüklenme (suyun yüzeyine ayak dibi ile düşme, trafik kazası) → vertebra korpusunun santral çökmesi → her iki korteksin kırılması → kemik parçacıklarının spinal kanala retropulsiyonu. Dennis'in üç kolon modeli: Orta ve arka kolon birlikte tutulunca kord basısı ve nörolojik hasar riski artar; bu burst kırığını kompresyon kırığından ayırır.",
+        "etiology": "Yüksek enerjili travma: Yüksekten düşme (aksiyel yüklenme), trafik kazası, dalma yaralanması. Torakolomber bileşke (T12-L2) en sık tutulan bölge.",
+        "differentialDiagnosis": ["Kompresyon Kırığı (Yalnızca ön kolon tutulumu, arka duvar sağlam)", "Chance Kırığı (Fleksiyon-distraksiyon, horizontal kırık hattı, emniyet kemeri)", "Patolojik Kırık (Altta yatan tümör/metastaz, minimal travma)", "Osteoporotik Kırık (Yaşlı, düşük enerjili, arka duvar genellikle sağlam)"],
+        "goldStandard": "BT (Sagittal + Aksiyel + Koronal reformat): Kırık hattı, retropulsiyon, kanal daralma oranı. MRI: PLC hasarı (STIR), kord kontüzyonu (T2). TLICS skoru cerrahi karar için kullanılır.",
+        "clinicalPearl": "Burst kırığında arka duvar retropulsiyonu + PLC hasarı (MRI STIR'da hiperintensite) = İnstabil kırık → cerrahi. TLICS skoru ≥5 = Cerrahi endikasyon. Kompresyon kırığından farkı: Arka duvar kırığı ve retropulsiyon varlığıdır.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -294,6 +310,10 @@ export const spinePathologies: Pathology[] = [
             "Differential diagnosis: OPLL (Ossification of Posterior Longitudinal Ligament), Cervical stenosis."
         ],
         "mechanism": "Servikal bölgede disk dejenerasyonu → nükleus pulpozus herniyasyonu veya disk-osteofil kompleksi oluşumu → posterior/posterolateral bası → sinir kökü basısı (radikülopati) veya kord kompresyonu (miyelopati). Lomber disk hernisinden farklı olarak dar kanal alanı nedeniyle küçük bir herninin bile kord basısına yol açabileceği unutulmamalı. Unkovertebral artropati foraminal stenoza ek katkı sağlar.",
+        "etiology": "Dejeneratif (yaşlanma, tekrarlayan travma). Akut travma (whiplash). Unkovertebral artropati ve faset artrozu foraminal daralma yapar. C5-C6 ve C6-C7 en sık tutulan seviyeler (en fazla hareket eden segmentler).",
+        "differentialDiagnosis": ["OPLL — Posterior Longitudinal Ligaman Ossifikasyonu (BT'de kalsifikasyon, Asyalılarda sık)", "Servikal Spondilotik Miyelopati (Yaygın spondiloz, multipl seviye)", "Servikal İntramedüller Tümör (Kord ekspansiyonu, kontrastlanma)", "Transvers Miyelit (İnflamatuvar, BOS bulguları)", "Brakiyal Pleksopati (Pancoast tümörü, travma — Servikal MRI normal)"],
+        "goldStandard": "MRI (Sagittal + Aksiyel T2, T1, T2*GRE): Disk hernisi, kord basısı, miyelopati sinyal değişikliği. BT: Kalsifiye disk (sert disk) ve OPLL değerlendirmesi. EMG: Radikülopati konfirmasyonu.",
+        "clinicalPearl": "Servikal miyelopati bulguları (el beceriksizliği, yürüme bozukluğu, hiperrefleksi, Babinski +) = Cerrahi endikasyon. Kord içi T2 sinyal artışı = Miyelomalazi (kötü prognoz, geri dönüşümsüz). C5-C6: C6 kökü (başparmak uyuşması, biseps zayıflığı), C6-C7: C7 kökü (orta parmak, triseps zayıflığı).",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Fardon DF et al. Lumbar disc nomenclature: version 2.0. Spine J. 2014;14(11):2525-2545.",
@@ -342,6 +362,10 @@ export const spinePathologies: Pathology[] = [
             "Scheuermann's disease: Multiple Schmorl nodes + kyphosis."
         ],
         "mechanism": "Zayıflamış vertebral end-plate + aniden artan aksiyel yük → nükleus pulpozusun end-plate korteksini delerek vertebra spongioza dokusu içine herniyasyonu. End-plate kıkırdağının konjenital zayıflığı (Scheuermann hastalığı) ya da osteoporoz zemin hazırlar. Akut fazda çevre kemikte ödem/vasküler tepki (Modic Tip 1), kronik fazda reaktif skleroz (Modic Tip 3) oluşur.",
+        "etiology": "Dejeneratif (end-plate zayıflaması). Scheuermann hastalığı (konjenital end-plate anomalisi). Osteoporoz. Travma (aksiyel yüklenme). Torakolomber bileşke en sık lokalizasyon.",
+        "differentialDiagnosis": ["Modic Değişiklikleri (End-plate'e sınırlı sinyal değişikliği, disk hernisi yok)", "Vertebral Metastaz (Fokal kitle, T1 hipointens, kortikal destrüksiyon)", "Spondilodiskit (Disk tutulumu, iki komşu vertebra, kontrastlanma)", "Limbus Vertebra (Anterior end-plate köşe defekti, dejeneratif)"],
+        "goldStandard": "MRI (Sagittal T1, T2, STIR): End-plate defekti ve çevre ödem değerlendirmesi. BT: End-plate irregülaritesi ve sklerotik halka. Akut vs kronik ayrımı STIR ile yapılır.",
+        "clinicalPearl": "Çoğu insidental ve asemptomatik — raporda not et, panik yapma. STIR'da çevre ödem varsa = Akut Schmorl nodülü (ağrı kaynağı olabilir). Multipl Schmorl nodülleri + kifoz + düzensiz end-plate = Scheuermann hastalığı düşün.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",

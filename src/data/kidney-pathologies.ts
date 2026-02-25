@@ -122,6 +122,10 @@ export const kidneyPathologies: Pathology[] = [
             ">4cm AML: Increased bleeding risk → Consider embolization."
         ],
         "mechanism": "mTOR yolağı aktivasyonu (TSC1/TSC2 mutasyonu veya sporadik) → anormal mezodermal diferansiasyon → yağ dokusu, düz kas ve anormal damarların karışımından oluşan hamartom. Anormal damarlar esnek duvardan yoksundur (anevrizma riski) → Wunderlich sendromu (spontan retroperitoneal kanama). Fat-poor AML: Düz kas baskın, TSC bağlantısı sık.",
+        "etiology": "Sporadik (%80) veya Tüberöz Skleroz Kompleksi (TSC) ilişkili (%20). TSC: TSC1/TSC2 gen mutasyonu → bilateral, multipl AML'ler. Kadınlarda daha sık (hormonal etki).",
+        "differentialDiagnosis": ["Renal Hücreli Karsinom (Fat-poor AML ile karışabilir; yağ yoksa BT ile ayrılamaz)", "Onkositom (Solid, homojen kontrastlanma)", "Renal lipom/liposarkom (Çok nadir, tamamen yağ)", "Wilms tümörü (Çocuk, yağ içermez)"],
+        "goldStandard": "Non-kontrast BT: Makroskopik yağ tespiti (<-10 HU = kesin AML). Fat-poor AML: MRI chemical shift, biyopsi veya cerrahi gerekebilir.",
+        "clinicalPearl": "BT'de <-10 HU yağ dokusu = AML kesin tanı, biyopsiye gerek yok. >4 cm AML'de spontan kanama riski artar → profilaktik embolizasyon düşün. TSC'li hastada bilateral AML'ler beklenir.",
         "references": [
             "Israel GM, Bosniak MA. Renal imaging for diagnosis and staging of renal cell carcinoma. Urol Clin North Am. 2003;30(3):499-514.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -181,6 +185,10 @@ export const kidneyPathologies: Pathology[] = [
             "Follow-up required: Only for Bosniak IIF and above."
         ],
         "mechanism": "Renal tübülün fokal dilatasyon ve obstrüksiyonu → sıvı birikimi → kistik yapı. Edinsel kistler: Kronik renal hasarda tübüler atrofi ve fibröz bağ doku baskısıyla gelişir. Sıvı saf transüda (proteinsiz) olduğu için 0-20 HU, T2'de BOS benzeri çok parlak sinyal verir. Kontrastlanma olmaması, duvar ve içerik normalliği = benign.",
+        "etiology": "Edinsel (yaşlanma, tübüler obstrüksiyon). İnsidans yaşla artar: >50 yaş bireylerin %50'sinden fazlasında en az bir basit kist bulunur. Kronik böbrek hastalığında sıklık artar.",
+        "differentialDiagnosis": ["Hiperdens kist (Bosniak II, >20 HU ama kontrastlanma yok)", "Parapelvik kist (Sinüs yerleşimli, hidronefroz ile karışabilir)", "Kistik RCC (Bosniak III-IV, septum/duvar kontrastlanması)", "ADPKD (Multipl bilateral kistler, büyük böbrekler, aile öyküsü)"],
+        "goldStandard": "USG: İlk basamak, basit kist kriterleri (anekoik, ince duvar, posterior güçlenme). BT: Bosniak sınıflaması ile karakterizasyon.",
+        "clinicalPearl": "USG'de 4 kriter: Anekoik + ince pürüzsüz duvar + posterior akustik güçlenme + internal eko yok = Bosniak I basit kist, takip gereksiz. Atipik özellik varsa BT/MRI ile Bosniak sınıflaması yap.",
         "references": [
             "Silverman SG et al. Bosniak Classification of Cystic Renal Masses, Version 2019. Radiology. 2019;292(2):475-488.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -230,6 +238,10 @@ export const kidneyPathologies: Pathology[] = [
             "2019 update: MRI findings incorporated."
         ],
         "mechanism": "Basit kist zemininde oluşan komplikasyonlar (kanama, enfeksiyon, displazi) → kist duvarında kalınlaşma, septumasyon, kalsifikasyon veya solid komponent. Bosniak sınıflaması, kist duvar ve içerik özelliklerine göre malignite riskini katmanlara ayırır. Solid kontrastlanan komponent (Bosniak IV) kistik RCC için yüksek risk (%90) taşır.",
+        "etiology": "Basit kist zemininde kanama, enfeksiyon veya neoplastik değişim. Kistik RCC: Clear cell tip kistik dejenerasyon. Multilokuler kistik nefroma. Kist komplikasyonları (hemorajik, enfekte kist).",
+        "differentialDiagnosis": ["Basit kist (Bosniak I, kontrastlanma yok)", "Hemorajik kist (Bosniak II, >20 HU ama kontrastlanma yok)", "Kistik RCC (Bosniak III-IV, solid kontrastlanan komponent)", "Multilokuler kistik nefroma (Bosniak III, pelvise herniasyon)", "Kist enfeksiyonu (Kalın duvar, klinik bulgular)"],
+        "goldStandard": "Kontrastlı BT (multifazik): Bosniak sınıflaması altın standardı. MRI: Septum ve duvar kontrastlanmasında BT'den daha sensitif (2019 güncellemesiyle MRI bulguları da dahil edildi).",
+        "clinicalPearl": "Bosniak IIF: Takip gerekli (yıllık BT, 5 yıl). Bosniak III-IV: Cerrahi. 2019 güncellemesinde MRI bulguları eklendi ve IIF kategorisi netleştirildi. Septum kalınlığı ve kontrastlanması en kritik parametrelerdir.",
         "references": [
             "Bosniak MA. The Bosniak Renal Cyst Classification: 25 Years Later. Radiology. 2012;262(3):781-785.",
             "Silverman SG et al. Bosniak Classification of Cystic Renal Masses, Version 2019. Radiology. 2019;292(2):475-488.",
@@ -290,6 +302,10 @@ export const kidneyPathologies: Pathology[] = [
             "Clinical + urine + imaging = Diagnosis. CT for complications."
         ],
         "mechanism": "E. coli (%80+) alt üriner yoldan renal pelvise çıkan enfeksiyon → tübüler epitel tutulumu → nötrofil infiltrasyonu ve ödem. Tübüler ödem, kontrast ajanlı BT'de tübülden geçişi yavaşlatır → striated nefrogram (hipoperfüze alanlar ile normoperfüze alanların radyal şerit paterni). Amfizematoz tip: Gaz üreten bakteriler (Klebsiella, E. coli) + diyabetik mikrovasküler hasar → intraparankimal gaz birikimi.",
+        "etiology": "Asandan enfeksiyon (en sık): E. coli (%80+), Klebsiella, Proteus. Risk faktörleri: Kadın cinsiyet, üriner obstrüksiyon, vezikoüreteral reflü (VUR), diyabet, gebelik, immunsupresyon, üriner kateterizasyon.",
+        "differentialDiagnosis": ["Renal infarkt (Kama şekilli ama kontrastlanmaz; ateş/lökositoz genellikle yok)", "Renal lenfoma (Multipl, bilateral, hipovasküler)", "Renal apse (Halka kontrastlanma, lokalize koleksiyon)", "Akut tübüler nekroz (Bilateral, diffüz, klinik bağlam farklı)", "Fokal piyelonefrit vs RCC (Fokal hipoperfüze alan kitle ile karışabilir — takip BT ile ayrım)"],
+        "goldStandard": "Klinik tanı (ateş + kostovertebral hassasiyet + piyüri). Kontrastlı BT: Komplikasyon şüphesinde (apse, amfizematöz piyelonefrit, obstrüksiyon). DWI-MRI: Radyasyon kaygısında alternatif.",
+        "clinicalPearl": "Antibiyotik tedavisine 72 saat yanıtsızlık → kontrastlı BT çek (apse? obstrüksiyon?). Amfizematöz piyelonefrit (intraparankimal gaz) = acil cerrahi/drenaj, genellikle diyabetik hastada. USG %70 normal olabilir — normal USG piyelonefriti dışlamaz.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Acute Pyelonephritis. American College of Radiology.",

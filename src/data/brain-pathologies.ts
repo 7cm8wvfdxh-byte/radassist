@@ -231,6 +231,10 @@ export const brainPathologies: Pathology[] = [
             "McDonald Criteria used for diagnosis.",
             "Normal white matter exists between lesions."
         ],
+        "etiology": "Otoimmün, multifaktöriyel. Genetik yatkınlık (HLA-DRB1*15:01). Çevresel: EBV enfeksiyonu, D vitamini eksikliği, sigara, yüksek enlem. Kadınlarda 2-3:1.",
+        "differentialDiagnosis": ["Nöromiyelitis Optika (NMO - AQP4 antikor, uzun segment miyelit)", "ADEM (Monofazik, derin gri cevher tutulumu, çocuk)", "Nörosarkoidoz (Leptomeningeal kontrastlanma, hipotalamus)", "Susac Sendromu (Corpus callosum santral lezyonları, işitme kaybı, retinal dal oklüzyonu)", "Vaskülit (Farklı vasküler alanlarda infarktlar)"],
+        "goldStandard": "MRI beyin + spinal kord (FLAIR + T1+C): McDonald 2017 kriterleri (DIS + DIT). BOS: Oligoklonal bantlar.",
+        "clinicalPearl": "Periventriküler ovoid lezyonlar (Dawson parmakları) + Open-ring kontrastlanma + Santral ven işareti = MS. FLAIR'de 'ateş böceği' paterni (parlak, yaygın).",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Multiple Sclerosis. American College of Radiology; 2019.",
@@ -277,6 +281,10 @@ export const brainPathologies: Pathology[] = [
             "Common in elderly and alcoholics (due to atrophy stretching veins).",
             "Acute-on-chronic SDH: Mixed density on CT."
         ],
+        "etiology": "Travma (köprü ven rüptürü). Yaşlılar (serebral atrofi → ven gerilmesi), antikoagülan kullanımı, alkolizm, koagülopati. Bebeklerde: Non-aksidental travma (çocuk istismarı) düşünülmelidir.",
+        "differentialDiagnosis": ["Epidural Hematom (Bikonveks, arteriyel, sütürleri geçmez)", "Subdural Higroma (BOS yoğunluğu, travma sonrası)", "Subdural Ampiyem (Ateş, rim kontrastlanması, DWI kısıtlanması)", "Araknoid Kist (BOS dansitesi, kitle etkisi az)"],
+        "goldStandard": "BT (kontrastsız): Akut SDH hiperdens hilal. İzodens subakut SDH için MRI (T1 hiperintens Met-Hb) daha duyarlıdır.",
+        "clinicalPearl": "Hilal şekli + sütürleri geçer + dural refleksiyonları geçmez = SDH. Subakut izodens SDH: BT'de gözden kaçabilir - orta hat şiftine ve sulkal asimetriye dikkat et.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Head Trauma. American College of Radiology; 2020.",
@@ -325,6 +333,10 @@ export const brainPathologies: Pathology[] = [
             "Lucid interval (regaining consciousness then deteriorating) is classic but not always present.",
             "Neurosurgical emergency if significant mass effect."
         ],
+        "etiology": "Travma → temporal kemik kırığı → A. meningea media rüptürü (%85-95). Daha nadir: Meningeal ven veya dural sinüs yaralanması, koagülopati.",
+        "differentialDiagnosis": ["Subdural Hematom (Hilal şekli, sütürleri geçer, venöz kaynaklı)", "Subaraknoid Kanama (Sisternalarda, sulkuslarda hiperdansite)", "İntraserebral Hematom (Parankimal, hipertansif lokasyonlar)", "Dural Metastaz (Bilinen malignite, düzensiz kontrastlanma)"],
+        "goldStandard": "BT (kontrastsız): Bikonveks hiperdens koleksiyon + kemik penceresinde kırık hattı. BT anjiyo: Aktif kanama odağı (swirl sign).",
+        "clinicalPearl": "Bikonveks (lens) şekli + sütürleri geçmez + temporal kemik kırığı = EDH. 'Swirl sign' (girdap işareti) aktif kanamayı gösterir → acil cerrahi.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Head Trauma. American College of Radiology; 2020.",
@@ -373,6 +385,10 @@ export const brainPathologies: Pathology[] = [
             "Most common cause is trauma; non-traumatic cause is aneurysm rupture.",
             "Complications: Vasospasm, Hydrocephalus."
         ],
+        "etiology": "Travmatik (%80): En sık neden. Non-travmatik: Anevrizma rüptürü (%80 non-travmatik), perimezensefalik SAK (%10), AVM, vaskülit, koagülopati.",
+        "differentialDiagnosis": ["İntraserebral Kanama (Parankimal hematom, hipertansif lokasyonlar)", "Reversibl Serebral Vazokonstriksiyon Sendromu (RCVS - Gök gürültüsü baş ağrısı, segmental vazospazm)", "Posterior Fossa Tümör Kanaması (Kitle etkisi, kontrastlanma)", "Serebral Venöz Tromboz (Venöz infarkt, Delta işareti)"],
+        "goldStandard": "BT (kontrastsız): İlk 6 saatte %98 duyarlılık. BT anjiyo: Anevrizma tespiti. Negatif BT'de LP (ksantokromi).",
+        "clinicalPearl": "'Hayatımın en kötü baş ağrısı' + BT'de bazal sisternalarda hiperdansite = SAK. Fisher skalası vazospazm riskini tahmin eder. 4-14. günler vazospazm penceresi.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Cerebrovascular Diseases-Stroke. American College of Radiology; 2021.",
@@ -422,6 +438,10 @@ export const brainPathologies: Pathology[] = [
             "Ring enhancing lesion DDx: 'MAGICAL DR' (Metastasis, Abscess, GBM, Infarct, Contusion, AIDS, Lymphoma, Demyelination, Radiation).",
             "Restricted diffusion (DWI) is key to differentiate from necrotic tumors (usually facilitated)."
         ],
+        "etiology": "Bakteriyel (%60-70): Streptococcus, Staphylococcus. Yayılım: Hematojen, komşuluk (sinüzit, otit, mastoidit), penetran travma, cerrahi. İmmünsuprese: Fungal (Aspergillus), Toxoplazma, Nocardia.",
+        "differentialDiagnosis": ["GBM (Kalın düzensiz kontrastlanan halka, DWI merkez kolaylaşmış)", "Metastaz (Multipl, gri-beyaz bileşke, bilinen primer)", "Demiyelinizan Lezyon (Open-ring kontrastlanma, MS öyküsü)", "Subakut İnfarkt (Vasküler teritory, giral kontrastlanma)"],
+        "goldStandard": "MRI DWI/ADC: Merkezi difüzyon kısıtlılığı (DWI parlak/ADC karanlık). T1+C: İnce düzgün halka kontrastlanma. Dual rim sign (SWI).",
+        "clinicalPearl": "Halka kontrastlanma + merkezi DWI kısıtlanması + ateş = Apse. GBM'de merkez DWI genellikle kolaylaşmıştır. Dual rim sign (SWI) apse için spesifiktir.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Focal Neurologic Deficit. American College of Radiology; 2020.",
@@ -471,6 +491,10 @@ export const brainPathologies: Pathology[] = [
             "Sensorineural hearing loss.",
             "Bilateral involvement suggests NF2 disease."
         ],
+        "etiology": "Sporadik (%95) veya NF2 ilişkili (bilateral). Schwann hücrelerinden köken alır. NF2 gen mutasyonu (merlin proteini). 8. kranial sinirin vestibüler dalı.",
+        "differentialDiagnosis": ["Menenjiyom (Geniş dural taban, dural kuyruk, kalsifikasyon)", "Epidermoid Kist (DWI parlak, kontrastlanmaz)", "Fasiyal Sinir Schwannomu (Fasiyal kanal genişlemiş)", "Araknoid Kist (BOS sinyali, kontrastlanmaz)"],
+        "goldStandard": "MRI T1+C (ince kesit): İnternal akustik kanal genişlemesi + yoğun kontrastlanan kitle. CISS/FIESTA sekansı küçük tümörlerin tespitinde üstün.",
+        "clinicalPearl": "CPA kitlesi + İAK genişlemesi + 'dondurma külahı' görünümü = Schwannom. Bilateral ise NF2 kesin. Epidermoidin aksine DWI kısıtlanmaz.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Hearing Loss and/or Vertigo. American College of Radiology; 2018.",
@@ -517,6 +541,10 @@ export const brainPathologies: Pathology[] = [
             "Can be Functional (Prolactinoma, GH-secreting) or Non-functional.",
             "Pituitary apoplexy is a medical emergency."
         ],
+        "etiology": "Adenohipofiz hücrelerinin monoklonal proliferasyonu. Sporadik (%95). Sendromik: MEN1 (prolaktinoma + hiperparatiroidi + pankreas tümörü), Carney kompleksi, McCune-Albright.",
+        "differentialDiagnosis": ["Kraniyofarenjiom (Supraseller, kalsifiye, kistik, T1 hiperintens)", "Rathke Yarığı Kisti (İntra/supraseller, kontrast tutmaz, T1 hiperintens)", "Hipofizer Apopleksi (Akut kanama, acil)", "Menenjiyom (Dural taban, yoğun homojen kontrast)"],
+        "goldStandard": "MRI dinamik kontrastlı (koronal ince kesit): Mikroadenom erken fazda hipointens, normal gland kontrastlanır. Prolaktin düzeyi >200 ng/mL = Prolaktinoma.",
+        "clinicalPearl": "Dinamik MRI'da normal gland önce parlar, mikroadenom geç kalır (hipointens kalır). Prolaktin >200 ng/mL ise biyopsiye gerek yok, Dopamin agonisti başla.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Neuroendocrine Imaging. American College of Radiology; 2019.",
@@ -570,6 +598,10 @@ export const brainPathologies: Pathology[] = [
             "Gray-white matter junction is the typical location.",
             "Lung, Breast, Melanoma, Kidney and Colon are the most common primary sources."
         ],
+        "etiology": "Hematojen yayılım. Primer kaynaklar: Akciğer (%40-50), Meme (%15-25), Melanom (%5-20), Böbrek (%5-10), Kolorektal (%5). Hemorajik metastazlar: 'MR. CT' (Melanom, Renal, Koryokarsinom, Tiroid).",
+        "differentialDiagnosis": ["GBM (Tek, infiltratif, kelebek paterni, korpus kallozum geçişi)", "Beyin Apsesi (İnce düzgün halka, DWI kısıtlı merkez)", "Primer CNS Lenfoma (Periventriküler, homojen, DWI kısıtlı)", "Demiyelinizan Hastalık (Open-ring, MS öyküsü)"],
+        "goldStandard": "MRI T1+C (üç düzlem, ince kesit): Multipl kontrastlanan lezyonlar. Çift doz kontrast veya SWI hemorajik metastaz için. Tüm vücut PET/BT primer odak araştırması.",
+        "clinicalPearl": "Multipl kontrastlanan lezyonlar + gri-beyaz bileşke + geniş ödem/küçük kitle = Metastaz. Peritümöral ödemde MRS normal (GBM'de anormal - infiltrasyon).",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Intracranial Neoplasms. American College of Radiology; 2020.",
