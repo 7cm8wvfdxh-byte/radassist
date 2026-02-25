@@ -66,7 +66,7 @@ export const liverPathologies: Pathology[] = [
         "goldStandard": "Dinamik BT veya MRI (LI-RADS 5): Arteriyel wash-in + Portal wash-out + Kapsül. Biyopsi: LI-RADS 3-4'te veya görüntüleme yetersizliğinde.",
         "clinicalPearl": "Sirotik hastada ≥10mm nodül + LI-RADS 5 paterni (wash-in/wash-out/kapsül) = Biyopsisiz HCC tanısı.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "LI-RADS: ACR CT/MRI LI-RADS v2018. American College of Radiology.",
             "American Association for the Study of Liver Diseases (AASLD) Practice Guideline: Management of Hepatocellular Carcinoma.",
             "Radiopaedia.org - Hepatocellular carcinoma"
@@ -126,8 +126,8 @@ export const liverPathologies: Pathology[] = [
         "goldStandard": "MRI (Hepatobilier ajan + DWI): Multimodal değerlendirme. PET-CT: Tedavi yanıtı ve evreleme.",
         "clinicalPearl": "T2'de 'Target sign' (santral hipointens, periferal hiperintens) metastaz için yüksek spesifik. Kolondan disappearing metastaz = MRI şart.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Sahani DV, Samir AE. Abdominal Imaging. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Hepatic metastases"
         ]
     },
@@ -192,8 +192,8 @@ export const liverPathologies: Pathology[] = [
         "goldStandard": "MRI T2: 'Ampul işareti' (BOS'tan parlak). Gecikmiş BT: Periferik nodüler → santripetal dolum (>5dk).",
         "clinicalPearl": "T2'de BOS'tan bile parlak sinyal (ampul/lightbulb işareti) + Periferik nodüler dolum → %100'e yakın tanısal.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Sahani DV, Samir AE. Abdominal Imaging. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Hepatic hemangioma"
         ]
     },
@@ -245,8 +245,8 @@ export const liverPathologies: Pathology[] = [
         ],
         "mechanism": "Anormal arteryel beslenmeli odak → lokal hiperperfüzyon → hepatosit ve Kupffer hücre hiperplazisi. Normal karaciğer mimarisini içerdiğinden (hepatosit, safra duktulusu, Kupffer hücresi) hepatobilier ajanlara UPTAKE yapar → hepatobilier fazda iso/hiperintensite. Santral skar, artmış kan akımına sekonder fibröz değişimi yansıtır.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Sahani DV, Samir AE. Abdominal Imaging. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Focal nodular hyperplasia"
         ]
     },
@@ -298,8 +298,8 @@ export const liverPathologies: Pathology[] = [
         ],
         "mechanism": "Östrojen/androjen → hepatosit proliferasyonu ve apoptoz inhibisyonu → klonal hepatosit kitlesi. HNF1α inaktivasyonu: Yağ birikimi (steatotik adenom). β-catenin aktivasyonu: Hepatosit displazisi → malign transformasyon. Tümörde safra duktulusu ve Kupffer hücresi yoktur → hepatobilier fazda kontrast almaz (hipointens), FNH'den ayrım buradan yapılır.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Sahani DV, Samir AE. Abdominal Imaging. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Hepatocellular adenoma"
         ]
     },
@@ -359,8 +359,8 @@ export const liverPathologies: Pathology[] = [
         ],
         "mechanism": "Bakteriyel ajan (E. coli, Klebsiella, anaeroplar) → portal bakteremi veya doğrudan yayılım → hepatosit nekrozu → nötrofil infiltrasyonu → pü birikimi. Granülasyon dokusu ile çevrili merkez (double target iç halka kontrast alır). Visköz pü içeriği su moleküllerinin difüzyonunu kısıtlar → DWI'da yüksek sinyal (nekrotik tümörde periferik kısıtlanma, apse merkezinde tam kısıtlanma).",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Sahani DV, Samir AE. Abdominal Imaging. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Pyogenic liver abscess"
         ]
     },
@@ -420,7 +420,7 @@ export const liverPathologies: Pathology[] = [
         ],
         "mechanism": "Kronik karaciğer hasarı (alkol, viral hepatit, NASH) → hepatosit nekrozu → fibröz doku birikimi (HSC aktivasyonu, TGF-β) → rejeneratif nodül formasyonu. Bozulan portal akım → portal hipertansiyon → kollateral dolaşım açılımı (özofageal varisler, umbilikal ven). Nodüler doku arteryel neovaskülarizasyon kazanırsa → displastik nodül → HCC dönüşümü.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "LI-RADS: ACR CT/MRI LI-RADS v2018. American College of Radiology.",
             "American Association for the Study of Liver Diseases (AASLD) Practice Guideline: Diagnosis and Management of Cirrhosis.",
             "Radiopaedia.org - Liver cirrhosis"
@@ -484,7 +484,7 @@ export const liverPathologies: Pathology[] = [
         ],
         "mechanism": "Echinococcus granulosus yumurtasının oral alınımı → bağırsakta larval formu (onkosfer) açılır → portal dolaşıma girer → karaciğerde yerleşir → hidatid kist gelişir. Kist üç tabakadan oluşur: Dış (perikist, konak fibröz doku), orta (germinal epiteli), iç (germinal tabaka, yavru kist üretir). Membran ayrışması → water lily sign; kalsifikasyon → inaktif evre.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "WHO Informal Working Group on Echinococcosis. International classification of ultrasound images in cystic echinococcosis.",
             "Radiopaedia.org - Hepatic hydatid cyst"
         ]
@@ -547,8 +547,8 @@ export const liverPathologies: Pathology[] = [
         "goldStandard": "USG (ilk basamak). BT: Komplikasyon değerlendirmesi (gangrenöz, amfizemöz). HIDA sintigrafisi: Sistik kanal obstrüksiyonu kanıtı.",
         "clinicalPearl": "Sonografik Murphy işareti: USG probu ile safra kesesi üzerine baskı uygulanınca ağrı — sistik kanal tıkanıklığını destekler, tanıda %85+ spesifiktir.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Right Upper Quadrant Pain. American College of Radiology; 2018.",
             "Radiopaedia.org - Acute cholecystitis"
         ]
     },
@@ -608,8 +608,8 @@ export const liverPathologies: Pathology[] = [
         "goldStandard": "USG. MRCP: Koledokolitiyazis şüphesinde.",
         "clinicalPearl": "BT'de 'negatif' safra kesesi = kolesterol taşı olabilir. Klinik kolik + USG negatifse MRCP iste.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "ACR Appropriateness Criteria: Right Upper Quadrant Pain. American College of Radiology; 2018.",
             "Radiopaedia.org - Cholelithiasis"
         ]
     },
@@ -670,7 +670,7 @@ export const liverPathologies: Pathology[] = [
         "goldStandard": "MR Spektroskopi veya Karaciğer Biyopsisi (>5% steatoz = NAFLD).",
         "clinicalPearl": "BT'de karaciğer dansitesi dalaktan düşükse steatoz düşün. Fokal yağ tutulmaması (özellikle safra kesesi yatağı ve portal dal komşuluğu) tümör ile karışabilir — vasküler yapılar düzgün seyrediyorsa benign.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "American Association for the Study of Liver Diseases (AASLD) Practice Guideline: Diagnosis and Management of Nonalcoholic Fatty Liver Disease.",
             "Radiopaedia.org - Hepatic steatosis"
         ]
@@ -737,8 +737,8 @@ export const liverPathologies: Pathology[] = [
         "goldStandard": "Dinamik BT veya MRCP + MRI. Ca 19-9 > 100 U/mL destekler. Kesin: Biyopsi veya cerrahi patoloji.",
         "clinicalPearl": "Obstrüktif sarılık + İntrahepatik safra dilatasyonu + Safra kanalı duvarında kalınlaşma → Kolanjiokarsinom şüphesi. Geç faz kontrastlanma (santripetal) HCC'den ayırt ettirir.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
+            "Sahani DV, Samir AE. Abdominal Imaging. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Cholangiocarcinoma"
         ]
     }

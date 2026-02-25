@@ -87,7 +87,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     };
 
     return (
-        <div className="relative w-full h-[550px] perspective-1000 group/card">
+        <div className="relative w-full h-[550px] perspective-1000 group/card" style={{ touchAction: 'pan-y' }}>
 
             {/* CARD CONTAINER */}
             <div
@@ -195,7 +195,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         </div>
 
                         {/* Scrollable Content Area */}
-                        <div className="flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-700 min-h-0">
+                        <div className="flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-700 min-h-0 overscroll-contain">
                             {activeTab === 'summary' ? (
                                 <ul className="space-y-2">
                                     {displayKeyPoints.slice(0, 4).map((kp, i) => ( // Show up to 4 key points
@@ -252,7 +252,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Back Content */}
-                    <div className="p-6 flex-1 overflow-y-auto space-y-5">
+                    <div className="p-6 flex-1 overflow-y-auto space-y-5 overscroll-contain">
 
                         {/* WHY? Section */}
                         {data.mechanism && (

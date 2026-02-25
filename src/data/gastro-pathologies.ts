@@ -36,7 +36,7 @@ export const gastroPathologies: Pathology[] = [
         references: [
             "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
             "ACR Appropriateness Criteria: Right Lower Quadrant Pain. American College of Radiology; 2018.",
-            "Defined Defined",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Radiopaedia.org - Acute appendicitis"
         ]
     },
@@ -191,7 +191,7 @@ export const gastroPathologies: Pathology[] = [
         references: [
             "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
             "ACR Appropriateness Criteria: Crohn Disease. American College of Radiology; 2020.",
-            "Defined Defined",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Radiopaedia.org - Crohn disease"
         ]
     },
@@ -227,7 +227,7 @@ export const gastroPathologies: Pathology[] = [
         references: [
             "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
             "ACR Appropriateness Criteria: Suspected Small Bowel Obstruction. American College of Radiology; 2019.",
-            "Defined Defined",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Radiopaedia.org - Small bowel obstruction"
         ]
     },
@@ -295,7 +295,7 @@ export const gastroPathologies: Pathology[] = [
         references: [
             "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
             "ACR Appropriateness Criteria: Acute Onset of Abdominal Pain and Suspicion of Mesenteric Ischemia. American College of Radiology; 2018.",
-            "Defined Defined",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Radiopaedia.org - Acute mesenteric ischemia"
         ]
     },
@@ -330,7 +330,7 @@ export const gastroPathologies: Pathology[] = [
         clinicalPearl: "Çocuklarda klasik triad: Kolik karın ağrısı + Kusma + 'Çilek jölesi' dışkı (mukus + kan). Pnömatik veya hidrostatik redüksiyon: Çocuklarda ilk tedavi seçeneği. 3-3-3 kuralı: >3 yaş, >3 gün semptom, >3cm = Cerrahi daha olası.",
         references: [
             "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
-            "Defined Defined",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Acute Abdominal Pain in Children. American College of Radiology; 2020.",
             "Radiopaedia.org - Intussusception"
         ]
@@ -366,7 +366,7 @@ export const gastroPathologies: Pathology[] = [
         clinicalPearl: "İmatinib (Gleevec) tedaviye yanıt: BT'de boyut küçülmesi + Hounsfield değerinde azalma (Choi kriterleri — RECIST'ten farklı!). Boyut değişmese bile tümör nekrozu = Yanıt. Risk sınıflaması: Boyut >5cm + Mitoz >5/50HPF = Yüksek risk.",
         references: [
             "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
-            "Defined Defined",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "NCCN Clinical Practice Guidelines in Oncology: Gastrointestinal Stromal Tumors (GIST). National Comprehensive Cancer Network; 2023.",
             "Radiopaedia.org - Gastrointestinal stromal tumor"
         ]
@@ -410,7 +410,7 @@ export const gastroPathologies: Pathology[] = [
         clinicalPearl: "Cluster sign: Küçük apselerin birleşme eğilimi → tek büyük kavite oluşumu. Double target sign: İç halka (granülasyon — kontrastlanır) + dış halka (ödem — kontrastlanmaz). DWI: Apse parlak (pü → kısıtlı difüzyon) vs nekrotik tümör (değişken).",
         references: [
             "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
-            "Defined Defined",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Acute Abdominal Pain - Fever or Suspected Abscess. American College of Radiology; 2018.",
             "Radiopaedia.org - Pyogenic liver abscess"
         ]
@@ -446,7 +446,7 @@ export const gastroPathologies: Pathology[] = [
         clinicalPearl: "Barrett özofagusu: >3cm uzunluk + intestinal metaplazi = Yüksek adenokarsinom riski → düzenli endoskopik surveyans. Endoskopik USG (EUS): T ve N evreleme doğruluğu BT'den üstün. Rat-tail sign: Baryumda düzensiz lümen daralması.",
         references: [
             "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
-            "Defined Defined",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "NCCN Clinical Practice Guidelines in Oncology: Esophageal and Esophagogastric Junction Cancers. National Comprehensive Cancer Network; 2023.",
             "Radiopaedia.org - Esophageal carcinoma"
         ]
@@ -500,7 +500,7 @@ export const gastroPathologies: Pathology[] = [
         clinicalPearl: "Linitis plastica (Borrmann IV): Mide duvarının diffüz infiltrasyonu → 'deri torbası' mide → BT'de peristaltik kayıp. Krukenberg tümörü: Over metastazı = Evre IV. Virchow nodu (sol supraklavikuler LAP) = Uzak metastaz işareti.",
         references: [
             "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
-            "Defined Defined",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "NCCN Clinical Practice Guidelines in Oncology: Gastric Cancer. National Comprehensive Cancer Network; 2023.",
             "Radiopaedia.org - Gastric adenocarcinoma"
         ]
@@ -552,7 +552,7 @@ export const gastroPathologies: Pathology[] = [
         clinicalPearl: "Rigler sign: Bağırsak duvarının hem iç hem dış yüzeyinin hava ile görünmesi (double wall sign). %10-30 perforasyonda serbest hava görülmez → klinik şüphede BT. Duodenum ön yüz perforasyonu en sık → serbest hava sağ subfrenik bölgede.",
         references: [
             "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
-            "Defined Defined",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Acute Abdominal Pain and Fever or Suspected Abdominal Abscess. American College of Radiology; 2018.",
             "Radiopaedia.org - Peptic ulcer perforation"
         ]
@@ -604,7 +604,7 @@ export const gastroPathologies: Pathology[] = [
         clinicalPearl: "Sonografik Murphy işareti: Prob ile baskıda ağrı + taş + duvar kalınlaşması = Tanısal triad. WES triadı: Wall thickening + Edema + Sonographic Murphy = PPV %94. Amfizemöz kolesistit (intramural hava): Acil kolesistektomi — mortalite %15-25.",
         references: [
             "Gore RM, Levine MS. Textbook of Gastrointestinal Radiology. 4th ed. Elsevier; 2015.",
-            "Defined Defined",
+            "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Right Upper Quadrant Pain. American College of Radiology; 2018.",
             "Radiopaedia.org - Acute cholecystitis"
         ]
