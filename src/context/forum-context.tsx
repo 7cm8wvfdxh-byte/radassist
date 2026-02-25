@@ -295,16 +295,26 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
 
     const deletePost = async (postId: string): Promise<{ success: boolean; error?: string }> => {
         try {
-            // Delete comments first (FK constraint)
-            await supabase.from('comments').delete().eq('post_id', postId);
-            // Delete likes
-            await supabase.from('post_likes').delete().eq('post_id', postId);
-            // Delete post
+            // Delete comments first (FK constraint) - ignore errors if table doesn't exist or no rows
+            const { error: commentsErr } = await supabase.from('comments').delete().eq('post_id', postId);
+            if (commentsErr) console.warn('Comments delete (non-blocking):', commentsErr.message);
+
+            // Delete likes - ignore errors if table doesn't exist or no rows
+            const { error: likesErr } = await supabase.from('post_likes').delete().eq('post_id', postId);
+            if (likesErr) console.warn('Likes delete (non-blocking):', likesErr.message);
+
+            // Delete the post itself
             const { error: deleteError } = await supabase.from('posts').delete().eq('id', postId);
-            if (deleteError) return { success: false, error: "Gönderi silinemedi." };
+            if (deleteError) {
+                console.error('Post delete error:', deleteError);
+                return { success: false, error: "Gönderi silinemedi: " + deleteError.message };
+            }
+
+            // Update local state immediately
             setPosts(prev => prev.filter(p => p.id !== postId));
             return { success: true };
-        } catch {
+        } catch (err) {
+            console.error('deletePost unexpected error:', err);
             return { success: false, error: "Beklenmeyen bir hata oluştu." };
         }
     };
@@ -312,9 +322,13 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
     const deleteComment = async (commentId: string): Promise<{ success: boolean; error?: string }> => {
         try {
             const { error: deleteError } = await supabase.from('comments').delete().eq('id', commentId);
-            if (deleteError) return { success: false, error: "Yorum silinemedi." };
+            if (deleteError) {
+                console.error('Comment delete error:', deleteError);
+                return { success: false, error: "Yorum silinemedi: " + deleteError.message };
+            }
             return { success: true };
-        } catch {
+        } catch (err) {
+            console.error('deleteComment unexpected error:', err);
             return { success: false, error: "Beklenmeyen bir hata oluştu." };
         }
     };
