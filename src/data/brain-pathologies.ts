@@ -27,6 +27,7 @@ export const brainPathologies: Pathology[] = [
             }
         },
         "mechanism": "Sitotoksik ödem (hücre şişmesi) nedeniyle su moleküllerinin hareketi kısıtlanır (DWI Parlak). Kan-beyin bariyeri yıkılınca vazojenik ödem ve kontrastlanma başlar.",
+        "mechanismEn": "Water molecule movement is restricted due to cytotoxic edema (cell swelling) (DWI Bright). Vasogenic edema and enhancement begin when the blood-brain barrier breaks down.",
         "keyPoints": [
             "DWI, erken tanı ve iskemi ayırımı için altın standarttır.",
             "BT, beyin kanamasını (hemorajiyi) dışlamak için ilk tercihtir.",
@@ -57,9 +58,13 @@ export const brainPathologies: Pathology[] = [
             "Time is brain: Thrombolysis window <4.5 hours, Thrombectomy <24 hours (in selected cases)."
         ],
         "etiology": "Kardiyoembolik (%30): AF, Endokardit. Büyük damar ateroskleroz (%25). Küçük damar hastalığı (laküner, %25). Kriptojenik (%20). CADASIL, Vaskülit (Nadir).",
+        "etiologyEn": "Cardioembolic (30%): AF, Endocarditis. Large vessel atherosclerosis (25%). Small vessel disease (lacunar, 25%). Cryptogenic (20%). CADASIL, Vasculitis (Rare).",
         "differentialDiagnosis": ["Beyin Tümörü (Subakut başlangıç, kitle etkisi, kontrast tutulumu)", "MS Plakı (Genç hasta, ovoid periventriküler lezyonlar)", "Beyin Apsesi (DWI pozitif ama klinik farklı: ateş)", "Hemiplejik Migren (Geri dönüşümlü, MR geçici bulgu)"],
+        "differentialDiagnosisEn": ["Brain Tumor (Subacute onset, mass effect, contrast enhancement)", "MS Plaque (Young patient, ovoid periventricular lesions)", "Brain Abscess (DWI positive but different clinical presentation: fever)", "Hemiplegic Migraine (Reversible, transient MRI finding)"],
         "goldStandard": "MRI DWI/ADC: Akut infarkt (DWI parlak/ADC karanlık). BT: İlk değerlendirme (kanama ekle). BT anjiyografi: Büyük damar oklüzyonu (LVO) tespiti.",
+        "goldStandardEn": "MRI DWI/ADC: Acute infarct (DWI bright/ADC dark). CT: Initial evaluation (exclude hemorrhage). CT angiography: Large vessel occlusion (LVO) detection.",
         "clinicalPearl": "DWI parlak + ADC karanlık = Akut iskemi (İlk dakikalardan itibaren pozitif). BT ilk 6 saatte normal olabilir, DWI asla.",
+        "clinicalPearlEn": "DWI bright + ADC dark = Acute ischemia (Positive from the first minutes). CT can be normal in the first 6 hours, DWI never.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Powers WJ et al. Guidelines for the Early Management of Patients With Acute Ischemic Stroke. Stroke. 2019;50:e344-e418.",
@@ -92,6 +97,7 @@ export const brainPathologies: Pathology[] = [
             }
         },
         "mechanism": "Hızlı, infiltratif tümör büyümesi ve santral nekroz. 'Palizadik nekroz' çevresindeki canlı tümör hücreleri yoğun kontrast tutar (Ring Enhancement).",
+        "mechanismEn": "Rapid, infiltrative tumor growth and central necrosis. Viable tumor cells surrounding 'palisading necrosis' show intense contrast uptake (Ring Enhancement).",
         "keyPoints": [
             "Erişkinlerde en sık görülen primer malign beyin tümörüdür.",
             "Orta hattı geçme eğilimindedir (Kelebek / Butterfly glioma).",
@@ -119,9 +125,13 @@ export const brainPathologies: Pathology[] = [
             "Molecular definition according to WHO 2021 is IDH-wildtype."
         ],
         "etiology": "Sporadik (%90+), Radyasyon maruziyeti, NF1/NF2 (Pediatrik GBM). WHO 2021: IDH-wildtype, TERT promoter mutasyonu, EGFR amplifikasyonu.",
+        "etiologyEn": "Sporadic (90%+), Radiation exposure, NF1/NF2 (Pediatric GBM). WHO 2021: IDH-wildtype, TERT promoter mutation, EGFR amplification.",
         "differentialDiagnosis": ["Beyin Metastazı (Multipl, gri-beyaz madde bileşkesi, bilinen primer)", "Primer CNS Lenfoma (Santral derin yerleşim, üniform kontrastlanma)", "Anaplastik Astrositom (IDH mutant, daha az nekroz)", "Beyin Apses (DWI merkezi kısıtlanma, ateş)"],
+        "differentialDiagnosisEn": ["Brain Metastasis (Multiple, gray-white matter junction, known primary)", "Primary CNS Lymphoma (Central deep location, uniform enhancement)", "Anaplastic Astrocytoma (IDH mutant, less necrosis)", "Brain Abscess (DWI central restriction, fever)"],
         "goldStandard": "MRI T1+C + FLAIR + DWI + Perfüzyon + Spektroskopi. Stereotaktik biyopsi: Moleküler tanı için.",
+        "goldStandardEn": "MRI T1+C + FLAIR + DWI + Perfusion + Spectroscopy. Stereotactic biopsy: For molecular diagnosis.",
         "clinicalPearl": "Rim (çevresel) kontrastlanma + Merkezi nekroz + FLAIR ödem + Kelebek patern (korpus kallozum invazyonu) = GBM klasik triadı.",
+        "clinicalPearlEn": "Rim (peripheral) enhancement + Central necrosis + FLAIR edema + Butterfly pattern (corpus callosum invasion) = Classic GBM triad.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Louis DN et al. The 2021 WHO Classification of Tumors of the Central Nervous System. Neuro Oncol. 2021;23(8):1231-1251.",
@@ -152,6 +162,7 @@ export const brainPathologies: Pathology[] = [
             }
         },
         "mechanism": "Ekstra-aksiyal, meninkslerden köken alan yavaş büyüyen tümör. 'Dural kuyruk' reaktif vaskülarizasyon veya tümör infiltrasyonu nedeniyle oluşur.",
+        "mechanismEn": "Extra-axial, slow-growing tumor originating from the meninges. 'Dural tail' occurs due to reactive vascularization or tumor infiltration.",
         "keyPoints": [
             "En sık görülen ekstra-aksiyal tümördür.",
             "Kadınlarda daha sıktır.",
@@ -178,9 +189,13 @@ export const brainPathologies: Pathology[] = [
             "'Dural tail' and 'CSF cleft' are classic signs."
         ],
         "etiology": "Araknoid hücre kökenli. Radyasyon (iyonizan), NF2 mutasyonu (bilateral = NF2). Kadınlarda 2:1. Progesteron reseptörü pozitifliği büyümeyi etkiler.",
+        "etiologyEn": "Arachnoid cell origin. Radiation (ionizing), NF2 mutation (bilateral = NF2). Female:Male ratio 2:1. Progesterone receptor positivity affects growth.",
         "differentialDiagnosis": ["Dural Metastaz (İrregüler sınır, agresif yıkım, bilinen primer)", "Schwannom (Sinir kökenli, foramen genişlemesi, dumbbell)", "Hemanjiyoperisitom (Seri yenidenme, kemik yıkım)", "Lenfoma (Dural plak, uniform kontrast, BOS tutulumu)"],
+        "differentialDiagnosisEn": ["Dural Metastasis (Irregular border, aggressive destruction, known primary)", "Schwannoma (Nerve origin, foraminal widening, dumbbell shape)", "Hemangiopericytoma (Recurrence tendency, bone destruction)", "Lymphoma (Dural plaque, uniform enhancement, CSF involvement)"],
         "goldStandard": "MRI T1+C: Homojen yoğun kontrastlanma + Dural tail. BT: Hiperostoz veya kemik yıkım değerlendirmesi.",
+        "goldStandardEn": "MRI T1+C: Homogeneous intense enhancement + Dural tail. CT: Evaluation of hyperostosis or bone destruction.",
         "clinicalPearl": "Dural tail + BOS yarığı (CSF cleft) + Homojen kontrastlanma + Ekstra-aksiyel = Menenjiyom. Kadın + Konveksite yerleşimi en sık.",
+        "clinicalPearlEn": "Dural tail + CSF cleft + Homogeneous enhancement + Extra-axial = Meningioma. Female + Convexity location is most common.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Intracranial Neoplasms. American College of Radiology; 2020.",
@@ -221,6 +236,7 @@ export const brainPathologies: Pathology[] = [
             }
         },
         "mechanism": "Otoimmün T-hücre aracılı miyelin kılıf hasarı. Kan-beyin bariyeri (BBB) bozulduğunda akut plaklarda kontrastlanma görülür.",
+        "mechanismEn": "Autoimmune T-cell mediated myelin sheath damage. Enhancement is seen in acute plaques when the blood-brain barrier (BBB) is disrupted.",
         "keyPoints": [
             "Zamanda (DIT) ve Mekanda (DIS) yayılım.",
             "Tanı için McDonald Kriterleri kullanılır.",
@@ -485,6 +501,7 @@ export const brainPathologies: Pathology[] = [
         "category": "Neoplastik",
         "categoryEn": "Neoplastic",
         "mechanism": "Adenohipofiz hücrelerinden monoklonal proliferasyon. Makroadenomlar sellar genişlemeye ve optik kiazma basısına neden olur. Dinamik MRI'da normal gland önce kontrast tutar; mikroadenom relatif hipointens (daha az kontrastlanan) olarak kalır.",
+        "mechanismEn": "Monoclonal proliferation from anterior pituitary cells. Macroadenomas cause sellar enlargement and optic chiasm compression. On dynamic MRI, normal gland enhances first; microadenoma remains relatively hypointense (less enhancing).",
         "findings": {
             "ct": {
                 "non_contrast": "Sellar genişleme, klinoidlerde erozyon (Makroadenom).",
@@ -531,6 +548,7 @@ export const brainPathologies: Pathology[] = [
         "category": "Neoplastik",
         "categoryEn": "Neoplastic",
         "mechanism": "Hematojen yayılım ile gri-beyaz cevher bileşkesine yerleşim (kan akımının yavaşladığı ve emboli tuzağına düştüğü alan). Primer tümörden kaynaklanan tümör hücreleri lokal invazyon ve vazojenik ödeme yol açar.",
+        "mechanismEn": "Hematogenous spread to the gray-white matter junction (area where blood flow slows and emboli become trapped). Tumor cells from the primary tumor cause local invasion and vasogenic edema.",
         "gallery": [
             { "url": "/images/mri_mets.png", "caption": "T1+C (Çoklu Halka)", "modality": "MRI" }
         ],
@@ -1249,6 +1267,7 @@ export const brainPathologies: Pathology[] = [
             }
         },
         "mechanism": "Akut hipertansiyon -> Serebral otoregülasyon kaybı -> Endotel hasarı -> Vazojenik ödem.",
+        "mechanismEn": "Acute hypertension -> Loss of cerebral autoregulation -> Endothelial damage -> Vasogenic edema.",
         "keyPoints": [
             "Klinik: Baş ağrısı, nöbet, görme bozukluğu, mental durum değişikliği.",
             "Etyoloji: Hipertansiyon, Eklampsi, İmmünsupresif ilaçlar (Siklosporin).",
@@ -1332,15 +1351,25 @@ export const brainPathologies: Pathology[] = [
             "Calcification + cortical location = Consider oligodendroglioma."
         ],
         "etiology": "IDH1/2 mutasyonu + 1p/19q ko-delesyonu. Oligodendroglial prekürsör hücrelerinden köken alır.",
+        "etiologyEn": "IDH1/2 mutation + 1p/19q co-deletion. Originates from oligodendroglial precursor cells.",
         "mechanism": "IDH mutant oligodendroglial hücreler → yavaş proliferasyon → kortikal infiltrasyon → kalsifikasyon birikimi. Anaplastik transformasyon zamanla gelişebilir.",
+        "mechanismEn": "IDH mutant oligodendroglial cells → slow proliferation → cortical infiltration → calcification accumulation. Anaplastic transformation may develop over time.",
         "differentialDiagnosis": [
             "Düşük gradeli astrositom (kalsifikasyon daha nadir)",
             "Gangliogliom (kortikal, kistik komponent)",
             "DNET (kortikal, genç hasta, 'bubbly' görünüm)",
             "Metastaz (peritümöral ödem daha belirgin)"
         ],
+        "differentialDiagnosisEn": [
+            "Low-grade astrocytoma (calcification rarer)",
+            "Ganglioglioma (cortical, cystic component)",
+            "DNET (cortical, young patient, 'bubbly' appearance)",
+            "Metastasis (peritumoral edema more prominent)"
+        ],
         "goldStandard": "MRI + Histopatoloji: 1p/19q ko-delesyonu ve IDH mutasyon analizi (WHO 2021 sınıflaması).",
+        "goldStandardEn": "MRI + Histopathology: 1p/19q co-deletion and IDH mutation analysis (WHO 2021 classification).",
         "clinicalPearl": "Kortikal kitlede kaba kalsifikasyon = Oligodendrogliom düşün (tanıda %90 doğruluk). Kemoterapiye (PCV) en iyi yanıt veren beyin tümörü.",
+        "clinicalPearlEn": "Coarse calcification in a cortical mass = Consider oligodendroglioma (90% diagnostic accuracy). Brain tumor with best response to chemotherapy (PCV).",
         "references": [
             "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
             "WHO Classification of Tumours of the Central Nervous System. 5th ed. 2021.",
@@ -1390,15 +1419,25 @@ export const brainPathologies: Pathology[] = [
             "Polycythemia may accompany (erythropoietin production)."
         ],
         "etiology": "Sporadik veya VHL sendromu (VHL gen mutasyonu, 3p25-26). Mezenşimal kökenli vasküler tümör.",
+        "etiologyEn": "Sporadic or VHL syndrome (VHL gene mutation, 3p25-26). Mesenchymal origin vascular tumor.",
         "mechanism": "VHL gen kaybı → HIF yolağı aktivasyonu → VEGF artışı → hipervasküler tümör gelişimi. Kist, tümöral sıvı sızıntısından oluşur.",
+        "mechanismEn": "VHL gene loss → HIF pathway activation → VEGF increase → hypervascular tumor development. Cyst forms from tumoral fluid leakage.",
         "differentialDiagnosis": [
             "Pilositik astrositom (çocuklarda, benzer kist + nodül)",
             "Metastaz (multipl, peritümöral ödem)",
             "Ependimom (4. ventrikülden kaynak, kalsifikasyon)",
             "Medulloblastom (çocuk, solid, vermis yerleşimli)"
         ],
+        "differentialDiagnosisEn": [
+            "Pilocytic astrocytoma (children, similar cyst + nodule)",
+            "Metastasis (multiple, peritumoral edema)",
+            "Ependymoma (originating from 4th ventricle, calcification)",
+            "Medulloblastoma (children, solid, vermis location)"
+        ],
         "goldStandard": "MRI (kist + yoğun kontrastlanan mural nodül). VHL şüphesinde genetik test ve multisistem tarama (retina, böbrek, pankreas).",
+        "goldStandardEn": "MRI (cyst + intensely enhancing mural nodule). Genetic testing and multisystem screening (retina, kidney, pancreas) if VHL is suspected.",
         "clinicalPearl": "Posterior fossa kist + yoğun kontrastlanan mural nodül + flow void = Hemanjioblastom. Multipl ise VHL düşün ve tüm vücut taraması yap.",
+        "clinicalPearlEn": "Posterior fossa cyst + intensely enhancing mural nodule + flow void = Hemangioblastoma. If multiple, consider VHL and perform whole-body screening.",
         "references": [
             "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
             "WHO Classification of CNS Tumours. 5th ed. 2021.",
@@ -1448,15 +1487,25 @@ export const brainPathologies: Pathology[] = [
             "Contains keratin and cholesterol crystals ('mother of pearl' appearance)."
         ],
         "etiology": "Konjenital ektopik epidermal inklüzyon. Nöral tüp kapanması sırasında ektoderm artıkları intrakraniyel yerleşim gösterir.",
+        "etiologyEn": "Congenital ectopic epidermal inclusion. Ectodermal remnants become intracranially located during neural tube closure.",
         "mechanism": "Ektodermik epitelyal hücreler → keratin ve kolesterol birikimi → yavaş büyüyen kistik lezyon. Sisternlere insinüe olarak yayılır.",
+        "mechanismEn": "Ectodermal epithelial cells → keratin and cholesterol accumulation → slow-growing cystic lesion. Spreads by insinuating into cisterns.",
         "differentialDiagnosis": [
             "Araknoid kist (DWI kısıtlanması YOK, FLAIR suprese)",
             "Dermoid kist (yağ içerir, T1 hiperintens)",
             "Nöroenterik kist (prepontin, T1 hiperintens olabilir)",
             "Kistik schwannom (kontrastlanma mevcut)"
         ],
+        "differentialDiagnosisEn": [
+            "Arachnoid cyst (NO DWI restriction, FLAIR suppressed)",
+            "Dermoid cyst (contains fat, T1 hyperintense)",
+            "Neuroenteric cyst (prepontine, may be T1 hyperintense)",
+            "Cystic schwannoma (enhancement present)"
+        ],
         "goldStandard": "MRI: DWI kısıtlanması + FLAIR'de suprese olmama + kontrastlanmayan kistik lezyon üçlüsü.",
+        "goldStandardEn": "MRI: DWI restriction + non-suppression on FLAIR + non-enhancing cystic lesion triad.",
         "clinicalPearl": "Serebelopontin açıda BOS benzeri kitle: DWI parlaksa epidermoid, DWI karanlıksa araknoid kist. Bu basit kural tanıyı büyük ölçüde daraltır.",
+        "clinicalPearlEn": "CSF-like mass in the cerebellopontine angle: If DWI bright = epidermoid, if DWI dark = arachnoid cyst. This simple rule largely narrows the diagnosis.",
         "references": [
             "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Epidermoid cyst (intracranial)",
@@ -1506,15 +1555,25 @@ export const brainPathologies: Pathology[] = [
             "Surveillance for small asymptomatic cysts, surgery for symptomatic/large ones."
         ],
         "etiology": "Konjenital endodermal kökenli. Embriyolojik nöroepitelyal artık.",
+        "etiologyEn": "Congenital endodermal origin. Embryological neuroepithelial remnant.",
         "mechanism": "Endodermal artık → 3. ventrikül tavanında kistik lezyon → mukoid/proteinöz materyal birikimi → foramen Monro obstrüksiyonu → bilateral lateral ventrikül dilatasyonu.",
+        "mechanismEn": "Endodermal remnant → cystic lesion in the roof of the 3rd ventricle → mucoid/proteinaceous material accumulation → foramen of Monro obstruction → bilateral lateral ventricle dilation.",
         "differentialDiagnosis": [
             "Subependimal dev hücreli astrositom (tüberoz skleroz, kontrastlanır)",
             "Santral nörositom (lateral ventrikül, kontrastlanır)",
             "Koroid pleksus papillomu (ventrikül içi, kontrastlanır)",
             "Kraniyofarenjiom (supraseller, kalsifikasyon)"
         ],
+        "differentialDiagnosisEn": [
+            "Subependymal giant cell astrocytoma (tuberous sclerosis, enhances)",
+            "Central neurocytoma (lateral ventricle, enhances)",
+            "Choroid plexus papilloma (intraventricular, enhances)",
+            "Craniopharyngioma (suprasellar, calcification)"
+        ],
         "goldStandard": "BT (hiperdens 3. ventrikül lezyonu) + MRI (T1 hiperintens, foramen Monro düzeyi).",
+        "goldStandardEn": "CT (hyperdense 3rd ventricle lesion) + MRI (T1 hyperintense, foramen of Monro level).",
         "clinicalPearl": "3. ventrikülde yuvarlak, BT'de hiperdens lezyon = Kolloid kist. Ani baş ağrısı ile başvuran hastada akut hidrosefali nedeni olabilir - acil şant gerekebilir.",
+        "clinicalPearlEn": "Round, hyperdense lesion on CT in the 3rd ventricle = Colloid cyst. May cause acute hydrocephalus in a patient presenting with sudden headache - emergency shunt may be required.",
         "references": [
             "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Colloid cyst",
@@ -1564,15 +1623,25 @@ export const brainPathologies: Pathology[] = [
             "Unexplained multiple infarcts in young patient = Investigate vasculitis."
         ],
         "etiology": "Primer SSS vasküliti (idiyopatik) veya sekonder (SLE, PAN, granülomatöz polianjiit, Behçet, enfeksiyon ilişkili).",
+        "etiologyEn": "Primary CNS vasculitis (idiopathic) or secondary (SLE, PAN, granulomatosis with polyangiitis, Behcet, infection-related).",
         "mechanism": "İmmün aracılı damar duvarı inflamasyonu → intimal proliferasyon + lümen daralması → iskemi/infarkt. Büyük ve orta boy damarlar tutulabilir.",
+        "mechanismEn": "Immune-mediated vessel wall inflammation → intimal proliferation + luminal narrowing → ischemia/infarct. Large and medium-sized vessels may be involved.",
         "differentialDiagnosis": [
             "Multipl skleroz (periventriküler, Dawson fingers)",
             "Aterosklerotik hastalık (yaşlı, risk faktörleri)",
             "Kardiyoembolik infarkt (aynı vasküler territory)",
             "CADASIL (temporal pol ve dış kapsül tutulumu)"
         ],
+        "differentialDiagnosisEn": [
+            "Multiple sclerosis (periventricular, Dawson fingers)",
+            "Atherosclerotic disease (elderly, risk factors)",
+            "Cardioembolic infarct (same vascular territory)",
+            "CADASIL (temporal pole and external capsule involvement)"
+        ],
         "goldStandard": "MRI + Vessel Wall Imaging + DSA (konvansiyonel anjiyografi). Kesin tanı: Beyin/meningeal biyopsi.",
+        "goldStandardEn": "MRI + Vessel Wall Imaging + DSA (conventional angiography). Definitive diagnosis: Brain/meningeal biopsy.",
         "clinicalPearl": "Genç hasta + multipl vasküler territoryde infarkt + ESR/CRP yüksekliği = Vaskülit. Vessel wall MRI aterosklerozdan ayırmada çok değerli.",
+        "clinicalPearlEn": "Young patient + infarcts in multiple vascular territories + elevated ESR/CRP = Vasculitis. Vessel wall MRI is very valuable in differentiating from atherosclerosis.",
         "references": [
             "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
             "Hajj-Ali RA, et al. Lancet Neurol. 2011;10(6):561-572.",
@@ -1622,15 +1691,25 @@ export const brainPathologies: Pathology[] = [
             "Treatment: Emergent IV thiamine - delay leads to permanent Korsakoff syndrome."
         ],
         "etiology": "Tiamin (B1 vitamini) eksikliği. En sık kronik alkolizm. Diğer: Hiperemezis gravidarum, malabsorbsiyon, uzun süreli TPN, bariatrik cerrahi sonrası.",
+        "etiologyEn": "Thiamine (vitamin B1) deficiency. Most commonly chronic alcoholism. Others: Hyperemesis gravidarum, malabsorption, prolonged TPN, post-bariatric surgery.",
         "mechanism": "Tiamin eksikliği → oksidatif metabolizma bozukluğu → seçici nöronal hasar (enerji metabolizmasına bağımlı bölgelerde: talamus, mamiller cisimler, periventriküler).",
+        "mechanismEn": "Thiamine deficiency → oxidative metabolism impairment → selective neuronal damage (in regions dependent on energy metabolism: thalami, mammillary bodies, periventricular areas).",
         "differentialDiagnosis": [
             "Derin serebral ven trombozu (bilateral talamik lezyon)",
             "Top of basilar sendromu (bilateral talamus + mezensefalon infarktı)",
             "Creutzfeldt-Jakob hastalığı (kortikal + bazal ganglia DWI kısıtlanması)",
             "Osmotik demyelinizasyon (santral pontin myelinoliz)"
         ],
+        "differentialDiagnosisEn": [
+            "Deep cerebral vein thrombosis (bilateral thalamic lesion)",
+            "Top of basilar syndrome (bilateral thalamus + mesencephalon infarct)",
+            "Creutzfeldt-Jakob disease (cortical + basal ganglia DWI restriction)",
+            "Osmotic demyelination (central pontine myelinolysis)"
+        ],
         "goldStandard": "MRI FLAIR/T2: Simetrik mediyal talamus + periakvaduktal + mamiller cisim hiperintensitesi. Klinik: Tiamin düzeyi (düşük).",
+        "goldStandardEn": "MRI FLAIR/T2: Symmetric medial thalami + periaqueductal + mammillary body hyperintensity. Clinical: Thiamine level (low).",
         "clinicalPearl": "Alkolik hastada konfüzyon + simetrik talamus T2 hiperintensitesi = Wernicke. Glukoz vermeden ÖNCE tiamin ver - aksi takdirde tabloyu ağırlaştırırsın.",
+        "clinicalPearlEn": "Confusion in alcoholic patient + symmetric thalamus T2 hyperintensity = Wernicke. Give thiamine BEFORE glucose - otherwise the condition worsens.",
         "references": [
             "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
             "Zuccoli G, et al. AJNR Am J Neuroradiol. 2009;30(1):171-176.",
@@ -1680,15 +1759,25 @@ export const brainPathologies: Pathology[] = [
             "Much more common in East Asian populations (Japan, Korea)."
         ],
         "etiology": "İdiyopatik (Moyamoya hastalığı) veya sekonder (Moyamoya sendromu: Nörofibromatozis tip 1, orak hücreli anemi, Down sendromu, radyasyon sonrası).",
+        "etiologyEn": "Idiopathic (Moyamoya disease) or secondary (Moyamoya syndrome: Neurofibromatosis type 1, sickle cell anemia, Down syndrome, post-radiation).",
         "mechanism": "Progresif intimal fibröz kalınlaşma → ICA terminal segment ve proksimal Willis poligonu dallarında stenoz/oklüzyon → kompansatuvar bazal perforatör ve leptomeningeal kollateral gelişimi.",
+        "mechanismEn": "Progressive intimal fibrous thickening → stenosis/occlusion in ICA terminal segment and proximal Circle of Willis branches → compensatory basal perforator and leptomeningeal collateral development.",
         "differentialDiagnosis": [
             "Aterosklerotik intrakraniyel stenoz (yaşlı, asimetrik)",
             "Vaskülit (inflamatuvar belirteçler yüksek)",
             "Fibromusküler displazi (genç kadın, renal arter tutulumu)",
             "İntrakraniyel ateroskleroz (fokal, unilateral olabilir)"
         ],
+        "differentialDiagnosisEn": [
+            "Atherosclerotic intracranial stenosis (elderly, asymmetric)",
+            "Vasculitis (elevated inflammatory markers)",
+            "Fibromuscular dysplasia (young female, renal artery involvement)",
+            "Intracranial atherosclerosis (focal, may be unilateral)"
+        ],
         "goldStandard": "DSA (konvansiyonel anjiyografi): Bilateral ICA terminal oklüzyon + bazal moyamoya damarları. MRA/CTA tarama için kullanılır.",
+        "goldStandardEn": "DSA (conventional angiography): Bilateral ICA terminal occlusion + basal moyamoya vessels. MRA/CTA used for screening.",
         "clinicalPearl": "Genç hastada tekrarlayan TIA/infarkt + bilateral ICA stenoz + bazal ganglia flow voidler = Moyamoya. Hiperventilasyon semptomları provoke eder (PaCO2 düşüşü → vazokonstrüksiyon).",
+        "clinicalPearlEn": "Recurrent TIA/infarcts in young patient + bilateral ICA stenosis + basal ganglia flow voids = Moyamoya. Hyperventilation provokes symptoms (PaCO2 decrease → vasoconstriction).",
         "references": [
             "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
             "Scott RM, Smith ER. N Engl J Med. 2009;360(12):1226-1237.",
@@ -1738,15 +1827,25 @@ export const brainPathologies: Pathology[] = [
             "Intense enhancement + intraventricular lobulated mass + hydrocephalus = Think CPP."
         ],
         "etiology": "Koroid pleksus epitelinden kaynaklanan benign (WHO Grade I) tümör. Li-Fraumeni sendromu (TP53 mutasyonu) ile ilişki.",
+        "etiologyEn": "Benign (WHO Grade I) tumor originating from choroid plexus epithelium. Associated with Li-Fraumeni syndrome (TP53 mutation).",
         "mechanism": "Koroid pleksus epiteli → papiller proliferasyon → BOS aşırı üretimi + mekanik obstrüksiyon → hidrosefali.",
+        "mechanismEn": "Choroid plexus epithelium → papillary proliferation → CSF overproduction + mechanical obstruction → hydrocephalus.",
         "differentialDiagnosis": [
             "Ependimom (4. ventrikül tabanından kaynak)",
             "Medulloblastom (solid, vermis, çocuk)",
             "Meningiom (erişkin, trigon bölgesi)",
             "Metastaz (koroid pleksusa metastaz, erişkin)"
         ],
+        "differentialDiagnosisEn": [
+            "Ependymoma (originating from 4th ventricle floor)",
+            "Medulloblastoma (solid, vermis, child)",
+            "Meningioma (adult, trigone region)",
+            "Metastasis (metastasis to choroid plexus, adult)"
+        ],
         "goldStandard": "MRI: Yoğun kontrastlanan ventrikül içi lobüle kitle. Histopatoloji: Papiller yapılar, fibrövasküler kor.",
+        "goldStandardEn": "MRI: Intensely enhancing intraventricular lobulated mass. Histopathology: Papillary structures, fibrovascular core.",
         "clinicalPearl": "Süt çocuğunda makrosefali + ventrikül içi yoğun kontrastlanan lobüle kitle = Koroid pleksus papillomu. Lateral ventrikülde ise koroid pleksus karsinomunu da dışla.",
+        "clinicalPearlEn": "Macrocephaly in infant + intensely enhancing intraventricular lobulated mass = Choroid plexus papilloma. If in the lateral ventricle, also exclude choroid plexus carcinoma.",
         "references": [
             "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
             "WHO Classification of CNS Tumours. 5th ed. 2021.",
@@ -1796,15 +1895,25 @@ export const brainPathologies: Pathology[] = [
             "Confirmation with JC virus PCR (CSF)."
         ],
         "etiology": "JC virüs (John Cunningham virus) reaktivasyonu. İmmünsupresyon: HIV/AIDS (CD4 <200), natalizumab (MS tedavisi), organ transplantasyonu, hematolojik maligniteler.",
+        "etiologyEn": "JC virus (John Cunningham virus) reactivation. Immunosuppression: HIV/AIDS (CD4 <200), natalizumab (MS treatment), organ transplantation, hematologic malignancies.",
         "mechanism": "JC virüs → oligodendrosit enfeksiyonu → demyelinizasyon → progresif beyaz cevher hasarı. Subkortikal U-fiberler dahil yaygın tutulum.",
+        "mechanismEn": "JC virus → oligodendrocyte infection → demyelination → progressive white matter damage. Widespread involvement including subcortical U-fibers.",
         "differentialDiagnosis": [
             "Multipl skleroz (periventriküler, Dawson fingers, U-fiber korunur)",
             "HIV ensefalopatisi (simetrik, periventriküler, daha diffüz)",
             "Lenfoma (kütle etkisi, kontrastlanma, DWI kısıtlanma)",
             "ADEM (çocuk/genç, monofazik, kontrastlanma olabilir)"
         ],
+        "differentialDiagnosisEn": [
+            "Multiple sclerosis (periventricular, Dawson fingers, U-fibers spared)",
+            "HIV encephalopathy (symmetric, periventricular, more diffuse)",
+            "Lymphoma (mass effect, enhancement, DWI restriction)",
+            "ADEM (child/young, monophasic, enhancement may be present)"
+        ],
         "goldStandard": "MRI (subkortikal U-fiber tutulumu + kontrastlanmama) + BOS JC virüs PCR pozitifliği.",
+        "goldStandardEn": "MRI (subcortical U-fiber involvement + no enhancement) + CSF JC virus PCR positivity.",
         "clinicalPearl": "İmmünsuprese hasta + asimetrik beyaz cevher lezyonu + U-fiber tutulumu + kontrastlanma yok = PML. Natalizumab kullanan MS hastasında yeni lezyon gelişirse PML'yi dışla.",
+        "clinicalPearlEn": "Immunosuppressed patient + asymmetric white matter lesion + U-fiber involvement + no enhancement = PML. If new lesion develops in MS patient on natalizumab, exclude PML.",
         "references": [
             "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
             "Berger JR, et al. N Engl J Med. 2017;376(8):765-773.",
@@ -1854,15 +1963,25 @@ export const brainPathologies: Pathology[] = [
             "Extrapontine myelinolysis: Basal ganglia, thalamus involvement → parkinsonism, dystonia."
         ],
         "etiology": "Hızlı osmolalite değişimi. En sık: Hiponatremi hızlı düzeltilmesi. Risk faktörleri: Kronik alkolizm, malnütrisyon, karaciğer transplantasyonu, yanık.",
+        "etiologyEn": "Rapid osmolality change. Most common: Rapid correction of hyponatremia. Risk factors: Chronic alcoholism, malnutrition, liver transplantation, burns.",
         "mechanism": "Hızlı serum osmolalite artışı → oligodendrosit hasarı (osmotik stres) → miyelinoliz. Pons bu hasara en duyarlı bölge (vasküler anatomisi nedeniyle).",
+        "mechanismEn": "Rapid serum osmolality increase → oligodendrocyte damage (osmotic stress) → myelinolysis. Pons is the most vulnerable region to this damage (due to its vascular anatomy).",
         "differentialDiagnosis": [
             "Pontin infarkt (asimetrik, vasküler territory)",
             "Pontin gliom (çocuk, genişleyen kitle, kontrastlanma)",
             "MS plağı (asimetrik, diğer demyelinizan lezyonlar)",
             "Wernicke ensefalopatisi (periakvaduktal, mamiller cisim)"
         ],
+        "differentialDiagnosisEn": [
+            "Pontine infarct (asymmetric, vascular territory)",
+            "Pontine glioma (child, expanding mass, enhancement)",
+            "MS plaque (asymmetric, other demyelinating lesions)",
+            "Wernicke encephalopathy (periaqueductal, mammillary bodies)"
+        ],
         "goldStandard": "MRI DWI (erken tanı) + T2/FLAIR (trident sign). Klinik: Hiponatremi düzeltme öyküsü + kuadripleji/psödobulber palsi.",
+        "goldStandardEn": "MRI DWI (early diagnosis) + T2/FLAIR (trident sign). Clinical: History of hyponatremia correction + quadriplegia/pseudobulbar palsy.",
         "clinicalPearl": "Hiponatremi düzeltildikten 2-6 gün sonra kuadripleji gelişen hastada: Pons MRI DWI çek. T2 negatif olsa bile DWI pozitif olabilir. Altın kural: Na düzeltme hızı <8-10 mEq/L/gün.",
+        "clinicalPearlEn": "In a patient developing quadriplegia 2-6 days after hyponatremia correction: Order pons MRI DWI. DWI may be positive even if T2 is negative. Golden rule: Na correction rate <8-10 mEq/L/day.",
         "references": [
             "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
             "Martin RJ. J Neurol Neurosurg Psychiatry. 2004;75(Suppl 3):iii22-iii28.",
@@ -1912,15 +2031,25 @@ export const brainPathologies: Pathology[] = [
             "Associated cavernous malformation: Seen together in 20-30%."
         ],
         "etiology": "Gelişimsel venöz varyant. Normal venöz gelişim sırasında oluşan drene edici ven anomalisi.",
+        "etiologyEn": "Developmental venous variant. Draining vein anomaly formed during normal venous development.",
         "mechanism": "Embriyolojik dönemde normal medüller venlerin gerilemesi yerine kalıcı olması → alternatif venöz drenaj yolu oluşumu → 'caput medusae' paterni.",
+        "mechanismEn": "Persistence instead of regression of normal medullary veins during embryological period → formation of alternative venous drainage pathway → 'caput medusae' pattern.",
         "differentialDiagnosis": [
             "Kavernöz malformasyon (T2* 'bloom', kontrastlanma minimal)",
             "AVM (arteriyel besleyiciler, erken venöz drenaj)",
             "Sturge-Weber (leptomeningeal anjiomatozis)",
             "Dural AV fistül (pulsatil tinnitus, erken venöz dolum)"
         ],
+        "differentialDiagnosisEn": [
+            "Cavernous malformation (T2* 'bloom', minimal enhancement)",
+            "AVM (arterial feeders, early venous drainage)",
+            "Sturge-Weber (leptomeningeal angiomatosis)",
+            "Dural AV fistula (pulsatile tinnitus, early venous filling)"
+        ],
         "goldStandard": "MRI kontrastlı: Caput medusae görünümü. Ek tetkik gerektirmez.",
+        "goldStandardEn": "Contrast-enhanced MRI: Caput medusae appearance. No additional workup required.",
         "clinicalPearl": "İnsidental kontrastlı MRI'da 'caput medusae' = DVA. Benign, cerrahi YAPILMAZ (çıkarılırsa venöz infarkt gelişir). Eşlik eden kavernöm varsa onu takip et.",
+        "clinicalPearlEn": "Incidental 'caput medusae' on contrast MRI = DVA. Benign, NO surgery (removal causes venous infarct). If associated cavernoma exists, follow that one.",
         "references": [
             "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
             "Defined AL, et al. AJNR Am J Neuroradiol. 2011;32(9):1568-1574.",
