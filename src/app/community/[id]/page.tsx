@@ -56,7 +56,11 @@ export default function PostDetailPage() {
     const handleDeletePost = async () => {
         if (!confirm(language === 'tr' ? "Bu gönderiyi silmek istediğinizden emin misiniz?" : "Are you sure you want to delete this post?")) return;
         const result = await deletePost(post.id);
-        if (result.success) router.push("/community");
+        if (result.success) {
+            router.push("/community");
+        } else {
+            alert(result.error || (language === 'tr' ? 'Gönderi silinemedi.' : 'Could not delete post.'));
+        }
     };
 
     const handleDeleteComment = async (commentId: string) => {
