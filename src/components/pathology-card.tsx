@@ -10,11 +10,19 @@ import {
     Flame, Target, Award, Stethoscope
 } from 'lucide-react';
 
+export interface MatchContext {
+    fieldName: string;
+    snippet: string;
+    weight: number;
+}
+
 interface PathologyCardProps {
     data: Pathology;
     isFavorite?: boolean;
     onToggleFavorite?: () => void;
     highlightQuery?: string;
+    matchContext?: MatchContext[];
+    matchType?: "exact" | "synonym" | "fuzzy";
 }
 
 type TabType = "summary" | string;
@@ -44,7 +52,33 @@ const HighlightedText = ({ text, query }: { text: string, query?: string }) => {
     );
 };
 
-export function PathologyCard({ data, isFavorite = false, onToggleFavorite, highlightQuery }: PathologyCardProps) {
+// Format field name for display
+function formatFieldLabel(fieldName: string, lang: string): string {
+    const tr: Record<string, string> = {
+        name: "İsim", nameEn: "İsim (EN)", category: "Kategori", categoryEn: "Kategori (EN)",
+        organ: "Organ", clinicalPearl: "Klinik İpucu", goldStandard: "Altın Standart",
+        etiology: "Etiyoloji", mechanism: "Mekanizma",
+    };
+    const en: Record<string, string> = {
+        name: "Name", nameEn: "Name (EN)", category: "Category", categoryEn: "Category (EN)",
+        organ: "Organ", clinicalPearl: "Clinical Pearl", goldStandard: "Gold Standard",
+        etiology: "Etiology", mechanism: "Mechanism",
+    };
+    const labels = lang === "tr" ? tr : en;
+
+    if (labels[fieldName]) return labels[fieldName];
+    if (fieldName.startsWith("keyPoint")) return lang === "tr" ? "Anahtar Nokta" : "Key Point";
+    if (fieldName.startsWith("ddx")) return lang === "tr" ? "Ayırıcı Tanı" : "DDx";
+    if (fieldName.startsWith("ct.")) return `BT: ${fieldName.split(".")[1].replace(/_/g, " ")}`;
+    if (fieldName.startsWith("mri.")) return `MR: ${fieldName.split(".")[1].replace(/_/g, " ")}`;
+    if (fieldName.startsWith("usg.")) return `USG`;
+    if (fieldName.startsWith("xray.")) return `X-Ray`;
+    if (fieldName.startsWith("pet.")) return `PET`;
+    if (fieldName.startsWith("mammography.")) return lang === "tr" ? "Mamografi" : "Mammography";
+    return fieldName;
+}
+
+export function PathologyCard({ data, isFavorite = false, onToggleFavorite, highlightQuery, matchContext, matchType }: PathologyCardProps) {
     const { language, t } = useLanguage();
     const isEn = language === "en";
     const [isFlipped, setIsFlipped] = useState(false);
@@ -155,6 +189,33 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                 {t("detailed_view")}
                             </button>
                         </div>
+
+                        {/* Search Match Context */}
+                        {matchContext && matchContext.length > 0 && highlightQuery && (
+                            <div className="mb-3 p-2.5 rounded-xl bg-indigo-500/5 border border-indigo-500/15 animate-in fade-in duration-300">
+                                <div className="flex items-center gap-1.5 mb-1.5">
+                                    <div className={cn(
+                                        "w-1.5 h-1.5 rounded-full",
+                                        matchType === "exact" ? "bg-green-400" : matchType === "synonym" ? "bg-blue-400" : "bg-amber-400"
+                                    )} />
+                                    <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500">
+                                        {matchType === "exact"
+                                            ? (language === "tr" ? "Tam eşleşme" : "Exact match")
+                                            : matchType === "synonym"
+                                                ? (language === "tr" ? "Eş anlamlı" : "Synonym")
+                                                : (language === "tr" ? "Yakın eşleşme" : "Fuzzy")}
+                                    </span>
+                                </div>
+                                {matchContext.slice(0, 2).map((mc, i) => (
+                                    <div key={i} className="flex items-start gap-1.5 text-[10px] leading-snug">
+                                        <span className="text-indigo-400 font-bold shrink-0 mt-px">{formatFieldLabel(mc.fieldName, language)}:</span>
+                                        <span className="text-slate-400 line-clamp-1">
+                                            <HighlightedText text={mc.snippet.replace(/\.\.\./g, "…").slice(0, 80)} query={highlightQuery} />
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
 
                         {/* Tabs */}
                         <div className="flex flex-wrap gap-2 mb-4 border-b border-white/5 pb-2">

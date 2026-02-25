@@ -167,6 +167,9 @@ const tr: Record<string, string> = {
     "search.navigate": "gezin",
     "search.select": "seç",
     "search.close": "kapat",
+    "search.caseStudy": "Vaka",
+    "search.finding": "Bulgu",
+    "search.announcement": "Duyuru",
 };
 
 // English translations
@@ -323,6 +326,9 @@ const en: Record<string, string> = {
     "search.navigate": "navigate",
     "search.select": "select",
     "search.close": "close",
+    "search.caseStudy": "Case",
+    "search.finding": "Finding",
+    "search.announcement": "Announcement",
 };
 
 const translations: Record<Language, Record<string, string>> = { tr, en };

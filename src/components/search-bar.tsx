@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Search, Clock, X, Sparkles, ChevronRight, Trash2, ArrowUpLeft } from "lucide-react";
+import { Search, Clock, X, Sparkles, ChevronRight, Trash2, ArrowUpLeft, BookOpen, Microscope, Bell } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
     SearchSuggestion,
@@ -9,6 +9,7 @@ import {
     getRecentSearches,
     addRecentSearch,
     clearRecentSearches,
+    ExtraSearchSource,
 } from "@/lib/search-utils";
 import { Pathology } from "@/types";
 import { useLanguage } from "@/context/language-context";
@@ -21,6 +22,7 @@ interface SearchBarProps {
     pathologies?: Pathology[];
     didYouMean?: string[];
     resultCount?: number;
+    extraSources?: ExtraSearchSource;
 }
 
 export function SearchBar({
@@ -31,6 +33,7 @@ export function SearchBar({
     pathologies = [],
     didYouMean = [],
     resultCount,
+    extraSources,
 }: SearchBarProps) {
     const { t } = useLanguage();
     const [isFocused, setIsFocused] = useState(false);
@@ -47,13 +50,13 @@ export function SearchBar({
             if (debounceRef.current) clearTimeout(debounceRef.current);
             debounceRef.current = setTimeout(() => {
                 const recentSearches = getRecentSearches();
-                const newSuggestions = getSearchSuggestions(pathologies, query, recentSearches);
+                const newSuggestions = getSearchSuggestions(pathologies, query, recentSearches, 10, extraSources);
                 setSuggestions(newSuggestions);
                 setSelectedIndex(-1);
                 setShowDropdown(newSuggestions.length > 0);
             }, 150);
         },
-        [pathologies]
+        [pathologies, extraSources]
     );
 
     useEffect(() => {
@@ -262,16 +265,23 @@ export function SearchBar({
                                 {/* Icon */}
                                 <div className={cn(
                                     "flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center",
-                                    suggestion.type === "pathology"
-                                        ? "bg-indigo-500/15 text-indigo-400"
-                                        : suggestion.type === "term"
-                                            ? "bg-cyan-500/15 text-cyan-400"
-                                            : "bg-slate-500/15 text-slate-400"
+                                    suggestion.type === "pathology" ? "bg-indigo-500/15 text-indigo-400"
+                                        : suggestion.type === "case" ? "bg-emerald-500/15 text-emerald-400"
+                                        : suggestion.type === "lexicon" ? "bg-amber-500/15 text-amber-400"
+                                        : suggestion.type === "announcement" ? "bg-rose-500/15 text-rose-400"
+                                        : suggestion.type === "term" ? "bg-cyan-500/15 text-cyan-400"
+                                        : "bg-slate-500/15 text-slate-400"
                                 )}>
                                     {suggestion.type === "recent" ? (
                                         <Clock className="w-3.5 h-3.5" />
                                     ) : suggestion.type === "pathology" ? (
                                         <Sparkles className="w-3.5 h-3.5" />
+                                    ) : suggestion.type === "case" ? (
+                                        <BookOpen className="w-3.5 h-3.5" />
+                                    ) : suggestion.type === "lexicon" ? (
+                                        <Microscope className="w-3.5 h-3.5" />
+                                    ) : suggestion.type === "announcement" ? (
+                                        <Bell className="w-3.5 h-3.5" />
                                     ) : (
                                         <Search className="w-3.5 h-3.5" />
                                     )}
@@ -282,16 +292,24 @@ export function SearchBar({
                                     <div className="text-sm font-medium truncate">
                                         {highlightMatch(suggestion.text, value)}
                                     </div>
-                                    {suggestion.type === "pathology" && (suggestion.category || suggestion.organ) && (
+                                    {(suggestion.category || suggestion.organ) && (
                                         <div className="text-[10px] text-slate-500 truncate mt-0.5">
-                                            {[suggestion.organ, suggestion.category].filter(Boolean).join(" · ")}
+                                            {suggestion.type === "case" ? (
+                                                <span className="text-emerald-500/70">{t("search.caseStudy") || "Vaka"} · {suggestion.category}</span>
+                                            ) : suggestion.type === "lexicon" ? (
+                                                <span className="text-amber-500/70">{t("search.finding") || "Bulgu"} · {suggestion.category}</span>
+                                            ) : suggestion.type === "announcement" ? (
+                                                <span className="text-rose-500/70">{t("search.announcement") || "Duyuru"}</span>
+                                            ) : (
+                                                [suggestion.organ, suggestion.category].filter(Boolean).join(" · ")
+                                            )}
                                         </div>
                                     )}
                                 </div>
 
                                 {/* Type badge */}
                                 <div className="flex-shrink-0">
-                                    {suggestion.type === "pathology" ? (
+                                    {(suggestion.type === "pathology" || suggestion.type === "case") ? (
                                         <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
                                     ) : suggestion.type === "recent" ? (
                                         <ArrowUpLeft className="w-3.5 h-3.5 text-slate-600" />
