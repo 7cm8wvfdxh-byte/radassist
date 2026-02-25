@@ -1,16 +1,43 @@
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/language-context";
-import { Star, ChevronRight, Activity } from "lucide-react";
+import { Star, ChevronRight, Activity, Search } from "lucide-react";
+import type { MatchContext } from "./pathology-card";
 
 interface PathologyListItemProps {
     data: Pathology;
     isFavorite?: boolean;
     onToggleFavorite?: () => void;
     onClick?: () => void;
+    matchContext?: MatchContext[];
+    matchType?: "exact" | "synonym" | "fuzzy";
 }
 
-export function PathologyListItem({ data, isFavorite = false, onToggleFavorite, onClick }: PathologyListItemProps) {
+function formatFieldLabel(fieldName: string, lang: string): string {
+    const tr: Record<string, string> = {
+        name: "İsim", category: "Kategori", organ: "Organ",
+        clinicalPearl: "Klinik İpucu", goldStandard: "Altın Standart",
+        etiology: "Etiyoloji", mechanism: "Mekanizma",
+    };
+    const en: Record<string, string> = {
+        name: "Name", category: "Category", organ: "Organ",
+        clinicalPearl: "Clinical Pearl", goldStandard: "Gold Standard",
+        etiology: "Etiology", mechanism: "Mechanism",
+    };
+    const labels = lang === "tr" ? tr : en;
+    if (labels[fieldName]) return labels[fieldName];
+    if (fieldName.startsWith("keyPoint")) return lang === "tr" ? "Anahtar Nokta" : "Key Point";
+    if (fieldName.startsWith("ddx")) return lang === "tr" ? "Ayırıcı Tanı" : "DDx";
+    if (fieldName.startsWith("ct.")) return `BT`;
+    if (fieldName.startsWith("mri.")) return `MR`;
+    if (fieldName.startsWith("usg.")) return `USG`;
+    if (fieldName.startsWith("xray.")) return `X-Ray`;
+    if (fieldName.startsWith("pet.")) return `PET`;
+    if (fieldName.startsWith("mammography.")) return lang === "tr" ? "Mamografi" : "Mammography";
+    return fieldName;
+}
+
+export function PathologyListItem({ data, isFavorite = false, onToggleFavorite, onClick, matchContext, matchType }: PathologyListItemProps) {
     const { language } = useLanguage();
     const isEn = language === "en";
 
@@ -66,10 +93,33 @@ export function PathologyListItem({ data, isFavorite = false, onToggleFavorite, 
                 </div>
             </div>
 
-            {/* Key Points Preview (Desktop Only) */}
+            {/* Search Match Context or Key Points Preview (Desktop Only) */}
             <div className="hidden md:flex flex-1 items-center gap-2 text-slate-400 text-sm border-l border-slate-800 pl-4 h-full">
-                <Activity className="w-4 h-4 text-slate-600 shrink-0" />
-                <span className="line-clamp-1">{displayKeyPoints[0]}</span>
+                {matchContext && matchContext.length > 0 ? (
+                    <div className="flex items-center gap-2 min-w-0">
+                        <Search className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                        <div className="flex items-center gap-1.5 min-w-0">
+                            <span className={cn(
+                                "px-1.5 py-0.5 rounded text-[9px] font-bold shrink-0",
+                                matchType === "exact"
+                                    ? "bg-green-500/15 text-green-400"
+                                    : matchType === "synonym"
+                                        ? "bg-blue-500/15 text-blue-400"
+                                        : "bg-amber-500/15 text-amber-400"
+                            )}>
+                                {formatFieldLabel(matchContext[0].fieldName, language)}
+                            </span>
+                            <span className="text-xs text-slate-500 line-clamp-1">
+                                {matchContext[0].snippet.replace(/\.\.\./g, "…").slice(0, 60)}
+                            </span>
+                        </div>
+                    </div>
+                ) : (
+                    <>
+                        <Activity className="w-4 h-4 text-slate-600 shrink-0" />
+                        <span className="line-clamp-1">{displayKeyPoints[0]}</span>
+                    </>
+                )}
             </div>
 
             {/* Arrow */}

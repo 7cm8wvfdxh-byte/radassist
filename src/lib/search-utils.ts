@@ -430,16 +430,25 @@ export function performScoredSearch(pathologies: Pathology[], query: string): Se
 // --- Otomatik Tamamlama Önerileri ---
 export interface SearchSuggestion {
     text: string;
-    type: "pathology" | "term" | "recent";
+    type: "pathology" | "term" | "recent" | "case" | "lexicon" | "announcement";
     category?: string;
     organ?: string;
+    url?: string;
+}
+
+// Ek veri kaynakları için arayüzler
+export interface ExtraSearchSource {
+    caseStudies?: { id: string; title: string; finalDiagnosis: string; patientHistory: string; difficulty: string }[];
+    lexiconTerms?: { id: string; label: string; category: string }[];
+    announcements?: { id: string; title: string; type: string; content: string; url?: string }[];
 }
 
 export function getSearchSuggestions(
     pathologies: Pathology[],
     query: string,
     recentSearches: string[] = [],
-    maxResults: number = 8
+    maxResults: number = 10,
+    extraSources?: ExtraSearchSource
 ): SearchSuggestion[] {
     if (!query.trim()) {
         // Query boşsa son aramaları göster
@@ -453,7 +462,7 @@ export function getSearchSuggestions(
     const suggestions: SearchSuggestion[] = [];
     const seen = new Set<string>();
 
-    // 1. Patoloji isimleri
+    // 1. Patoloji isimleri (en yüksek öncelik)
     for (const p of pathologies) {
         const name = p.name.toLowerCase();
         const nameEn = p.nameEn?.toLowerCase() || "";
@@ -468,10 +477,72 @@ export function getSearchSuggestions(
                 });
             }
         }
-        if (suggestions.length >= maxResults) break;
+        if (suggestions.length >= 5) break;
     }
 
-    // 2. Fuzzy patoloji isimleri (eğer az sonuç bulunduysa)
+    // 2. Vaka çalışmaları
+    if (extraSources?.caseStudies) {
+        for (const cs of extraSources.caseStudies) {
+            if (suggestions.length >= maxResults) break;
+            const titleLower = cs.title.toLowerCase();
+            const diagLower = cs.finalDiagnosis.toLowerCase();
+            const histLower = cs.patientHistory.toLowerCase();
+            if (titleLower.includes(lower) || diagLower.includes(lower) || histLower.includes(lower)) {
+                const key = `case-${cs.id}`;
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    suggestions.push({
+                        text: cs.title,
+                        type: "case",
+                        category: cs.difficulty,
+                        url: `/case-studies/${cs.id}`,
+                    });
+                }
+            }
+        }
+    }
+
+    // 3. Leksikon (bulgu terimleri)
+    if (extraSources?.lexiconTerms) {
+        for (const term of extraSources.lexiconTerms) {
+            if (suggestions.length >= maxResults) break;
+            const labelLower = term.label.toLowerCase();
+            if (labelLower.includes(lower)) {
+                const key = `lex-${term.id}`;
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    suggestions.push({
+                        text: term.label,
+                        type: "lexicon",
+                        category: term.category,
+                    });
+                }
+            }
+        }
+    }
+
+    // 4. Duyurular
+    if (extraSources?.announcements) {
+        for (const ann of extraSources.announcements) {
+            if (suggestions.length >= maxResults) break;
+            const titleLower = ann.title.toLowerCase();
+            const contentLower = ann.content.toLowerCase();
+            if (titleLower.includes(lower) || contentLower.includes(lower)) {
+                const key = `ann-${ann.id}`;
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    suggestions.push({
+                        text: ann.title,
+                        type: "announcement",
+                        category: ann.type,
+                        url: ann.url,
+                    });
+                }
+            }
+        }
+    }
+
+    // 5. Fuzzy patoloji isimleri (eğer az sonuç bulunduysa)
     if (suggestions.length < 3 && lower.length >= 3) {
         for (const p of pathologies) {
             if (seen.has(p.name)) continue;
@@ -492,7 +563,7 @@ export function getSearchSuggestions(
         }
     }
 
-    // 3. Sözlük terimleri
+    // 6. Sözlük terimleri (eş anlamlılar sözlüğü)
     const allTerms = [
         ...Object.keys(RADIOLOGY_SYNONYMS),
         ...Object.values(RADIOLOGY_SYNONYMS).flat(),

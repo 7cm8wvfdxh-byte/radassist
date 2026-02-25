@@ -22,6 +22,9 @@ import { mskPathologies } from "@/data/msk-pathologies";
 import { gastroPathologies } from "@/data/gastro-pathologies";
 import { gynecologyPathologies } from "@/data/gynecology-pathologies";
 import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Flame, Bean, Wind, Wrench, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen } from "lucide-react";
+import { caseStudies } from "@/data/case-studies";
+import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from "@/data/lexicon";
+import { announcements } from "@/data/announcements";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils"; // Ensure cn is imported
 import { performScoredSearch, getDidYouMeanSuggestions, addRecentSearch, SearchResult } from "@/lib/search-utils";
@@ -130,6 +133,29 @@ export default function Home() {
     ...gynecologyPathologies.map(p => ({ ...p, organ: p.organ || 'Jinekoloji' }))
   ], []);
 
+  // Extra search sources (case studies, lexicon, announcements)
+  const extraSearchSources = useMemo(() => ({
+    caseStudies: caseStudies.map(cs => ({
+      id: cs.id,
+      title: cs.title,
+      finalDiagnosis: cs.finalDiagnosis,
+      patientHistory: cs.patientHistory,
+      difficulty: cs.difficulty,
+    })),
+    lexiconTerms: [...USG_FINDINGS, ...CT_FINDINGS, ...MRI_FINDINGS].map(f => ({
+      id: f.id,
+      label: f.label,
+      category: f.category,
+    })),
+    announcements: announcements.map(a => ({
+      id: a.id,
+      title: a.title,
+      type: a.type,
+      content: a.content,
+      url: a.url,
+    })),
+  }), []);
+
   const { filteredPathologies, searchResults, didYouMeanSuggestions } = useMemo(() => {
     let pool: Pathology[] = [];
 
@@ -196,6 +222,15 @@ export default function Home() {
       didYouMeanSuggestions: [] as string[],
     };
   }, [searchQuery, favorites, showFavoritesOnly, activeModule, searchGlobal, allPathologies]);
+
+  // Build lookup map from pathology ID → search result for context display
+  const searchResultMap = useMemo(() => {
+    const map = new Map<string, SearchResult>();
+    for (const sr of searchResults) {
+      map.set(sr.pathology.id, sr);
+    }
+    return map;
+  }, [searchResults]);
 
   // Son aramayı kaydet (debounced)
   useEffect(() => {
@@ -494,6 +529,7 @@ export default function Home() {
                   pathologies={searchGlobal ? allPathologies : filteredPathologies}
                   didYouMean={didYouMeanSuggestions}
                   resultCount={searchQuery.trim() ? filteredPathologies.length : undefined}
+                  extraSources={extraSearchSources}
                 />
 
                 {/* Global Search Toggle */}
@@ -762,28 +798,38 @@ export default function Home() {
               </div>
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
-              {filteredPathologies.map((pathology) => (
-                <PathologyCard
-                  key={pathology.id}
-                  data={pathology}
-                  isFavorite={favorites.includes(pathology.id)}
-                  onToggleFavorite={() => toggleFavorite(pathology.id)}
-                  highlightQuery={searchQuery} // Pass highlight query
-                />
-              ))}
+              {filteredPathologies.map((pathology) => {
+                const sr = searchResultMap.get(pathology.id);
+                return (
+                  <PathologyCard
+                    key={pathology.id}
+                    data={pathology}
+                    isFavorite={favorites.includes(pathology.id)}
+                    onToggleFavorite={() => toggleFavorite(pathology.id)}
+                    highlightQuery={searchQuery}
+                    matchContext={sr?.matchedFields}
+                    matchType={sr?.matchType}
+                  />
+                );
+              })}
             </div>
             </div>
           ) : (
             <div className="max-w-4xl mx-auto flex flex-col gap-2 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
-              {filteredPathologies.map((pathology) => (
-                <PathologyListItem
-                  key={pathology.id}
-                  data={pathology}
-                  isFavorite={favorites.includes(pathology.id)}
-                  onToggleFavorite={() => toggleFavorite(pathology.id)}
-                  onClick={() => setSelectedPathology(pathology)}
-                />
-              ))}
+              {filteredPathologies.map((pathology) => {
+                const sr = searchResultMap.get(pathology.id);
+                return (
+                  <PathologyListItem
+                    key={pathology.id}
+                    data={pathology}
+                    isFavorite={favorites.includes(pathology.id)}
+                    onToggleFavorite={() => toggleFavorite(pathology.id)}
+                    onClick={() => setSelectedPathology(pathology)}
+                    matchContext={sr?.matchedFields}
+                    matchType={sr?.matchType}
+                  />
+                );
+              })}
             </div>
           )
         )}
@@ -809,7 +855,9 @@ export default function Home() {
               data={selectedPathology}
               isFavorite={favorites.includes(selectedPathology.id)}
               onToggleFavorite={() => toggleFavorite(selectedPathology.id)}
-              highlightQuery={searchQuery} // Pass highlight query
+              highlightQuery={searchQuery}
+              matchContext={searchResultMap.get(selectedPathology.id)?.matchedFields}
+              matchType={searchResultMap.get(selectedPathology.id)?.matchType}
             />
           </div>
         </div>

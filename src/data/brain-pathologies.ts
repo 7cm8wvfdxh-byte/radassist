@@ -247,6 +247,10 @@ export const brainPathologies: Pathology[] = [
             "McDonald Criteria used for diagnosis.",
             "Normal white matter exists between lesions."
         ],
+        "etiology": "Otoimmün, multifaktöriyel. Genetik yatkınlık (HLA-DRB1*15:01). Çevresel: EBV enfeksiyonu, D vitamini eksikliği, sigara, yüksek enlem. Kadınlarda 2-3:1.",
+        "differentialDiagnosis": ["Nöromiyelitis Optika (NMO - AQP4 antikor, uzun segment miyelit)", "ADEM (Monofazik, derin gri cevher tutulumu, çocuk)", "Nörosarkoidoz (Leptomeningeal kontrastlanma, hipotalamus)", "Susac Sendromu (Corpus callosum santral lezyonları, işitme kaybı, retinal dal oklüzyonu)", "Vaskülit (Farklı vasküler alanlarda infarktlar)"],
+        "goldStandard": "MRI beyin + spinal kord (FLAIR + T1+C): McDonald 2017 kriterleri (DIS + DIT). BOS: Oligoklonal bantlar.",
+        "clinicalPearl": "Periventriküler ovoid lezyonlar (Dawson parmakları) + Open-ring kontrastlanma + Santral ven işareti = MS. FLAIR'de 'ateş böceği' paterni (parlak, yaygın).",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Multiple Sclerosis. American College of Radiology; 2019.",
@@ -293,6 +297,10 @@ export const brainPathologies: Pathology[] = [
             "Common in elderly and alcoholics (due to atrophy stretching veins).",
             "Acute-on-chronic SDH: Mixed density on CT."
         ],
+        "etiology": "Travma (köprü ven rüptürü). Yaşlılar (serebral atrofi → ven gerilmesi), antikoagülan kullanımı, alkolizm, koagülopati. Bebeklerde: Non-aksidental travma (çocuk istismarı) düşünülmelidir.",
+        "differentialDiagnosis": ["Epidural Hematom (Bikonveks, arteriyel, sütürleri geçmez)", "Subdural Higroma (BOS yoğunluğu, travma sonrası)", "Subdural Ampiyem (Ateş, rim kontrastlanması, DWI kısıtlanması)", "Araknoid Kist (BOS dansitesi, kitle etkisi az)"],
+        "goldStandard": "BT (kontrastsız): Akut SDH hiperdens hilal. İzodens subakut SDH için MRI (T1 hiperintens Met-Hb) daha duyarlıdır.",
+        "clinicalPearl": "Hilal şekli + sütürleri geçer + dural refleksiyonları geçmez = SDH. Subakut izodens SDH: BT'de gözden kaçabilir - orta hat şiftine ve sulkal asimetriye dikkat et.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Head Trauma. American College of Radiology; 2020.",
@@ -341,6 +349,10 @@ export const brainPathologies: Pathology[] = [
             "Lucid interval (regaining consciousness then deteriorating) is classic but not always present.",
             "Neurosurgical emergency if significant mass effect."
         ],
+        "etiology": "Travma → temporal kemik kırığı → A. meningea media rüptürü (%85-95). Daha nadir: Meningeal ven veya dural sinüs yaralanması, koagülopati.",
+        "differentialDiagnosis": ["Subdural Hematom (Hilal şekli, sütürleri geçer, venöz kaynaklı)", "Subaraknoid Kanama (Sisternalarda, sulkuslarda hiperdansite)", "İntraserebral Hematom (Parankimal, hipertansif lokasyonlar)", "Dural Metastaz (Bilinen malignite, düzensiz kontrastlanma)"],
+        "goldStandard": "BT (kontrastsız): Bikonveks hiperdens koleksiyon + kemik penceresinde kırık hattı. BT anjiyo: Aktif kanama odağı (swirl sign).",
+        "clinicalPearl": "Bikonveks (lens) şekli + sütürleri geçmez + temporal kemik kırığı = EDH. 'Swirl sign' (girdap işareti) aktif kanamayı gösterir → acil cerrahi.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Head Trauma. American College of Radiology; 2020.",
@@ -389,6 +401,10 @@ export const brainPathologies: Pathology[] = [
             "Most common cause is trauma; non-traumatic cause is aneurysm rupture.",
             "Complications: Vasospasm, Hydrocephalus."
         ],
+        "etiology": "Travmatik (%80): En sık neden. Non-travmatik: Anevrizma rüptürü (%80 non-travmatik), perimezensefalik SAK (%10), AVM, vaskülit, koagülopati.",
+        "differentialDiagnosis": ["İntraserebral Kanama (Parankimal hematom, hipertansif lokasyonlar)", "Reversibl Serebral Vazokonstriksiyon Sendromu (RCVS - Gök gürültüsü baş ağrısı, segmental vazospazm)", "Posterior Fossa Tümör Kanaması (Kitle etkisi, kontrastlanma)", "Serebral Venöz Tromboz (Venöz infarkt, Delta işareti)"],
+        "goldStandard": "BT (kontrastsız): İlk 6 saatte %98 duyarlılık. BT anjiyo: Anevrizma tespiti. Negatif BT'de LP (ksantokromi).",
+        "clinicalPearl": "'Hayatımın en kötü baş ağrısı' + BT'de bazal sisternalarda hiperdansite = SAK. Fisher skalası vazospazm riskini tahmin eder. 4-14. günler vazospazm penceresi.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Cerebrovascular Diseases-Stroke. American College of Radiology; 2021.",
@@ -438,6 +454,10 @@ export const brainPathologies: Pathology[] = [
             "Ring enhancing lesion DDx: 'MAGICAL DR' (Metastasis, Abscess, GBM, Infarct, Contusion, AIDS, Lymphoma, Demyelination, Radiation).",
             "Restricted diffusion (DWI) is key to differentiate from necrotic tumors (usually facilitated)."
         ],
+        "etiology": "Bakteriyel (%60-70): Streptococcus, Staphylococcus. Yayılım: Hematojen, komşuluk (sinüzit, otit, mastoidit), penetran travma, cerrahi. İmmünsuprese: Fungal (Aspergillus), Toxoplazma, Nocardia.",
+        "differentialDiagnosis": ["GBM (Kalın düzensiz kontrastlanan halka, DWI merkez kolaylaşmış)", "Metastaz (Multipl, gri-beyaz bileşke, bilinen primer)", "Demiyelinizan Lezyon (Open-ring kontrastlanma, MS öyküsü)", "Subakut İnfarkt (Vasküler teritory, giral kontrastlanma)"],
+        "goldStandard": "MRI DWI/ADC: Merkezi difüzyon kısıtlılığı (DWI parlak/ADC karanlık). T1+C: İnce düzgün halka kontrastlanma. Dual rim sign (SWI).",
+        "clinicalPearl": "Halka kontrastlanma + merkezi DWI kısıtlanması + ateş = Apse. GBM'de merkez DWI genellikle kolaylaşmıştır. Dual rim sign (SWI) apse için spesifiktir.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Focal Neurologic Deficit. American College of Radiology; 2020.",
@@ -487,6 +507,10 @@ export const brainPathologies: Pathology[] = [
             "Sensorineural hearing loss.",
             "Bilateral involvement suggests NF2 disease."
         ],
+        "etiology": "Sporadik (%95) veya NF2 ilişkili (bilateral). Schwann hücrelerinden köken alır. NF2 gen mutasyonu (merlin proteini). 8. kranial sinirin vestibüler dalı.",
+        "differentialDiagnosis": ["Menenjiyom (Geniş dural taban, dural kuyruk, kalsifikasyon)", "Epidermoid Kist (DWI parlak, kontrastlanmaz)", "Fasiyal Sinir Schwannomu (Fasiyal kanal genişlemiş)", "Araknoid Kist (BOS sinyali, kontrastlanmaz)"],
+        "goldStandard": "MRI T1+C (ince kesit): İnternal akustik kanal genişlemesi + yoğun kontrastlanan kitle. CISS/FIESTA sekansı küçük tümörlerin tespitinde üstün.",
+        "clinicalPearl": "CPA kitlesi + İAK genişlemesi + 'dondurma külahı' görünümü = Schwannom. Bilateral ise NF2 kesin. Epidermoidin aksine DWI kısıtlanmaz.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Hearing Loss and/or Vertigo. American College of Radiology; 2018.",
@@ -534,6 +558,10 @@ export const brainPathologies: Pathology[] = [
             "Can be Functional (Prolactinoma, GH-secreting) or Non-functional.",
             "Pituitary apoplexy is a medical emergency."
         ],
+        "etiology": "Adenohipofiz hücrelerinin monoklonal proliferasyonu. Sporadik (%95). Sendromik: MEN1 (prolaktinoma + hiperparatiroidi + pankreas tümörü), Carney kompleksi, McCune-Albright.",
+        "differentialDiagnosis": ["Kraniyofarenjiom (Supraseller, kalsifiye, kistik, T1 hiperintens)", "Rathke Yarığı Kisti (İntra/supraseller, kontrast tutmaz, T1 hiperintens)", "Hipofizer Apopleksi (Akut kanama, acil)", "Menenjiyom (Dural taban, yoğun homojen kontrast)"],
+        "goldStandard": "MRI dinamik kontrastlı (koronal ince kesit): Mikroadenom erken fazda hipointens, normal gland kontrastlanır. Prolaktin düzeyi >200 ng/mL = Prolaktinoma.",
+        "clinicalPearl": "Dinamik MRI'da normal gland önce parlar, mikroadenom geç kalır (hipointens kalır). Prolaktin >200 ng/mL ise biyopsiye gerek yok, Dopamin agonisti başla.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Neuroendocrine Imaging. American College of Radiology; 2019.",
@@ -588,6 +616,10 @@ export const brainPathologies: Pathology[] = [
             "Gray-white matter junction is the typical location.",
             "Lung, Breast, Melanoma, Kidney and Colon are the most common primary sources."
         ],
+        "etiology": "Hematojen yayılım. Primer kaynaklar: Akciğer (%40-50), Meme (%15-25), Melanom (%5-20), Böbrek (%5-10), Kolorektal (%5). Hemorajik metastazlar: 'MR. CT' (Melanom, Renal, Koryokarsinom, Tiroid).",
+        "differentialDiagnosis": ["GBM (Tek, infiltratif, kelebek paterni, korpus kallozum geçişi)", "Beyin Apsesi (İnce düzgün halka, DWI kısıtlı merkez)", "Primer CNS Lenfoma (Periventriküler, homojen, DWI kısıtlı)", "Demiyelinizan Hastalık (Open-ring, MS öyküsü)"],
+        "goldStandard": "MRI T1+C (üç düzlem, ince kesit): Multipl kontrastlanan lezyonlar. Çift doz kontrast veya SWI hemorajik metastaz için. Tüm vücut PET/BT primer odak araştırması.",
+        "clinicalPearl": "Multipl kontrastlanan lezyonlar + gri-beyaz bileşke + geniş ödem/küçük kitle = Metastaz. Peritümöral ödemde MRS normal (GBM'de anormal - infiltrasyon).",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Intracranial Neoplasms. American College of Radiology; 2020.",
@@ -598,7 +630,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "cavernous_malformation",
         "name": "Kavernom (Cavernous Malformation)",
+        "nameEn": "Cavernous Malformation (Cavernoma)",
         "category": "Vasküler",
+        "categoryEn": "Vascular",
         "gallery": [
             { "url": "/images/mri_cavernoma.png", "caption": "T2 (Popcorn)", "modality": "MRI" }
         ],
@@ -618,6 +652,15 @@ export const brainPathologies: Pathology[] = [
             "Ailesel vakalarda çokludur (Multipl) (CCM genleri).",
             "Kanama riski taşır."
         ],
+        "keyPointsEn": [
+            "Angiographically occult (low-flow/occult lesion).",
+            "Multiple in familial cases (CCM genes).",
+            "Carries risk of hemorrhage."
+        ],
+        "etiology": "Sporadik (%80, genellikle tek) veya ailesel (%20, multipl - CCM1/CCM2/CCM3 gen mutasyonları). Düşük akımlı vasküler malformasyon (kapiller düzeyde). Radyasyon sonrası gelişebilir.",
+        "differentialDiagnosis": ["Hemorajik Metastaz (Kontrastlanma, peritümöral ödem)", "Amiloid Anjiyopati (Yaşlı, lobar mikrokanamalar, SWI'da yaygın)", "Kapiller Telenjiektazi (SWI'da küçük, T1+C'de kontrastlanma)", "Diffüz Aksonal Yaralanma (Travma öyküsü, gri-beyaz bileşke)"],
+        "goldStandard": "MRI SWI/GRE: Hemosiderin halkası (blooming artefaktı). T2: Popcorn görünümü. Konvansiyonel anjiyografi negatiftir (okült lezyon).",
+        "clinicalPearl": "T2'de 'popcorn' + SWI'da hemosiderin halkası + anjiyografide görülmez = Kavernom. Multipl ise ailesel kavernomatoz düşün (CCM genleri). DVA eşliği sık.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
@@ -628,7 +671,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "diffuse_axonal_injury",
         "name": "Diffüz Aksonal Yaralanma (DAI)",
+        "nameEn": "Diffuse Axonal Injury (DAI)",
         "category": "Travma",
+        "categoryEn": "Trauma",
         "findings": {
             "ct": {
                 "non_contrast": "Genellikle Normaldir (%50-80). Gri-beyaz cevher bileşkesinde, korpus kallozumda veya beyin sapında küçük peteşiyel kanamalar görülebilir."
@@ -644,6 +689,15 @@ export const brainPathologies: Pathology[] = [
             "Klinik-Radyolojik uyumsuzluk (GKS düşük ama BT normal olabilir).",
             "SWI en duyarlı sekanstır."
         ],
+        "keyPointsEn": [
+            "Rotational acceleration/deceleration injury.",
+            "Clinical-radiological mismatch (low GCS but CT may be normal).",
+            "SWI is the most sensitive sequence."
+        ],
+        "etiology": "Yüksek enerjili travma (trafik kazası). Rotasyonel kesme (shearing) kuvvetleri → aksonal hasar. Adams sınıflaması: Evre 1 (gri-beyaz bileşke), Evre 2 (korpus kallozum), Evre 3 (beyin sapı - en kötü prognoz).",
+        "differentialDiagnosis": ["Serebral Kontüzyon (Kortikal, inferior frontal/anterior temporal, kanama odaklı)", "Çoklu Serebral Metastaz (Multipl, kontrastlanma, bilinen primer)", "Fat Embolisi Sendromu (Uzun kemik kırığı, starfield paterni, DWI)", "Amiloid Anjiyopati (Yaşlı, lobar dağılım, travma yok)"],
+        "goldStandard": "MRI SWI: Multipl mikrokanamalar (blooming). DWI: Akut aksonal hasar. BT: Sıklıkla normal (%50-80), ancak acilde ilk tercih.",
+        "clinicalPearl": "BT normal + düşük GKS = DAI düşün → MRI SWI iste. Gri-beyaz bileşke + korpus kallozum splenium + dorsolateral beyin sapı = Klasik DAI üçlüsü.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Head Trauma. American College of Radiology; 2022.",
@@ -654,7 +708,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "idiopathic_intracranial_hypertension",
         "name": "İdiyopatik İntrakraniyal Hipertansiyon (Psödotümör Serebri)",
+        "nameEn": "Idiopathic Intracranial Hypertension (Pseudotumor Cerebri)",
         "category": "Sellar/Vasküler",
+        "categoryEn": "Sellar/Vascular",
         "findings": {
             "ct": {
                 "non_contrast": "Zor izlenen (slit-like) ventriküller. Empty (boş) sella."
@@ -670,6 +726,15 @@ export const brainPathologies: Pathology[] = [
             "Papilödem, Baş ağrısı, Görme bozuklukları.",
             "Venöz Sinüs Trombozu mutlaka dışlanmalıdır."
         ],
+        "keyPointsEn": [
+            "Obese women of childbearing age.",
+            "Papilledema, headache, visual disturbances.",
+            "Venous sinus thrombosis must be excluded."
+        ],
+        "etiology": "İdiyopatik. Risk faktörleri: Obezite, kadın cinsiyet, doğurganlık çağı. İlaçlar: Tetrasiklin, A vitamini, büyüme hormonu, OKS. BOS emilim bozukluğu veya venöz basınç artışı.",
+        "differentialDiagnosis": ["Serebral Venöz Sinüs Trombozu (Akut başlangıç, MRV'de akım defekti)", "İntrakranial Kitle Lezyonu (Papilödem + fokal nörolojik defisit)", "Meningeal Karsinomatoz (Leptomeningeal kontrastlanma)", "Sarkoidoz (Leptomeningeal, hipotalamik tutulum)"],
+        "goldStandard": "MRI + MRV: Empty sella, optik sinir kılıf genişlemesi, transvers sinüs stenozu. LP: Açılış basıncı >25 cmH2O, normal BOS biyokimyası.",
+        "clinicalPearl": "Obez genç kadın + baş ağrısı + papilödem + Empty sella + optik sinir kılıf genişlemesi = İİH. MRV mutlaka yapılmalı (venöz sinüs trombozu dışla).",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Headache. American College of Radiology; 2019.",
@@ -680,7 +745,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "hydrocephalus_nph",
         "name": "Normal Basınçlı Hidrosefali (NPH)",
+        "nameEn": "Normal Pressure Hydrocephalus (NPH)",
         "category": "Dejeneratif",
+        "categoryEn": "Degenerative",
         "findings": {
             "ct": {
                 "non_contrast": "Atrofiye oranla orantısız ventrikül genişlemesi. Evans İndeksi > 0.3."
@@ -694,6 +761,14 @@ export const brainPathologies: Pathology[] = [
             "Klasik Triad: Yürüme bozukluğu ('manyetik yürüyüş'), Demans, İdrar inkontinansı.",
             "Orantısız genişlemiş subaraknoid mesafeli hidrosefali (DESH) bulguları."
         ],
+        "keyPointsEn": [
+            "Classic Triad: Gait disturbance ('magnetic gait'), Dementia, Urinary incontinence.",
+            "Disproportionately enlarged subarachnoid space hydrocephalus (DESH) findings."
+        ],
+        "etiology": "İdiyopatik (%50+). Sekonder: Önceki SAK, menenjit, travma. BOS emilim bozukluğu (araknoid granülasyonlar). Yaşlı popülasyonda (%60-80 yaş).",
+        "differentialDiagnosis": ["Alzheimer Hastalığı (Hipokampal atrofi, medial temporal lob atrofisi, Evans indeksi normal)", "Serebral Atrofi (Sulkuslar orantılı genişlemiş, ex-vacuo ventrikulomegali)", "Obstrüktif Hidrosefali (Akut başlangıç, baş ağrısı, 4. ventrikül/akuadukt obstrüksiyonu)", "Subkortikal Vasküler Demans (Periventriküler beyaz cevher lezyonları)"],
+        "goldStandard": "MRI: Evans indeksi >0.3, DESH paterni (konveksite sıkışma + Sylvian fissür genişlemesi), akuadukt flow void artışı. Tap testi (30-50 mL BOS boşaltma sonrası yürüyüş iyileşmesi).",
+        "clinicalPearl": "Yaşlıda yürüyüş bozukluğu (ilk semptom) + ventrikülomegali + konveksite sıkışma + Evans >0.3 = NPH. Tap testi pozitifse şant tedavisi yararlı. 'Wet, wacky, wobbly' = İdrar, demans, yürüyüş.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Normal Pressure Hydrocephalus",
@@ -703,7 +778,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "tuberous_sclerosis",
         "name": "Tuberoskleroz Kompleksi",
+        "nameEn": "Tuberous Sclerosis Complex (TSC)",
         "category": "Fakomatoz",
+        "categoryEn": "Phakomatosis",
         "findings": {
             "ct": {
                 "non_contrast": "Kalsifiye subependimal nodüller (SEN). Kortikal tüberler (hipodens)."
@@ -718,6 +795,15 @@ export const brainPathologies: Pathology[] = [
             "Renal AML (Anjiyomiyolipom), Kardiyak Rabdomyomlar.",
             "SEGA gelişimi açısından takip gereklidir."
         ],
+        "keyPointsEn": [
+            "Epilepsy, Skin lesions (adenoma sebaceum).",
+            "Renal AML (Angiomyolipoma), Cardiac Rhabdomyomas.",
+            "Follow-up required for SEGA development."
+        ],
+        "etiology": "Otozomal dominant. TSC1 (hamartin, 9q34) veya TSC2 (tüberin, 16p13.3) gen mutasyonu. mTOR yolağı aktivasyonu. De novo mutasyon %60-70.",
+        "differentialDiagnosis": ["Periventriküler Heterotopi (Subependimal, kontrastlanmaz, kalsifiye değil)", "Santral Nörositom (Foramen Monro, kontrastlanır, genç erişkin)", "Subependimal Yayılım (Metastaz veya gliom, düzensiz, kontrastlanır)", "Sturge-Weber Sendromu (Leptomeningeal anjiomatozis, kortikal kalsifikasyon)"],
+        "goldStandard": "MRI beyin (FLAIR + T1+C): Kortikal tüberler, SEN, SEGA tespiti. BT: Kalsifiye SEN'ler. Genetik test: TSC1/TSC2 mutasyon analizi.",
+        "clinicalPearl": "Kalsifiye subependimal nodüller + kortikal tüberler + SEGA (Foramen Monro) = TSC. SEGA >1cm ve büyüyorsa tedavi (mTOR inhibitörü veya cerrahi). Renal AML ve LAM taraması unutulmamalı.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Tuberous Sclerosis Complex",
@@ -728,7 +814,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "arteriovenous_malformation",
         "name": "Arteriyovenöz Malformasyon (AVM)",
+        "nameEn": "Arteriovenous Malformation (AVM)",
         "category": "Vasküler",
+        "categoryEn": "Vascular",
         "findings": {
             "ct": {
                 "non_contrast": "İzo/Hiperdens solucan paketi (bag of worms). Kalsifikasyon. Kanama yoksa kitle etkisi yapmaz.",
@@ -746,6 +834,15 @@ export const brainPathologies: Pathology[] = [
             "Yüksek akımlı lezyon.",
             "Cerrahi risk için Spetzler-Martin derecelendirmesi."
         ],
+        "keyPointsEn": [
+            "Congenital shunt without capillary bed.",
+            "High-flow lesion.",
+            "Spetzler-Martin grading for surgical risk."
+        ],
+        "etiology": "Konjenital vasküler malformasyon. Embriyolojik dönemde kapiller yatağın gelişmemesi → direkt arteriyovenöz şant. Sporadik. HHT (Osler-Weber-Rendu) ile ilişkili olabilir.",
+        "differentialDiagnosis": ["Dural AV Fistül (Edinsel, dural besleyiciler, pulsatil tinnitus)", "Kavernom (Düşük akımlı, anjiyografide görülmez)", "Hemorajik Tümör (Kontrastlanma, kitle etkisi)", "Gelişimsel Venöz Anomali (Caput medusae, düşük akımlı)"],
+        "goldStandard": "DSA (Dijital Subtraksiyon Anjiyografi): Altın standart. Nidus, besleyici arterler, drene olan venler. MRI/MRA: Tarama. Spetzler-Martin sınıflaması (boyut, lokasyon, venöz drenaj).",
+        "clinicalPearl": "T2'de serpiginöz flow void ('solucan paketi') + BT anjiyoda erken venöz dolum = AVM. Spetzler-Martin skoru tedavi kararını belirler. Kanama riski yıllık %2-4, önceki kanama riski artırır.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
@@ -756,7 +853,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "venous_sinus_thrombosis",
         "name": "Serebral Venöz Sinüs Trombozu",
+        "nameEn": "Cerebral Venous Sinus Thrombosis (CVST)",
         "category": "Vasküler",
+        "categoryEn": "Vascular",
         "findings": {
             "ct": {
                 "non_contrast": "Hiperdens damar/sinüs işareti (Cord sign). İntra-parankimal kanama (sıklıkla bilateral/parasagittal, arteriyel alana uymayan).",
@@ -772,6 +871,14 @@ export const brainPathologies: Pathology[] = [
             "Hiperkoagülasyon durumları (OKS kullanımı, gebelik, Faktör V Leiden).",
             "Arteriyel sulama alanlarına uymayan hemorajik infarktlar."
         ],
+        "keyPointsEn": [
+            "Hypercoagulable states (OCP use, pregnancy, Factor V Leiden).",
+            "Hemorrhagic infarcts not conforming to arterial territories."
+        ],
+        "etiology": "Hiperkoagülabilite: OKS kullanımı, gebelik/postpartum, Faktör V Leiden, Protein C/S eksikliği, antifosfolipid sendromu. Enfeksiyon (sinüzit, otit, mastoidit). Dehidratasyon. Malignite.",
+        "differentialDiagnosis": ["Arteriyel İskemik İnme (Vasküler teritory uyumu, DWI kısıtlanması)", "Hemorajik İnme (Hipertansif lokasyonlar, basal ganglia)", "PRES (Paryeto-oksipital, vazojenik ödem, DWI negatif)", "Dural AV Fistül (Pulsatil tinnitus, venöz konjesyon)"],
+        "goldStandard": "MRV (MR Venografi): Akım defekti/sinüs oklüzyonu. BT Venografi: Empty Delta işareti. MRI T1/T2: Flow void kaybı + subakut trombüste T1 hiperintensite.",
+        "clinicalPearl": "Genç kadın + baş ağrısı + arteriyel alana uymayan hemorajik infarkt = CVST düşün. Empty Delta işareti (SSS'de dolum defekti) + cord sign (hiperdens sinüs) = Klasik bulgular. MRV mutlaka istenmelidir.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
@@ -782,7 +889,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "herpes_encephalitis",
         "name": "Herpes Simpleks Ensefaliti",
+        "nameEn": "Herpes Simplex Encephalitis (HSE)",
         "category": "Enfeksiyon",
+        "categoryEn": "Infection",
         "findings": {
             "ct": {
                 "non_contrast": "Medial temporal loblar/insulada hipodansite. Erken dönemde sıklıkla normaldir."
@@ -799,6 +908,15 @@ export const brainPathologies: Pathology[] = [
             "Bazal ganglionlar korunur (MCA infarktının aksine).",
             "Yüksek mortalite - Şüphe anında hemen Asiklovir başlanmalı."
         ],
+        "keyPointsEn": [
+            "Caused by HSV-1. Involves the limbic system.",
+            "Basal ganglia are spared (unlike MCA infarct).",
+            "High mortality - Acyclovir should be started immediately on suspicion."
+        ],
+        "etiology": "HSV-1 (erişkin), HSV-2 (neonatal). Latent trigeminal gangliyon enfeksiyonunun reaktivasyonu veya primer enfeksiyon. Temporal loba nörotropizm (olfaktör/trigeminal sinir yolu).",
+        "differentialDiagnosis": ["MCA İnfarktı (Bazal ganglionlar tutulur, vasküler teritory)", "Limbik Ensefalit (Otoimmün, anti-NMDAR, bilateral medial temporal)", "Gliom (Kitle etkisi, kontrastlanma, yavaş progresyon)", "Status Epileptikus (DWI kısıtlanması, kortikal ödem, nöbet öyküsü)"],
+        "goldStandard": "MRI (FLAIR + DWI): Medial temporal lob + insula hiperintensitesi (DWI erken pozitif). BOS PCR: HSV DNA (altın standart tanı).",
+        "clinicalPearl": "Ateş + konfüzyon + medial temporal lob T2/FLAIR hiperintensitesi = HSE hasta ispat edilene kadar. Bazal ganglia KORUNMASI MCA infarktından ayırır. Asiklovir HEMEN başla, PCR sonucunu bekleme.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: CNS Infections. American College of Radiology; 2020.",
@@ -809,7 +927,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "arachnoid_cyst",
         "name": "Araknoid Kist",
+        "nameEn": "Arachnoid Cyst",
         "category": "Konjenital",
+        "categoryEn": "Congenital",
         "findings": {
             "ct": {
                 "non_contrast": "Keskin sınırlı, BOS dansitesinde ekstra-aksiyal sıvı koleksiyonu. Komşu kemikte incelme/taraklanma (scalloping)."
@@ -826,6 +946,15 @@ export const brainPathologies: Pathology[] = [
             "Genellikle insidentaldir (tesadüfen bulunur).",
             "Galassi sınıflaması kullanılır."
         ],
+        "keyPointsEn": [
+            "Middle cranial fossa (temporal/Sylvian) is the most common location.",
+            "Usually incidental (found accidentally).",
+            "Galassi classification is used."
+        ],
+        "etiology": "Konjenital (araknoidal membranın gelişimsel duplikasyonu). Edinsel (travma, enfeksiyon, cerrahi sonrası) daha nadir. BOS benzeri sıvı içerir.",
+        "differentialDiagnosis": ["Epidermoid Kist (DWI parlak, FLAIR suprese olmaz)", "Nöroepitelyal Kist (İntraparankimal, BOS sinyali)", "Kronik Subdural Higroma (Hilal şekli, travma öyküsü)", "Porensefalik Kist (Ventrikül ile bağlantılı, perinatal hasar)"],
+        "goldStandard": "MRI: Tüm sekanslarda BOS ile izointens + FLAIR'de tam baskılanma + DWI'da kolaylaşmış difüzyon. BT: BOS dansitesinde ekstra-aksiyal koleksiyon.",
+        "clinicalPearl": "BOS sinyalinde ekstra-aksiyal kist + FLAIR'de supresyon + DWI karanlık = Araknoid kist. DWI parlaksa epidermoid kist düşün. Çoğu asemptomatik ve takip yeterli.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Arachnoid Cyst",
@@ -835,7 +964,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "primary_cns_lymphoma",
         "name": "Primer Serebral Lenfoma (PCNSL)",
+        "nameEn": "Primary CNS Lymphoma (PCNSL)",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
         "findings": {
             "ct": {
                 "non_contrast": "Gri cevhere göre izo-hiperdens (hücresel yoğunluk nedeniyle). Genellikle derin yerleşimli (periventriküler, bazal ganglion).",
@@ -855,6 +986,15 @@ export const brainPathologies: Pathology[] = [
             "Genellikle B-hücreli lenfomadır.",
             "İmmün sistemi baskılanmış hastalarda (EBV ilişkili) görünüm çok farklıdır (nekrotik, halkasal)."
         ],
+        "keyPointsEn": [
+            "Responds dramatically to steroids ('Ghost tumor'). Steroids MUST NOT be given before biopsy.",
+            "Usually B-cell lymphoma.",
+            "Appearance is very different in immunocompromised patients (EBV-related) - necrotic, ring-enhancing."
+        ],
+        "etiology": "İmmünkompetan: Sporadik, ileri yaş (>60). İmmünkompromize: EBV ilişkili (HIV/AIDS, organ transplant). Diffüz büyük B-hücreli lenfoma (%90+).",
+        "differentialDiagnosis": ["GBM (Periferal halka kontrastlanma, nekroz, infiltratif)", "Toksoplazmoz (AIDS, multipl halka, eksantrik hedef, DWI negatif)", "Metastaz (Multipl, gri-beyaz bileşke, bilinen primer)", "Sarkoidoz (Leptomeningeal, granülomatöz)"],
+        "goldStandard": "MRI (T1+C + DWI + Perfüzyon + MRS): Homojen kontrastlanma + DWI kısıtlanması + düşük rCBV + yüksek lipid/laktat piki. Stereotaktik biyopsi: Kesin tanı. Steroid öncesi biyopsi kritik.",
+        "clinicalPearl": "Derin periventriküler + homojen kontrastlanma + DWI parlak + düşük perfüzyon = Lenfoma. Steroid 'hayalet tümör' yaratır (lezyon kaybolur, biyopsi negatif gelir). BİYOPSİ ÖNCESI STEROİD VERME!",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Cerebral Neoplasm. American College of Radiology; 2020.",
@@ -865,7 +1005,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "intracerebral_hemorrhage",
         "name": "İntraserebral Kanama (Hemorajik İnme)",
+        "nameEn": "Intracerebral Hemorrhage (Hemorrhagic Stroke)",
         "category": "Vasküler",
+        "categoryEn": "Vascular",
         "findings": {
             "ct": {
                 "non_contrast": "Hiperakut/Akut dönem: Hiperdens (60-80 HU) parankimal hematom. Çevre hipodansite (ödem). Kitle etkisi ve ventriküler şift. 'Spot sign' (aktif kanama odağı) BT anjiyoda görülebilir.",
@@ -886,6 +1028,16 @@ export const brainPathologies: Pathology[] = [
             "BT anjiyoda 'Spot sign': Hematom genişlemesi riski yüksek.",
             "Kanama kronolojisi MRI'da T1/T2 sinyal değişimleriyle takip edilir."
         ],
+        "keyPointsEn": [
+            "Most common cause: Hypertension (basal ganglia, thalamus, pons, cerebellum).",
+            "Lobar hemorrhage in young patient: Consider amyloid angiopathy, AVM, cavernoma.",
+            "'Spot sign' on CTA: High risk of hematoma expansion.",
+            "Hemorrhage chronology is tracked by T1/T2 signal changes on MRI."
+        ],
+        "etiology": "Hipertansif (%60-70): Bazal ganglia, talamus, pons, serebellum. Serebral Amiloid Anjiyopati (%15-20): Yaşlı, lobar. AVM/Kavernom: Genç hasta. Antikoagülan tedavi. Tümör kanaması.",
+        "differentialDiagnosis": ["Hemorajik İnfarkt (Vasküler teritory, giral patern)", "Hemorajik Metastaz (Multipl, ödem/kitle orantısızlığı)", "Kavernom Kanaması (Popcorn, hemosiderin halkası)", "Dural AV Fistül Kanaması (Venöz konjesyon, pulsatil tinnitus)"],
+        "goldStandard": "BT (kontrastsız): İlk değerlendirme. BT anjiyo: Spot sign (aktif kanama), altta yatan neden. MRI (subakut dönem): Kanama kronolojisi, altta yatan patoloji (tümör, AVM, kavernom).",
+        "clinicalPearl": "Hipertansif hastada bazal ganglia/talamus kanaması = Hipertansif ICH (en sık). Genç + lobar = AVM/kavernom ara. Yaşlı + multipl lobar mikrokanama (SWI) = Amiloid anjiyopati. Spot sign = Acil!",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
@@ -896,7 +1048,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "cerebral_aneurysm",
         "name": "Serebral Anevrizma (Berry Anevrizması)",
+        "nameEn": "Cerebral Aneurysm (Berry Aneurysm)",
         "category": "Vasküler",
+        "categoryEn": "Vascular",
         "findings": {
             "ct": {
                 "non_contrast": "Rüptüre: Subaraknoid kanama (sisternalarda hiperdansite). İntrüptüre: Genellikle insidental.",
@@ -919,6 +1073,16 @@ export const brainPathologies: Pathology[] = [
             "PHASES skoru rüptür riskini tahmin eder.",
             "Polikistik böbrek hastalığı, Ehlers-Danlos, aile öyküsü: Tarama endikasyonu."
         ],
+        "keyPointsEn": [
+            "Most common location: Anterior communicating artery (30%), Posterior communicating artery (25%), MCA bifurcation (20%).",
+            "Rupture risk: Size >7mm, posterior circulation, irregular shape, 'daughter sac'.",
+            "PHASES score predicts rupture risk.",
+            "Polycystic kidney disease, Ehlers-Danlos, family history: Screening indication."
+        ],
+        "etiology": "Edinsel (dejeneratif): Hemodinamik stres → tunika media hasarı. Risk faktörleri: Hipertansiyon, sigara, aile öyküsü. İlişkili sendromlar: ADPKD, Ehlers-Danlos tip IV, Marfan, aort koarktasyonu.",
+        "differentialDiagnosis": ["Infundibular Genişleme (Koni şekilli, <3mm, arterin merkezden çıkışı)", "İnfektif (Mikotik) Anevrizma (Distal yerleşim, endokardit)", "Dissekan Anevrizma (Fusiform, intramural hematom)", "Onkotik Anevrizma (Atriyal miksoma, koryokarsinom)"],
+        "goldStandard": "DSA (3D rotasyonel anjiografi): Altın standart (boyut, şekil, dome/neck oranı, tedavi planlaması). BT anjiyo: Tarama ve acil değerlendirme. MR anjiyo (TOF): Non-invaziv tarama.",
+        "clinicalPearl": "Willis poligonu bifurkasyonlarında sakküler genişleme = Berry anevrizması. >7mm, irregüler şekil, daughter sac = Yüksek rüptür riski. ADPKD hastalarında aile öyküsü varsa MRA tarama.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
@@ -929,7 +1093,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "low_grade_glioma",
         "name": "Düşük Dereceli Gliom (WHO Grade 2)",
+        "nameEn": "Low-Grade Glioma (WHO Grade 2)",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
         "findings": {
             "ct": {
                 "non_contrast": "Homojen hipodens kitle. Kalsifikasyon (%20-40, özellikle oligodendrogliomda). Minimal kitle etkisi. Kontrastlanma genellikle YOK.",
@@ -950,6 +1116,16 @@ export const brainPathologies: Pathology[] = [
             "Frontal ve temporal loblar en sık yerleşim.",
             "'T2-FLAIR mismatch': Astrositom için spesifik (T2'de hiperintens, FLAIR'de santral hipointens)."
         ],
+        "keyPointsEn": [
+            "WHO 2021: IDH-mutant astrocytoma, Oligodendroglioma (1p/19q co-deletion).",
+            "Usually presents in young adults (30-40 years) with epilepsy.",
+            "Frontal and temporal lobes are the most common locations.",
+            "'T2-FLAIR mismatch': Specific for astrocytoma (T2 hyperintense, FLAIR central hypointense)."
+        ],
+        "etiology": "IDH1/2 mutasyonu (>%80). WHO 2021: IDH-mutant astrositom (ATRX kaybı) veya Oligodendrogliom (1p/19q ko-delesyon). Li-Fraumeni sendromu (TP53). Radyasyon maruziyeti.",
+        "differentialDiagnosis": ["GBM (Halka kontrastlanma, nekroz, yüksek perfüzyon)", "DNET (Kortikal, genç, 'bubbly' görünüm, kontrast tutmaz)", "Gangliogliom (Kistik + kontrastlanan nodül, temporal lob)", "Ensefalit (Akut klinik, ateş, DWI kısıtlanması)"],
+        "goldStandard": "MRI (T2/FLAIR + T1+C + DWI + Perfüzyon + MRS): Kontrastlanmayan T2 hiperintens lezyon + düşük rCBV. Histopatoloji + moleküler analiz (IDH, 1p/19q, ATRX): Kesin sınıflama.",
+        "clinicalPearl": "Genç erişkinde epilepsi + kontrastlanmayan T2 hiperintens lezyon + düşük perfüzyon = Düşük dereceli gliom. T2-FLAIR mismatch varsa IDH-mutant astrositom. Kontrastlanma başlarsa grade artışı düşün.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Louis DN et al. The 2021 WHO Classification of Tumors of the Central Nervous System. Neuro Oncol. 2021;23(8):1231-1251.",
@@ -960,7 +1136,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "pituitary_macroadenoma",
         "name": "Hipofiz Makroadenomu (>10mm)",
+        "nameEn": "Pituitary Macroadenoma (>10mm)",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
         "findings": {
             "ct": {
                 "non_contrast": "Sellar genişleme, klinoid erozyonu. Suprasellar uzanım. Heterojen (kanama, kist, nekroz).",
@@ -980,6 +1158,16 @@ export const brainPathologies: Pathology[] = [
             "Hipofizer apopleksi: Ani kanama/nekroz - Acil nöroşirürji konsültasyonu.",
             "Prolaktinoma tedavisi: Önce medikal (Dopamin agonisti), cerrahi ikinci seçenek."
         ],
+        "keyPointsEn": [
+            "Functional: Prolactinoma (most common), GH-secreting (Acromegaly), ACTH (Cushing).",
+            "Non-functional: Symptoms from mass effect (Bitemporal hemianopsia - optic chiasm compression).",
+            "Pituitary apoplexy: Sudden hemorrhage/necrosis - Emergency neurosurgery consult.",
+            "Prolactinoma treatment: Medical first (Dopamine agonist), surgery second choice."
+        ],
+        "etiology": "Adenohipofiz hücrelerinin benign monoklonal proliferasyonu. Fonksiyonel: Prolaktinoma (%40), Non-fonksiyonel (%30), GH (%20), ACTH (%5). MEN1 sendromu ile ilişkili olabilir.",
+        "differentialDiagnosis": ["Kraniyofarenjiom (Kalsifikasyon, kistik, T1 hiperintens)", "Menenjiyom (Dural taban, yoğun homojen kontrast, dural kuyruk)", "Rathke Yarığı Kisti (Kontrast tutmaz, küçük, T1 hiperintens)", "Metastaz (Hipofiz sapı kalınlaşması, diabetes insipidus, bilinen primer)"],
+        "goldStandard": "MRI koronal ince kesit (T1+C dinamik): Supraseller uzanım, kavernöz sinüs invazyonu, optik kiazma basısı değerlendirmesi. Hormonal profil: Prolaktin, GH, IGF-1, kortizol.",
+        "clinicalPearl": "Supraseller kitle + 'Figure-of-8' (kardan adam) görünümü + bitemporal hemianopsi = Makroadenom. Prolaktin >200 ng/mL: Prolaktinoma kesin (hook effect'e dikkat). Kavernöz sinüs invazyonu: ICA %50'den fazla sarılma.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
@@ -990,7 +1178,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "craniopharyngioma",
         "name": "Kraniyofarenjiom",
+        "nameEn": "Craniopharyngioma",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
         "findings": {
             "ct": {
                 "non_contrast": "Suprasellar kalsifiye (>%90) kistik/solid kitle. Kalsifikasyon PATOGNOMONIK. Çocuklarda %90, erişkinlerde %50 kalsifiye.",
@@ -1010,6 +1200,16 @@ export const brainPathologies: Pathology[] = [
             "Ayırıcı tanı: Rathke yarığı kisti (kalsifikasyon yok, daha küçük), Dermoid kist, Hipofiz adenomu.",
             "Tedavi zorluğu: Hipotalamus yapışıklığı nedeniyle subtotal rezeksiyon."
         ],
+        "keyPointsEn": [
+            "Bimodal age distribution: Childhood (5-15 years) and adults (50-75 years).",
+            "Adamantinomatous type (child): Calcified, cystic. Papillary type (adult): More solid.",
+            "DDx: Rathke cleft cyst (no calcification, smaller), Dermoid cyst, Pituitary adenoma.",
+            "Treatment challenge: Subtotal resection due to hypothalamic adhesion."
+        ],
+        "etiology": "Rathke kesesi (Rathke's pouch) artıklarından köken alır. Adamantinomatöz tip: CTNNB1 (beta-katenin) mutasyonu, çocuk. Papiller tip: BRAF V600E mutasyonu, erişkin.",
+        "differentialDiagnosis": ["Hipofiz Makroadenomu (Sellar kaynaklı, kalsifikasyon nadir, T1 hiperintens değil)", "Rathke Yarığı Kisti (Kalsifikasyon yok, küçük, kontrastlanmaz)", "Dermoid Kist (Yağ sinyali, T1 hiperintens, kalsifikasyon nadir)", "Optik Yolak Gliomu (NF1, kontrast tutabilir, kalsifikasyon yok)"],
+        "goldStandard": "MRI (T1, T1+C, T2) + BT (kalsifikasyon): Supraseller kalsifiye kistik/solid kitle + T1 hiperintens kist içeriği. BT kalsifikasyon tespiti için üstündür.",
+        "clinicalPearl": "Supraseller kalsifiye + kistik kitle + T1 hiperintens kist = Kraniyofarenjiom. Çocukta kalsifikasyon %90 (patognomonik). Erişkin papiller tipte BRAF V600E hedefli tedavi mümkün.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -1020,7 +1220,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "toxoplasmosis_cns",
         "name": "Toksoplazmoz (Serebral - AIDS)",
+        "nameEn": "Toxoplasmosis (Cerebral - AIDS)",
         "category": "Enfeksiyon",
+        "categoryEn": "Infection",
         "findings": {
             "ct": {
                 "non_contrast": "Multipl hipodens lezyonlar, bazal ganglia ve kortikomedüller bileşke. Kitle etkisi ve ödem.",
@@ -1041,6 +1243,16 @@ export const brainPathologies: Pathology[] = [
             "Eksantrik hedef işareti toksoplazmoz için yüksek spesifik.",
             "Empirik tedavi (2 hafta): Yanıt varsa tanı doğrulanır, yoksa biyopsi."
         ],
+        "keyPointsEn": [
+            "AIDS-defining illness. CD4 <100 cells/uL.",
+            "Lymphoma vs Toxoplasmosis: DWI (Lymphoma = restriction), Perfusion, Thallium scale.",
+            "Eccentric target sign is highly specific for toxoplasmosis.",
+            "Empiric treatment (2 weeks): If response, diagnosis confirmed; if not, biopsy."
+        ],
+        "etiology": "Toxoplasma gondii paraziti reaktivasyonu. İmmünsupresyon (HIV/AIDS, CD4 <100). Kedi dışkısı veya çiğ et ile bulaş → latent enfeksiyonun reaktivasyonu. En sık AIDS ilişkili fırsatçı SSS enfeksiyonu.",
+        "differentialDiagnosis": ["Primer CNS Lenfoma (Tek/az sayıda, homojen kontrast, DWI kısıtlı, yüksek perfüzyon)", "Beyin Apsesi (İnce düzgün halka, DWI merkez kısıtlı)", "PML (Kontrastlanma yok, U-fiber tutulumu, kütle etkisi yok)", "Metastaz (Bilinen primer, gri-beyaz bileşke)"],
+        "goldStandard": "MRI (T1+C + DWI + Perfüzyon): Multipl halka kontrastlanan lezyonlar + eksantrik hedef işareti. Seroloji: Toxoplasma IgG pozitif. Empirik tedaviye yanıt (2 hafta).",
+        "clinicalPearl": "AIDS + CD4 <100 + multipl halka lezyonlar + eksantrik hedef işareti = Toksoplazmoz. Lenfomadan ayırt: DWI (Tokso = negatif, Lenfoma = pozitif), Perfüzyon (Tokso = düşük). 2 hafta empirik tedaviye yanıt yoksa biyopsi.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: HIV-Associated Central Nervous System Disease. American College of Radiology; 2022.",
@@ -1051,7 +1263,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "neurocysticercosis",
         "name": "Nörosistiserkoz",
+        "nameEn": "Neurocysticercosis",
         "category": "Enfeksiyon",
+        "categoryEn": "Infection",
         "findings": {
             "ct": {
                 "non_contrast": "Evre bağımlı: VEZİKÜLER: İnce duvarlı kist, içinde hiperdans skoleks ('nokta'). KOLLOİDAL: Çevre ödem, kist bulanıklaşması. GRANÜLER: Kalsifiye nodül. KALSİFİYE: Tamamen kalsifiye.",
@@ -1072,6 +1286,16 @@ export const brainPathologies: Pathology[] = [
             "Skoleks görülmesi patognomonik ('solucan başı').",
             "Racemoz form: Bazal sisternalarda üzüm salkımı şeklinde kistler."
         ],
+        "keyPointsEn": [
+            "Most common cause of acquired epilepsy worldwide.",
+            "4 stages: Vesicular -> Colloidal -> Granular -> Calcified.",
+            "Visualization of scolex is pathognomonic ('worm head').",
+            "Racemose form: Grape-like clusters of cysts in basal cisterns."
+        ],
+        "etiology": "Taenia solium (domuz tenyası) larvası (sistiserk). Fekal-oral bulaş (domuz eti veya kontamine su/gıda). Endemik bölgeler: Latin Amerika, Güneydoğu Asya, Afrika.",
+        "differentialDiagnosis": ["Beyin Apsesi (Tek, ince düzgün halka, DWI kısıtlı merkez)", "Metastaz (Multipl, gri-beyaz bileşke, bilinen primer)", "Tüberkülom (Kalsifiye, halka kontrast, 'target sign')", "Toksoplazmoz (AIDS, bazal ganglia, eksantrik hedef)"],
+        "goldStandard": "MRI (T1+C, T2, FLAIR, DWI) + BT (kalsifikasyon): Evre bağımlı bulgular. Kist içinde skoleks tespiti (T1/T2). Seroloji: EITB (Enzyme-linked immunoelectrotransfer blot).",
+        "clinicalPearl": "Endemik bölgeden gelen hastada nöbet + kist içinde skoleks (nokta) = Nörosistiserkoz. 4 evre görünümü hatırla: Veziküler (canlı), Kolloidal (ödem), Granüler (halka), Kalsifiye (granülom). Farklı evrelerdeki lezyonlar aynı anda olabilir.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -1082,7 +1306,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "chiari_i_malformation",
         "name": "Chiari Tip I Malformasyonu",
+        "nameEn": "Chiari Type I Malformation",
         "category": "Konjenital",
+        "categoryEn": "Congenital",
         "findings": {
             "mri": {
                 "t1": "Sagittal: Serebellar tonsillerin foramen magnum altına >5mm herniasyonu. Tonsil sivri (peg-like) şekil.",
@@ -1101,6 +1327,16 @@ export const brainPathologies: Pathology[] = [
             "Chiari 0: Tonsil herniasyonu yok ama BOS akım bozukluğu var.",
             "Cerrahi: Posterior fossa dekompresyonu (BOS akımını düzeltmek için)."
         ],
+        "keyPointsEn": [
+            "Symptoms: Cough-triggered occipital headache, hand numbness.",
+            "Syringomyelia accompanies in 25-70%.",
+            "Chiari 0: No tonsillar herniation but CSF flow disturbance present.",
+            "Surgery: Posterior fossa decompression (to correct CSF flow)."
+        ],
+        "etiology": "Küçük posterior fossa (konjenital veya edinsel). Konjenital kranioservikal bileşke anomalisi. Edinsel: İntrakranyal hipotansiyon, LP sonrası, tethered kord. Genetik yatkınlık.",
+        "differentialDiagnosis": ["Chiari II Malformasyonu (Miyelomeningosel, tektal beaking, düşük tentoryum)", "Tonsillar Ektopi (3-5mm, asemptomatik, fizyolojik varyant)", "İntrakraniyal Hipotansiyon (LP/dural kaçak öyküsü, difüz pakimeningeal kontrast)", "Posterior Fossa Kitlesi (Tonsil herniasyonuna neden olabilir)"],
+        "goldStandard": "MRI sagittal (T1/T2): Tonsil herniasyonu >5mm (foramen magnum altı). BOS akım çalışması (Phase Contrast Cine MRI): Foramen magnum akım dinamikleri. Servikal MRI: Siringomiyeli taraması.",
+        "clinicalPearl": "Sagittal MRI'da serebellar tonsiller foramen magnum altına >5mm herniasyon + sivri (peg-like) tonsil şekli = Chiari I. Siringomiyeli eşlik ediyorsa cerrahi endikasyonu güçlenir. Valsalva ile ağrı provokasyonu klasik.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
@@ -1111,7 +1347,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "dandy_walker_malformation",
         "name": "Dandy-Walker Malformasyonu",
+        "nameEn": "Dandy-Walker Malformation",
         "category": "Konjenital",
+        "categoryEn": "Congenital",
         "findings": {
             "mri": {
                 "t1": "Sagittal: Vermis HİPOPLAZİSİ veya agenezisi. 4. ventrikül dilatasyonu ve posterior fossaya balonlaşması.",
@@ -1130,6 +1368,16 @@ export const brainPathologies: Pathology[] = [
             "%70-90 hidrosefali eşliği.",
             "Diğer anomaliler eşlik edebilir: Korpus kallozum agenezisi, heterotopiler."
         ],
+        "keyPointsEn": [
+            "Dandy-Walker variant: Milder vermian hypoplasia, normal-sized posterior fossa.",
+            "Mega cisterna magna: Normal vermis, only enlarged cisterna - Differential diagnosis.",
+            "70-90% associated hydrocephalus.",
+            "Other anomalies may coexist: Corpus callosum agenesis, heterotopias."
+        ],
+        "etiology": "Serebellar vermis gelişim bozukluğu (4. haftadan itibaren). Sporadik (%çoğunluk). İlişkili: Kromozomal anomaliler (Trizomi 13, 18, 21), konjenital enfeksiyonlar (CMV, rubella), fetal alkol sendromu.",
+        "differentialDiagnosis": ["Dandy-Walker Varyantı (Hafif vermis hipoplazisi, normal posterior fossa)", "Mega Sisterna Magna (Normal vermis, sadece genişlemiş sisterna)", "Blake Kesesi Kisti (Ekspanse 4. ventrikül, vermis normal)", "Araknoid Kist (Posterior fossa, vermis kompresyonu)"],
+        "goldStandard": "MRI sagittal (T1/T2): Vermis hipoplazisi/agenezisi + 4. ventrikül kistik dilatasyonu + posterior fossa genişlemesi (tentoryum elevasyonu). Prenatal USG/fetal MRI: Erken tanı.",
+        "clinicalPearl": "Klasik triad: Vermis hipoplazisi + 4. ventrikül kistik genişlemesi + genişlemiş posterior fossa = Dandy-Walker. Vermis normal ise DW varyantı veya mega sisterna magna düşün. Eşlik eden supratentoryal anomalileri ara.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
@@ -1140,7 +1388,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "corpus_callosum_agenesis",
         "name": "Korpus Kallozum Agenezisi",
+        "nameEn": "Agenesis of the Corpus Callosum",
         "category": "Konjenital",
+        "categoryEn": "Congenital",
         "findings": {
             "mri": {
                 "t1": "Sagittal: Korpus kallozum YOK. Radial sulkuslar (3. ventrikül çevresinde güneş ışını paterni).",
@@ -1159,6 +1409,16 @@ export const brainPathologies: Pathology[] = [
             "Sendromik: Aicardi sendromu (kızlarda), ACC+Koriyoretinal lakünler+İnfantil spazm.",
             "Asemptomatik olabilir veya gelişimsel gecikme ile prezente."
         ],
+        "keyPointsEn": [
+            "Partial agenesis: Posterior part (splenium) most commonly absent.",
+            "Lipoma (interhemispheric) accompanies in 50%.",
+            "Syndromic: Aicardi syndrome (in girls), ACC+Chorioretinal lacunae+Infantile spasms.",
+            "May be asymptomatic or present with developmental delay."
+        ],
+        "etiology": "Nöral gelişim bozukluğu (8-20. gestasyonel hafta). Sporadik veya sendromik. İlişkili: Aicardi sendromu (X-bağlantılı), FAS, Trizomi 13/18, metabolik hastalıklar (piruvat dehidrogenaz eksikliği).",
+        "differentialDiagnosis": ["Holoprozensefali (Orta hat yapıları füzyonu, tek ventrikül)", "Septo-optik Displazi (Septum pellucidum yokluğu, optik sinir hipoplazisi)", "Hidranensefali (Serebral hemisferler yok, falks korunmuş)", "Normal Varyant (Kavum septum pellucidum yokluğu, asemptomatik)"],
+        "goldStandard": "MRI sagittal (T1): Korpus kallozum yokluğu, radyal sulkuslar. Aksiyel: Paralel ventriküller ('yarış arabası boynuzları'). Koronal: 'Viking kaskı' görünümü. Kolposfali.",
+        "clinicalPearl": "Sagittal MRI'da korpus kallozum yok + radyal sulkuslar + paralel ventriküller + kolposfali = ACC. Parsiyel agenezide splenium (posterior) önce eksik olur. İnterhemisferik lipom ve Probst demeti eşlik edebilir.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -1169,7 +1429,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "adem",
         "name": "Akut Dissemine Ensefalomiyelit (ADEM)",
+        "nameEn": "Acute Disseminated Encephalomyelitis (ADEM)",
         "category": "Demiyelinizan",
+        "categoryEn": "Demyelinating",
         "findings": {
             "mri": {
                 "t1": "Hafif hipointens lezyonlar. Akut evrede kitle etkisi ve ödem olabilir.",
@@ -1188,6 +1450,16 @@ export const brainPathologies: Pathology[] = [
             "Deep gray matter tutulumu (talamus, bazal ganglia) ADEM için tipik, MS'de nadir.",
             "Difüz, kötü sınırlı lezyonlar - MS'de oval, iyi sınırlı Dawson parmakları."
         ],
+        "keyPointsEn": [
+            "Post-infectious or post-vaccination. More common in children (average 5-8 years).",
+            "Monophasic course (unlike MS). Relapse: Suggests MS or MDEM.",
+            "Deep gray matter involvement (thalamus, basal ganglia) typical for ADEM, rare in MS.",
+            "Diffuse, poorly defined lesions - MS has oval, well-defined Dawson's fingers."
+        ],
+        "etiology": "Post-enfeksiyöz otoimmün demiyelinizasyon (1-4 hafta sonra). Viral: Kızamık, kabakulak, VZV, EBV, influenza. Post-aşı (nadir). Çocuklarda daha sık (%80 pediatrik). Anti-MOG ilişkili olabilir.",
+        "differentialDiagnosis": ["Multipl Skleroz (Relaps, periventriküler Dawson parmakları, derin gri cevher tutulumu nadir)", "NMO/NMOSD (AQP4 antikor, uzun segment miyelit, optik nörit)", "Viral Ensefalit (Ateş yüksek, BOS hücre artışı, HSV için temporal lob)", "Akut Nekrotizan Ensefalopati (Bilateral talamik nekroz, influenza, çocuk)"],
+        "goldStandard": "MRI (FLAIR + T1+C + DWI): Multifokal, asimetrik, kötü sınırlı beyaz cevher + derin gri cevher lezyonları. Monofazik seyir. Anti-MOG antikor testi.",
+        "clinicalPearl": "Çocukta viral enfeksiyon sonrası ensefalopati + multifokal beyaz cevher + derin gri cevher (talamus) lezyonları = ADEM. MS'den farkı: Monofazik, kötü sınırlı, derin gri cevher tutulumu. Relaps olursa MS'e geçiş düşün.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
@@ -1198,7 +1470,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "medulloblastoma",
         "name": "Medulloblastom (Posterior Fossa Tümörü)",
+        "nameEn": "Medulloblastoma (Posterior Fossa Tumor)",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
         "findings": {
             "ct": {
                 "non_contrast": "Vermis/4. ventrikül yerleşimli HİPERDENS kitle (yüksek sellülarite). Kalsifikasyon %20. Obstrüktif hidrosefali sık.",
@@ -1218,6 +1492,16 @@ export const brainPathologies: Pathology[] = [
             "DWI kısıtlaması: Pilocytic astrositom ve ependimomdan ayırıcı (onlarda kısıtlanma yok).",
             "Staging: Tüm nöroaksis MR + LP (leptomeningeal yayılım)."
         ],
+        "keyPointsEn": [
+            "Most common malignant brain tumor in children. Average age 5-7 years.",
+            "Location: VERMIS (midline) in children, HEMISPHERE (lateral) in adults.",
+            "DWI restriction: Differentiates from pilocytic astrocytoma and ependymoma (no restriction in those).",
+            "Staging: Entire neuraxis MRI + LP (leptomeningeal spread)."
+        ],
+        "etiology": "Embriyonal tümör (primitif nöroektodermal). WHO 2021 moleküler alt tipleri: WNT-aktif (iyi prognoz), SHH-aktif, Grup 3 (en kötü prognoz, MYC amplifikasyonu), Grup 4 (en sık). Gorlin sendromu (SHH tipi).",
+        "differentialDiagnosis": ["Pilositik Astrositom (Kist + mural nodül, DWI kısıtlılığı yok)", "Ependimom (4. ventrikül tabanı, foraminalardan plastik uzanım)", "Atipik Teratoid/Rabdoid Tümör (AT/RT, <3 yaş, agresif)", "Beyin Sapı Gliomu (Diffüz pontin genişleme, kontrastlanmaz)"],
+        "goldStandard": "MRI beyin + tüm spinal aks (T1+C, DWI): Vermis/4. ventrikül solid kitle + DWI kısıtlanması + drop metastaz taraması. Histopatoloji + moleküler sınıflama (WNT, SHH, Grup 3/4).",
+        "clinicalPearl": "Çocukta posterior fossa solid kitle + DWI kısıtlanması + hiperdens BT = Medulloblastom. Pilositik astrositomda DWI negatiftir (en önemli ayırıcı bulgu). Leptomeningeal yayılım için tüm spinal aks taranmalı.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Louis DN et al. The 2021 WHO Classification of Tumors of the Central Nervous System. Neuro Oncol. 2021;23(8):1231-1251.",
@@ -1228,7 +1512,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "pilocytic_astrocytoma",
         "name": "Pilositik Astrositom (WHO Grade 1)",
+        "nameEn": "Pilocytic Astrocytoma (WHO Grade 1)",
         "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
         "findings": {
             "ct": {
                 "non_contrast": "Kistik kitle + kontrastlanan mural nodül. Serebellumda en sık. Kalsifikasyon nadir.",
@@ -1248,6 +1534,16 @@ export const brainPathologies: Pathology[] = [
             "Lokasyonlar: Serebellum > Optik yolak (NF1) > Hipotalamus.",
             "'Kist + mural nodül' paterni klasik ama %50 solid olabilir."
         ],
+        "keyPointsEn": [
+            "Most common low-grade brain tumor in children and young adults.",
+            "WHO Grade 1 - Excellent prognosis, surgery is curative.",
+            "Locations: Cerebellum > Optic pathway (NF1) > Hypothalamus.",
+            "'Cyst + mural nodule' pattern is classic but 50% may be solid."
+        ],
+        "etiology": "BRAF-KIAA1549 füzyon geni (serebellar tipte %90). NF1 ilişkili: Optik yolak gliomu. Sporadik (%çoğunluk). WHO Grade 1, düşük mitotik indeks.",
+        "differentialDiagnosis": ["Medulloblastom (Solid, vermis, DWI kısıtlanması, hiperdens BT)", "Hemanjioblastom (Erişkin, yoğun kontrastlanan nodül, VHL)", "Ependimom (4. ventrikül tabanı, foraminalardan plastik uzanım)", "Gangliogliom (Temporal lob, kistik + solid, kalsifikasyon)"],
+        "goldStandard": "MRI (T1+C, T2, DWI): Kist + yoğun kontrastlanan mural nodül + DWI kısıtlanması yok. Cerrahi + histopatoloji: BRAF füzyon analizi.",
+        "clinicalPearl": "Çocukta serebellumda kist + kontrastlanan mural nodül + DWI negatif = Pilositik astrositom. Medulloblastomdan farkı: DWI kısıtlanması YOK. NF1 hastasında optik yolak gliomu genellikle pilositik astrositomdur.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Louis DN et al. The 2021 WHO Classification of Tumors of the Central Nervous System. Neuro Oncol. 2021;23(8):1231-1251.",
@@ -1258,7 +1554,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "pres",
         "name": "PRES (Posterior Reversible Encephalopathy Syndrome)",
+        "nameEn": "Posterior Reversible Encephalopathy Syndrome (PRES)",
         "category": "Vasküler / Metabolik",
+        "categoryEn": "Vascular/Metabolic",
         "findings": {
             "mri": {
                 "t2_flair": "Bilateral simetrik, özellikle paryeto-oksipital loblarda beyaz cevherde vazojenik ödem (Hiperintens). Frontal lob ve bazal ganglion tutulumu da görülebilir.",
@@ -1273,6 +1571,15 @@ export const brainPathologies: Pathology[] = [
             "Etyoloji: Hipertansiyon, Eklampsi, İmmünsupresif ilaçlar (Siklosporin).",
             "Genellikle reversibldir, ancak tedavi edilmezse infarkta ilerler."
         ],
+        "keyPointsEn": [
+            "Clinical: Headache, seizures, visual disturbance, altered mental status.",
+            "Etiology: Hypertension, Eclampsia, Immunosuppressive drugs (Cyclosporine).",
+            "Usually reversible, but progresses to infarction if untreated."
+        ],
+        "etiology": "Akut hipertansiyon (%70-80), eklampsi/preeklampsi, immünsupresif ilaçlar (siklosporin, takrolimus), kemoterapötikler, otoimmün hastalıklar (SLE), renal yetmezlik, sepsis.",
+        "differentialDiagnosis": ["Venöz Sinüs Trombozu (MRV'de dolum defekti, hemorajik venöz infarkt)", "Bilateral Posterior Serebral Arter İnfarktı (DWI kısıtlanması, vasküler teritory)", "Progresif Multifokal Lökoensefalopati (İmmünsuprese, asimetrik, U-fiber)", "Osmotik Demyelinizasyon (Pons, Na düzeltme öyküsü)"],
+        "goldStandard": "MRI (FLAIR + DWI): Bilateral paryeto-oksipital vazojenik ödem (FLAIR hiperintens) + DWI'da kısıtlanma YOKTUR (vazojenik ödem). DWI kısıtlanması varsa irreversibl hasar.",
+        "clinicalPearl": "Hipertansif kriz/eklampsi + nöbet + bilateral paryeto-oksipital FLAIR hiperintensite + DWI negatif = PRES. DWI pozitif ise kötü prognoz (irreversibl). Posterior baskınlık nedeni: Posterior sirkülasyonda sempatik innervasyon daha az.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
@@ -1283,7 +1590,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "avm",
         "name": "Arteriovenöz Malformasyon (AVM)",
+        "nameEn": "Arteriovenous Malformation (AVM)",
         "category": "Vasküler",
+        "categoryEn": "Vascular",
         "findings": {
             "mri": {
                 "t2": "Nidus (karışık yumak) içinde 'Flow Void' (siyah, akım boşluğu) yapıları. Sinyal artışı (ödem/gliosis) çevre dokuda olabilir.",
@@ -1301,6 +1610,15 @@ export const brainPathologies: Pathology[] = [
             "Yıllık kanama riski %2-4.",
             "Nidus içinde anevrizma olması kanama riskini artırır."
         ],
+        "keyPointsEn": [
+            "Spetzler-Martin score determines surgical risk.",
+            "Annual bleeding risk is 2-4%.",
+            "Aneurysm within the nidus increases bleeding risk."
+        ],
+        "etiology": "Konjenital vasküler malformasyon. Kapiller yatak gelişmemiş → direkt AV şant. Sporadik veya HHT ilişkili (Osler-Weber-Rendu sendromu). Yüksek akımlı lezyon.",
+        "differentialDiagnosis": ["Dural AV Fistül (Edinsel, dural besleyiciler, pulsatil tinnitus)", "Kavernom (Düşük akımlı, anjiyografide okült)", "Vasküler Tümör (Metastaz, GBM - kontrastlanma paterni farklı)", "DVA (Düşük akımlı, caput medusae, benign)"],
+        "goldStandard": "DSA (Dijital Subtraksiyon Anjiyografi): Altın standart - nidus, besleyiciler, drenaj paternini gösterir. MRI/MRA tarama amaçlıdır.",
+        "clinicalPearl": "MRI'da serpiginöz flow void + DSA'da erken venöz dolum = AVM. Spetzler-Martin sınıflaması tedavi kararını (cerrahi, embolizasyon, radyocerrahi) yönlendirir. İntranidal anevrizma varsa kanama riski yükselir.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",

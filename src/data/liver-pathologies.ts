@@ -259,6 +259,10 @@ export const liverPathologies: Pathology[] = [
             "Differential diagnosis: Fibrolamellar HCC (scar T2 hypointense, calcification)."
         ],
         "mechanism": "Anormal arteryel beslenmeli odak → lokal hiperperfüzyon → hepatosit ve Kupffer hücre hiperplazisi. Normal karaciğer mimarisini içerdiğinden (hepatosit, safra duktulusu, Kupffer hücresi) hepatobilier ajanlara UPTAKE yapar → hepatobilier fazda iso/hiperintensite. Santral skar, artmış kan akımına sekonder fibröz değişimi yansıtır.",
+        "etiology": "Konjenital vasküler malformasyona bağlı poliklonal hepatosit hiperplazisi. Kadınlarda daha sık (K:E = 8:1). OKS kullanımı ile zayıf ilişki (Adenomdan farklı olarak büyümeyi tetiklemez, sadece boyut artışı mümkün).",
+        "differentialDiagnosis": ["Hepatik Adenom (Hepatobilier fazda HİPOİNTENS, yağ/kanama, OKS ilişkili)", "Fibrolamellar HCC (Santral skar T2 HİPOİNTENS, kalsifikasyon, genç hasta)", "HCC (Sirotik zemin, wash-out, AFP yüksek)", "Flash-filling Hemanjiyom (<2cm, T2 ampul işareti)", "Hipervasküler Metastaz (NET, RCC — multipl, primer odak)"],
+        "goldStandard": "MRI Hepatobilier faz (Gd-EOB-DTPA): İzo/hiperintens = FNH (korunmuş hepatosit fonksiyonu). Santral skar T2 hiperintens + geç faz kontrastlanması tanıyı destekler.",
+        "clinicalPearl": "Hepatobilier fazda İZO/HİPERİNTENS = FNH (Adenom ve metastaz HİPOİNTENS). Santral skar T2 hiperintens ise FNH, T2 hipointens ise fibrolamellar HCC düşün.",
         "mechanismEn": "Abnormal arterial supply focus → local hyperperfusion → hepatocyte and Kupffer cell hyperplasia. Because it contains normal liver architecture (hepatocytes, bile ductules, Kupffer cells) it takes up hepatobiliary agents → iso/hyperintensity in hepatobiliary phase. Central scar reflects fibrous changes secondary to increased blood flow.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -313,6 +317,10 @@ export const liverPathologies: Pathology[] = [
             "Subtypes: HNF1α-inactivated (fatty), β-catenin mutant (high malignancy risk), Inflammatory."
         ],
         "mechanism": "Östrojen/androjen → hepatosit proliferasyonu ve apoptoz inhibisyonu → klonal hepatosit kitlesi. HNF1α inaktivasyonu: Yağ birikimi (steatotik adenom). β-catenin aktivasyonu: Hepatosit displazisi → malign transformasyon. Tümörde safra duktulusu ve Kupffer hücresi yoktur → hepatobilier fazda kontrast almaz (hipointens), FNH'den ayrım buradan yapılır.",
+        "etiology": "OKS kullanımı (en sık neden, %90 ilişkili). Anabolik steroidler. Glikojen depo hastalığı (tip I, III). Obezite ve metabolik sendrom (inflamatuvar alt tip).",
+        "differentialDiagnosis": ["FNH (Hepatobilier fazda İZO/HİPERİNTENS, santral skar, tedavi gereksiz)", "HCC (Sirotik zemin, wash-in/wash-out, AFP yüksek)", "Hipervasküler Metastaz (Multipl, primer odak bilinen, T2 daha parlak)", "Fokal Nodüler Steatoz (Kitle etkisi yok, vasküler yapılar düzgün)", "Hemanjiyom (T2 ampul işareti, periferik nodüler dolum)"],
+        "goldStandard": "MRI Hepatobilier faz (Gd-EOB-DTPA): HİPOİNTENS (Kupffer hücresi ve safra duktulusu yok). Chemical shift: HNF1α tipinde yağ saptanır. Biyopsi: β-catenin pozitifliği malignite riski gösterir.",
+        "clinicalPearl": "Genç kadın + OKS kullanımı + hepatobilier fazda hipointens lezyon + intralezyonel yağ veya kanama = Hepatik Adenom. >5cm → rezeksiyon (kanama + malignite riski). β-catenin mutant: Erkeklerde bile malignite riski yüksek.",
         "mechanismEn": "Estrogen/androgen → hepatocyte proliferation and apoptosis inhibition → clonal hepatocyte mass. HNF1-alpha inactivation: Fat accumulation (steatotic adenoma). Beta-catenin activation: Hepatocyte dysplasia → malignant transformation. Tumor lacks bile ductules and Kupffer cells → no uptake in hepatobiliary phase (hypointense), this differentiates from FNH.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -375,6 +383,10 @@ export const liverPathologies: Pathology[] = [
             "Treatment: Percutaneous drainage + Antibiotics."
         ],
         "mechanism": "Bakteriyel ajan (E. coli, Klebsiella, anaeroplar) → portal bakteremi veya doğrudan yayılım → hepatosit nekrozu → nötrofil infiltrasyonu → pü birikimi. Granülasyon dokusu ile çevrili merkez (double target iç halka kontrast alır). Visköz pü içeriği su moleküllerinin difüzyonunu kısıtlar → DWI'da yüksek sinyal (nekrotik tümörde periferik kısıtlanma, apse merkezinde tam kısıtlanma).",
+        "etiology": "Biliyer kaynaklı (%40-60): Kolanjit, koledokolitiyazis. Portal kaynaklı: Apandisit, divertikülit, inflamatuvar barsak hastalığı. Arteryel (sistemik bakteremi). Direkt yayılım (kolesistit). Kriptojenik (%15-20). Etken: E. coli, Klebsiella, Streptococcus, anaeroplar.",
+        "differentialDiagnosis": ["Nekrotik Metastaz (Periferal DWI kısıtlanma, santral serbest difüzyon)", "Amebik Apse (Tek, büyük, sağ lob, çikolata renkli içerik, seyahat öyküsü)", "Hidatik Kist (Kız veziküller, kalsifikasyon, DWI kısıtlanma yok)", "İnfekte Basit Kist (Öncesinde bilinen kist)", "Hepatik İnfarkt (Kama şekilli, safra kanalı normal)"],
+        "goldStandard": "Kontrastlı BT: Double target sign + cluster sign. MRI DWI: Merkezi difüzyon kısıtlanması (nekrotik tümörden ayırımda kritik). Perkütan aspirasyon: Tanı + tedavi.",
+        "clinicalPearl": "Apse vs Nekrotik Tümör: Apse merkezinde DWI kısıtlanma (pü viskozitesi), nekrotik tümörde merkez DWI serbest (likefaksiyon). Double target sign piyojenik apse için karakteristik.",
         "mechanismEn": "Bacterial agent (E. coli, Klebsiella, anaerobes) → portal bacteremia or direct spread → hepatocyte necrosis → neutrophil infiltration → pus accumulation. Center surrounded by granulation tissue (double target inner ring enhances). Viscous pus content restricts water molecule diffusion → high signal on DWI (peripheral restriction in necrotic tumor, complete central restriction in abscess).",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -437,6 +449,10 @@ export const liverPathologies: Pathology[] = [
             "Portal hypertension signs: Splenomegaly, ascites, varices, recanalized umbilical vein."
         ],
         "mechanism": "Kronik karaciğer hasarı (alkol, viral hepatit, NASH) → hepatosit nekrozu → fibröz doku birikimi (HSC aktivasyonu, TGF-β) → rejeneratif nodül formasyonu. Bozulan portal akım → portal hipertansiyon → kollateral dolaşım açılımı (özofageal varisler, umbilikal ven). Nodüler doku arteryel neovaskülarizasyon kazanırsa → displastik nodül → HCC dönüşümü.",
+        "etiology": "Alkol (%30-40), Kronik HBV/HCV enfeksiyonu (%30-40), NASH/Metabolik sendrom (%20, giderek artıyor), Otoimmün hepatit, Primer biliyer kolanjit, Wilson hastalığı, Hemokromatozis, α1-antitripsin eksikliği, Kriptojenik.",
+        "differentialDiagnosis": ["Hepatik Steatoz (Homojen yağlanma, nodüler yüzey yok)", "Konjenital Hepatik Fibrozis (Genç yaş, portal HT erken, hepatosit fonksiyonu korunmuş)", "Budd-Chiari (Kaudat lob hipertrofisi, hepatik ven trombozu)", "Nodüler Rejeneratif Hiperplazi (NRH — portal HT var ama fibrozis minimal)", "Sarkoidoz (Granülomlar, hepatosplenomegali, LAP)"],
+        "goldStandard": "MR Elastografi veya Transient Elastografi (FibroScan): Fibrozis evrelemesi non-invaziv. Biyopsi: Altın standart (METAVIR F4). MRI: Nodül karakterizasyonu, HCC taraması (LI-RADS).",
+        "clinicalPearl": "Nodüler karaciğer yüzeyi + kaudat lob hipertrofisi + sağ lob atrofisi + splenomegali = Siroz. Rejeneratif nodül (siderotik) T1/T2 hipointens → HCC riski düşük. Non-siderotik displastik nodül T1 hiperintens → HCC transformasyonu yüksek risk.",
         "mechanismEn": "Chronic liver injury (alcohol, viral hepatitis, NASH) → hepatocyte necrosis → fibrous tissue accumulation (HSC activation, TGF-beta) → regenerative nodule formation. Disrupted portal flow → portal hypertension → collateral circulation development (esophageal varices, umbilical vein). If nodular tissue acquires arterial neovascularization → dysplastic nodule → HCC transformation.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -502,6 +518,10 @@ export const liverPathologies: Pathology[] = [
             "Type 3 (Daughter vesicle) and Type 2 (Membrane) are active."
         ],
         "mechanism": "Echinococcus granulosus yumurtasının oral alınımı → bağırsakta larval formu (onkosfer) açılır → portal dolaşıma girer → karaciğerde yerleşir → hidatid kist gelişir. Kist üç tabakadan oluşur: Dış (perikist, konak fibröz doku), orta (germinal epiteli), iç (germinal tabaka, yavru kist üretir). Membran ayrışması → water lily sign; kalsifikasyon → inaktif evre.",
+        "etiology": "Echinococcus granulosus (kistik ekinokokkoz, en sık). Echinococcus multilocularis (alveoler ekinokokkoz, daha agresif). Bulaş: Enfekte köpek dışkısıyla kontamine gıda/su. Endemik bölgeler: Akdeniz, Orta Doğu, Türkiye, Güney Amerika, Avustralya.",
+        "differentialDiagnosis": ["Basit Hepatik Kist (İnce düzgün duvar, septasyon/kız vezikül yok)", "Karaciğer Apsesi (Kalın duvar, DWI kısıtlanma, ateş, lökositoz)", "Biliyer Kistadenom/Kistadenokarsinom (Septasyon, mural nodül, kontrastlanma)", "Kistik Metastaz (Düzensiz duvar, solid komponent, primer odak)", "Travmatik Kist/Bilioma (Travma öyküsü, düzensiz şekil)"],
+        "goldStandard": "USG (ilk basamak, WHO-IWGE sınıflaması CE1-CE5). BT: Kist morfolojisi, kalsifikasyon, kız veziküller detayı. MRI/MRCP: Safra kanalı ilişkisi ve komplikasyonlar (rüptür). Seroloji (IHA, ELISA): Destekleyici.",
+        "clinicalPearl": "Water lily sign (yüzen membran) = Hidatik kist PATOGNOMONİK. CE1-CE3a aktif (tedavi gerekir), CE4-CE5 inaktif (izlem). Rüptür → anafilaksi riski: Aspirasyon öncesi albendazol başla ve PAIR protokolüne uy.",
         "mechanismEn": "Oral ingestion of Echinococcus granulosus eggs → larval form (oncosphere) hatches in intestine → enters portal circulation → settles in liver → hydatid cyst develops. Cyst consists of three layers: outer (pericyst, host fibrous tissue), middle (germinal epithelium), inner (germinal layer, produces daughter cysts). Membrane detachment → water lily sign; calcification → inactive stage.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",

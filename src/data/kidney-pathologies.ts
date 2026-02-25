@@ -127,6 +127,10 @@ export const kidneyPathologies: Pathology[] = [
             ">4cm AML: Increased bleeding risk → Consider embolization."
         ],
         "mechanism": "mTOR yolağı aktivasyonu (TSC1/TSC2 mutasyonu veya sporadik) → anormal mezodermal diferansiasyon → yağ dokusu, düz kas ve anormal damarların karışımından oluşan hamartom. Anormal damarlar esnek duvardan yoksundur (anevrizma riski) → Wunderlich sendromu (spontan retroperitoneal kanama). Fat-poor AML: Düz kas baskın, TSC bağlantısı sık.",
+        "etiology": "Sporadik (%80) veya Tüberöz Skleroz Kompleksi (TSC) ilişkili (%20). TSC: TSC1/TSC2 gen mutasyonu → bilateral, multipl AML'ler. Kadınlarda daha sık (hormonal etki).",
+        "differentialDiagnosis": ["Renal Hücreli Karsinom (Fat-poor AML ile karışabilir; yağ yoksa BT ile ayrılamaz)", "Onkositom (Solid, homojen kontrastlanma)", "Renal lipom/liposarkom (Çok nadir, tamamen yağ)", "Wilms tümörü (Çocuk, yağ içermez)"],
+        "goldStandard": "Non-kontrast BT: Makroskopik yağ tespiti (<-10 HU = kesin AML). Fat-poor AML: MRI chemical shift, biyopsi veya cerrahi gerekebilir.",
+        "clinicalPearl": "BT'de <-10 HU yağ dokusu = AML kesin tanı, biyopsiye gerek yok. >4 cm AML'de spontan kanama riski artar → profilaktik embolizasyon düşün. TSC'li hastada bilateral AML'ler beklenir.",
         "mechanismEn": "mTOR pathway activation (TSC1/TSC2 mutation or sporadic) → abnormal mesodermal differentiation → hamartoma composed of a mixture of fat tissue, smooth muscle, and abnormal vessels. Abnormal vessels lack elastic walls (aneurysm risk) → Wunderlich syndrome (spontaneous retroperitoneal hemorrhage). Fat-poor AML: Smooth muscle dominant, frequent TSC association.",
         "references": [
             "Israel GM, Bosniak MA. Renal imaging for diagnosis and staging of renal cell carcinoma. Urol Clin North Am. 2003;30(3):499-514.",
@@ -187,6 +191,10 @@ export const kidneyPathologies: Pathology[] = [
             "Follow-up required: Only for Bosniak IIF and above."
         ],
         "mechanism": "Renal tübülün fokal dilatasyon ve obstrüksiyonu → sıvı birikimi → kistik yapı. Edinsel kistler: Kronik renal hasarda tübüler atrofi ve fibröz bağ doku baskısıyla gelişir. Sıvı saf transüda (proteinsiz) olduğu için 0-20 HU, T2'de BOS benzeri çok parlak sinyal verir. Kontrastlanma olmaması, duvar ve içerik normalliği = benign.",
+        "etiology": "Edinsel (yaşlanma, tübüler obstrüksiyon). İnsidans yaşla artar: >50 yaş bireylerin %50'sinden fazlasında en az bir basit kist bulunur. Kronik böbrek hastalığında sıklık artar.",
+        "differentialDiagnosis": ["Hiperdens kist (Bosniak II, >20 HU ama kontrastlanma yok)", "Parapelvik kist (Sinüs yerleşimli, hidronefroz ile karışabilir)", "Kistik RCC (Bosniak III-IV, septum/duvar kontrastlanması)", "ADPKD (Multipl bilateral kistler, büyük böbrekler, aile öyküsü)"],
+        "goldStandard": "USG: İlk basamak, basit kist kriterleri (anekoik, ince duvar, posterior güçlenme). BT: Bosniak sınıflaması ile karakterizasyon.",
+        "clinicalPearl": "USG'de 4 kriter: Anekoik + ince pürüzsüz duvar + posterior akustik güçlenme + internal eko yok = Bosniak I basit kist, takip gereksiz. Atipik özellik varsa BT/MRI ile Bosniak sınıflaması yap.",
         "mechanismEn": "Focal dilation and obstruction of renal tubule → fluid accumulation → cystic structure. Acquired cysts: Develop due to tubular atrophy and fibrous tissue compression in chronic renal disease. Since the fluid is pure transudate (protein-free), it measures 0-20 HU and gives CSF-like very bright signal on T2. Absence of enhancement, normal wall and content = benign.",
         "references": [
             "Silverman SG et al. Bosniak Classification of Cystic Renal Masses, Version 2019. Radiology. 2019;292(2):475-488.",
@@ -237,6 +245,10 @@ export const kidneyPathologies: Pathology[] = [
             "2019 update: MRI findings incorporated."
         ],
         "mechanism": "Basit kist zemininde oluşan komplikasyonlar (kanama, enfeksiyon, displazi) → kist duvarında kalınlaşma, septumasyon, kalsifikasyon veya solid komponent. Bosniak sınıflaması, kist duvar ve içerik özelliklerine göre malignite riskini katmanlara ayırır. Solid kontrastlanan komponent (Bosniak IV) kistik RCC için yüksek risk (%90) taşır.",
+        "etiology": "Basit kist zemininde kanama, enfeksiyon veya neoplastik değişim. Kistik RCC: Clear cell tip kistik dejenerasyon. Multilokuler kistik nefroma. Kist komplikasyonları (hemorajik, enfekte kist).",
+        "differentialDiagnosis": ["Basit kist (Bosniak I, kontrastlanma yok)", "Hemorajik kist (Bosniak II, >20 HU ama kontrastlanma yok)", "Kistik RCC (Bosniak III-IV, solid kontrastlanan komponent)", "Multilokuler kistik nefroma (Bosniak III, pelvise herniasyon)", "Kist enfeksiyonu (Kalın duvar, klinik bulgular)"],
+        "goldStandard": "Kontrastlı BT (multifazik): Bosniak sınıflaması altın standardı. MRI: Septum ve duvar kontrastlanmasında BT'den daha sensitif (2019 güncellemesiyle MRI bulguları da dahil edildi).",
+        "clinicalPearl": "Bosniak IIF: Takip gerekli (yıllık BT, 5 yıl). Bosniak III-IV: Cerrahi. 2019 güncellemesinde MRI bulguları eklendi ve IIF kategorisi netleştirildi. Septum kalınlığı ve kontrastlanması en kritik parametrelerdir.",
         "mechanismEn": "Complications arising from simple cysts (hemorrhage, infection, dysplasia) → wall thickening, septation, calcification, or solid component. Bosniak classification stratifies malignancy risk based on cyst wall and content characteristics. Solid enhancing component (Bosniak IV) carries high risk (90%) for cystic RCC.",
         "references": [
             "Bosniak MA. The Bosniak Renal Cyst Classification: 25 Years Later. Radiology. 2012;262(3):781-785.",
@@ -298,6 +310,10 @@ export const kidneyPathologies: Pathology[] = [
             "Clinical + urine + imaging = Diagnosis. CT for complications."
         ],
         "mechanism": "E. coli (%80+) alt üriner yoldan renal pelvise çıkan enfeksiyon → tübüler epitel tutulumu → nötrofil infiltrasyonu ve ödem. Tübüler ödem, kontrast ajanlı BT'de tübülden geçişi yavaşlatır → striated nefrogram (hipoperfüze alanlar ile normoperfüze alanların radyal şerit paterni). Amfizematoz tip: Gaz üreten bakteriler (Klebsiella, E. coli) + diyabetik mikrovasküler hasar → intraparankimal gaz birikimi.",
+        "etiology": "Asandan enfeksiyon (en sık): E. coli (%80+), Klebsiella, Proteus. Risk faktörleri: Kadın cinsiyet, üriner obstrüksiyon, vezikoüreteral reflü (VUR), diyabet, gebelik, immunsupresyon, üriner kateterizasyon.",
+        "differentialDiagnosis": ["Renal infarkt (Kama şekilli ama kontrastlanmaz; ateş/lökositoz genellikle yok)", "Renal lenfoma (Multipl, bilateral, hipovasküler)", "Renal apse (Halka kontrastlanma, lokalize koleksiyon)", "Akut tübüler nekroz (Bilateral, diffüz, klinik bağlam farklı)", "Fokal piyelonefrit vs RCC (Fokal hipoperfüze alan kitle ile karışabilir — takip BT ile ayrım)"],
+        "goldStandard": "Klinik tanı (ateş + kostovertebral hassasiyet + piyüri). Kontrastlı BT: Komplikasyon şüphesinde (apse, amfizematöz piyelonefrit, obstrüksiyon). DWI-MRI: Radyasyon kaygısında alternatif.",
+        "clinicalPearl": "Antibiyotik tedavisine 72 saat yanıtsızlık → kontrastlı BT çek (apse? obstrüksiyon?). Amfizematöz piyelonefrit (intraparankimal gaz) = acil cerrahi/drenaj, genellikle diyabetik hastada. USG %70 normal olabilir — normal USG piyelonefriti dışlamaz.",
         "mechanismEn": "E. coli (80%+) ascending infection from lower urinary tract to renal pelvis → tubular epithelial involvement → neutrophil infiltration and edema. Tubular edema slows contrast transit through tubules on contrast-enhanced CT → striated nephrogram (radial stripe pattern of hypoperfused and normally perfused areas). Emphysematous type: Gas-producing bacteria (Klebsiella, E. coli) + diabetic microvascular damage → intraparenchymal gas accumulation.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -356,6 +372,10 @@ export const kidneyPathologies: Pathology[] = [
             "'Rim sign': Soft tissue around ureteral stone - Distinguishes from phlebolith."
         ],
         "mechanism": "İdrar supersatürasyonu → kristal nükleasyonu → taş büyümesi. Kalsiyum oksalat: Hiperoksalüri veya hiperkalsiüri. Ürik asit: Asidik idrar (pH <5.5) + hiperurisemi. Struvit (magnezyum amonyum fosfat): Üreaz (+) bakteri enfeksiyonu (Proteus, Klebsiella) → amonyak → alkali idrar. Sistin: Sistinopatide tübüler reabsorbsiyon bozukluğu. BT'de HU değeri taş kompozisyonunu yansıtır.",
+        "etiology": "Kalsiyum oksalat (%75-80): Hiperkalsiüri, hiperoksalüri. Ürik asit (%5-10): Gut, myeloproliferatif hastalıklar, asidik idrar. Struvit (%10-15): Üreaz-pozitif bakteri enfeksiyonu (Proteus). Sistin (%1-2): Otozomal resesif sistinüri. Risk faktörleri: Dehidratasyon, yüksek protein diyeti, aile öyküsü, medüller sünger böbrek.",
+        "differentialDiagnosis": ["Flebolit (Pelvik ven kalsifikasyonu, 'comet tail' bulgusu, rim sign yok)", "Vasküler kalsifikasyon (Tübüler, damar seyrine uyumlu)", "Renal arter anevrizması (Kalsifiye, hilum komşuluğunda)", "Appendikolit (Sağ alt kadran, klinik bağlam)", "Tüberküloz kalsifikasyonu (Parankimal, düzensiz)"],
+        "goldStandard": "Non-kontrast BT: Altın standart (sensitivite %95-98, spesifisite %96-100). USG: Çocuklarda ve gebelerde ilk tercih. Dual-energy BT: Taş kompozisyonu tayini (ürik asit vs kalsiyum ayrımı).",
+        "clinicalPearl": "Ürik asit taşları BT'de nispeten düşük HU (<600) gösterir ve alkali idrar tedavisine yanıt verir — cerrahi gerekmeyebilir. Struvit taşları staghorn konfigürasyonu gösterir ve tedavisiz tekrarlar. Dual-energy BT taş tipini non-invaziv ayırt edebilir.",
         "mechanismEn": "Urine supersaturation → crystal nucleation → stone growth. Calcium oxalate: Hyperoxaluria or hypercalciuria. Uric acid: Acidic urine (pH <5.5) + hyperuricemia. Struvite (magnesium ammonium phosphate): Urease-producing bacterial infection (Proteus, Klebsiella) → ammonia → alkaline urine. Cystine: Tubular reabsorption defect in cystinopathy. HU value on CT reflects stone composition.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -370,6 +390,10 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Benign",
         "categoryEn": "Benign",
         "mechanism": "Proksimal tübüler intersitisyel hücrelerden (onkositler) köken alan benign epitelyal tümör. Mitokondri açısından zengin eozinofilik hücreler kompakt adacıklar oluşturur. Santral yıldız şeklindeki skar, fibrotik stroma birikiminin sonucudur.",
+        "etiology": "Sporadik (çoğunluk). Birt-Hogg-Dube sendromu: Bilateral, multipl onkositomlar + kromofob RCC. İnsidans: Tüm renal neoplazmlerin %3-7'si. Erkeklerde daha sık, genellikle >50 yaş.",
+        "differentialDiagnosis": ["Renal Hücreli Karsinom (En önemli ayırıcı; görüntüleme ile kesin ayrım çoğu zaman mümkün değil)", "Kromofob RCC (Onkositomla histolojik benzerlik, spoke-wheel olabilir)", "Fat-poor AML (Homojen solid kitle, yağ saptanamaz)", "Renal adenom (Küçük, <1 cm, insidental)"],
+        "goldStandard": "Kontrastlı BT/MRI: Santral skar + spoke-wheel kontrastlanma paterni şüphe uyandırır ama kesin tanı koydurmaz. Kesin tanı: Cerrahi eksizyon + histopatoloji. Biyopsi güvenilirliği sınırlıdır.",
+        "clinicalPearl": "Santral yıldız skar + spoke-wheel kontrastlanma paterni onkositomu düşündürür ama RCC'yi dışlamaz — %30-50'sinde skar yoktur. Görüntüleme ile kesin tanı konamadığından çoğu olguda parsiyel nefrektomi yapılır ve tanı patolojik olarak konur.",
         "mechanismEn": "Benign epithelial tumor originating from proximal tubular intercalated cells (oncocytes). Mitochondria-rich eosinophilic cells form compact nests. The central stellate scar results from fibrotic stromal accumulation.",
         "findings": {
             "ct": {
@@ -412,6 +436,10 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Neoplastik",
         "categoryEn": "Neoplastic",
         "mechanism": "Kronik ürotelyum irritasyonu (sigara, aromatik amin maruziyeti) → DNA hasarı → Transizyonel epitel displazisi → Karsinoma. Tüm ürotelyumu etkileyebilen 'field effect' nedeniyle multifokaldır; eş zamanlı mesane tümörü sık görülür.",
+        "etiology": "Sigara (en güçlü risk faktörü, 2-4 kat risk artışı), aromatik aminler (mesleki maruziyet: boya, kimya sanayi), aristoloşik asit (Balkan nefropatisi), siklofosfamid, kronik enfeksiyon/irritasyon, fenasetin kullanımı.",
+        "differentialDiagnosis": ["Renal Hücreli Karsinom (Kortikal kökenli, böbrek konturunu bozar, hipervasküler)", "Kan pıhtısı (Dolum defekti ama kontrastlanma yok, pozisyonla değişebilir)", "Fungus topu (İmmunsuprese hasta, antifungal tedaviye yanıt)", "Fibroepitelyal polip (Nadir, üreter yerleşimli benign tümör)", "Renal pelvis taşı (Hiperdens, akustik gölge)"],
+        "goldStandard": "BT Ürografi (boşaltım fazı): Dolum defekti tespitinde altın standart. Üreterorenoskopi + biyopsi: Histopatolojik tanı. Sitoloji: Yüksek grade tümörlerde yardımcı.",
+        "clinicalPearl": "Ağrısız makroskopik hematüri + BT ürografide dolum defekti + böbrek konturu normal = Ürotelyal karsinom düşün. Field effect nedeniyle TÜM ürotelyumu (bilateral böbrekler + üreterler + mesane) tara. Sigara öyküsü risk artırır.",
         "mechanismEn": "Chronic urothelial irritation (smoking, aromatic amine exposure) → DNA damage → Transitional epithelial dysplasia → Carcinoma. Multifocal due to 'field effect' affecting the entire urothelium; synchronous bladder tumor is common.",
         "findings": {
             "ct": {
