@@ -363,6 +363,10 @@ export const kidneyPathologies: Pathology[] = [
             "'Rim sign': Soft tissue around ureteral stone - Distinguishes from phlebolith."
         ],
         "mechanism": "İdrar supersatürasyonu → kristal nükleasyonu → taş büyümesi. Kalsiyum oksalat: Hiperoksalüri veya hiperkalsiüri. Ürik asit: Asidik idrar (pH <5.5) + hiperurisemi. Struvit (magnezyum amonyum fosfat): Üreaz (+) bakteri enfeksiyonu (Proteus, Klebsiella) → amonyak → alkali idrar. Sistin: Sistinopatide tübüler reabsorbsiyon bozukluğu. BT'de HU değeri taş kompozisyonunu yansıtır.",
+        "etiology": "Kalsiyum oksalat (%75-80): Hiperkalsiüri, hiperoksalüri. Ürik asit (%5-10): Gut, myeloproliferatif hastalıklar, asidik idrar. Struvit (%10-15): Üreaz-pozitif bakteri enfeksiyonu (Proteus). Sistin (%1-2): Otozomal resesif sistinüri. Risk faktörleri: Dehidratasyon, yüksek protein diyeti, aile öyküsü, medüller sünger böbrek.",
+        "differentialDiagnosis": ["Flebolit (Pelvik ven kalsifikasyonu, 'comet tail' bulgusu, rim sign yok)", "Vasküler kalsifikasyon (Tübüler, damar seyrine uyumlu)", "Renal arter anevrizması (Kalsifiye, hilum komşuluğunda)", "Appendikolit (Sağ alt kadran, klinik bağlam)", "Tüberküloz kalsifikasyonu (Parankimal, düzensiz)"],
+        "goldStandard": "Non-kontrast BT: Altın standart (sensitivite %95-98, spesifisite %96-100). USG: Çocuklarda ve gebelerde ilk tercih. Dual-energy BT: Taş kompozisyonu tayini (ürik asit vs kalsiyum ayrımı).",
+        "clinicalPearl": "Ürik asit taşları BT'de nispeten düşük HU (<600) gösterir ve alkali idrar tedavisine yanıt verir — cerrahi gerekmeyebilir. Struvit taşları staghorn konfigürasyonu gösterir ve tedavisiz tekrarlar. Dual-energy BT taş tipini non-invaziv ayırt edebilir.",
         "references": [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "ACR Appropriateness Criteria: Acute Onset Flank Pain — Suspicion of Stone Disease. American College of Radiology.",
@@ -376,6 +380,10 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Benign",
         "categoryEn": "Benign",
         "mechanism": "Proksimal tübüler intersitisyel hücrelerden (onkositler) köken alan benign epitelyal tümör. Mitokondri açısından zengin eozinofilik hücreler kompakt adacıklar oluşturur. Santral yıldız şeklindeki skar, fibrotik stroma birikiminin sonucudur.",
+        "etiology": "Sporadik (çoğunluk). Birt-Hogg-Dube sendromu: Bilateral, multipl onkositomlar + kromofob RCC. İnsidans: Tüm renal neoplazmlerin %3-7'si. Erkeklerde daha sık, genellikle >50 yaş.",
+        "differentialDiagnosis": ["Renal Hücreli Karsinom (En önemli ayırıcı; görüntüleme ile kesin ayrım çoğu zaman mümkün değil)", "Kromofob RCC (Onkositomla histolojik benzerlik, spoke-wheel olabilir)", "Fat-poor AML (Homojen solid kitle, yağ saptanamaz)", "Renal adenom (Küçük, <1 cm, insidental)"],
+        "goldStandard": "Kontrastlı BT/MRI: Santral skar + spoke-wheel kontrastlanma paterni şüphe uyandırır ama kesin tanı koydurmaz. Kesin tanı: Cerrahi eksizyon + histopatoloji. Biyopsi güvenilirliği sınırlıdır.",
+        "clinicalPearl": "Santral yıldız skar + spoke-wheel kontrastlanma paterni onkositomu düşündürür ama RCC'yi dışlamaz — %30-50'sinde skar yoktur. Görüntüleme ile kesin tanı konamadığından çoğu olguda parsiyel nefrektomi yapılır ve tanı patolojik olarak konur.",
         "findings": {
             "ct": {
                 "contrast": "RCC ile ayrımı zordur. Santral skar (Yıldızvari hipodansite) klasik bulgusudur (%30-50). Spoke-wheel (tekerlek) tarzı kontrastlanma."
@@ -417,6 +425,10 @@ export const kidneyPathologies: Pathology[] = [
         "category": "Neoplastik",
         "categoryEn": "Neoplastic",
         "mechanism": "Kronik ürotelyum irritasyonu (sigara, aromatik amin maruziyeti) → DNA hasarı → Transizyonel epitel displazisi → Karsinoma. Tüm ürotelyumu etkileyebilen 'field effect' nedeniyle multifokaldır; eş zamanlı mesane tümörü sık görülür.",
+        "etiology": "Sigara (en güçlü risk faktörü, 2-4 kat risk artışı), aromatik aminler (mesleki maruziyet: boya, kimya sanayi), aristoloşik asit (Balkan nefropatisi), siklofosfamid, kronik enfeksiyon/irritasyon, fenasetin kullanımı.",
+        "differentialDiagnosis": ["Renal Hücreli Karsinom (Kortikal kökenli, böbrek konturunu bozar, hipervasküler)", "Kan pıhtısı (Dolum defekti ama kontrastlanma yok, pozisyonla değişebilir)", "Fungus topu (İmmunsuprese hasta, antifungal tedaviye yanıt)", "Fibroepitelyal polip (Nadir, üreter yerleşimli benign tümör)", "Renal pelvis taşı (Hiperdens, akustik gölge)"],
+        "goldStandard": "BT Ürografi (boşaltım fazı): Dolum defekti tespitinde altın standart. Üreterorenoskopi + biyopsi: Histopatolojik tanı. Sitoloji: Yüksek grade tümörlerde yardımcı.",
+        "clinicalPearl": "Ağrısız makroskopik hematüri + BT ürografide dolum defekti + böbrek konturu normal = Ürotelyal karsinom düşün. Field effect nedeniyle TÜM ürotelyumu (bilateral böbrekler + üreterler + mesane) tara. Sigara öyküsü risk artırır.",
         "findings": {
             "ct": {
                 "contrast": "Renal pelviste santral yerleşimli yumuşak doku kitlesi. Dolum defekti. Kalisiyel dilatasyon (Tümör obstrüksiyonuna bağlı).",

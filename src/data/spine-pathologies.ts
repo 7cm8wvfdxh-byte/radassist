@@ -415,6 +415,10 @@ export const spinePathologies: Pathology[] = [
             "Facet block and ablation: Used for diagnosis and treatment."
         ],
         "mechanism": "Faset (zigapofiziyel) eklem artrozisi: Disk yüksekliği azaldıkça faset ekleme binen yük artar → kıkırdak dejenerasyonu → kemik subkondral değişiklikler → osteofitler → eklem kapsülü ve çevredeki sinoviyal membranın kalınlaşması. Sinoviyal kist: Kronik irritasyon → sinoviyal sıvının eklem kapsülü zayıf noktasından herniyasyonu → lateral recess veya foramene bası yapabilir.",
+        "etiology": "Dejeneratif (en sık): Disk yükseklik kaybına sekonder artan faset yükü. Travmatik: Faset kırığı/subluksasyonu. İnflamatuvar: Romatoid artrit, ankilozan spondilit. Lomber bölge en sık tutulur (L4-L5, L5-S1).",
+        "differentialDiagnosis": ["Disk Hernisi (Radiküler ağrı, fleksiyonda artar, SLR +)", "Sakroiliak Eklem Disfonksiyonu (FABER testi +, SI bölgede hassasiyet)", "Lomber Spinal Stenoz (Bilateral kladikasyo, disk + faset + ligaman)", "Piriformis Sendromu (Gluteal ağrı, piriformis germe testi +)", "Vertebral Kompresyon Kırığı (Akut ağrı, osteoporoz)"],
+        "goldStandard": "MRI (Aksiyel + Sagittal T2): Faset hipertrofisi, effüzyon, sinoviyal kist. BT: Faset sklerozisi, osteofit, vakum fenomeni. Tanısal faset blokajı: Ağrı kaynağı konfirmasyonu.",
+        "clinicalPearl": "Bel ağrısı + ekstansiyonda artış + fleksiyonda rahatlama + paraspinal hassasiyet = Faset artropatisi düşün. Sinoviyal kist lateral resess stenozu yapıyorsa radikülopati olabilir — disk hernisi ile karışabilir.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -466,6 +470,10 @@ export const spinePathologies: Pathology[] = [
             "Surgery: Gross total resection is possible (well-defined)."
         ],
         "mechanism": "Ependimal hücrelerden (spinal kanalın santral kanalını ve ventriküllerini döşeyen hücreler) köken alan WHO Grade 2 tümör. Tümöre ait kanama→hemosiderin birikimi (cap sign); polar kistler ependimal hasar ve BOS birikmesiyle oluşur. Konus ve filum terminale lokalizasyonu: Bu bölgelerde geniş ependimal hücre rezervuarı bulunur. İyi sınırlı yapısı cerrahi tam rezeksiyona olanak tanır.",
+        "etiology": "Ependimal hücrelerden köken alan WHO Grade 2 neoplazmlar. Sporadik veya NF2 ilişkili (NF2'de multipl olabilir). Erişkinlerde en sık intramedüller tümör. Miksopapiller alt tip: Filum terminale/konus lokalizasyonu.",
+        "differentialDiagnosis": ["Spinal Astrositom (İnfiltratif, sınırları belirsiz, eksantrik, heterojen kontrastlanma)", "Hemanjioblastom (Mural nodül + kist, Von Hippel-Lindau sendromu)", "Metastaz (Multipl, hızlı büyüme, kord dışı tutulum baskın)", "Gangliogliom (Nadir, kalsifikasyon olabilir, genç yaş)"],
+        "goldStandard": "Kontrastlı MRI (Sagittal + Aksiyel T1+K, T2): Santral, iyi sınırlı, homojen kontrastlanan kitle + cap sign + polar kistler. T2* GRE: Hemosiderin (cap sign) duyarlılığı artırır.",
+        "clinicalPearl": "'Cap sign' (hemosiderin) gördüğünde ependimom düşün — astrositomda bu bulgu yoktur. Homojen kontrastlanma + iyi sınırlı = Ependimom (cerrahi rezeksiyon uygun). Heterojen + infiltratif = Astrositom (cerrahi zor).",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -520,6 +528,10 @@ export const spinePathologies: Pathology[] = [
             "'Dumbbell' tumor: Extends both inside and outside the canal by widening the foramen."
         ],
         "mechanism": "Schwann hücrelerinden köken alan benign tümör (WHO Grade 1). Spinal sinir köklerinde (dorsal > ventral) gelişir. Yavaş büyüme → foramen kemik remodelinge uğrar (genişler). Antoni A (hücresel, kompakt) ve Antoni B (miksoid, hücresiz) alanlar arası geçiş → T2 heterojenik hiperintensite ve target sign. NF2'de NF2 geninin (merlin proteini) bialelik inaktivasyonu → multipl schwannom.",
+        "etiology": "Schwann hücrelerinden köken alan benign tümör (WHO Grade 1). Sporadik (en sık). NF2 ilişkili (multipl schwannom + bilateral vestibüler schwannom). Schwannomatozis (NF2 negatif, multipl schwannom).",
+        "differentialDiagnosis": ["Nörofibrom (Fusiform, sinir merkezinde, NF1 ilişkili, kontrastlanma homojen)", "Menenjiyom (Geniş tabanlı dural temas, dural tail, torasik dominant)", "Spinal Metastaz (Multipl, hızlı büyüme, destrüktif)", "Paragangliom (Filum terminale, vasküler, 'salt and pepper')"],
+        "goldStandard": "Kontrastlı MRI (Aksiyel + Sagittal T1+K, T2): Foraminal genişleme + dumbbell konfigürasyon + heterojen T2 hiperintensite + yoğun kontrastlanma. BT: Foramen genişlemesi.",
+        "clinicalPearl": "Foraminal genişleme + dumbbell şekil + T2 heterojen hiperintensite (target sign) + yoğun kontrastlanma = Schwannom. Nörofibromda sinir merkezinden (fusiform) büyür; schwannomda sinir eksentrik olarak itilir. Multipl schwannom = NF2 düşün.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -571,6 +583,10 @@ export const spinePathologies: Pathology[] = [
             "Complications: Epidural abscess, paraspinal abscess, pathologic fracture."
         ],
         "mechanism": "Hematojen bakteriyemi (S. aureus, Klebsiella) → vertebral metafizer bölge arteriyollerinde tutulma → end-plate vasküler hasar → disk avasküleri nedeniyle disk başlangıçta korunur → ilerleme sonucu disk katılımı. İki komşu vertebranın end-plate'lerinin simetrik tutulumu tipiktir (disk ortak besleme alanı). Enfeksiyon ilerledikçe epidural/paraspinal apse oluşabilir.",
+        "etiology": "Hematojen yayılım (en sık): S. aureus (%50-70), Gram-negatif basiller (üriner kaynak). İV ilaç kullanımı, diyabet, immunosupresyon, yakın cerrahi/girişim risk faktörleri. Endemik bölgelerde M. tuberculosis.",
+        "differentialDiagnosis": ["Modic Tip 1 Değişiklikleri (Disk sinyali normal/dejeneratif, DWI kısıtlanma yok, kontrastlanma difüz)", "Vertebral Metastaz (Disk korunur, pedikül tutulumu, kilo kaybı)", "Tüberküloz Spondiliti (Disk korunmuş, paraspinal soğuk apse, gibbus, subligamentöz yayılım)", "Nöropatik Artropati — Charcot Spine (DM/Siringomiyeli zemininde, debris, vakum fenomeni)"],
+        "goldStandard": "MRI (Sagittal T1, T2, STIR, T1+K, DWI): End-plate erozyonu + disk tutulumu + kontrastlanma + DWI kısıtlanma (apse). BT rehberliğinde biyopsi: Kültür ve duyarlılık testi.",
+        "clinicalPearl": "İki komşu vertebrada end-plate erozyonu + disk tutulumu + paraspinal koleksiyon = Spondilodiskit. Modic Tip 1'den farkı: DWI kısıtlanma (apse), disk T2 hiperintens (enfeksiyon), klinik enfeksiyon bulguları (ateş, CRP yüksek).",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -624,6 +640,10 @@ export const spinePathologies: Pathology[] = [
             "Risk factors: IV drug use, DM, immunosuppression, recent spinal procedure."
         ],
         "mechanism": "Hematojen yayılım veya komşu vertebra osteomiyelitinden direkt yayılım → epidural mesafede pü birikimi. Visköz pü → su moleküllerinin hareketi kısıtlanır → DWI'da parlak, ADC düşük. Epidural mesafedeki artan basınç → spinal kord ve sinir köklerine kompresyon ve vasküler ischemi → nörolojik hasar. Torasik bölgede kanal dardır, küçük koleksiyonlar bile nörolojik defisit yapabilir.",
+        "etiology": "S. aureus (en sık, %60-90). Hematojen yayılım (cilt enfeksiyonu, endokardit, üriner). Direkt yayılım (vertebral osteomiyelit). İatrojenik (spinal cerrahi, epidural kateter, LP). Risk: IV ilaç kullanımı, DM, immunosupresyon.",
+        "differentialDiagnosis": ["Epidural Hematom (Antikoagülan, T1 hiperintens subakut, DWI kısıtlanma yok)", "Disk Hernisi (Disk aralığı düzeyinde, kontrastlanma yok, ateş yok)", "Epidural Metastaz (Kemik destrüksiyonu, kontrastlanma solid, DWI farklı)", "Epidural Lipomatozis (Yağ sinyali, steroid kullanımı)"],
+        "goldStandard": "ACİL MRI (Sagittal + Aksiyel T1+K + DWI): Halka kontrastlanma + DWI kısıtlanma = Apse konfirme. BT rehberliğinde aspirasyon/drenaj: Kültür ve duyarlılık testi.",
+        "clinicalPearl": "Ateş + sırt ağrısı + nörolojik defisit = Spinal epidural apse şüphesi → ACİL MRI iste. DWI kısıtlanma (parlak) pü içeriğini gösterir. 24 saat içinde cerrahi yapılmazsa kalıcı parapleji riski yüksek!",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -675,6 +695,10 @@ export const spinePathologies: Pathology[] = [
             "Gibbus (angular kyphosis) is pathognomonic for chronic Pott disease."
         ],
         "mechanism": "M. tuberculosis hematojen yayılım → vertebral ön elemanlar (cisimler) tutulur → yavaş granülomatöz yıkım. Disk enzim salabilecek nötrofil içermediğinden (tüberküloz granülomatöz inflamasyon) disk ileri aşamaya kadar korunur (piyojenik enfeksiyondan fark). Anterior subligamentöz yayılım → multipl vertebra tutulumu. Vertebra ön yüzünde çöküş → kyphosis (gibbus deformitesi). Soğuk apse: Düşük ateş/belirgin inflamasyon yok çünkü granülomatöz tepki lokalize eder.",
+        "etiology": "Mycobacterium tuberculosis. Hematojen yayılım (primer akciğer TB'den). Endemik bölgelerde sık. Torakal ve lomber bölge en sık tutulan segmentler. İmmunosupresyon ve HIV risk faktörleri.",
+        "differentialDiagnosis": ["Piyojenik Spondilodiskit (Disk erken tutulur, hızlı seyir, yüksek ateş, nötrofil yoğun)", "Brusella Spondiliti (Endemik bölge, düşük ateş, L4-L5 sık, 'parrot beak' osteofitler)", "Vertebral Metastaz (Disk korunur ama posterior element tutulumu var, hızlı seyir)", "Fungal Spondiliti (İmmunosupresyon, yavaş seyir, nadir)"],
+        "goldStandard": "MRI (Sagittal T1, T2, STIR, T1+K): Vertebra anterior tutulumu + disk korunmuş + paraspinal soğuk apse + subligamentöz yayılım. BT rehberliğinde biyopsi: ARB boyama, kültür, PCR (Xpert MTB/RIF).",
+        "clinicalPearl": "Disk KORUNMUŞ + paraspinal büyük apse + subligamentöz multipl vertebra tutulumu + gibbus = Pott hastalığı (TB spondilit). Piyojenikte disk ERKEN tutulur ve hızlı seyreder. Psoas apsesi TB'de karakteristik — kasık bölgesine yayılabilir.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
@@ -720,6 +744,10 @@ export const spinePathologies: Pathology[] = [
             "Tuberculosis (Pott disease): Gibbus deformity, large psoas abscesses, disc relatively preserved (Skip lesions)."
         ],
         "mechanism": "S. aureus hematojen yayılım → vertebral end-plate damarlanması (ağırlıklı olarak diskin beslendiği alanlar) tıkanır → end-plate nekrozu → diskitis. İnfeksiyonun diskte ilerlemesiyle disk yüksekliği azalır ve sinyal artar. Epidural apse: Enfeksiyonun posterior epidural mesafeye yayılması ile oluşur. Piyojenik enfeksiyonun potttan farkı: Disk erken tutulur, nötrofil kökenli proteolitik enzimler diski hızla yıkar.",
+        "etiology": "Piyojenik: S. aureus (%50+), Gram-negatif (E. coli, Klebsiella — üriner kaynak). Hematojen yayılım en sık. IV ilaç kullanımı, DM, immunosupresyon risk faktörleri. Postoperatif: S. epidermidis, Propionibacterium. Lomber bölge en sık.",
+        "differentialDiagnosis": ["Modic Tip 1 Değişiklikleri (Disk normal/dejeneratif, enfeksiyon klinik bulguları yok, DWI kısıtlanma yok)", "Tüberküloz Spondiliti (Disk korunmuş, paraspinal soğuk apse, gibbus, yavaş seyir)", "Nöropatik Artropati (Charcot Spine) (DM zemininde, debris, vakum fenomeni, ağrısız)", "Dejeneratif Disk Hastalığı (End-plate düzenli, disk vakum fenomeni, ateş/CRP yok)"],
+        "goldStandard": "MRI (T1, T2, STIR, T1+K, DWI): İki komşu vertebra end-plate tutulumu + disk sinyal artışı + kontrastlanma. DWI: Apse kısıtlanma gösterir. BT rehberliğinde biyopsi: Kültür (altın standart etiyolojik tanı).",
+        "clinicalPearl": "MRI'da iki komşu vertebra end-plate'inde erozyon + aradaki diskte T2 sinyal artışı + paraspinal koleksiyon = Spondilodiskit. 'Mirror image' end-plate erozyonu karakteristik. DWI kısıtlanma varsa apse düşün. Modic Tip 1'den ayırt: Disk T2 parlak + klinik enfeksiyon = Spondilodiskit.",
         "references": [
             "Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.",
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",

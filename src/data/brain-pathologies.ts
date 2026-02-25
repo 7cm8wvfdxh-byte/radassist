@@ -612,7 +612,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "cavernous_malformation",
         "name": "Kavernom (Cavernous Malformation)",
+        "nameEn": "Cavernous Malformation (Cavernoma)",
         "category": "Vasküler",
+        "categoryEn": "Vascular",
         "gallery": [
             { "url": "/images/mri_cavernoma.png", "caption": "T2 (Popcorn)", "modality": "MRI" }
         ],
@@ -632,6 +634,15 @@ export const brainPathologies: Pathology[] = [
             "Ailesel vakalarda çokludur (Multipl) (CCM genleri).",
             "Kanama riski taşır."
         ],
+        "keyPointsEn": [
+            "Angiographically occult (low-flow/occult lesion).",
+            "Multiple in familial cases (CCM genes).",
+            "Carries risk of hemorrhage."
+        ],
+        "etiology": "Sporadik (%80, genellikle tek) veya ailesel (%20, multipl - CCM1/CCM2/CCM3 gen mutasyonları). Düşük akımlı vasküler malformasyon (kapiller düzeyde). Radyasyon sonrası gelişebilir.",
+        "differentialDiagnosis": ["Hemorajik Metastaz (Kontrastlanma, peritümöral ödem)", "Amiloid Anjiyopati (Yaşlı, lobar mikrokanamalar, SWI'da yaygın)", "Kapiller Telenjiektazi (SWI'da küçük, T1+C'de kontrastlanma)", "Diffüz Aksonal Yaralanma (Travma öyküsü, gri-beyaz bileşke)"],
+        "goldStandard": "MRI SWI/GRE: Hemosiderin halkası (blooming artefaktı). T2: Popcorn görünümü. Konvansiyonel anjiyografi negatiftir (okült lezyon).",
+        "clinicalPearl": "T2'de 'popcorn' + SWI'da hemosiderin halkası + anjiyografide görülmez = Kavernom. Multipl ise ailesel kavernomatoz düşün (CCM genleri). DVA eşliği sık.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
@@ -642,7 +653,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "diffuse_axonal_injury",
         "name": "Diffüz Aksonal Yaralanma (DAI)",
+        "nameEn": "Diffuse Axonal Injury (DAI)",
         "category": "Travma",
+        "categoryEn": "Trauma",
         "findings": {
             "ct": {
                 "non_contrast": "Genellikle Normaldir (%50-80). Gri-beyaz cevher bileşkesinde, korpus kallozumda veya beyin sapında küçük peteşiyel kanamalar görülebilir."
@@ -658,6 +671,15 @@ export const brainPathologies: Pathology[] = [
             "Klinik-Radyolojik uyumsuzluk (GKS düşük ama BT normal olabilir).",
             "SWI en duyarlı sekanstır."
         ],
+        "keyPointsEn": [
+            "Rotational acceleration/deceleration injury.",
+            "Clinical-radiological mismatch (low GCS but CT may be normal).",
+            "SWI is the most sensitive sequence."
+        ],
+        "etiology": "Yüksek enerjili travma (trafik kazası). Rotasyonel kesme (shearing) kuvvetleri → aksonal hasar. Adams sınıflaması: Evre 1 (gri-beyaz bileşke), Evre 2 (korpus kallozum), Evre 3 (beyin sapı - en kötü prognoz).",
+        "differentialDiagnosis": ["Serebral Kontüzyon (Kortikal, inferior frontal/anterior temporal, kanama odaklı)", "Çoklu Serebral Metastaz (Multipl, kontrastlanma, bilinen primer)", "Fat Embolisi Sendromu (Uzun kemik kırığı, starfield paterni, DWI)", "Amiloid Anjiyopati (Yaşlı, lobar dağılım, travma yok)"],
+        "goldStandard": "MRI SWI: Multipl mikrokanamalar (blooming). DWI: Akut aksonal hasar. BT: Sıklıkla normal (%50-80), ancak acilde ilk tercih.",
+        "clinicalPearl": "BT normal + düşük GKS = DAI düşün → MRI SWI iste. Gri-beyaz bileşke + korpus kallozum splenium + dorsolateral beyin sapı = Klasik DAI üçlüsü.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Head Trauma. American College of Radiology; 2022.",
@@ -668,7 +690,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "idiopathic_intracranial_hypertension",
         "name": "İdiyopatik İntrakraniyal Hipertansiyon (Psödotümör Serebri)",
+        "nameEn": "Idiopathic Intracranial Hypertension (Pseudotumor Cerebri)",
         "category": "Sellar/Vasküler",
+        "categoryEn": "Sellar/Vascular",
         "findings": {
             "ct": {
                 "non_contrast": "Zor izlenen (slit-like) ventriküller. Empty (boş) sella."
@@ -684,6 +708,15 @@ export const brainPathologies: Pathology[] = [
             "Papilödem, Baş ağrısı, Görme bozuklukları.",
             "Venöz Sinüs Trombozu mutlaka dışlanmalıdır."
         ],
+        "keyPointsEn": [
+            "Obese women of childbearing age.",
+            "Papilledema, headache, visual disturbances.",
+            "Venous sinus thrombosis must be excluded."
+        ],
+        "etiology": "İdiyopatik. Risk faktörleri: Obezite, kadın cinsiyet, doğurganlık çağı. İlaçlar: Tetrasiklin, A vitamini, büyüme hormonu, OKS. BOS emilim bozukluğu veya venöz basınç artışı.",
+        "differentialDiagnosis": ["Serebral Venöz Sinüs Trombozu (Akut başlangıç, MRV'de akım defekti)", "İntrakranial Kitle Lezyonu (Papilödem + fokal nörolojik defisit)", "Meningeal Karsinomatoz (Leptomeningeal kontrastlanma)", "Sarkoidoz (Leptomeningeal, hipotalamik tutulum)"],
+        "goldStandard": "MRI + MRV: Empty sella, optik sinir kılıf genişlemesi, transvers sinüs stenozu. LP: Açılış basıncı >25 cmH2O, normal BOS biyokimyası.",
+        "clinicalPearl": "Obez genç kadın + baş ağrısı + papilödem + Empty sella + optik sinir kılıf genişlemesi = İİH. MRV mutlaka yapılmalı (venöz sinüs trombozu dışla).",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Headache. American College of Radiology; 2019.",
@@ -694,7 +727,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "hydrocephalus_nph",
         "name": "Normal Basınçlı Hidrosefali (NPH)",
+        "nameEn": "Normal Pressure Hydrocephalus (NPH)",
         "category": "Dejeneratif",
+        "categoryEn": "Degenerative",
         "findings": {
             "ct": {
                 "non_contrast": "Atrofiye oranla orantısız ventrikül genişlemesi. Evans İndeksi > 0.3."
@@ -708,6 +743,14 @@ export const brainPathologies: Pathology[] = [
             "Klasik Triad: Yürüme bozukluğu ('manyetik yürüyüş'), Demans, İdrar inkontinansı.",
             "Orantısız genişlemiş subaraknoid mesafeli hidrosefali (DESH) bulguları."
         ],
+        "keyPointsEn": [
+            "Classic Triad: Gait disturbance ('magnetic gait'), Dementia, Urinary incontinence.",
+            "Disproportionately enlarged subarachnoid space hydrocephalus (DESH) findings."
+        ],
+        "etiology": "İdiyopatik (%50+). Sekonder: Önceki SAK, menenjit, travma. BOS emilim bozukluğu (araknoid granülasyonlar). Yaşlı popülasyonda (%60-80 yaş).",
+        "differentialDiagnosis": ["Alzheimer Hastalığı (Hipokampal atrofi, medial temporal lob atrofisi, Evans indeksi normal)", "Serebral Atrofi (Sulkuslar orantılı genişlemiş, ex-vacuo ventrikulomegali)", "Obstrüktif Hidrosefali (Akut başlangıç, baş ağrısı, 4. ventrikül/akuadukt obstrüksiyonu)", "Subkortikal Vasküler Demans (Periventriküler beyaz cevher lezyonları)"],
+        "goldStandard": "MRI: Evans indeksi >0.3, DESH paterni (konveksite sıkışma + Sylvian fissür genişlemesi), akuadukt flow void artışı. Tap testi (30-50 mL BOS boşaltma sonrası yürüyüş iyileşmesi).",
+        "clinicalPearl": "Yaşlıda yürüyüş bozukluğu (ilk semptom) + ventrikülomegali + konveksite sıkışma + Evans >0.3 = NPH. Tap testi pozitifse şant tedavisi yararlı. 'Wet, wacky, wobbly' = İdrar, demans, yürüyüş.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Normal Pressure Hydrocephalus",
@@ -717,7 +760,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "tuberous_sclerosis",
         "name": "Tuberoskleroz Kompleksi",
+        "nameEn": "Tuberous Sclerosis Complex (TSC)",
         "category": "Fakomatoz",
+        "categoryEn": "Phakomatosis",
         "findings": {
             "ct": {
                 "non_contrast": "Kalsifiye subependimal nodüller (SEN). Kortikal tüberler (hipodens)."
@@ -732,6 +777,15 @@ export const brainPathologies: Pathology[] = [
             "Renal AML (Anjiyomiyolipom), Kardiyak Rabdomyomlar.",
             "SEGA gelişimi açısından takip gereklidir."
         ],
+        "keyPointsEn": [
+            "Epilepsy, Skin lesions (adenoma sebaceum).",
+            "Renal AML (Angiomyolipoma), Cardiac Rhabdomyomas.",
+            "Follow-up required for SEGA development."
+        ],
+        "etiology": "Otozomal dominant. TSC1 (hamartin, 9q34) veya TSC2 (tüberin, 16p13.3) gen mutasyonu. mTOR yolağı aktivasyonu. De novo mutasyon %60-70.",
+        "differentialDiagnosis": ["Periventriküler Heterotopi (Subependimal, kontrastlanmaz, kalsifiye değil)", "Santral Nörositom (Foramen Monro, kontrastlanır, genç erişkin)", "Subependimal Yayılım (Metastaz veya gliom, düzensiz, kontrastlanır)", "Sturge-Weber Sendromu (Leptomeningeal anjiomatozis, kortikal kalsifikasyon)"],
+        "goldStandard": "MRI beyin (FLAIR + T1+C): Kortikal tüberler, SEN, SEGA tespiti. BT: Kalsifiye SEN'ler. Genetik test: TSC1/TSC2 mutasyon analizi.",
+        "clinicalPearl": "Kalsifiye subependimal nodüller + kortikal tüberler + SEGA (Foramen Monro) = TSC. SEGA >1cm ve büyüyorsa tedavi (mTOR inhibitörü veya cerrahi). Renal AML ve LAM taraması unutulmamalı.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "Radiopaedia.org - Tuberous Sclerosis Complex",
@@ -742,7 +796,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "arteriovenous_malformation",
         "name": "Arteriyovenöz Malformasyon (AVM)",
+        "nameEn": "Arteriovenous Malformation (AVM)",
         "category": "Vasküler",
+        "categoryEn": "Vascular",
         "findings": {
             "ct": {
                 "non_contrast": "İzo/Hiperdens solucan paketi (bag of worms). Kalsifikasyon. Kanama yoksa kitle etkisi yapmaz.",
@@ -760,6 +816,15 @@ export const brainPathologies: Pathology[] = [
             "Yüksek akımlı lezyon.",
             "Cerrahi risk için Spetzler-Martin derecelendirmesi."
         ],
+        "keyPointsEn": [
+            "Congenital shunt without capillary bed.",
+            "High-flow lesion.",
+            "Spetzler-Martin grading for surgical risk."
+        ],
+        "etiology": "Konjenital vasküler malformasyon. Embriyolojik dönemde kapiller yatağın gelişmemesi → direkt arteriyovenöz şant. Sporadik. HHT (Osler-Weber-Rendu) ile ilişkili olabilir.",
+        "differentialDiagnosis": ["Dural AV Fistül (Edinsel, dural besleyiciler, pulsatil tinnitus)", "Kavernom (Düşük akımlı, anjiyografide görülmez)", "Hemorajik Tümör (Kontrastlanma, kitle etkisi)", "Gelişimsel Venöz Anomali (Caput medusae, düşük akımlı)"],
+        "goldStandard": "DSA (Dijital Subtraksiyon Anjiyografi): Altın standart. Nidus, besleyici arterler, drene olan venler. MRI/MRA: Tarama. Spetzler-Martin sınıflaması (boyut, lokasyon, venöz drenaj).",
+        "clinicalPearl": "T2'de serpiginöz flow void ('solucan paketi') + BT anjiyoda erken venöz dolum = AVM. Spetzler-Martin skoru tedavi kararını belirler. Kanama riski yıllık %2-4, önceki kanama riski artırır.",
         "references": [
             "Osborn AG. Osborn's Brain: Imaging, Pathology, and Anatomy. 2nd ed. Elsevier; 2017.",
             "ACR Appropriateness Criteria: Cerebrovascular Diseases. American College of Radiology; 2021.",
@@ -770,7 +835,9 @@ export const brainPathologies: Pathology[] = [
     {
         "id": "venous_sinus_thrombosis",
         "name": "Serebral Venöz Sinüs Trombozu",
+        "nameEn": "Cerebral Venous Sinus Thrombosis (CVST)",
         "category": "Vasküler",
+        "categoryEn": "Vascular",
         "findings": {
             "ct": {
                 "non_contrast": "Hiperdens damar/sinüs işareti (Cord sign). İntra-parankimal kanama (sıklıkla bilateral/parasagittal, arteriyel alana uymayan).",

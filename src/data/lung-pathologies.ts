@@ -407,6 +407,10 @@ export const lungPathologies: Pathology[] = [
             "Saber-sheath trachea (narrowing of coronal diameter of trachea) may be associated."
         ],
         "mechanism": "Sigara dumanı veya alfa-1 antitripsin eksikliği → proteaz/antiproteaz dengesizliği (nötrofil elastaz artışı, alfa-1 antitripsin azalması) → alveolar duvar yıkımı → hava boşluğu genişlemesi → akciğer elastisitesi azalır → hava hapsi. Sentrilobüler amfizem: Sigara ile ilişkili, merkezi asiner hasar. Panasiner: Tüm asiner yıkım. Hiperinflasyon ve flatleşen diyafram bu gaz hapsi mekanizmasının yansımasıdır.",
+        "etiology": "Sigara (en önemli neden, %85-90). Alfa-1 antitripsin eksikliği (genç, alt lob panasiner amfizem). İntravenöz ilaç kullanımı (talk granülomatozu). Mesleki maruziyet (kadmiyum, kömür tozu). Bağ dokusu hastalıkları (Marfan, Ehlers-Danlos — paraseptal amfizem).",
+        "differentialDiagnosis": ["Bronşiektazi (Dilate bronşlar, signet ring, duvar kalınlaşması)", "Langerhans Hücreli Histiyositoz (Üst lob kistler, düzensiz şekil, genç sigara içen)", "Lenfanjiyoleyomiyomatozis — LAM (Genç kadın, diffüz ince duvarlı kistler)", "Pneumocystis Pnömonisi (HIV, bilateral GGO + kistler)", "Honeycombing/UIP (Bazal, subplevral, kalın duvarlı kistler)"],
+        "goldStandard": "HRCT toraks: Amfizem tipi (sentrilobüler, panasiner, paraseptal), dağılımı ve şiddeti. İnspirasyon/ekspirasyon BT: Hava hapsi değerlendirmesi. SFT (Spirometri): FEV1/FVC <0.70 (obstrüktif patern).",
+        "clinicalPearl": "Sentrilobüler (üst lob) = Sigara. Panasiner (alt lob) = Alfa-1 antitripsin eksikliği → <45 yaş amfizemde alfa-1 antitripsin düzeyi iste! Paraseptal amfizem spontan pnömotoraks riski taşır. PA çapı >29mm ise kor pulmonale gelişimini düşün.",
         "references": [
             "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
