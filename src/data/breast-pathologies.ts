@@ -441,5 +441,220 @@ export const breastPathologies: Pathology[] = [
             "ACR Appropriateness Criteria: Breast Pain. American College of Radiology.",
             "Radiopaedia.org - Breast lesion characterization"
         ]
+    },
+    {
+        id: "invasive-lobular-carcinoma",
+        name: "İnvaziv Lobüler Karsinom (ILC)",
+        nameEn: "Invasive Lobular Carcinoma (ILC)",
+        category: "Malign",
+        categoryEn: "Malignant",
+        mechanism: "E-cadherin kaybı → tek sıra halinde infiltratif büyüme (Indian file pattern) → USG ve mammografide gizli kalabilir. Bilateral ve multifokal olma eğilimi yüksek. İnvaziv karsinomların %10-15'i.",
+        keyPoints: ["E-cadherin kaybı PATOGNOMONİK (immünohistokimya).", "Mammografi ve USG'de GİZLİ kalabilir (desmoplastik reaksiyon az).", "MRI en duyarlı modalite (multifokalite ve bilateralite tespiti).", "Bilateral meme kanseri riski artmış."],
+        keyPointsEn: ["E-cadherin loss PATHOGNOMONIC (immunohistochemistry).", "May be OCCULT on mammography and USG (less desmoplastic reaction).", "MRI most sensitive modality (multifocality and bilaterality detection).", "Increased risk of bilateral breast cancer."],
+        findings: {
+            mammography: { description: "Asimetrik dansite veya yapısal distorsiyon. Kitle her zaman görülmez. Kalsifikasyon nadir. BI-RADS 4 veya 5." },
+            usg: { description: "İll-defined hipoekoik alan veya posterior akustik gölgeleme. Belirgin kitle oluşturmayabilir." },
+            mri: { t1_c_dynamic: "İrregüler kitle veya non-mass enhancement. Multifokal ve multisentrisite en iyi MRI ile saptanır. Tip 3 kinetik eğri." }
+        },
+        findingsEn: {
+            mammography: { description: "Asymmetric density or architectural distortion. Mass may not always be visible. Calcification rare. BI-RADS 4 or 5." },
+            usg: { description: "Ill-defined hypoechoic area or posterior acoustic shadowing. May not form a discrete mass." },
+            mri: { t1_c_dynamic: "Irregular mass or non-mass enhancement. Multifocality and multicentricity best detected by MRI. Type 3 kinetic curve." }
+        },
+        etiology: "CDH1 gen mutasyonu (herediter diffüz gastrik kanser sendromu ile ilişkili). Hormon reseptör pozitifliği yüksek (%90+ ER+).",
+        differentialDiagnosis: ["İnvaziv duktal karsinom (daha belirgin kitle)", "Yapısal distorsiyon (radyal skar, cerrahi skar)", "Lenfoma (bilateral, düşük kontrastlanma)"],
+        goldStandard: "Mammografi + USG + MRI (multifokalite). Histopatoloji: E-cadherin negatif.",
+        clinicalPearl: "Mammografide gizli meme kanseri + MRI'da non-mass enhancement = ILC düşün. Cerrahi öncesi MRI zorunlu (multifokalite ve kontralateral hastalık).",
+        references: ["ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.", "Radiopaedia.org - Invasive lobular carcinoma"]
+    },
+    {
+        id: "inflammatory-breast-cancer",
+        name: "İnflamatuvar Meme Kanseri",
+        nameEn: "Inflammatory Breast Cancer",
+        category: "Malign",
+        categoryEn: "Malignant",
+        mechanism: "Dermal lenfatiklerin tümör embolisi → lenfatik obstrüksiyon → diffüz ödem ('peau d'orange'). Klinik tanı: >1/3 meme cildinde eritem ve ödem. En agresif meme kanseri formu.",
+        keyPoints: ["KLİNİK TANI: Eritem + ödem + peau d'orange (>1/3 meme cildi).", "Belirgin kitle olmayabilir — diffüz cilt ve parankimal değişiklikler.", "USG: Diffüz cilt kalınlaşması (>5mm) + parankimal ödem.", "Mastit ile karışabilir — antibiyotiğe yanıtsızlık → biyopsi."],
+        keyPointsEn: ["CLINICAL DIAGNOSIS: Erythema + edema + peau d'orange (>1/3 breast skin).", "May not have a discrete mass — diffuse skin and parenchymal changes.", "USG: Diffuse skin thickening (>5mm) + parenchymal edema.", "May be confused with mastitis — no response to antibiotics → biopsy."],
+        findings: {
+            mammography: { description: "Diffüz cilt kalınlaşması. Trabeküler kalınlaşma. Aksiller lenfadenopati. Belirgin kitle olmayabilir." },
+            usg: { description: "Cilt kalınlaşması >5mm. Parankimal ödem (hipoekoik alanlar). Aksiller LAP." },
+            mri: { t1_c_dynamic: "Diffüz non-mass enhancement. Cilt kontrastlanması ve kalınlaşması. Meme boyutunda artış." }
+        },
+        findingsEn: {
+            mammography: { description: "Diffuse skin thickening. Trabecular thickening. Axillary lymphadenopathy." },
+            usg: { description: "Skin thickening >5mm. Parenchymal edema. Axillary LAP." },
+            mri: { t1_c_dynamic: "Diffuse non-mass enhancement. Skin enhancement and thickening." }
+        },
+        etiology: "Dermal lenfatik tümör embolisi. Genellikle yüksek grade, ER/PR negatif, HER2 pozitif olma eğiliminde.",
+        differentialDiagnosis: ["Mastit/abse (ateş, antibiyotiğe yanıt)", "Lenfatik obstrüksiyon (aksiller cerrahi sonrası)", "Radyasyon dermatiti (radyoterapi öyküsü)"],
+        goldStandard: "Klinik tanı + Cilt biyopsisi (dermal lenfatik tümör embolisi). Evreleme: PET-BT.",
+        clinicalPearl: "Kırmızı, şiş meme + antibiyotiğe yanıtsız 'mastit' = İnflamatuvar meme kanseri şüphesi → acil cilt biyopsisi.",
+        references: ["ACR BI-RADS Atlas. 5th ed. 2013.", "Radiopaedia.org - Inflammatory breast cancer"]
+    },
+    {
+        id: "breast-abscess",
+        name: "Meme Absesi / Mastit",
+        nameEn: "Breast Abscess / Mastitis",
+        category: "İnflamatuvar",
+        categoryEn: "Inflammatory",
+        mechanism: "Bakteriyel enfeksiyon (S. aureus en sık) → meme dokusu inflamasyonu (mastit) → apse formasyonu (lokalize koleksiyon). Laktasyonel: Emzirme döneminde çatlak meme başından enfeksiyon. Non-laktasyonel: Periduktal mastit, granülomatöz mastit.",
+        keyPoints: ["Laktasyonel mastit/apse: Emzirme döneminde en sık.", "USG: Hipoekoik koleksiyon + kalın düzensiz duvar + internal debris.", "USG eşliğinde drenaj terapötik.", "Antibiyotiğe yanıtsız 'mastit' → inflamatuvar karsinom dışla."],
+        keyPointsEn: ["Lactational mastitis/abscess: Most common during breastfeeding.", "USG: Hypoechoic collection + thick irregular wall + internal debris.", "USG-guided drainage is therapeutic.", "Mastitis unresponsive to antibiotics → rule out inflammatory carcinoma."],
+        findings: {
+            usg: { description: "Kalın duvarlı hipoekoik/anekoik koleksiyon. İnternal debris ve septasyonlar. Çevre doku ödemi ve hiperekojenite. Doppler: Periferal hipervaskülarite." },
+            mammography: { description: "Fokal asimetrik dansite. Cilt kalınlaşması. İnternal hava (nadir, drenaj sonrası)." },
+            mri: { t1_c_dynamic: "Rim (periferal) kontrastlanma. Santral non-kontrastlanan alan (nekroz/pü). Çevre ödem." }
+        },
+        findingsEn: {
+            usg: { description: "Thick-walled hypoechoic/anechoic collection. Internal debris and septations. Surrounding tissue edema. Doppler: Peripheral hypervascularity." },
+            mammography: { description: "Focal asymmetric density. Skin thickening." },
+            mri: { t1_c_dynamic: "Rim (peripheral) enhancement. Central non-enhancing area (necrosis/pus)." }
+        },
+        etiology: "S. aureus (en sık), streptokoklar. Laktasyonel (çatlak meme başı) veya non-laktasyonel (periduktal mastit, granülomatöz mastit).",
+        differentialDiagnosis: ["İnflamatuvar meme kanseri (antibiyotiğe yanıtsız, cilt biyopsisi)", "Yağ nekrozu (travma öyküsü, yağ kisti)", "Granülomatöz mastit (kronik, steroid yanıtlı)"],
+        goldStandard: "USG: Tanı + USG eşliğinde drenaj (terapötik). Aspirat kültürü.",
+        clinicalPearl: "Emziren kadında ateş + eritematöz kitle + USG'de koleksiyon = Meme apsesi → USG eşliğinde drenaj + antibiyotik.",
+        references: ["ACR BI-RADS Atlas. 5th ed. 2013.", "Radiopaedia.org - Breast abscess"]
+    },
+    {
+        id: "gynecomastia",
+        name: "Jinekomasti",
+        nameEn: "Gynecomastia",
+        category: "Benign",
+        categoryEn: "Benign",
+        mechanism: "Erkekte östrojen/androjen dengesizliği → meme glandüler doku proliferasyonu. Fizyolojik (neonatal, pubertal, senil) veya patolojik (ilaç, karaciğer hastalığı, testiküler tümör, Klinefelter).",
+        keyPoints: ["Erkekte EN SIK meme kitlesi nedeni.", "Retroareolar konsentrik veya eksantrik doku artışı.", "USG: Retroareolar hipoekoik 'dallanma' paterni.", "Erkekte unilateral sert kitle → meme karsinomu dışla (nadir ama önemli)."],
+        keyPointsEn: ["MOST COMMON cause of breast mass in males.", "Retroareolar concentric or eccentric tissue increase.", "USG: Retroareolar hypoechoic 'branching' pattern.", "Unilateral hard mass in male → rule out breast carcinoma (rare but important)."],
+        findings: {
+            mammography: { description: "Retroareolar üçgensi veya yelpaze şekilli dansite artışı. Bilateral simetrik (fizyolojik) veya unilateral (patolojik). Dört patern: Nodüler, dendritik, diffüz, asimetrik." },
+            usg: { description: "Retroareolar hipoekoik solid doku. Dallanma paterni. Bilateral ve simetrik ise benign." }
+        },
+        findingsEn: {
+            mammography: { description: "Retroareolar triangular or fan-shaped density increase. Bilateral symmetric or unilateral." },
+            usg: { description: "Retroareolar hypoechoic solid tissue. Branching pattern. Benign if bilateral and symmetric." }
+        },
+        etiology: "İlaç (spironolakton, ketokonazol, anabolik steroidler, antiandrojenler), karaciğer sirozu, hipertiroidi, Klinefelter, testiküler tümör.",
+        differentialDiagnosis: ["Erkek meme kanseri (sert, eksantrik, nipple retraksiyon)", "Lipom (yağ sinyali)", "Psödojinekomasti (adipöz doku, glandüler değil)"],
+        goldStandard: "Mammografi: Retroareolar glandüler doku. USG: Ek değerlendirme. Klinik + hormonal değerlendirme.",
+        clinicalPearl: "Erkekte bilateral retroareolar doku artışı = Jinekomasti. Unilateral, sert, eksantrik kitle = Erkek meme kanseri düşün → biyopsi.",
+        references: ["ACR BI-RADS Atlas. 5th ed. 2013.", "Radiopaedia.org - Gynecomastia"]
+    },
+    {
+        id: "fibrocystic-changes",
+        name: "Fibrokistik Değişiklikler",
+        nameEn: "Fibrocystic Changes",
+        category: "Benign",
+        categoryEn: "Benign",
+        mechanism: "Hormonal stimülasyona bağlı meme dokusunun fibroz ve kistik değişiklikleri. Menstrüel siklusla değişen semptomlar. En sık 30-50 yaş kadınlarda. Premenopozal kadınların %50'sinde mevcut.",
+        keyPoints: ["Premenopozal kadınlarda EN SIK meme durumu.", "Multipl basit ve komplike kistler + stromal fibroz.", "Siklusla değişen ağrı ve hassasiyet KARAKTERİSTİK.", "Atipik duktal/lobüler hiperplazi → kanser riski hafif artmış."],
+        keyPointsEn: ["MOST COMMON breast condition in premenopausal women.", "Multiple simple and complicated cysts + stromal fibrosis.", "Cyclical pain and tenderness CHARACTERISTIC.", "Atypical ductal/lobular hyperplasia → slightly increased cancer risk."],
+        findings: {
+            usg: { description: "Multipl basit kistler (anekoik, ince duvarlı). Komplike kistler (internal eko, ince debris). Solid fibröz alanlar (hipoekoik). Mikrokistler." },
+            mammography: { description: "Diffüz veya fokal dansiteleri. Multipl kistler. Kaba 'teacup' kalsifikasyonlar (benign). Heterojen dens meme dokusu." }
+        },
+        findingsEn: {
+            usg: { description: "Multiple simple cysts (anechoic, thin-walled). Complicated cysts (internal echoes). Solid fibrous areas (hypoechoic). Microcysts." },
+            mammography: { description: "Diffuse or focal densities. Multiple cysts. Coarse 'teacup' calcifications (benign). Heterogeneous dense breast tissue." }
+        },
+        etiology: "Hormonal (östrojen dominansı). Hormon dalgalanmaları → siklik meme ağrısı ve şişlik.",
+        differentialDiagnosis: ["Multipl fibroadenomlar (solid, iyi sınırlı)", "DCIS (mikrokalsifikasyonlar, BI-RADS 4)", "Meme kanseri (irregüler kitle, spiküle)"],
+        goldStandard: "USG: Basit kistlerin doğrulanması. Mammografi: Tarama. Atipik bulgularda biyopsi.",
+        clinicalPearl: "Siklik meme ağrısı + USG'de multipl basit kistler + normal mammografi = Fibrokistik değişiklikler. Tedavi semptomatik.",
+        references: ["ACR BI-RADS Atlas. 5th ed. 2013.", "Radiopaedia.org - Fibrocystic changes"]
+    },
+    {
+        id: "radial-scar",
+        name: "Radyal Skar (Kompleks Sklerozan Lezyon)",
+        nameEn: "Radial Scar (Complex Sclerosing Lesion)",
+        category: "Benign/Riskli",
+        categoryEn: "Benign/High-Risk",
+        mechanism: "Fibröz merkez + radyal uzanan duktüller ve lobüller → yapısal distorsiyon. Mammografide maligniteyi taklit eder (spiküle lezyon). >1cm ise 'kompleks sklerozan lezyon' olarak adlandırılır. Atipik epitelyal hiperplazi eşlik edebilir.",
+        keyPoints: ["Mammografide MALİGNİTEYİ TAKLİT EDER (spiküle lezyon).", "Santral radyolüsensi + radyal uzanan spiküller.", "Biyopsi zorunlu: Eşlik eden atipi ve gizli karsinom dışlanmalı.", ">1cm = Kompleks sklerozan lezyon; cerrahi eksizyon önerilir."],
+        keyPointsEn: ["MIMICS MALIGNANCY on mammography (spiculated lesion).", "Central radiolucency + radially extending spicules.", "Biopsy mandatory: Exclude associated atypia and occult carcinoma.", ">1cm = Complex sclerosing lesion; surgical excision recommended."],
+        findings: {
+            mammography: { description: "Spiküle lezyon (maligniteyi taklit eder). Santral radyolusensi (lucent center). Farklı projeksiyonlarda boyut değişikliği (black star)." },
+            usg: { description: "Hipoekoik irregüler alan. Posterior akustik gölgeleme. Yapısal distorsiyon." }
+        },
+        findingsEn: {
+            mammography: { description: "Spiculated lesion (mimics malignancy). Central radiolucency (lucent center). Size change on different projections (black star)." },
+            usg: { description: "Hypoechoic irregular area. Posterior acoustic shadowing. Architectural distortion." }
+        },
+        etiology: "Benign proliferatif lezyon. Etiyoloji tam bilinmiyor. Hormonal etkiler olabilir.",
+        differentialDiagnosis: ["İnvaziv duktal karsinom (solid santral, kalsifikasyon)", "İnvaziv lobüler karsinom (yapısal distorsiyon, MRI'da non-mass enhancement)", "Cerrahi skar (önceki cerrahi öyküsü)", "Yağ nekrozu (travma, yağ kisti)"],
+        goldStandard: "Mammografi + USG → Core/vakum biyopsi zorunlu. >1cm veya atipi varsa cerrahi eksizyon.",
+        clinicalPearl: "Mammografide spiküle lezyon + santral radyolusensi = Radyal skar düşün. MALİGNİTE dışlanamaz → biyopsi HER ZAMAN gerekli.",
+        references: ["ACR BI-RADS Atlas. 5th ed. 2013.", "Radiopaedia.org - Radial scar"]
+    },
+    {
+        id: "breast-hamartoma",
+        name: "Meme Hamartomu (Fibroadenolipom)",
+        nameEn: "Breast Hamartoma (Fibroadenolipoma)",
+        category: "Benign",
+        categoryEn: "Benign",
+        mechanism: "Normal meme dokusu komponentlerinin (yağ, fibröz doku, glandüler doku) kapsüle içinde anormal organizasyonu. 'Meme içinde meme' görünümü karakteristik.",
+        keyPoints: ["'Meme içinde meme' (breast within a breast) PATOGNOMONİK.", "İnce kapsül ile çevrili mikst dansite kitle.", "Yağ + glandüler + fibröz doku kombinasyonu.", "Benign — takip veya tedavi gerektirmez."],
+        keyPointsEn: ["'Breast within a breast' PATHOGNOMONIC.", "Mixed density mass surrounded by thin capsule.", "Combination of fat + glandular + fibrous tissue.", "Benign — no follow-up or treatment needed."],
+        findings: {
+            mammography: { description: "İyi sınırlı, mikst dansite (yağ + yumuşak doku) kitle. İnce kapsül (radyolusen halo). 'Meme içinde meme' görünümü." },
+            usg: { description: "İyi sınırlı, mikst ekojenitenin kitle. Heterojen iç yapı (yağ + solid alanlar). İnce kapsül." }
+        },
+        findingsEn: {
+            mammography: { description: "Well-defined, mixed density (fat + soft tissue) mass. Thin capsule (radiolucent halo). 'Breast within a breast' appearance." },
+            usg: { description: "Well-defined, mixed echogenicity mass. Heterogeneous internal structure. Thin capsule." }
+        },
+        etiology: "Gelişimsel. Normal meme dokusu komponentlerinin disorganizasyonu.",
+        differentialDiagnosis: ["Fibroadenom (daha homojen, solid)", "Lipom (sadece yağ)", "Fillodes tümör (hızlı büyüme, kistik alanlar)"],
+        goldStandard: "Mammografi: 'Breast within a breast'. İleri tetkik gerekmez.",
+        clinicalPearl: "Mammografide mikst dansite kitle + ince kapsül + 'meme içinde meme' = Hamartom. Benign, biyopsi genellikle gerekmez.",
+        references: ["ACR BI-RADS Atlas. 5th ed. 2013.", "Radiopaedia.org - Breast hamartoma"]
+    },
+    {
+        id: "implant-rupture",
+        name: "Meme İmplant Rüptürü",
+        nameEn: "Breast Implant Rupture",
+        category: "İmplant İlişkili",
+        categoryEn: "Implant-Related",
+        mechanism: "Silikon implant kabuğunun yırtılması. İntrakapüler: Silikon fibröz kapsül içinde kalır → 'linguine sign'. Ekstrakapüler: Silikon fibröz kapsül dışına sızar → granülom oluşumu.",
+        keyPoints: ["'Linguine sign': İntrakapüler rüptürde kıvrımlı implant kabuğu = PATOGNOMONİK.", "'Snowstorm': Ekstrakapüler silikon sızıntısı USG'de.", "MRI implant değerlendirmesinde en duyarlı modalite.", "İntrakapüler rüptür: Silikon su baskılı (silikon spesifik) sekanslar anahtar."],
+        keyPointsEn: ["'Linguine sign': Wavy implant shell in intracapsular rupture = PATHOGNOMONIC.", "'Snowstorm': Extracapsular silicone leak on USG.", "MRI most sensitive modality for implant evaluation.", "Intracapsular rupture: Silicone-specific suppression sequences key."],
+        findings: {
+            mri: { t1: "İmplant kontur ve bütünlük değerlendirmesi.", t2: "İNTRAKAPSÜLER: 'Linguine sign' (kıvrımlı kabuk fragmanları), 'keyhole/teardrop sign' (silikon-sıvı ayrımı). EKSTRAKAPÜLER: Silikon granülomları (ekstra-implant hiperintens odaklar).", t1_c: "Rutin kullanılmaz. Kapsüler kontraksiyon/enflamasyon değerlendirmesi." },
+            usg: { description: "İntrakapüler: 'Stepladder sign' (çoklu ekojen çizgiler). Ekstrakapüler: 'Snowstorm appearance' (hiperekoik, gölgeleme). Kapsüler kontur düzensizliği." }
+        },
+        findingsEn: {
+            mri: { t1: "Implant contour and integrity assessment.", t2: "INTRACAPSULAR: 'Linguine sign', 'keyhole/teardrop sign'. EXTRACAPSULAR: Silicone granulomas.", t1_c: "Not routine." },
+            usg: { description: "Intracapsular: 'Stepladder sign'. Extracapsular: 'Snowstorm appearance'. Capsular contour irregularity." }
+        },
+        etiology: "İmplant yaşlanması (>10 yıl), travma, cerrahi komplikasyon.",
+        differentialDiagnosis: ["İntakt implant (düzgün kontur, linguine sign yok)", "Kapsüler kontraksiyon (implant şekil değişikliği, rüptür yok)", "Seroma (periprostetik sıvı koleksiyonu)"],
+        goldStandard: "MRI: Silikon spesifik sekanslar (silikon su baskılı). Linguine sign = İntrakapüler rüptür.",
+        clinicalPearl: "MRI'da linguine sign = İntrakapüler rüptür kesin tanısı. Ekstrakapüler sızıntı varsa cerrahi revizyon daha acil.",
+        references: ["ACR BI-RADS Atlas. 5th ed. 2013.", "Radiopaedia.org - Breast implant rupture"]
+    },
+    {
+        id: "mucinous-carcinoma-breast",
+        name: "Müsinöz Karsinom (Meme)",
+        nameEn: "Mucinous Carcinoma (Breast)",
+        category: "Malign",
+        categoryEn: "Malignant",
+        mechanism: "Müsin üreten tümör hücreleri ekstraselüler müsin gölcükleri oluşturur → iyi sınırlı, yumuşak kitle. Saf (pure) form iyi prognozlu. Mikst form (duktal komponent eşlik eder) daha agresif.",
+        keyPoints: ["İyi sınırlı → YANILTICI benign görünüm (fibroadenom gibi).", "Yaşlı kadınlarda sık (60-70 yaş).", "Saf form: Çok iyi prognoz (>90% 10-yıllık sağkalım).", "T2 HİPERİNTENS (müsin içeriği): MRI'da fibroadenomdan farklı yüksek T2 sinyali."],
+        keyPointsEn: ["Well-defined → MISLEADING benign appearance (like fibroadenoma).", "Common in elderly women (60-70 years).", "Pure form: Excellent prognosis (>90% 10-year survival).", "T2 HYPERINTENSE (mucin content): Different from fibroadenoma high T2 signal on MRI."],
+        findings: {
+            mammography: { description: "İyi sınırlı, yuvarlak/lobüle kitle. Düşük-orta dansite. Benign görünüm yanıltıcı olabilir." },
+            usg: { description: "İyi sınırlı, homojen hipoekoik kitle. Posterior akustik güçlenme (yüksek su içeriği). Komplex kist ile karışabilir." },
+            mri: { t1_c_dynamic: "T2 ÇOK HİPERİNTENS (müsin). Progresif kontrastlanma (Tip 1 veya 2 eğri). Homojen." }
+        },
+        findingsEn: {
+            mammography: { description: "Well-defined, round/lobulated mass. Low-medium density." },
+            usg: { description: "Well-defined, homogeneous hypoechoic mass. Posterior acoustic enhancement. May be confused with complex cyst." },
+            mri: { t1_c_dynamic: "T2 VERY HYPERINTENSE (mucin). Progressive enhancement (Type 1 or 2 curve). Homogeneous." }
+        },
+        etiology: "Duktal epitelden kökenli müsin üreten karsinom. ER/PR pozitifliği yüksek. HER2 genellikle negatif.",
+        differentialDiagnosis: ["Fibroadenom (genç yaş, T2 orta sinyal)", "Fillodes tümör (hızlı büyüme, kistik)", "Komplike kist (aspire edildiğinde tanı)", "Medüller karsinom (genç, yüksek grade)"],
+        goldStandard: "Mammografi + USG + Core biyopsi. MRI: T2 hiperintensite (müsin doğrulama).",
+        clinicalPearl: "Yaşlı kadında iyi sınırlı kitle + T2 çok parlak (müsin) + yavaş kontrastlanma = Müsinöz karsinom. Benign görünüm yanıltıcı → 50+ yaş iyi sınırlı kitlede biyopsi düşün.",
+        references: ["ACR BI-RADS Atlas. 5th ed. 2013.", "Radiopaedia.org - Mucinous carcinoma breast"]
     }
 ];

@@ -1288,5 +1288,643 @@ export const brainPathologies: Pathology[] = [
             "Atlas SW. Magnetic Resonance Imaging of the Brain and Spine. 5th ed. Lippincott Williams & Wilkins; 2016.",
             "Radiopaedia.org - Arteriovenous Malformation (Brain)"
         ]
+    },
+    {
+        "id": "oligodendroglioma",
+        "name": "Oligodendrogliom",
+        "nameEn": "Oligodendroglioma",
+        "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
+        "findings": {
+            "ct": {
+                "non_contrast": "Kortikal/subkortikal hipodens kitle. %70-90 kaba, 'popcorn' tarzı kalsifikasyon PATOGNOMONİK. Kemik remodellingi (yavaş büyüme).",
+                "contrast": "Minimal veya heterojen kontrastlanma."
+            },
+            "mri": {
+                "t1": "Hipointens. Kalsifikasyon ve kanama alanlarında sinyal karışıklığı.",
+                "t2": "Hiperintens, heterojen. Kortikal tutulum belirgin. Kalsifikasyonlar hipointens.",
+                "t1_c": "Değişken kontrastlanma. Anaplastik oligodendrogliomda daha belirgin.",
+                "dwi": "Genellikle hafif kısıtlanma. Yüksek gradede belirginleşir."
+            }
+        },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Cortical/subcortical hypodense mass. 70-90% coarse 'popcorn' calcification is PATHOGNOMONIC. Bone remodeling (slow growth).",
+                "contrast": "Minimal or heterogeneous enhancement."
+            },
+            "mri": {
+                "t1": "Hypointense. Signal heterogeneity in areas of calcification and hemorrhage.",
+                "t2": "Hyperintense, heterogeneous. Cortical involvement is prominent. Calcifications are hypointense.",
+                "t1_c": "Variable enhancement. More prominent in anaplastic oligodendroglioma.",
+                "dwi": "Generally mild restriction. More prominent in high grade."
+            }
+        },
+        "keyPoints": [
+            "1p/19q ko-delesyonu tanısal ve prognostik belirteçtir.",
+            "IDH mutasyonu pozitifliği iyi prognoz göstergesi.",
+            "Frontal lob en sık tutulum yeri.",
+            "Kalsifikasyon + kortikal yerleşim = Oligodendrogliom düşün."
+        ],
+        "keyPointsEn": [
+            "1p/19q co-deletion is diagnostic and prognostic marker.",
+            "IDH mutation positivity indicates good prognosis.",
+            "Frontal lobe is the most common location.",
+            "Calcification + cortical location = Consider oligodendroglioma."
+        ],
+        "etiology": "IDH1/2 mutasyonu + 1p/19q ko-delesyonu. Oligodendroglial prekürsör hücrelerinden köken alır.",
+        "mechanism": "IDH mutant oligodendroglial hücreler → yavaş proliferasyon → kortikal infiltrasyon → kalsifikasyon birikimi. Anaplastik transformasyon zamanla gelişebilir.",
+        "differentialDiagnosis": [
+            "Düşük gradeli astrositom (kalsifikasyon daha nadir)",
+            "Gangliogliom (kortikal, kistik komponent)",
+            "DNET (kortikal, genç hasta, 'bubbly' görünüm)",
+            "Metastaz (peritümöral ödem daha belirgin)"
+        ],
+        "goldStandard": "MRI + Histopatoloji: 1p/19q ko-delesyonu ve IDH mutasyon analizi (WHO 2021 sınıflaması).",
+        "clinicalPearl": "Kortikal kitlede kaba kalsifikasyon = Oligodendrogliom düşün (tanıda %90 doğruluk). Kemoterapiye (PCV) en iyi yanıt veren beyin tümörü.",
+        "references": [
+            "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
+            "WHO Classification of Tumours of the Central Nervous System. 5th ed. 2021.",
+            "Radiopaedia.org - Oligodendroglioma"
+        ]
+    },
+    {
+        "id": "hemangioblastoma",
+        "name": "Hemanjioblastom",
+        "nameEn": "Hemangioblastoma",
+        "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
+        "findings": {
+            "ct": {
+                "non_contrast": "Posterior fossa kistik lezyon. Kist duvarında veya içinde solid mural nodül (hiperdens).",
+                "contrast": "Mural nodül YOĞUN kontrastlanır. Kist duvarı kontrastlanmaz (reaktif, tümöral değil)."
+            },
+            "mri": {
+                "t1": "Kist: Hipointens (BOS ile izointens veya hafif hiperintens - proteinöz). Mural nodül: İzointens.",
+                "t2": "Kist: Belirgin hiperintens. Mural nodül: İzointens, Flow void yapıları içerebilir (hipervasküler).",
+                "t1_c": "Mural nodül YOĞUN ve HOMojen kontrastlanır. Kist duvarı kontrastlanmaz.",
+                "dwi": "Kısıtlanma yok (difüzyon serbest)."
+            }
+        },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Posterior fossa cystic lesion. Solid mural nodule on cyst wall (hyperdense).",
+                "contrast": "Mural nodule enhances INTENSELY. Cyst wall does not enhance (reactive, not tumoral)."
+            },
+            "mri": {
+                "t1": "Cyst: Hypointense (isointense or mildly hyperintense to CSF - proteinaceous). Mural nodule: Isointense.",
+                "t2": "Cyst: Markedly hyperintense. Mural nodule: Isointense, may contain flow voids (hypervascular).",
+                "t1_c": "Mural nodule enhances INTENSELY and HOMOGENEOUSLY. Cyst wall does not enhance.",
+                "dwi": "No restriction (free diffusion)."
+            }
+        },
+        "keyPoints": [
+            "Posterior fossanın en sık primer intra-aksiyel tümörü (erişkinde).",
+            "Von Hippel-Lindau sendromu ile ilişki: %25-40 VHL hastasında görülür.",
+            "Kist duvarı tümöral DEĞİLDİR - cerrahi sadece mural nodülü hedefler.",
+            "Polisitemi eşlik edebilir (eritropoietin üretimi)."
+        ],
+        "keyPointsEn": [
+            "Most common primary intra-axial tumor of posterior fossa (in adults).",
+            "Associated with Von Hippel-Lindau syndrome: seen in 25-40% of VHL patients.",
+            "Cyst wall is NOT tumoral - surgery targets only the mural nodule.",
+            "Polycythemia may accompany (erythropoietin production)."
+        ],
+        "etiology": "Sporadik veya VHL sendromu (VHL gen mutasyonu, 3p25-26). Mezenşimal kökenli vasküler tümör.",
+        "mechanism": "VHL gen kaybı → HIF yolağı aktivasyonu → VEGF artışı → hipervasküler tümör gelişimi. Kist, tümöral sıvı sızıntısından oluşur.",
+        "differentialDiagnosis": [
+            "Pilositik astrositom (çocuklarda, benzer kist + nodül)",
+            "Metastaz (multipl, peritümöral ödem)",
+            "Ependimom (4. ventrikülden kaynak, kalsifikasyon)",
+            "Medulloblastom (çocuk, solid, vermis yerleşimli)"
+        ],
+        "goldStandard": "MRI (kist + yoğun kontrastlanan mural nodül). VHL şüphesinde genetik test ve multisistem tarama (retina, böbrek, pankreas).",
+        "clinicalPearl": "Posterior fossa kist + yoğun kontrastlanan mural nodül + flow void = Hemanjioblastom. Multipl ise VHL düşün ve tüm vücut taraması yap.",
+        "references": [
+            "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
+            "WHO Classification of CNS Tumours. 5th ed. 2021.",
+            "Radiopaedia.org - Hemangioblastoma"
+        ]
+    },
+    {
+        "id": "epidermoid_cyst",
+        "name": "Epidermoid Kist",
+        "nameEn": "Epidermoid Cyst",
+        "category": "Konjenital/Gelişimsel",
+        "categoryEn": "Congenital/Developmental",
+        "findings": {
+            "ct": {
+                "non_contrast": "BOS dansitesine yakın hipodens lezyon. Serebelopontin açı veya paraseller bölge. İnsinüe edici büyüme paterni.",
+                "contrast": "Kontrastlanma yok (periferal ince kontrastlanma nadiren)."
+            },
+            "mri": {
+                "t1": "Hipointens (BOS benzeri). FLAIR: BOS'tan farklı olarak SUPRESE OLMAZ (HİPERİNTENS kalır) - AYIRICI BULGU.",
+                "t2": "Hiperintens (BOS benzeri). Heterojen olabilir.",
+                "t1_c": "Kontrastlanma yok. Periferal ince kontrastlanma nadir.",
+                "dwi": "BELİRGİN DİFÜZYON KISITLANMASI - 'parlak ampul' işareti. Araknoid kistten AYIRICI en önemli bulgu."
+            }
+        },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Hypodense lesion near CSF density. Cerebellopontine angle or parasellar region. Insinuating growth pattern.",
+                "contrast": "No enhancement (peripheral thin enhancement rarely)."
+            },
+            "mri": {
+                "t1": "Hypointense (CSF-like). FLAIR: Does NOT suppress like CSF (remains HYPERINTENSE) - DISTINGUISHING FINDING.",
+                "t2": "Hyperintense (CSF-like). May be heterogeneous.",
+                "t1_c": "No enhancement. Peripheral thin enhancement rare.",
+                "dwi": "MARKED DIFFUSION RESTRICTION - 'bright bulb' sign. Most important finding to distinguish from arachnoid cyst."
+            }
+        },
+        "keyPoints": [
+            "DWI kısıtlanması araknoid kistten ayırmada ANAHTAR bulgudur.",
+            "FLAIR'de suprese olmaması BOS'tan farklılığı gösterir.",
+            "Serebelopontin açının 3. en sık kitlesi (schwannom ve menenjiyomdan sonra).",
+            "Keratin ve kolesterol kristalleri ('mother of pearl' görünümü) içerir."
+        ],
+        "keyPointsEn": [
+            "DWI restriction is the KEY finding to differentiate from arachnoid cyst.",
+            "Non-suppression on FLAIR differentiates from CSF.",
+            "3rd most common mass of cerebellopontine angle (after schwannoma and meningioma).",
+            "Contains keratin and cholesterol crystals ('mother of pearl' appearance)."
+        ],
+        "etiology": "Konjenital ektopik epidermal inklüzyon. Nöral tüp kapanması sırasında ektoderm artıkları intrakraniyel yerleşim gösterir.",
+        "mechanism": "Ektodermik epitelyal hücreler → keratin ve kolesterol birikimi → yavaş büyüyen kistik lezyon. Sisternlere insinüe olarak yayılır.",
+        "differentialDiagnosis": [
+            "Araknoid kist (DWI kısıtlanması YOK, FLAIR suprese)",
+            "Dermoid kist (yağ içerir, T1 hiperintens)",
+            "Nöroenterik kist (prepontin, T1 hiperintens olabilir)",
+            "Kistik schwannom (kontrastlanma mevcut)"
+        ],
+        "goldStandard": "MRI: DWI kısıtlanması + FLAIR'de suprese olmama + kontrastlanmayan kistik lezyon üçlüsü.",
+        "clinicalPearl": "Serebelopontin açıda BOS benzeri kitle: DWI parlaksa epidermoid, DWI karanlıksa araknoid kist. Bu basit kural tanıyı büyük ölçüde daraltır.",
+        "references": [
+            "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
+            "Radiopaedia.org - Epidermoid cyst (intracranial)",
+            "Smirniotopoulos JG, et al. Radiographics. 2006;26(Suppl 1):S173-S189."
+        ]
+    },
+    {
+        "id": "colloid_cyst",
+        "name": "Kolloid Kist",
+        "nameEn": "Colloid Cyst",
+        "category": "Konjenital/Gelişimsel",
+        "categoryEn": "Congenital/Developmental",
+        "findings": {
+            "ct": {
+                "non_contrast": "3. ventrikül anteriorunda (foramen Monro düzeyinde) yuvarlak, HİPERDENS (60-90 HU) lezyon. BİLATERAL hidrosefali.",
+                "contrast": "Kontrastlanma yok veya minimal periferal."
+            },
+            "mri": {
+                "t1": "Genellikle HİPERİNTENS (proteinöz içerik). %30 izointens olabilir.",
+                "t2": "Değişken: Hipo/izo/hiperintens (içerik viskozitesine bağlı). Yüksek viskozitede HİPOİNTENS.",
+                "t1_c": "Kontrastlanma yok (ince rim nadiren).",
+                "dwi": "Değişken. Genellikle kısıtlanma yok."
+            }
+        },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Round, HYPERDENSE (60-90 HU) lesion in anterior 3rd ventricle (at foramen of Monro). BILATERAL hydrocephalus.",
+                "contrast": "No enhancement or minimal peripheral."
+            },
+            "mri": {
+                "t1": "Usually HYPERINTENSE (proteinaceous content). May be isointense in 30%.",
+                "t2": "Variable: Hypo/iso/hyperintense (depends on viscosity). HYPOINTENSE with high viscosity.",
+                "t1_c": "No enhancement (thin rim rarely).",
+                "dwi": "Variable. Generally no restriction."
+            }
+        },
+        "keyPoints": [
+            "Lokalizasyonu PATOGNOMONİK: 3. ventrikül ön kısmı, foramen Monro düzeyi.",
+            "Ani ölüm riski: Pozisyonel foramen Monro obstrüksiyonu → akut hidrosefali.",
+            "BT'de hiperdens + 3. ventrikül anterioru = Kolloid kist tanısı neredeyse kesin.",
+            "Asemptomatik küçük kistlerde izlem, semptomatik/büyük olanlarda cerrahi."
+        ],
+        "keyPointsEn": [
+            "Location is PATHOGNOMONIC: Anterior 3rd ventricle, foramen of Monro level.",
+            "Risk of sudden death: Positional foramen of Monro obstruction → acute hydrocephalus.",
+            "Hyperdense on CT + anterior 3rd ventricle = Nearly definitive diagnosis of colloid cyst.",
+            "Surveillance for small asymptomatic cysts, surgery for symptomatic/large ones."
+        ],
+        "etiology": "Konjenital endodermal kökenli. Embriyolojik nöroepitelyal artık.",
+        "mechanism": "Endodermal artık → 3. ventrikül tavanında kistik lezyon → mukoid/proteinöz materyal birikimi → foramen Monro obstrüksiyonu → bilateral lateral ventrikül dilatasyonu.",
+        "differentialDiagnosis": [
+            "Subependimal dev hücreli astrositom (tüberoz skleroz, kontrastlanır)",
+            "Santral nörositom (lateral ventrikül, kontrastlanır)",
+            "Koroid pleksus papillomu (ventrikül içi, kontrastlanır)",
+            "Kraniyofarenjiom (supraseller, kalsifikasyon)"
+        ],
+        "goldStandard": "BT (hiperdens 3. ventrikül lezyonu) + MRI (T1 hiperintens, foramen Monro düzeyi).",
+        "clinicalPearl": "3. ventrikülde yuvarlak, BT'de hiperdens lezyon = Kolloid kist. Ani baş ağrısı ile başvuran hastada akut hidrosefali nedeni olabilir - acil şant gerekebilir.",
+        "references": [
+            "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
+            "Radiopaedia.org - Colloid cyst",
+            "Beaumont TL, et al. J Neurosurg. 2016;125(6):1420-1430."
+        ]
+    },
+    {
+        "id": "cns_vasculitis",
+        "name": "SSS Vasküliti (Primer Serebral Anjiit)",
+        "nameEn": "CNS Vasculitis (Primary Cerebral Angiitis)",
+        "category": "Vasküler/İnflamatuvar",
+        "categoryEn": "Vascular/Inflammatory",
+        "findings": {
+            "ct": {
+                "non_contrast": "Multipl infarkt alanları (farklı vasküler territorylerde). Normal olabilir.",
+                "contrast": "Leptomeningeal kontrastlanma olabilir."
+            },
+            "mri": {
+                "t1": "Multipl subkortikal ve derin beyaz cevher lezyonları. Akut infarkt alanları.",
+                "t2": "Multipl T2/FLAIR hiperintens lezyonlar, farklı yaşlarda. Beyaz cevher ve korteks tutulumu.",
+                "t1_c": "Leptomeningeal/vasküler kontrastlanma. Damar duvarı kontrastlanması (vessel wall imaging'de).",
+                "dwi": "Akut infarktlarda kısıtlanma. Farklı vasküler territorylerde eşzamanlı difüzyon pozitif lezyonlar."
+            }
+        },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Multiple infarct areas (in different vascular territories). May be normal.",
+                "contrast": "Leptomeningeal enhancement may be present."
+            },
+            "mri": {
+                "t1": "Multiple subcortical and deep white matter lesions. Acute infarct areas.",
+                "t2": "Multiple T2/FLAIR hyperintense lesions of different ages. White matter and cortex involvement.",
+                "t1_c": "Leptomeningeal/vascular enhancement. Vessel wall enhancement (on vessel wall imaging).",
+                "dwi": "Restriction in acute infarcts. Simultaneous diffusion-positive lesions in different vascular territories."
+            }
+        },
+        "keyPoints": [
+            "Farklı vasküler territorylerde, farklı yaşlarda infarktlar = Vaskülit düşün.",
+            "Vessel wall MRI: Konsantrik (düzgün) damar duvarı kontrastlanması aterosklerozdan ayırır.",
+            "Konvansiyonel anjiyografi 'boncuk dizisi' (beading) paterni gösterebilir.",
+            "Genç hastada açıklanamayan multipl infarkt = Vaskülit araştır."
+        ],
+        "keyPointsEn": [
+            "Infarcts of different ages in different vascular territories = Consider vasculitis.",
+            "Vessel wall MRI: Concentric (smooth) vessel wall enhancement differentiates from atherosclerosis.",
+            "Conventional angiography may show 'string of beads' (beading) pattern.",
+            "Unexplained multiple infarcts in young patient = Investigate vasculitis."
+        ],
+        "etiology": "Primer SSS vasküliti (idiyopatik) veya sekonder (SLE, PAN, granülomatöz polianjiit, Behçet, enfeksiyon ilişkili).",
+        "mechanism": "İmmün aracılı damar duvarı inflamasyonu → intimal proliferasyon + lümen daralması → iskemi/infarkt. Büyük ve orta boy damarlar tutulabilir.",
+        "differentialDiagnosis": [
+            "Multipl skleroz (periventriküler, Dawson fingers)",
+            "Aterosklerotik hastalık (yaşlı, risk faktörleri)",
+            "Kardiyoembolik infarkt (aynı vasküler territory)",
+            "CADASIL (temporal pol ve dış kapsül tutulumu)"
+        ],
+        "goldStandard": "MRI + Vessel Wall Imaging + DSA (konvansiyonel anjiyografi). Kesin tanı: Beyin/meningeal biyopsi.",
+        "clinicalPearl": "Genç hasta + multipl vasküler territoryde infarkt + ESR/CRP yüksekliği = Vaskülit. Vessel wall MRI aterosklerozdan ayırmada çok değerli.",
+        "references": [
+            "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
+            "Hajj-Ali RA, et al. Lancet Neurol. 2011;10(6):561-572.",
+            "Radiopaedia.org - CNS vasculitis"
+        ]
+    },
+    {
+        "id": "wernicke_encephalopathy",
+        "name": "Wernicke Ensefalopatisi",
+        "nameEn": "Wernicke Encephalopathy",
+        "category": "Metabolik/Toksik",
+        "categoryEn": "Metabolic/Toxic",
+        "findings": {
+            "ct": {
+                "non_contrast": "Genellikle NORMAL. İleri vakalarda talamus ve periventriküler hipodensiteler.",
+                "contrast": "Mamiller cisim kontrastlanması (nadir görülür BT'de)."
+            },
+            "mri": {
+                "t1": "Genellikle normal. Kronik evrede mamiller cisim atrofisi.",
+                "t2": "SİMETRİK hiperintensite: Mediyal talamusta, periakvaduktal gri cevherde, mamiller cisimlerde, tektal plakada. PATOGNOMONİK dağılım.",
+                "t1_c": "Mamiller cisim kontrastlanması (akut fazda). Periventriküler kontrastlanma olabilir.",
+                "dwi": "Akut fazda kısıtlanma gösterebilir (sitotoksik ödem). Reversibl olabilir."
+            }
+        },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Usually NORMAL. Thalamic and periventricular hypodensities in advanced cases.",
+                "contrast": "Mammillary body enhancement (rarely seen on CT)."
+            },
+            "mri": {
+                "t1": "Usually normal. Mammillary body atrophy in chronic stage.",
+                "t2": "SYMMETRIC hyperintensity: In medial thalami, periaqueductal gray matter, mammillary bodies, tectal plate. PATHOGNOMONIC distribution.",
+                "t1_c": "Mammillary body enhancement (in acute phase). Periventricular enhancement may be present.",
+                "dwi": "May show restriction in acute phase (cytotoxic edema). May be reversible."
+            }
+        },
+        "keyPoints": [
+            "Klasik triad: Konfüzyon + ataksi + oftalmopleji (sadece %16 tam triad gösterir).",
+            "Simetrik mediyal talamus + periakvaduktal tutulum = Wernicke düşün.",
+            "Mamiller cisim tutulumu PATOGNOMONİK (MRI'da en spesifik bulgu).",
+            "Tedavi: Acil IV tiamin - gecikme kalıcı Korsakoff sendromuna yol açar."
+        ],
+        "keyPointsEn": [
+            "Classic triad: Confusion + ataxia + ophthalmoplegia (only 16% show complete triad).",
+            "Symmetric medial thalami + periaqueductal involvement = Think Wernicke.",
+            "Mammillary body involvement is PATHOGNOMONIC (most specific finding on MRI).",
+            "Treatment: Emergent IV thiamine - delay leads to permanent Korsakoff syndrome."
+        ],
+        "etiology": "Tiamin (B1 vitamini) eksikliği. En sık kronik alkolizm. Diğer: Hiperemezis gravidarum, malabsorbsiyon, uzun süreli TPN, bariatrik cerrahi sonrası.",
+        "mechanism": "Tiamin eksikliği → oksidatif metabolizma bozukluğu → seçici nöronal hasar (enerji metabolizmasına bağımlı bölgelerde: talamus, mamiller cisimler, periventriküler).",
+        "differentialDiagnosis": [
+            "Derin serebral ven trombozu (bilateral talamik lezyon)",
+            "Top of basilar sendromu (bilateral talamus + mezensefalon infarktı)",
+            "Creutzfeldt-Jakob hastalığı (kortikal + bazal ganglia DWI kısıtlanması)",
+            "Osmotik demyelinizasyon (santral pontin myelinoliz)"
+        ],
+        "goldStandard": "MRI FLAIR/T2: Simetrik mediyal talamus + periakvaduktal + mamiller cisim hiperintensitesi. Klinik: Tiamin düzeyi (düşük).",
+        "clinicalPearl": "Alkolik hastada konfüzyon + simetrik talamus T2 hiperintensitesi = Wernicke. Glukoz vermeden ÖNCE tiamin ver - aksi takdirde tabloyu ağırlaştırırsın.",
+        "references": [
+            "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
+            "Zuccoli G, et al. AJNR Am J Neuroradiol. 2009;30(1):171-176.",
+            "Radiopaedia.org - Wernicke encephalopathy"
+        ]
+    },
+    {
+        "id": "moyamoya_disease",
+        "name": "Moyamoya Hastalığı",
+        "nameEn": "Moyamoya Disease",
+        "category": "Vasküler",
+        "categoryEn": "Vascular",
+        "findings": {
+            "ct": {
+                "non_contrast": "İnfarkt alanları (bazen hemorajik). Bazal ganglia bölgesinde kalsifikasyon (kronik).",
+                "cta": "Bilateral ICA terminal segment ve proksimal ACA/MCA'da belirgin darlık/oklüzyon. Bazalde 'dumanlı bulut' şeklinde kollateral ağ."
+            },
+            "mri": {
+                "t1": "Bazal ganglia ve periventriküler bölgede multipl flow void yapıları (kollateraller). İnfarkt sekelleri.",
+                "t2": "Multipl 'flow void' (bazal kollateraller). Ivy sign (leptomeningeal kollateraller): FLAIR'de sulkal hiperintensite.",
+                "t1_c": "Leptomeningeal kontrastlanma (pial kollateraller). Bazal ganglia kontrastlanan kollateral damar ağı.",
+                "dwi": "Akut iskemik olaylarda difüzyon kısıtlanması. Watershed (sınır zon) infarktları."
+            }
+        },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Infarct areas (sometimes hemorrhagic). Calcification in basal ganglia region (chronic).",
+                "cta": "Marked stenosis/occlusion in bilateral ICA terminal segments and proximal ACA/MCA. 'Puff of smoke' collateral network at base."
+            },
+            "mri": {
+                "t1": "Multiple flow void structures in basal ganglia and periventricular region (collaterals). Infarct sequelae.",
+                "t2": "Multiple flow voids (basal collaterals). Ivy sign (leptomeningeal collaterals): Sulcal hyperintensity on FLAIR.",
+                "t1_c": "Leptomeningeal enhancement (pial collaterals). Enhancing collateral vascular network in basal ganglia.",
+                "dwi": "Diffusion restriction in acute ischemic events. Watershed (border zone) infarcts."
+            }
+        },
+        "keyPoints": [
+            "Bilateral ICA terminal stenoz/oklüzyon + bazal kollateral ağ = 'Dumanlı bulut (Moyamoya)' görünümü.",
+            "'Ivy sign' (FLAIR sulkal hiperintensite): Leptomeningeal kollateral göstergesi.",
+            "Çocuklarda iskemik, erişkinlerde hemorajik prezentasyon daha sık.",
+            "Doğu Asya popülasyonunda çok daha sık (Japonya, Kore)."
+        ],
+        "keyPointsEn": [
+            "Bilateral ICA terminal stenosis/occlusion + basal collateral network = 'Puff of smoke (Moyamoya)' appearance.",
+            "'Ivy sign' (sulcal hyperintensity on FLAIR): Indicator of leptomeningeal collaterals.",
+            "Ischemic presentation more common in children, hemorrhagic in adults.",
+            "Much more common in East Asian populations (Japan, Korea)."
+        ],
+        "etiology": "İdiyopatik (Moyamoya hastalığı) veya sekonder (Moyamoya sendromu: Nörofibromatozis tip 1, orak hücreli anemi, Down sendromu, radyasyon sonrası).",
+        "mechanism": "Progresif intimal fibröz kalınlaşma → ICA terminal segment ve proksimal Willis poligonu dallarında stenoz/oklüzyon → kompansatuvar bazal perforatör ve leptomeningeal kollateral gelişimi.",
+        "differentialDiagnosis": [
+            "Aterosklerotik intrakraniyel stenoz (yaşlı, asimetrik)",
+            "Vaskülit (inflamatuvar belirteçler yüksek)",
+            "Fibromusküler displazi (genç kadın, renal arter tutulumu)",
+            "İntrakraniyel ateroskleroz (fokal, unilateral olabilir)"
+        ],
+        "goldStandard": "DSA (konvansiyonel anjiyografi): Bilateral ICA terminal oklüzyon + bazal moyamoya damarları. MRA/CTA tarama için kullanılır.",
+        "clinicalPearl": "Genç hastada tekrarlayan TIA/infarkt + bilateral ICA stenoz + bazal ganglia flow voidler = Moyamoya. Hiperventilasyon semptomları provoke eder (PaCO2 düşüşü → vazokonstrüksiyon).",
+        "references": [
+            "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
+            "Scott RM, Smith ER. N Engl J Med. 2009;360(12):1226-1237.",
+            "Radiopaedia.org - Moyamoya disease"
+        ]
+    },
+    {
+        "id": "choroid_plexus_papilloma",
+        "name": "Koroid Pleksus Papillomu",
+        "nameEn": "Choroid Plexus Papilloma",
+        "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
+        "findings": {
+            "ct": {
+                "non_contrast": "Ventrikül içi lobüle, izodens/hafif hiperdens kitle. Kalsifikasyon %25. Belirgin HİDROSEFALİ.",
+                "contrast": "YOĞUN ve HOMOJEN kontrastlanma."
+            },
+            "mri": {
+                "t1": "İzointens/hafif hipointens ventrikül içi kitle. Lobüle kontur ('karnabahar' görünümü).",
+                "t2": "İzointens/hafif hiperintens. Lobüle morfoloji belirgin.",
+                "t1_c": "YOĞUN ve HOMOJEN kontrastlanma. Lobüle yapı çok belirgin kontrastlı serilerde.",
+                "dwi": "Genellikle kısıtlanma yok (papillomda). Karsinomda kısıtlanma olabilir."
+            }
+        },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Intraventricular lobulated, isodense/mildly hyperdense mass. Calcification 25%. Prominent HYDROCEPHALUS.",
+                "contrast": "INTENSE and HOMOGENEOUS enhancement."
+            },
+            "mri": {
+                "t1": "Isointense/mildly hypointense intraventricular mass. Lobulated contour ('cauliflower' appearance).",
+                "t2": "Isointense/mildly hyperintense. Lobulated morphology prominent.",
+                "t1_c": "INTENSE and HOMOGENEOUS enhancement. Lobulated structure very prominent on contrast series.",
+                "dwi": "Generally no restriction (in papilloma). Restriction may be present in carcinoma."
+            }
+        },
+        "keyPoints": [
+            "Çocuklarda lateral ventrikül, erişkinlerde 4. ventrikül yerleşimi.",
+            "Hidrosefali: BOS aşırı üretimi + obstrüksiyon.",
+            "Karsinom ayırımı: Beyin parankimi invazyonu, nekroz, DWI kısıtlanması.",
+            "Yoğun kontrastlanma + ventrikül içi lobüle kitle + hidrosefali = CPP düşün."
+        ],
+        "keyPointsEn": [
+            "Lateral ventricle in children, 4th ventricle in adults.",
+            "Hydrocephalus: CSF overproduction + obstruction.",
+            "Carcinoma differentiation: Brain parenchyma invasion, necrosis, DWI restriction.",
+            "Intense enhancement + intraventricular lobulated mass + hydrocephalus = Think CPP."
+        ],
+        "etiology": "Koroid pleksus epitelinden kaynaklanan benign (WHO Grade I) tümör. Li-Fraumeni sendromu (TP53 mutasyonu) ile ilişki.",
+        "mechanism": "Koroid pleksus epiteli → papiller proliferasyon → BOS aşırı üretimi + mekanik obstrüksiyon → hidrosefali.",
+        "differentialDiagnosis": [
+            "Ependimom (4. ventrikül tabanından kaynak)",
+            "Medulloblastom (solid, vermis, çocuk)",
+            "Meningiom (erişkin, trigon bölgesi)",
+            "Metastaz (koroid pleksusa metastaz, erişkin)"
+        ],
+        "goldStandard": "MRI: Yoğun kontrastlanan ventrikül içi lobüle kitle. Histopatoloji: Papiller yapılar, fibrövasküler kor.",
+        "clinicalPearl": "Süt çocuğunda makrosefali + ventrikül içi yoğun kontrastlanan lobüle kitle = Koroid pleksus papillomu. Lateral ventrikülde ise koroid pleksus karsinomunu da dışla.",
+        "references": [
+            "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
+            "WHO Classification of CNS Tumours. 5th ed. 2021.",
+            "Radiopaedia.org - Choroid plexus papilloma"
+        ]
+    },
+    {
+        "id": "pml",
+        "name": "PML (Progresif Multifokal Lökoensefalopati)",
+        "nameEn": "Progressive Multifocal Leukoencephalopathy (PML)",
+        "category": "Enfeksiyöz/Demyelinizan",
+        "categoryEn": "Infectious/Demyelinating",
+        "findings": {
+            "ct": {
+                "non_contrast": "Asimetrik beyaz cevher hipodensiteleri. Kütle etkisi yok. Multifokal.",
+                "contrast": "Kontrastlanma YOK (tipik). İmmün rekonstitüsyon durumunda (IRIS) periferal kontrastlanma olabilir."
+            },
+            "mri": {
+                "t1": "Beyaz cevherde hipointens lezyonlar. U-fiber (subkortikal arkuat lifler) tutulumu KARAKTERİSTİK.",
+                "t2": "Asimetrik, multifokal, konfluent beyaz cevher hiperintensiteleri. Subkortikal U-fiber tutulumu (kortikal kenar boyunca). Kütle etkisi ve perileziyonel ödem YOK.",
+                "t1_c": "Kontrastlanma yok (tipik PML). IRIS gelişirse: Periferal/patchy kontrastlanma.",
+                "dwi": "Aktif lezyon kenarında kısıtlanma (ilerleyen demyelinizasyon cephesi). Santral bölümde kısıtlanma yok."
+            }
+        },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Asymmetric white matter hypodensities. No mass effect. Multifocal.",
+                "contrast": "NO enhancement (typical). Peripheral enhancement may be present in immune reconstitution (IRIS)."
+            },
+            "mri": {
+                "t1": "Hypointense lesions in white matter. U-fiber (subcortical arcuate fibers) involvement is CHARACTERISTIC.",
+                "t2": "Asymmetric, multifocal, confluent white matter hyperintensities. Subcortical U-fiber involvement (along cortical margin). NO mass effect or perilesional edema.",
+                "t1_c": "No enhancement (typical PML). If IRIS develops: Peripheral/patchy enhancement.",
+                "dwi": "Restriction at active lesion edge (advancing demyelination front). No restriction in central portion."
+            }
+        },
+        "keyPoints": [
+            "İmmünsuprese hastada (HIV, natalizumab, transplant) beyaz cevher lezyonları = PML düşün.",
+            "U-fiber tutulumu MS'ten AYIRICI: MS subkortikal U-fiberleri genellikle korur.",
+            "Kontrastlanma olmaması + kütle etkisi olmaması = PML. Kontrastlanma varsa IRIS düşün.",
+            "JC virüs PCR (BOS) ile doğrulama yapılır."
+        ],
+        "keyPointsEn": [
+            "White matter lesions in immunosuppressed patient (HIV, natalizumab, transplant) = Think PML.",
+            "U-fiber involvement DIFFERENTIATES from MS: MS generally spares subcortical U-fibers.",
+            "No enhancement + no mass effect = PML. If enhancement present, consider IRIS.",
+            "Confirmation with JC virus PCR (CSF)."
+        ],
+        "etiology": "JC virüs (John Cunningham virus) reaktivasyonu. İmmünsupresyon: HIV/AIDS (CD4 <200), natalizumab (MS tedavisi), organ transplantasyonu, hematolojik maligniteler.",
+        "mechanism": "JC virüs → oligodendrosit enfeksiyonu → demyelinizasyon → progresif beyaz cevher hasarı. Subkortikal U-fiberler dahil yaygın tutulum.",
+        "differentialDiagnosis": [
+            "Multipl skleroz (periventriküler, Dawson fingers, U-fiber korunur)",
+            "HIV ensefalopatisi (simetrik, periventriküler, daha diffüz)",
+            "Lenfoma (kütle etkisi, kontrastlanma, DWI kısıtlanma)",
+            "ADEM (çocuk/genç, monofazik, kontrastlanma olabilir)"
+        ],
+        "goldStandard": "MRI (subkortikal U-fiber tutulumu + kontrastlanmama) + BOS JC virüs PCR pozitifliği.",
+        "clinicalPearl": "İmmünsuprese hasta + asimetrik beyaz cevher lezyonu + U-fiber tutulumu + kontrastlanma yok = PML. Natalizumab kullanan MS hastasında yeni lezyon gelişirse PML'yi dışla.",
+        "references": [
+            "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
+            "Berger JR, et al. N Engl J Med. 2017;376(8):765-773.",
+            "Radiopaedia.org - Progressive multifocal leukoencephalopathy"
+        ]
+    },
+    {
+        "id": "central_pontine_myelinolysis",
+        "name": "Santral Pontin Miyelinoliz (Osmotik Demyelinizasyon)",
+        "nameEn": "Central Pontine Myelinolysis (Osmotic Demyelination)",
+        "category": "Metabolik/Toksik",
+        "categoryEn": "Metabolic/Toxic",
+        "findings": {
+            "ct": {
+                "non_contrast": "Ponsta hipodens alan. Erken evrede normal olabilir. BT sensitivitesi düşük.",
+                "contrast": "Genellikle kontrastlanma yok."
+            },
+            "mri": {
+                "t1": "Pons santralinde hipointens alan. 'Trident (üçlü diş)' veya 'yarasa kanat' şekli KARAKTERİSTİK.",
+                "t2": "Pons santralinde SİMETRİK hiperintensite. Ventrolateral pons ve tegmentum KORUNUR (trident sign). Ekstrapontin tutulum: Bazal ganglia, talamus, serebellum.",
+                "t1_c": "Kontrastlanma yok (tipik). Subakut dönemde hafif kontrastlanma nadiren.",
+                "dwi": "ERKEN BULGU: Semptom başlangıcından 24 saat içinde DWI kısıtlanması görülebilir (T2/FLAIR'den ÖNCE pozitifleşir)."
+            }
+        },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Hypodense area in pons. May be normal in early stage. CT sensitivity is low.",
+                "contrast": "Generally no enhancement."
+            },
+            "mri": {
+                "t1": "Hypointense area in central pons. 'Trident' or 'bat wing' shape is CHARACTERISTIC.",
+                "t2": "SYMMETRIC hyperintensity in central pons. Ventrolateral pons and tegmentum are SPARED (trident sign). Extrapontine involvement: Basal ganglia, thalamus, cerebellum.",
+                "t1_c": "No enhancement (typical). Mild enhancement rarely in subacute period.",
+                "dwi": "EARLY FINDING: DWI restriction can be seen within 24 hours of symptom onset (becomes positive BEFORE T2/FLAIR)."
+            }
+        },
+        "keyPoints": [
+            "Hiponatreminin hızlı düzeltilmesi (>10-12 mEq/L/gün) en sık neden.",
+            "Trident sign: Santral pons tutulumu + ventrolateral korunma = Patognomonik.",
+            "DWI erken tanıda T2/FLAIR'den daha sensitif - semptom başlangıcından 24 saat içinde pozitifleşir.",
+            "Ekstrapontin miyelinoliz: Bazal ganglia, talamus tutulumu → parkinsonizm, distoni."
+        ],
+        "keyPointsEn": [
+            "Rapid correction of hyponatremia (>10-12 mEq/L/day) is the most common cause.",
+            "Trident sign: Central pons involvement + ventrolateral sparing = Pathognomonic.",
+            "DWI is more sensitive than T2/FLAIR in early diagnosis - becomes positive within 24 hours of onset.",
+            "Extrapontine myelinolysis: Basal ganglia, thalamus involvement → parkinsonism, dystonia."
+        ],
+        "etiology": "Hızlı osmolalite değişimi. En sık: Hiponatremi hızlı düzeltilmesi. Risk faktörleri: Kronik alkolizm, malnütrisyon, karaciğer transplantasyonu, yanık.",
+        "mechanism": "Hızlı serum osmolalite artışı → oligodendrosit hasarı (osmotik stres) → miyelinoliz. Pons bu hasara en duyarlı bölge (vasküler anatomisi nedeniyle).",
+        "differentialDiagnosis": [
+            "Pontin infarkt (asimetrik, vasküler territory)",
+            "Pontin gliom (çocuk, genişleyen kitle, kontrastlanma)",
+            "MS plağı (asimetrik, diğer demyelinizan lezyonlar)",
+            "Wernicke ensefalopatisi (periakvaduktal, mamiller cisim)"
+        ],
+        "goldStandard": "MRI DWI (erken tanı) + T2/FLAIR (trident sign). Klinik: Hiponatremi düzeltme öyküsü + kuadripleji/psödobulber palsi.",
+        "clinicalPearl": "Hiponatremi düzeltildikten 2-6 gün sonra kuadripleji gelişen hastada: Pons MRI DWI çek. T2 negatif olsa bile DWI pozitif olabilir. Altın kural: Na düzeltme hızı <8-10 mEq/L/gün.",
+        "references": [
+            "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
+            "Martin RJ. J Neurol Neurosurg Psychiatry. 2004;75(Suppl 3):iii22-iii28.",
+            "Radiopaedia.org - Osmotic demyelination syndrome"
+        ]
+    },
+    {
+        "id": "cerebral_venous_angioma",
+        "name": "Gelişimsel Venöz Anomali (DVA)",
+        "nameEn": "Developmental Venous Anomaly (DVA)",
+        "category": "Vasküler/Konjenital",
+        "categoryEn": "Vascular/Congenital",
+        "findings": {
+            "ct": {
+                "non_contrast": "Genellikle NORMAL. Nadiren lineer hiperdens yapı (dilate kolektör ven).",
+                "contrast": "'Caput medusae' (Medusa başı) görünümü: Santral dilate kolektör vene drene olan radyal medüller venlerin yıldız şeklinde dizilimi."
+            },
+            "mri": {
+                "t1": "Genellikle normal. Flow void (kolektör ven) görülebilir.",
+                "t2": "Genellikle normal. Kolektör ven flow void olarak izlenir. T2* (SWI): Radyal medüller venler hipointens.",
+                "t1_c": "'CAPUT MEDUSAE': Yoğun kontrastlanan radyal venler + santral dilate kolektör ven. EN KARAKTERİSTİK BULGU.",
+                "dwi": "Normal (kısıtlanma yok)."
+            }
+        },
+        "findingsEn": {
+            "ct": {
+                "non_contrast": "Usually NORMAL. Rarely linear hyperdense structure (dilated collector vein).",
+                "contrast": "'Caput medusae' (Medusa head) appearance: Star-shaped arrangement of radial medullary veins draining into central dilated collector vein."
+            },
+            "mri": {
+                "t1": "Usually normal. Flow void (collector vein) may be visible.",
+                "t2": "Usually normal. Collector vein seen as flow void. T2* (SWI): Radial medullary veins hypointense.",
+                "t1_c": "'CAPUT MEDUSAE': Intensely enhancing radial veins + central dilated collector vein. MOST CHARACTERISTIC FINDING.",
+                "dwi": "Normal (no restriction)."
+            }
+        },
+        "keyPoints": [
+            "En sık intrakraniyel vasküler malformasyon (insidental, %2.5 otopsi).",
+            "'Caput medusae' (Medusa başı) PATOGNOMONİK: Radyal venler + santral kolektör ven.",
+            "BENİGN - cerrahi endikasyonu YOK. Normal beyin drenajının bir parçası.",
+            "Eşlik eden kavernöz malformasyon: %20-30 birlikte görülür."
+        ],
+        "keyPointsEn": [
+            "Most common intracranial vascular malformation (incidental, 2.5% autopsy).",
+            "'Caput medusae' (Medusa head) is PATHOGNOMONIC: Radial veins + central collector vein.",
+            "BENIGN - NO surgical indication. Part of normal brain drainage.",
+            "Associated cavernous malformation: Seen together in 20-30%."
+        ],
+        "etiology": "Gelişimsel venöz varyant. Normal venöz gelişim sırasında oluşan drene edici ven anomalisi.",
+        "mechanism": "Embriyolojik dönemde normal medüller venlerin gerilemesi yerine kalıcı olması → alternatif venöz drenaj yolu oluşumu → 'caput medusae' paterni.",
+        "differentialDiagnosis": [
+            "Kavernöz malformasyon (T2* 'bloom', kontrastlanma minimal)",
+            "AVM (arteriyel besleyiciler, erken venöz drenaj)",
+            "Sturge-Weber (leptomeningeal anjiomatozis)",
+            "Dural AV fistül (pulsatil tinnitus, erken venöz dolum)"
+        ],
+        "goldStandard": "MRI kontrastlı: Caput medusae görünümü. Ek tetkik gerektirmez.",
+        "clinicalPearl": "İnsidental kontrastlı MRI'da 'caput medusae' = DVA. Benign, cerrahi YAPILMAZ (çıkarılırsa venöz infarkt gelişir). Eşlik eden kavernöm varsa onu takip et.",
+        "references": [
+            "Osborn AG. Osborn's Brain. 2nd ed. Elsevier; 2017.",
+            "Defined AL, et al. AJNR Am J Neuroradiol. 2011;32(9):1568-1574.",
+            "Radiopaedia.org - Developmental venous anomaly"
+        ]
     }
 ];

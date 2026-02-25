@@ -687,5 +687,467 @@ export const mskPathologies: Pathology[] = [
             "ACR Appropriateness Criteria: Chronic Foot Pain. American College of Radiology; 2018.",
             "Radiopaedia.org - Plantar fasciitis"
         ]
+    },
+    {
+        id: "pcl-tear",
+        name: "Arka Çapraz Bağ (PCL) Yırtığı",
+        nameEn: "Posterior Cruciate Ligament (PCL) Tear",
+        category: "Diz",
+        categoryEn: "Knee",
+        mechanism: "Dashboard yaralanması (diz fleksiyonda tibianın posteriora itilmesi) → PCL rüptürü. İzole PCL yırtığı nadirdir; genellikle çoklu bağ yaralanması. PCL normalden 2 kat kalınsa parsiyel yırtık düşün.",
+        keyPoints: ["Dashboard injury mekanizması en sık.", "Sagittal MRI'da PCL'de artmış sinyal + kalınlaşma/diskontinüite.", "İzole PCL yırtığında konservatif tedavi genellikle yeterli.", "Multiligamentöz yaralanma varsa cerrahi gerekir."],
+        keyPointsEn: ["Dashboard injury mechanism most common.", "Sagittal MRI: Increased signal + thickening/discontinuity in PCL.", "Conservative treatment usually sufficient for isolated PCL tear.", "Surgery needed if multiligamentous injury."],
+        findings: {
+            mri: { t2: "PCL'de artmış T2 sinyal (parsiyel yırtık) veya tam diskontinüite (tam yırtık). Normal PCL: Homojen hipointens bant. Kalınlaşma ve ödem. Kemik kontüzyonu: Tibial plato anterior + femoral kondil anterior.", stir: "Periligamentöz ödem. Efüzyon." }
+        },
+        findingsEn: {
+            mri: { t2: "Increased T2 signal in PCL (partial tear) or complete discontinuity (complete tear). Normal PCL: Homogeneous hypointense band. Thickening and edema. Bone contusion: Anterior tibial plateau + anterior femoral condyle.", stir: "Periligamentous edema. Effusion." }
+        },
+        etiology: "Travma: Dashboard yaralanması, spor yaralanması, düşme. Diz fleksiyonda posterior yönlü kuvvet.",
+        differentialDiagnosis: ["ACL Yırtığı (Anterior tibial subluksasyon, pivot shift, posterolateral kontüzyon)", "Menisküs Yırtığı (Eklemiçi patoloji, eşlik edebilir)", "Posterolateral Köşe Yaralanması (Popliteus, LCL, biseps femoris)", "Patellar Dislokasyon (Medial retinakulum yırtığı, lateral femoral kondil kontüzyonu)"],
+        goldStandard: "MRI: Sagittal PDW/T2 — PCL kontinüitesi ve sinyal değerlendirmesi.",
+        clinicalPearl: "Dashboard yaralanması + posterior tibial translasyon (posterior drawer testi) + MRI'da PCL diskontinüitesi = PCL yırtığı.",
+        references: ["Defined Stoller DW. Magnetic Resonance Imaging in Orthopaedics and Sports Medicine.", "Defined approach in Sonin AH et al. AJR. 1995;164(1):135-140.", "Radiopaedia.org - PCL tear"]
+    },
+    {
+        id: "medial-meniscus-tear",
+        name: "Medial Menisküs Yırtığı",
+        nameEn: "Medial Meniscus Tear",
+        category: "Diz",
+        categoryEn: "Knee",
+        mechanism: "Ağırlık taşıma altında rotasyonel kuvvet → menisküs fibrokıkırdağında yırtılma. Posterior horn en sık tutulan bölge (%75). Grade I: İntrasübstans dejenerasyon. Grade II: Lineer sinyal yüzeye ulaşmaz. Grade III: Artiküler yüzeye ulaşan yırtık.",
+        keyPoints: ["Posterior horn en sık tutulan bölge.", "Grade III = Artiküler yüzeye ulaşan yırtık (cerrahi önem).", "Horizontal, vertikal, radyal, kompleks yırtık tipleri.", "ACL yırtığı ile sık birliktelik (O'Donoghue triadı)."],
+        keyPointsEn: ["Posterior horn most commonly affected.", "Grade III = Tear reaching articular surface (surgical significance).", "Horizontal, vertical, radial, complex tear types.", "Frequent association with ACL tear (O'Donoghue triad)."],
+        findings: {
+            mri: { t2: "Menisküs içinde artiküler yüzeye uzanan artmış sinyal (Grade III). Horizontal yırtık: Üst ve alt artiküler yüzeyi bölen. Vertikal yırtık: Longitudinal uzanım. Radyal yırtık: Serbest kenara dik. Kova sapı (bucket handle): Deplase fragman interkondiler notch'ta (double PCL sign).", stir: "Perimeniskal ödem. Parameniskal kist (horizontal yırtık ile ilişkili)." }
+        },
+        findingsEn: {
+            mri: { t2: "Increased signal extending to articular surface within meniscus (Grade III). Horizontal tear: Divides upper and lower articular surfaces. Vertical tear: Longitudinal extension. Radial tear: Perpendicular to free edge. Bucket handle: Displaced fragment in intercondylar notch (double PCL sign).", stir: "Perimeniscal edema. Parameniscal cyst (associated with horizontal tear)." }
+        },
+        etiology: "Akut travma (genç: spor yaralanması, rotasyonel kuvvet), dejeneratif (yaşlı: kronik aşınma, horizontal tip sık).",
+        differentialDiagnosis: ["Lateral Menisküs Yırtığı (Lateral kompartman, diskoid menisküs riski)", "Meniskal Kist (Menisküs yırtığından kaynaklanan ekstra-artiküler kist)", "ACL Yırtığı (Eşlik eden patoloji, anterior tibial translasyon)", "Plika Sendromu (Medial plika, snapping, kondral hasarı taklit)"],
+        goldStandard: "MRI: Sagittal PDW/T2 — menisküs morfolojisi ve sinyal değerlendirmesi. Artroskopi: Hem tanısal hem terapötik.",
+        clinicalPearl: "Sagittal MRI'da menisküs içinde artiküler yüzeye ulaşan artmış sinyal = Grade III yırtık (cerrahi önem). Double PCL sign = Kova sapı yırtığı.",
+        references: ["Defined Stoller DW. MRI in Orthopaedics.", "Defined approach in De Smet AA. Radiology. 1994;193(1):223-225.", "Radiopaedia.org - Meniscal tear"]
+    },
+    {
+        id: "slap-lesion",
+        name: "SLAP Lezyon (Superior Labrum Anterior-Posterior)",
+        nameEn: "SLAP Lesion",
+        category: "Omuz",
+        categoryEn: "Shoulder",
+        mechanism: "Superior labrumun biseps ankraj noktasından ayrılması. Overhead sporlar (beyzbol, tenis), düşme (uzanmış kol), traksiyon yaralanması. Snyder sınıflaması: Tip I (dejenerasyon), Tip II (en sık, biseps ankraj ayrılması), Tip III (kova sapı), Tip IV (biseps içine uzanım).",
+        keyPoints: ["Tip II en sık (%55): Biseps ankrajının glenoid'den ayrılması.", "MR artrografi: En hassas yöntem (kontrast sublabral boşluğa geçer).", "Peel-back mekanizması: Abdüksiyon + eksternal rotasyonda labrum geriye soyulur.", "Normal varyant sublabral reses ile karışabilir (>2mm = patolojik)."],
+        keyPointsEn: ["Type II most common (55%): Biceps anchor detachment from glenoid.", "MR arthrography: Most sensitive method (contrast enters sublabral space).", "Peel-back mechanism: Labrum peels back in abduction + external rotation.", "May mimic normal sublabral recess (>2mm = pathological)."],
+        findings: {
+            mri: { t2: "Superior labrumda artmış sinyal. Sublabral sıvı/kontrast (artrografide). Biseps labral kompleks irregülaritesi. Paralabral kist (aksiller sinir bası riski).", t1_c: "MR Artrografi: Kontrast madde superior labrum altına geçer (Tip II). Labral ayrılma ve yırtık kontur." }
+        },
+        findingsEn: {
+            mri: { t2: "Increased signal in superior labrum. Sublabral fluid/contrast (in arthrography). Biceps-labral complex irregularity. Paralabral cyst (axillary nerve compression risk).", t1_c: "MR Arthrography: Contrast enters beneath superior labrum (Type II). Labral detachment and tear contour." }
+        },
+        etiology: "Overhead sporlar (beyzbol pitcher, tenis), uzanmış kola düşme, traksiyon (taşıma), dejeneratif (>40 yaş).",
+        differentialDiagnosis: ["Bankart Lezyonu (İnferior labrum, anterior instabilite)", "Sublabral Reses (Normal varyant, <2mm, 11-1 saat arası)", "Buford Kompleksi (Kordsuz superior labrum + kalın MGHL, normal varyant)", "Biseps Tendiniti (Biseps olukta sıvı, tendon kalınlaşması)"],
+        goldStandard: "MR Artrografi: SLAP lezyon tespitinde en hassas (%82-100 sensitivite). Konvansiyonel MRI sensitivitesi daha düşük. Artroskopi: Kesin tanı ve tedavi.",
+        clinicalPearl: "MR artrografide kontrast maddenin superior labrum altına sızması (>2mm sublabral boşluk) = SLAP lezyon düşün.",
+        references: ["Defined Snyder SJ et al. SLAP lesions of the shoulder. Arthroscopy. 1990;6(4):274-279.", "Defined approach in Defined ACR Appropriateness Criteria: Shoulder Pain.", "Radiopaedia.org - SLAP lesion"]
+    },
+    {
+        id: "ewing-sarcoma",
+        name: "Ewing Sarkomu",
+        nameEn: "Ewing Sarcoma",
+        category: "Kemik Tümörü",
+        categoryEn: "Bone Tumor",
+        mechanism: "EWSR1-FLI1 translokasyonu (t(11;22)) → nöroektodermal kökenli malign küçük yuvarlak hücreli tümör. Diafiz yerleşimli (osteosarkomdan farklı). Periosteal reaksiyon belirgin. 5-15 yaş pik.",
+        keyPoints: ["Diafiz/metadiafiz yerleşimli (osteosarkom: metafiz).", "Güve yeniği (moth-eaten) veya permeatif destrüksiyon.", "Soğan kabuğu (onion-skin) lameller periosteal reaksiyon.", "Büyük yumuşak doku komponenti kemik lezyonuna göre orantısız."],
+        keyPointsEn: ["Diaphyseal/metadiaphyseal location (osteosarcoma: metaphysis).", "Moth-eaten or permeative destruction.", "Onion-skin (lamellated) periosteal reaction.", "Large soft tissue component disproportionate to bone lesion."],
+        findings: {
+            xray: { description: "Diafiz yerleşimli agresif kemik lezyonu. Güve yeniği/permeatif destrüksiyon paterni. Lameller (soğan kabuğu) periosteal reaksiyon. Sunburst paterni de olabilir. Büyük yumuşak doku kitlesi." },
+            mri: { t1: "Kemik lezyonu: T1 hipointens (normal yağlı kemik iliği sinyali kayıp). Yumuşak doku kitlesi: T1 ara sinyal.", t2: "Heterojen hiperintens (nekroz, kanama). Yumuşak doku komponenti belirgin.", t1_c: "Heterojen kontrastlanma. Nekrotik alanlar kontrastlanmaz. Skip metastaz değerlendirilmeli.", stir: "Kemik iliği ödemi (tümör yayılımı). Yumuşak doku ödemi." },
+            ct: { non_contrast: "Permeatif kemik destrüksiyonu. Periosteal reaksiyon. Yumuşak doku kitlesi (kemik penceresinde daha iyi)." }
+        },
+        findingsEn: {
+            xray: { description: "Diaphyseal aggressive bone lesion. Moth-eaten/permeative destruction pattern. Lamellated (onion-skin) periosteal reaction. Sunburst pattern also possible. Large soft tissue mass." },
+            mri: { t1: "Bone lesion: T1 hypointense (loss of normal fatty marrow signal). Soft tissue mass: T1 intermediate signal.", t2: "Heterogeneous hyperintense (necrosis, hemorrhage). Soft tissue component prominent.", t1_c: "Heterogeneous enhancement. Necrotic areas non-enhancing. Skip metastasis should be evaluated.", stir: "Bone marrow edema (tumor extension). Soft tissue edema." },
+            ct: { non_contrast: "Permeative bone destruction. Periosteal reaction. Soft tissue mass (better on bone window)." }
+        },
+        etiology: "EWSR1-FLI1 gen füzyonu (t(11;22)(q24;q12)), %85. Çocuk ve adölesan (5-15 yaş). Erkeklerde daha sık. Pelvis, femur, tibia en sık lokalizasyonlar.",
+        differentialDiagnosis: ["Osteosarkom (Metafiz, osteoid üretimi, sunburst, Codman üçgeni)", "Osteomiyelit (Klinik enfeksiyon, ateş, lökositoz, sekestrum)", "Lenfoma (Permeatif, yaşlı hasta, ivory vertebra)", "Eozinofilik Granülom (Çocuk, litik, vertebra plana)"],
+        goldStandard: "MRI: Lokal evreleme (yumuşak doku yayılımı, skip metastaz). Direkt grafi: Periosteal reaksiyon. BT Toraks: Akciğer metastaz taraması. Biyopsi: Kesin tanı.",
+        clinicalPearl: "Çocuk/adölesanda diafiz yerleşimli agresif kemik lezyonu + soğan kabuğu periosteal reaksiyon + büyük yumuşak doku kitlesi = Ewing sarkomu düşün.",
+        references: ["Defined WHO Classification of Tumours of Soft Tissue and Bone, 5th ed.", "Defined ACR Appropriateness Criteria: Primary Bone Tumors.", "Radiopaedia.org - Ewing sarcoma"]
+    },
+    {
+        id: "giant-cell-tumor",
+        name: "Dev Hücreli Tümör (GCT)",
+        nameEn: "Giant Cell Tumor (GCT)",
+        category: "Kemik Tümörü",
+        categoryEn: "Bone Tumor",
+        mechanism: "Osteoklast benzeri dev hücreler + mononükleer stromal hücreler → epifiz-metafiz bölgesinde ekzantrik litik lezyon. 20-40 yaş arası sık. Subartikülere uzanır (eklem yüzeyine yakın). Lokal agresif, nadiren malign.",
+        keyPoints: ["Epifiz yerleşimli (fizis kapandıktan sonra), subartikülere uzanır.", "Ekzantrik, ekspansil litik lezyon — sabun köpüğü (soap bubble) görünümü.", "En sık diz çevresi: Distal femur + proksimal tibia.", "20-40 yaş, kadınlarda hafif fazla."],
+        keyPointsEn: ["Epiphyseal location (after physeal closure), extends to subarticular region.", "Eccentric, expansile lytic lesion — soap bubble appearance.", "Most common around knee: Distal femur + proximal tibia.", "20-40 years, slightly more common in women."],
+        findings: {
+            xray: { description: "Ekzantrik, litik, iyi-orta tanımlı lezyon. Epifiz-metafiz yerleşimli, subartikülere uzanır. Sklerotik rim yok veya ince. Kalsifikasyon yok. Periosteal reaksiyon minimal. Patolojik kırık eşlik edebilir." },
+            mri: { t1: "Hipointens-izointens solid kitle. Hemosiderin birikimleri hipointens.", t2: "Heterojen (solid: ara sinyal, kistik: hiperintens, hemosiderin: hipointens). Sıvı-sıvı seviyeleri (sekonder ABC komponenti).", t1_c: "Yoğun kontrastlanma (solid komponent). Nekrotik alanlar kontrastlanmaz." }
+        },
+        findingsEn: {
+            xray: { description: "Eccentric, lytic, well-to-moderately defined lesion. Epiphyseal-metaphyseal, extending to subarticular region. No sclerotic rim or thin. No calcification. Minimal periosteal reaction. Pathologic fracture may accompany." },
+            mri: { t1: "Hypointense-isointense solid mass. Hemosiderin deposits hypointense.", t2: "Heterogeneous (solid: intermediate, cystic: hyperintense, hemosiderin: hypointense). Fluid-fluid levels (secondary ABC component).", t1_c: "Avid enhancement (solid component). Necrotic areas non-enhancing." }
+        },
+        etiology: "RANK/RANKL sinyal yolağı hiperaktivasyonu → osteoklast benzeri dev hücre proliferasyonu. Sporadik. Paget hastalığı zemininde GCT nadir.",
+        differentialDiagnosis: ["Anevrizmal Kemik Kisti-ABC (Sıvı-sıvı seviyeleri, ekspansil, metafiz)", "Kondroblastom (Epifiz, genç, kalsifikasyon +, <20 yaş)", "Subkondral Kist (Dejeneratif, küçük, osteoartrit bulguları)", "Brown Tümör (Hiperparatiroidizm, multipl litik, lab değerleri)"],
+        goldStandard: "Direkt grafi + MRI: Epifiz yerleşimli ekzantrik litik lezyon. BT: Korteks detayı. Biyopsi: Kesin tanı.",
+        clinicalPearl: "20-40 yaş hastada diz çevresinde epifiz yerleşimli ekzantrik litik lezyon (subartikülere uzanan) = GCT düşün.",
+        references: ["Defined WHO Classification of Tumours of Soft Tissue and Bone, 5th ed.", "Defined approach in Murphey MD et al. Radiographics. 2001;21(5):1283-1309.", "Radiopaedia.org - Giant cell tumour"]
+    },
+    {
+        id: "enchondroma",
+        name: "Enkondrom",
+        nameEn: "Enchondroma",
+        category: "Kemik Tümörü",
+        categoryEn: "Bone Tumor",
+        mechanism: "Medüller kavitede benign hyalin kıkırdak tümörü. En sık el ve ayak küçük kemiklerinde. Uzun kemiklerde metafiz/diafiz yerleşimli. Kıkırdak matriksine ait 'rings and arcs' kalsifikasyon patognomonik.",
+        keyPoints: ["Medüller, santral yerleşimli benign kıkırdak tümörü.", "Halka ve ark (rings and arcs) kalsifikasyon patognomoniktir.", "El-ayak tubüler kemiklerinde en sık.", "Uzun kemiklerde kondrosarkom ile ayrımda boyut, ağrı ve kortikal erozyon önemli."],
+        keyPointsEn: ["Medullary, centrally located benign cartilage tumor.", "Rings and arcs calcification is pathognomonic.", "Most common in hand-foot tubular bones.", "Size, pain, and cortical erosion important for differentiation from chondrosarcoma in long bones."],
+        findings: {
+            xray: { description: "Medüller kavitede iyi sınırlı litik lezyon. Kondroid matriks kalsifikasyonu (rings and arcs = noktacıklı veya halka şeklinde). El kemiklerinde: ekspansil litik, ince korteks. Skalloping olabilir (endosteal)." },
+            mri: { t1: "Hipointens (kıkırdak matriks). Kalsifikasyonlar: Punktat düşük sinyal.", t2: "Lobüle, çok hiperintens (hyalin kıkırdağın yüksek su içeriği). Kalsifikasyonlar: Düşük sinyal odaklar.", t1_c: "Periferal ve septal kontrastlanma (rings and arcs paterni). Solid kontrastlanma: kondrosarkom şüphesi." }
+        },
+        findingsEn: {
+            xray: { description: "Well-defined lytic lesion in medullary cavity. Chondroid matrix calcification (rings and arcs = punctate or ring-shaped). In hand bones: expansile lytic, thin cortex. Scalloping possible (endosteal)." },
+            mri: { t1: "Hypointense (cartilage matrix). Calcifications: Punctate low signal.", t2: "Lobulated, very hyperintense (high water content of hyaline cartilage). Calcifications: Low signal foci.", t1_c: "Peripheral and septal enhancement (rings and arcs pattern). Solid enhancement: chondrosarcoma suspicion." }
+        },
+        etiology: "Sporadik. Ollier hastalığı (multipl enkondromatoz), Maffucci sendromu (enkondromatoz + yumuşak doku hemanjiomları) → malign transformasyon riski yüksek.",
+        differentialDiagnosis: ["Kondrosarkom (>5cm, ağrılı, kortikal destrüksiyon, periosteal reaksiyon, endosteal scalloping >2/3)", "Kemik İnfarktı (Serpentine kalsifikasyon, epifiz/metafiz, ağrısız)", "Fibröz Displazi (Ground-glass matriks, kalsifikasyon farklı)", "Non-Ossifiye Fibrom (Ekzantrik, sklerotik rim, metafiz)"],
+        goldStandard: "Direkt grafi: Rings and arcs kalsifikasyon + medüller litik lezyon. MRI: T2 hiperintens lobüle kıkırdak tümörü. Takip: Büyüme/ağrı → kondrosarkom dışla.",
+        clinicalPearl: "El kemiklerinde medüller litik lezyon + kondroid kalsifikasyon = Enkondrom. Uzun kemiklerde boyut >5cm + kortikal destrüksiyon = kondrosarkom dışla.",
+        references: ["Defined WHO Classification of Tumours of Soft Tissue and Bone, 5th ed.", "Defined approach in Murphey MD et al. Radiographics. 1998;18(5):1213-1237.", "Radiopaedia.org - Enchondroma"]
+    },
+    {
+        id: "aneurysmal-bone-cyst",
+        name: "Anevrizmal Kemik Kisti (ABC)",
+        nameEn: "Aneurysmal Bone Cyst (ABC)",
+        category: "Kemik Tümörü",
+        categoryEn: "Bone Tumor",
+        mechanism: "Reaktif vasküler lezyon → kanla dolu multiseptate kistik kaviteler → ekspansil büyüme ('blow-out' paterni). Primer (%70) veya sekonder (GCT, kondroblastom, osteoblastom zemininde %30). USP6 gen rearrangement (primer).",
+        keyPoints: ["Sıvı-sıvı seviyeleri (fluid-fluid levels) karakteristik ama patognomonik değil.", "Ekspansil, blow-out kemik lezyonu + ince periosteal kabuk.", "Metafiz yerleşimli (20 yaş altı sık).", "Sekonder ABC: Altta yatan tümör araştırılmalı (GCT, kondroblastom)."],
+        keyPointsEn: ["Fluid-fluid levels characteristic but not pathognomonic.", "Expansile, blow-out bone lesion + thin periosteal shell.", "Metaphyseal location (common under age 20).", "Secondary ABC: Underlying tumor should be investigated (GCT, chondroblastoma)."],
+        findings: {
+            xray: { description: "Ekspansil litik lezyon (blow-out). İnce periosteal kabuk (eggshell cortex). Septalar görülebilir. Metafiz yerleşimli (uzun kemikler) veya posterior elemanlar (vertebra)." },
+            mri: { t1: "Multilokule kistik lezyon. Sıvı-sıvı seviyeleri: Üst kısım T1 hiperintens (methemoglobin), alt kısım hipointens (seröz sıvı). İnce septalar ve periosteal kabuk.", t2: "Sıvı-sıvı seviyeleri çok belirgin. Kistik kaviteler T2 hiperintens. Septalar hipointens.", t1_c: "Septal ve periferik kontrastlanma (ince septalar). Kist kaviteleri kontrastlanmaz. Solid kontrastlanma: Sekonder ABC veya agresif lezyon düşün." }
+        },
+        findingsEn: {
+            xray: { description: "Expansile lytic lesion (blow-out). Thin periosteal shell (eggshell cortex). Septations may be visible. Metaphyseal (long bones) or posterior elements (vertebra)." },
+            mri: { t1: "Multiloculated cystic lesion. Fluid-fluid levels: Upper portion T1 hyperintense (methemoglobin), lower portion hypointense (serous fluid). Thin septa and periosteal shell.", t2: "Fluid-fluid levels very prominent. Cystic cavities T2 hyperintense. Septa hypointense.", t1_c: "Septal and peripheral enhancement (thin septa). Cyst cavities non-enhancing. Solid enhancement: Consider secondary ABC or aggressive lesion." }
+        },
+        etiology: "Primer: USP6 gen rearrangement. Sekonder: GCT, kondroblastom, osteoblastom, fibröz displazi zemininde. 10-20 yaş sık.",
+        differentialDiagnosis: ["Telanjiektatik Osteosarkom (Agresif, sıvı-sıvı seviyeleri, kalın septalar, solid kontrastlanma)", "Dev Hücreli Tümör-GCT (Epifiz, ekzantrik, solid komponent, >20 yaş)", "Basit Kemik Kisti-UBC (Kistik, sıvı-sıvı seviyesi yok, 'fallen fragment' işareti)", "Kondroblastom (Epifiz, <20 yaş, matrikal kalsifikasyon)"],
+        goldStandard: "MRI: Sıvı-sıvı seviyeleri + ekspansil lezyon. Direkt grafi: Blow-out ekspansiyon. Biyopsi: Kesin tanı + sekonder patoloji araştırması.",
+        clinicalPearl: "Genç hastada ekspansil kemik lezyonu + MRI'da sıvı-sıvı seviyeleri = ABC düşün. Ama telanjiektatik osteosarkom dışlanmalı (kalın septalar + solid komponent = kırmızı bayrak).",
+        references: ["Defined WHO Classification of Tumours of Soft Tissue and Bone, 5th ed.", "Defined approach in Kransdorf MJ, Sweet DE. Radiographics. 1995;15(5):1285-1297.", "Radiopaedia.org - Aneurysmal bone cyst"]
+    },
+    {
+        id: "pvns",
+        name: "PVNS (Pigmente Villonodüler Sinovit)",
+        nameEn: "Pigmented Villonodular Synovitis (PVNS)",
+        category: "Eklem",
+        categoryEn: "Joint",
+        mechanism: "Sinovyal membranın proliferatif hastalığı → hemosiderin birikimiyle karakterize villöz ve nodüler sinovyal hiperplazi. Monoartiküler (diz %80). Difüz veya lokalize (nodüler) form. CSF1 gen translokasyonu.",
+        keyPoints: ["Hemosiderin birikimi → T2'de ve özellikle GRE/SWI'da belirgin sinyal kaybı (blooming).", "Monoartiküler (diz en sık), genç erişkin.", "Difüz form: Tüm sinovya tutulumu, kemik erozyonları.", "Lokalize nodüler form: Hoffa yağ yastığında nodül."],
+        keyPointsEn: ["Hemosiderin deposition → Signal loss on T2 and especially GRE/SWI (blooming).", "Monoarticular (knee most common), young adult.", "Diffuse form: Entire synovial involvement, bone erosions.", "Localized nodular form: Nodule in Hoffa fat pad."],
+        findings: {
+            mri: { t1: "Sinovyal kalınlaşma. Hemosiderin: T1 hipointens-izointens nodüler odaklar.", t2: "Hemosiderin: Belirgin T2 hipointens (düşük sinyal) odaklar. Sinovyal sıvı hiperintens. Kemik erozyonları.", other_sequences: "GRE (T2*)/SWI: Blooming artefaktı (hemosiderin manyetik duyarlılık → sinyal kaybı). Bu dizi tanı için en değerli.", t1_c: "Kontrastlanan sinovyal proliferasyon. Hemosiderin alanları kontrastlanmaz." }
+        },
+        findingsEn: {
+            mri: { t1: "Synovial thickening. Hemosiderin: T1 hypointense-isointense nodular foci.", t2: "Hemosiderin: Markedly T2 hypointense (low signal) foci. Synovial fluid hyperintense. Bone erosions.", other_sequences: "GRE (T2*)/SWI: Blooming artifact (hemosiderin magnetic susceptibility → signal loss). Most valuable sequence for diagnosis.", t1_c: "Enhancing synovial proliferation. Hemosiderin areas non-enhancing." }
+        },
+        etiology: "Neoplastik (CSF1 gen translokasyonu → tenosinovyal dev hücreli tümör olarak yeniden sınıflandırıldı). 20-40 yaş, cinsiyet farkı yok.",
+        differentialDiagnosis: ["Sinovyal Kondramatoz (Kalsifiye küçük cisimler, kemik-kıkırdak metaplazisi)", "Hemofili Artropatisi (Tekrarlayan eklem içi kanama öyküsü, bilateral, faktör eksikliği)", "Romatoid Artrit (Simetrik, pannus, poliartriküler, RF/anti-CCP pozitif)", "Sinovyal Sarkom (Periartüküler yumuşak doku kitlesi, genç, agresif)"],
+        goldStandard: "MRI: GRE/SWI'da blooming + sinovyal proliferasyon + hemosiderin birikimi → tanı koydurucudur. Biyopsi: Kesin tanı.",
+        clinicalPearl: "Genç erişkinde monoartiküler sinovyal proliferasyon + MRI'da GRE/SWI'da blooming (hemosiderin) = PVNS (tenosinovyal dev hücreli tümör).",
+        references: ["Defined WHO Classification of Tumours of Soft Tissue and Bone, 5th ed.", "Defined approach in Murphey MD et al. Radiographics. 2008;28(5):1493-1518.", "Radiopaedia.org - Pigmented villonodular synovitis"]
+    },
+    {
+        id: "scaphoid-fracture",
+        name: "Skafoid Kırığı",
+        nameEn: "Scaphoid Fracture",
+        category: "Kırık",
+        categoryEn: "Fracture",
+        mechanism: "El bileğine düşme (FOOSH - Fall On Outstretched Hand) → skafoid bel (waist) kırığı (%70). Proksimal fragmanın retrograd kanlanması nedeniyle AVN riski yüksek. Direkt grafide %15-20 okkült → MRI altın standart.",
+        keyPoints: ["Karpal kemiklerin en sık kırılan kemiidir.", "Bel (waist) kırığı en sık (%70), proksimal pol AVN riski yüksek.", "Direkt grafide %15-20 okkült — klinik şüphe varsa MRI.", "Herbert vida ile cerrahi fiksasyon (deplase kırıklarda)."],
+        keyPointsEn: ["Most commonly fractured carpal bone.", "Waist fracture most common (70%), high AVN risk in proximal pole.", "15-20% occult on X-ray — MRI if clinical suspicion.", "Herbert screw surgical fixation (in displaced fractures)."],
+        findings: {
+            xray: { description: "Skafoid hattında kortikal kırılma (step-off). Akut dönemde normal olabilir (%15-20). 2 hafta sonra tekrar grafi: Rezorpsiyon hattı görünür hale gelir. Scaphoid fat stripe obliterasyonu (dolaylı bulgu)." },
+            mri: { t1: "Kırık hattı: T1 hipointens lineer sinyal. Kemik iliği ödemi: T1 hipointens. AVN: Proksimal pol T1 sinyalinde homojen kayıp (yağ sinyali kaybı).", stir: "Kırık hattı + kemik iliği ödemi: STIR hiperintens. Ligamentöz yaralanma değerlendirmesi.", t2: "Kırık hattı T2 hiperintens. Periosteal/yumuşak doku ödemi." }
+        },
+        findingsEn: {
+            xray: { description: "Cortical disruption at scaphoid line (step-off). May be normal in acute phase (15-20%). Repeat X-ray at 2 weeks: Resorption line becomes visible. Scaphoid fat stripe obliteration (indirect sign)." },
+            mri: { t1: "Fracture line: T1 hypointense linear signal. Bone marrow edema: T1 hypointense. AVN: Homogeneous signal loss in proximal pole T1 (fat signal loss).", stir: "Fracture line + bone marrow edema: STIR hyperintense. Ligamentous injury assessment.", t2: "Fracture line T2 hyperintense. Periosteal/soft tissue edema." }
+        },
+        etiology: "FOOSH (uzanmış ele düşme), spor yaralanması, trafik kazası. Genç erişkinlerde sık.",
+        differentialDiagnosis: ["Distal Radius Kırığı (Colles/Smith, aynı mekanizma, direkt grafide belirgin)", "Skafoid Kontüzyonu (Ödem var ama kırık hattı yok, MRI ayrımı)", "De Quervain Tenosinoviti (1. kompartman ağrısı, Finkelstein pozitif)", "Kienbock Hastalığı (Lunat AVN, progresif kolaps, farklı mekanizma)"],
+        goldStandard: "Direkt grafi (ilk değerlendirme) → Okkült ise MRI (sensitivite %98-100). BT: Kırık hattı detayı ve kaynamama (non-union) değerlendirmesi.",
+        clinicalPearl: "Anatomik enfiye çukurundan (anatomical snuffbox) hassasiyet + normal direkt grafi = Okkült skafoid kırığı düşün → MRI.",
+        references: ["Defined ACR Appropriateness Criteria: Acute Hand and Wrist Trauma.", "Defined approach in Defined Breitenseher MJ et al. AJR. 1997;168(5):1169-1172.", "Radiopaedia.org - Scaphoid fracture"]
+    },
+    {
+        id: "vertebral-compression-fracture",
+        name: "Vertebral Kompresyon Kırığı (Benign vs Malign)",
+        nameEn: "Vertebral Compression Fracture (Benign vs Malignant)",
+        category: "Kırık",
+        categoryEn: "Fracture",
+        mechanism: "Osteoporotik: Düşük enerjili travma → vertebra korpusunda anterior wedging. Malign (patolojik): Metastatik infiltrasyon → vertebra yapısal bütünlüğü kaybolur → kompresyon. MRI ayrım kriterleri kritik.",
+        keyPoints: ["Benign: T1/T2 sinyal normal kemik iliği ile uyumlu, retropulse fragment, vakum fenomeni.", "Malign: Posterior eleman tutulumu, epidural kitle, konveks posterior korpus konturu, pediküler sinyal kaybı.", "DWI/ADC: Malign kırıklarda difüzyon kısıtlılığı (düşük ADC).", "Fluid sign (T2 hiperintens kleft): Benign kırık lehine."],
+        keyPointsEn: ["Benign: T1/T2 signal consistent with normal marrow, retropulsed fragment, vacuum phenomenon.", "Malignant: Posterior element involvement, epidural mass, convex posterior corpus contour, pedicle signal loss.", "DWI/ADC: Diffusion restriction in malignant fractures (low ADC).", "Fluid sign (T2 hyperintense cleft): Favors benign fracture."],
+        findings: {
+            mri: { t1: "BENIGN: Band-like marrow edema (akut), normal sinyal korunmuş alanlar, retropulse. MALIGN: Komplet kemik iliği replasmanı (tüm korpus T1 hipointens), pediküler tutulum, epidural kitle.", t2: "BENIGN: T2 hiperintens ödem bandı, fluid sign (kleft). MALIGN: Heterojen sinyal, posterior korpus konveksitesi.", stir: "BENIGN: Akut dönemde ödem hiperintens, kronik dönemde düzelir. MALIGN: Persistan hiperintens sinyal.", dwi: "BENIGN: Akut dönemde hafif kısıtlılık (yüksek ADC). MALIGN: Belirgin kısıtlılık (düşük ADC <1.0 × 10⁻³)." },
+            xray: { description: "Vertebra yükseklik kaybı (anterior wedging). Posterior duvar bütünlüğü. Vakum fenomeni (gaz): Benign lehine." },
+            ct: { non_contrast: "Kırık hattı detayı. Retropulse fragment. Vakum fenomeni (benign). Osteolitik destrüksiyon (malign)." }
+        },
+        findingsEn: {
+            mri: { t1: "BENIGN: Band-like marrow edema (acute), preserved normal signal areas, retropulsion. MALIGNANT: Complete marrow replacement (entire corpus T1 hypointense), pedicle involvement, epidural mass.", t2: "BENIGN: T2 hyperintense edema band, fluid sign (cleft). MALIGNANT: Heterogeneous signal, posterior corpus convexity.", stir: "BENIGN: Acute edema hyperintense, resolves in chronic phase. MALIGNANT: Persistent hyperintense signal.", dwi: "BENIGN: Mild restriction in acute phase (high ADC). MALIGNANT: Marked restriction (low ADC <1.0 × 10⁻³)." },
+            xray: { description: "Vertebral height loss (anterior wedging). Posterior wall integrity. Vacuum phenomenon (gas): Favors benign." },
+            ct: { non_contrast: "Fracture line detail. Retropulsed fragment. Vacuum phenomenon (benign). Osteolytic destruction (malignant)." }
+        },
+        etiology: "Benign: Osteoporoz (postmenopozal), travma, steroid kullanımı. Malign: Kemik metastazı (meme, prostat, akciğer, renal, tiroid), multipl miyelom, lenfoma.",
+        differentialDiagnosis: ["Akut Osteoporotik Kırık (Band-like ödem, fluid sign, retropulse)", "Patolojik Kırık-Metastaz (Komplet replasman, pediküler tutulum, epidural kitle)", "Multipl Miyelom (Yaygın kemik iliği infiltrasyonu, pepper pot skull)", "Schmorl Nodülü (Endplate herniasyonu, kırık değil, asemptomatik)"],
+        goldStandard: "MRI: Benign vs malign ayrım (T1 sinyal paterni, pediküler tutulum, DWI/ADC). PET/BT: Malign şüphe doğrulama. Biyopsi: Kesin tanı (şüpheli olgularda).",
+        clinicalPearl: "MRI'da kompresyon kırığında: Pediküler tutulum + komplet iliği replasman + epidural kitle + düşük ADC = Malign. Fluid sign + retropulse + normal pediküller = Benign.",
+        references: ["Defined approach in Defined Baur A et al. Radiology. 2003;226(2):432-437.", "Defined ACR Appropriateness Criteria: Management of Vertebral Compression Fractures.", "Radiopaedia.org - Vertebral compression fracture"]
+    },
+    {
+        id: "soft-tissue-lipoma",
+        name: "Yumuşak Doku Lipomu",
+        nameEn: "Soft Tissue Lipoma",
+        category: "Yumuşak Doku",
+        categoryEn: "Soft Tissue",
+        mechanism: "Matür adipositlerden oluşan benign mezenkimal tümör. En sık yumuşak doku tümörüdür. Yağ sinyali tüm sekanslarda cilt altı yağ ile identik. İnce septalar (<2mm) benign özellik.",
+        keyPoints: ["Tüm sekanslarda subkutan yağ ile identik sinyal.", "Yağ baskılama sekanslarında sinyal kaybı — tanı doğrulayıcı.", "İnce septalar (<2mm), minimal kontrastlanma: Benign.", "Kalın septalar (>2mm), nodüler kontrastlanma, non-adipöz komponent: Liposarkom şüphesi."],
+        keyPointsEn: ["Signal identical to subcutaneous fat on all sequences.", "Signal loss on fat suppression sequences — diagnostic confirmation.", "Thin septa (<2mm), minimal enhancement: Benign.", "Thick septa (>2mm), nodular enhancement, non-adipose component: Liposarcoma suspicion."],
+        findings: {
+            mri: { t1: "Yağ ile identik yüksek sinyal (subkutan yağ referans). Homojen. İnce septalar hipointens.", t2: "Yağ ile identik yüksek sinyal.", stir: "Sinyal kaybı (yağ baskılama ile doğrulama). Bu dizi tanı için anahtar.", t1_c: "Kontrastlanma yok veya minimal septal kontrastlanma. Nodüler/solid kontrastlanma: Liposarkom düşün." },
+            usg: { description: "İyi sınırlı, kompresibıl, ovoid lezyon. Subkutan yağ ile izoekoik veya hafif hiperekoik. Cilt altında en sık. İnce lineer ekolar (septalar)." }
+        },
+        findingsEn: {
+            mri: { t1: "Fat-identical high signal (subcutaneous fat reference). Homogeneous. Thin septa hypointense.", t2: "Fat-identical high signal.", stir: "Signal loss (confirmation with fat suppression). Key sequence for diagnosis.", t1_c: "No enhancement or minimal septal enhancement. Nodular/solid enhancement: Consider liposarcoma." },
+            usg: { description: "Well-defined, compressible, ovoid lesion. Isoechoic or mildly hyperechoic to subcutaneous fat. Most common subcutaneously. Thin linear echoes (septa)." }
+        },
+        etiology: "Sporadik. Lipomatoz (multipl lipomlar): Familyal multipl lipomatoz, Dercum hastalığı, Madelung hastalığı.",
+        differentialDiagnosis: ["İyi Diferansiye Liposarkom-ALT (Kalın septalar >2mm, nodüler kontrastlanma, non-adipöz komponent >25%)", "Anjiolipom (Ağrılı, subkutan, vasküler komponent, kontrast tutulumu)", "Hibernoma (Kahverengi yağ, T1'de yağdan az parlak, vasküler, kontrastlanır)", "Lipoblastom (Pediatrik, lokalize, yağ + miksoid komponent)"],
+        goldStandard: "MRI: Yağ sinyali + STIR'da sinyal kaybı + ince septalar + kontrastlanma yok = Lipom tanısı. Biyopsi: Atipik özellikler varsa.",
+        clinicalPearl: "MRI'da tüm sekanslarda subkutan yağ ile identik + STIR'da sinyal kaybı + kontrastlanma yok = Lipom kesin tanısı. Kalın septalar veya solid komponent → liposarkom dışla.",
+        references: ["Defined WHO Classification of Tumours of Soft Tissue and Bone, 5th ed.", "Defined approach in Kransdorf MJ et al. Radiographics. 2002;22(4):925-946.", "Radiopaedia.org - Lipoma"]
+    },
+    {
+        id: "chondrosarcoma",
+        name: "Kondrosarkom",
+        nameEn: "Chondrosarcoma",
+        category: "Kemik Tümörleri",
+        categoryEn: "Bone Tumors",
+        mechanism: "Kıkırdak matriksi üreten malign tümör. Düşük gradeli: İntramedüller, yavaş büyüyen. Yüksek gradeli: Agresif, kortikal destrüksiyon. Primer veya sekonder (enkondrom/osteokondrom malign transformasyonu). En sık pelvis, proksimal femur, humerus.",
+        keyPoints: ["Kıkırdak matriksi: 'Rings and arcs' (halka ve yay) kalsifikasyonu PATOGNOMONİK.", "Endosteal scalloping >2/3 kortikal kalınlık = Malignite şüphesi.", "Enkondromdan ayırımda ağrı + boyut artışı + T2'de yoğun sinyal kritik.", ">40 yaş, aksiyel iskelet tercihi (pelvis en sık)."],
+        keyPointsEn: ["Chondroid matrix: 'Rings and arcs' calcification PATHOGNOMONIC.", "Endosteal scalloping >2/3 cortical thickness = Malignancy suspicion.", "Pain + size increase + intense T2 signal critical to differentiate from enchondroma.", ">40 years, axial skeleton preference (pelvis most common)."],
+        findings: {
+            xray: { description: "İntramedüller litik lezyon. Kıkırdak matriksi kalsifikasyonu (rings and arcs). Endosteal scalloping. Kortikal ekspansiyon veya destrüksiyon (yüksek grade)." },
+            ct: { non_contrast: "Kıkırdak matriksi kalsifikasyonları detaylı. Kortikal destrüksiyon derecesi. Yumuşak doku komponenti.", contrast: "Heterojen kontrastlanma. Periferal ve septal kontrastlanma paterni." },
+            mri: { t1: "Hipointens lobüle kitle.", t2: "ÇOK PARLAK (hiperintens) — kıkırdak matriksinin yüksek su içeriği. Lobüle morfoloji. Septalar hipointens.", t1_c: "Periferal ve septal kontrastlanma ('rings and arcs' paterni)." }
+        },
+        findingsEn: {
+            xray: { description: "Intramedullary lytic lesion. Chondroid matrix calcification (rings and arcs). Endosteal scalloping. Cortical expansion or destruction (high grade)." },
+            ct: { non_contrast: "Detailed chondroid matrix calcifications. Degree of cortical destruction. Soft tissue component.", contrast: "Heterogeneous enhancement. Peripheral and septal enhancement pattern." },
+            mri: { t1: "Hypointense lobulated mass.", t2: "VERY BRIGHT (hyperintense) — high water content of chondroid matrix. Lobulated morphology. Septa hypointense.", t1_c: "Peripheral and septal enhancement ('rings and arcs' pattern)." }
+        },
+        etiology: "Primer: De novo. Sekonder: Enkondrom veya osteokondrom malign transformasyonu. Maffucci sendromu ve Ollier hastalığında risk artmış.",
+        differentialDiagnosis: ["Enkondrom (benign, ağrısız, <5cm, minimal scalloping)", "Kemik infarktı (serpiginöz kalsifikasyon, kontrastlanma yok)", "Osteosarkom (osteoid matriks, sunburst)", "Metastaz (multipl, litik)"],
+        goldStandard: "Radyografi + MRI + Biyopsi. Gradeleme histopatolojik (Grade I-III). Grade I ayırımı enkondromdan zor olabilir.",
+        clinicalPearl: "Pelvis/proksimal femurda rings and arcs kalsifikasyonu + endosteal scalloping >2/3 + T2'de çok parlak = Kondrosarkom. Enkondromdan farklı: Ağrılı, büyüyor, >5cm.",
+        references: ["WHO Classification of Tumours of Soft Tissue and Bone. 5th ed.", "Defined approach in Murphey MD et al. Radiographics. 2003;23(5):1245-1278.", "Radiopaedia.org - Chondrosarcoma"]
+    },
+    {
+        id: "osteochondroma",
+        name: "Osteokondrom (Ekzostoz)",
+        nameEn: "Osteochondroma (Exostosis)",
+        category: "Kemik Tümörleri",
+        categoryEn: "Bone Tumors",
+        mechanism: "En sık benign kemik tümörü. Büyüme plağından kaynaklanan kemik ve kıkırdak çıkıntısı. Kortikal ve medüller kemik ana kemikle devamlılık gösterir ('parent bone continuity'). Kıkırdak kapak (cartilage cap) <2cm benign, >2cm malign transformasyon şüphesi.",
+        keyPoints: ["Kortikal ve medüller devamlılık ana kemikle = PATOGNOMONİK.", "Kıkırdak kapak kalınlığı: <2cm benign, >2cm malign şüphesi (kondrosarkom).", "Büyüme eklemden uzağa doğru (away from joint).", "Multipl herediter ekzostoz: Otozomal dominant, multipl lezyonlar."],
+        keyPointsEn: ["Cortical and medullary continuity with parent bone = PATHOGNOMONIC.", "Cartilage cap thickness: <2cm benign, >2cm malignancy suspicion (chondrosarcoma).", "Growth direction away from joint.", "Multiple hereditary exostoses: Autosomal dominant, multiple lesions."],
+        findings: {
+            xray: { description: "Kemik yüzeyinden dışa doğru çıkıntı (sesil veya pediküllü). Korteks ve medulla ana kemikle devamlı. Büyüme plağına yakın metafizer yerleşim." },
+            mri: { t1: "Kemik iliği sinyali (medüller devamlılık). Kıkırdak kapak: T1 hipointens.", t2: "Kıkırdak kapak: T2 HİPERİNTENS (ölçüm yapılmalı). <2cm = Benign. >2cm = Malignite şüphesi.", t1_c: "Kıkırdak kapak kontrastlanabilir. Kalın, düzensiz kontrastlanma: Malign transformasyon." }
+        },
+        findingsEn: {
+            xray: { description: "Bony protuberance from bone surface (sessile or pedunculated). Cortex and medulla continuous with parent bone. Metaphyseal location near growth plate." },
+            mri: { t1: "Bone marrow signal (medullary continuity). Cartilage cap: T1 hypointense.", t2: "Cartilage cap: T2 HYPERINTENSE (measurement required). <2cm = Benign. >2cm = Malignancy suspicion.", t1_c: "Cartilage cap may enhance. Thick, irregular enhancement: Malignant transformation." }
+        },
+        etiology: "Büyüme plağı anomalisi. Sporadik (soliter) veya multipl herediter ekzostoz (EXT1/EXT2 gen mutasyonu, otozomal dominant).",
+        differentialDiagnosis: ["Parosteal osteosarkom (kemik yüzeyinde, medüller devamlılık yok)", "Myositis ossifikans (travma öyküsü, periferal kalsifikasyon)", "Juxtakortikal kondrosarkom (kıkırdak matriksi, destrüksiyon)"],
+        goldStandard: "Radyografi: Medüller ve kortikal devamlılık. MRI: Kıkırdak kapak kalınlığı ölçümü.",
+        clinicalPearl: "Kemik çıkıntısı + medüller/kortikal devamlılık + kıkırdak kapak <2cm = Benign osteokondrom. Ağrı, büyüme veya kapak >2cm = Malign transformasyon düşün.",
+        references: ["WHO Classification of Tumours of Soft Tissue and Bone. 5th ed.", "Radiopaedia.org - Osteochondroma"]
+    },
+    {
+        id: "pigmented-villonodular-synovitis",
+        name: "PVNS (Pigmente Villonodüler Sinovit)",
+        nameEn: "Pigmented Villonodular Synovitis (PVNS)",
+        category: "Artiküler",
+        categoryEn: "Articular",
+        mechanism: "Sinovyal membranın proliferatif hastalığı. Hemosiderin birikimi karakteristik (tekrarlayan intraartiküler kanama). Diffüz (tüm eklem) veya lokalize (fokal nodüler) form. Diz en sık. 'Blooming artifact' gradient echo sekanslarda hemosiderinden kaynaklanır.",
+        keyPoints: ["Gradient echo (T2*): 'BLOOMING' artefaktı = Hemosiderin birikimi PATOGNOMONİK.", "Diz eklemi en sık tutulan eklem.", "Kemik erozyonları her iki tarafta (non-agresif, sklerotik kenar).", "Eklem aralığı korunur (RA'dan farklı)."],
+        keyPointsEn: ["Gradient echo (T2*): 'BLOOMING' artifact = Hemosiderin deposition PATHOGNOMONIC.", "Knee joint most commonly affected.", "Bone erosions on both sides (non-aggressive, sclerotic margin).", "Joint space preserved (unlike RA)."],
+        findings: {
+            mri: { t1: "Diffüz sinovyal kalınlaşma. Hipointens alanlar (hemosiderin).", t2: "Heterojen sinyal. Hipointens alanlar (hemosiderin). T2*: BELİRGİN 'BLOOMING' (hemosiderin manyetik susceptibilite artefaktı).", t1_c: "Sinovyal kontrastlanma (proliferatif sinovyum). Hemosiderin alanları kontrastlanmaz." },
+            usg: { description: "Sinovyal kalınlaşma, eklem efüzyonu. Hiperekoik odaklar (hemosiderin). Doppler: Artmış vaskülarite." }
+        },
+        findingsEn: {
+            mri: { t1: "Diffuse synovial thickening. Hypointense areas (hemosiderin).", t2: "Heterogeneous signal. Hypointense areas (hemosiderin). T2*: MARKED 'BLOOMING' (hemosiderin magnetic susceptibility artifact).", t1_c: "Synovial enhancement (proliferative synovium). Hemosiderin areas don't enhance." },
+            usg: { description: "Synovial thickening, joint effusion. Hyperechoic foci (hemosiderin). Doppler: Increased vascularity." }
+        },
+        etiology: "Etiyoloji net bilinmiyor. Neoplastik veya inflamatuvar süreç tartışmalı. CSF1 translokasyonu tanımlanmış. 20-40 yaş, kadın = erkek.",
+        differentialDiagnosis: ["Hemofili artropatisi (kanama diatezi, bilateral)", "Sinovyal hemanjiom (vasküler, flebolit)", "Romatoid artrit (eklem aralığı daralması, bilateral, simetrik)", "Sinovyal sarkom (solid kitle, heterojen)"],
+        goldStandard: "MRI: T2* blooming + diffüz sinovyal kalınlaşma + kemik erozyonları. Histopatoloji: Hemosiderin yüklü makrofajlar + dev hücreler.",
+        clinicalPearl: "Genç hastada monoartiküler eklem şişliği + MRI'da T2* blooming = PVNS. Gradient echo sekansı tanıda anahtar — mutlaka iste.",
+        references: ["Defined approach in Defined. Radiographics PVNS.", "Radiopaedia.org - PVNS"]
+    },
+    {
+        id: "morton-neuroma",
+        name: "Morton Nöroması",
+        nameEn: "Morton Neuroma",
+        category: "Yumuşak Doku",
+        categoryEn: "Soft Tissue",
+        mechanism: "İntermetatarsal bursanın kronik kompresyonu → perinöral fibrozis (gerçek nöroma değil). En sık 3. intermetatarsal aralık (2.-3. arası), ikinci sıklıkla 2. aralık. Tekrarlayan travma ve dar ayakkabı kullanımı predispozan.",
+        keyPoints: ["3. intermetatarsal aralık en sık (%65-70).", "Gerçek nöroma DEĞİL — perinöral fibrozis.", "USG'de intermetatarsal hipoekoik kitle + Mulder testi pozitif.", "MRI T1 ve T2'de hipointens (fibröz doku)."],
+        keyPointsEn: ["3rd intermetatarsal space most common (65-70%).", "NOT a true neuroma — perineural fibrosis.", "Hypoechoic intermetatarsal mass on USG + positive Mulder test.", "Hypointense on both T1 and T2 MRI (fibrous tissue)."],
+        findings: {
+            mri: { t1: "İntermetatarsal aralıkta hipointens nodüler lezyon. Metatars başları arasında 'dumbbell' şekli.", t2: "Hipointens (fibröz doku). Çevre bursit varsa sıvı hiperintens.", t1_c: "Kontrastlanma değişken — hafif kontrastlanma olabilir." },
+            usg: { description: "İntermetatarsal aralıkta hipoekoik solid kitle. Kompresyon ile Mulder 'click' muayene sonografik olarak gösterilebilir. Genellikle >5mm tanısal." }
+        },
+        findingsEn: {
+            mri: { t1: "Hypointense nodular lesion in intermetatarsal space. 'Dumbbell' shape between metatarsal heads.", t2: "Hypointense (fibrous tissue). Surrounding bursitis fluid hyperintense.", t1_c: "Enhancement variable — mild enhancement may be present." },
+            usg: { description: "Hypoechoic solid mass in intermetatarsal space. Mulder 'click' test can be demonstrated sonographically with compression. Generally >5mm diagnostic." }
+        },
+        etiology: "Kronik mekanik kompresyon (dar ayakkabı, yüksek topuk). Kadınlarda 8-10 kat daha sık. Tekrarlayan travma.",
+        differentialDiagnosis: ["İntermetatarsal bursit (sıvı dolu, T2 hiperintens)", "Stres fraktürü (kemik ödemi, farklı lokalizasyon)", "Sinovyal kist (T2 hiperintens, ince duvar)", "Schwannom (eksentrik, T2 hiperintens)"],
+        goldStandard: "USG (ilk basamak, dinamik değerlendirme) + MRI (atipik vakalarda).",
+        clinicalPearl: "3. intermetatarsal ağrı + USG'de hipoekoik kitle + Mulder click pozitif = Morton nöroması. USG ilk basamak ve yeterlidir çoğu vakada.",
+        references: ["Defined approach in Defined. Foot and ankle MRI.", "Radiopaedia.org - Morton neuroma"]
+    },
+    {
+        id: "osteoid-osteoma",
+        name: "Osteoid Osteom",
+        nameEn: "Osteoid Osteoma",
+        category: "Kemik Tümörleri",
+        categoryEn: "Bone Tumors",
+        mechanism: "Benign osteoblastik tümör. <2cm küçük nidus (santral vasküler alan) + çevre reaktif skleroz. Nidus prostaglandin üretir → gece ağrısı → ASA/NSAİD ile dramatik yanıt. En sık femur ve tibia. 5-25 yaş, erkek > kadın (3:1).",
+        keyPoints: ["Nidus <2cm + çevre skleroz = Osteoid osteom.", "Gece ağrısı + ASA/NSAİD ile dramatik yanıt KLASİK.", "BT: Nidus tespitinde altın standart (küçük radyolusen alan).", "İntraartiküler yerleşimde: Sinovit taklit eder, skleroz minimal."],
+        keyPointsEn: ["Nidus <2cm + surrounding sclerosis = Osteoid osteoma.", "Night pain + dramatic response to ASA/NSAIDs is CLASSIC.", "CT: Gold standard for nidus detection (small radiolucent area).", "Intra-articular location: Mimics synovitis, minimal sclerosis."],
+        findings: {
+            ct: { non_contrast: "NIDUS: Küçük yuvarlak radyolusen alan (<2cm). Santral kalsifikasyon (noktasal). Belirgin çevre REAKTİF SKLEROZ (kortikal kalınlaşma).", contrast: "Nidus yoğun kontrastlanır (hipervasküler)." },
+            mri: { t1: "Nidus: Hipointens veya izointens. Çevre skleroz: Hipointens.", t2: "Nidus: Hiperintens (vasküler). Çevre kemik iliği ödemi BELİRGİN (nidus boyutuna göre orantısız). Bu ödem agresif patolojiyi taklit edebilir.", t1_c: "Nidus YOĞUN kontrastlanır." },
+            xray: { description: "Belirgin kortikal kalınlaşma/skleroz. Santral radyolusen alan (nidus — direkt grafide zor görülür). Periosteal reaksiyon." }
+        },
+        findingsEn: {
+            ct: { non_contrast: "NIDUS: Small round radiolucent area (<2cm). Central calcification (punctate). Prominent surrounding REACTIVE SCLEROSIS (cortical thickening).", contrast: "Nidus enhances intensely (hypervascular)." },
+            mri: { t1: "Nidus: Hypointense or isointense. Surrounding sclerosis: Hypointense.", t2: "Nidus: Hyperintense (vascular). Surrounding bone marrow edema PROMINENT (disproportionate to nidus size). This edema may mimic aggressive pathology.", t1_c: "Nidus enhances INTENSELY." },
+            xray: { description: "Prominent cortical thickening/sclerosis. Central radiolucent area (nidus — difficult to see on radiograph). Periosteal reaction." }
+        },
+        etiology: "Benign osteoblastik neoplazm. 5-25 yaş. Erkek:Kadın = 3:1. Femur ve tibia diafiz en sık.",
+        differentialDiagnosis: ["Osteoblastom (>2cm, daha az skleroz)", "Stres fraktürü (lineer, ödem, öykü)", "Brodie absesi (enfeksiyon, penumbra sign)", "Eozinofilik granülom (çocuk, litik, periosteal reaksiyon)"],
+        goldStandard: "BT: Nidus tespiti (ince kesit). MRI: Çevre ödem ve yumuşak doku değerlendirmesi. Tedavi: Perkütan radyofrekans ablasyon.",
+        clinicalPearl: "Genç erkek + gece ağrısı + ASA ile düzelen + BT'de küçük nidus + skleroz = Osteoid osteom. MRI'da orantısız kemik ödemi agresif patolojiyi taklit edebilir — BT iste.",
+        references: ["Defined approach in Kransdorf MJ et al. Radiographics osteoid osteoma.", "Radiopaedia.org - Osteoid osteoma"]
+    },
+    {
+        id: "myositis-ossificans",
+        name: "Miyozitis Ossifikans",
+        nameEn: "Myositis Ossificans",
+        category: "Yumuşak Doku",
+        categoryEn: "Soft Tissue",
+        mechanism: "Travma sonrası kasda heterotopik kemik oluşumu. Zonal maturasyon paterni: Periferal kalsifikasyon → santral inmatur doku. Bu patern malign tümörlerden (osteosarkom) AYIRICI — osteosarkomda santral kalsifikasyon olur.",
+        keyPoints: ["ZONAL PATERN: Periferik matur kemik + santral inmatur doku = Benign.", "Osteosarkom: TERS patern (santral kalsifikasyon) = Malign.", "Travma öyküsü genellikle mevcut (2-4 hafta sonra belirginleşir).", "Radyografide 3-4 hafta sonra periferal kalsifikasyon görülür."],
+        keyPointsEn: ["ZONAL PATTERN: Peripheral mature bone + central immature tissue = Benign.", "Osteosarcoma: REVERSE pattern (central calcification) = Malignant.", "Trauma history usually present (becomes apparent after 2-4 weeks).", "Peripheral calcification visible on radiograph after 3-4 weeks."],
+        findings: {
+            xray: { description: "Erken (1-2 hafta): Normal veya non-spesifik yumuşak doku şişliği. Orta (3-4 hafta): Periferal kalsifikasyon başlar (zonal). Geç (>6 hafta): Matür periferik kemik kabuğu." },
+            ct: { non_contrast: "Zonal kalsifikasyon: Periferal olgun kemik + santral yumuşak doku. Kas içi veya periosteal yerleşim. Kemikten net ayrım (cleavage plane)." },
+            mri: { t1: "Erken: Kas ödemi (hipointens/izointens). Geç: Periferal kalsifikasyon hipointens rim.", t2: "Erken: Belirgin ödem (çok hiperintens — agresif patolojiyi taklit eder!). Geç: Periferal hipointens rim + santral heterojen sinyal.", t1_c: "Erken: Belirgin kontrastlanma (agresif görünüm). Geç: Periferal rim kontrastlanması." }
+        },
+        findingsEn: {
+            xray: { description: "Early (1-2 weeks): Normal or nonspecific soft tissue swelling. Middle (3-4 weeks): Peripheral calcification begins (zonal). Late (>6 weeks): Mature peripheral bone shell." },
+            ct: { non_contrast: "Zonal calcification: Peripheral mature bone + central soft tissue. Intramuscular or periosteal location. Clear separation from bone (cleavage plane)." },
+            mri: { t1: "Early: Muscle edema (hypointense/isointense). Late: Peripheral calcification hypointense rim.", t2: "Early: Marked edema (very hyperintense — mimics aggressive pathology!). Late: Peripheral hypointense rim + central heterogeneous signal.", t1_c: "Early: Marked enhancement (aggressive appearance). Late: Peripheral rim enhancement." }
+        },
+        etiology: "Travma (en sık). Spor yaralanması, cerrahi, yanık. Nadir: Non-travmatik (spinal kord hasarı, nöroljenik).",
+        differentialDiagnosis: ["Parosteal osteosarkom (kemik yüzeyinde, santral kalsifikasyon)", "Ekstraosseöz osteosarkom (santral kalsifikasyon, ters zonal patern)", "Tümöral kalsinozis (periartüler, kalsifiye kitleler)", "Yumuşak doku sarkomu (heterojen, agresif)"],
+        goldStandard: "BT: Zonal maturasyon paterni (periferik kalsifikasyon). MRI: Evreleme ve ayırıcı tanı. Erken evrede BT daha tanısal (MRI agresif patolojiyi taklit edebilir).",
+        clinicalPearl: "Travma sonrası kas kitlesi + BT'de periferal kalsifikasyon (zonal patern) = Miyozitis ossifikans. Erken MRI YANILTICI olabilir (agresif tümör gibi) — BT ile doğrula. Osteosarkom TERS patern gösterir.",
+        references: ["Defined approach in Defined. Radiographics heterotopic ossification.", "Radiopaedia.org - Myositis ossificans"]
+    },
+    {
+        id: "lateral-meniscus-tear",
+        name: "Lateral Menisküs Yırtığı",
+        nameEn: "Lateral Meniscus Tear",
+        category: "Artiküler",
+        categoryEn: "Articular",
+        mechanism: "Lateral menisküs yırtığı mediale göre daha nadir ama spesifik yaralanma paternleri ile ilişkili. Diskoid menisküs varlığında risk artmış. ACL yırtığına sıklıkla eşlik eder (pivot shift). Parrot-beak yırtık lateral menisküste karakteristik.",
+        keyPoints: ["ACL yırtığı ile birlikte sık (lateral kompartman bone bruise paterni).", "Diskoid menisküs: Yırtık riskini artırır.", "Posterior horn ve gövde en sık yırtık yerleri.", "Kök yırtığı: Menisküs ekstrüzyonuna yol açar."],
+        keyPointsEn: ["Frequently associated with ACL tear (lateral compartment bone bruise pattern).", "Discoid meniscus: Increases tear risk.", "Posterior horn and body most common tear locations.", "Root tear: Leads to meniscal extrusion."],
+        findings: {
+            mri: { t1: "Menisküs içinde lineer sinyal değişikliği (artiküler yüzeye uzanırsa yırtık).", t2: "İntrameniskal hiperintens sinyal artiküler yüzeye uzanır = Yırtık (Grade III). Menisküs morfolojisi bozulmuş olabilir. Parameniskal kist eşlik edebilir (horizontal yırtıkla ilişkili).", t1_c: "Rutin kullanılmaz." }
+        },
+        findingsEn: {
+            mri: { t1: "Linear signal change within meniscus (tear if extends to articular surface).", t2: "Intrameniscal hyperintense signal extending to articular surface = Tear (Grade III). Meniscal morphology may be disrupted. Parameniscal cyst may accompany (associated with horizontal tear).", t1_c: "Not routinely used." }
+        },
+        etiology: "Travma (spor yaralanması, pivot mekanizma), dejeneratif (yaşla ilişkili). Diskoid menisküs predispozan.",
+        differentialDiagnosis: ["Meniskal dejenerasyon (Grade I-II, yüzeye ulaşmaz)", "Diskoid menisküs (genişlemiş menisküs)", "Parameniskal kist (periferik kistik lezyon)", "Meniskokapsüler ayrılma (periferal, MRI'da zor)"],
+        goldStandard: "MRI: Proton dansite (PD) yağ baskılı veya T2* sekanslar. Artroskopi: Kesin tanı ve tedavi.",
+        clinicalPearl: "ACL yırtığı + lateral kompartman bone bruise = Lateral menisküs yırtığını ara. Parameniskal kist varsa horizontal yırtığı doğrular.",
+        references: ["Defined approach in Defined. Stoller's Orthopaedics and Sports Medicine.", "Radiopaedia.org - Lateral meniscus tear"]
+    },
+    {
+        id: "tibial-plateau-fracture",
+        name: "Tibia Plato Kırığı",
+        nameEn: "Tibial Plateau Fracture",
+        category: "Travma",
+        categoryEn: "Trauma",
+        mechanism: "Aksiyel yük + valgus/varus stresi → tibial platoda kırık. Lateral plato en sık (%55-70). Schatzker sınıflaması cerrahi planlamada kritik. Lipohemartroz (yağ-sıvı seviyesi) kırığı düşündürür.",
+        keyPoints: ["Schatzker sınıflaması (I-VI) cerrahi planlamada standart.", "Lipohemartroz (yağ-sıvı seviyesi) intraartiküler kırık göstergesi.", "Lateral plato en sık (%55-70). Schatzker II: Lateral split-depresyon.", "BT: Kırık patern, depresyon derinliği ve fragman pozisyonu değerlendirmesi."],
+        keyPointsEn: ["Schatzker classification (I-VI) standard for surgical planning.", "Lipohemarthrosis (fat-fluid level) indicates intra-articular fracture.", "Lateral plateau most common (55-70%). Schatzker II: Lateral split-depression.", "CT: Fracture pattern, depression depth and fragment position assessment."],
+        findings: {
+            xray: { description: "Tibial platoda kırık hattı. Artiküler yüzey depresyonu. Lipohemartroz (lateral grafide yağ-sıvı seviyesi suprapatellar bursada)." },
+            ct: { non_contrast: "Kırık patern detayı: Split, depresyon derecesi, komminüsyon. Schatzker sınıflaması. Artiküler yüzey depresyon derinliği (>2-3mm cerrahi endikasyon)." },
+            mri: { t1: "Kırık hattı (hipointens). Kemik iliği ödemi.", t2: "Kemik iliği ödemi (hiperintens). Eşlik eden ligaman/menisküs yaralanmaları. Lipohemartroz: Sıvı-sıvı seviyesi.", t1_c: "Rutin değil." }
+        },
+        findingsEn: {
+            xray: { description: "Fracture line in tibial plateau. Articular surface depression. Lipohemarthrosis (fat-fluid level in suprapatellar bursa on lateral view)." },
+            ct: { non_contrast: "Fracture pattern detail: Split, depression degree, comminution. Schatzker classification. Articular surface depression depth (>2-3mm surgical indication)." },
+            mri: { t1: "Fracture line (hypointense). Bone marrow edema.", t2: "Bone marrow edema (hyperintense). Associated ligament/meniscus injuries. Lipohemarthrosis: Fluid-fluid level.", t1_c: "Not routine." }
+        },
+        etiology: "Yüksek enerjili travma (motorlu araç kazası, düşme). Düşük enerjili (osteoporotik kemik, yaşlı). Lateral plato: Valgus stresi.",
+        differentialDiagnosis: ["Kemik kontüzyonu (kırık hattı yok, ödem mevcut)", "Osteokondral lezyon (artiküler kartilaj ve subkondral kemik)", "Stres kırığı (lineer, gradual başlangıç)"],
+        goldStandard: "BT: Kırık sınıflaması ve cerrahi planlama. MRI: Yumuşak doku yaralanmaları (ligaman, menisküs). Radyografi: İlk değerlendirme.",
+        clinicalPearl: "Diz travması + lateral grafide lipohemartroz = İntraartiküler kırık. BT ile Schatzker sınıfla. Depresyon >2-3mm → cerrahi. MRI ile menisküs ve bağ yaralanmalarını değerlendir.",
+        references: ["Defined approach in Defined. Schatzker classification of tibial plateau fractures.", "Radiopaedia.org - Tibial plateau fracture"]
+    },
+    {
+        id: "femoroacetabular-impingement",
+        name: "Femoroasetabüler Sıkışma (FAİ)",
+        nameEn: "Femoroacetabular Impingement (FAI)",
+        category: "Artiküler",
+        categoryEn: "Articular",
+        mechanism: "Femur başı/boyun ile asetabulum arasında anormal temas → labral yırtık ve kıkırdak hasarı → erken osteoartrit. CAM tipi: Femur başı-boyun bileşkesinde 'bump' (alfa açısı >55°). PINCER tipi: Asetabüler aşırı örtünme. MİKST: Her ikisi birlikte (en sık).",
+        keyPoints: ["CAM: Alfa açısı >55° (femur başında bump).", "PINCER: Asetabüler overörtünme (crossover sign, coxa profunda).", "Labral yırtık: Anterosüperior en sık.", "Erken osteoartrit nedeni — genç aktif hastalarda."],
+        keyPointsEn: ["CAM: Alpha angle >55° (bump on femoral head).", "PINCER: Acetabular overcoverage (crossover sign, coxa profunda).", "Labral tear: Anterosuperior most common.", "Cause of early osteoarthritis — in young active patients."],
+        findings: {
+            xray: { description: "CAM: Femur başı-boyun bileşkesinde bump (pistol grip deformitesi). PINCER: Crossover sign, coxa profunda, protrusio asetabuli. Herniation pit (femur boyun anteriorunda kortikal irregülarite)." },
+            mri: { t1: "Femur başı-boyun morfolojisi (CAM bump). Labral yapı değerlendirmesi. MR artrografi: İntraartiküler kontrast ile labral yırtık detayı.", t2: "Labral yırtık: Hiperintens sinyal veya morfolojik bozukluk. Kıkırdak defekti: Fokal kayıp veya incelme. Kemik iliği ödemi (impingement bölgesinde).", t1_c: "MR artrografi: Kontrast labral altına veya kıkırdak defektine sızar (yırtık doğrulama)." }
+        },
+        findingsEn: {
+            xray: { description: "CAM: Bump at femoral head-neck junction (pistol grip deformity). PINCER: Crossover sign, coxa profunda, protrusio acetabuli. Herniation pit (cortical irregularity at anterior femoral neck)." },
+            mri: { t1: "Femoral head-neck morphology (CAM bump). Labral structure evaluation. MR arthrography: Labral tear detail with intra-articular contrast.", t2: "Labral tear: Hyperintense signal or morphological disruption. Cartilage defect: Focal loss or thinning. Bone marrow edema (at impingement zone).", t1_c: "MR arthrography: Contrast leaks under labrum or into cartilage defect (tear confirmation)." }
+        },
+        etiology: "CAM: Gelişimsel (slipped capital femoral epiphysis, Legg-Calvé-Perthes sekeli). PINCER: Asetabüler retroversiyon, coxa profunda. Genetik yatkınlık ve spor aktivitesi.",
+        differentialDiagnosis: ["Labral yırtık (izole, impingement morfolojisi yok)", "Kalça osteoartriti (yaşlı, diffüz)", "AVN (subkondral kresentrik sinyal değişikliği)", "İliopsoas tendinopati (anterior kalça ağrısı, farklı lokalizasyon)"],
+        goldStandard: "MR Artrografi: Labral yırtık ve kıkırdak hasarı. Radyografi: Alfa açısı ölçümü (CAM), crossover sign (PINCER).",
+        clinicalPearl: "Genç aktif hasta + anterior kalça/kasık ağrısı + fleksiyon-iç rotasyonda ağrı = FAİ düşün. Alfa açısı >55° = CAM. MR artrografi labral yırtığı gösterir.",
+        references: ["Defined approach in Defined. Tannast M et al. Radiographics FAI.", "Radiopaedia.org - Femoroacetabular impingement"]
     }
 ];

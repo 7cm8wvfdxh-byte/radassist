@@ -877,5 +877,229 @@ export const spinePathologies: Pathology[] = [
             "Brant WE, Helms CA. Fundamentals of Diagnostic Radiology. 5th ed. Lippincott Williams & Wilkins; 2019.",
             "Radiopaedia.org - Syringomyelia"
         ]
+    },
+    {
+        "id": "ankylosing_spondylitis",
+        "name": "Ankilozan Spondilit",
+        "nameEn": "Ankylosing Spondylitis",
+        "category": "İnflamatuvar",
+        "categoryEn": "Inflammatory",
+        "findings": {
+            "ct": { "non_contrast": "Sindesmofitler (vertebra gövdesi kenarında ince kemik köprüleri). 'Bambu kamışı' (bamboo spine) görünümü. Sakroiliak eklem füzyonu. Faset eklem ankilozu." },
+            "mri": { "t1": "Erken: Vertebra köşelerinde sinyal değişikliği (Romanus lezyonu). İleri: Yağlı dejenerasyon (T1 hiperintens).", "t2": "Erken: Köşe ödemi (parlak Romanus lezyonu). STIR: Aktif inflamasyon hiperintens. Sakroiliak eklem kemik iliği ödemi (aktif sakroiliit).", "t1_c": "Aktif lezyonlarda kontrastlanma." }
+        },
+        "findingsEn": {
+            "ct": { "non_contrast": "Syndesmophytes (thin bony bridges at vertebral body margins). 'Bamboo spine' appearance. Sacroiliac joint fusion. Facet joint ankylosis." },
+            "mri": { "t1": "Early: Signal changes at vertebral corners (Romanus lesion). Advanced: Fatty degeneration (T1 hyperintense).", "t2": "Early: Corner edema (bright Romanus lesion). STIR: Active inflammation hyperintense. Sacroiliac joint bone marrow edema (active sacroiliitis).", "t1_c": "Enhancement in active lesions." }
+        },
+        "keyPoints": ["Sakroiliit BİLATERAL ve SİMETRİK (RA'dan farklı).", "Bamboo spine: Yaygın sindesmofitler → ankiloz.", "Romanus lezyonu: Vertebra köşesinde inflamasyon (parlak köşe bulgusu).", "Andersson lezyonu: Discovertebral destrüksiyon (psödoartroz)."],
+        "keyPointsEn": ["Sacroiliitis BILATERAL and SYMMETRIC (unlike RA).", "Bamboo spine: Extensive syndesmophytes → ankylosis.", "Romanus lesion: Inflammation at vertebral corner (shiny corner sign).", "Andersson lesion: Discovertebral destruction (pseudoarthrosis)."],
+        "etiology": "Otoimmün. HLA-B27 pozitifliği (%90+). Genetik yatkınlık + çevresel tetikleyiciler.",
+        "mechanism": "Entezis (ligaman-kemik bileşkesi) inflamasyonu → kemik erozyonu → reaktif kemik oluşumu → ankiloz.",
+        "differentialDiagnosis": ["DISH (osteofitler anterolateral, SI eklem korunur)", "Psöriatik artrit (asimetrik sindesmofitler)", "Reaktif artrit (asimetrik SI tutulum)", "Enfeksiyöz sakroiliit (unilateral)"],
+        "goldStandard": "MRI (erken tanı): STIR'da sakroiliak kemik iliği ödemi. Radyografi: İleri evre (bambu kamışı, SI füzyon).",
+        "clinicalPearl": "Genç erkek + kronik bel ağrısı + sabah tutukluğu + bilateral sakroiliit = Ankilozan spondilit. MRI STIR aktif inflamasyonu erken gösterir.",
+        "references": ["Defined approach in Defined. Radiographics AS imaging.", "Radiopaedia.org - Ankylosing spondylitis"]
+    },
+    {
+        "id": "vertebral_hemangioma",
+        "name": "Vertebral Hemanjiom",
+        "nameEn": "Vertebral Hemangioma",
+        "category": "Benign Tümör",
+        "categoryEn": "Benign Tumor",
+        "findings": {
+            "ct": { "non_contrast": "Vertebra gövdesinde 'polka dot' (benekli) patern = Aksiyel kesitte kalınlaşmış vertikaler trabeküller arası yağ. Sagittalde 'corduroy' (kadife) patern = Vertikaler çizgilenme." },
+            "mri": { "t1": "HİPERİNTENS (yağ içeriği nedeniyle). Polka dot/corduroy patern.", "t2": "HİPERİNTENS (yağ + vasküler komponent). T1 ve T2'de birlikte hiperintensite = Tipik hemanjiom.", "t1_c": "Kontrastlanma değişken. Agresif hemanjiomda belirgin kontrastlanma + epidural uzanım." }
+        },
+        "findingsEn": {
+            "ct": { "non_contrast": "'Polka dot' pattern = Thickened vertical trabeculae with fat in between. Sagittal 'corduroy' pattern = Vertical striations." },
+            "mri": { "t1": "HYPERINTENSE (due to fat content). Polka dot/corduroy pattern.", "t2": "HYPERINTENSE (fat + vascular component). Hyperintensity on both T1 and T2 = Typical hemangioma.", "t1_c": "Variable enhancement. Prominent enhancement + epidural extension in aggressive hemangioma." }
+        },
+        "keyPoints": ["T1 VE T2'de birlikte hiperintensite = Tipik vertebral hemanjiom.", "BT'de polka dot (aksiyel) ve corduroy (sagittal) PATOGNOMONİK.", "Agresif hemanjiom: T1 hipointens (az yağ), epidural uzanım, kortikal ekspansiyon.", "Çoğu insidental ve asemptomatik — tedavi gerektirmez."],
+        "keyPointsEn": ["Hyperintensity on BOTH T1 and T2 = Typical vertebral hemangioma.", "CT polka dot (axial) and corduroy (sagittal) PATHOGNOMONIC.", "Aggressive hemangioma: T1 hypointense (less fat), epidural extension, cortical expansion.", "Most incidental and asymptomatic — no treatment needed."],
+        "etiology": "Vasküler hamartom. En sık torasik vertebra. İnsidans: %10-12 (otopsi). Kadınlarda daha sık.",
+        "mechanism": "Vasküler malformasyon → trabeküler kemik rezorbsiyonu → vertikaler trabeküller kalınlaşır, horizontaller rezorbe olur → polka dot/corduroy paterni.",
+        "differentialDiagnosis": ["Metastaz (T1 hipointens, T2 hiperintens — hemanjiomda her iki sekans parlak)", "Lenfoma (T1 hipointens, DWI kısıtlanma)", "Paget hastalığı (kortikal kalınlaşma, genişleme)", "Yağlı dejenerasyon (T1 parlak ama T2'de yağ baskılanır)"],
+        "goldStandard": "MRI: T1+T2 hiperintensite. BT: Polka dot/corduroy. Agresif ise kontrastlı MRI.",
+        "clinicalPearl": "MRI'da vertebrada T1 VE T2 parlak = Hemanjiom. T1 karanlık ise metastaz veya agresif hemanjiom düşün. Çoğu insidental, raporda belirtip geç.",
+        "references": ["Defined approach in Defined. Vertebral hemangioma imaging.", "Radiopaedia.org - Vertebral hemangioma"]
+    },
+    {
+        "id": "sacral_insufficiency_fracture",
+        "name": "Sakral Yetmezlik Kırığı",
+        "nameEn": "Sacral Insufficiency Fracture",
+        "category": "Travma/Metabolik",
+        "categoryEn": "Trauma/Metabolic",
+        "findings": {
+            "ct": { "non_contrast": "Sakral alada lineer sklerotik bantlar. Kırık hattı koronal planda en iyi görülür. Bilateral olabilir." },
+            "mri": { "t1": "Sakral alada bilateral hipointens bantlar. H-şekilli patern (her iki ala + horizontal komponent).", "t2": "STIR: BELİRGİN HİPERİNTENS kemik iliği ödemi. H-şekilli veya kelebek patern. Bilateral ala tutulumu + horizontal sakral kırık = 'Honda sign' (H harfi).", "t1_c": "Kontrastlanma olabilir (reaktif)." }
+        },
+        "findingsEn": {
+            "ct": { "non_contrast": "Linear sclerotic bands in sacral ala. Fracture line best seen on coronal plane. May be bilateral." },
+            "mri": { "t1": "Bilateral hypointense bands in sacral ala. H-shaped pattern.", "t2": "STIR: PROMINENT HYPERINTENSE bone marrow edema. H-shaped or butterfly pattern. Bilateral ala involvement + horizontal sacral fracture = 'Honda sign' (H letter).", "t1_c": "Enhancement may be present (reactive)." }
+        },
+        "keyPoints": ["'Honda sign' (H harfi): Bilateral sakral ala + horizontal kırık PATOGNOMONİK.", "Osteoporoz, radyoterapi, steroid kullanımı risk faktörleri.", "Direkt grafide sıklıkla GÖZDen kaçar → MRI veya BT ile tanı.", "Yaşlı kadın + bel/kalça ağrısı + osteoporoz = Sakral yetmezlik kırığı düşün."],
+        "keyPointsEn": ["'Honda sign' (H letter): Bilateral sacral ala + horizontal fracture PATHOGNOMONIC.", "Osteoporosis, radiotherapy, steroid use are risk factors.", "Often MISSED on plain radiographs → diagnosed by MRI or CT.", "Elderly woman + low back/hip pain + osteoporosis = Consider sacral insufficiency fracture."],
+        "etiology": "Osteoporoz (en sık), radyoterapi (pelvik), uzun süreli steroid kullanımı, romatoid artrit, Paget hastalığı.",
+        "mechanism": "Zayıflamış kemik (osteoporotik) + normal fizyolojik yüklenme → sakral aladaki stres konsantrasyonu → kırık.",
+        "differentialDiagnosis": ["Sakral metastaz (fokal kitle, kortikal destrüksiyon)", "Sakroiliit (SI eklem tutulumu, inflamatuvar)", "Sakral fraktür (yüksek enerjili travma)"],
+        "goldStandard": "MRI STIR: Kemik iliği ödemi + Honda sign. BT: Sklerotik kırık hatları. Sintigrafi: H-patern (sensitif ama nonspesifik).",
+        "clinicalPearl": "Yaşlı osteoporotik hasta + bel/sakral ağrı + normal grafi = MRI iste. Honda sign (H) = Sakral yetmezlik kırığı.",
+        "references": ["Defined approach in Defined. Sacral insufficiency fractures imaging.", "Radiopaedia.org - Sacral insufficiency fracture"]
+    },
+    {
+        "id": "spinal_meningioma",
+        "name": "Spinal Menenjiyom",
+        "nameEn": "Spinal Meningioma",
+        "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
+        "findings": {
+            "ct": { "non_contrast": "İntradural ekstramedüller izodens/hafif hiperdens kitle. Kalsifikasyon olabilir.", "contrast": "Yoğun homojen kontrastlanma. Dural kuyruk (tail) bulgusu." },
+            "mri": { "t1": "Kord ile İZOİNTENS (gözden kaçabilir kontrastsız serilerde). Duraya geniş tabanlı temas.", "t2": "İzointens veya hafif hiperintens. Kord kompresyonu ve yer değiştirmesi.", "t1_c": "YOĞUN ve HOMOJEN kontrastlanma. Dural tail (kuyruk) PATOGNOMONİK. Geniş tabanlı dural temas." }
+        },
+        "findingsEn": {
+            "ct": { "non_contrast": "Intradural extramedullary isodense/slightly hyperdense mass. Calcification possible.", "contrast": "Intense homogeneous enhancement. Dural tail sign." },
+            "mri": { "t1": "ISOINTENSE to cord (may be missed on non-contrast). Broad-based dural attachment.", "t2": "Isointense or mildly hyperintense. Cord compression and displacement.", "t1_c": "INTENSE and HOMOGENEOUS enhancement. Dural tail PATHOGNOMONIC. Broad-based dural contact." }
+        },
+        "keyPoints": ["İntradural ekstramedüller tümörlerin 2. en sığı (schwannomdan sonra).", "Torasik segment en sık (%80). Kadınlarda belirgin dominans.", "Dural tail + homojen kontrastlanma + geniş tabanlı dural temas = Menenjiyom.", "Schwannomdan ayırım: Menenjiyom geniş tabanlı, schwannom foraminal uzanım gösterir."],
+        "keyPointsEn": ["2nd most common intradural extramedullary tumor (after schwannoma).", "Thoracic segment most common (80%). Female predominance.", "Dural tail + homogeneous enhancement + broad dural base = Meningioma.", "Differentiation from schwannoma: Meningioma broad-based, schwannoma shows foraminal extension."],
+        "etiology": "Araknoid kap hücrelerinden kökenli. Kadınlarda sık (hormonal ilişki). Nörofibromatozis tip 2'de multipl olabilir.",
+        "mechanism": "Araknoid kap hücreleri → yavaş büyüyen intradural ekstramedüller kitle → spinal kord kompresyonu → progresif myelopati.",
+        "differentialDiagnosis": ["Schwannom (foraminal uzanım, dumbbell şekli)", "Nörofibrom (pleksiform, NF1)", "Metastaz (multipl, hızlı büyüme)", "Spinal hemanjiyoblastom (mural nodül, kist)"],
+        "goldStandard": "Kontrastlı MRI: Yoğun homojen kontrastlanma + dural tail + intradural ekstramedüller pozisyon.",
+        "clinicalPearl": "Orta yaş kadın + progresif myelopati + torasik intradural ekstramedüller kitle + dural tail = Spinal menenjiyom.",
+        "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Spinal meningioma"]
+    },
+    {
+        "id": "spinal_epidural_hematoma",
+        "name": "Spinal Epidural Hematom",
+        "nameEn": "Spinal Epidural Hematoma",
+        "category": "Vasküler/Acil",
+        "categoryEn": "Vascular/Emergency",
+        "findings": {
+            "ct": { "non_contrast": "Epidural alanda hiperdens koleksiyon (akut kan). Spinal kanal daralması. Kord kompresyonu." },
+            "mri": { "t1": "Akut: İzointens. Subakut (>24-48 saat): T1 HİPERİNTENS (methemoglobin). Bikonveks lens şekilli epidural koleksiyon.", "t2": "Akut: Heterojen/hipointens. Subakut: Hiperintens. Posterior epidural alanda EN SIK (venöz pleksus).", "t1_c": "Periferik kontrastlanma (subakut evrede)." }
+        },
+        "findingsEn": {
+            "ct": { "non_contrast": "Hyperdense collection in epidural space (acute blood). Spinal canal narrowing. Cord compression." },
+            "mri": { "t1": "Acute: Isointense. Subacute (>24-48h): T1 HYPERINTENSE (methemoglobin). Biconvex lens-shaped epidural collection.", "t2": "Acute: Heterogeneous/hypointense. Subacute: Hyperintense. MOST COMMON in posterior epidural space (venous plexus).", "t1_c": "Peripheral enhancement (subacute stage)." }
+        },
+        "keyPoints": ["Posterior epidural alan en sık lokalizasyon (epidural venöz pleksus).", "Antikoagülan kullanımı en önemli risk faktörü.", "Acil cerrahi dekompresyon: 24-48 saat içinde yapılmazsa kalıcı nörolojik hasar.", "Akut parapleji + antikoagülan = Spinal epidural hematom düşün → ACİL MRI."],
+        "keyPointsEn": ["Posterior epidural space most common location (epidural venous plexus).", "Anticoagulant use most important risk factor.", "Emergency surgical decompression: Permanent neurological damage if not done within 24-48h.", "Acute paraplegia + anticoagulant = Think spinal epidural hematoma → EMERGENT MRI."],
+        "etiology": "Antikoagülan tedavi, koagülopati, travma, spinal cerrahi/girişim sonrası, vasküler malformasyon. Spontan (hipertansiyon).",
+        "mechanism": "Epidural venöz pleksus kanaması → epidural hematom → spinal kord kompresyonu → akut myelopati.",
+        "differentialDiagnosis": ["Epidural abse (ateş, lökositoz, rim kontrastlanma)", "Disk herniasyonu (disk aralığı düzeyinde)", "Spinal tümör (kontrastlanma, destrüksiyon)", "Epidural lipomatozis (yağ sinyali)"],
+        "goldStandard": "ACİL MRI: T1+T2 sagittal ve aksiyel. Cerrahi karar 24-48 saat içinde.",
+        "clinicalPearl": "Antikoagülan alan hasta + akut sırt ağrısı + progresif parapleji = ACİL MRI. Posterior epidural T1 hiperintens koleksiyon = Hematom.",
+        "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Spinal epidural hematoma"]
+    },
+    {
+        "id": "tethered_cord",
+        "name": "Gergin Omurilik Sendromu",
+        "nameEn": "Tethered Cord Syndrome",
+        "category": "Konjenital",
+        "categoryEn": "Congenital",
+        "findings": {
+            "mri": { "t1": "Konus medullaris L2-L3 ALTINDA (normal: L1-L2 üst kenar). Filum terminale kalın (>2mm). Filum terminale içinde yağ (lipom): T1 HİPERİNTENS.", "t2": "Konus pozisyonu aşağıda. Kalın filum. Eşlik eden anomaliler: Lipom, dermoid, diastematomiyeli, spinal lipomiyelomeningosel.", "t1_c": "Tümöral komponent varsa kontrastlanma." }
+        },
+        "findingsEn": {
+            "mri": { "t1": "Conus medullaris BELOW L2-L3 (normal: L1-L2 upper border). Thickened filum terminale (>2mm). Fat within filum terminale (lipoma): T1 HYPERINTENSE.", "t2": "Low conus position. Thickened filum. Associated anomalies: Lipoma, dermoid, diastematomyelia, spinal lipomyelomeningocele.", "t1_c": "Enhancement if tumoral component present." }
+        },
+        "keyPoints": ["Konus medullaris L2-L3 altında = Gergin omurilik.", "Kalın filum terminale (>2mm) + filum içinde yağ KARAKTERİSTİK.", "Çocuklarda: Üriner inkontinans, ayak deformitesi, skolyoz.", "Yetişkin tethered cord: Geç başlangıç, progresif nörolojik bozulma."],
+        "keyPointsEn": ["Conus medullaris below L2-L3 = Tethered cord.", "Thickened filum terminale (>2mm) + fat within filum CHARACTERISTIC.", "Children: Urinary incontinence, foot deformity, scoliosis.", "Adult tethered cord: Late onset, progressive neurological deterioration."],
+        "etiology": "Konjenital: Spinal disrafizm spektrumu (okkült veya açık). Postoperatif: Miyelomeningosel onarımı sonrası yapışıklık.",
+        "mechanism": "Filum terminale kalınlaşması veya interspinal lipom → konus medullarisin aşağıda sabitlenmesi → büyümeyle kord gerilimi → nörolojik hasar.",
+        "differentialDiagnosis": ["Normal konus varyantı (L2-L3 sınırında, filum normal)", "Spinal lipom (yağ kitlesi, konus düzeyi değişken)", "Diastematomiyeli (kord bölünmesi, kemik spur)"],
+        "goldStandard": "MRI: Konus düzeyi + filum kalınlığı + eşlik eden anomaliler. Sagittal T1 + T2 + aksiyel kesitler.",
+        "clinicalPearl": "Çocukta üriner inkontinans + cilt bulgusu (dimple, kıllanma, lipom) + MRI'da düşük konus = Tethered cord. Filum içinde yağ doğrular.",
+        "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Tethered cord"]
+    },
+    {
+        "id": "spinal_avm",
+        "name": "Spinal AVM (Dural AV Fistül)",
+        "nameEn": "Spinal AVM (Dural AV Fistula)",
+        "category": "Vasküler",
+        "categoryEn": "Vascular",
+        "findings": {
+            "mri": { "t1": "Kord üzerinde serpentin flow voidler (dilate perimedüller venler).", "t2": "Kord içinde hiperintensite (venöz konjesyon myelopatisi). Kord yüzeyinde multipl flow void yapıları ('FLow void cluster'). Kord ödemi ve şişliği.", "t1_c": "Kord kontrastlanması (venöz konjesyon). Dilate perimedüller venler kontrastlanır." }
+        },
+        "findingsEn": {
+            "mri": { "t1": "Serpentine flow voids on cord surface (dilated perimedullary veins).", "t2": "Hyperintensity within cord (venous congestive myelopathy). Multiple flow void structures on cord surface. Cord edema and swelling.", "t1_c": "Cord enhancement (venous congestion). Dilated perimedullary veins enhance." }
+        },
+        "keyPoints": ["Kord yüzeyinde serpentin flow voidler + kord T2 hiperintensitesi = Spinal dural AV fistül.", "En sık spinal vasküler malformasyon (Tip I: Dural AV fistül).", "Progresif myelopati + inkontinans (orta yaş erkek).", "DSA (spinal anjiyografi): Kesin tanı ve tedavi planlaması."],
+        "keyPointsEn": ["Serpentine flow voids on cord surface + cord T2 hyperintensity = Spinal dural AV fistula.", "Most common spinal vascular malformation (Type I: Dural AV fistula).", "Progressive myelopathy + incontinence (middle-aged male).", "DSA (spinal angiography): Definitive diagnosis and treatment planning."],
+        "etiology": "Edinsel (Tip I dural AV fistül, en sık). Konjenital (Tip II-IV, nadir). Orta yaş erkek dominant.",
+        "mechanism": "Dural düzeyde arteriyovenöz şant → perimedüller venlerde basınç artışı → venöz konjesyon → kord iskemisi ve myelopati.",
+        "differentialDiagnosis": ["Spinal kord tümörü (fokal kitle, kontrastlanma)", "Transvers myelit (akut, enflamatuvar)", "MS (plak benzeri lezyonlar)", "Sarkoidoz (menengeal kontrastlanma)"],
+        "goldStandard": "Spinal DSA (anjiyografi): Fistül lokalizasyonu ve besleyici arter. MRI: İlk tarama.",
+        "clinicalPearl": "Orta yaşlı erkek + progresif myelopati + kord yüzeyinde flow void = Spinal dural AV fistül. DSA ile kesin tanı ve embolizasyon/cerrahi tedavi.",
+        "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Spinal dural arteriovenous fistula"]
+    },
+    {
+        "id": "cauda_equina_syndrome",
+        "name": "Kauda Equina Sendromu",
+        "nameEn": "Cauda Equina Syndrome",
+        "category": "Acil",
+        "categoryEn": "Emergency",
+        "findings": {
+            "ct": { "non_contrast": "Disk herniasyonu veya spinal kanal daralması (etiyolojiye göre). Serbest fragman olabilir." },
+            "mri": { "t1": "Kauda equina liflerinin kompresyonu (disk, tümör, hematom, abse). L1-2 altında spinal kanal içinde etiyolojik lezyon.", "t2": "Kauda equina lifleri çevresinde sıvı kaybı (sıkışma). Büyük disk herniasyonu veya spinal kanal daraltan lezyon. Kord sinyal değişikliği (konus düzeyinde tutulum varsa).", "t1_c": "Etiyolojiye göre: Tümör (kontrastlanma), abse (rim kontrastlanma)." }
+        },
+        "findingsEn": {
+            "ct": { "non_contrast": "Disc herniation or spinal canal narrowing (based on etiology). Free fragment may be present." },
+            "mri": { "t1": "Cauda equina compression (disc, tumor, hematoma, abscess). Etiological lesion within spinal canal below L1-2.", "t2": "Loss of fluid around cauda equina fibers (compression). Large disc herniation or canal-narrowing lesion. Cord signal change (if conus level involvement).", "t1_c": "Based on etiology: Tumor (enhancement), abscess (rim enhancement)." }
+        },
+        "keyPoints": ["ACİL: Cerrahi dekompresyon 24-48 saat içinde → kalıcı nörolojik hasar riski.", "Saddle anestezi + üriner retansiyon/inkontinans + bilateral alt ekstremite güçsüzlük.", "Büyük disk herniasyonu EN SIK neden.", "ACİL MRI endikasyonu: Saddle anestezi + sfinkter disfonksiyonu."],
+        "keyPointsEn": ["EMERGENCY: Surgical decompression within 24-48h → risk of permanent neurological damage.", "Saddle anesthesia + urinary retention/incontinence + bilateral lower extremity weakness.", "Large disc herniation MOST COMMON cause.", "EMERGENT MRI indication: Saddle anesthesia + sphincter dysfunction."],
+        "etiology": "Büyük disk herniasyonu (en sık), spinal stenoz, tümör, epidural abse, epidural hematom, travma.",
+        "mechanism": "L1-2 altında spinal kanalda kauda equina liflerinin kompresyonu → alt motor nöron lezyonu → bilateral radikülöpati + sfinkter disfonksiyonu.",
+        "differentialDiagnosis": ["Konus medullaris sendromu (üst motor nöron bulguları, erken sfinkter)", "Bilateral lumbosakral radikülöpati (asimetrik olabilir)", "Spinal kord kompresyonu (üst seviye, üst motor nöron)"],
+        "goldStandard": "ACİL MRI: Kauda equina kompresyonu + etiyolojik lezyon tespiti. Sagittal + aksiyel T1, T2.",
+        "clinicalPearl": "Saddle anestezi + üriner retansiyon + büyük disk = Kauda equina sendromu → ACİL MRI ve cerrahi. 24-48 saat gecikme kalıcı sfinkter hasarına yol açar.",
+        "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Cauda equina syndrome"]
+    },
+    {
+        "id": "tarlov_cyst",
+        "name": "Tarlov Kisti (Perinöral Kist)",
+        "nameEn": "Tarlov Cyst (Perineural Cyst)",
+        "category": "Konjenital/Gelişimsel",
+        "categoryEn": "Congenital/Developmental",
+        "findings": {
+            "ct": { "non_contrast": "Sakral foramenlerde BOS dansitesinde kistik lezyon. Kemik remodellingi (kronik bası)." },
+            "mri": { "t1": "BOS ile İZOİNTENS (hipointens) kistik lezyon. Sakral sinir kökü posterior ganglionu düzeyinde.", "t2": "BOS ile İZOİNTENS (çok hiperintens). Sakral foramenler düzeyinde, genellikle multipl ve bilateral. Kist içinde sinir kök lifleri görülebilir.", "t1_c": "Kontrastlanma yok." }
+        },
+        "findingsEn": {
+            "ct": { "non_contrast": "CSF-density cystic lesion in sacral foramina. Bone remodeling (chronic pressure)." },
+            "mri": { "t1": "ISOINTENSE to CSF (hypointense) cystic lesion. At level of sacral nerve root posterior ganglion.", "t2": "ISOINTENSE to CSF (very hyperintense). At sacral foramina level, usually multiple and bilateral. Nerve root fibers may be seen within cyst.", "t1_c": "No enhancement." }
+        },
+        "keyPoints": ["Sakral foramenlerde BOS sinyalinde kistik lezyonlar.", "Çoğu ASEMPTOMATİK ve insidental.", "Büyük kistler: Sakral ağrı, radikülopati, sfinkter semptomları.", "Sinir kök lifleri kist DUVARINDA bulunur (diğer kistlerden ayırıcı)."],
+        "keyPointsEn": ["CSF-signal cystic lesions in sacral foramina.", "Most ASYMPTOMATIC and incidental.", "Large cysts: Sacral pain, radiculopathy, sphincter symptoms.", "Nerve root fibers found in cyst WALL (differentiates from other cysts)."],
+        "etiology": "Konjenital (meningeal divertikül). Travma ve BOS basınç değişiklikleri kist büyümesini tetikleyebilir.",
+        "mechanism": "Posterior kök gangliyonu düzeyinde araknoid proliferasyon → BOS birikimi → kist oluşumu. Kronik bası → kemik remodellingi.",
+        "differentialDiagnosis": ["Meningeal divertikül (sinir kök lifleri kist içinde değil)", "Araknoid kist (perinöral değil)", "Schwannom (solid komponent, kontrastlanma)", "Ependimal kist (intramedüller)"],
+        "goldStandard": "MRI: BOS sinyalinde sakral kist + kist duvarında sinir kök lifleri.",
+        "clinicalPearl": "Sakral MRI'da insidental BOS sinyalinde kistler = Tarlov kisti. Çoğu tedavi gerektirmez. Semptomatik büyük kistlerde perkütan aspirasyon veya cerrahi.",
+        "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Tarlov cyst"]
+    },
+    {
+        "id": "spinal_cord_infarction",
+        "name": "Spinal Kord İnfarktı",
+        "nameEn": "Spinal Cord Infarction",
+        "category": "Vasküler/Acil",
+        "categoryEn": "Vascular/Emergency",
+        "findings": {
+            "mri": { "t1": "Erken: Normal veya hafif hipointensite. Geç: Kord atrofisi.", "t2": "'OWL EYES' (baykuş gözü) veya 'SNAKE EYES': Aksiyel kesitte bilateral anterior horn hiperintensitesi. Sagittalde longitudinal uzun segment T2 hiperintensitesi ('pencil-like'). Anterior spinal arter territorysine uyumlu.", "dwi": "ERKEN: Difüzyon kısıtlanması (akut infarkt). T2'den ÖNCE pozitifleşir.", "t1_c": "Subakut evrede kontrastlanma (kan-beyin bariyeri bozulması)." }
+        },
+        "findingsEn": {
+            "mri": { "t1": "Early: Normal or mild hypointensity. Late: Cord atrophy.", "t2": "'OWL EYES' or 'SNAKE EYES': Bilateral anterior horn hyperintensity on axial. Longitudinal long segment T2 hyperintensity on sagittal ('pencil-like'). Consistent with anterior spinal artery territory.", "dwi": "EARLY: Diffusion restriction (acute infarct). Becomes positive BEFORE T2.", "t1_c": "Enhancement in subacute stage (blood-cord barrier breakdown)." }
+        },
+        "keyPoints": ["'Owl eyes' (baykuş gözü): Aksiyelde bilateral anterior horn tutulumu PATOGNOMONİK.", "Anterior spinal arter sendromu en sık (%75).", "Aort cerrahisi/anjiyografi sonrası en sık etiyoloji.", "DWI erken tanıda T2'den daha sensitif."],
+        "keyPointsEn": ["'Owl eyes': Bilateral anterior horn involvement on axial PATHOGNOMONIC.", "Anterior spinal artery syndrome most common (75%).", "Most common etiology after aortic surgery/angiography.", "DWI more sensitive than T2 for early diagnosis."],
+        "etiology": "Aort cerrahisi/aortik klemp, aort diseksiyonu, ateroskleroz, vaskülit, hipotansiyon, fibrokartilajenöz embolizm.",
+        "mechanism": "Anterior spinal arter oklüzyonu → anterior 2/3 kord iskemisi → bilateral motor + ağrı/ısı kaybı (spinotalamik) AMA dorsal kolon korunur (propriyosepsiyon sağlam).",
+        "differentialDiagnosis": ["Transvers myelit (daha simetrik, inflamatuvar belirteçler)", "MS akut atağı (asimetrik, periferik plaklar)", "Nöromiyelitis optika (NMOSD - uzun segment, optik sinir tutulumu)", "Spinal kord kompresyonu (dış bası bulguları)"],
+        "goldStandard": "ACİL MRI: DWI + T2 (owl eyes + anterior kord tutulumu). Aort görüntüleme (etiyoloji).",
+        "clinicalPearl": "Aort cerrahisi sonrası akut parapleji + ağrı/ısı kaybı + propriyosepsiyon korunmuş = Anterior spinal arter sendromu. MRI DWI owl eyes paterni doğrular.",
+        "references": ["Ross JS. Diagnostic Imaging: Spine. 4th ed. Elsevier; 2021.", "Radiopaedia.org - Spinal cord infarction"]
     }
 ];

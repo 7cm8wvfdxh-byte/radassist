@@ -687,5 +687,162 @@ export const lungPathologies: Pathology[] = [
             "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Bronchiectasis"
         ]
+    },
+    {
+        "id": "pulmonary_metastasis",
+        "name": "Pulmoner Metastaz",
+        "nameEn": "Pulmonary Metastasis",
+        "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
+        "findings": {
+            "xray": { "description": "Multipl yuvarlak nodüller, bilateral, alt loblarda baskın ('cannonball' metastaz). Bazal predileksiyon (hematojen yayılım)." },
+            "ct": { "non_contrast": "Multipl yuvarlak, iyi sınırlı nodüller bilateral. Alt lob dominant (hematojen). Kavitasyon (skuamöz hücreli). Kalsifikasyon (osteosarkom, kondrosarkom). Milier patern (tiroid, renal, melanom).", "contrast": "Değişken kontrastlanma. Hipervasküler metastaz (renal, tiroid, melanom): Belirgin kontrastlanma." }
+        },
+        "findingsEn": {
+            "xray": { "description": "Multiple round nodules, bilateral, lower lobe predominant ('cannonball' metastasis)." },
+            "ct": { "non_contrast": "Multiple round, well-defined bilateral nodules. Lower lobe dominant (hematogenous). Cavitation (squamous cell). Calcification (osteosarcoma). Miliary pattern (thyroid, renal, melanoma).", "contrast": "Variable enhancement." }
+        },
+        "keyPoints": ["Multipl bilateral nodüller + bilinen primer = Metastaz.", "Alt lob baskın (hematojen) veya lenfanjitik patern (septal kalınlaşma).", "Kavitasyon: Skuamöz hücreli primer düşündürür.", "'Cannonball' metastaz: Büyük yuvarlak nodüller (renal, kolon)."],
+        "keyPointsEn": ["Multiple bilateral nodules + known primary = Metastasis.", "Lower lobe predominant (hematogenous) or lymphangitic pattern.", "Cavitation: Suggests squamous cell primary.", "'Cannonball' metastasis: Large round nodules (renal, colon)."],
+        "etiology": "Hematojen yayılım en sık. Primer: Meme, kolon, renal, melanom, tiroid.",
+        "mechanism": "Primer tümörden hematojen embolizasyon → pulmoner kapillerlerde tutulum → nodül büyümesi.",
+        "differentialDiagnosis": ["Granülomlar (TB, fungal — kalsifiye)", "Septin emboliler (kaviter, periferal)", "Sarkoidoz (perilenfatik, hiler LAP)", "Multipl hamartomlar (yağ + kalsifikasyon)"],
+        "goldStandard": "BT toraks: Nodül tespiti. PET-BT: Metabolik aktivite. Biyopsi: Primer bilinmiyorsa.",
+        "clinicalPearl": "Bilinen kanser + yeni multipl pulmoner nodüller = Metastaz. Kavitasyon varsa skuamöz hücreli, kalsifikasyon varsa osteojenik primer düşün.",
+        "references": ["Webb WR. Thoracic Imaging. 3rd ed. Lippincott Williams & Wilkins; 2017.", "Radiopaedia.org - Pulmonary metastasis"]
+    },
+    {
+        "id": "pulmonary_edema",
+        "name": "Pulmoner Ödem",
+        "nameEn": "Pulmonary Edema",
+        "category": "Vasküler",
+        "categoryEn": "Vascular",
+        "findings": {
+            "xray": { "description": "KARDİYOJENİK: Sefalizasyon (üst lob venöz distansiyon). Peribronşiyal kalınlaşma ('peribronchial cuffing'). Kerley B çizgileri (septal kalınlaşma). Bilateral perihiler bat-wing opasiteler. Plevral efüzyon (bilateral). Kardiyomegali." },
+            "ct": { "non_contrast": "Ground-glass opasiteler (bilateral, gravitasyona bağımlı). İnterlobüler septal kalınlaşma. Peribronşiyal kalınlaşma. Plevral efüzyon. SVO dolgunluğu.", "contrast": "Kardiyomegali. SVO dolgunluğu. Pulmoner ven distansiyonu." }
+        },
+        "findingsEn": {
+            "xray": { "description": "CARDIOGENIC: Cephalization. Peribronchial cuffing. Kerley B lines. Bilateral perihilar bat-wing opacities. Bilateral pleural effusion. Cardiomegaly." },
+            "ct": { "non_contrast": "Ground-glass opacities (bilateral, gravity-dependent). Interlobular septal thickening. Peribronchial thickening. Pleural effusion. SVC fullness.", "contrast": "Cardiomegaly. SVC fullness. Pulmonary vein distension." }
+        },
+        "keyPoints": ["Kardiyojenik: Kardiyomegali + sefalizasyon + bat-wing + efüzyon.", "Non-kardiyojenik (ARDS): Kardiyomegali YOK, periferal dağılım.", "Kerley B çizgileri: İnterlobüler septal kalınlaşma (1-2cm horizontal çizgiler).", "Hızlı değişim: Tedaviye hızlı yanıt (diüretik sonrası)."],
+        "keyPointsEn": ["Cardiogenic: Cardiomegaly + cephalization + bat-wing + effusion.", "Non-cardiogenic (ARDS): NO cardiomegaly, peripheral distribution.", "Kerley B lines: Interlobular septal thickening.", "Rapid change: Rapid response to treatment (after diuretics)."],
+        "etiology": "Kardiyojenik (sol kalp yetmezliği en sık). Non-kardiyojenik: ARDS, böbrek yetmezliği, sıvı yüklenmesi, nörojenik.",
+        "mechanism": "Kardiyojenik: Sol ventrikül yetmezliği → pulmoner venöz basınç artışı → kapiller sızıntı → alveolar ve interstisyel ödem.",
+        "differentialDiagnosis": ["Pnömoni (asimetrik, konsolidasyon, ateş)", "Pulmoner hemoraji (hemoptizi, diffüz GGO)", "Lenfanjitik karsinomatozis (unilateral olabilir, LAP)"],
+        "goldStandard": "Göğüs grafisi: Hızlı tanı. BT: Ayırıcı tanıda yardımcı. Ekokardiyografi: Kardiyak fonksiyon.",
+        "clinicalPearl": "Bilateral bat-wing opasiteler + kardiyomegali + sefalizasyon + plevral efüzyon = Kardiyojenik pulmoner ödem. Diüretik sonrası hızlı düzelme tanıyı doğrular.",
+        "references": ["Webb WR. Thoracic Imaging. 3rd ed. 2017.", "Radiopaedia.org - Pulmonary edema"]
+    },
+    {
+        "id": "mesothelioma",
+        "name": "Malign Plevral Mezotelyoma",
+        "nameEn": "Malignant Pleural Mesothelioma",
+        "category": "Neoplastik",
+        "categoryEn": "Neoplastic",
+        "findings": {
+            "xray": { "description": "Unilateral plevral kalınlaşma (nodüler). Plevral efüzyon. İpsilateral hemitoraks küçülmesi (çekilme). Plevral plaklar (asbest maruziyeti)." },
+            "ct": { "non_contrast": "Nodüler plevral kalınlaşma (>1cm). Sirkumferensiyal (çevresel) plevral tutulum.", "contrast": "Nodüler plevral kontrastlanma. Mediastinal plevra tutulumu ('rind-like' patern). Fissürel kalınlaşma. İnterkostal alan invazyonu. Karşı taraf plevra tutulumu (ileri evre)." }
+        },
+        "findingsEn": {
+            "xray": { "description": "Unilateral pleural thickening (nodular). Pleural effusion. Ipsilateral hemithorax shrinkage." },
+            "ct": { "non_contrast": "Nodular pleural thickening (>1cm). Circumferential pleural involvement.", "contrast": "Nodular pleural enhancement. Mediastinal pleural involvement ('rind-like' pattern). Fissural thickening." }
+        },
+        "keyPoints": ["Asbest maruziyeti EN ÖNEMLİ risk faktörü (20-40 yıl latent dönem).", "Unilateral nodüler plevral kalınlaşma + mediastinal tutulum + fissürel kalınlaşma.", "Hemitoraks küçülmesi (çekilme) metastatik plevral hastalıktan AYIRICI.", "Sirkumferensiyal plevral tutulum + asbest öyküsü = Mezotelyoma düşün."],
+        "keyPointsEn": ["Asbestos exposure MOST IMPORTANT risk factor (20-40 year latent period).", "Unilateral nodular pleural thickening + mediastinal involvement + fissural thickening.", "Hemithorax shrinkage differentiates from metastatic pleural disease.", "Circumferential pleural involvement + asbestos history = Consider mesothelioma."],
+        "etiology": "Asbest maruziyeti (%80). Latent dönem 20-40 yıl. Erkeklerde daha sık.",
+        "mechanism": "Asbest lifleri → plevral mezoteliyal hücrelerde kronik inflamasyon ve DNA hasarı → malign transformasyon.",
+        "differentialDiagnosis": ["Metastatik plevral hastalık (bilinen primer, hemitoraks genişlemiş)", "Plevral plaklar (benign, kalsifiye, nodüler değil)", "Organize efüzyon/ampiyem (enfeksiyon öyküsü)", "Soliter fibröz tümör (pedünküllü, plevral)"],
+        "goldStandard": "BT + Plevral biyopsi (torakoskopik). İmmünohistokimya: Calretinin +, WT1 +.",
+        "clinicalPearl": "Asbest maruziyeti + unilateral nodüler plevral kalınlaşma + hemitoraks küçülmesi = Mezotelyoma. Plevral biyopsi zorunlu.",
+        "references": ["Webb WR. Thoracic Imaging. 3rd ed. 2017.", "Radiopaedia.org - Mesothelioma"]
+    },
+    {
+        "id": "thymoma",
+        "name": "Timoma",
+        "nameEn": "Thymoma",
+        "category": "Mediastinal",
+        "categoryEn": "Mediastinal",
+        "findings": {
+            "xray": { "description": "Anterior mediastinal genişleme. Lobüle kontur. Asimetrik olabilir." },
+            "ct": { "non_contrast": "Anterior mediastinal solid kitle. Homojen veya heterojen (kistik alanlar, kalsifikasyon).", "contrast": "Homojen veya heterojen kontrastlanma. İyi kapsüllü (non-invaziv) veya kapsül invazyonu (invaziv). Plevral drop metastaz. Vasküler yapılara invazyon (ileri evre)." }
+        },
+        "findingsEn": {
+            "xray": { "description": "Anterior mediastinal widening. Lobulated contour." },
+            "ct": { "non_contrast": "Anterior mediastinal solid mass. Homogeneous or heterogeneous.", "contrast": "Homogeneous or heterogeneous enhancement. Well-capsulated (non-invasive) or capsular invasion (invasive). Pleural drop metastasis." }
+        },
+        "keyPoints": ["Anterior mediastenin EN SIK primer tümörü (erişkinde).", "Myastenia gravis ilişkisi: %30-50 timoma hastasında MG.", "'4T' anterior mediasten: Timoma, Teratom, Tiroid, Terrible (lenfoma).", "Plevral drop metastaz: Plevral yüzeyde metastaz nodülleri."],
+        "keyPointsEn": ["MOST COMMON primary tumor of anterior mediastinum (in adults).", "Myasthenia gravis association: MG in 30-50% of thymoma patients.", "'4T' anterior mediastinum: Thymoma, Teratoma, Thyroid, Terrible (lymphoma).", "Pleural drop metastasis: Metastatic nodules on pleural surface."],
+        "etiology": "Timik epitel kökenli. Masaoka-Koga evreleme: I (kapsüllü) - IVb (uzak metastaz). Paraneoplastik sendromlar: MG, saf kırmızı hücre aplazisi, hipogammaglobulinemi.",
+        "mechanism": "Timik epitelyal hücreler → neoplastik proliferasyon → anterior mediastinal kitle. T-lenfosit matürasyonu ile ilişki → otoimmün fenomenler (MG).",
+        "differentialDiagnosis": ["Lenfoma (genç, LAP, homojen, FDG avid)", "Germ hücreli tümör (teratom: yağ + kalsifikasyon)", "Tiroid guatr (servikal uzanım, iyot avidite)", "Timik kist (su dansitesinde, kontrastlanma yok)"],
+        "goldStandard": "BT: Anterior mediastinal kitle karakterizasyonu. MRI: İnvazyon değerlendirmesi. Biyopsi veya cerrahi.",
+        "clinicalPearl": "Anterior mediastinal kitle + myastenia gravis = Timoma. Plevral drop metastaz invaziv timomada görülür.",
+        "references": ["Webb WR. Thoracic Imaging. 3rd ed. 2017.", "Radiopaedia.org - Thymoma"]
+    },
+    {
+        "id": "covid19_pneumonia",
+        "name": "COVID-19 Pnömonisi",
+        "nameEn": "COVID-19 Pneumonia",
+        "category": "Enfeksiyöz",
+        "categoryEn": "Infectious",
+        "findings": {
+            "ct": { "non_contrast": "Bilateral, multifokal GROUND-GLASS opasiteler (GGO). Alt lob ve posterior dağılım baskın. 'Crazy paving' paterni (GGO + septal kalınlaşma). Konsolidasyon (ileri evre). Vasküler genişleme (pulmoner vaskülopati). Halo sign. Reverse halo (organize pnömoni paterni)." }
+        },
+        "findingsEn": {
+            "ct": { "non_contrast": "Bilateral, multifocal GROUND-GLASS opacities (GGO). Lower lobe and posterior predominant. 'Crazy paving' pattern. Consolidation (advanced). Vascular enlargement. Halo sign. Reverse halo (organizing pneumonia pattern)." }
+        },
+        "keyPoints": ["Bilateral periferal GGO en tipik bulgu.", "Crazy paving: GGO + retiküler kalınlaşma.", "CO-RADS sınıflaması: 1-5 (şüphe derecesi).", "Pulmoner emboli riski artmış (D-dimer takibi)."],
+        "keyPointsEn": ["Bilateral peripheral GGO most typical finding.", "Crazy paving: GGO + reticular thickening.", "CO-RADS classification: 1-5 (suspicion level).", "Increased risk of pulmonary embolism."],
+        "etiology": "SARS-CoV-2 virüs enfeksiyonu. ACE2 reseptör aracılı giriş.",
+        "mechanism": "SARS-CoV-2 → tip II pnömosit hasarı → diffüz alveoler hasar → GGO/konsolidasyon. İmmün yanıt → sitokin fırtınası → ARDS.",
+        "differentialDiagnosis": ["Diğer viral pnömoniler (influenza, CMV)", "Organize pnömoni (COP)", "PCP (Pneumocystis — HIV)", "Pulmoner ödem (kardiyomegali, sefalizasyon)"],
+        "goldStandard": "PCR (tanı). BT: Klinik evreleme ve komplikasyon tespiti. BT anjiyografi: PE şüphesinde.",
+        "clinicalPearl": "Bilateral periferal GGO + alt lob dominansı + ateş + PCR pozitif = COVID-19 pnömonisi. D-dimer yüksekse pulmoner emboli dışla.",
+        "references": ["Defined approach in Simpson S et al. Radiographics. 2020;40(6):E199-E217.", "Radiopaedia.org - COVID-19"]
+    },
+    {
+        "id": "pulmonary_hypertension",
+        "name": "Pulmoner Hipertansiyon",
+        "nameEn": "Pulmonary Hypertension",
+        "category": "Vasküler",
+        "categoryEn": "Vascular",
+        "findings": {
+            "xray": { "description": "Ana pulmoner arter dilatasyonu. Santral pulmoner arterlerde genişleme + periferal 'pruning' (daralma). Sağ ventrikül büyümesi (lateral grafide retrosternal boşluk azalması)." },
+            "ct": { "non_contrast": "Ana pulmoner arter çapı >29mm (veya asendan aortadan büyük). Sağ ventrikül dilatasyonu (RV/LV >1). İnterventriküler septum düzleşmesi/sol tarafa kayması.", "contrast": "BT ANJİYOGRAFİ: Ana PA çapı ölçümü. Kronin tromboembolik PH: İntraluminal web, band, eksantrik trombüs. Mozaik perfüzyon (lobüler heterojenite)." }
+        },
+        "findingsEn": {
+            "xray": { "description": "Main pulmonary artery dilation. Central pulmonary artery enlargement + peripheral 'pruning'. RV enlargement." },
+            "ct": { "non_contrast": "Main pulmonary artery diameter >29mm (or larger than ascending aorta). RV dilation (RV/LV >1). IVS flattening/bowing.", "contrast": "CT ANGIOGRAPHY: Main PA measurement. CTEPH: Intraluminal web, band, eccentric thrombus. Mosaic perfusion." }
+        },
+        "keyPoints": ["Ana PA çapı >29mm veya aortadan büyük = PH şüphesi.", "RV/LV oranı >1 = Sağ ventrikül dilatasyonu.", "CTEPH: Organize trombüs + mozaik perfüzyon → endarterektomi ile tedavi edilebilir.", "Septum düzleşmesi/bowing: Sağ ventrikül basınç yüklenmesi."],
+        "keyPointsEn": ["Main PA >29mm or larger than aorta = PH suspicion.", "RV/LV ratio >1 = RV dilation.", "CTEPH: Organized thrombus + mosaic perfusion → treatable with endarterectomy.", "Septal flattening/bowing: RV pressure overload."],
+        "etiology": "WHO Grup 1 (PAH), Grup 2 (sol kalp), Grup 3 (akciğer hastalığı), Grup 4 (CTEPH), Grup 5 (diğer).",
+        "mechanism": "Pulmoner vasküler rezistans artışı → PA basınç artışı → sağ ventrikül afterload artışı → RV hipertrofi/dilatasyon → sağ kalp yetmezliği.",
+        "differentialDiagnosis": ["Pulmoner emboli (akut, dolum defekti)", "Sol kalp yetmezliği (sol ventrikül dilate)", "İdiyopatik PA dilatasyonu (basınç normal)"],
+        "goldStandard": "Ekokardiyografi (tarama). Sağ kalp kateterizasyonu (kesin tanı): mPAP ≥20 mmHg. BT: CTEPH değerlendirmesi.",
+        "clinicalPearl": "Efor dispnesi + PA >29mm + RV/LV >1 = PH. CTEPH dışla (organize trombüs) çünkü cerrahi ile tedavi edilebilir.",
+        "references": ["Webb WR. Thoracic Imaging. 3rd ed. 2017.", "Radiopaedia.org - Pulmonary hypertension"]
+    },
+    {
+        "id": "round_atelectasis",
+        "name": "Yuvarlak Atelektazi",
+        "nameEn": "Round Atelectasis",
+        "category": "Plevral/Parankimal",
+        "categoryEn": "Pleural/Parenchymal",
+        "findings": {
+            "ct": { "non_contrast": "Plevral kalınlaşmaya komşu yuvarlak/oval parankimal opasifikasyon. Posterior ve alt loblarda sık.", "contrast": "'COMET TAIL' (kuyruklu yıldız) sign: Kitleye giren vasküler ve bronşiyal yapılar (kıvrılmış). Komşu plevral kalınlaşma/efüzyon. Homojen kontrastlanma. Akut açı ile plevraya temas." }
+        },
+        "findingsEn": {
+            "ct": { "non_contrast": "Round/oval parenchymal opacification adjacent to pleural thickening.", "contrast": "'COMET TAIL' sign: Vascular and bronchial structures entering the mass (curved). Adjacent pleural thickening. Homogeneous enhancement. Acute angle with pleura." }
+        },
+        "keyPoints": ["'Comet tail' sign PATOGNOMONİK: Kitleye giren kıvrımlı damarlar.", "Asbest ilişkili plevral hastalık en sık neden.", "Akciğer kanseri veya metastazla karışabilir — comet tail ayırır.", "Boyutu değişmez (stabil): FDG avidite gösterebilir (FP!)."],
+        "keyPointsEn": ["'Comet tail' sign PATHOGNOMONIC: Curved vessels entering the mass.", "Asbestos-related pleural disease most common cause.", "May be confused with lung cancer or metastasis — comet tail differentiates.", "Size unchanged (stable): May show FDG avidity (false positive!)."],
+        "etiology": "Asbest maruziyeti (en sık). Plevral efüzyon, enfeksiyon, cerrahi sonrası.",
+        "mechanism": "Plevral kalınlaşma/efüzyon → viseral plevra invaginasyonu → komşu akciğer parankimi katlanarak atelektatik kitle oluşturur.",
+        "differentialDiagnosis": ["Akciğer kanseri (spiküle, LAP, büyüme)", "Metastaz (multipl, bilinen primer)", "Organize pnömoni (periferik, reverse halo)"],
+        "goldStandard": "BT: Comet tail sign + plevral kalınlaşma + stabil boyut. Şüphede PET-BT veya biyopsi.",
+        "clinicalPearl": "Plevral kalınlaşma komşuluğunda yuvarlak kitle + comet tail sign = Yuvarlak atelektazi. Biyopsi gerektirmez ama FDG-PET yanlış pozitif verebilir.",
+        "references": ["Webb WR. Thoracic Imaging. 3rd ed. 2017.", "Radiopaedia.org - Round atelectasis"]
     }
 ];
