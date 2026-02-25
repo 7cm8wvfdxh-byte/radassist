@@ -43,9 +43,9 @@ export const breastPathologies: Pathology[] = [
         clinicalPearl: "Spiküle kenar + posterior akustik gölgeleme + Tip 3 (washout) kinetik eğri = İnvaziv karsinom üçlüsü.",
         references: [
             "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
-            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "Kopans DB. Breast Imaging. 3rd ed. Lippincott Williams & Wilkins; 2007.",
             "ACR Appropriateness Criteria: Palpable Breast Masses. American College of Radiology.",
-            "Defined Defined Defined Defined Defined Defined"
+            "Radiopaedia.org - Breast lesion characterization"
         ]
     },
     {
@@ -90,8 +90,8 @@ export const breastPathologies: Pathology[] = [
         clinicalPearl: "30 yaş altı kadında oval, düzgün sınırlı, mobil kitle = Fibroadenom düşün, BI-RADS 3 ile takip edilebilir.",
         references: [
             "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
-            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
-            "Defined Defined Defined Defined Defined Defined Defined"
+            "Kopans DB. Breast Imaging. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Radiopaedia.org - Breast imaging"
         ]
     },
     {
@@ -130,7 +130,7 @@ export const breastPathologies: Pathology[] = [
         clinicalPearl: "Anekoik + ince düzgün duvar + posterior akustik güçlenme = Basit kist üçlüsü → BI-RADS 2, takip gerekmez.",
         references: [
             "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
-            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "Kopans DB. Breast Imaging. 3rd ed. Lippincott Williams & Wilkins; 2007.",
             "ACR Appropriateness Criteria: Evaluation of the Symptomatic Breast. American College of Radiology."
         ]
     },
@@ -164,8 +164,8 @@ export const breastPathologies: Pathology[] = [
         clinicalPearl: "Komplike kistte Doppler negatifliği anahtar bulgudur — solid komponentli intrakistik lezyonlardan ayırt eder.",
         references: [
             "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
-            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
-            "Defined Defined Defined Defined"
+            "Kopans DB. Breast Imaging. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Radiopaedia.org - Breast cysts"
         ]
     },
     {
@@ -210,9 +210,9 @@ export const breastPathologies: Pathology[] = [
         clinicalPearl: "Tek taraflı, spontan, kanlı/seröz meme başı akıntısı olan kadında ilk düşünülecek tanı intraduktal papillomdur.",
         references: [
             "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
-            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "Kopans DB. Breast Imaging. 3rd ed. Lippincott Williams & Wilkins; 2007.",
             "ACR Appropriateness Criteria: Evaluation of Nipple Discharge. American College of Radiology.",
-            "Defined Defined Defined Defined"
+            "Radiopaedia.org - Breast cysts"
         ]
     },
     {
@@ -250,9 +250,9 @@ export const breastPathologies: Pathology[] = [
         goldStandard: "Mammografi: Yağ kisti (radyolusen merkez + egg-shell kalsifikasyon) tanı koydurucudur. Şüpheli olgularda MRI veya biyopsi.",
         clinicalPearl: "Mammografide radyolusen merkezli kitle + çevresel (egg-shell) kalsifikasyon + travma/cerrahi öyküsü = Yağ nekrozu, biyopsi gerekmez.",
         references: [
-            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "Kopans DB. Breast Imaging. 3rd ed. Lippincott Williams & Wilkins; 2007.",
             "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
-            "Defined Defined Defined Defined Defined Defined"
+            "Radiopaedia.org - Breast lesion characterization"
         ]
     },
     {
@@ -313,8 +313,8 @@ export const breastPathologies: Pathology[] = [
         clinicalPearl: "Mammografide segmental/lineer dağılımlı ince pleomorfik mikrokalsifikasyonlar = DCIS'e kadar suçlu kabul et.",
         references: [
             "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
-            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
-            "Defined Defined Defined Defined Defined Defined Defined",
+            "Kopans DB. Breast Imaging. 3rd ed. Lippincott Williams & Wilkins; 2007.",
+            "Radiopaedia.org - Breast imaging",
             "ACR Appropriateness Criteria: Breast Microcalcifications. American College of Radiology."
         ]
     },
@@ -375,9 +375,9 @@ export const breastPathologies: Pathology[] = [
         goldStandard: "USG + Kalın iğne (core) biyopsi: Stromal sellülarite değerlendirmesi. İnce iğne biyopsisi yetersiz! Kesin tanı ve grade: Eksizyonel biyopsi.",
         clinicalPearl: "Hızla büyüyen büyük kitle + USG'de kistik boşluklar (yaprak yarıkları) = Filloides düşün; fibroadenom olarak takibe bırakma, core biyopsi yap.",
         references: [
-            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "Kopans DB. Breast Imaging. 3rd ed. Lippincott Williams & Wilkins; 2007.",
             "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
-            "Defined Defined Defined Defined"
+            "Radiopaedia.org - Breast cysts"
         ]
     },
     {
@@ -436,10 +436,10 @@ export const breastPathologies: Pathology[] = [
         goldStandard: "USG: Tanı için yeterli (laktasyon döneminde kistik lezyon + yağ-sıvı seviyesi). Aspirasyon: Hem tanısal (süt içeriği) hem terapötik.",
         clinicalPearl: "Emziren kadında kistik kitle + yağ-sıvı seviyesi = Galaktosel, aspirasyonda süt gelir → tanı doğrulanır.",
         references: [
-            "Defined Defined Defined Defined Defined Defined Defined Defined Defined",
+            "Kopans DB. Breast Imaging. 3rd ed. Lippincott Williams & Wilkins; 2007.",
             "ACR BI-RADS Atlas. 5th ed. American College of Radiology; 2013.",
             "ACR Appropriateness Criteria: Breast Pain. American College of Radiology.",
-            "Defined Defined Defined Defined Defined Defined"
+            "Radiopaedia.org - Breast lesion characterization"
         ]
     }
 ];

@@ -53,9 +53,9 @@ export const lungPathologies: Pathology[] = [
         "goldStandard": "BT-PET: Evreleme ve biyopsi kılavuzluğu. PET-CT: Mediastinal ve uzak metastaz değerlendirmesi. Biyopsi: Histolojik tip ve moleküler belirteç.",
         "clinicalPearl": "Spiküle kenar + Plevral çekme + Hiler adenopati = Akciğer kanseri. 'Satellite nodule' + Nodül >3cm = T2 evre.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "NCCN Clinical Practice Guidelines in Oncology: Non-Small Cell Lung Cancer. National Comprehensive Cancer Network; 2023.",
+            "ACR Appropriateness Criteria: Lung Cancer Screening. American College of Radiology; 2021.",
             "Radiopaedia.org - Lung cancer"
         ]
     },
@@ -111,8 +111,8 @@ export const lungPathologies: Pathology[] = [
         "goldStandard": "BT Pulmoner Anjiografi (BTPA): Altın standart, duyarlılık >%90. V/Q sintigrafi: BT kontrendike ise (hamile, böbrek yetmezliği).",
         "clinicalPearl": "Polo mint sign (aksiyel) + Railway track sign (koronal) = PE. RV/LV >1 = Masif/submasif PE, kötü prognoz.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Pulmonary embolism"
         ]
     },
@@ -160,8 +160,8 @@ export const lungPathologies: Pathology[] = [
         ],
         "mechanism": "Bakteriyel: Patojenin alt solunum yollarına ulaşması → alveolar makrofajların yetersiz temizliği → bakteri proliferasyonu → nötrofil yanıtı → eksüda dolu alveoller (konsolidasyon). Viral/COVID-19: Hücresel immün yanıt ve sitokin fırtınası → difüz alveolar hasar → tip II pnömosit hasarı → surfaktan kaybı → alveoler kollaps → ground-glass opasiteler, crazy-paving. Nekrotizan: Vaskülit ve tromboz → akciğer parankimi nekrozu → kavitasyon.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Pneumonia"
         ]
     },
@@ -211,8 +211,8 @@ export const lungPathologies: Pathology[] = [
         ],
         "mechanism": "Solid nodül: Tam solid doku proliferasyonu — granülom (enfeksiyöz: TB, histoplazma), karsinoid, metastaz veya primer malignite. Subsolid/ground-glass nodül: Kısmi alveol dolumu ile birlikte hava korunumu — atipik adenomatöz hiperplazi (AAH) → in situ adenokarsinom (AIS) → minimal invaziv adenokarsinom (MIA) → invaziv adenokarsinom malignisite spektrumu. Solid komponent arttıkça invazyon artmaktadır.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Pulmonary nodule"
         ]
     },
@@ -265,8 +265,8 @@ export const lungPathologies: Pathology[] = [
         ],
         "mechanism": "Visseral veya pariyetal plevra bütünlüğünün bozulması → plevral boşluğa hava kaçışı → akciğer elastik geri çekim kuvveti ile çöküş. Primer spontan: Apikal subplevral bleb rüptürü (genç, uzun erkeklerde zayıf mezoteliyal doku). Tansiyon: Tek yönlü valf mekanizması → inspirasyonda hava girer, ekspirasyonda çıkamaz → giderek artan basınç → mediastinal şift → karşı akciğer ve venöz dönüş baskılanması → kardiyovasküler kollaps.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Pneumothorax"
         ]
     },
@@ -316,8 +316,8 @@ export const lungPathologies: Pathology[] = [
         ],
         "mechanism": "Kronik alveolar epitelyal hasar (tip II pnömosit) → anormal yara iyileşmesi → fibroblast aktivasyonu (TGF-β, PDGF) → aşırı ECM depolanması → akciğer parankim mimarisinin bozulması. Baziler/subplevral tutulum: Bu bölgelerdeki mekanik strese duyarlılık ile ilişkilidir. Honeycombing: Alveol gruplarının fibröz doku ile dolması ve birbirine yapışarak kistik hava boşlukları oluşturması.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Interstitial lung disease"
         ]
     },
@@ -349,8 +349,8 @@ export const lungPathologies: Pathology[] = [
         ],
         "mechanism": "Bilinmeyen tetikleyici → tekrarlayan epitelyal mikro-hasarlar → TGF-β mediated fibroblast aktivasyonu → miyofibroblastlara dönüşüm → kollajen birikimi. Alveolar yüzey azalır → gaz değişimi bozulur → restriktif patern. Baziler subplevral tutulum, bu bölgelerin solunum sırasındaki gerilme kuvvetlerine olan duyarlılığıyla açıklanır.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Idiopathic pulmonary fibrosis"
         ]
     },
@@ -388,8 +388,8 @@ export const lungPathologies: Pathology[] = [
         ],
         "mechanism": "Sigara dumanı veya alfa-1 antitripsin eksikliği → proteaz/antiproteaz dengesizliği (nötrofil elastaz artışı, alfa-1 antitripsin azalması) → alveolar duvar yıkımı → hava boşluğu genişlemesi → akciğer elastisitesi azalır → hava hapsi. Sentrilobüler amfizem: Sigara ile ilişkili, merkezi asiner hasar. Panasiner: Tüm asiner yıkım. Hiperinflasyon ve flatleşen diyafram bu gaz hapsi mekanizmasının yansımasıdır.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Pulmonary emphysema"
         ]
     },
@@ -454,8 +454,8 @@ export const lungPathologies: Pathology[] = [
         "goldStandard": "USG (tanı + torasentez kılavuzluğu). BT: Etiyoloji ve komplikasyon değerlendirmesi.",
         "clinicalPearl": "Masif efüzyon + kontralateral mediastinal yer değiştirme = Serbest efüzyon. İpsilateral yer değiştirme YOK = Atelektazi veya malign mezotelyoma (plevral tutulum akciğeri sabitler).",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Pleural effusion"
         ]
     },
@@ -515,8 +515,8 @@ export const lungPathologies: Pathology[] = [
         "goldStandard": "Balgam ARB + Kültür (Löwenstein-Jensen). Moleküler: GeneXpert MTB/RIF (hızlı tanı). Görüntüleme destekleyicidir.",
         "clinicalPearl": "Üst lob + kavite + tree-in-bud = Aktif TB ekarte edilmeli. Nekrotik LAP'ta rim kontrastlanma TB'e özgüdür — lenfoma ve metastazdan ayırır.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Pulmonary tuberculosis"
         ]
     },
@@ -576,8 +576,8 @@ export const lungPathologies: Pathology[] = [
         "goldStandard": "BT + Balgam kültürü/bronkoskopi. DWI → apse içeriğini tümörden ayırır.",
         "clinicalPearl": "DWI'da apse içeriği kısıtlanır (parlak), nekrotik tümör kısıtlanmaz → BT'de kavitasyon gördüğünde MRI-DWI yapmanın değeri büyüktür.",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Lung abscess"
         ]
     },
@@ -633,8 +633,8 @@ export const lungPathologies: Pathology[] = [
         "goldStandard": "Doku biyopsisi (BAL veya transbronşial biyopsi): Non-kazeöz epiteloid granülom. ACE düzeyi destekleyici.",
         "clinicalPearl": "Bilateral hiler LAP + nefes darlığı + eritema nodozum + artralji = Löfgren Sendromu (iyi prognozlu akut sarkoidoz).",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Sarcoidosis"
         ]
     },
@@ -683,8 +683,8 @@ export const lungPathologies: Pathology[] = [
         "goldStandard": "HRCT toraksi: Signet ring işareti + bronş/arter oranı. Altta yatan etiyoloji araştırması: Ter testi (CF), siliyer motilite testi, immün panel.",
         "clinicalPearl": "Günlük pürülan balgam + kronik öksürük + HRCT'de signet ring = Bronşiektazi. Santral tutulum → ABPA ekarte et (IgE, Aspergillus seroloji).",
         "references": [
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined Defined.",
-            "Defined Defined. Defined Defined Defined Defined Defined Defined Defined.",
+            "Webb WR, Higgins CB. Thoracic Imaging: Pulmonary and Cardiovascular Radiology. 3rd ed. Lippincott Williams & Wilkins; 2017.",
+            "ACR Appropriateness Criteria. American College of Radiology. https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria",
             "Radiopaedia.org - Bronchiectasis"
         ]
     }

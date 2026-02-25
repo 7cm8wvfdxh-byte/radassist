@@ -57,6 +57,9 @@ const tr: Record<string, string> = {
     "pathology.gallery": "Galeri",
     "pathology.addFavorite": "Favorilere Ekle",
     "pathology.removeFavorite": "Favorilerden Çıkar",
+    "detailed_view": "Detaylı",
+    "quick_view": "Özet",
+    "mechanism": "Mekanizma",
 
     // Community/Forum
     "forum.title": "RadRoom",
@@ -200,6 +203,9 @@ const en: Record<string, string> = {
     "pathology.gallery": "Gallery",
     "pathology.addFavorite": "Add to Favorites",
     "pathology.removeFavorite": "Remove from Favorites",
+    "detailed_view": "Details",
+    "quick_view": "Summary",
+    "mechanism": "Mechanism",
 
     // Community/Forum
     "forum.title": "RadRoom",
