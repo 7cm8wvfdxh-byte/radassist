@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useDeferredValue } from "react";
 import { SearchBar } from "@/components/search-bar";
 import { PathologyCard } from "@/components/pathology-card";
 import { PathologyListItem } from "@/components/pathology-list-item";
@@ -120,6 +120,9 @@ export default function Home() {
 
   const [searchGlobal, setSearchGlobal] = useState(false); // Global search toggle
 
+  // Defer the search query to avoid blocking UI during heavy search computation
+  const deferredSearchQuery = useDeferredValue(searchQuery);
+
   // Tüm patolojileri birleştir (öneri sistemi için)
   const allPathologies = useMemo(() => [
     ...brainPathologies.map(p => ({ ...p, organ: p.organ || 'Beyin' })),
@@ -180,13 +183,13 @@ export default function Home() {
       pool = pool.filter(p => favorites.includes(p.id));
     }
 
-    if (searchQuery.trim()) {
-      // Skorlu arama kullan
-      const scored = performScoredSearch(pool, searchQuery);
+    if (deferredSearchQuery.trim()) {
+      // Skorlu arama kullan (deferred to keep UI responsive)
+      const scored = performScoredSearch(pool, deferredSearchQuery);
 
       // Sonuç yoksa "bunu mu demek istediniz?" önerileri
       const dymSuggestions = scored.length === 0
-        ? getDidYouMeanSuggestions(pool, searchQuery)
+        ? getDidYouMeanSuggestions(pool, deferredSearchQuery)
         : [];
 
       return {
@@ -221,7 +224,7 @@ export default function Home() {
       searchResults: [] as SearchResult[],
       didYouMeanSuggestions: [] as string[],
     };
-  }, [searchQuery, favorites, showFavoritesOnly, activeModule, searchGlobal, allPathologies]);
+  }, [deferredSearchQuery, favorites, showFavoritesOnly, activeModule, searchGlobal, allPathologies]);
 
   // Build lookup map from pathology ID → search result for context display
   const searchResultMap = useMemo(() => {
@@ -765,7 +768,7 @@ export default function Home() {
           </div>
         ) : (
           viewMode === "grid" ? (
-            <div>
+            <div className={searchQuery !== deferredSearchQuery ? "opacity-70 transition-opacity" : "transition-opacity"}>
             {/* Search context strip */}
             {searchQuery.trim() && searchResults.length > 0 && (
               <div className="flex flex-wrap items-center gap-2 mb-4 px-1 animate-in fade-in duration-300">
@@ -815,7 +818,7 @@ export default function Home() {
             </div>
             </div>
           ) : (
-            <div className="max-w-4xl mx-auto flex flex-col gap-2 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
+            <div className={cn("max-w-4xl mx-auto flex flex-col gap-2 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300", searchQuery !== deferredSearchQuery && "opacity-70")}>
               {filteredPathologies.map((pathology) => {
                 const sr = searchResultMap.get(pathology.id);
                 return (

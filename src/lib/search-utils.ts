@@ -205,7 +205,13 @@ interface SearchField {
     fieldName: string;
 }
 
+// Cache searchable fields per pathology to avoid recomputing on every search
+const _fieldsCache = new WeakMap<Pathology, SearchField[]>();
+
 function getSearchableFields(p: Pathology): SearchField[] {
+    const cached = _fieldsCache.get(p);
+    if (cached) return cached;
+
     const fields: SearchField[] = [];
 
     // İsim (en yüksek ağırlık)
@@ -254,6 +260,7 @@ function getSearchableFields(p: Pathology): SearchField[] {
     addFindingsFields(p.findings.pet as Record<string, string | undefined>, "pet", 3);
     addFindingsFields(p.findings.mammography as Record<string, string | undefined>, "mammography", 3);
 
+    _fieldsCache.set(p, fields);
     return fields;
 }
 
@@ -311,18 +318,25 @@ export function performScoredSearch(pathologies: Pathology[], query: string): Se
 
     const results: SearchResult[] = [];
 
-    for (const p of pathologies) {
-        let fields = getSearchableFields(p);
-
-        // Modalite bağlamı varsa, o modaliteye ait alanlara bonus ağırlık ver
-        if (modalityCtx.modality) {
-            fields = fields.map(f => {
-                if (f.fieldName.startsWith(modalityCtx.fieldPrefix!)) {
-                    return { ...f, weight: f.weight + 4 }; // Modalite bonus
-                }
-                return f;
-            });
+    // Pre-compute reverse synonyms and token variations ONCE (outside loop)
+    const reverseSynonyms = getReverseSynonyms();
+    const tokenVariationsMap = new Map<string, string[]>();
+    for (const token of rawTokens) {
+        const variations = [token];
+        if (RADIOLOGY_SYNONYMS[token]) {
+            for (const s of RADIOLOGY_SYNONYMS[token]) variations.push(s.toLowerCase());
         }
+        if (reverseSynonyms[token]) {
+            for (const s of reverseSynonyms[token]) variations.push(s.toLowerCase());
+        }
+        tokenVariationsMap.set(token, variations);
+    }
+
+    const hasModalityCtx = !!modalityCtx.modality;
+    const modalPrefix = modalityCtx.fieldPrefix;
+
+    for (const p of pathologies) {
+        const fields = getSearchableFields(p);
 
         let totalScore = 0;
         let allTokensMatched = true;
@@ -330,27 +344,23 @@ export function performScoredSearch(pathologies: Pathology[], query: string): Se
         let bestMatchType: SearchResult["matchType"] = "exact";
 
         for (const token of rawTokens) {
-            // Token varyasyonlarını oluştur
-            let possibleVariations = [token];
-            if (RADIOLOGY_SYNONYMS[token]) {
-                possibleVariations = [...possibleVariations, ...RADIOLOGY_SYNONYMS[token].map(s => s.toLowerCase())];
-            }
-            // Ters sözlük
-            const reverseSynonyms = getReverseSynonyms();
-            if (reverseSynonyms[token]) {
-                possibleVariations = [...possibleVariations, ...reverseSynonyms[token].map(s => s.toLowerCase())];
-            }
+            const possibleVariations = tokenVariationsMap.get(token)!;
 
             let tokenMatched = false;
             let tokenBestScore = 0;
 
             for (const field of fields) {
+                // Calculate weight inline (avoid array copy for modality bonus)
+                const fieldWeight = hasModalityCtx && field.fieldName.startsWith(modalPrefix!)
+                    ? field.weight + 4
+                    : field.weight;
+
                 // Exact / substring match
                 for (const variation of possibleVariations) {
                     if (field.text.includes(variation)) {
                         tokenMatched = true;
                         const isOriginalToken = variation === token;
-                        const matchScore = isOriginalToken ? field.weight * 2 : field.weight;
+                        const matchScore = isOriginalToken ? fieldWeight * 2 : fieldWeight;
                         if (!isOriginalToken && bestMatchType === "exact") bestMatchType = "synonym";
 
                         if (matchScore > tokenBestScore) {
@@ -362,17 +372,19 @@ export function performScoredSearch(pathologies: Pathology[], query: string): Se
                             snippet: extractSnippet(field.text, variation),
                             weight: field.weight,
                         });
-                        break; // Bir field'da birden fazla variation bulunamaz, devam et
+                        break;
                     }
                 }
             }
 
-            // Fuzzy match (bulunamadıysa)
+            // Fuzzy match (bulunamadıysa) - only high-weight fields first for speed
             if (!tokenMatched && token.length >= 4) {
+                const maxDist = token.length <= 5 ? 1 : 2;
                 for (const field of fields) {
-                    if (isFuzzyMatch(token, field.text, token.length <= 5 ? 1 : 2)) {
+                    if (field.weight < 5) continue;
+                    if (isFuzzyMatch(token, field.text, maxDist)) {
                         tokenMatched = true;
-                        tokenBestScore = field.weight * 0.5; // Fuzzy match daha düşük skor
+                        tokenBestScore = field.weight * 0.5;
                         bestMatchType = "fuzzy";
                         matchedFields.push({
                             fieldName: field.fieldName,
@@ -380,6 +392,22 @@ export function performScoredSearch(pathologies: Pathology[], query: string): Se
                             weight: field.weight,
                         });
                         break;
+                    }
+                }
+                if (!tokenMatched) {
+                    for (const field of fields) {
+                        if (field.weight >= 5) continue;
+                        if (isFuzzyMatch(token, field.text, maxDist)) {
+                            tokenMatched = true;
+                            tokenBestScore = field.weight * 0.5;
+                            bestMatchType = "fuzzy";
+                            matchedFields.push({
+                                fieldName: field.fieldName,
+                                snippet: extractSnippet(field.text, token),
+                                weight: field.weight,
+                            });
+                            break;
+                        }
                     }
                 }
             }
