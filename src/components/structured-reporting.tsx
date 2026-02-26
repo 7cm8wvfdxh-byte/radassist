@@ -279,6 +279,7 @@ export function StructuredReporting() {
     const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
     const [selectedFindings, setSelectedFindings] = useState<string[]>([]);
     const [clinicalInfo, setClinicInfo] = useState('');
+    const [comparisonStudy, setComparisonStudy] = useState('');
     const [copied, setCopied] = useState(false);
     const [selectedRadsCategory, setSelectedRadsCategory] = useState<string | null>(null);
 
@@ -295,56 +296,416 @@ export function StructuredReporting() {
     const radsSystem = config?.radsSystem ? RADS_SYSTEMS.find(r => r.id === config.radsSystem) : null;
     const radsCategory = radsSystem?.categories.find(c => c.category === (selectedRadsCategory || calculatedRads));
 
+    // Technique description generator based on organ + modality
+    const getTechniqueDescription = (organ: string, modality: string): string => {
+        const techniqueMap: Record<string, Record<string, string>> = {
+            brain: {
+                'Kranial MR': 'Multiplanar (aksiyal, koronal, sagital), multisekans (T1, T2, FLAIR, DWI/ADC, SWI) kranial MR incelemesi yapılmıştır. İntravenöz kontrast madde (IVKM — Gadolinyum bazlı) uygulanması sonrası T1 ağırlıklı sekanslarda değerlendirme yapılmıştır.',
+                'Kranial BT': 'Kontrastsız ve kontrastlı (IV iyotlu kontrast madde sonrası) aksiyal planda kranial BT incelemesi yapılmıştır. Kemik ve parankimal pencere algoritmalarında değerlendirilmiştir.',
+                'BT Anjiyografi': 'İntravenöz iyotlu kontrast madde uygulanmasını takiben, kranial BT anjiyografi protokolü ile akvizisyon elde edilmiştir. Aksiyel kaynak görüntüler, MIP ve VR rekonstrüksiyonlarda serebrovasküler yapılar değerlendirilmiştir.',
+                'MR Anjiyografi': 'TOF (Time-of-Flight) ve/veya kontrastlı MR anjiyografi tekniği ile intrakranyal vasküler yapılar değerlendirilmiştir. MIP ve kaynak görüntüler birlikte incelenmiştir.',
+                'Difüzyon MR': 'Difüzyon ağırlıklı görüntüleme (DWI, b=0 ve b=1000 s/mm²) ve ADC (Apparent Diffusion Coefficient) haritalama ile birlikte değerlendirilmiştir.',
+            },
+            liver: {
+                'Dinamik Karaciğer BT': 'IV iyotlu kontrast madde uygulaması sonrası arteryel faz (~25-30 sn), portal venöz faz (~60-70 sn) ve geç faz (~180 sn) olmak üzere dinamik (trifazik) karaciğer BT protokolü uygulanmıştır.',
+                'Dinamik Karaciğer MR': 'T1 (in-phase/out-of-phase), T2, T2 SPAIR/FS ve IV Gadolinyum bazlı kontrast madde sonrası dinamik T1 ağırlıklı (arteryel, portal venöz, transisyonel, hepatobiliyer faz) sekanslarda karaciğer MR incelemesi yapılmıştır.',
+                'Hepatobiliyer MR (Primovist)': 'Hepatosit-spesifik kontrast madde (Gadoksetik asit — Primovist®) uygulaması sonrası dinamik ve 20. dk hepatobiliyer faz dahil karaciğer MR incelemesi yapılmıştır.',
+                'Abdomen USG': 'Konveks (3.5-5 MHz) prob ile gri-skala ve renkli Doppler abdomen ultrasonografi incelemesi yapılmıştır.',
+            },
+            breast: {
+                'Mammografi (MMG)': 'Her iki meme bilateral kraniokaudal (CC) ve mediolateral oblik (MLO) pozisyonlarda dijital mammografi incelemesi yapılmıştır.',
+                'Meme USG': 'Yüksek frekanslı (12-18 MHz) lineer prob ile bilateral meme ve aksiller bölge ultrasonografi incelemesi yapılmıştır.',
+                'Meme MR': 'IV Gadolinyum bazlı kontrast madde sonrası bilateral dinamik kontrastlı meme MR incelemesi (T1 pre-post kontrast, T2, STIR, subtraksiyon, MIP, kinetik analiz) yapılmıştır.',
+                'Tomosintez': 'Dijital meme tomosintez (DBT) — her iki meme CC ve MLO pozisyonlarda 3D akvizisyon yapılmıştır.',
+            },
+            lung: {
+                'Toraks BT': 'IV kontrast madde uygulaması sonrası toraks BT incelemesi yapılmıştır. Mediastinal ve parankim pencere ayarlarında değerlendirilmiştir.',
+                'Pulmoner BT Anjiyografi': 'Bolus-tracking yöntemi ile pulmoner arterlere yönelik BT anjiyografi protokolü uygulanmıştır. Ana pulmoner arter, lober, segmenter ve subsegmenter dallar değerlendirilmiştir.',
+                'YRBT (HRCT)': 'İnce kesit (1-1.25 mm), yüksek çözünürlüklü akciğer BT (YRBT) incelemesi yapılmıştır. Pron ve ekspiryum görüntüleri [alınmıştır/alınmamıştır].',
+                'PA Akciğer Grafisi': 'Posteroanterior (PA) akciğer grafisi değerlendirilmiştir. Teknik yeterliliği [uygun/kısıtlı] olarak değerlendirilmiştir.',
+                'Düşük Doz BT (LDCT)': 'Akciğer kanseri tarama protokolü ile düşük doz BT incelemesi (kontrastsız) yapılmıştır.',
+            },
+            kidney: {
+                'Kontrastsız Üriner BT': 'Kontrastsız düşük doz üriner sistem BT incelemesi yapılmıştır. Böbrekler, üreterler ve mesane değerlendirilmiştir.',
+                'Trifazik Böbrek BT': 'IV kontrast madde sonrası kortikomed üller faz, nefrografik faz ve ekskretuvar faz olmak üzere trifazik böbrek BT protokolü uygulanmıştır.',
+                'Kontrastlı Böbrek MR': 'T1, T2, DWI ve IV Gadolinyum bazlı kontrast madde sonrası dinamik MR sekanslarında böbrekler incelenmiştir.',
+                'Böbrek USG': 'Konveks (3.5-5 MHz) prob ile bilateral böbrek ve mesane ultrasonografi incelemesi yapılmıştır. Renkli Doppler ile vasküler değerlendirme yapılmıştır.',
+            },
+            spine: {
+                'Lomber MR': 'Sagital (T1, T2) ve aksiyal (T2) planlarda lomber spinal MR incelemesi yapılmıştır. L1-S1 düzeyleri disk ve nöral yapılar açısından değerlendirilmiştir.',
+                'Servikal MR': 'Sagital (T1, T2, STIR) ve aksiyal (T2*/GRE) planlarda servikal spinal MR incelemesi yapılmıştır. C2-T1 düzeyleri disk, nöral yapılar ve spinal kord değerlendirilmiştir.',
+                'Torakal MR': 'Sagital (T1, T2, STIR) ve aksiyal planlarda torakal spinal MR incelemesi yapılmıştır.',
+                'Spinal BT': 'İnce kesit spinal BT incelemesi yapılmıştır. Kemik ve yumuşak doku pencerelerinde değerlendirilmiştir.',
+                'Direkt Grafi': 'AP ve lateral pozisyonlarda konvansiyonel radyografi değerlendirilmiştir.',
+            },
+            msk: {
+                'Omuz MR': 'Koronal (T1, PD-FS), sagital (T2-FS), aksiyal (PD-FS) planlarda omuz MR incelemesi yapılmıştır. Rotator manşet, labrum, tendonlar ve eklem yapıları değerlendirilmiştir.',
+                'Diz MR': 'Sagital (PD-FS, T1), koronal (T2-FS, PD), aksiyal (PD-FS) planlarda diz MR incelemesi yapılmıştır. Menisküsler, çapraz bağlar, kollateral bağlar ve kıkırdak değerlendirilmiştir.',
+                'Kalça MR': 'Koronal (T1, STIR), aksiyal (T2-FS), sagital (PD-FS) planlarda kalça MR incelemesi yapılmıştır.',
+                'Ayak-Bilek MR': 'Sagital (T1, PD-FS), aksiyal (T2-FS), koronal (STIR) planlarda ayak-bilek MR incelemesi yapılmıştır.',
+                'Direkt Grafi': 'AP ve lateral pozisyonlarda konvansiyonel radyografi değerlendirilmiştir.',
+            },
+            gi: {
+                'Abdomen BT': 'IV ve oral kontrast madde uygulaması sonrası portal venöz fazda abdomen BT incelemesi yapılmıştır.',
+                'Abdomen MR': 'T1, T2, DWI ve IV Gadolinyum bazlı kontrast madde sonrası dinamik sekanslarla abdomen MR incelemesi yapılmıştır.',
+                'Abdomen USG': 'Konveks (3.5-5 MHz) prob ile gri-skala ve renkli Doppler abdomen ultrasonografi incelemesi yapılmıştır.',
+                'BT Kolonografi': 'Kolon distansiyonu sonrası pron ve supin pozisyonlarda ince kesit BT akvizisyonu alınmıştır. 2D ve 3D endolüminal rekonstrüksiyonlarda değerlendirilmiştir.',
+                'MRCP': 'T2 ağırlıklı ağır T2 sekanslarla (2D ve 3D) pankreatobiliyer MRCP incelemesi yapılmıştır.',
+            },
+            gyn: {
+                'Pelvis MR': 'Sagital, aksiyal ve koronal planlarda T1, T2, DWI ve IV Gadolinyum bazlı kontrast madde sonrası dinamik sekanslarla pelvis MR incelemesi yapılmıştır.',
+                'Transvajinal USG': 'Transvajinal (5-9 MHz) ve transabdominal (3.5-5 MHz) prob ile gri-skala ve renkli Doppler pelvis ultrasonografi incelemesi yapılmıştır.',
+                'Abdominopelvik BT': 'IV kontrast madde uygulaması sonrası portal venöz fazda abdominopelvik BT incelemesi yapılmıştır.',
+            },
+        };
+        return techniqueMap[organ]?.[modality] || `${modality} incelemesi standart protokol ile gerçekleştirilmiştir.`;
+    };
+
+    // Pertinent negative findings generator
+    const getPertinentNegatives = (organ: string, fields: Record<string, string>, findings: string[]): string[] => {
+        const negatives: string[] = [];
+        const negativeMap: Record<string, { field: string; values: string[]; negative: string }[]> = {
+            brain: [
+                { field: 'midline_shift', values: ['0', ''], negative: 'Orta hat yapıları doğal seyirli olup şift izlenmemiştir.' },
+                { field: 'ventricles', values: ['Normal boyutta', ''], negative: 'Ventriküler sistem doğal boyut ve konfigürasyondadır.' },
+                { field: 'edema', values: ['Yok', ''], negative: 'Periferik ödem alanı izlenmemiştir.' },
+            ],
+            liver: [
+                { field: 'cirrhosis', values: ['false', ''], negative: 'Karaciğer parankim yapısı homojendi, siroz bulgusu izlenmedi.' },
+                { field: 'capsule', values: ['Yok', ''], negative: 'Kapsül kontrastlanması izlenmemiştir.' },
+            ],
+            lung: [
+                { field: 'pleural_effusion', values: ['Yok', ''], negative: 'Plevral efüzyon izlenmemiştir.' },
+                { field: 'lymph_nodes', values: ['Yok', ''], negative: 'Mediastinal patolojik boyutta lenfadenopati (LAP) saptanmamıştır.' },
+            ],
+            kidney: [
+                { field: 'hydronephrosis', values: ['Yok', ''], negative: 'Pelvikalisiyel sistemde dilatasyon izlenmemiştir.' },
+            ],
+            spine: [
+                { field: 'signal_change', values: ['Normal', ''], negative: 'Spinal kord sinyal intensitesi doğaldır, miyelopati bulgusu saptanmamıştır.' },
+                { field: 'nerve_root', values: ['Yok', ''], negative: 'Sinir köklerinde belirgin kompresyon izlenmemiştir.' },
+            ],
+            msk: [
+                { field: 'effusion', values: ['Yok', ''], negative: 'Eklem efüzyonu izlenmemiştir.' },
+                { field: 'bone_bruise', values: ['Yok', ''], negative: 'Kemik kontüzyonu saptanmamıştır.' },
+            ],
+            gi: [
+                { field: 'fat_stranding', values: ['Normal', ''], negative: 'Çevre yağ planları temizdir, inflamatuvar değişiklik izlenmemiştir.' },
+            ],
+        };
+        const checkList = negativeMap[organ] || [];
+        for (const item of checkList) {
+            const val = fields[item.field] || '';
+            if (item.values.includes(val)) {
+                negatives.push(item.negative);
+            }
+        }
+        // Bulgu bazlı negatifler
+        if (organ === 'brain' && !findings.includes('hemorrhage')) {
+            negatives.push('Akut hemoraji bulgusu izlenmemiştir.');
+        }
+        if (organ === 'lung' && !findings.includes('pneumothorax')) {
+            negatives.push('Pnömotoraks bulgusu saptanmamıştır.');
+        }
+        if (organ === 'gi' && !findings.includes('free_air')) {
+            negatives.push('Serbest hava (perforasyon bulgusu) izlenmemiştir.');
+        }
+        return negatives;
+    };
+
     // Generate dynamic report
     const generatedReport = useMemo(() => {
         if (!config) return '';
+        const modality = selectedModality || config.modalities[0];
         const lines: string[] = [];
 
-        lines.push('═══════════════════════════════════════');
-        lines.push('         RADYOLOJİ RAPORU');
-        lines.push('═══════════════════════════════════════');
+        lines.push('══════════════════════════════════════════════');
+        lines.push('           RADYOLOJİ RAPORU');
+        lines.push('══════════════════════════════════════════════');
         lines.push('');
-        lines.push(`KLİNİK BİLGİ: ${clinicalInfo || '[Klinik bilgi giriniz]'}`);
+        lines.push('Hasta Adı    : [...........................]');
+        lines.push('Protokol No  : [............]');
+        lines.push('Tarih        : [../../....]');
         lines.push('');
-        lines.push(`İNCELEME: ${selectedModality || config.modalities[0]}`);
+        lines.push('──────────────────────────────────────────────');
+
+        // KLİNİK BİLGİ ve ENDİKASYON
+        lines.push('');
+        lines.push('KLİNİK BİLGİ ve ENDİKASYON:');
+        lines.push(clinicalInfo || '[Klinik bilgi ve inceleme endikasyonu belirtilmelidir.]');
+
+        // KARŞILAŞTIRMA
+        lines.push('');
+        lines.push('KARŞILAŞTIRMA:');
+        lines.push(comparisonStudy || 'Karşılaştırma için önceki inceleme mevcut değildir.');
+
+        // İNCELEME
+        lines.push('');
+        lines.push(`İNCELEME: ${modality}`);
+
+        // TEKNİK
         lines.push('');
         lines.push('TEKNİK:');
-        lines.push(`${selectedModality || config.modalities[0]} incelemesi uygulanmıştır.`);
+        lines.push(getTechniqueDescription(config.organ, modality));
+
+        // BULGULAR
         lines.push('');
+        lines.push('──────────────────────────────────────────────');
         lines.push('BULGULAR:');
+        lines.push('');
 
-        // Build findings from field values
-        const fieldLines: string[] = [];
-        config.fields.forEach(field => {
-            const val = fieldValues[field.id];
-            if (val && val !== 'Yok' && val !== '0' && val !== 'false' && val !== 'Normal') {
-                fieldLines.push(`${field.label}: ${val}${field.unit ? ' ' + field.unit : ''}`);
-            }
+        // Build narrative findings
+        const hasAnyField = config.fields.some(f => {
+            const val = fieldValues[f.id];
+            return val && val !== 'Yok' && val !== '0' && val !== 'false' && val !== 'Normal' && val !== '';
         });
+        const hasAnyFinding = selectedFindings.length > 0;
 
-        if (fieldLines.length > 0) {
-            lines.push(fieldLines.join('. ') + '.');
+        if (hasAnyField || hasAnyFinding) {
+            // Build narrative prose based on organ
+            const narrativeParts: string[] = [];
+
+            // Organ-specific narrative generation
+            if (config.organ === 'brain') {
+                const loc = fieldValues.location;
+                const size = fieldValues.size;
+                const enh = fieldValues.enhancement;
+                const edema = fieldValues.edema;
+                const shift = fieldValues.midline_shift;
+
+                if (loc || size) {
+                    let sentence = '';
+                    if (loc) sentence += `${loc} lokalizasyonunda `;
+                    if (size) sentence += `yaklaşık ${size} boyutlarında ölçülen `;
+                    sentence += 'lezyon izlenmiştir.';
+                    narrativeParts.push(sentence.charAt(0).toUpperCase() + sentence.slice(1));
+                }
+                if (enh && enh !== 'Yok') {
+                    narrativeParts.push(`IVKM sonrası ${enh.toLowerCase()} tarzda kontrast tutulumu göstermektedir.`);
+                }
+                if (edema && edema !== 'Yok') {
+                    narrativeParts.push(`Çevresinde ${edema.toLowerCase()} düzeyde periferik vazojenik ödem alanı eşlik etmektedir.`);
+                }
+                if (shift && parseInt(shift) > 0) {
+                    narrativeParts.push(`Orta hat yapılarında yaklaşık ${shift} mm şift izlenmektedir.`);
+                }
+                const vent = fieldValues.ventricles;
+                if (vent && vent !== 'Normal boyutta') {
+                    narrativeParts.push(`Ventriküler sistem ${vent.toLowerCase()} olarak değerlendirilmiştir.`);
+                }
+            } else if (config.organ === 'liver') {
+                const seg = fieldValues.segment;
+                const size = fieldValues.size;
+                const art = fieldValues.arterial_phase;
+                const port = fieldValues.portal_phase;
+                const del = fieldValues.delayed_phase;
+                const caps = fieldValues.capsule;
+                const cirr = fieldValues.cirrhosis;
+
+                if (cirr === 'true') {
+                    narrativeParts.push('Karaciğer parankimi heterojen görünümde olup, parankim yüzeyinde nodülarite ve kontur düzensizliği (siroz bulguları) dikkati çekmektedir.');
+                }
+                if (seg || size) {
+                    let sentence = 'Karaciğer parankiminde ';
+                    if (seg) sentence += `${seg} düzeyinde `;
+                    if (size) sentence += `yaklaşık ${size} boyutlarında `;
+                    sentence += 'lezyon izlenmiştir.';
+                    narrativeParts.push(sentence);
+                }
+                if (art) {
+                    narrativeParts.push(`Arteryel fazda lezyon ${art.toLowerCase()} kontrastlanma paterni göstermektedir.`);
+                }
+                if (port) {
+                    narrativeParts.push(`Portal venöz fazda ${port.toLowerCase()} olarak izlenmektedir.`);
+                }
+                if (del) {
+                    narrativeParts.push(`Geç fazda ${del.toLowerCase()} saptanmıştır.`);
+                }
+                if (caps && caps !== 'Yok') {
+                    narrativeParts.push(`Lezyon çevresinde ${caps.toLowerCase()} görünümde kapsül izlenmektedir.`);
+                }
+            } else if (config.organ === 'breast') {
+                const lat = fieldValues.laterality;
+                const quad = fieldValues.quadrant;
+                const size = fieldValues.size;
+                const shape = fieldValues.shape;
+                const margins = fieldValues.margins;
+                const dens = fieldValues.density;
+                const calc = fieldValues.calcification;
+                const ln = fieldValues.lymph_node;
+
+                if (lat || quad || size) {
+                    let sentence = '';
+                    if (lat) sentence += `${lat} memede `;
+                    if (quad) sentence += `${quad.toLowerCase()} kadrana yerleşimli, `;
+                    if (size) sentence += `yaklaşık ${size} boyutlarında, `;
+                    if (shape) sentence += `${shape.toLowerCase()} morfolojide, `;
+                    if (margins) sentence += `${margins.toLowerCase()} konturlu `;
+                    sentence += 'lezyon izlenmiştir.';
+                    narrativeParts.push(sentence.charAt(0).toUpperCase() + sentence.slice(1));
+                }
+                if (dens) narrativeParts.push(`Mammografide ${dens.toLowerCase()} dansitede izlenmektedir.`);
+                if (calc && calc !== 'Yok') narrativeParts.push(`${calc} tarzda kalsifikasyonlar eşlik etmektedir.`);
+                if (ln && ln !== 'Normal morfoloji') narrativeParts.push(`Aksiller bölgede ${ln.toLowerCase()} lenf nod(ları) dikkati çekmiştir.`);
+            } else if (config.organ === 'lung') {
+                const lat = fieldValues.laterality;
+                const lob = fieldValues.lobe;
+                const nSize = fieldValues.nodule_size;
+                const nType = fieldValues.nodule_type;
+                const marg = fieldValues.margins_lung;
+                const lap = fieldValues.lymph_nodes;
+                const eff = fieldValues.pleural_effusion;
+
+                if (lat || lob || nSize) {
+                    let sentence = '';
+                    if (lat) sentence += `${lat} akciğer `;
+                    if (lob) sentence += `${lob.toLowerCase()} düzeyinde `;
+                    if (nSize) sentence += `yaklaşık ${nSize} mm çaplı, `;
+                    if (nType) sentence += `${nType.toLowerCase()} karakterde, `;
+                    if (marg) sentence += `${marg.toLowerCase()} konturlu `;
+                    sentence += 'nodül/kitle izlenmiştir.';
+                    narrativeParts.push(sentence.charAt(0).toUpperCase() + sentence.slice(1));
+                }
+                if (lap && lap !== 'Yok') narrativeParts.push(`Mediastende ${lap.toLowerCase()} lenf nod(ları) izlenmiştir.`);
+                if (eff && eff !== 'Yok') narrativeParts.push(`${eff} düzeyde plevral efüzyon eşlik etmektedir.`);
+            } else if (config.organ === 'kidney') {
+                const lat = fieldValues.laterality;
+                const loc = fieldValues.location;
+                const size = fieldValues.size;
+                const hu = fieldValues.density_hu;
+                const hydro = fieldValues.hydronephrosis;
+                const enh = fieldValues.enhancement_kidney;
+
+                if (lat || loc || size) {
+                    let sentence = '';
+                    if (lat) sentence += `${lat} böbrek `;
+                    if (loc) sentence += `${loc.toLowerCase()} düzeyinde `;
+                    if (size) sentence += `yaklaşık ${size} boyutlarında `;
+                    sentence += 'lezyon/odak izlenmiştir.';
+                    narrativeParts.push(sentence.charAt(0).toUpperCase() + sentence.slice(1));
+                }
+                if (hu) narrativeParts.push(`Lezyonun dansitesi yaklaşık ${hu} HU olarak ölçülmüştür.`);
+                if (enh && enh !== 'Yok (Basit kist)') narrativeParts.push(`Kontrast tutulumu: ${enh}.`);
+                if (hydro && hydro !== 'Yok') narrativeParts.push(`İpsilateral pelvikalisiyel sistemde ${hydro.toLowerCase()} düzeyde dilatasyon (hidronefroz) izlenmektedir.`);
+            } else if (config.organ === 'spine') {
+                const level = fieldValues.level;
+                const hType = fieldValues.herniation_type;
+                const hLoc = fieldValues.herniation_loc;
+                const stenosis = fieldValues.canal_stenosis;
+                const nerve = fieldValues.nerve_root;
+                const signal = fieldValues.signal_change;
+
+                if (level) {
+                    let sentence = `${level} intervertebral disk düzeyinde `;
+                    if (hType) sentence += `${hType.toLowerCase()} tarzda disk patolojisi izlenmiştir. `;
+                    if (hLoc) sentence += `Herniasyon ${hLoc.toLowerCase()} yönelimlidir.`;
+                    narrativeParts.push(sentence);
+                }
+                if (stenosis && stenosis !== 'Yok') narrativeParts.push(`Bu düzeyde ${stenosis.toLowerCase()} derecede spinal kanal stenozu mevcuttur.`);
+                if (nerve && nerve !== 'Yok') narrativeParts.push(`${nerve.charAt(0).toUpperCase() + nerve.slice(1)} izlenmektedir.`);
+                if (signal && signal !== 'Normal') narrativeParts.push(`Spinal kordda ${signal.toLowerCase()} saptanmış olup miyelopati açısından değerlendirilmelidir.`);
+            } else if (config.organ === 'msk') {
+                const joint = fieldValues.joint;
+                const lat = fieldValues.laterality;
+                const tear = fieldValues.tear_type;
+                const eff = fieldValues.effusion;
+                const bruise = fieldValues.bone_bruise;
+
+                if (joint || lat) {
+                    let sentence = '';
+                    if (lat) sentence += `${lat} `;
+                    if (joint) sentence += `${joint.toLowerCase()} `;
+                    sentence += 'incelenmiştir.';
+                    narrativeParts.push(sentence.charAt(0).toUpperCase() + sentence.slice(1));
+                }
+                if (tear && tear !== 'Yok') narrativeParts.push(`Tendonda ${tear.toLowerCase()} saptanmıştır.`);
+                if (eff && eff !== 'Yok') narrativeParts.push(`Eklem içerisinde ${eff.toLowerCase()} düzeyde efüzyon izlenmektedir.`);
+                if (bruise === 'Mevcut') narrativeParts.push('Kemik kontüzyonu (bone bruise) ile uyumlu sinyal değişiklikleri eşlik etmektedir.');
+            } else if (config.organ === 'gi') {
+                const loc = fieldValues.location;
+                const wall = fieldValues.wall_thickness;
+                const lumen = fieldValues.lumen;
+                const fat = fieldValues.fat_stranding;
+
+                if (loc) {
+                    let sentence = `${loc} düzeyinde `;
+                    if (wall) sentence += `duvar kalınlığı yaklaşık ${wall} mm olarak ölçülen `;
+                    sentence += 'patolojik bulgu izlenmiştir.';
+                    narrativeParts.push(sentence);
+                }
+                if (lumen && lumen !== 'Normal') narrativeParts.push(`Lümen ${lumen.toLowerCase()} olarak değerlendirilmiştir.`);
+                if (fat && fat !== 'Normal') narrativeParts.push(`Çevre yağ planlarında ${fat.toLowerCase()} saptanmıştır.`);
+            } else if (config.organ === 'gyn') {
+                const lat = fieldValues.laterality;
+                const size = fieldValues.size;
+                const structure = fieldValues.structure;
+                const solid = fieldValues.solid_component;
+                const invasion = fieldValues.myometrial_invasion;
+
+                if (lat || size) {
+                    let sentence = '';
+                    if (lat) sentence += `${lat} `;
+                    sentence += 'lokalizasyonda ';
+                    if (size) sentence += `yaklaşık ${size} boyutlarında, `;
+                    if (structure) sentence += `${structure.toLowerCase()} yapıda `;
+                    sentence += 'lezyon izlenmiştir.';
+                    narrativeParts.push(sentence.charAt(0).toUpperCase() + sentence.slice(1));
+                }
+                if (solid && solid !== 'Yok') narrativeParts.push(`Lezyon içerisinde ${solid.toLowerCase()} dikkati çekmektedir.`);
+                if (invasion && invasion !== 'Yok') narrativeParts.push(`Miyometriyal invazyon derinliği: ${invasion}.`);
+            } else {
+                // Generic fallback
+                config.fields.forEach(field => {
+                    const val = fieldValues[field.id];
+                    if (val && val !== 'Yok' && val !== '0' && val !== 'false' && val !== 'Normal' && val !== '') {
+                        narrativeParts.push(`${field.label}: ${val}${field.unit ? ' ' + field.unit : ''}.`);
+                    }
+                });
+            }
+
+            if (narrativeParts.length > 0) {
+                lines.push(narrativeParts.join(' '));
+            }
+
+            // Selected findings as narrative
+            if (selectedFindings.length > 0) {
+                const findingLabels = selectedFindings
+                    .map(id => config.findingOptions.find(f => f.id === id)?.label)
+                    .filter(Boolean);
+                if (findingLabels.length > 0) {
+                    lines.push('');
+                    lines.push(`Eşlik eden bulgular: ${findingLabels.join('; ')}.`);
+                }
+            }
+        } else {
+            lines.push('İnceleme alanında belirgin patolojik bulgu izlenmemiştir.');
         }
 
-        // Add selected findings
-        if (selectedFindings.length > 0) {
-            const findingLabels = selectedFindings
-                .map(id => config.findingOptions.find(f => f.id === id)?.label)
-                .filter(Boolean);
-            lines.push(`\nSaptanan bulgular: ${findingLabels.join(', ')}.`);
+        // Pertinent negatives
+        const negatives = getPertinentNegatives(config.organ, fieldValues, selectedFindings);
+        if (negatives.length > 0 && (hasAnyField || hasAnyFinding)) {
+            lines.push('');
+            lines.push(negatives.join(' '));
         }
 
-        // RADS scoring
+        // RADS scoring section
         if (radsSystem && (selectedRadsCategory || calculatedRads)) {
             const cat = radsSystem.categories.find(c => c.category === (selectedRadsCategory || calculatedRads));
             if (cat) {
-                lines.push(`\n${radsSystem.name} Değerlendirmesi: ${cat.category} — ${cat.label}`);
-                lines.push(`Risk: ${cat.risk || 'N/A'}`);
+                lines.push('');
+                lines.push(`${radsSystem.name}: ${cat.category} — ${cat.label}`);
+                if (cat.risk) lines.push(`Malinite Riski: ${cat.risk}`);
             }
         }
 
+        // SONUÇ (Impression)
         lines.push('');
-        lines.push('SONUÇ & ÖNERİLER:');
+        lines.push('──────────────────────────────────────────────');
+        lines.push('SONUÇ:');
+        lines.push('');
+
+        const impressionParts: string[] = [];
+        let impressionNumber = 1;
 
         // Try to find a matching report template
         const matchedTemplate = Object.values(REPORT_TEMPLATES).find(t =>
@@ -353,21 +714,52 @@ export function StructuredReporting() {
         );
 
         if (radsCategory) {
-            lines.push(`${radsSystem!.name}: ${radsCategory.category} (${radsCategory.label})`);
-            lines.push(`Önerilen Yönetim: ${radsCategory.management}`);
-        } else if (matchedTemplate) {
-            lines.push(matchedTemplate.impressionTemplate);
-        } else {
-            lines.push('Tanımlanan bulgular klinik bilgi ile birlikte değerlendirilmelidir.');
+            impressionParts.push(`${impressionNumber}. ${radsSystem!.name}: ${radsCategory.category} (${radsCategory.label}).`);
+            impressionNumber++;
         }
 
+        if (hasAnyField || hasAnyFinding) {
+            if (matchedTemplate && !radsCategory) {
+                impressionParts.push(`${impressionNumber}. ${matchedTemplate.impressionTemplate}`);
+                impressionNumber++;
+            } else if (!radsCategory) {
+                impressionParts.push(`${impressionNumber}. Tanımlanan bulgular klinik bilgi eşliğinde değerlendirilmelidir.`);
+                impressionNumber++;
+            }
+        } else {
+            impressionParts.push(`${impressionNumber}. İnceleme alanında belirgin patolojik bulgu izlenmemiştir.`);
+            impressionNumber++;
+        }
+
+        lines.push(impressionParts.join('\n'));
+
+        // ÖNERİLER (Recommendations)
         lines.push('');
-        lines.push('───────────────────────────────────────');
+        lines.push('ÖNERİLER:');
+        const recommendations: string[] = [];
+        if (radsCategory) {
+            recommendations.push(`- ${radsCategory.management}`);
+        }
+        if (comparisonStudy) {
+            recommendations.push('- Önceki inceleme ile karşılaştırmalı değerlendirme yapılmıştır.');
+        }
+        if (recommendations.length === 0) {
+            recommendations.push('- Klinik korelasyon önerilir.');
+            recommendations.push('- Gerektiğinde ileri tetkik (kontrastlı inceleme / biyopsi) planlanabilir.');
+        }
+        lines.push(recommendations.join('\n'));
+
+        // Footer
+        lines.push('');
+        lines.push('──────────────────────────────────────────────');
+        lines.push('Radyolog : Dr. [....................], Uzm. Dr.');
+        lines.push('Onay     : ../../....  Saat: ..:..');
+        lines.push('');
         lines.push('* Bu rapor yapay zeka destekli taslak niteliğindedir.');
-        lines.push('  Uzman radyolog onayı gerektirir.');
+        lines.push('  Nihai rapor uzman radyolog onayı ile geçerlidir.');
 
         return lines.join('\n');
-    }, [config, selectedModality, fieldValues, selectedFindings, clinicalInfo, radsSystem, radsCategory, selectedRadsCategory, calculatedRads]);
+    }, [config, selectedModality, fieldValues, selectedFindings, clinicalInfo, comparisonStudy, radsSystem, radsCategory, selectedRadsCategory, calculatedRads]);
 
     const handleCopy = async () => {
         await navigator.clipboard.writeText(generatedReport);
@@ -379,6 +771,7 @@ export function StructuredReporting() {
         setFieldValues({});
         setSelectedFindings([]);
         setClinicInfo('');
+        setComparisonStudy('');
         setSelectedRadsCategory(null);
     };
 
@@ -436,13 +829,25 @@ export function StructuredReporting() {
                         <div className="flex-1 space-y-5 overflow-y-auto max-h-[70vh] pr-2">
                             {/* Clinical Info */}
                             <div>
-                                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Klinik Bilgi</label>
+                                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Klinik Bilgi ve Endikasyon</label>
                                 <textarea
                                     value={clinicalInfo}
                                     onChange={e => setClinicInfo(e.target.value)}
-                                    placeholder="Hastanın semptomları, öyküsü..."
+                                    placeholder="Ör: 58 yaşında erkek hasta. Baş ağrısı, bulantı, sağ hemiparezi şikayeti. Malignite taraması..."
                                     className="w-full mt-1 px-3 py-2 rounded-lg bg-zinc-800/50 border border-zinc-700 text-zinc-200 text-sm focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 outline-none resize-none"
                                     rows={2}
+                                />
+                            </div>
+
+                            {/* Comparison Study */}
+                            <div>
+                                <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Karşılaştırma (Önceki İnceleme)</label>
+                                <input
+                                    type="text"
+                                    value={comparisonStudy}
+                                    onChange={e => setComparisonStudy(e.target.value)}
+                                    placeholder="Ör: 15.01.2024 tarihli Kranial MR incelemesi ile karşılaştırılmıştır."
+                                    className="w-full mt-1 px-3 py-2 rounded-lg bg-zinc-800/50 border border-zinc-700 text-zinc-200 text-sm focus:border-emerald-500/50 outline-none"
                                 />
                             </div>
 
