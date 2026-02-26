@@ -97,6 +97,25 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     const [activeTab, setActiveTab] = useState<TabType>("summary");
     const [activeImage, setActiveImage] = useState<number | null>(null);
 
+    // Back-face field names that should trigger auto-flip
+    const BACK_FACE_FIELDS = new Set(["etiology", "mechanism", "clinicalPearl", "goldStandard"]);
+    const isBackFaceField = (fieldName: string) =>
+        BACK_FACE_FIELDS.has(fieldName) || fieldName.startsWith("ddx");
+
+    // Auto-flip card when search matches back-face content
+    React.useEffect(() => {
+        if (!matchContext || matchContext.length === 0 || !highlightQuery) {
+            setIsFlipped(false);
+            return;
+        }
+        const topMatch = matchContext[0];
+        if (isBackFaceField(topMatch.fieldName)) {
+            setIsFlipped(true);
+        } else {
+            setIsFlipped(false);
+        }
+    }, [matchContext, highlightQuery]);
+
     // Initial Cover Image Logic
     React.useEffect(() => {
         if (!highlightQuery || !data.gallery) return;
@@ -326,7 +345,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                     {isEn ? "Why?" : "Neden Böyle Görünüyor?"}
                                 </h4>
                                 <div className="p-3 rounded-xl bg-yellow-500/5 border border-yellow-500/10 text-xs text-yellow-100/90 leading-relaxed font-serif italic">
-                                    &ldquo;{displayMechanism}&rdquo;
+                                    &ldquo;<HighlightedText text={displayMechanism} query={highlightQuery} />&rdquo;
                                 </div>
                             </div>
                         )}
@@ -339,7 +358,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                     {isEn ? "Etiology" : "Etiyoloji"}
                                 </h4>
                                 <p className="text-xs text-zinc-400 leading-relaxed p-3 rounded-xl bg-orange-500/5 border border-orange-500/10">
-                                    {displayEtiology}
+                                    <HighlightedText text={displayEtiology} query={highlightQuery} />
                                 </p>
                             </div>
                         )}
@@ -355,7 +374,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                     {displayDifferentialDiagnosis.map((ddx, i) => (
                                         <li key={i} className="flex gap-2 text-xs text-zinc-400">
                                             <span className="text-rose-500 font-bold shrink-0">{i + 1}.</span>
-                                            <span className="leading-snug">{ddx}</span>
+                                            <span className="leading-snug"><HighlightedText text={ddx} query={highlightQuery} /></span>
                                         </li>
                                     ))}
                                 </ul>
@@ -370,7 +389,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                     {isEn ? "Gold Standard" : "Altın Standart"}
                                 </h4>
                                 <p className="text-xs text-zinc-400 leading-relaxed p-3 rounded-xl bg-amber-500/5 border border-amber-500/10">
-                                    {displayGoldStandard}
+                                    <HighlightedText text={displayGoldStandard} query={highlightQuery} />
                                 </p>
                             </div>
                         )}
@@ -383,7 +402,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                     {isEn ? "Clinical Pearl" : "Klinik İpucu"}
                                 </h4>
                                 <div className="p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/10 text-xs text-emerald-100/90 leading-relaxed font-medium">
-                                    {displayClinicalPearl}
+                                    <HighlightedText text={displayClinicalPearl} query={highlightQuery} />
                                 </div>
                             </div>
                         )}
