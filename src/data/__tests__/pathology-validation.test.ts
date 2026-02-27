@@ -208,3 +208,45 @@ describe('disease-signatures ve lexicon tutarlılığı', () => {
         ).toBeLessThan(50);
     });
 });
+
+describe('EN çeviri kapsamı doğrulama', () => {
+    ALL_MODULES.forEach(({ name, data }) => {
+        describe(`${name} modülü EN çevirileri`, () => {
+            it('her patolojide nameEn olmalı', () => {
+                data.forEach(p => {
+                    expect(p.nameEn, `${p.name} nameEn eksik`).toBeTruthy();
+                });
+            });
+
+            it('her patolojide categoryEn olmalı', () => {
+                data.forEach(p => {
+                    expect(p.categoryEn, `${p.name} categoryEn eksik`).toBeTruthy();
+                });
+            });
+
+            it('her patolojide keyPointsEn olmalı', () => {
+                data.forEach(p => {
+                    expect(p.keyPointsEn, `${p.name} keyPointsEn eksik`).toBeDefined();
+                    expect(p.keyPointsEn!.length, `${p.name} keyPointsEn boş`).toBeGreaterThan(0);
+                });
+            });
+
+            it('her patolojide mechanismEn olmalı', () => {
+                data.forEach(p => {
+                    expect(p.mechanismEn, `${p.name} mechanismEn eksik`).toBeTruthy();
+                });
+            });
+        });
+    });
+});
+
+describe('Modül içi ID benzersizliği (kesin)', () => {
+    ALL_MODULES.forEach(({ name, data }) => {
+        it(`${name} modülünde ID tekrarı olmamalı`, () => {
+            const ids = data.map(p => p.id);
+            const uniqueIds = new Set(ids);
+            const duplicates = ids.filter((id, i) => ids.indexOf(id) !== i);
+            expect(duplicates, `Tekrarlayan ID'ler: ${duplicates.join(', ')}`).toHaveLength(0);
+        });
+    });
+});

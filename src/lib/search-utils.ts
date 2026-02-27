@@ -75,6 +75,36 @@ function getReverseSynonyms(): Record<string, string[]> {
     return _reverseSynonyms;
 }
 
+// --- Sözlük Terimleri Önbellek ---
+let _cachedDictionaryTerms: string[] | null = null;
+function getCachedDictionaryTerms(): string[] {
+    if (_cachedDictionaryTerms) return _cachedDictionaryTerms;
+    const allTerms = [
+        ...Object.keys(RADIOLOGY_SYNONYMS),
+        ...Object.values(RADIOLOGY_SYNONYMS).flat(),
+    ];
+    _cachedDictionaryTerms = Array.from(new Set(allTerms.map(t => t.toLowerCase())));
+    return _cachedDictionaryTerms;
+}
+
+// --- Token Variation Önbellek ---
+const _tokenVariationsCache = new Map<string, string[]>();
+function getCachedTokenVariations(token: string): string[] {
+    const cached = _tokenVariationsCache.get(token);
+    if (cached) return cached;
+    const reverseSynonyms = getReverseSynonyms();
+    const variations = [token];
+    if (RADIOLOGY_SYNONYMS[token]) {
+        for (const s of RADIOLOGY_SYNONYMS[token]) variations.push(s.toLowerCase());
+    }
+    if (reverseSynonyms[token]) {
+        for (const s of reverseSynonyms[token]) variations.push(s.toLowerCase());
+    }
+    if (_tokenVariationsCache.size > 500) _tokenVariationsCache.clear();
+    _tokenVariationsCache.set(token, variations);
+    return variations;
+}
+
 // --- Modalite Algılama ---
 const MODALITY_PATTERNS: { pattern: RegExp; modality: string; fieldPrefix: string }[] = [
     { pattern: /\b(?:mr['\u2019]?(?:da|de|ı|i)?|mri['\u2019]?(?:da|de)?|manyetik)\b/i, modality: "mri", fieldPrefix: "mri" },
@@ -119,15 +149,28 @@ export function detectModalityContext(query: string): ModalityContext {
     };
 }
 
-// --- Levenshtein Distance (Fuzzy Matching) ---
+// --- Levenshtein Distance (Fuzzy Matching) with Memoization ---
+const _distanceCache = new Map<string, number>();
+
 function levenshteinDistance(a: string, b: string): number {
-    const matrix: number[][] = [];
+    const cacheKey = a < b ? `${a}|${b}` : `${b}|${a}`;
+    const cached = _distanceCache.get(cacheKey);
+    if (cached !== undefined) return cached;
+
     const aLen = a.length;
     const bLen = b.length;
 
-    if (aLen === 0) return bLen;
-    if (bLen === 0) return aLen;
+    if (aLen === 0) { _distanceCache.set(cacheKey, bLen); return bLen; }
+    if (bLen === 0) { _distanceCache.set(cacheKey, aLen); return aLen; }
 
+    // Early exit: if length difference exceeds typical threshold, skip full computation
+    if (Math.abs(aLen - bLen) > 3) {
+        const dist = Math.abs(aLen - bLen);
+        _distanceCache.set(cacheKey, dist);
+        return dist;
+    }
+
+    const matrix: number[][] = [];
     for (let i = 0; i <= aLen; i++) matrix[i] = [i];
     for (let j = 0; j <= bLen; j++) matrix[0][j] = j;
 
@@ -142,7 +185,11 @@ function levenshteinDistance(a: string, b: string): number {
         }
     }
 
-    return matrix[aLen][bLen];
+    const result = matrix[aLen][bLen];
+    // Limit cache size to prevent memory growth
+    if (_distanceCache.size > 10000) _distanceCache.clear();
+    _distanceCache.set(cacheKey, result);
+    return result;
 }
 
 function isFuzzyMatch(token: string, target: string, maxDistance: number = 1): boolean {
@@ -318,18 +365,10 @@ export function performScoredSearch(pathologies: Pathology[], query: string): Se
 
     const results: SearchResult[] = [];
 
-    // Pre-compute reverse synonyms and token variations ONCE (outside loop)
-    const reverseSynonyms = getReverseSynonyms();
+    // Pre-compute token variations using cached lookups
     const tokenVariationsMap = new Map<string, string[]>();
     for (const token of rawTokens) {
-        const variations = [token];
-        if (RADIOLOGY_SYNONYMS[token]) {
-            for (const s of RADIOLOGY_SYNONYMS[token]) variations.push(s.toLowerCase());
-        }
-        if (reverseSynonyms[token]) {
-            for (const s of reverseSynonyms[token]) variations.push(s.toLowerCase());
-        }
-        tokenVariationsMap.set(token, variations);
+        tokenVariationsMap.set(token, getCachedTokenVariations(token));
     }
 
     const hasModalityCtx = !!modalityCtx.modality;
@@ -592,11 +631,7 @@ export function getSearchSuggestions(
     }
 
     // 6. Sözlük terimleri (eş anlamlılar sözlüğü)
-    const allTerms = [
-        ...Object.keys(RADIOLOGY_SYNONYMS),
-        ...Object.values(RADIOLOGY_SYNONYMS).flat(),
-    ];
-    const uniqueTerms = Array.from(new Set(allTerms.map(t => t.toLowerCase())));
+    const uniqueTerms = getCachedDictionaryTerms();
 
     for (const term of uniqueTerms) {
         if (suggestions.length >= maxResults) break;

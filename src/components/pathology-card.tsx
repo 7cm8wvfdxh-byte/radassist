@@ -38,19 +38,20 @@ const MODALITY_CONFIG: Record<string, { label: string, icon: React.ElementType, 
     dsa: { label: "DSA", icon: Activity, color: "text-red-400", bg: "bg-red-500/10 border-red-500/20" },
 };
 
-const HighlightedText = ({ text, query }: { text: string, query?: string }) => {
+const HighlightedText = React.memo(({ text, query }: { text: string, query?: string }) => {
     if (!query || !query.trim()) return <>{text}</>;
     const tokens = expandQueryTokens(query);
     if (tokens.length === 0) return <>{text}</>;
     const uniqueTokens = Array.from(new Set(tokens)).sort((a, b) => b.length - a.length);
-    const regex = new RegExp(`(${uniqueTokens.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi');
-    const parts = text.split(regex);
+    const pattern = new RegExp(`(${uniqueTokens.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi');
+    const parts = text.split(pattern);
+    const lowerTokens = new Set(uniqueTokens.map(t => t.toLowerCase()));
     return (
         <>
-            {parts.map((part, i) => regex.test(part) ? <mark key={i} className="bg-yellow-500/40 text-yellow-100 rounded-sm px-0.5 mx-0.5 font-semibold">{part}</mark> : part)}
+            {parts.map((part, i) => lowerTokens.has(part.toLowerCase()) ? <mark key={i} className="bg-yellow-500/40 text-yellow-100 rounded-sm px-0.5 mx-0.5 font-semibold">{part}</mark> : part)}
         </>
     );
-};
+});
 
 // Format field name for display
 function formatFieldLabel(fieldName: string, lang: string): string {
@@ -159,7 +160,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         {data.gallery && data.gallery.length > 0 ? (
                             <Image
                                 src={data.gallery[activeImage ?? 0].url}
-                                alt={data.name}
+                                alt={`${displayName} - ${data.gallery?.[activeImage ?? 0]?.modality || ''}`}
                                 fill
                                 className="object-cover opacity-80 group-hover/card:opacity-100 transition-opacity"
                             />
@@ -180,6 +181,8 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             <button
                                 onClick={(e) => { e.stopPropagation(); onToggleFavorite?.(); }}
                                 className="p-2 rounded-full bg-black/40 backdrop-blur border border-white/10 hover:bg-yellow-500/20 text-yellow-500 transition-all"
+                                aria-label={isFavorite ? (isEn ? "Remove from favorites" : "Favorilerden kaldır") : (isEn ? "Add to favorites" : "Favorilere ekle")}
+                                aria-pressed={isFavorite}
                             >
                                 <Star className={cn("w-4 h-4", isFavorite && "fill-yellow-500")} />
                             </button>
@@ -192,6 +195,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                     <button
                                         key={i}
                                         onClick={(e) => { e.stopPropagation(); setActiveImage(i); }}
+                                        aria-label={`${isEn ? 'Image' : 'Görüntü'} ${i + 1} / ${data.gallery!.length}`}
                                         className={cn(
                                             "w-1.5 h-1.5 rounded-full transition-all",
                                             (activeImage ?? 0) === i ? "bg-white w-3" : "bg-white/40 hover:bg-white/80"
@@ -240,8 +244,10 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         )}
 
                         {/* Tabs */}
-                        <div className="flex flex-wrap gap-2 mb-4 border-b border-white/5 pb-2">
+                        <div className="flex flex-wrap gap-2 mb-4 border-b border-white/5 pb-2" role="tablist">
                             <button
+                                role="tab"
+                                aria-selected={activeTab === 'summary'}
                                 onClick={(e) => { e.stopPropagation(); setActiveTab('summary'); }}
                                 className={cn(
                                     "flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg transition-all",
@@ -262,6 +268,8 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                 return (
                                     <button
                                         key={modality}
+                                        role="tab"
+                                        aria-selected={isActive}
                                         onClick={(e) => { e.stopPropagation(); setActiveTab(modality); }}
                                         className={cn(
                                             "flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg transition-all border",
@@ -329,7 +337,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             <Brain className="w-5 h-5" />
                             <span className="font-bold tracking-widest text-xs uppercase">{t("mechanism")}</span>
                         </div>
-                        <button onClick={handleFlip} className="p-1.5 hover:bg-white/10 rounded-full text-zinc-400 hover:text-white transition-colors">
+                        <button onClick={handleFlip} aria-label={isEn ? "Flip to front" : "Ön yüze dön"} className="p-1.5 hover:bg-white/10 rounded-full text-zinc-400 hover:text-white transition-colors">
                             <X className="w-5 h-5" />
                         </button>
                     </div>
