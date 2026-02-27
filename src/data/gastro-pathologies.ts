@@ -1015,7 +1015,7 @@ export const gastroPathologies: Pathology[] = [
         references: ["Defined approach in Lockhart et al. Internal hernia after gastric bypass. Radiology. 2007;242(3):824-831.", "Radiopaedia.org - Internal hernia"]
     },
     {
-        id: "mesenteric-ischemia",
+        id: "mesenteric-ischemia-vascular",
         name: "Mezenterik İskemi (Akut)",
         nameEn: "Acute Mesenteric Ischemia",
         category: "Vasküler",

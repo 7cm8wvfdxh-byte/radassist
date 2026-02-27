@@ -260,6 +260,39 @@ describe('getDidYouMeanSuggestions', () => {
     });
 });
 
+describe('Performans optimizasyonları', () => {
+    it('aynı sorgu için tutarlı sonuçlar üretmeli (cache tutarlılığı)', () => {
+        const results1 = performScoredSearch(mockPathologies, 'kitle');
+        const results2 = performScoredSearch(mockPathologies, 'kitle');
+        expect(results1.length).toBe(results2.length);
+        results1.forEach((r, i) => {
+            expect(r.pathology.id).toBe(results2[i].pathology.id);
+            expect(r.score).toBe(results2[i].score);
+        });
+    });
+
+    it('fuzzy arama da tekrarlanabilir olmalı (Levenshtein cache)', () => {
+        const results1 = performScoredSearch(mockPathologies, 'glioblastm');
+        const results2 = performScoredSearch(mockPathologies, 'glioblastm');
+        expect(results1.length).toBe(results2.length);
+    });
+
+    it('token genişletme eş anlamlılarda her iki yönde çalışmalı', () => {
+        const tokens = expandQueryTokens('parlak');
+        expect(tokens).toContain('parlak');
+        expect(tokens).toContain('hiperintens');
+        // Geri yönlü kontrol
+        const tokensReverse = expandQueryTokens('hiperintens');
+        expect(tokensReverse).toContain('parlak');
+    });
+
+    it('sözlük önerileri önbellekten gelmeli (tutarlılık)', () => {
+        const suggestions1 = getSearchSuggestions(mockPathologies, 'hip');
+        const suggestions2 = getSearchSuggestions(mockPathologies, 'hip');
+        expect(suggestions1.length).toBe(suggestions2.length);
+    });
+});
+
 describe('Son aramalar yönetimi', () => {
     beforeEach(() => {
         clearRecentSearches();

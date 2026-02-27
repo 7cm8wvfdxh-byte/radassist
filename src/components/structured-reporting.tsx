@@ -243,12 +243,13 @@ function calculateLiRads(fields: Record<string, string>): string {
     const size = parseInt(fields.size?.match(/\d+/)?.[0] || '0');
 
     if (!hasAPHE) {
-        if (hasGrowth) return 'LR-4';
-        return size < 20 ? 'LR-3' : 'LR-3';
+        if (hasGrowth && size >= 20) return 'LR-4';
+        if (hasGrowth) return 'LR-3';
+        return 'LR-3';
     }
     // Has APHE
     const ancillaryCount = [hasWashout, hasCapsule, hasGrowth].filter(Boolean).length;
-    if (size < 10) return ancillaryCount >= 1 ? 'LR-4' : 'LR-3';
+    if (size < 10) return ancillaryCount >= 2 ? 'LR-4' : 'LR-3';
     if (size < 20) {
         if (ancillaryCount >= 2) return 'LR-5';
         if (ancillaryCount >= 1) return 'LR-4';
@@ -294,7 +295,7 @@ export function StructuredReporting() {
     }, [config, fieldValues, selectedFindings]);
 
     const radsSystem = config?.radsSystem ? RADS_SYSTEMS.find(r => r.id === config.radsSystem) : null;
-    const radsCategory = radsSystem?.categories.find(c => c.category === (selectedRadsCategory || calculatedRads));
+    const radsCategory = radsSystem?.categories?.find(c => c.category === (selectedRadsCategory || calculatedRads));
 
     // Technique description generator based on organ + modality
     const getTechniqueDescription = (organ: string, modality: string): string => {
@@ -836,6 +837,7 @@ export function StructuredReporting() {
                                     placeholder="Ör: 58 yaşında erkek hasta. Baş ağrısı, bulantı, sağ hemiparezi şikayeti. Malignite taraması..."
                                     className="w-full mt-1 px-3 py-2 rounded-lg bg-zinc-800/50 border border-zinc-700 text-zinc-200 text-sm focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 outline-none resize-none"
                                     rows={2}
+                                    aria-label="Klinik bilgi ve endikasyon"
                                 />
                             </div>
 
@@ -848,17 +850,20 @@ export function StructuredReporting() {
                                     onChange={e => setComparisonStudy(e.target.value)}
                                     placeholder="Ör: 15.01.2024 tarihli Kranial MR incelemesi ile karşılaştırılmıştır."
                                     className="w-full mt-1 px-3 py-2 rounded-lg bg-zinc-800/50 border border-zinc-700 text-zinc-200 text-sm focus:border-emerald-500/50 outline-none"
+                                    aria-label="Karşılaştırma incelemesi"
                                 />
                             </div>
 
                             {/* Modality */}
                             <div>
                                 <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">İnceleme Yöntemi</label>
-                                <div className="flex flex-wrap gap-2 mt-1">
+                                <div className="flex flex-wrap gap-2 mt-1" role="radiogroup" aria-label="İnceleme yöntemi seçimi">
                                     {config?.modalities.map(m => (
                                         <button
                                             key={m}
                                             onClick={() => setSelectedModality(m)}
+                                            role="radio"
+                                            aria-checked={selectedModality === m}
                                             className={cn(
                                                 "px-3 py-1.5 rounded-lg text-xs font-medium border transition-all",
                                                 selectedModality === m
