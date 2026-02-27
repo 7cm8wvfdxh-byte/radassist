@@ -62,12 +62,6 @@
 
 /* Mobile touch scrolling improvements */
 @media (max-width: 640px) {
-  /* Ensure cards don't block page scrolling */
-  .perspective-1000 {
-    touch-action: pan-y;
-    -webkit-overflow-scrolling: touch;
-  }
-
   /* Make card inner scroll areas work properly on mobile */
   .overscroll-contain {
     overscroll-behavior: contain;
