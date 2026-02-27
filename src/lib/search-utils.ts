@@ -374,6 +374,9 @@ export function performScoredSearch(pathologies: Pathology[], query: string): Se
     const hasModalityCtx = !!modalityCtx.modality;
     const modalPrefix = modalityCtx.fieldPrefix;
 
+    // Bütünsel (phrase) arama: 2+ kelime yazıldığında tam ifadeyi de ara
+    const fullPhrase = rawTokens.length >= 2 ? rawTokens.join(" ") : null;
+
     for (const p of pathologies) {
         const fields = getSearchableFields(p);
 
@@ -382,6 +385,52 @@ export function performScoredSearch(pathologies: Pathology[], query: string): Se
         const matchedFields: SearchResult["matchedFields"] = [];
         let bestMatchType: SearchResult["matchType"] = "exact";
 
+        // --- Bütünsel ifade araması (phrase search) ---
+        let phraseMatchScore = 0;
+        if (fullPhrase) {
+            for (const field of fields) {
+                const fieldWeight = hasModalityCtx && field.fieldName.startsWith(modalPrefix!)
+                    ? field.weight + 4
+                    : field.weight;
+
+                if (field.text.includes(fullPhrase)) {
+                    phraseMatchScore += fieldWeight * 3;
+                    matchedFields.push({
+                        fieldName: field.fieldName,
+                        snippet: extractSnippet(field.text, fullPhrase),
+                        weight: field.weight,
+                    });
+                }
+            }
+        }
+
+        // Tam ifade eşleşmesi varsa token bazlı aramayı atlayarak doğrudan ekle
+        if (phraseMatchScore > 0) {
+            const nameLower = p.name.toLowerCase();
+            if (nameLower.includes(fullPhrase!)) {
+                phraseMatchScore *= 2.5;
+            } else if (rawTokens.some(t => nameLower.includes(t))) {
+                phraseMatchScore *= 1.5;
+            }
+
+            const seen = new Set<string>();
+            const uniqueFields = matchedFields.filter(f => {
+                const key = f.fieldName;
+                if (seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            });
+
+            results.push({
+                pathology: p,
+                score: phraseMatchScore,
+                matchedFields: uniqueFields.slice(0, 3),
+                matchType: "exact",
+            });
+            continue;
+        }
+
+        // --- Token bazlı arama (mevcut davranış) ---
         for (const token of rawTokens) {
             const possibleVariations = tokenVariationsMap.get(token)!;
 
