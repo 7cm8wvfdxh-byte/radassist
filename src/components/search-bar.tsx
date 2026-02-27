@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Search, Clock, X, Sparkles, ChevronRight, Trash2, ArrowUpLeft, BookOpen, Microscope, Bell } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -25,7 +25,7 @@ interface SearchBarProps {
     extraSources?: ExtraSearchSource;
 }
 
-export function SearchBar({
+export const SearchBar = React.memo(function SearchBar({
     value,
     onChange,
     className,
@@ -329,7 +329,7 @@ export function SearchBar({
             )}
         </div>
     );
-}
+});
 
 // Helper: Highlight matching portion
 function highlightMatch(text: string, query: string): React.ReactNode {

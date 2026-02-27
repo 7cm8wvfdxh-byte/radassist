@@ -166,7 +166,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             />
                         ) : (
                             <div className="flex items-center justify-center h-full text-zinc-600 bg-zinc-800">
-                                <Activity className="w-10 h-10 opacity-20" />
+                                <Activity className="w-10 h-10 opacity-20" aria-hidden="true" />
                             </div>
                         )}
 
@@ -248,6 +248,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             <button
                                 role="tab"
                                 aria-selected={activeTab === 'summary'}
+                                aria-controls={`tabpanel-${data.id}-summary`}
                                 onClick={(e) => { e.stopPropagation(); setActiveTab('summary'); }}
                                 className={cn(
                                     "flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg transition-all",
@@ -256,7 +257,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                         : "text-zinc-500 hover:text-zinc-300 bg-transparent border border-transparent"
                                 )}
                             >
-                                <FileText className="w-3.5 h-3.5" />
+                                <FileText className="w-3.5 h-3.5" aria-hidden="true" />
                                 {t("quick_view")}
                             </button>
 
@@ -270,6 +271,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                         key={modality}
                                         role="tab"
                                         aria-selected={isActive}
+                                        aria-controls={`tabpanel-${data.id}-${modality}`}
                                         onClick={(e) => { e.stopPropagation(); setActiveTab(modality); }}
                                         className={cn(
                                             "flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg transition-all border",
@@ -278,7 +280,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                                 : "border-transparent text-zinc-500 hover:text-zinc-300 bg-transparent"
                                         )}
                                     >
-                                        <Icon className="w-3.5 h-3.5" />
+                                        <Icon className="w-3.5 h-3.5" aria-hidden="true" />
                                         {config.label}
                                     </button>
                                 );
@@ -286,7 +288,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         </div>
 
                         {/* Scrollable Content Area */}
-                        <div className="flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-700 min-h-0 overscroll-contain" style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}>
+                        <div id={`tabpanel-${data.id}-${activeTab}`} role="tabpanel" className="flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-700 min-h-0 overscroll-contain" style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}>
                             {activeTab === 'summary' ? (
                                 <ul className="space-y-2">
                                     {displayKeyPoints.slice(0, 4).map((kp, i) => ( // Show up to 4 key points
@@ -349,7 +351,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         {displayMechanism && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-100">
                                 <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
-                                    <Lightbulb className="w-4 h-4 text-yellow-500" />
+                                    <Lightbulb className="w-4 h-4 text-yellow-500" aria-hidden="true" />
                                     {isEn ? "Why?" : "Neden Böyle Görünüyor?"}
                                 </h4>
                                 <div className="p-3 rounded-xl bg-yellow-500/5 border border-yellow-500/10 text-xs text-yellow-100/90 leading-relaxed font-serif italic">
@@ -362,7 +364,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         {displayEtiology && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-150">
                                 <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
-                                    <Flame className="w-4 h-4 text-orange-400" />
+                                    <Flame className="w-4 h-4 text-orange-400" aria-hidden="true" />
                                     {isEn ? "Etiology" : "Etiyoloji"}
                                 </h4>
                                 <p className="text-xs text-zinc-400 leading-relaxed p-3 rounded-xl bg-orange-500/5 border border-orange-500/10">
@@ -375,7 +377,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         {displayDifferentialDiagnosis && displayDifferentialDiagnosis.length > 0 && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-200">
                                 <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
-                                    <Target className="w-4 h-4 text-rose-400" />
+                                    <Target className="w-4 h-4 text-rose-400" aria-hidden="true" />
                                     {isEn ? "Differential Diagnosis" : "Ayırıcı Tanı"}
                                 </h4>
                                 <ul className="space-y-1.5">
@@ -393,7 +395,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         {displayGoldStandard && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-250">
                                 <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
-                                    <Award className="w-4 h-4 text-amber-400" />
+                                    <Award className="w-4 h-4 text-amber-400" aria-hidden="true" />
                                     {isEn ? "Gold Standard" : "Altın Standart"}
                                 </h4>
                                 <p className="text-xs text-zinc-400 leading-relaxed p-3 rounded-xl bg-amber-500/5 border border-amber-500/10">
@@ -406,7 +408,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         {displayClinicalPearl && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-300">
                                 <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
-                                    <Stethoscope className="w-4 h-4 text-emerald-400" />
+                                    <Stethoscope className="w-4 h-4 text-emerald-400" aria-hidden="true" />
                                     {isEn ? "Clinical Pearl" : "Klinik İpucu"}
                                 </h4>
                                 <div className="p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/10 text-xs text-emerald-100/90 leading-relaxed font-medium">
@@ -418,7 +420,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         {/* Key Points Section */}
                         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 delay-350">
                             <h4 className="text-sm font-semibold text-zinc-300 flex items-center gap-2 mb-2">
-                                <Sparkles className="w-4 h-4 text-cyan-400" />
+                                <Sparkles className="w-4 h-4 text-cyan-400" aria-hidden="true" />
                                 {isEn ? "Key Points" : "Anahtar Noktalar"}
                             </h4>
                             <ul className="space-y-2">

@@ -209,7 +209,7 @@ export function LearningStats() {
                     <Clock className="w-4 h-4 text-zinc-500" />
                     Haftalık Aktivite
                 </h3>
-                <div className="flex items-end gap-2 h-24">
+                <div className="flex items-end gap-2 h-24" role="img" aria-label="Weekly activity chart">
                     {weeklyActivity.map(day => (
                         <div key={day.date} className="flex-1 flex flex-col items-center gap-1">
                             <div className="w-full relative" style={{ height: '80px' }}>
@@ -237,7 +237,7 @@ export function LearningStats() {
                     {organBreakdown.length === 0 ? (
                         <p className="text-xs text-zinc-500 text-center py-8">Henüz quiz çözülmedi. Quiz modunu deneyin!</p>
                     ) : (
-                        <div className="space-y-3">
+                        <div className="space-y-3" role="list">
                             {organBreakdown.map(([organ, data]) => {
                                 const acc = data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0;
                                 return (
@@ -290,6 +290,7 @@ export function LearningStats() {
                             return (
                                 <div
                                     key={badge.id}
+                                    role="status"
                                     className={cn(
                                         "p-3 rounded-lg border transition-all",
                                         earned

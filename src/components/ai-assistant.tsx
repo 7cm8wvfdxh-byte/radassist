@@ -104,7 +104,7 @@ export function AIAssistant() {
                 {
                     id: (Date.now() + 1).toString(),
                     role: 'assistant',
-                    content: language === 'tr' ? '⚠️ Bir hata oluştu. Lütfen tekrar deneyin.' : '⚠️ An error occurred. Please try again.',
+                    content: '⚠️ ' + t("ai.error"),
                 },
             ]);
         } finally {
@@ -142,7 +142,8 @@ export function AIAssistant() {
                     <button
                         onClick={clearChat}
                         className="p-2 rounded-lg hover:bg-white/5 text-gray-400 hover:text-white transition-colors"
-                        title={language === 'tr' ? "Sohbeti temizle" : "Clear chat"}
+                        title={t("ai.clearChat")}
+                        aria-label={t("ai.clearChat")}
                     >
                         <Trash2 className="w-5 h-5" />
                     </button>
@@ -150,7 +151,7 @@ export function AIAssistant() {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4" role="log" aria-live="polite" aria-label="Chat messages">
                 {showWelcome && messages.length === 0 && (
                     <div className="flex flex-col items-center justify-center h-full text-center space-y-6">
                         <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20">
@@ -158,12 +159,10 @@ export function AIAssistant() {
                         </div>
                         <div>
                             <h3 className="text-xl font-semibold text-white mb-2">
-                                {language === 'tr' ? 'Patoloji Arama Asistanı' : 'Pathology Search Assistant'}
+                                {t("ai.welcomeTitle")}
                             </h3>
                             <p className="text-gray-400 max-w-md">
-                                {language === 'tr'
-                                    ? '9 organ sistemindeki patoloji veritabanından arama yapabilirsiniz. Hastalık adı, bulgu veya anahtar kelime yazın.'
-                                    : 'Search across 9 organ system pathology databases. Type a disease name, finding, or keyword.'}
+                                {t("ai.welcomeText")}
                             </p>
                         </div>
 
@@ -173,7 +172,8 @@ export function AIAssistant() {
                                 <button
                                     key={i}
                                     onClick={() => handleQuickPrompt(prompt.text)}
-                                    className="flex items-center gap-2 p-3 rounded-xl bg-white/5 border border-white/10 
+                                    aria-label={prompt.text}
+                                    className="flex items-center gap-2 p-3 rounded-xl bg-white/5 border border-white/10
                                                hover:bg-white/10 hover:border-purple-500/30 transition-all text-left text-sm"
                                 >
                                     <span className="text-lg">{prompt.icon}</span>
@@ -187,6 +187,7 @@ export function AIAssistant() {
                 {messages.map((message) => (
                     <div
                         key={message.id}
+                        role="article"
                         className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                         {message.role === 'assistant' && (
@@ -229,7 +230,7 @@ export function AIAssistant() {
                 ))}
 
                 {isLoading && messages[messages.length - 1]?.role === 'user' && (
-                    <div className="flex gap-3">
+                    <div className="flex gap-3" role="status" aria-label="Loading">
                         <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20 
                                         border border-purple-500/30 flex items-center justify-center">
                             <Search className="w-4 h-4 text-purple-400" />
@@ -259,6 +260,7 @@ export function AIAssistant() {
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         placeholder={t("ai.placeholder")}
+                        aria-label={t("ai.placeholder")}
                         className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10
                                    text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50
                                    focus:ring-2 focus:ring-purple-500/20 transition-all"
@@ -267,6 +269,7 @@ export function AIAssistant() {
                     <button
                         type="submit"
                         disabled={isLoading || !inputValue.trim()}
+                        aria-label="Send message"
                         className="px-4 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600
                                    text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed
                                    hover:from-purple-500 hover:to-blue-500 transition-all
@@ -276,9 +279,7 @@ export function AIAssistant() {
                     </button>
                 </div>
                 <p className="text-xs text-gray-500 mt-2 text-center">
-                    {language === 'tr'
-                        ? '⚠️ Yanıtlar veritabanı aramasına dayalıdır ve bilgilendirme amaçlıdır. Kesin tanı için klinik korelasyon gereklidir.'
-                        : '⚠️ Responses are based on database search and are for informational purposes only. Clinical correlation is required for definitive diagnosis.'}
+                    {'⚠️ ' + t("ai.disclaimer")}
                 </p>
             </form>
         </div>

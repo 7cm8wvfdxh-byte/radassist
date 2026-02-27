@@ -31,7 +31,7 @@ export default function PostDetailPage() {
     }, [id, getPost]);
 
     if (isLoading) return <div className="min-h-screen bg-black text-white p-8">{t("general.loading")}</div>;
-    if (!post) return <div className="min-h-screen bg-black text-white p-8">{language === 'tr' ? 'Gönderi bulunamadı.' : 'Post not found.'}</div>;
+    if (!post) return <div className="min-h-screen bg-black text-white p-8">{t("forum.notFound")}</div>;
 
     const handleComment = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -45,7 +45,7 @@ export default function PostDetailPage() {
     };
 
     const handleLike = async () => {
-        if (!user) { alert(language === 'tr' ? "Beğenmek için giriş yapmalısınız." : "You must be logged in to like."); return; }
+        if (!user) { alert(t("forum.loginToLike")); return; }
         if (post) {
             await toggleLike(post.id, user.id);
             const updatedPost = await getPost(post.id);
@@ -54,17 +54,17 @@ export default function PostDetailPage() {
     };
 
     const handleDeletePost = async () => {
-        if (!confirm(language === 'tr' ? "Bu gönderiyi silmek istediğinizden emin misiniz?" : "Are you sure you want to delete this post?")) return;
+        if (!confirm(t("forum.deleteConfirm"))) return;
         const result = await deletePost(post.id);
         if (result.success) {
             router.push("/community");
         } else {
-            alert(result.error || (language === 'tr' ? 'Gönderi silinemedi.' : 'Could not delete post.'));
+            alert(result.error || t("forum.deleteFailed"));
         }
     };
 
     const handleDeleteComment = async (commentId: string) => {
-        if (!confirm(language === 'tr' ? "Bu yorumu silmek istediğinizden emin misiniz?" : "Are you sure you want to delete this comment?")) return;
+        if (!confirm(t("forum.deleteCommentConfirm"))) return;
         const result = await deleteComment(commentId);
         if (result.success) {
             const updatedPost = await getPost(post.id);
@@ -79,7 +79,7 @@ export default function PostDetailPage() {
                 {/* Navigation */}
                 <Link href="/community" className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors mb-6 group">
                     <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    <span>{language === 'tr' ? 'Foruma Dön' : 'Back to Forum'}</span>
+                    <span>{t("forum.backToForum")}</span>
                 </Link>
 
                 {/* Main Post Card */}
@@ -94,12 +94,12 @@ export default function PostDetailPage() {
                                 </div>
                                 <div>
                                     <div className="flex items-center gap-2">
-                                        <span className="font-bold text-white">{post.author?.name || (language === 'tr' ? 'Anonim' : 'Anonymous')}</span>
+                                        <span className="font-bold text-white">{post.author?.name || t("forum.anonymous")}</span>
                                         {/* Admin badge — gönderi sahibi admin ise */}
                                         {user?.is_admin && user.id === post.author_id && (
                                             <span className="flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[9px] font-bold">
                                                 <ShieldCheck className="w-2.5 h-2.5" />
-                                                YÖNETİCİ
+                                                {t("forum.admin")}
                                             </span>
                                         )}
                                     </div>
@@ -114,7 +114,7 @@ export default function PostDetailPage() {
                                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-red-400 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-xs font-bold transition-all"
                                 >
                                     <Trash2 className="w-3.5 h-3.5" />
-                                    {language === 'tr' ? 'Gönderiyi Sil' : 'Delete Post'}
+                                    {t("forum.deletePost")}
                                 </button>
                             )}
                         </div>
@@ -182,7 +182,7 @@ export default function PostDetailPage() {
                             <div key={comment.id} className="p-6 bg-white/5 border border-white/5 rounded-2xl animate-in fade-in slide-in-from-bottom-2 group/comment">
                                 <div className="flex items-center justify-between mb-3">
                                     <div className="flex items-center gap-2">
-                                        <span className="font-bold text-sm text-zinc-300">{comment.author?.name || (language === 'tr' ? 'Anonim' : 'Anonymous')}</span>
+                                        <span className="font-bold text-sm text-zinc-300">{comment.author?.name || t("forum.anonymous")}</span>
                                         <span className="w-1 h-1 bg-zinc-600 rounded-full" />
                                         <span className="text-xs text-zinc-500">{comment.author?.specialty || ''}</span>
                                     </div>
@@ -196,7 +196,8 @@ export default function PostDetailPage() {
                                             <button
                                                 onClick={() => handleDeleteComment(comment.id)}
                                                 className="opacity-0 group-hover/comment:opacity-100 p-1 rounded text-zinc-600 hover:text-red-400 hover:bg-red-500/10 transition-all"
-                                                title="Yorumu Sil (Admin)"
+                                                title={t("forum.deleteComment")}
+                                                aria-label={t("forum.deleteComment")}
                                             >
                                                 <Trash2 className="w-3.5 h-3.5" />
                                             </button>

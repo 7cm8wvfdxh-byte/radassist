@@ -92,3 +92,14 @@
     radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
   animation: aurora 60s linear infinite;
 }
+
+/* Improved focus visibility */
+:focus-visible {
+  outline: 2px solid rgb(99 102 241);
+  outline-offset: 2px;
+}
+
+/* Better contrast for zinc-600 text on dark backgrounds */
+.text-contrast-fix {
+  color: rgb(161 161 170); /* zinc-400 instead of zinc-600 */
+}

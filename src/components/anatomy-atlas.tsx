@@ -320,6 +320,7 @@ export function AnatomyAtlas() {
                             <button
                                 key={o.id}
                                 onClick={() => setSelectedOrgan(o.id)}
+                                aria-pressed={selectedOrgan === o.id}
                                 className={cn(
                                     "p-4 rounded-xl border transition-all text-left group hover:scale-[1.02]",
                                     colors.bg, colors.border
@@ -380,6 +381,8 @@ export function AnatomyAtlas() {
                                 >
                                     <button
                                         onClick={() => setExpandedRegion(isExpanded ? null : seg.id)}
+                                        aria-expanded={isExpanded}
+                                        aria-controls={`region-${seg.id}`}
                                         className="w-full px-4 py-3 flex items-center justify-between hover:bg-zinc-800/30 transition-colors"
                                     >
                                         <div className="text-left">
@@ -390,7 +393,7 @@ export function AnatomyAtlas() {
                                     </button>
 
                                     {isExpanded && (
-                                        <div className="border-t border-zinc-800 p-4 space-y-3 animate-in slide-in-from-top-2 duration-200">
+                                        <div id={`region-${seg.id}`} role="region" className="border-t border-zinc-800 p-4 space-y-3 animate-in slide-in-from-top-2 duration-200">
                                             {/* Normal Values */}
                                             {seg.normalValues && seg.normalValues.length > 0 && (
                                                 <div>

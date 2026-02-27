@@ -1,3 +1,4 @@
+import React from "react";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/language-context";
@@ -37,7 +38,7 @@ function formatFieldLabel(fieldName: string, lang: string): string {
     return fieldName;
 }
 
-export function PathologyListItem({ data, isFavorite = false, onToggleFavorite, onClick, matchContext, matchType }: PathologyListItemProps) {
+export const PathologyListItem = React.memo(function PathologyListItem({ data, isFavorite = false, onToggleFavorite, onClick, matchContext, matchType }: PathologyListItemProps) {
     const { language } = useLanguage();
     const isEn = language === "en";
 
@@ -126,4 +127,4 @@ export function PathologyListItem({ data, isFavorite = false, onToggleFavorite, 
             <ChevronRight className="w-5 h-5 text-slate-600 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all" />
         </div>
     );
-}
+});

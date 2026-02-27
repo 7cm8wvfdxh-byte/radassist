@@ -55,12 +55,12 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
                 setSelectedTags([]);
                 onClose();
             } else {
-                setError(result.error || "Gönderi oluşturulamadı. Lütfen tekrar deneyin.");
+                setError(result.error || t("forum.createError"));
             }
         } catch (err) {
             console.error("Error in handleSubmit:", err);
             setIsSubmitting(false);
-            setError("Beklenmeyen bir hata oluştu.");
+            setError(t("forum.unexpectedError"));
         }
     };
 
