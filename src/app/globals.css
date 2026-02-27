@@ -103,3 +103,33 @@
 .text-contrast-fix {
   color: rgb(161 161 170); /* zinc-400 instead of zinc-600 */
 }
+
+/* Search bar pulse animation on focus */
+@keyframes search-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.1), 0 0 40px rgba(99, 102, 241, 0.05); }
+  50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.15), 0 0 60px rgba(99, 102, 241, 0.1); }
+}
+
+.search-glow-active {
+  animation: search-glow 3s ease-in-out infinite;
+}
+
+/* Smooth scroll for filter chips */
+.scroll-smooth {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for filter chips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Tabular numbers for result count animation */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}

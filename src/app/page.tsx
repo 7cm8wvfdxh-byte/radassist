@@ -535,8 +535,9 @@ export default function Home() {
           {/* Search Bar */}
           {viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
             <div className="relative group mb-4">
-              <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl ring-1 ring-white/10 shadow-2xl flex flex-col">
+              <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 group-focus-within:opacity-50 transition duration-1000 group-hover:duration-200 group-focus-within:duration-200"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative bg-black/60 backdrop-blur-xl rounded-2xl ring-1 ring-white/10 group-focus-within:ring-indigo-500/30 shadow-2xl group-focus-within:shadow-indigo-500/10 flex flex-col transition-all duration-300">
                 <SearchBar
                   value={searchQuery}
                   onChange={setSearchQuery}
@@ -547,6 +548,7 @@ export default function Home() {
                   }
                   pathologies={searchGlobal ? allPathologies : filteredPathologies}
                   didYouMean={didYouMeanSuggestions}
+                  isSearching={searchQuery !== deferredSearchQuery && searchQuery.trim().length > 0}
                   resultCount={searchQuery.trim() ? filteredPathologies.length : undefined}
                   extraSources={extraSearchSources}
                 />
@@ -562,36 +564,39 @@ export default function Home() {
                   </label>
                 </div>
 
-                {/* Smart Filter Chips */}
-                <div className="px-4 pb-4 flex gap-2 overflow-x-auto no-scrollbar mask-gradient-r">
-                  {[
-                    { label: "Acil", query: "acil" },
-                    { label: "Kitle", query: "kitle" },
-                    { label: "T2 Hiper", query: "t2 hiper" },
-                    { label: "Kontrast+", query: "kontrast" },
-                    { label: "Kalsifikasyon", query: "kalsifikasyon" },
-                    { label: "Kist", query: "kist" },
-                  ].map(chip => (
-                    <button
-                      key={chip.label}
-                      onClick={() => {
-                        // Toggle logic: If already in query, remove it. Else append.
-                        if (searchQuery.toLowerCase().includes(chip.query)) {
-                          setSearchQuery(prev => prev.replace(chip.query, "").trim());
-                        } else {
-                          setSearchQuery(prev => (prev + " " + chip.query).trim());
-                        }
-                      }}
-                      className={cn(
-                        "px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-all border",
-                        searchQuery.toLowerCase().includes(chip.query)
-                          ? "bg-indigo-500/20 text-indigo-300 border-indigo-500/50"
-                          : "bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:text-slate-200"
-                      )}
-                    >
-                      {chip.label}
-                    </button>
-                  ))}
+                {/* Smart Filter Chips with mobile scroll indicator */}
+                <div className="relative px-4 pb-4">
+                  <div className="flex gap-2 overflow-x-auto no-scrollbar scroll-smooth" role="group" aria-label={t("search.chip.emergency")}>
+                    {[
+                      { labelKey: "search.chip.emergency", query: "acil" },
+                      { labelKey: "search.chip.mass", query: "kitle" },
+                      { labelKey: "search.chip.t2hyper", query: "t2 hiper" },
+                      { labelKey: "search.chip.contrast", query: "kontrast" },
+                      { labelKey: "search.chip.calcification", query: "kalsifikasyon" },
+                      { labelKey: "search.chip.cyst", query: "kist" },
+                    ].map(chip => (
+                      <button
+                        key={chip.labelKey}
+                        onClick={() => {
+                          if (searchQuery.toLowerCase().includes(chip.query)) {
+                            setSearchQuery(prev => prev.replace(chip.query, "").trim());
+                          } else {
+                            setSearchQuery(prev => (prev + " " + chip.query).trim());
+                          }
+                        }}
+                        className={cn(
+                          "px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all border",
+                          searchQuery.toLowerCase().includes(chip.query)
+                            ? "bg-indigo-500/20 text-indigo-300 border-indigo-500/50 shadow-[0_0_10px_rgba(99,102,241,0.15)]"
+                            : "bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:text-slate-200"
+                        )}
+                      >
+                        {t(chip.labelKey)}
+                      </button>
+                    ))}
+                  </div>
+                  {/* Mobile scroll fade indicator */}
+                  <div className="absolute right-4 top-0 bottom-4 w-8 bg-gradient-to-l from-black/80 to-transparent pointer-events-none sm:hidden" />
                 </div>
               </div>
             </div>
@@ -706,7 +711,7 @@ export default function Home() {
                   }`}
               >
                 <Sparkles className={`w-4 h-4 ${showFavoritesOnly ? "fill-yellow-400" : ""}`} />
-                {showFavoritesOnly ? "Favoriler" : "Favorilerim"}
+                {showFavoritesOnly ? t("home.favorites") : t("home.favorites")}
                 {favorites.length > 0 && (
                   <span className="ml-1 bg-white/10 px-1.5 py-0.5 rounded-full text-[10px]">
                     {favorites.length}
@@ -717,11 +722,21 @@ export default function Home() {
           </div>
 
           {viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
-            <p className="mt-4 text-slate-500 text-xs">
+            <p className="mt-4 text-slate-500 text-xs flex items-center gap-1">
+              <span className="hidden sm:inline text-slate-600">{t("search.shortcutHint")}</span>
+              <kbd className="hidden sm:inline px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-slate-500">
+                {typeof navigator !== "undefined" && navigator.platform?.includes("Mac") ? "⌘" : "Ctrl+"}K
+              </kbd>
+              <span className="hidden sm:inline text-slate-600 mr-2">{t("search.shortcutKey")}</span>
+              <span className="text-slate-700">|</span>
               {activeModule === 'brain' ? (
-                <>Örn: <span className="text-slate-400 border-b border-indigo-500/30 mx-1">Glioblastom</span>, <span className="text-slate-400 border-b border-cyan-500/30 mx-1">İnme</span></>
+                <span className="ml-2">
+                  {language === 'tr' ? 'Örn:' : 'e.g.'} <span className="text-slate-400 border-b border-indigo-500/30 mx-1">Glioblastom</span>, <span className="text-slate-400 border-b border-cyan-500/30 mx-1">{language === 'tr' ? 'İnme' : 'Stroke'}</span>
+                </span>
               ) : (
-                <>Örn: <span className="text-slate-400 border-b border-emerald-500/30 mx-1">Fıtık</span>, <span className="text-slate-400 border-b border-cyan-500/30 mx-1">Stenoz</span>, <span className="text-slate-400 border-b border-rose-500/30 mx-1">Kırık</span></>
+                <span className="ml-2">
+                  {language === 'tr' ? 'Örn:' : 'e.g.'} <span className="text-slate-400 border-b border-emerald-500/30 mx-1">{language === 'tr' ? 'Fıtık' : 'Hernia'}</span>, <span className="text-slate-400 border-b border-cyan-500/30 mx-1">{language === 'tr' ? 'Stenoz' : 'Stenosis'}</span>
+                </span>
               )}
             </p>
           )}
@@ -747,39 +762,77 @@ export default function Home() {
         ) : viewMode === "anatomy" ? (
           <AnatomyAtlas />
         ) : filteredPathologies.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-32 text-slate-600 animate-in fade-in zoom-in duration-500">
-            <Search className="w-16 h-16 mb-4 opacity-20" />
-            <p className="text-lg font-medium">
-              {showFavoritesOnly
-                ? (language === 'tr' ? "Henüz favori eklenmemiş." : "No favorites added yet.")
-                : (language === 'tr' ? "Sonuç bulunamadı" : "No results found")}
-            </p>
-            {searchQuery.trim() && !showFavoritesOnly && (
-              <p className="text-sm text-slate-500 mt-2 max-w-md text-center">
-                {language === 'tr'
-                  ? "Arama ipucu: Kısaltmalar (BT, MR), halk dili (parlak, koyu) veya teknik terimler (hiperintens) kullanabilirsiniz."
-                  : "Search tip: Try abbreviations (CT, MRI), colloquial terms, or technical terms (hyperintense)."}
-              </p>
-            )}
-            {showFavoritesOnly && (
-              <button
-                onClick={() => setShowFavoritesOnly(false)}
-                className="mt-4 text-indigo-400 hover:text-indigo-300 text-sm underline underline-offset-4"
-              >
-                {language === 'tr' ? 'Tümünü Göster' : 'Show All'}
-              </button>
-            )}
-            {!showFavoritesOnly && searchQuery.trim() && (
-              <button
-                onClick={() => {
-                  setSearchGlobal(!searchGlobal);
-                }}
-                className="mt-4 text-indigo-400 hover:text-indigo-300 text-sm underline underline-offset-4"
-              >
-                {searchGlobal
-                  ? (language === 'tr' ? 'Sadece bu modülde ara' : 'Search in current module only')
-                  : (language === 'tr' ? 'Tüm modüllerde ara' : 'Search all modules')}
-              </button>
+          <div className="flex flex-col items-center justify-center py-20 sm:py-32 animate-in fade-in zoom-in duration-500">
+            {/* Animated search illustration */}
+            <div className="relative mb-8">
+              <div className="absolute inset-0 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" />
+              <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-indigo-500/10 to-cyan-500/10 border border-white/5 flex items-center justify-center">
+                <Search className="w-10 h-10 text-slate-600" />
+              </div>
+              {/* Orbiting dots */}
+              <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-indigo-500/30 animate-bounce" style={{ animationDelay: '0s', animationDuration: '2s' }} />
+              <div className="absolute -bottom-1 -left-1 w-2 h-2 rounded-full bg-cyan-500/30 animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '2.5s' }} />
+            </div>
+
+            {showFavoritesOnly ? (
+              <>
+                <p className="text-lg font-bold text-slate-400 mb-2">
+                  {t("home.noFavorites")}
+                </p>
+                <p className="text-sm text-slate-600 mb-6 text-center max-w-sm">
+                  {language === 'tr'
+                    ? 'Patoloji kartlarındaki yıldız ikonuna tıklayarak favorilere ekleyebilirsiniz.'
+                    : 'Click the star icon on pathology cards to add favorites.'}
+                </p>
+                <button
+                  onClick={() => setShowFavoritesOnly(false)}
+                  className="px-5 py-2.5 rounded-xl text-sm font-bold text-indigo-400 border border-indigo-500/30 hover:bg-indigo-500/10 transition-all"
+                >
+                  {language === 'tr' ? 'Tümünü Göster' : 'Show All'}
+                </button>
+              </>
+            ) : (
+              <>
+                <p className="text-xl font-bold text-slate-300 mb-2">
+                  {searchQuery.trim() ? t("search.noResults") : t("search.emptyTitle")}
+                </p>
+                <p className="text-sm text-slate-500 mb-6 text-center max-w-md">
+                  {searchQuery.trim()
+                    ? t("search.noResultsHint")
+                    : t("search.emptySubtitle")}
+                </p>
+
+                {/* Search tips */}
+                {searchQuery.trim() ? (
+                  <div className="flex flex-col items-center gap-3">
+                    <button
+                      onClick={() => setSearchGlobal(!searchGlobal)}
+                      className="px-5 py-2.5 rounded-xl text-sm font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 hover:bg-indigo-500/20 transition-all"
+                    >
+                      {searchGlobal
+                        ? (language === 'tr' ? 'Sadece bu modülde ara' : 'Search in current module only')
+                        : t("search.tryGlobal")}
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-2.5 max-w-sm">
+                    {[
+                      { icon: "💡", text: t("search.emptyHint1") },
+                      { icon: "🔬", text: t("search.emptyHint2") },
+                      { icon: "🔗", text: t("search.emptyHint3") },
+                    ].map((hint, i) => (
+                      <div
+                        key={i}
+                        className="flex items-start gap-3 px-4 py-2.5 rounded-xl bg-white/[0.02] border border-white/5 text-sm text-slate-500 animate-in fade-in slide-in-from-bottom-2"
+                        style={{ animationDelay: `${i * 100}ms` }}
+                      >
+                        <span className="text-base leading-none mt-0.5">{hint.icon}</span>
+                        <span>{hint.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </>
             )}
           </div>
         ) : (
