@@ -176,7 +176,7 @@ export default function Home() {
     })),
   }), []);
 
-  const { filteredPathologies, searchResults, didYouMeanSuggestions } = useMemo(() => {
+  const { filteredPathologies, searchResults, didYouMeanSuggestions, organFilters } = useMemo(() => {
     let pool: Pathology[] = [];
 
     // Arama aktifken her zaman tüm patolojilerde ara
