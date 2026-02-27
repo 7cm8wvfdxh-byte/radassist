@@ -28,6 +28,8 @@
   /* 3D Flip Utilities */
   .perspective-1000 {
     perspective: 1000px;
+    /* Prevent perspective from creating a new stacking context that blocks scroll */
+    -webkit-transform-style: flat;
   }
 
   .transform-style-3d {
@@ -36,14 +38,41 @@
 
   .backface-hidden {
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .rotate-y-180 {
     transform: rotateY(180deg);
   }
 
+  /* Scrollbar styling for mobile */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+  }
+}
 
-  /* 3D Cube Classes Removed */
+/* Mobile touch scrolling improvements */
+@media (max-width: 640px) {
+  /* Ensure cards don't block page scrolling */
+  .perspective-1000 {
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Make card inner scroll areas work properly on mobile */
+  .overscroll-contain {
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* Aurora Animation */
