@@ -300,42 +300,6 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
 
     return (
         <div className="h-full flex flex-col animate-in fade-in duration-500">
-            {/* Header Tabs */}
-            <div className="flex justify-center mb-6">
-                <div className="bg-zinc-900/50 p-1 rounded-xl border border-white/10 flex gap-1 flex-wrap justify-center">
-                    <button onClick={() => setActiveTab('ruler')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'ruler' ? "bg-cyan-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
-                        <Ruler className="w-4 h-4" /> Normal Değerler
-                    </button>
-                    <button onClick={() => setActiveTab('calc')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'calc' ? "bg-purple-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
-                        <CalcIcon className="w-4 h-4" /> Hesaplayıcılar
-                    </button>
-                    <button onClick={() => setActiveTab('rads')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'rads' ? "bg-emerald-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
-                        <ShieldCheck className="w-4 h-4" /> RADS
-                    </button>
-                    <button onClick={() => setActiveTab('templates')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'templates' ? "bg-sky-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
-                        <FileText className="w-4 h-4" /> Şablonlar
-                    </button>
-                    <button onClick={() => setActiveTab('protocols')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'protocols' ? "bg-amber-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
-                        <FlaskConical className="w-4 h-4" /> Protokoller
-                    </button>
-                    <div className="w-px h-6 bg-white/10 mx-1 self-center" />
-                    <button onClick={() => setActiveTab('signs')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'signs' ? "bg-rose-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
-                        <Eye className="w-4 h-4" /> İşaretler
-                    </button>
-                    <button onClick={() => setActiveTab('ddx')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'ddx' ? "bg-orange-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
-                        <GitBranch className="w-4 h-4" /> DDx
-                    </button>
-                    <button onClick={() => setActiveTab('contrast')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'contrast' ? "bg-blue-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
-                        <Droplets className="w-4 h-4" /> Kontrast
-                    </button>
-                    <button onClick={() => setActiveTab('artifacts')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'artifacts' ? "bg-yellow-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
-                        <Zap className="w-4 h-4" /> Artefaktlar
-                    </button>
-                    <button onClick={() => setActiveTab('glossary')} className={cn("flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold transition-all", activeTab === 'glossary' ? "bg-teal-600 text-white shadow-lg" : "text-zinc-400 hover:text-white hover:bg-white/5")}>
-                        <BookOpen className="w-4 h-4" /> Sözlük
-                    </button>
-                </div>
-            </div>
 
             {/* ─── TAB: RULER ─────────────────────────────────────── */}
             {activeTab === 'ruler' && (
