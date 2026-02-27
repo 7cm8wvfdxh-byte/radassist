@@ -37,7 +37,7 @@ import { breastPathologies } from "@/data/breast-pathologies";
 import { mskPathologies } from "@/data/msk-pathologies";
 import { gastroPathologies } from "@/data/gastro-pathologies";
 import { gynecologyPathologies } from "@/data/gynecology-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Flame, Bean, Wind, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen, Ruler, Calculator, FlaskConical, Eye, GitBranch, Droplets, Zap } from "lucide-react";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Flame, Bean, Wind, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen, Ruler, Calculator, FlaskConical, Eye, GitBranch, Droplets, Zap, Magnet } from "lucide-react";
 import { caseStudies } from "@/data/case-studies";
 import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from "@/data/lexicon";
 import { announcements } from "@/data/announcements";
@@ -116,7 +116,7 @@ export default function Home() {
     return "brain";
   });
   const [selectedPathology, setSelectedPathology] = useState<Pathology | null>(null);
-  const [toolboxTab, setToolboxTab] = useState<'ruler' | 'calc' | 'rads' | 'templates' | 'protocols' | 'signs' | 'ddx' | 'contrast' | 'artifacts' | 'glossary'>('ruler');
+  const [toolboxTab, setToolboxTab] = useState<'ruler' | 'calc' | 'rads' | 'templates' | 'protocols' | 'signs' | 'ddx' | 'contrast' | 'artifacts' | 'glossary' | 'sequences'>('ruler');
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Mark as loaded after client hydration (intentional setState-in-effect for hydration detection)
@@ -305,6 +305,7 @@ export default function Home() {
               { key: 'contrast' as const, icon: Droplets, label: language === 'tr' ? 'Kontrast' : 'Contrast', color: 'blue' },
               { key: 'artifacts' as const, icon: Zap, label: language === 'tr' ? 'Artefaktlar' : 'Artifacts', color: 'yellow' },
               { key: 'glossary' as const, icon: BookOpen, label: language === 'tr' ? 'Sözlük' : 'Glossary', color: 'teal' },
+              { key: 'sequences' as const, icon: Magnet, label: language === 'tr' ? 'MR Sekanslar' : 'MR Sequences', color: 'fuchsia' },
             ]).map(item => {
               const Icon = item.icon;
               const isActive = viewMode === 'toolbox' && toolboxTab === item.key;
@@ -319,6 +320,7 @@ export default function Home() {
                 blue:    { active: 'bg-blue-600 text-white shadow-lg shadow-blue-500/20', hover: 'hover:bg-blue-500/10 hover:text-blue-300', icon: 'text-blue-400' },
                 yellow:  { active: 'bg-yellow-600 text-white shadow-lg shadow-yellow-500/20', hover: 'hover:bg-yellow-500/10 hover:text-yellow-300', icon: 'text-yellow-400' },
                 teal:    { active: 'bg-teal-600 text-white shadow-lg shadow-teal-500/20', hover: 'hover:bg-teal-500/10 hover:text-teal-300', icon: 'text-teal-400' },
+                fuchsia: { active: 'bg-fuchsia-600 text-white shadow-lg shadow-fuchsia-500/20', hover: 'hover:bg-fuchsia-500/10 hover:text-fuchsia-300', icon: 'text-fuchsia-400' },
               };
               const colors = colorMap[item.color];
               return (
