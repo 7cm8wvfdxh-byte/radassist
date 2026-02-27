@@ -19,6 +19,7 @@ vi.mock('@/context/language-context', () => ({
                 'search.navigate': 'gezin',
                 'search.select': 'seç',
                 'search.close': 'kapat',
+                'search.searching': 'Aranıyor...',
             };
             return translations[key] || key;
         },
@@ -70,7 +71,8 @@ describe('SearchBar', () => {
 
     it('sonuç sayısını göstermeli', () => {
         render(<SearchBar value="test" onChange={mockOnChange} resultCount={5} />);
-        expect(screen.getByText('5 sonuç bulundu')).toBeInTheDocument();
+        expect(screen.getByText('5')).toBeInTheDocument();
+        expect(screen.getByText(/sonuç bulundu/)).toBeInTheDocument();
     });
 
     it('sonuç bulunamadığında mesaj göstermeli', () => {

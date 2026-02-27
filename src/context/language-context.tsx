@@ -218,6 +218,26 @@ const tr: Record<string, string> = {
     "ai.error": "Bir hata oluştu. Lütfen tekrar deneyin.",
     "ai.clearChat": "Sohbeti temizle",
     "ai.disclaimer": "Yanıtlar veritabanı aramasına dayalıdır ve bilgilendirme amaçlıdır. Kesin tanı için klinik korelasyon gereklidir.",
+
+    // Search Enhancements
+    "search.shortcutHint": "Hızlı arama için",
+    "search.shortcutKey": "tuşuna basın",
+    "search.chip.emergency": "Acil",
+    "search.chip.mass": "Kitle",
+    "search.chip.t2hyper": "T2 Hiper",
+    "search.chip.contrast": "Kontrast+",
+    "search.chip.calcification": "Kalsifikasyon",
+    "search.chip.cyst": "Kist",
+    "search.emptyTitle": "Aradığınızı Bulun",
+    "search.emptySubtitle": "Patoloji adı, bulgu veya radyolojik terim yazarak arama yapın",
+    "search.emptyHint1": "Halk dili kullanabilirsiniz: \"parlak\", \"koyu\", \"kitle\"",
+    "search.emptyHint2": "Modalite belirtin: \"MR'da hiperintens\", \"BT'de hiperdens\"",
+    "search.emptyHint3": "Eş anlamlılar otomatik genişletilir",
+    "search.searching": "Aranıyor...",
+    "search.resultsSingular": "sonuç bulundu",
+    "search.scrollMore": "kaydır",
+    "search.tryGlobal": "Tüm modüllerde aramayı deneyin",
+    "search.noResultsHint": "Farklı bir terim veya eş anlamlı deneyin",
 };
 
 // English translations
@@ -425,6 +445,26 @@ const en: Record<string, string> = {
     "ai.error": "An error occurred. Please try again.",
     "ai.clearChat": "Clear chat",
     "ai.disclaimer": "Responses are based on database search and are for informational purposes only. Clinical correlation is required for definitive diagnosis.",
+
+    // Search Enhancements
+    "search.shortcutHint": "Quick search with",
+    "search.shortcutKey": "key",
+    "search.chip.emergency": "Emergency",
+    "search.chip.mass": "Mass",
+    "search.chip.t2hyper": "T2 Hyper",
+    "search.chip.contrast": "Contrast+",
+    "search.chip.calcification": "Calcification",
+    "search.chip.cyst": "Cyst",
+    "search.emptyTitle": "Find What You Need",
+    "search.emptySubtitle": "Search by pathology name, finding, or radiological term",
+    "search.emptyHint1": "Use colloquial terms: \"bright\", \"dark\", \"mass\"",
+    "search.emptyHint2": "Specify modality: \"hyperintense on MRI\", \"hyperdense on CT\"",
+    "search.emptyHint3": "Synonyms are automatically expanded",
+    "search.searching": "Searching...",
+    "search.resultsSingular": "result found",
+    "search.scrollMore": "scroll",
+    "search.tryGlobal": "Try searching all modules",
+    "search.noResultsHint": "Try a different term or synonym",
 };
 
 const translations: Record<Language, Record<string, string>> = { tr, en };

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import { Search, Clock, X, Sparkles, ChevronRight, Trash2, ArrowUpLeft, BookOpen, Microscope, Bell } from "lucide-react";
+import { Search, Clock, X, Sparkles, ChevronRight, Trash2, ArrowUpLeft, BookOpen, Microscope, Bell, Command } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
     SearchSuggestion,
@@ -23,6 +23,7 @@ interface SearchBarProps {
     didYouMean?: string[];
     resultCount?: number;
     extraSources?: ExtraSearchSource;
+    isSearching?: boolean;
 }
 
 export const SearchBar = React.memo(function SearchBar({
@@ -34,15 +35,39 @@ export const SearchBar = React.memo(function SearchBar({
     didYouMean = [],
     resultCount,
     extraSources,
+    isSearching = false,
 }: SearchBarProps) {
     const { t } = useLanguage();
     const [isFocused, setIsFocused] = useState(false);
     const [suggestions, setSuggestions] = useState<SearchSuggestion[]>([]);
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const [showDropdown, setShowDropdown] = useState(false);
+    const [animatedCount, setAnimatedCount] = useState<number | undefined>(undefined);
     const inputRef = useRef<HTMLInputElement>(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    // Animated result counter
+    useEffect(() => {
+        if (resultCount === undefined) {
+            setAnimatedCount(undefined);
+            return;
+        }
+        setAnimatedCount(resultCount);
+    }, [resultCount]);
+
+    // Ctrl+K / Cmd+K global shortcut
+    useEffect(() => {
+        function handleGlobalKeyDown(e: KeyboardEvent) {
+            if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+                e.preventDefault();
+                inputRef.current?.focus();
+                inputRef.current?.select();
+            }
+        }
+        document.addEventListener("keydown", handleGlobalKeyDown);
+        return () => document.removeEventListener("keydown", handleGlobalKeyDown);
+    }, []);
 
     // Debounced suggestion update
     const updateSuggestions = useCallback(
@@ -140,24 +165,31 @@ export const SearchBar = React.memo(function SearchBar({
 
     const hasRecentSuggestions = suggestions.some(s => s.type === "recent");
     const isDropdownVisible = showDropdown && isFocused && suggestions.length > 0;
+    const isMac = typeof navigator !== "undefined" && navigator.platform?.includes("Mac");
 
     return (
         <div className={cn("relative w-full", className)}>
-            {/* Input */}
+            {/* Input area */}
             <div className="relative">
+                {/* Animated search icon */}
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <Search
-                        className={cn(
-                            "h-5 w-5 transition-colors duration-200",
-                            isFocused ? "text-indigo-400" : "text-slate-500"
-                        )}
-                    />
+                    {isSearching ? (
+                        <div className="h-5 w-5 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                        <Search
+                            className={cn(
+                                "h-5 w-5 transition-all duration-300",
+                                isFocused ? "text-indigo-400 scale-110" : "text-slate-500"
+                            )}
+                        />
+                    )}
                 </div>
+
                 <input
                     ref={inputRef}
                     type="text"
-                    className="block w-full pl-12 pr-12 py-4 bg-transparent text-lg text-white placeholder-slate-500 focus:outline-none focus:ring-0 font-medium"
-                    placeholder={placeholder || t("search.placeholder") || "Patoloji, bulgu veya sekans ara..."}
+                    className="block w-full pl-12 pr-24 py-4 bg-transparent text-lg text-white placeholder-slate-500 focus:outline-none focus:ring-0 font-medium"
+                    placeholder={placeholder || t("search.placeholder")}
                     value={value}
                     onChange={(e) => onChange(e.target.value)}
                     onFocus={() => {
@@ -174,44 +206,61 @@ export const SearchBar = React.memo(function SearchBar({
                     aria-expanded={isDropdownVisible}
                     aria-haspopup="listbox"
                     aria-autocomplete="list"
+                    aria-label={t("search.placeholder")}
                 />
 
-                {/* Clear button */}
-                {value && (
-                    <button
-                        onClick={handleClear}
-                        className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-500 hover:text-white transition-colors"
-                        aria-label={t("search.clear") || "Temizle"}
-                        type="button"
-                    >
-                        <X className="h-5 w-5" />
-                    </button>
-                )}
+                {/* Right side: Clear button + Keyboard shortcut badge */}
+                <div className="absolute inset-y-0 right-0 pr-4 flex items-center gap-2">
+                    {value ? (
+                        <button
+                            onClick={handleClear}
+                            className="flex items-center justify-center w-7 h-7 rounded-lg text-slate-500 hover:text-white hover:bg-white/10 transition-all"
+                            aria-label={t("search.clear")}
+                            type="button"
+                        >
+                            <X className="h-4 w-4" />
+                        </button>
+                    ) : !isFocused ? (
+                        <kbd className="hidden sm:flex items-center gap-1 px-2 py-1 rounded-md bg-white/5 border border-white/10 text-[11px] text-slate-500 font-mono select-none">
+                            {isMac ? <Command className="w-3 h-3" /> : "Ctrl+"}K
+                        </kbd>
+                    ) : null}
+                </div>
             </div>
 
-            {/* Result count badge */}
-            {value.trim() && resultCount !== undefined && (
-                <div className="px-4 pb-1">
-                    <span className="text-xs text-slate-500">
-                        {resultCount > 0
-                            ? `${resultCount} ${t("search.resultsFound") || "sonuç bulundu"}`
-                            : t("search.noResults") || "Sonuç bulunamadı"
-                        }
-                    </span>
+            {/* Animated result count badge */}
+            {value.trim() && animatedCount !== undefined && (
+                <div className="px-4 pb-1 animate-in fade-in slide-in-from-top-1 duration-200">
+                    {isSearching ? (
+                        <span className="text-xs text-indigo-400 flex items-center gap-1.5">
+                            <span className="inline-block w-1 h-1 rounded-full bg-indigo-400 animate-pulse" />
+                            {t("search.searching")}
+                        </span>
+                    ) : animatedCount > 0 ? (
+                        <span className="text-xs text-slate-400">
+                            <span className="text-indigo-400 font-bold tabular-nums">{animatedCount}</span>
+                            {" "}{t("search.resultsFound")}
+                        </span>
+                    ) : (
+                        <span className="text-xs text-amber-400/80 flex items-center gap-1.5">
+                            <span className="inline-block w-1 h-1 rounded-full bg-amber-400" />
+                            {t("search.noResults")}
+                        </span>
+                    )}
                 </div>
             )}
 
             {/* Did you mean? */}
             {value.trim() && didYouMean.length > 0 && resultCount === 0 && (
-                <div className="px-4 pb-2">
+                <div className="px-4 pb-2 animate-in fade-in slide-in-from-top-1 duration-300">
                     <span className="text-xs text-slate-400">
-                        {t("search.didYouMean") || "Bunu mu demek istediniz?"}{" "}
+                        {t("search.didYouMean")}{" "}
                     </span>
                     {didYouMean.map((suggestion, i) => (
                         <button
                             key={suggestion}
                             onClick={() => handleSelect(suggestion)}
-                            className="text-xs text-indigo-400 hover:text-indigo-300 underline underline-offset-2 mx-1 transition-colors"
+                            className="text-xs text-indigo-400 hover:text-indigo-300 underline underline-offset-2 mx-1 transition-colors font-medium"
                             type="button"
                         >
                             {suggestion}
@@ -232,7 +281,7 @@ export const SearchBar = React.memo(function SearchBar({
                     {hasRecentSuggestions && !value.trim() && (
                         <div className="flex items-center justify-between px-4 pt-3 pb-1">
                             <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
-                                {t("search.recentSearches") || "Son Aramalar"}
+                                {t("search.recentSearches")}
                             </span>
                             <button
                                 onClick={handleClearRecent}
@@ -240,7 +289,7 @@ export const SearchBar = React.memo(function SearchBar({
                                 type="button"
                             >
                                 <Trash2 className="w-3 h-3" />
-                                {t("search.clearAll") || "Temizle"}
+                                {t("search.clearAll")}
                             </button>
                         </div>
                     )}
@@ -253,7 +302,7 @@ export const SearchBar = React.memo(function SearchBar({
                                 onClick={() => handleSelect(suggestion.text)}
                                 onMouseEnter={() => setSelectedIndex(index)}
                                 className={cn(
-                                    "flex items-center gap-3 w-full px-4 py-2.5 text-left transition-colors",
+                                    "flex items-center gap-3 w-full px-4 py-2.5 text-left transition-all duration-150",
                                     selectedIndex === index
                                         ? "bg-indigo-500/15 text-white"
                                         : "text-slate-300 hover:bg-white/5"
@@ -264,7 +313,8 @@ export const SearchBar = React.memo(function SearchBar({
                             >
                                 {/* Icon */}
                                 <div className={cn(
-                                    "flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center",
+                                    "flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-transform duration-150",
+                                    selectedIndex === index && "scale-110",
                                     suggestion.type === "pathology" ? "bg-indigo-500/15 text-indigo-400"
                                         : suggestion.type === "case" ? "bg-emerald-500/15 text-emerald-400"
                                         : suggestion.type === "lexicon" ? "bg-amber-500/15 text-amber-400"
@@ -295,11 +345,11 @@ export const SearchBar = React.memo(function SearchBar({
                                     {(suggestion.category || suggestion.organ) && (
                                         <div className="text-[10px] text-slate-500 truncate mt-0.5">
                                             {suggestion.type === "case" ? (
-                                                <span className="text-emerald-500/70">{t("search.caseStudy") || "Vaka"} · {suggestion.category}</span>
+                                                <span className="text-emerald-500/70">{t("search.caseStudy")} · {suggestion.category}</span>
                                             ) : suggestion.type === "lexicon" ? (
-                                                <span className="text-amber-500/70">{t("search.finding") || "Bulgu"} · {suggestion.category}</span>
+                                                <span className="text-amber-500/70">{t("search.finding")} · {suggestion.category}</span>
                                             ) : suggestion.type === "announcement" ? (
-                                                <span className="text-rose-500/70">{t("search.announcement") || "Duyuru"}</span>
+                                                <span className="text-rose-500/70">{t("search.announcement")}</span>
                                             ) : (
                                                 [suggestion.organ, suggestion.category].filter(Boolean).join(" · ")
                                             )}
@@ -310,7 +360,10 @@ export const SearchBar = React.memo(function SearchBar({
                                 {/* Type badge */}
                                 <div className="flex-shrink-0">
                                     {(suggestion.type === "pathology" || suggestion.type === "case") ? (
-                                        <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
+                                        <ChevronRight className={cn(
+                                            "w-3.5 h-3.5 transition-transform duration-150",
+                                            selectedIndex === index ? "text-indigo-400 translate-x-0.5" : "text-slate-600"
+                                        )} />
                                     ) : suggestion.type === "recent" ? (
                                         <ArrowUpLeft className="w-3.5 h-3.5 text-slate-600" />
                                     ) : null}
@@ -321,9 +374,9 @@ export const SearchBar = React.memo(function SearchBar({
 
                     {/* Footer hint */}
                     <div className="px-4 py-2 border-t border-white/5 flex items-center gap-4 text-[10px] text-slate-600">
-                        <span><kbd className="px-1 py-0.5 bg-slate-800 rounded text-slate-500 font-mono">↑↓</kbd> {t("search.navigate") || "gezin"}</span>
-                        <span><kbd className="px-1 py-0.5 bg-slate-800 rounded text-slate-500 font-mono">↵</kbd> {t("search.select") || "seç"}</span>
-                        <span><kbd className="px-1 py-0.5 bg-slate-800 rounded text-slate-500 font-mono">esc</kbd> {t("search.close") || "kapat"}</span>
+                        <span><kbd className="px-1 py-0.5 bg-slate-800 rounded text-slate-500 font-mono">↑↓</kbd> {t("search.navigate")}</span>
+                        <span><kbd className="px-1 py-0.5 bg-slate-800 rounded text-slate-500 font-mono">↵</kbd> {t("search.select")}</span>
+                        <span><kbd className="px-1 py-0.5 bg-slate-800 rounded text-slate-500 font-mono">esc</kbd> {t("search.close")}</span>
                     </div>
                 </div>
             )}
