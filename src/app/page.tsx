@@ -649,75 +649,76 @@ export default function Home() {
             </div>
           )}
 
-          {/* Search Bar */}
-          {viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
-            <div className="relative group mb-4">
-              <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 group-focus-within:opacity-50 transition duration-1000 group-hover:duration-200 group-focus-within:duration-200"></div>
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-black/60 backdrop-blur-xl rounded-2xl ring-1 ring-white/10 group-focus-within:ring-indigo-500/30 shadow-2xl group-focus-within:shadow-indigo-500/10 flex flex-col transition-all duration-300">
-                <SearchBar
-                  value={searchQuery}
-                  onChange={(v) => { setSearchQuery(v); if (!v.trim()) setActiveOrganFilter(null); }}
-                  placeholder={
-                    searchGlobal
-                      ? t("search.allModules")
-                      : `${t(`organ.${activeModule === 'gi' ? 'gastro' : activeModule === 'gyn' ? 'gynecology' : activeModule}`)} ${t("search.inModule")}`
+          {/* Search Bar - Always visible */}
+          <div className="relative group mb-4">
+            <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-40 group-focus-within:opacity-50 transition duration-1000 group-hover:duration-200 group-focus-within:duration-200"></div>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300"></div>
+            <div className="relative bg-black/60 backdrop-blur-xl rounded-2xl ring-1 ring-white/10 group-focus-within:ring-indigo-500/30 shadow-2xl group-focus-within:shadow-indigo-500/10 flex flex-col transition-all duration-300">
+              <SearchBar
+                value={searchQuery}
+                onChange={(v) => {
+                  setSearchQuery(v);
+                  if (!v.trim()) setActiveOrganFilter(null);
+                  if (v.trim() && viewMode !== "grid" && viewMode !== "list") {
+                    setViewMode("grid");
+                    localStorage.setItem("radassist-view-mode", "grid");
                   }
-                  pathologies={allPathologies}
-                  didYouMean={didYouMeanSuggestions}
-                  isSearching={searchQuery !== deferredSearchQuery && searchQuery.trim().length > 0}
-                  resultCount={searchQuery.trim() ? filteredPathologies.length : undefined}
-                  extraSources={extraSearchSources}
-                />
+                }}
+                placeholder={t("search.placeholder")}
+                pathologies={allPathologies}
+                didYouMean={didYouMeanSuggestions}
+                isSearching={searchQuery !== deferredSearchQuery && searchQuery.trim().length > 0}
+                resultCount={searchQuery.trim() ? filteredPathologies.length : undefined}
+                extraSources={extraSearchSources}
+              />
 
-                {/* Global Search Toggle */}
-                <div className="px-4 pb-3 flex items-center justify-end gap-2">
-                  <label className="flex items-center gap-2 cursor-pointer group/toggle select-none">
-                    <div className={`w-3 h-3 rounded-full border ${searchGlobal ? "bg-indigo-500 border-indigo-500" : "border-slate-500 group-hover/toggle:border-indigo-400"} transition-all`} />
-                    <input type="checkbox" checked={searchGlobal} onChange={(e) => setSearchGlobal(e.target.checked)} className="hidden" />
-                    <span className={`text-xs font-medium transition-colors ${searchGlobal ? "text-indigo-400" : "text-slate-500 group-hover/toggle:text-slate-300"}`}>
-                      {t("search.searchAllModules")}
-                    </span>
-                  </label>
-                </div>
+              {/* Global Search Toggle */}
+              <div className="px-4 pb-3 flex items-center justify-end gap-2">
+                <label className="flex items-center gap-2 cursor-pointer group/toggle select-none">
+                  <div className={`w-3 h-3 rounded-full border ${searchGlobal ? "bg-indigo-500 border-indigo-500" : "border-slate-500 group-hover/toggle:border-indigo-400"} transition-all`} />
+                  <input type="checkbox" checked={searchGlobal} onChange={(e) => setSearchGlobal(e.target.checked)} className="hidden" />
+                  <span className={`text-xs font-medium transition-colors ${searchGlobal ? "text-indigo-400" : "text-slate-500 group-hover/toggle:text-slate-300"}`}>
+                    {t("search.searchAllModules")}
+                  </span>
+                </label>
+              </div>
 
-                {/* Smart Filter Chips with mobile scroll indicator */}
-                <div className="relative px-4 pb-4">
-                  <div className="flex gap-2 overflow-x-auto no-scrollbar scroll-smooth" role="group" aria-label={t("search.chip.emergency")}>
-                    {[
-                      { labelKey: "search.chip.emergency", query: "acil" },
-                      { labelKey: "search.chip.mass", query: "kitle" },
-                      { labelKey: "search.chip.t2hyper", query: "t2 hiper" },
-                      { labelKey: "search.chip.contrast", query: "kontrast" },
-                      { labelKey: "search.chip.calcification", query: "kalsifikasyon" },
-                      { labelKey: "search.chip.cyst", query: "kist" },
-                    ].map(chip => (
-                      <button
-                        key={chip.labelKey}
-                        onClick={() => {
-                          if (searchQuery.toLowerCase().includes(chip.query)) {
-                            setSearchQuery(prev => prev.replace(chip.query, "").trim());
-                          } else {
-                            setSearchQuery(prev => (prev + " " + chip.query).trim());
-                          }
-                        }}
-                        className={cn(
-                          "px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all border",
-                          searchQuery.toLowerCase().includes(chip.query)
-                            ? "bg-indigo-500/20 text-indigo-300 border-indigo-500/50 shadow-[0_0_10px_rgba(99,102,241,0.15)]"
-                            : "bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:text-slate-200"
-                        )}
-                      >
-                        {t(chip.labelKey)}
-                      </button>
-                    ))}
-                  </div>
-                  {/* Mobile scroll fade indicator */}
-                  <div className="absolute right-4 top-0 bottom-4 w-8 bg-gradient-to-l from-black/80 to-transparent pointer-events-none sm:hidden" />
+              {/* Smart Filter Chips with mobile scroll indicator */}
+              <div className="relative px-4 pb-4">
+                <div className="flex gap-2 overflow-x-auto no-scrollbar scroll-smooth" role="group" aria-label={t("search.chip.emergency")}>
+                  {[
+                    { labelKey: "search.chip.emergency", query: "acil" },
+                    { labelKey: "search.chip.mass", query: "kitle" },
+                    { labelKey: "search.chip.t2hyper", query: "t2 hiper" },
+                    { labelKey: "search.chip.contrast", query: "kontrast" },
+                    { labelKey: "search.chip.calcification", query: "kalsifikasyon" },
+                    { labelKey: "search.chip.cyst", query: "kist" },
+                  ].map(chip => (
+                    <button
+                      key={chip.labelKey}
+                      onClick={() => {
+                        if (searchQuery.toLowerCase().includes(chip.query)) {
+                          setSearchQuery(prev => prev.replace(chip.query, "").trim());
+                        } else {
+                          setSearchQuery(prev => (prev + " " + chip.query).trim());
+                        }
+                      }}
+                      className={cn(
+                        "px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all border",
+                        searchQuery.toLowerCase().includes(chip.query)
+                          ? "bg-indigo-500/20 text-indigo-300 border-indigo-500/50 shadow-[0_0_10px_rgba(99,102,241,0.15)]"
+                          : "bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:text-slate-200"
+                      )}
+                    >
+                      {t(chip.labelKey)}
+                    </button>
+                  ))}
                 </div>
+                {/* Mobile scroll fade indicator */}
+                <div className="absolute right-4 top-0 bottom-4 w-8 bg-gradient-to-l from-black/80 to-transparent pointer-events-none sm:hidden" />
               </div>
             </div>
-          )}
+          </div>
 
         </div>
 
