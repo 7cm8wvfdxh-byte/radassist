@@ -43,7 +43,7 @@ import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from "@/data/lexicon";
 import { announcements } from "@/data/announcements";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils"; // Ensure cn is imported
-import { performScoredSearch, getDidYouMeanSuggestions, addRecentSearch, SearchResult } from "@/lib/search-utils";
+import { performScoredSearch, getDidYouMeanSuggestions, addRecentSearch, SearchResult, getOrganFilters, OrganFilterResult } from "@/lib/search-utils";
 import { useAuth } from "@/context/auth-context";
 import { useLanguage } from "@/context/language-context";
 import Link from "next/link"; // Need Link for navigation
@@ -135,6 +135,7 @@ export default function Home() {
   };
 
   const [searchGlobal, setSearchGlobal] = useState(false); // Global search toggle
+  const [activeOrganFilter, setActiveOrganFilter] = useState<string | null>(null); // Organ filtre chip
 
   // Defer the search query to avoid blocking UI during heavy search computation
   const deferredSearchQuery = useDeferredValue(searchQuery);
@@ -206,15 +207,17 @@ export default function Home() {
       // Skorlu arama kullan (deferred to keep UI responsive)
       const scored = performScoredSearch(pool, deferredSearchQuery);
 
-      // Sonuç yoksa "bunu mu demek istediniz?" önerileri
-      const dymSuggestions = scored.length === 0
-        ? getDidYouMeanSuggestions(pool, deferredSearchQuery)
-        : [];
+      // Sonuç az veya yoksa "bunu mu demek istediniz?" önerileri
+      const dymSuggestions = getDidYouMeanSuggestions(pool, deferredSearchQuery, scored.length);
+
+      // Organ bazlı filtre chip'leri
+      const organFilters = scored.length > 0 ? getOrganFilters(scored) : [];
 
       return {
         filteredPathologies: scored.map(r => r.pathology),
         searchResults: scored,
         didYouMeanSuggestions: dymSuggestions,
+        organFilters,
       };
     }
 
@@ -242,6 +245,7 @@ export default function Home() {
       filteredPathologies: sorted,
       searchResults: [] as SearchResult[],
       didYouMeanSuggestions: [] as string[],
+      organFilters: [] as OrganFilterResult[],
     };
   }, [deferredSearchQuery, favorites, showFavoritesOnly, activeModule, searchGlobal, allPathologies]);
 
@@ -543,7 +547,7 @@ export default function Home() {
               <div className="relative bg-black/60 backdrop-blur-xl rounded-2xl ring-1 ring-white/10 group-focus-within:ring-indigo-500/30 shadow-2xl group-focus-within:shadow-indigo-500/10 flex flex-col transition-all duration-300">
                 <SearchBar
                   value={searchQuery}
-                  onChange={setSearchQuery}
+                  onChange={(v) => { setSearchQuery(v); if (!v.trim()) setActiveOrganFilter(null); }}
                   placeholder={
                     searchGlobal
                       ? t("search.allModules")
@@ -823,6 +827,9 @@ export default function Home() {
                       { icon: "💡", text: t("search.emptyHint1") },
                       { icon: "🔬", text: t("search.emptyHint2") },
                       { icon: "🔗", text: t("search.emptyHint3") },
+                      { icon: "🚫", text: t("search.advancedHint1") },
+                      { icon: "🏷️", text: t("search.advancedHint2") },
+                      { icon: "✏️", text: t("search.advancedHint3") },
                     ].map((hint, i) => (
                       <div
                         key={i}
@@ -872,8 +879,43 @@ export default function Home() {
                 )}
               </div>
             )}
+
+            {/* Organ filtre chip'leri */}
+            {searchQuery.trim() && organFilters.length > 1 && (
+              <div className="flex flex-wrap items-center gap-2 mb-4 px-1 animate-in fade-in duration-200">
+                <span className="text-[10px] text-slate-600 font-medium uppercase tracking-wider">
+                  {language === 'tr' ? 'Filtre:' : 'Filter:'}
+                </span>
+                <button
+                  onClick={() => setActiveOrganFilter(null)}
+                  className={cn(
+                    "px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all",
+                    !activeOrganFilter
+                      ? "bg-indigo-500/20 text-indigo-400 border-indigo-500/30"
+                      : "bg-white/5 text-slate-500 border-white/10 hover:text-slate-300"
+                  )}
+                >
+                  {language === 'tr' ? 'Tümü' : 'All'} ({filteredPathologies.length})
+                </button>
+                {organFilters.map(of => (
+                  <button
+                    key={of.organ}
+                    onClick={() => setActiveOrganFilter(activeOrganFilter === of.organ ? null : of.organ)}
+                    className={cn(
+                      "px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all",
+                      activeOrganFilter === of.organ
+                        ? "bg-indigo-500/20 text-indigo-400 border-indigo-500/30"
+                        : "bg-white/5 text-slate-500 border-white/10 hover:text-slate-300"
+                    )}
+                  >
+                    {of.organ} ({of.count})
+                  </button>
+                ))}
+              </div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 items-start animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
-              {filteredPathologies.map((pathology) => {
+              {(activeOrganFilter ? filteredPathologies.filter(p => (p.organ || 'Diğer') === activeOrganFilter) : filteredPathologies).map((pathology) => {
                 const sr = searchResultMap.get(pathology.id);
                 return (
                   <PathologyCard

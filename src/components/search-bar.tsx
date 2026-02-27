@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import { Search, Clock, X, Sparkles, ChevronRight, Trash2, ArrowUpLeft, BookOpen, Microscope, Bell, Command } from "lucide-react";
+import { Search, Clock, X, Sparkles, ChevronRight, Trash2, ArrowUpLeft, BookOpen, Microscope, Bell, Command, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
     SearchSuggestion,
@@ -10,6 +10,7 @@ import {
     addRecentSearch,
     clearRecentSearches,
     ExtraSearchSource,
+    getEstimatedResultCount,
 } from "@/lib/search-utils";
 import { Pathology } from "@/types";
 import { useLanguage } from "@/context/language-context";
@@ -163,7 +164,7 @@ export const SearchBar = React.memo(function SearchBar({
         updateSuggestions(value);
     };
 
-    const hasRecentSuggestions = suggestions.some(s => s.type === "recent");
+    const hasRecentSuggestions = suggestions.some(s => s.type === "recent" || s.type === "trending");
     const isDropdownVisible = showDropdown && isFocused && suggestions.length > 0;
     const isMac = typeof navigator !== "undefined" && navigator.platform?.includes("Mac");
 
@@ -251,7 +252,7 @@ export const SearchBar = React.memo(function SearchBar({
             )}
 
             {/* Did you mean? */}
-            {value.trim() && didYouMean.length > 0 && resultCount === 0 && (
+            {value.trim() && didYouMean.length > 0 && resultCount !== undefined && resultCount <= 3 && (
                 <div className="px-4 pb-2 animate-in fade-in slide-in-from-top-1 duration-300">
                     <span className="text-xs text-slate-400">
                         {t("search.didYouMean")}{" "}
@@ -320,10 +321,13 @@ export const SearchBar = React.memo(function SearchBar({
                                         : suggestion.type === "lexicon" ? "bg-amber-500/15 text-amber-400"
                                         : suggestion.type === "announcement" ? "bg-rose-500/15 text-rose-400"
                                         : suggestion.type === "term" ? "bg-cyan-500/15 text-cyan-400"
+                                        : suggestion.type === "trending" ? "bg-orange-500/15 text-orange-400"
                                         : "bg-slate-500/15 text-slate-400"
                                 )}>
                                     {suggestion.type === "recent" ? (
                                         <Clock className="w-3.5 h-3.5" />
+                                    ) : suggestion.type === "trending" ? (
+                                        <TrendingUp className="w-3.5 h-3.5" />
                                     ) : suggestion.type === "pathology" ? (
                                         <Sparkles className="w-3.5 h-3.5" />
                                     ) : suggestion.type === "case" ? (
@@ -344,7 +348,9 @@ export const SearchBar = React.memo(function SearchBar({
                                     </div>
                                     {(suggestion.category || suggestion.organ) && (
                                         <div className="text-[10px] text-slate-500 truncate mt-0.5">
-                                            {suggestion.type === "case" ? (
+                                            {suggestion.type === "trending" ? (
+                                                <span className="text-orange-500/70">{suggestion.category}</span>
+                                            ) : suggestion.type === "case" ? (
                                                 <span className="text-emerald-500/70">{t("search.caseStudy")} · {suggestion.category}</span>
                                             ) : suggestion.type === "lexicon" ? (
                                                 <span className="text-amber-500/70">{t("search.finding")} · {suggestion.category}</span>

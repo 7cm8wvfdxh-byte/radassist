@@ -238,6 +238,12 @@ const tr: Record<string, string> = {
     "search.scrollMore": "kaydır",
     "search.tryGlobal": "Tüm modüllerde aramayı deneyin",
     "search.noResultsHint": "Farklı bir terim veya eş anlamlı deneyin",
+    "search.trending": "Popüler Aramalar",
+    "search.advancedHint1": "Hariç tutmak için: kitle -benign",
+    "search.advancedHint2": "Alan filtresi: organ:beyin kitle",
+    "search.advancedHint3": "Yazım düzeltme otomatik çalışır",
+    "search.phonetic": "Düzeltme",
+    "search.filterByOrgan": "Organa göre filtrele",
 };
 
 // English translations
@@ -465,6 +471,12 @@ const en: Record<string, string> = {
     "search.scrollMore": "scroll",
     "search.tryGlobal": "Try searching all modules",
     "search.noResultsHint": "Try a different term or synonym",
+    "search.trending": "Trending Searches",
+    "search.advancedHint1": "Exclude terms: mass -benign",
+    "search.advancedHint2": "Field filter: organ:brain mass",
+    "search.advancedHint3": "Typo correction works automatically",
+    "search.phonetic": "Correction",
+    "search.filterByOrgan": "Filter by organ",
 };
 
 const translations: Record<Language, Record<string, string>> = { tr, en };
