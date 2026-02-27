@@ -178,7 +178,10 @@ export default function Home() {
   const { filteredPathologies, searchResults, didYouMeanSuggestions } = useMemo(() => {
     let pool: Pathology[] = [];
 
-    if (searchGlobal) {
+    // Arama aktifken her zaman tüm patolojilerde ara
+    const hasActiveSearch = deferredSearchQuery.trim().length > 0;
+
+    if (hasActiveSearch || searchGlobal) {
       pool = allPathologies;
     } else {
       switch (activeModule) {
@@ -199,7 +202,7 @@ export default function Home() {
       pool = pool.filter(p => favorites.includes(p.id));
     }
 
-    if (deferredSearchQuery.trim()) {
+    if (hasActiveSearch) {
       // Skorlu arama kullan (deferred to keep UI responsive)
       const scored = performScoredSearch(pool, deferredSearchQuery);
 
@@ -546,7 +549,7 @@ export default function Home() {
                       ? t("search.allModules")
                       : `${t(`organ.${activeModule === 'gi' ? 'gastro' : activeModule === 'gyn' ? 'gynecology' : activeModule}`)} ${t("search.inModule")}`
                   }
-                  pathologies={searchGlobal ? allPathologies : filteredPathologies}
+                  pathologies={allPathologies}
                   didYouMean={didYouMeanSuggestions}
                   isSearching={searchQuery !== deferredSearchQuery && searchQuery.trim().length > 0}
                   resultCount={searchQuery.trim() ? filteredPathologies.length : undefined}
