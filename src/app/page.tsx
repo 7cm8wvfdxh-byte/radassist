@@ -37,7 +37,7 @@ import { breastPathologies } from "@/data/breast-pathologies";
 import { mskPathologies } from "@/data/msk-pathologies";
 import { gastroPathologies } from "@/data/gastro-pathologies";
 import { gynecologyPathologies } from "@/data/gynecology-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Flame, Bean, Wind, Wrench, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen } from "lucide-react";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Flame, Bean, Wind, Wrench, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen, Ruler, Calculator, FlaskConical, Eye, GitBranch, Droplets, Zap } from "lucide-react";
 import { caseStudies } from "@/data/case-studies";
 import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from "@/data/lexicon";
 import { announcements } from "@/data/announcements";
@@ -116,6 +116,7 @@ export default function Home() {
     return "brain";
   });
   const [selectedPathology, setSelectedPathology] = useState<Pathology | null>(null);
+  const [toolboxTab, setToolboxTab] = useState<'ruler' | 'calc' | 'rads' | 'templates' | 'protocols' | 'signs' | 'ddx' | 'contrast' | 'artifacts' | 'glossary'>('ruler');
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Mark as loaded after client hydration (intentional setState-in-effect for hydration detection)
@@ -290,21 +291,59 @@ export default function Home() {
           RadAsist
         </h1>
 
+        {/* Toolbox Menu - Alet Çantası */}
+        <div className="w-full max-w-4xl mx-auto mb-6 sm:mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 bg-zinc-900/40 backdrop-blur-sm p-2 sm:p-3 rounded-2xl border border-white/5">
+            {([
+              { key: 'ruler' as const, icon: Ruler, label: language === 'tr' ? 'Normal Değerler' : 'Normal Values', color: 'cyan' },
+              { key: 'calc' as const, icon: Calculator, label: language === 'tr' ? 'Hesaplayıcılar' : 'Calculators', color: 'purple' },
+              { key: 'rads' as const, icon: ShieldCheck, label: 'RADS', color: 'emerald' },
+              { key: 'templates' as const, icon: FileText, label: language === 'tr' ? 'Şablonlar' : 'Templates', color: 'sky' },
+              { key: 'protocols' as const, icon: FlaskConical, label: language === 'tr' ? 'Protokoller' : 'Protocols', color: 'amber' },
+              { key: 'signs' as const, icon: Eye, label: language === 'tr' ? 'İşaretler' : 'Signs', color: 'rose' },
+              { key: 'ddx' as const, icon: GitBranch, label: 'DDx', color: 'orange' },
+              { key: 'contrast' as const, icon: Droplets, label: language === 'tr' ? 'Kontrast' : 'Contrast', color: 'blue' },
+              { key: 'artifacts' as const, icon: Zap, label: language === 'tr' ? 'Artefaktlar' : 'Artifacts', color: 'yellow' },
+              { key: 'glossary' as const, icon: BookOpen, label: language === 'tr' ? 'Sözlük' : 'Glossary', color: 'teal' },
+            ]).map(item => {
+              const Icon = item.icon;
+              const isActive = viewMode === 'toolbox' && toolboxTab === item.key;
+              const colorMap: Record<string, { active: string; hover: string; icon: string }> = {
+                cyan:    { active: 'bg-cyan-600 text-white shadow-lg shadow-cyan-500/20', hover: 'hover:bg-cyan-500/10 hover:text-cyan-300', icon: 'text-cyan-400' },
+                purple:  { active: 'bg-purple-600 text-white shadow-lg shadow-purple-500/20', hover: 'hover:bg-purple-500/10 hover:text-purple-300', icon: 'text-purple-400' },
+                emerald: { active: 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20', hover: 'hover:bg-emerald-500/10 hover:text-emerald-300', icon: 'text-emerald-400' },
+                sky:     { active: 'bg-sky-600 text-white shadow-lg shadow-sky-500/20', hover: 'hover:bg-sky-500/10 hover:text-sky-300', icon: 'text-sky-400' },
+                amber:   { active: 'bg-amber-600 text-white shadow-lg shadow-amber-500/20', hover: 'hover:bg-amber-500/10 hover:text-amber-300', icon: 'text-amber-400' },
+                rose:    { active: 'bg-rose-600 text-white shadow-lg shadow-rose-500/20', hover: 'hover:bg-rose-500/10 hover:text-rose-300', icon: 'text-rose-400' },
+                orange:  { active: 'bg-orange-600 text-white shadow-lg shadow-orange-500/20', hover: 'hover:bg-orange-500/10 hover:text-orange-300', icon: 'text-orange-400' },
+                blue:    { active: 'bg-blue-600 text-white shadow-lg shadow-blue-500/20', hover: 'hover:bg-blue-500/10 hover:text-blue-300', icon: 'text-blue-400' },
+                yellow:  { active: 'bg-yellow-600 text-white shadow-lg shadow-yellow-500/20', hover: 'hover:bg-yellow-500/10 hover:text-yellow-300', icon: 'text-yellow-400' },
+                teal:    { active: 'bg-teal-600 text-white shadow-lg shadow-teal-500/20', hover: 'hover:bg-teal-500/10 hover:text-teal-300', icon: 'text-teal-400' },
+              };
+              const colors = colorMap[item.color];
+              return (
+                <button
+                  key={item.key}
+                  onClick={() => {
+                    setToolboxTab(item.key);
+                    setViewMode('toolbox');
+                    localStorage.setItem('radassist-view-mode', 'toolbox');
+                  }}
+                  className={cn(
+                    "flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
+                    isActive ? colors.active : `text-zinc-400 ${colors.hover}`
+                  )}
+                >
+                  <Icon className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", isActive ? "text-white" : colors.icon)} />
+                  <span className="hidden sm:inline">{item.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Hero Actions Container */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
-          {/* Toolbox Mode Button */}
-          <button
-            onClick={() => {
-              setViewMode("toolbox");
-              localStorage.setItem("radassist-view-mode", "toolbox");
-            }}
-            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500/10 to-emerald-500/10 border border-teal-500/20 hover:border-teal-500/40 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-300"
-          >
-            <div className="absolute inset-0 bg-teal-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
-            <Wrench className="w-5 h-5 text-teal-400 group-hover:rotate-12 transition-transform" />
-            <span className="text-sm font-bold text-teal-200 group-hover:text-teal-100">{t("mode.toolbox")}</span>
-          </button>
-
           {/* Emergency Panel Button */}
           <button
             onClick={() => {
@@ -757,7 +796,7 @@ export default function Home() {
         {viewMode === "ai" ? (
           <AIAssistant />
         ) : viewMode === "toolbox" ? (
-          <ToolboxMode />
+          <ToolboxMode activeTab={toolboxTab} onTabChange={setToolboxTab} />
         ) : viewMode === "report" ? (
           <StructuredReporting />
         ) : viewMode === "compare" ? (

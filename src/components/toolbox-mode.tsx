@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Ruler, Search, Activity, Calculator as CalcIcon, ShieldCheck, FileText, FlaskConical, Eye, GitBranch, Droplets, Zap, BookOpen } from 'lucide-react';
 import { RADIOLOGY_MEASUREMENTS, RADIOLOGY_CALCULATORS, Measurement } from '@/data/toolbox-data';
 import { RADS_SYSTEMS, RadsSystem } from '@/data/rads-data';
@@ -21,8 +21,27 @@ const RADS_COLOR_MAP: Record<string, { badge: string; bar: string; text: string 
     blue:   { badge: 'bg-blue-500/15 text-blue-300 border-blue-500/30',          bar: 'bg-blue-500',    text: 'text-blue-300' },
 };
 
-export function ToolboxMode() {
-    const [activeTab, setActiveTab] = useState<'ruler' | 'calc' | 'rads' | 'templates' | 'protocols' | 'signs' | 'ddx' | 'contrast' | 'artifacts' | 'glossary'>('ruler');
+type ToolboxTab = 'ruler' | 'calc' | 'rads' | 'templates' | 'protocols' | 'signs' | 'ddx' | 'contrast' | 'artifacts' | 'glossary';
+
+interface ToolboxModeProps {
+    activeTab?: ToolboxTab;
+    onTabChange?: (tab: ToolboxTab) => void;
+}
+
+export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxModeProps = {}) {
+    const [internalTab, setInternalTab] = useState<ToolboxTab>(controlledTab ?? 'ruler');
+    const activeTab = controlledTab ?? internalTab;
+    const setActiveTab = (tab: ToolboxTab) => {
+        setInternalTab(tab);
+        onTabChange?.(tab);
+    };
+
+    // Sync internal tab when controlled tab changes from parent
+    useEffect(() => {
+        if (controlledTab && controlledTab !== internalTab) {
+            setInternalTab(controlledTab);
+        }
+    }, [controlledTab]); // eslint-disable-line react-hooks/exhaustive-deps
 
     // --- RULER state ---
     const [searchQuery, setSearchQuery] = useState('');
