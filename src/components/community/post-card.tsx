@@ -21,7 +21,7 @@ export function PostCard({ post, compact = false }: PostCardProps) {
 
     const handleDelete = async (e: React.MouseEvent) => {
         e.preventDefault();
-        if (!confirm(language === 'tr' ? "Bu gönderiyi silmek istediğinizden emin misiniz?" : "Are you sure you want to delete this post?")) return;
+        if (!confirm(t("forum.deleteConfirm"))) return;
         await deletePost(post.id);
     };
 
@@ -33,12 +33,12 @@ export function PostCard({ post, compact = false }: PostCardProps) {
                     <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
                         <span className="text-[10px] font-bold text-white">{(post.author?.name || 'A').charAt(0)}</span>
                     </div>
-                    <span className="font-medium text-zinc-300">{post.author?.name || (language === 'tr' ? 'Anonim' : 'Anonymous')}</span>
+                    <span className="font-medium text-zinc-300">{post.author?.name || t("forum.anonymous")}</span>
                     {/* Admin badge — gönderi sahibi admin ise göster (author_id üzerinden) */}
                     {user?.is_admin && user.id === post.author_id && (
-                        <span className="flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[9px] font-bold">
-                            <ShieldCheck className="w-2.5 h-2.5" />
-                            YÖNETİCİ
+                        <span role="status" className="flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[9px] font-bold">
+                            <ShieldCheck className="w-2.5 h-2.5" aria-hidden="true" />
+                            {t("forum.admin")}
                         </span>
                     )}
                     <span className="w-1 h-1 rounded-full bg-zinc-700" />
@@ -52,7 +52,8 @@ export function PostCard({ post, compact = false }: PostCardProps) {
                     <button
                         onClick={handleDelete}
                         className="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg text-zinc-600 hover:text-red-400 hover:bg-red-500/10 transition-all"
-                        title="Gönderiyi Sil (Admin)"
+                        title={t("forum.deletePostAdmin")}
+                        aria-label={t("forum.deletePostAdmin")}
                     >
                         <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -84,13 +85,14 @@ export function PostCard({ post, compact = false }: PostCardProps) {
                         onClick={(e) => {
                             e.preventDefault();
                             if (!user) {
-                                alert(language === 'tr' ? "Beğenmek için giriş yapmalısınız." : "You must be logged in to like.");
+                                alert(t("forum.loginToLike"));
                                 return;
                             }
                             toggleLike(post.id, user.id);
                         }}
                         className="flex items-center gap-1.5 text-zinc-500 hover:text-cyan-400 transition-colors text-xs font-medium group/like"
                         aria-label={`${language === 'tr' ? 'Beğen' : 'Like'} (${post.likes} ${t("forum.likes")})`}
+                        aria-pressed={!!post.liked_by_user}
                         type="button"
                     >
                         <ThumbsUp className="w-4 h-4 group-hover/like:scale-110 transition-transform" aria-hidden="true" />
@@ -98,18 +100,18 @@ export function PostCard({ post, compact = false }: PostCardProps) {
                     </button>
 
                     <Link href={`/community/${post.id}`} className="flex items-center gap-1.5 text-zinc-500 hover:text-white transition-colors text-xs font-medium">
-                        <MessageSquare className="w-4 h-4" />
+                        <MessageSquare className="w-4 h-4" aria-hidden="true" />
                         <span>{post.comments?.length || 0} {t("forum.comments")}</span>
                     </Link>
                 </div>
 
                 <div className="flex items-center gap-4 text-xs text-zinc-600">
                     <div className="flex items-center gap-1">
-                        <Eye className="w-3.5 h-3.5" />
+                        <Eye className="w-3.5 h-3.5" aria-hidden="true" />
                         <span>{post.view_count}</span>
                     </div>
                     <button className="hover:text-white transition-colors">
-                        <Share2 className="w-3.5 h-3.5" />
+                        <Share2 className="w-3.5 h-3.5" aria-hidden="true" />
                     </button>
                 </div>
             </div>

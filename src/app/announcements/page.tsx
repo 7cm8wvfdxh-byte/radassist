@@ -5,8 +5,10 @@ import Link from "next/link";
 import { ArrowLeft, MapPin, ExternalLink, Megaphone, Bell, GraduationCap, FileText, Globe } from "lucide-react";
 import { announcements } from "@/data/announcements";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/context/language-context";
 
 export default function AnnouncementsPage() {
+    const { t, language } = useLanguage();
     const [filter, setFilter] = useState<'all' | 'congress' | 'seminar' | 'news' | 'update'>('all');
 
     const filteredData = filter === 'all'
@@ -35,11 +37,11 @@ export default function AnnouncementsPage() {
 
     const getLabel = (type: string) => {
         switch (type) {
-            case 'congress': return "Kongre";
-            case 'seminar': return "Seminer / Webinar";
-            case 'news': return "Haber / Makale";
-            case 'update': return "Sistem Güncellemesi";
-            default: return "Duyuru";
+            case 'congress': return t("announcements.congress");
+            case 'seminar': return t("announcements.seminar");
+            case 'news': return t("announcements.news");
+            case 'update': return t("announcements.update");
+            default: return t("announcements.announcement");
         }
     };
 
@@ -51,15 +53,15 @@ export default function AnnouncementsPage() {
                 <div className="space-y-4">
                     <Link href="/" className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors group">
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                        <span>Ana Ekrana Dön</span>
+                        <span>{t("nav.backToHome")}</span>
                     </Link>
                     <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-lg shadow-orange-500/20">
                             <Bell className="w-6 h-6 text-white" />
                         </div>
                         <div>
-                            <h1 className="text-3xl font-bold tracking-tight">Duyurular & Etkinlikler</h1>
-                            <p className="text-zinc-400">Radyoloji gündemini ve yaklaşan organizasyonları takip edin.</p>
+                            <h1 className="text-3xl font-bold tracking-tight">{t("announcements.title")}</h1>
+                            <p className="text-zinc-400">{t("announcements.subtitle")}</p>
                         </div>
                     </div>
                 </div>
@@ -77,7 +79,7 @@ export default function AnnouncementsPage() {
                                     : "bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white"
                             )}
                         >
-                            {f === 'all' ? 'Tümü' : getLabel(f)}
+                            {f === 'all' ? t("announcements.all") : getLabel(f)}
                         </button>
                     ))}
                 </div>
@@ -93,7 +95,7 @@ export default function AnnouncementsPage() {
                                     {getLabel(item.type)}
                                 </span>
                                 <span className="text-sm text-zinc-500 font-medium">
-                                    {new Date(item.date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                                    {new Date(item.date).toLocaleDateString(language === 'tr' ? 'tr-TR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
                                 </span>
                             </div>
 
@@ -120,7 +122,7 @@ export default function AnnouncementsPage() {
                                             target="_blank" // For external links mostly, internal for updates
                                             className="flex items-center gap-1.5 text-sm font-bold text-cyan-500 hover:text-cyan-400 transition-colors ml-auto"
                                         >
-                                            Detayları Gör <ExternalLink className="w-3 h-3" />
+                                            {t("announcements.viewDetails")} <ExternalLink className="w-3 h-3" />
                                         </a>
                                     )}
                                 </div>
@@ -130,7 +132,7 @@ export default function AnnouncementsPage() {
 
                     {filteredData.length === 0 && (
                         <div className="text-center py-20 text-zinc-500">
-                            Bu kategoride şu an aktif bir duyuru bulunmuyor.
+                            {t("announcements.noAnnouncements")}
                         </div>
                     )}
                 </div>

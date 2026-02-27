@@ -125,10 +125,14 @@ export function AdminNotifications() {
                 onClick={() => { setIsOpen(!isOpen); if (!isOpen) fetchNotifications(); }}
                 className="relative p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
                 title={language === 'tr' ? 'Admin Bildirimleri' : 'Admin Notifications'}
+                aria-expanded={isOpen}
             >
                 <Bell className="w-4 h-4 text-amber-400" />
                 {unreadCount > 0 && (
-                    <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] flex items-center justify-center px-1 rounded-full bg-red-500 text-white text-[10px] font-bold border-2 border-black">
+                    <span
+                        className="absolute -top-1 -right-1 min-w-[18px] h-[18px] flex items-center justify-center px-1 rounded-full bg-red-500 text-white text-[10px] font-bold border-2 border-black"
+                        aria-label={`${unreadCount} ${language === 'tr' ? 'okunmamış bildirim' : 'unread notifications'}`}
+                    >
                         {unreadCount > 99 ? '99+' : unreadCount}
                     </span>
                 )}
@@ -179,7 +183,7 @@ export function AdminNotifications() {
                         </div>
 
                         {/* Notification List */}
-                        <div className="flex-1 overflow-y-auto p-3 space-y-2">
+                        <div className="flex-1 overflow-y-auto p-3 space-y-2" role="feed" aria-label="Notifications">
                             {isLoading && notifications.length === 0 && (
                                 <div className="flex items-center justify-center py-12">
                                     <Loader2 className="w-6 h-6 text-zinc-500 animate-spin" />
@@ -198,6 +202,7 @@ export function AdminNotifications() {
                             {notifications.map(notif => (
                                 <div
                                     key={notif.id}
+                                    role="article"
                                     className={`p-3 rounded-xl border transition-all cursor-pointer group ${
                                         notif.is_read
                                             ? 'bg-white/[0.02] border-white/5 opacity-60'

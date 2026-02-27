@@ -170,6 +170,54 @@ const tr: Record<string, string> = {
     "search.caseStudy": "Vaka",
     "search.finding": "Bulgu",
     "search.announcement": "Duyuru",
+
+    // Auth pages
+    "auth.welcomeBack": "Tekrar Hoşgeldiniz",
+    "auth.welcomeBackSubtitle": "Kişiselleştirilmiş radyoloji asistanınıza erişmek için giriş yapın.",
+    "auth.joinUs": "Aramıza Katılın",
+    "auth.joinUsSubtitle": "Binlerce vaka, hesaplayıcı ve yapay zeka desteğiyle öğrenme sürecinizi hızlandırın.",
+    "auth.emailRequired": "Lütfen önce e-posta adresinizi girin.",
+    "auth.resetFailed": "Şifre sıfırlama e-postası gönderilemedi.",
+    "auth.unexpectedError": "Beklenmeyen bir hata oluştu.",
+    "auth.loginError": "Giriş yapılırken bir hata oluştu.",
+    "auth.resetSent": "Sıfırlama e-postası gönderildi!",
+    "auth.heroTitle1": "Radyolojik Tanıda",
+    "auth.heroTitle2": "Yapay Zeka Gücü",
+    "auth.heroSubtitle": "Binlerce patoloji, gelişmiş hesaplayıcılar ve akıllı asistan ile nöbetleriniz artık daha güvenli.",
+
+    // Announcements
+    "announcements.title": "Duyurular & Etkinlikler",
+    "announcements.subtitle": "Radyoloji gündemini ve yaklaşan organizasyonları takip edin.",
+    "announcements.congress": "Kongre",
+    "announcements.seminar": "Seminer / Webinar",
+    "announcements.news": "Haber / Makale",
+    "announcements.update": "Sistem Güncellemesi",
+    "announcements.announcement": "Duyuru",
+    "announcements.all": "Tümü",
+    "announcements.viewDetails": "Detayları Gör",
+    "announcements.noAnnouncements": "Bu kategoride şu an aktif bir duyuru bulunmuyor.",
+
+    // Forum / Community
+    "forum.anonymous": "Anonim",
+    "forum.admin": "YÖNETİCİ",
+    "forum.deletePost": "Gönderiyi Sil",
+    "forum.deletePostAdmin": "Gönderiyi Sil (Admin)",
+    "forum.deleteComment": "Yorumu Sil (Admin)",
+    "forum.notFound": "Gönderi bulunamadı.",
+    "forum.loginToLike": "Beğenmek için giriş yapmalısınız.",
+    "forum.backToForum": "Foruma Dön",
+    "forum.createError": "Gönderi oluşturulamadı. Lütfen tekrar deneyin.",
+    "forum.unexpectedError": "Beklenmeyen bir hata oluştu.",
+    "forum.deleteConfirm": "Bu gönderiyi silmek istediğinizden emin misiniz?",
+    "forum.deleteFailed": "Gönderi silinemedi.",
+    "forum.deleteCommentConfirm": "Bu yorumu silmek istediğinizden emin misiniz?",
+
+    // AI Assistant
+    "ai.welcomeTitle": "Patoloji Arama Asistanı",
+    "ai.welcomeText": "9 organ sistemindeki patoloji veritabanından arama yapabilirsiniz. Hastalık adı, bulgu veya anahtar kelime yazın.",
+    "ai.error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "ai.clearChat": "Sohbeti temizle",
+    "ai.disclaimer": "Yanıtlar veritabanı aramasına dayalıdır ve bilgilendirme amaçlıdır. Kesin tanı için klinik korelasyon gereklidir.",
 };
 
 // English translations
@@ -329,6 +377,54 @@ const en: Record<string, string> = {
     "search.caseStudy": "Case",
     "search.finding": "Finding",
     "search.announcement": "Announcement",
+
+    // Auth pages
+    "auth.welcomeBack": "Welcome Back",
+    "auth.welcomeBackSubtitle": "Sign in to access your personalized radiology assistant.",
+    "auth.joinUs": "Join Us",
+    "auth.joinUsSubtitle": "Accelerate your learning with thousands of cases, calculators, and AI support.",
+    "auth.emailRequired": "Please enter your email first.",
+    "auth.resetFailed": "Could not send password reset email.",
+    "auth.unexpectedError": "An unexpected error occurred.",
+    "auth.loginError": "An error occurred while logging in.",
+    "auth.resetSent": "Reset email sent!",
+    "auth.heroTitle1": "AI Power in",
+    "auth.heroTitle2": "Radiological Diagnosis",
+    "auth.heroSubtitle": "Your shifts are now safer with thousands of pathologies, advanced calculators, and a smart assistant.",
+
+    // Announcements
+    "announcements.title": "Announcements & Events",
+    "announcements.subtitle": "Follow the radiology agenda and upcoming events.",
+    "announcements.congress": "Congress",
+    "announcements.seminar": "Seminar / Webinar",
+    "announcements.news": "News / Article",
+    "announcements.update": "System Update",
+    "announcements.announcement": "Announcement",
+    "announcements.all": "All",
+    "announcements.viewDetails": "View Details",
+    "announcements.noAnnouncements": "No active announcements in this category.",
+
+    // Forum / Community
+    "forum.anonymous": "Anonymous",
+    "forum.admin": "ADMIN",
+    "forum.deletePost": "Delete Post",
+    "forum.deletePostAdmin": "Delete Post (Admin)",
+    "forum.deleteComment": "Delete Comment (Admin)",
+    "forum.notFound": "Post not found.",
+    "forum.loginToLike": "You must log in to like.",
+    "forum.backToForum": "Back to Forum",
+    "forum.createError": "Could not create post. Please try again.",
+    "forum.unexpectedError": "An unexpected error occurred.",
+    "forum.deleteConfirm": "Are you sure you want to delete this post?",
+    "forum.deleteFailed": "Could not delete post.",
+    "forum.deleteCommentConfirm": "Are you sure you want to delete this comment?",
+
+    // AI Assistant
+    "ai.welcomeTitle": "Pathology Search Assistant",
+    "ai.welcomeText": "Search across 9 organ system pathology databases. Type a disease name, finding, or keyword.",
+    "ai.error": "An error occurred. Please try again.",
+    "ai.clearChat": "Clear chat",
+    "ai.disclaimer": "Responses are based on database search and are for informational purposes only. Clinical correlation is required for definitive diagnosis.",
 };
 
 const translations: Record<Language, Record<string, string>> = { tr, en };

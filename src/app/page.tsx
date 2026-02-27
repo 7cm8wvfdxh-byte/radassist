@@ -4,13 +4,29 @@ import { useState, useMemo, useEffect, useDeferredValue } from "react";
 import { SearchBar } from "@/components/search-bar";
 import { PathologyCard } from "@/components/pathology-card";
 import { PathologyListItem } from "@/components/pathology-list-item";
-import { AIAssistant } from "@/components/ai-assistant";
-import { ToolboxMode } from "@/components/toolbox-mode";
-import { StructuredReporting } from "@/components/structured-reporting";
-import { ComparisonMode } from "@/components/comparison-mode";
-import { EmergencyPanel } from "@/components/emergency-panel";
-import { LearningStats } from "@/components/learning-stats";
-import { AnatomyAtlas } from "@/components/anatomy-atlas";
+import dynamic from "next/dynamic";
+
+const AIAssistant = dynamic(() => import("@/components/ai-assistant").then(mod => ({ default: mod.AIAssistant })), {
+  loading: () => <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" /></div>,
+});
+const ToolboxMode = dynamic(() => import("@/components/toolbox-mode").then(mod => ({ default: mod.ToolboxMode })), {
+  loading: () => <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin" /></div>,
+});
+const StructuredReporting = dynamic(() => import("@/components/structured-reporting").then(mod => ({ default: mod.StructuredReporting })), {
+  loading: () => <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" /></div>,
+});
+const ComparisonMode = dynamic(() => import("@/components/comparison-mode").then(mod => ({ default: mod.ComparisonMode })), {
+  loading: () => <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-green-500 border-t-transparent rounded-full animate-spin" /></div>,
+});
+const EmergencyPanel = dynamic(() => import("@/components/emergency-panel").then(mod => ({ default: mod.EmergencyPanel })), {
+  loading: () => <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-red-500 border-t-transparent rounded-full animate-spin" /></div>,
+});
+const LearningStats = dynamic(() => import("@/components/learning-stats").then(mod => ({ default: mod.LearningStats })), {
+  loading: () => <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-yellow-500 border-t-transparent rounded-full animate-spin" /></div>,
+});
+const AnatomyAtlas = dynamic(() => import("@/components/anatomy-atlas").then(mod => ({ default: mod.AnatomyAtlas })), {
+  loading: () => <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" /></div>,
+});
 import { brainPathologies } from "@/data/brain-pathologies";
 import { spinePathologies } from "@/data/spine-pathologies";
 import { liverPathologies } from "@/data/liver-pathologies";

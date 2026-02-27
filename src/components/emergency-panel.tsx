@@ -304,6 +304,7 @@ export function EmergencyPanel() {
                             {/* Case Header */}
                             <button
                                 onClick={() => setExpandedCase(isExpanded ? null : ec.id)}
+                                aria-expanded={isExpanded}
                                 className="w-full px-4 py-3 flex items-center gap-3 hover:bg-zinc-800/30 transition-colors"
                             >
                                 <div className={cn("p-2 rounded-lg", ec.color === 'red' ? 'bg-red-500/10 text-red-400' : 'bg-orange-500/10 text-orange-400')}>
@@ -312,7 +313,7 @@ export function EmergencyPanel() {
                                 <div className="flex-1 text-left">
                                     <div className="flex items-center gap-2">
                                         <h3 className="font-bold text-zinc-200">{ec.title}</h3>
-                                        <span className={cn("text-[10px] px-2 py-0.5 rounded-full border font-bold", urgencyColors[ec.urgency])}>
+                                        <span role="status" className={cn("text-[10px] px-2 py-0.5 rounded-full border font-bold", urgencyColors[ec.urgency])}>
                                             {ec.urgency}
                                         </span>
                                     </div>
@@ -394,9 +395,10 @@ export function EmergencyPanel() {
                                                 <button
                                                     onClick={() => handleCopy(ec.reportTemplate, `report-${ec.id}`)}
                                                     className="p-1 hover:bg-zinc-700 rounded transition-colors"
+                                                    aria-label="Rapor şablonunu kopyala"
                                                 >
                                                     {copiedId === `report-${ec.id}` ? (
-                                                        <Check className="w-3 h-3 text-green-400" />
+                                                        <Check className="w-3 h-3 text-green-400" aria-hidden="true" />
                                                     ) : (
                                                         <Copy className="w-3 h-3 text-zinc-500" />
                                                     )}
@@ -413,9 +415,10 @@ export function EmergencyPanel() {
                                                 <button
                                                     onClick={() => handleCopy(ec.notifyTemplate, `notify-${ec.id}`)}
                                                     className="p-1 hover:bg-zinc-700 rounded transition-colors"
+                                                    aria-label="Rapor şablonunu kopyala"
                                                 >
                                                     {copiedId === `notify-${ec.id}` ? (
-                                                        <Check className="w-3 h-3 text-green-400" />
+                                                        <Check className="w-3 h-3 text-green-400" aria-hidden="true" />
                                                     ) : (
                                                         <Copy className="w-3 h-3 text-zinc-500" />
                                                     )}

@@ -145,6 +145,7 @@ function PathologySelector({
         <div className="relative">
             <button
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label={side === 'left' ? 'Select left pathology' : 'Select right pathology'}
                 className={cn(
                     "w-full px-4 py-3 rounded-xl border text-left transition-all flex items-center justify-between",
                     selected
@@ -273,6 +274,7 @@ export function ComparisonMode() {
                     onClick={swapSides}
                     className="mt-5 p-2 rounded-full bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 transition-colors"
                     title={isEn ? "Swap sides" : "Tarafları değiştir"}
+                    aria-label="Swap pathologies"
                 >
                     <ArrowLeftRight className="w-4 h-4 text-zinc-400" />
                 </button>
@@ -286,7 +288,7 @@ export function ComparisonMode() {
             {left && right ? (
                 <div className="space-y-4">
                     {/* Summary Row */}
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-4">
                             <h3 className="font-bold text-blue-300 text-lg">{left.name}</h3>
                             <p className="text-xs text-zinc-400">{left.category}</p>
@@ -307,6 +309,7 @@ export function ComparisonMode() {
                     <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl overflow-hidden">
                         <button
                             onClick={() => toggleSection('findings')}
+                            aria-expanded={expandedSections.includes('findings')}
                             className="w-full px-4 py-3 flex items-center justify-between hover:bg-zinc-800/50 transition-colors"
                         >
                             <span className="text-sm font-bold text-zinc-300">{isEn ? 'Imaging Findings' : 'Görüntüleme Bulguları'}</span>
@@ -314,7 +317,7 @@ export function ComparisonMode() {
                         </button>
                         {expandedSections.includes('findings') && (
                             <div className="border-t border-zinc-800">
-                                <div className="grid grid-cols-2 divide-x divide-zinc-800">
+                                <div className="grid grid-cols-1 md:grid-cols-2 md:divide-x divide-zinc-800">
                                     <div className="p-4 space-y-2">
                                         {leftFindings.length > 0 ? leftFindings.map((f, i) => (
                                             <div key={i} className="text-xs">
@@ -340,6 +343,7 @@ export function ComparisonMode() {
                     <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl overflow-hidden">
                         <button
                             onClick={() => toggleSection('keypoints')}
+                            aria-expanded={expandedSections.includes('keypoints')}
                             className="w-full px-4 py-3 flex items-center justify-between hover:bg-zinc-800/50 transition-colors"
                         >
                             <span className="text-sm font-bold text-zinc-300">{isEn ? 'Key Points' : 'Anahtar Noktalar'}</span>
@@ -347,7 +351,7 @@ export function ComparisonMode() {
                         </button>
                         {expandedSections.includes('keypoints') && (
                             <div className="border-t border-zinc-800">
-                                <div className="grid grid-cols-2 divide-x divide-zinc-800">
+                                <div className="grid grid-cols-1 md:grid-cols-2 md:divide-x divide-zinc-800">
                                     <div className="p-4">
                                         <ul className="space-y-1.5">
                                             {left.keyPoints.map((kp, i) => (
@@ -377,6 +381,7 @@ export function ComparisonMode() {
                     <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl overflow-hidden">
                         <button
                             onClick={() => toggleSection('differential')}
+                            aria-expanded={expandedSections.includes('differential')}
                             className="w-full px-4 py-3 flex items-center justify-between hover:bg-zinc-800/50 transition-colors"
                         >
                             <span className="text-sm font-bold text-zinc-300">{isEn ? 'Differential Diagnosis / Additional Info' : 'Ayırıcı Tanı / Ek Bilgi'}</span>
@@ -384,7 +389,7 @@ export function ComparisonMode() {
                         </button>
                         {expandedSections.includes('differential') && (
                             <div className="border-t border-zinc-800">
-                                <div className="grid grid-cols-2 divide-x divide-zinc-800">
+                                <div className="grid grid-cols-1 md:grid-cols-2 md:divide-x divide-zinc-800">
                                     <div className="p-4 space-y-3">
                                         {left.etiology && (
                                             <div>

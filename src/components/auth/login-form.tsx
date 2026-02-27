@@ -21,7 +21,7 @@ export function LoginForm() {
 
     const handleForgotPassword = async () => {
         if (!email.trim()) {
-            setError(language === 'tr' ? "Lütfen önce e-posta adresinizi girin." : "Please enter your email first.");
+            setError(t("auth.emailRequired"));
             return;
         }
         try {
@@ -29,13 +29,13 @@ export function LoginForm() {
                 redirectTo: `${window.location.origin}/login`,
             });
             if (resetError) {
-                setError(language === 'tr' ? "Şifre sıfırlama e-postası gönderilemedi." : "Could not send password reset email.");
+                setError(t("auth.resetFailed"));
             } else {
                 setResetSent(true);
                 setError("");
             }
         } catch {
-            setError(language === 'tr' ? "Beklenmeyen bir hata oluştu." : "An unexpected error occurred.");
+            setError(t("auth.unexpectedError"));
         }
     };
 
@@ -49,7 +49,7 @@ export function LoginForm() {
         if (result.success) {
             router.push("/");
         } else {
-            setError(result.error || "Giriş yapılırken bir hata oluştu.");
+            setError(result.error || t("auth.loginError"));
         }
 
         setIsLoading(false);
@@ -99,7 +99,7 @@ export function LoginForm() {
                 {resetSent ? (
                     <span className="flex items-center gap-1 text-green-400 text-xs">
                         <CheckCircle2 className="w-3.5 h-3.5" />
-                        {language === 'tr' ? 'Sıfırlama e-postası gönderildi!' : 'Reset email sent!'}
+                        {t("auth.resetSent")}
                     </span>
                 ) : (
                     <button type="button" onClick={handleForgotPassword} className="text-cyan-400 hover:text-cyan-300 transition-colors">

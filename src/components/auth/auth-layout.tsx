@@ -1,5 +1,8 @@
+"use client";
+
 import React from 'react';
 import { Brain, ShieldCheck } from 'lucide-react';
+import { useLanguage } from '@/context/language-context';
 
 interface AuthLayoutProps {
     children: React.ReactNode;
@@ -9,6 +12,7 @@ interface AuthLayoutProps {
 }
 
 export function AuthLayout({ children, title, subtitle, illustration }: AuthLayoutProps) {
+    const { t } = useLanguage();
     return (
         <div className="min-h-screen w-full flex bg-black text-white selection:bg-cyan-500/30">
 
@@ -39,11 +43,11 @@ export function AuthLayout({ children, title, subtitle, illustration }: AuthLayo
                         </div>
                     )}
                     <h1 className="text-4xl font-bold leading-tight">
-                        Radyolojik Tanıda <br />
-                        <span className="text-cyan-400">Yapay Zeka</span> Gücü
+                        {t("auth.heroTitle1")} <br />
+                        <span className="text-cyan-400">{t("auth.heroTitle2")}</span>
                     </h1>
                     <p className="text-zinc-400 text-lg leading-relaxed">
-                        Binlerce patoloji, gelişmiş hesaplayıcılar ve akıllı asistan ile nöbetleriniz artık daha güvenli.
+                        {t("auth.heroSubtitle")}
                     </p>
                 </div>
 

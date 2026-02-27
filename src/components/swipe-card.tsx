@@ -1,5 +1,5 @@
 import { motion, PanInfo, useMotionValue, useTransform, useAnimation } from "framer-motion";
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { Brain, Info, RotateCw } from "lucide-react";
@@ -13,7 +13,7 @@ interface SwipeCardProps {
     isFront: boolean; // Is this the top card?
 }
 
-export function SwipeCard({ data, onSwipeRight, onSwipeLeft, isFront }: SwipeCardProps) {
+export const SwipeCard = React.memo(function SwipeCard({ data, onSwipeRight, onSwipeLeft, isFront }: SwipeCardProps) {
     const { language } = useLanguage();
     const isEn = language === "en";
     const [isFlipped, setIsFlipped] = useState(false);
@@ -170,4 +170,4 @@ export function SwipeCard({ data, onSwipeRight, onSwipeLeft, isFront }: SwipeCar
             </motion.div>
         </motion.div>
     );
-}
+});

@@ -21,6 +21,7 @@ const TabsList = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <div
         ref={ref}
+        role="tablist"
         className={cn(
             "inline-flex h-10 items-center justify-center rounded-md bg-zinc-800 p-1 text-zinc-400",
             className
@@ -51,6 +52,7 @@ const TabsContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <div
         ref={ref}
+        role="tabpanel"
         className={cn(
             "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
             className
