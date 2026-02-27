@@ -253,7 +253,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#030712] relative aurora-bg selection:bg-indigo-500/30">
 
       {/* Hero Section */}
-      <div className="relative pt-24 pb-12 px-6 flex flex-col items-center justify-center text-center">
+      <div className="relative pt-16 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 flex flex-col items-center justify-center text-center">
 
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
 
@@ -263,12 +263,12 @@ export default function Home() {
         </div>
 
 
-        <h1 className="text-6xl sm:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-500 mb-4 sm:mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
           RadAsist
         </h1>
 
         {/* Hero Actions Container */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
           {/* Toolbox Mode Button */}
           <button
             onClick={() => {
@@ -367,7 +367,7 @@ export default function Home() {
           {/* Module Selector - 5 Organs */}
           {viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
             <div className="flex justify-center mb-8">
-              <div className="flex flex-wrap justify-center gap-1 p-1 bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-2xl relative">
+              <div className="flex flex-wrap justify-center gap-1 p-1 bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-2xl relative max-w-full overflow-x-auto">
                 <button
                   onClick={() => {
                     setActiveModule("brain");
@@ -581,9 +581,9 @@ export default function Home() {
             </div>
           )}
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
             {/* View Toggle */}
-            <div className="bg-slate-800/50 p-1 rounded-full border border-slate-700 flex items-center">
+            <div className="bg-slate-800/50 p-1 rounded-full border border-slate-700 flex items-center flex-wrap justify-center">
               <button
                 onClick={() => {
                   setViewMode("grid");
@@ -714,7 +714,7 @@ export default function Home() {
       </div>
 
       {/* Main Content Area */}
-      <div className="max-w-[1600px] mx-auto px-6 pb-24">
+      <div className="max-w-[1600px] mx-auto px-3 sm:px-6 pb-24">
 
         {viewMode === "ai" ? (
           <AIAssistant />
@@ -800,7 +800,7 @@ export default function Home() {
                 )}
               </div>
             )}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 items-start animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
               {filteredPathologies.map((pathology) => {
                 const sr = searchResultMap.get(pathology.id);
                 return (

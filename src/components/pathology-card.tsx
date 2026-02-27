@@ -144,7 +144,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     };
 
     return (
-        <div className="relative w-full h-[550px] perspective-1000 group/card" style={{ touchAction: 'pan-y' }}>
+        <div className="relative w-full h-[480px] sm:h-[550px] perspective-1000 group/card" style={{ touchAction: 'pan-y' }}>
 
             {/* CARD CONTAINER */}
             <div
@@ -156,7 +156,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                 {/* --- FRONT FACE --- */}
                 <div className="absolute inset-0 backface-hidden w-full h-full bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-xl">
                     {/* Header Image Area */}
-                    <div className="relative h-48 w-full bg-black shrink-0">
+                    <div className="relative h-36 sm:h-48 w-full bg-black shrink-0">
                         {data.gallery && data.gallery.length > 0 ? (
                             <Image
                                 src={data.gallery[activeImage ?? 0].url}
@@ -207,9 +207,9 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Front Content */}
-                    <div className="p-5 flex-1 flex flex-col min-h-0">
+                    <div className="p-3 sm:p-5 flex-1 flex flex-col min-h-0">
                         <div className="flex justify-between items-start mb-2">
-                            <h3 className="text-xl font-bold text-white leading-tight pr-4">{displayName}</h3>
+                            <h3 className="text-base sm:text-xl font-bold text-white leading-tight pr-4">{displayName}</h3>
                             <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider shrink-0">
                                 <RotateCw className="w-3 h-3 group-hover/flip:rotate-180 transition-transform duration-500" />
                                 {t("detailed_view")}
@@ -286,7 +286,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         </div>
 
                         {/* Scrollable Content Area */}
-                        <div className="flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-700 min-h-0 overscroll-contain">
+                        <div className="flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-700 min-h-0 overscroll-contain" style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}>
                             {activeTab === 'summary' ? (
                                 <ul className="space-y-2">
                                     {displayKeyPoints.slice(0, 4).map((kp, i) => ( // Show up to 4 key points
@@ -343,7 +343,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Back Content */}
-                    <div className="p-6 flex-1 overflow-y-auto space-y-5 overscroll-contain">
+                    <div className="p-4 sm:p-6 flex-1 overflow-y-auto space-y-5 overscroll-contain" style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}>
 
                         {/* WHY? Section */}
                         {displayMechanism && (
