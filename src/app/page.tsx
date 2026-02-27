@@ -295,17 +295,17 @@ export default function Home() {
         <div className="w-full max-w-4xl mx-auto mb-6 sm:mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
           <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 bg-zinc-900/40 backdrop-blur-sm p-2 sm:p-3 rounded-2xl border border-white/5">
             {([
-              { key: 'ruler' as const, icon: Ruler, label: language === 'tr' ? 'Normal Değerler' : 'Normal Values', color: 'cyan' },
-              { key: 'calc' as const, icon: Calculator, label: language === 'tr' ? 'Hesaplayıcılar' : 'Calculators', color: 'purple' },
-              { key: 'rads' as const, icon: ShieldCheck, label: 'RADS', color: 'emerald' },
-              { key: 'templates' as const, icon: FileText, label: language === 'tr' ? 'Şablonlar' : 'Templates', color: 'sky' },
-              { key: 'protocols' as const, icon: FlaskConical, label: language === 'tr' ? 'Protokoller' : 'Protocols', color: 'amber' },
-              { key: 'signs' as const, icon: Eye, label: language === 'tr' ? 'İşaretler' : 'Signs', color: 'rose' },
-              { key: 'ddx' as const, icon: GitBranch, label: 'DDx', color: 'orange' },
-              { key: 'contrast' as const, icon: Droplets, label: language === 'tr' ? 'Kontrast' : 'Contrast', color: 'blue' },
-              { key: 'artifacts' as const, icon: Zap, label: language === 'tr' ? 'Artefaktlar' : 'Artifacts', color: 'yellow' },
-              { key: 'glossary' as const, icon: BookOpen, label: language === 'tr' ? 'Sözlük' : 'Glossary', color: 'teal' },
-              { key: 'sequences' as const, icon: Magnet, label: language === 'tr' ? 'MR Sekanslar' : 'MR Sequences', color: 'fuchsia' },
+              { key: 'ruler' as const, icon: Ruler, label: language === 'tr' ? 'Normal Değerler' : 'Normal Values', shortLabel: 'Normal', color: 'cyan' },
+              { key: 'calc' as const, icon: Calculator, label: language === 'tr' ? 'Hesaplayıcılar' : 'Calculators', shortLabel: language === 'tr' ? 'Hesap' : 'Calc', color: 'purple' },
+              { key: 'rads' as const, icon: ShieldCheck, label: 'RADS', shortLabel: 'RADS', color: 'emerald' },
+              { key: 'templates' as const, icon: FileText, label: language === 'tr' ? 'Şablonlar' : 'Templates', shortLabel: language === 'tr' ? 'Şablon' : 'Tmpl', color: 'sky' },
+              { key: 'protocols' as const, icon: FlaskConical, label: language === 'tr' ? 'Protokoller' : 'Protocols', shortLabel: language === 'tr' ? 'Protokol' : 'Proto', color: 'amber' },
+              { key: 'signs' as const, icon: Eye, label: language === 'tr' ? 'İşaretler' : 'Signs', shortLabel: language === 'tr' ? 'İşaret' : 'Signs', color: 'rose' },
+              { key: 'ddx' as const, icon: GitBranch, label: 'DDx', shortLabel: 'DDx', color: 'orange' },
+              { key: 'contrast' as const, icon: Droplets, label: language === 'tr' ? 'Kontrast' : 'Contrast', shortLabel: language === 'tr' ? 'Kontrast' : 'Contrast', color: 'blue' },
+              { key: 'artifacts' as const, icon: Zap, label: language === 'tr' ? 'Artefaktlar' : 'Artifacts', shortLabel: language === 'tr' ? 'Artefakt' : 'Artifact', color: 'yellow' },
+              { key: 'glossary' as const, icon: BookOpen, label: language === 'tr' ? 'Sözlük' : 'Glossary', shortLabel: language === 'tr' ? 'Sözlük' : 'Gloss', color: 'teal' },
+              { key: 'sequences' as const, icon: Magnet, label: language === 'tr' ? 'MR Sekanslar' : 'MR Sequences', shortLabel: 'MR', color: 'fuchsia' },
             ]).map(item => {
               const Icon = item.icon;
               const isActive = viewMode === 'toolbox' && toolboxTab === item.key;
@@ -332,11 +332,12 @@ export default function Home() {
                     localStorage.setItem('radassist-view-mode', 'toolbox');
                   }}
                   className={cn(
-                    "flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
+                    "flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
                     isActive ? colors.active : `text-zinc-400 ${colors.hover}`
                   )}
                 >
                   <Icon className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", isActive ? "text-white" : colors.icon)} />
+                  <span className="sm:hidden text-[10px]">{item.shortLabel}</span>
                   <span className="hidden sm:inline">{item.label}</span>
                 </button>
               );
@@ -347,12 +348,12 @@ export default function Home() {
 
             {/* Other Features */}
             {([
-              { mode: 'emergency' as const, icon: AlertTriangle, label: language === 'tr' ? 'Acil Radyoloji' : 'Emergency', color: 'red' },
-              { mode: 'report' as const, icon: FileText, label: language === 'tr' ? 'Raporlama' : 'Reporting', color: 'blue' },
-              { mode: 'ai' as const, icon: Search, label: language === 'tr' ? 'AI Arama' : 'AI Search', color: 'purple' },
-              { mode: 'compare' as const, icon: GitCompare, label: language === 'tr' ? 'Karşılaştırma' : 'Compare', color: 'violet' },
-              { mode: 'stats' as const, icon: BarChart3, label: language === 'tr' ? 'İstatistikler' : 'Stats', color: 'yellow' },
-              { mode: 'anatomy' as const, icon: BookOpen, label: language === 'tr' ? 'Anatomi Atlası' : 'Anatomy Atlas', color: 'green' },
+              { mode: 'emergency' as const, icon: AlertTriangle, label: language === 'tr' ? 'Acil Radyoloji' : 'Emergency', shortLabel: language === 'tr' ? 'Acil' : 'Emerg', color: 'red' },
+              { mode: 'report' as const, icon: FileText, label: language === 'tr' ? 'Raporlama' : 'Reporting', shortLabel: language === 'tr' ? 'Rapor' : 'Report', color: 'blue' },
+              { mode: 'ai' as const, icon: Search, label: language === 'tr' ? 'AI Arama' : 'AI Search', shortLabel: 'AI', color: 'purple' },
+              { mode: 'compare' as const, icon: GitCompare, label: language === 'tr' ? 'Karşılaştırma' : 'Compare', shortLabel: language === 'tr' ? 'Karşıl.' : 'Comp', color: 'violet' },
+              { mode: 'stats' as const, icon: BarChart3, label: language === 'tr' ? 'İstatistikler' : 'Stats', shortLabel: language === 'tr' ? 'İstat.' : 'Stats', color: 'yellow' },
+              { mode: 'anatomy' as const, icon: BookOpen, label: language === 'tr' ? 'Anatomi Atlası' : 'Anatomy Atlas', shortLabel: language === 'tr' ? 'Anatomi' : 'Anatomy', color: 'green' },
             ]).map(item => {
               const Icon = item.icon;
               const isActive = viewMode === item.mode;
@@ -373,11 +374,12 @@ export default function Home() {
                     localStorage.setItem('radassist-view-mode', item.mode);
                   }}
                   className={cn(
-                    "flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
+                    "flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
                     isActive ? colors.active : `text-zinc-400 ${colors.hover}`
                   )}
                 >
                   <Icon className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", isActive ? "text-white" : colors.icon)} />
+                  <span className="sm:hidden text-[10px]">{item.shortLabel}</span>
                   <span className="hidden sm:inline">{item.label}</span>
                 </button>
               );
@@ -393,13 +395,14 @@ export default function Home() {
                 localStorage.setItem("radassist-view-mode", "grid");
               }}
               className={cn(
-                "flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
+                "flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
                 viewMode === "grid"
                   ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/20"
                   : "text-zinc-400 hover:bg-indigo-500/10 hover:text-indigo-300"
               )}
             >
               <LayoutGrid className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", viewMode === "grid" ? "text-white" : "text-indigo-400")} />
+              <span className="sm:hidden text-[10px]">{language === 'tr' ? 'Izgara' : 'Grid'}</span>
               <span className="hidden sm:inline">{language === 'tr' ? 'Izgara' : 'Grid'}</span>
             </button>
             <button
@@ -408,13 +411,14 @@ export default function Home() {
                 localStorage.setItem("radassist-view-mode", "list");
               }}
               className={cn(
-                "flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
+                "flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
                 viewMode === "list"
                   ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/20"
                   : "text-zinc-400 hover:bg-indigo-500/10 hover:text-indigo-300"
               )}
             >
               <List className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", viewMode === "list" ? "text-white" : "text-indigo-400")} />
+              <span className="sm:hidden text-[10px]">{language === 'tr' ? 'Liste' : 'List'}</span>
               <span className="hidden sm:inline">{language === 'tr' ? 'Liste' : 'List'}</span>
             </button>
 
@@ -425,13 +429,14 @@ export default function Home() {
                 <button
                   onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
                   className={cn(
-                    "flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
+                    "flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
                     showFavoritesOnly
                       ? "bg-yellow-500/20 text-yellow-300 shadow-lg shadow-yellow-500/10"
                       : "text-zinc-400 hover:bg-yellow-500/10 hover:text-yellow-300"
                   )}
                 >
                   <Sparkles className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", showFavoritesOnly ? "fill-yellow-400 text-yellow-400" : "text-yellow-400")} />
+                  <span className="sm:hidden text-[10px]">{language === 'tr' ? 'Fav' : 'Fav'}</span>
                   <span className="hidden sm:inline">{t("home.favorites")}</span>
                   {favorites.length > 0 && (
                     <span className="ml-0.5 bg-white/10 px-1.5 py-0.5 rounded-full text-[10px]">
