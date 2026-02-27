@@ -37,7 +37,7 @@ import { breastPathologies } from "@/data/breast-pathologies";
 import { mskPathologies } from "@/data/msk-pathologies";
 import { gastroPathologies } from "@/data/gastro-pathologies";
 import { gynecologyPathologies } from "@/data/gynecology-pathologies";
-import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Flame, Bean, Wind, Wrench, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen, Ruler, Calculator, FlaskConical, Eye, GitBranch, Droplets, Zap } from "lucide-react";
+import { Search, Brain, Sparkles, LayoutGrid, List, X, Bone, Flame, Bean, Wind, Scan, Dumbbell, Utensils, Heart, FileText, GitCompare, AlertTriangle, BarChart3, BookOpen, Ruler, Calculator, FlaskConical, Eye, GitBranch, Droplets, Zap } from "lucide-react";
 import { caseStudies } from "@/data/case-studies";
 import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from "@/data/lexicon";
 import { announcements } from "@/data/announcements";
@@ -339,36 +339,107 @@ export default function Home() {
                 </button>
               );
             })}
+
+            {/* Divider */}
+            <div className="w-full h-px bg-white/5 my-1" />
+
+            {/* Other Features */}
+            {([
+              { mode: 'emergency' as const, icon: AlertTriangle, label: language === 'tr' ? 'Acil Radyoloji' : 'Emergency', color: 'red' },
+              { mode: 'report' as const, icon: FileText, label: language === 'tr' ? 'Raporlama' : 'Reporting', color: 'blue' },
+              { mode: 'ai' as const, icon: Search, label: language === 'tr' ? 'AI Arama' : 'AI Search', color: 'purple' },
+              { mode: 'compare' as const, icon: GitCompare, label: language === 'tr' ? 'Karşılaştırma' : 'Compare', color: 'violet' },
+              { mode: 'stats' as const, icon: BarChart3, label: language === 'tr' ? 'İstatistikler' : 'Stats', color: 'yellow' },
+              { mode: 'anatomy' as const, icon: BookOpen, label: language === 'tr' ? 'Anatomi Atlası' : 'Anatomy Atlas', color: 'green' },
+            ]).map(item => {
+              const Icon = item.icon;
+              const isActive = viewMode === item.mode;
+              const modeColorMap: Record<string, { active: string; hover: string; icon: string }> = {
+                red:    { active: 'bg-red-600 text-white shadow-lg shadow-red-500/20', hover: 'hover:bg-red-500/10 hover:text-red-300', icon: 'text-red-400' },
+                blue:   { active: 'bg-blue-600 text-white shadow-lg shadow-blue-500/20', hover: 'hover:bg-blue-500/10 hover:text-blue-300', icon: 'text-blue-400' },
+                purple: { active: 'bg-purple-600 text-white shadow-lg shadow-purple-500/20', hover: 'hover:bg-purple-500/10 hover:text-purple-300', icon: 'text-purple-400' },
+                violet: { active: 'bg-violet-600 text-white shadow-lg shadow-violet-500/20', hover: 'hover:bg-violet-500/10 hover:text-violet-300', icon: 'text-violet-400' },
+                yellow: { active: 'bg-yellow-600 text-white shadow-lg shadow-yellow-500/20', hover: 'hover:bg-yellow-500/10 hover:text-yellow-300', icon: 'text-yellow-400' },
+                green:  { active: 'bg-green-600 text-white shadow-lg shadow-green-500/20', hover: 'hover:bg-green-500/10 hover:text-green-300', icon: 'text-green-400' },
+              };
+              const colors = modeColorMap[item.color];
+              return (
+                <button
+                  key={item.mode}
+                  onClick={() => {
+                    setViewMode(item.mode);
+                    localStorage.setItem('radassist-view-mode', item.mode);
+                  }}
+                  className={cn(
+                    "flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
+                    isActive ? colors.active : `text-zinc-400 ${colors.hover}`
+                  )}
+                >
+                  <Icon className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", isActive ? "text-white" : colors.icon)} />
+                  <span className="hidden sm:inline">{item.label}</span>
+                </button>
+              );
+            })}
+
+            {/* Divider */}
+            <div className="w-px h-6 bg-white/10 mx-1 self-center" />
+
+            {/* Grid/List View Buttons */}
+            <button
+              onClick={() => {
+                setViewMode("grid");
+                localStorage.setItem("radassist-view-mode", "grid");
+              }}
+              className={cn(
+                "flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
+                viewMode === "grid"
+                  ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/20"
+                  : "text-zinc-400 hover:bg-indigo-500/10 hover:text-indigo-300"
+              )}
+            >
+              <LayoutGrid className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", viewMode === "grid" ? "text-white" : "text-indigo-400")} />
+              <span className="hidden sm:inline">{language === 'tr' ? 'Izgara' : 'Grid'}</span>
+            </button>
+            <button
+              onClick={() => {
+                setViewMode("list");
+                localStorage.setItem("radassist-view-mode", "list");
+              }}
+              className={cn(
+                "flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
+                viewMode === "list"
+                  ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/20"
+                  : "text-zinc-400 hover:bg-indigo-500/10 hover:text-indigo-300"
+              )}
+            >
+              <List className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", viewMode === "list" ? "text-white" : "text-indigo-400")} />
+              <span className="hidden sm:inline">{language === 'tr' ? 'Liste' : 'List'}</span>
+            </button>
+
+            {/* Favorites Toggle */}
+            {(viewMode === "grid" || viewMode === "list") && (
+              <>
+                <div className="w-px h-6 bg-white/10 mx-1 self-center" />
+                <button
+                  onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+                  className={cn(
+                    "flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 active:scale-95",
+                    showFavoritesOnly
+                      ? "bg-yellow-500/20 text-yellow-300 shadow-lg shadow-yellow-500/10"
+                      : "text-zinc-400 hover:bg-yellow-500/10 hover:text-yellow-300"
+                  )}
+                >
+                  <Sparkles className={cn("w-3.5 h-3.5 sm:w-4 sm:h-4", showFavoritesOnly ? "fill-yellow-400 text-yellow-400" : "text-yellow-400")} />
+                  <span className="hidden sm:inline">{t("home.favorites")}</span>
+                  {favorites.length > 0 && (
+                    <span className="ml-0.5 bg-white/10 px-1.5 py-0.5 rounded-full text-[10px]">
+                      {favorites.length}
+                    </span>
+                  )}
+                </button>
+              </>
+            )}
           </div>
-        </div>
-
-        {/* Hero Actions Container */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
-          {/* Emergency Panel Button */}
-          <button
-            onClick={() => {
-              setViewMode("emergency");
-              localStorage.setItem("radassist-view-mode", "emergency");
-            }}
-            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 hover:border-red-500/40 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-300"
-          >
-            <div className="absolute inset-0 bg-red-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
-            <AlertTriangle className="w-5 h-5 text-red-400 group-hover:scale-110 transition-transform" />
-            <span className="text-sm font-bold text-red-200 group-hover:text-red-100">{language === 'tr' ? 'Acil Radyoloji' : 'Emergency'}</span>
-          </button>
-
-          {/* Structured Reporting Button */}
-          <button
-            onClick={() => {
-              setViewMode("report");
-              localStorage.setItem("radassist-view-mode", "report");
-            }}
-            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-500/20 hover:border-blue-500/40 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 animate-in fade-in zoom-in duration-700 delay-300"
-          >
-            <div className="absolute inset-0 bg-blue-500/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
-            <FileText className="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform" />
-            <span className="text-sm font-bold text-blue-200 group-hover:text-blue-100">{language === 'tr' ? 'Raporlama' : 'Reporting'}</span>
-          </button>
         </div>
 
         {/* User Profile / Auth */}
@@ -648,144 +719,6 @@ export default function Home() {
             </div>
           )}
 
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
-            {/* View Toggle */}
-            <div className="bg-slate-800/50 p-1 rounded-full border border-slate-700 flex items-center flex-wrap justify-center">
-              <button
-                onClick={() => {
-                  setViewMode("grid");
-                  localStorage.setItem("radassist-view-mode", "grid");
-                }}
-                className={`p-1.5 rounded-full transition-all ${viewMode === "grid" ? "bg-indigo-500 text-white shadow-lg" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="Izgara Görünümü"
-              >
-                <LayoutGrid className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => {
-                  setViewMode("list");
-                  localStorage.setItem("radassist-view-mode", "list");
-                }}
-                className={`p-1.5 rounded-full transition-all ${viewMode === "list" ? "bg-indigo-500 text-white shadow-lg" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="Liste Görünümü"
-              >
-                <List className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => {
-                  setViewMode("ai");
-                  localStorage.setItem("radassist-view-mode", "ai");
-                }}
-                className={`p-1.5 rounded-full transition-all ${viewMode === "ai" ? "bg-purple-500 text-white shadow-lg ring-2 ring-purple-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="Patoloji Arama"
-              >
-                <Search className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={() => {
-                  setViewMode("toolbox");
-                  localStorage.setItem("radassist-view-mode", "toolbox");
-                }}
-                className={`p-1.5 rounded-full transition-all ${viewMode === "toolbox" ? "bg-teal-500 text-white shadow-lg ring-2 ring-teal-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="Alet Çantası"
-              >
-                <Wrench className="w-4 h-4" />
-              </button>
-
-              <div className="w-px h-4 bg-slate-700 mx-0.5" />
-
-              <button
-                onClick={() => {
-                  setViewMode("emergency");
-                  localStorage.setItem("radassist-view-mode", "emergency");
-                }}
-                className={`p-1.5 rounded-full transition-all ${viewMode === "emergency" ? "bg-red-500 text-white shadow-lg ring-2 ring-red-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="Acil Radyoloji"
-              >
-                <AlertTriangle className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => {
-                  setViewMode("report");
-                  localStorage.setItem("radassist-view-mode", "report");
-                }}
-                className={`p-1.5 rounded-full transition-all ${viewMode === "report" ? "bg-blue-500 text-white shadow-lg ring-2 ring-blue-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="Yapılandırılmış Raporlama"
-              >
-                <FileText className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => {
-                  setViewMode("compare");
-                  localStorage.setItem("radassist-view-mode", "compare");
-                }}
-                className={`p-1.5 rounded-full transition-all ${viewMode === "compare" ? "bg-violet-500 text-white shadow-lg ring-2 ring-violet-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="Karşılaştırma Modu"
-              >
-                <GitCompare className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => {
-                  setViewMode("stats");
-                  localStorage.setItem("radassist-view-mode", "stats");
-                }}
-                className={`p-1.5 rounded-full transition-all ${viewMode === "stats" ? "bg-yellow-500 text-white shadow-lg ring-2 ring-yellow-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="Öğrenme İstatistikleri"
-              >
-                <BarChart3 className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => {
-                  setViewMode("anatomy");
-                  localStorage.setItem("radassist-view-mode", "anatomy");
-                }}
-                className={`p-1.5 rounded-full transition-all ${viewMode === "anatomy" ? "bg-green-500 text-white shadow-lg ring-2 ring-green-500/50" : "text-slate-400 hover:text-white hover:bg-white/10"}`}
-                title="Anatomi Atlası"
-              >
-                <BookOpen className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Favorites Toggle */}
-            {viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
-              <button
-                onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${showFavoritesOnly
-                  ? "bg-yellow-500/10 text-yellow-400 border-yellow-500/50 shadow-[0_0_15px_rgba(234,179,8,0.2)]"
-                  : "bg-slate-800/50 text-slate-400 border-slate-700 hover:border-slate-600 hover:bg-slate-800"
-                  }`}
-              >
-                <Sparkles className={`w-4 h-4 ${showFavoritesOnly ? "fill-yellow-400" : ""}`} />
-                {showFavoritesOnly ? t("home.favorites") : t("home.favorites")}
-                {favorites.length > 0 && (
-                  <span className="ml-1 bg-white/10 px-1.5 py-0.5 rounded-full text-[10px]">
-                    {favorites.length}
-                  </span>
-                )}
-              </button>
-            )}
-          </div>
-
-          {viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
-            <p className="mt-4 text-slate-500 text-xs flex items-center gap-1">
-              <span className="hidden sm:inline text-slate-600">{t("search.shortcutHint")}</span>
-              <kbd className="hidden sm:inline px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-slate-500">
-                {typeof navigator !== "undefined" && navigator.platform?.includes("Mac") ? "⌘" : "Ctrl+"}K
-              </kbd>
-              <span className="hidden sm:inline text-slate-600 mr-2">{t("search.shortcutKey")}</span>
-              <span className="text-slate-700">|</span>
-              {activeModule === 'brain' ? (
-                <span className="ml-2">
-                  {language === 'tr' ? 'Örn:' : 'e.g.'} <span className="text-slate-400 border-b border-indigo-500/30 mx-1">Glioblastom</span>, <span className="text-slate-400 border-b border-cyan-500/30 mx-1">{language === 'tr' ? 'İnme' : 'Stroke'}</span>
-                </span>
-              ) : (
-                <span className="ml-2">
-                  {language === 'tr' ? 'Örn:' : 'e.g.'} <span className="text-slate-400 border-b border-emerald-500/30 mx-1">{language === 'tr' ? 'Fıtık' : 'Hernia'}</span>, <span className="text-slate-400 border-b border-cyan-500/30 mx-1">{language === 'tr' ? 'Stenoz' : 'Stenosis'}</span>
-                </span>
-              )}
-            </p>
-          )}
         </div>
 
       </div>
