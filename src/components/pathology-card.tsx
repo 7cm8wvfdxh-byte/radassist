@@ -62,17 +62,21 @@ function getHighlightPattern(query: string): { pattern: RegExp; lowerTokens: Set
 }
 
 const HighlightedText = React.memo(({ text, query }: { text: string, query?: string }) => {
+    if (!text) return null;
     if (!query || !query.trim()) return <>{text}</>;
-    const highlight = getHighlightPattern(query);
-    if (!highlight) return <>{text}</>;
-    // Reset lastIndex since regex has 'g' flag and is reused
-    highlight.pattern.lastIndex = 0;
-    const parts = text.split(highlight.pattern);
-    return (
-        <>
-            {parts.map((part, i) => highlight.lowerTokens.has(part.toLowerCase()) ? <mark key={i} className="bg-yellow-500/40 text-yellow-100 rounded-sm px-0.5 mx-0.5 font-semibold">{part}</mark> : part)}
-        </>
-    );
+    try {
+        const highlight = getHighlightPattern(query);
+        if (!highlight) return <>{text}</>;
+        highlight.pattern.lastIndex = 0;
+        const parts = text.split(highlight.pattern);
+        return (
+            <>
+                {parts.map((part, i) => highlight.lowerTokens.has(part.toLowerCase()) ? <mark key={i} className="bg-yellow-500/40 text-yellow-100 rounded-sm px-0.5 mx-0.5 font-semibold">{part}</mark> : part)}
+            </>
+        );
+    } catch {
+        return <>{text}</>;
+    }
 });
 
 // Format field name for display
@@ -348,7 +352,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Bottom Action Hint */}
-                    <div className="p-3 bg-zinc-950/30 border-t border-white/5 text-[10px] text-center text-zinc-500">
+                    <div className="p-3 bg-zinc-950/30 border-t border-white/5 text-[10px] text-center text-zinc-500 shrink-0">
                         {isEn ? "Flip card for detailed pathophysiology & mechanism ↻" : "Detaylı patofizyoloji ve mekanizma için kartı çevirin ↻"}
                     </div>
                 </div>

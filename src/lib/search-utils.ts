@@ -332,9 +332,11 @@ function isFuzzyMatch(token: string, target: string, maxDistance: number = 1): b
     if (token.length < 4) return token === target;
     if (target.includes(token) || token.includes(target)) return true;
 
-    // Kelime bazında kontrol
+    // Kelime bazında kontrol - sadece ilk 30 kelimeyi tara (uzun metinlerde performans)
     const words = target.split(/\s+/);
-    for (const word of words) {
+    const limit = Math.min(words.length, 30);
+    for (let i = 0; i < limit; i++) {
+        const word = words[i];
         if (word.length >= 3 && levenshteinDistance(token, word) <= maxDistance) {
             return true;
         }
@@ -548,6 +550,7 @@ export function performSmartSearch(pathologies: Pathology[], query: string): Pat
 }
 
 export function performScoredSearch(pathologies: Pathology[], query: string): SearchResult[] {
+  try {
     if (!query.trim()) return pathologies.map(p => ({
         pathology: p,
         score: 0,
@@ -783,6 +786,10 @@ export function performScoredSearch(pathologies: Pathology[], query: string): Se
     results.sort((a, b) => b.score - a.score);
 
     return results;
+  } catch (e) {
+    console.error("performScoredSearch error:", e);
+    return [];
+  }
 }
 
 // --- Otomatik Tamamlama Önerileri ---
@@ -803,12 +810,14 @@ export interface ExtraSearchSource {
 }
 
 export function getSearchSuggestions(
-    pathologies: Pathology[],
+    pathologies: Pathology[] | undefined,
     query: string,
     recentSearches: string[] = [],
     maxResults: number = 10,
     extraSources?: ExtraSearchSource
 ): SearchSuggestion[] {
+  try {
+    if (!pathologies) return [];
     if (!query.trim()) {
         // Query boşsa: Trending aramaları ve son aramaları göster
         const trending = getTrendingSearches(5);
@@ -970,6 +979,10 @@ export function getSearchSuggestions(
     }
 
     return suggestions.slice(0, maxResults);
+  } catch (e) {
+    console.error("getSearchSuggestions error:", e);
+    return [];
+  }
 }
 
 // --- "Bunu mu demek istediniz?" Önerileri (İyileştirilmiş: düşük sonuçlarda da göster) ---
@@ -979,6 +992,7 @@ export function getDidYouMeanSuggestions(
     resultCount: number = 0,
     maxResults: number = 3
 ): string[] {
+  try {
     const lower = query.toLowerCase().trim();
     if (lower.length < 2) return [];
 
@@ -1033,6 +1047,10 @@ export function getDidYouMeanSuggestions(
     }
 
     return results;
+  } catch (e) {
+    console.error("getDidYouMeanSuggestions error:", e);
+    return [];
+  }
 }
 
 // --- Tahmini Sonuç Sayısı (Dropdown için hızlı tahmin) ---
