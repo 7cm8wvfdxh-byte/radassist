@@ -122,7 +122,7 @@ export const SwipeCard = React.memo(function SwipeCard({ data, onSwipeRight, onS
 
                 {/* --- BACK SIDE --- */}
                 <div
-                    className="absolute inset-0 backface-hidden bg-zinc-800 p-6 flex flex-col h-full overflow-y-auto overscroll-contain scrollbar-thin scrollbar-thumb-zinc-700"
+                    className="absolute inset-0 backface-hidden bg-zinc-800 p-6 flex flex-col h-full overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-700"
                     style={{ transform: "rotateY(180deg)", WebkitOverflowScrolling: 'touch' }}
                 >
                     <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">

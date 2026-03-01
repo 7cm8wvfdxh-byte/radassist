@@ -20,6 +20,8 @@ interface BeforeInstallPromptEvent extends Event {
     userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
 }
 
+const DISMISSED_KEY = 'radassist-pwa-dismissed';
+
 let deferredPrompt: BeforeInstallPromptEvent | null = null;
 
 export function PwaInstallPrompt() {
@@ -33,6 +35,11 @@ export function PwaInstallPrompt() {
 
         // SSR guard
         if (typeof window === 'undefined') return;
+
+        // Don't show if user previously dismissed
+        try {
+            if (localStorage.getItem(DISMISSED_KEY)) return;
+        } catch { /* ignore */ }
 
         const userAgent = window.navigator.userAgent.toLowerCase();
         const isIosDevice = /iphone|ipad|ipod/.test(userAgent);
@@ -72,13 +79,18 @@ export function PwaInstallPrompt() {
         deferredPrompt = null;
     };
 
+    const handleDismiss = () => {
+        setShowPrompt(false);
+        try { localStorage.setItem(DISMISSED_KEY, '1'); } catch { /* ignore */ }
+    };
+
     if (!showPrompt) return null;
 
     return (
         <div className="fixed bottom-4 left-4 right-4 z-[100] animate-in slide-in-from-bottom-5 duration-500" role="dialog" aria-labelledby="pwa-prompt-title">
             <div className="bg-zinc-900/90 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-2xl relative">
                 <button
-                    onClick={() => setShowPrompt(false)}
+                    onClick={handleDismiss}
                     className="absolute top-2 right-2 text-zinc-400 hover:text-white p-1"
                     aria-label={t("general.close")}
                     type="button"

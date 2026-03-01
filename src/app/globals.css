@@ -39,6 +39,9 @@
   .backface-hidden {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    /* Flatten children's 3D context so overflow-y-auto scroll works on mobile */
+    transform-style: flat;
+    -webkit-transform-style: flat;
   }
 
   .rotate-y-180 {
@@ -62,18 +65,8 @@
 
 /* Mobile touch scrolling improvements */
 @media (max-width: 640px) {
-  /* Make card inner scroll areas work properly on mobile */
-  .overscroll-contain {
-    overscroll-behavior: contain;
+  .backface-hidden {
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-y;
-  }
-
-  /* Isolate scrollable areas from 3D transform context on mobile */
-  .backface-hidden > .overflow-y-auto,
-  .backface-hidden > div > .overflow-y-auto {
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-y;
   }
 }
 
