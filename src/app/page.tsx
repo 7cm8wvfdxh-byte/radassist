@@ -205,21 +205,32 @@ export default function Home() {
     }
 
     if (hasActiveSearch) {
-      // Skorlu arama kullan (deferred to keep UI responsive)
-      const scored = performScoredSearch(pool, deferredSearchQuery);
+      try {
+        // Skorlu arama kullan (deferred to keep UI responsive)
+        const scored = performScoredSearch(pool, deferredSearchQuery);
 
-      // Sonuç az veya yoksa "bunu mu demek istediniz?" önerileri
-      const dymSuggestions = getDidYouMeanSuggestions(pool, deferredSearchQuery, scored.length);
+        // Sonuç az veya yoksa "bunu mu demek istediniz?" önerileri
+        const dymSuggestions = getDidYouMeanSuggestions(pool, deferredSearchQuery, scored.length);
 
-      // Organ bazlı filtre chip'leri
-      const organFilters = scored.length > 0 ? getOrganFilters(scored) : [];
+        // Organ bazlı filtre chip'leri
+        const organFilters = scored.length > 0 ? getOrganFilters(scored) : [];
 
-      return {
-        filteredPathologies: scored.map(r => r.pathology),
-        searchResults: scored,
-        didYouMeanSuggestions: dymSuggestions,
-        organFilters,
-      };
+        return {
+          filteredPathologies: scored.map(r => r.pathology),
+          searchResults: scored,
+          didYouMeanSuggestions: dymSuggestions,
+          organFilters,
+        };
+      } catch (e) {
+        console.error("Search error:", e);
+        // Arama çökerse tüm listeyi döndür
+        return {
+          filteredPathologies: pool,
+          searchResults: [] as SearchResult[],
+          didYouMeanSuggestions: [] as string[],
+          organFilters: [] as OrganFilterResult[],
+        };
+      }
     }
 
     // Arama yoksa kategori sıralaması uygula

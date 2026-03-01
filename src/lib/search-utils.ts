@@ -343,13 +343,23 @@ function isFuzzyMatch(token: string, target: string, maxDistance: number = 1): b
 }
 
 // --- Token Genişletme (Bidirectional) ---
+const _expandCache = new Map<string, string[]>();
+const MAX_EXPANDED_TOKENS = 20;
+
 export function expandQueryTokens(query: string): string[] {
-    const rawTokens = query.toLowerCase().split(/\s+/).filter(t => t.length > 0);
+    const cacheKey = query.toLowerCase().trim();
+    if (!cacheKey) return [];
+    const cached = _expandCache.get(cacheKey);
+    if (cached) return cached;
+
+    const rawTokens = cacheKey.split(/\s+/).filter(t => t.length > 0);
     const expandedTokens = new Set<string>(rawTokens);
 
     const reverseSynonyms = getReverseSynonyms();
 
-    rawTokens.forEach(token => {
+    for (const token of rawTokens) {
+        if (expandedTokens.size >= MAX_EXPANDED_TOKENS) break;
+
         // Fonetik düzeltme
         const corrected = getPhoneticCorrection(token);
         if (corrected && corrected !== token) {
@@ -359,33 +369,32 @@ export function expandQueryTokens(query: string): string[] {
 
         // İleri yönlü: Halk dili -> Tıbbi
         if (RADIOLOGY_SYNONYMS[effectiveToken]) {
-            RADIOLOGY_SYNONYMS[effectiveToken].forEach(syn => expandedTokens.add(syn.toLowerCase()));
+            for (const syn of RADIOLOGY_SYNONYMS[effectiveToken]) {
+                expandedTokens.add(syn.toLowerCase());
+                if (expandedTokens.size >= MAX_EXPANDED_TOKENS) break;
+            }
         }
 
         // Geri yönlü: Tıbbi -> Halk dili + diğer teknik terimler
         if (reverseSynonyms[effectiveToken]) {
-            reverseSynonyms[effectiveToken].forEach(syn => expandedTokens.add(syn.toLowerCase()));
+            for (const syn of reverseSynonyms[effectiveToken]) {
+                expandedTokens.add(syn.toLowerCase());
+                if (expandedTokens.size >= MAX_EXPANDED_TOKENS) break;
+            }
         }
 
-        // Kısmi eşleşme (en az 3 karakter)
-        if (effectiveToken.length >= 3) {
-            Object.keys(RADIOLOGY_SYNONYMS).forEach(key => {
-                if (key.includes(effectiveToken) || effectiveToken.includes(key)) {
-                    RADIOLOGY_SYNONYMS[key].forEach(syn => expandedTokens.add(syn.toLowerCase()));
-                    expandedTokens.add(key);
-                }
-            });
-            // Ters sözlükte de kısmi eşleşme
-            Object.keys(reverseSynonyms).forEach(key => {
-                if (key.includes(effectiveToken) || effectiveToken.includes(key)) {
-                    reverseSynonyms[key].forEach(syn => expandedTokens.add(syn.toLowerCase()));
-                    expandedTokens.add(key);
-                }
-            });
-        }
-    });
+        // Kısmi eşleşme - sadece TAM kelime eşleşmesi (key===token veya token===key)
+        // Eski kod: key.includes(token) → "kan" kelimesi "kanama", "kanamak" vs hepsini patlatıyordu
+        // Yeni: sadece exact key match (zaten yukarıda yapılıyor) - kısmi eşleşme kaldırıldı
+    }
 
-    return Array.from(expandedTokens);
+    const result = Array.from(expandedTokens).slice(0, MAX_EXPANDED_TOKENS);
+
+    // Cache boyutunu sınırla
+    if (_expandCache.size > 200) _expandCache.clear();
+    _expandCache.set(cacheKey, result);
+
+    return result;
 }
 
 // --- Gelişmiş Sorgu Ayrıştırma (Negatif arama + Alan bazlı arama) ---
@@ -489,12 +498,15 @@ function getSearchableFields(p: Pathology): SearchField[] {
         });
     };
 
-    addFindingsFields(p.findings.ct as Record<string, string | undefined>, "ct", 3);
-    addFindingsFields(p.findings.mri as Record<string, string | undefined>, "mri", 3);
-    addFindingsFields(p.findings.usg as Record<string, string | undefined>, "usg", 3);
-    addFindingsFields(p.findings.xray as Record<string, string | undefined>, "xray", 3);
-    addFindingsFields(p.findings.pet as Record<string, string | undefined>, "pet", 3);
-    addFindingsFields(p.findings.mammography as Record<string, string | undefined>, "mammography", 3);
+    const findings = p.findings;
+    if (findings) {
+        addFindingsFields(findings.ct as Record<string, string | undefined>, "ct", 3);
+        addFindingsFields(findings.mri as Record<string, string | undefined>, "mri", 3);
+        addFindingsFields(findings.usg as Record<string, string | undefined>, "usg", 3);
+        addFindingsFields(findings.xray as Record<string, string | undefined>, "xray", 3);
+        addFindingsFields(findings.pet as Record<string, string | undefined>, "pet", 3);
+        addFindingsFields(findings.mammography as Record<string, string | undefined>, "mammography", 3);
+    }
 
     _fieldsCache.set(p, fields);
     return fields;
