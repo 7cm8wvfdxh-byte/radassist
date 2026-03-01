@@ -38,17 +38,39 @@ const MODALITY_CONFIG: Record<string, { label: string, icon: React.ElementType, 
     dsa: { label: "DSA", icon: Activity, color: "text-red-400", bg: "bg-red-500/10 border-red-500/20" },
 };
 
+// Cache compiled regex + token set per query to avoid recomputing per-card
+const _highlightCache = new Map<string, { pattern: RegExp; lowerTokens: Set<string> } | null>();
+
+function getHighlightPattern(query: string): { pattern: RegExp; lowerTokens: Set<string> } | null {
+    const key = query.toLowerCase().trim();
+    if (!key) return null;
+    const cached = _highlightCache.get(key);
+    if (cached !== undefined) return cached;
+
+    const tokens = expandQueryTokens(query);
+    if (tokens.length === 0) { _highlightCache.set(key, null); return null; }
+
+    const uniqueTokens = Array.from(new Set(tokens)).sort((a, b) => b.length - a.length);
+    const escaped = uniqueTokens.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+    const result = {
+        pattern: new RegExp(`(${escaped})`, 'gi'),
+        lowerTokens: new Set(uniqueTokens.map(t => t.toLowerCase())),
+    };
+    if (_highlightCache.size > 50) _highlightCache.clear();
+    _highlightCache.set(key, result);
+    return result;
+}
+
 const HighlightedText = React.memo(({ text, query }: { text: string, query?: string }) => {
     if (!query || !query.trim()) return <>{text}</>;
-    const tokens = expandQueryTokens(query);
-    if (tokens.length === 0) return <>{text}</>;
-    const uniqueTokens = Array.from(new Set(tokens)).sort((a, b) => b.length - a.length);
-    const pattern = new RegExp(`(${uniqueTokens.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi');
-    const parts = text.split(pattern);
-    const lowerTokens = new Set(uniqueTokens.map(t => t.toLowerCase()));
+    const highlight = getHighlightPattern(query);
+    if (!highlight) return <>{text}</>;
+    // Reset lastIndex since regex has 'g' flag and is reused
+    highlight.pattern.lastIndex = 0;
+    const parts = text.split(highlight.pattern);
     return (
         <>
-            {parts.map((part, i) => lowerTokens.has(part.toLowerCase()) ? <mark key={i} className="bg-yellow-500/40 text-yellow-100 rounded-sm px-0.5 mx-0.5 font-semibold">{part}</mark> : part)}
+            {parts.map((part, i) => highlight.lowerTokens.has(part.toLowerCase()) ? <mark key={i} className="bg-yellow-500/40 text-yellow-100 rounded-sm px-0.5 mx-0.5 font-semibold">{part}</mark> : part)}
         </>
     );
 });
