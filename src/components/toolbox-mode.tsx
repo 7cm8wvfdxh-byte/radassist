@@ -13,13 +13,13 @@ import { MR_SEQUENCES, MR_SEQUENCE_CATEGORIES, HEMORRHAGE_STAGES } from '@/data/
 import { cn } from '@/lib/utils';
 
 const RADS_COLOR_MAP: Record<string, { badge: string; bar: string; text: string }> = {
-    green:  { badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30', bar: 'bg-emerald-500', text: 'text-emerald-300' },
-    yellow: { badge: 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30',   bar: 'bg-yellow-400',  text: 'text-yellow-300' },
-    orange: { badge: 'bg-orange-500/15 text-orange-300 border-orange-500/30',   bar: 'bg-orange-500',  text: 'text-orange-300' },
-    red:    { badge: 'bg-red-500/15 text-red-300 border-red-500/30',             bar: 'bg-red-500',     text: 'text-red-300' },
-    purple: { badge: 'bg-purple-500/15 text-purple-300 border-purple-500/30',   bar: 'bg-purple-500',  text: 'text-purple-300' },
-    gray:   { badge: 'bg-zinc-500/15 text-zinc-400 border-zinc-500/30',          bar: 'bg-zinc-500',    text: 'text-zinc-400' },
-    blue:   { badge: 'bg-blue-500/15 text-blue-300 border-blue-500/30',          bar: 'bg-blue-500',    text: 'text-blue-300' },
+    green: { badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30', bar: 'bg-emerald-500', text: 'text-emerald-300' },
+    yellow: { badge: 'bg-yellow-500/15 text-yellow-300 border-yellow-500/30', bar: 'bg-yellow-400', text: 'text-yellow-300' },
+    orange: { badge: 'bg-orange-500/15 text-orange-300 border-orange-500/30', bar: 'bg-orange-500', text: 'text-orange-300' },
+    red: { badge: 'bg-red-500/15 text-red-300 border-red-500/30', bar: 'bg-red-500', text: 'text-red-300' },
+    purple: { badge: 'bg-purple-500/15 text-purple-300 border-purple-500/30', bar: 'bg-purple-500', text: 'text-purple-300' },
+    gray: { badge: 'bg-zinc-500/15 text-zinc-400 border-zinc-500/30', bar: 'bg-zinc-500', text: 'text-zinc-400' },
+    blue: { badge: 'bg-blue-500/15 text-blue-300 border-blue-500/30', bar: 'bg-blue-500', text: 'text-blue-300' },
 };
 
 type ToolboxTab = 'ruler' | 'calc' | 'rads' | 'templates' | 'protocols' | 'signs' | 'ddx' | 'contrast' | 'artifacts' | 'glossary' | 'sequences';
@@ -204,7 +204,7 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
         const change = ((current - baseline) / baseline) * 100;
         const response = current === 0 ? "Tam Yanıt (CR)" :
             change <= -30 ? "Kısmi Yanıt (PR)" :
-            change >= 20 && (current - baseline) >= 5 ? "Progresif Hastalık (PD)" : "Stabil Hastalık (SD)";
+                change >= 20 && (current - baseline) >= 5 ? "Progresif Hastalık (PD)" : "Stabil Hastalık (SD)";
         setCalcResult({ main: `%${change.toFixed(1)} Değişim`, detail: response });
     };
 
@@ -339,8 +339,8 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
 
             {/* ─── TAB: RADS ──────────────────────────────────────── */}
             {activeTab === 'rads' && (
-                <div className="max-w-4xl mx-auto w-full flex gap-6">
-                    <div className="w-1/3 space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-zinc-700">
+                <div className="max-w-4xl mx-auto w-full flex flex-col md:flex-row gap-6">
+                    <div className="w-full md:w-1/3 space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-zinc-700">
                         {RADS_SYSTEMS.map(sys => (
                             <button key={sys.id} onClick={() => setActiveRads(sys.id)} className={cn("w-full text-left p-3 rounded-xl border transition-all text-sm", activeRads === sys.id ? "bg-emerald-500/20 border-emerald-500 text-emerald-200 shadow-[0_0_10px_rgba(16,185,129,0.15)]" : "bg-zinc-900/40 border-zinc-800 text-zinc-400 hover:bg-zinc-800")}>
                                 <div className="font-bold">{sys.name}</div>
@@ -348,7 +348,7 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
                             </button>
                         ))}
                     </div>
-                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px] overflow-y-auto">
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[300px] md:min-h-[400px] overflow-y-auto">
                         {(() => {
                             const sys: RadsSystem | undefined = RADS_SYSTEMS.find(s => s.id === activeRads);
                             if (!sys) return null;
@@ -392,8 +392,8 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
 
             {/* ─── TAB: CALCULATOR ────────────────────────────────── */}
             {activeTab === 'calc' && (
-                <div className="max-w-4xl mx-auto w-full flex gap-6">
-                    <div className="w-1/3 space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-zinc-700">
+                <div className="max-w-4xl mx-auto w-full flex flex-col md:flex-row gap-6">
+                    <div className="w-full md:w-1/3 space-y-2 max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-zinc-700">
                         {RADIOLOGY_CALCULATORS.map(c => (
                             <button key={c.id} onClick={() => { setActiveCalc(c.id); setCalcResult(null); setCalcValues({}); }} className={cn("w-full text-left p-3 rounded-xl border transition-all text-sm", activeCalc === c.id ? "bg-purple-500/20 border-purple-500 text-purple-200 shadow-[0_0_10px_rgba(168,85,247,0.2)]" : "bg-zinc-900/40 border-zinc-800 text-zinc-400 hover:bg-zinc-800")}>
                                 <div className="font-semibold">{c.name}</div>
@@ -401,7 +401,7 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
                             </button>
                         ))}
                     </div>
-                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px]">
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[300px] md:min-h-[400px]">
                         {!activeCalc ? (
                             <div className="h-full flex flex-col items-center justify-center text-zinc-600">
                                 <Activity className="w-12 h-12 mb-3 opacity-30" />
@@ -548,7 +548,7 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
                                             <p className="text-xs text-zinc-500 italic">Her bölge: normal=0 puan, iskemi=−1 puan. Toplam 10 üzerinden.</p>
                                             <div className="bg-zinc-900/50 rounded-lg p-3 border border-zinc-800">
                                                 <p className="text-[10px] font-bold text-zinc-500 uppercase mb-2">Bazal Ganglia Düzeyi</p>
-                                                {[['c','Kaudat (C)'],['l','Lentiküler (L)'],['i','İnsüla (I)'],['ic','İnternal kapsül (IC)']].map(([key, label]) => (
+                                                {[['c', 'Kaudat (C)'], ['l', 'Lentiküler (L)'], ['i', 'İnsüla (I)'], ['ic', 'İnternal kapsül (IC)']].map(([key, label]) => (
                                                     <div key={key} className="flex items-center justify-between py-1">
                                                         <span>{label}</span>
                                                         <div className="flex bg-black/40 p-0.5 rounded border border-zinc-700">
@@ -560,7 +560,7 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
                                             </div>
                                             <div className="bg-zinc-900/50 rounded-lg p-3 border border-zinc-800">
                                                 <p className="text-[10px] font-bold text-zinc-500 uppercase mb-2">MCA Korteks Düzeyi</p>
-                                                {[['m1','M1 (Ant MCA)'],['m2','M2 (Ant Temporal)'],['m3','M3 (Post Temporal)'],['m4','M4 (Ant Sup)'],['m5','M5 (Lat Sup)'],['m6','M6 (Post Sup)']].map(([key, label]) => (
+                                                {[['m1', 'M1 (Ant MCA)'], ['m2', 'M2 (Ant Temporal)'], ['m3', 'M3 (Post Temporal)'], ['m4', 'M4 (Ant Sup)'], ['m5', 'M5 (Lat Sup)'], ['m6', 'M6 (Post Sup)']].map(([key, label]) => (
                                                     <div key={key} className="flex items-center justify-between py-1">
                                                         <span>{label}</span>
                                                         <div className="flex bg-black/40 p-0.5 rounded border border-zinc-700">
@@ -615,9 +615,9 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
 
             {/* ─── TAB: TEMPLATES ─────────────────────────────────── */}
             {activeTab === 'templates' && (
-                <div className="max-w-4xl mx-auto w-full flex gap-6">
+                <div className="max-w-4xl mx-auto w-full flex flex-col md:flex-row gap-6">
                     {/* Left: list */}
-                    <div className="w-1/3 flex flex-col gap-2 max-h-[620px]">
+                    <div className="w-full md:w-1/3 flex flex-col gap-2 max-h-[620px]">
                         <div className="relative flex-shrink-0">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
                             <input type="text" placeholder="Şablon ara..." value={templateSearch} onChange={e => setTemplateSearch(e.target.value)} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-2.5 pl-9 pr-3 text-zinc-200 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-sky-500 transition-colors" />
@@ -640,7 +640,7 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
                     </div>
 
                     {/* Right: detail */}
-                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px] overflow-y-auto">
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[300px] md:min-h-[400px] overflow-y-auto">
                         {!activeTemplate ? (
                             <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-3">
                                 <FileText className="w-12 h-12 opacity-20" />
@@ -696,9 +696,9 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
 
             {/* ─── TAB: PROTOCOLS ─────────────────────────────────── */}
             {activeTab === 'protocols' && (
-                <div className="max-w-4xl mx-auto w-full flex gap-6">
+                <div className="max-w-4xl mx-auto w-full flex flex-col md:flex-row gap-6">
                     {/* Left: list */}
-                    <div className="w-1/3 flex flex-col gap-2 max-h-[620px]">
+                    <div className="w-full md:w-1/3 flex flex-col gap-2 max-h-[620px]">
                         <div className="relative flex-shrink-0">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
                             <input type="text" placeholder="Protokol ara..." value={protocolSearch} onChange={e => setProtocolSearch(e.target.value)} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-2.5 pl-9 pr-3 text-zinc-200 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-amber-500 transition-colors" />
@@ -722,7 +722,7 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
                     </div>
 
                     {/* Right: detail */}
-                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px] overflow-y-auto">
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[300px] md:min-h-[400px] overflow-y-auto">
                         {!activeProtocol ? (
                             <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-3">
                                 <FlaskConical className="w-12 h-12 opacity-20" />
@@ -797,9 +797,9 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
             )}
             {/* ─── TAB: SIGNS ───────────────────────────────────────── */}
             {activeTab === 'signs' && (
-                <div className="max-w-4xl mx-auto w-full flex gap-6">
+                <div className="max-w-4xl mx-auto w-full flex flex-col md:flex-row gap-6">
                     {/* Left: list */}
-                    <div className="w-1/3 flex flex-col gap-2 max-h-[620px]">
+                    <div className="w-full md:w-1/3 flex flex-col gap-2 max-h-[620px]">
                         <div className="relative flex-shrink-0">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
                             <input type="text" placeholder="İşaret ara (örn: hampton, target)..." value={signsSearch} onChange={e => setSignsSearch(e.target.value)} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-2.5 pl-9 pr-3 text-zinc-200 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-rose-500 transition-colors" />
@@ -823,7 +823,7 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
                     </div>
 
                     {/* Right: detail */}
-                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px] overflow-y-auto">
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[300px] md:min-h-[400px] overflow-y-auto">
                         {!activeSign ? (
                             <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-3">
                                 <Eye className="w-12 h-12 opacity-20" />
@@ -865,9 +865,9 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
 
             {/* ─── TAB: DDX ────────────────────────────────────────────── */}
             {activeTab === 'ddx' && (
-                <div className="max-w-4xl mx-auto w-full flex gap-6">
+                <div className="max-w-4xl mx-auto w-full flex flex-col md:flex-row gap-6">
                     {/* Left: list */}
-                    <div className="w-1/3 flex flex-col gap-2 max-h-[620px]">
+                    <div className="w-full md:w-1/3 flex flex-col gap-2 max-h-[620px]">
                         <div className="relative flex-shrink-0">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
                             <input type="text" placeholder="Bulgu ara (ring enhance, GGO)..." value={ddxSearch} onChange={e => setDdxSearch(e.target.value)} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-2.5 pl-9 pr-3 text-zinc-200 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-orange-500 transition-colors" />
@@ -884,7 +884,7 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
                     </div>
 
                     {/* Right: detail */}
-                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px] overflow-y-auto">
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[300px] md:min-h-[400px] overflow-y-auto">
                         {!activeDdx ? (
                             <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-3">
                                 <GitBranch className="w-12 h-12 opacity-20" />
@@ -1081,9 +1081,9 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
 
             {/* ─── TAB: ARTIFACTS ───────────────────────────────────────── */}
             {activeTab === 'artifacts' && (
-                <div className="max-w-4xl mx-auto w-full flex gap-6">
+                <div className="max-w-4xl mx-auto w-full flex flex-col md:flex-row gap-6">
                     {/* Left: list */}
-                    <div className="w-1/3 flex flex-col gap-2 max-h-[620px]">
+                    <div className="w-full md:w-1/3 flex flex-col gap-2 max-h-[620px]">
                         <div className="relative flex-shrink-0">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500" />
                             <input type="text" placeholder="Artefakt ara (motion, beam)..." value={artifactSearch} onChange={e => setArtifactSearch(e.target.value)} className="w-full bg-zinc-900/80 border border-zinc-700 rounded-xl py-2.5 pl-9 pr-3 text-zinc-200 placeholder:text-zinc-600 text-sm focus:outline-none focus:border-yellow-500 transition-colors" />
@@ -1107,7 +1107,7 @@ export function ToolboxMode({ activeTab: controlledTab, onTabChange }: ToolboxMo
                     </div>
 
                     {/* Right: detail */}
-                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[400px] overflow-y-auto">
+                    <div className="flex-1 bg-zinc-900/60 rounded-2xl border border-zinc-800 p-6 flex flex-col min-h-[300px] md:min-h-[400px] overflow-y-auto">
                         {!activeArtifact ? (
                             <div className="h-full flex flex-col items-center justify-center text-zinc-600 gap-3">
                                 <Zap className="w-12 h-12 opacity-20" />
@@ -1223,17 +1223,17 @@ function SequencesPanel() {
     });
 
     const seqColorMap: Record<string, { bg: string; border: string; text: string; badge: string }> = {
-        blue:    { bg: 'bg-blue-500/10', border: 'border-blue-500/20', text: 'text-blue-400', badge: 'bg-blue-500/15 text-blue-300 border-blue-500/30' },
-        green:   { bg: 'bg-emerald-500/10', border: 'border-emerald-500/20', text: 'text-emerald-400', badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30' },
-        sky:     { bg: 'bg-sky-500/10', border: 'border-sky-500/20', text: 'text-sky-400', badge: 'bg-sky-500/15 text-sky-300 border-sky-500/30' },
-        indigo:  { bg: 'bg-indigo-500/10', border: 'border-indigo-500/20', text: 'text-indigo-400', badge: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30' },
-        orange:  { bg: 'bg-orange-500/10', border: 'border-orange-500/20', text: 'text-orange-400', badge: 'bg-orange-500/15 text-orange-300 border-orange-500/30' },
-        red:     { bg: 'bg-red-500/10', border: 'border-red-500/20', text: 'text-red-400', badge: 'bg-red-500/15 text-red-300 border-red-500/30' },
-        violet:  { bg: 'bg-violet-500/10', border: 'border-violet-500/20', text: 'text-violet-400', badge: 'bg-violet-500/15 text-violet-300 border-violet-500/30' },
+        blue: { bg: 'bg-blue-500/10', border: 'border-blue-500/20', text: 'text-blue-400', badge: 'bg-blue-500/15 text-blue-300 border-blue-500/30' },
+        green: { bg: 'bg-emerald-500/10', border: 'border-emerald-500/20', text: 'text-emerald-400', badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30' },
+        sky: { bg: 'bg-sky-500/10', border: 'border-sky-500/20', text: 'text-sky-400', badge: 'bg-sky-500/15 text-sky-300 border-sky-500/30' },
+        indigo: { bg: 'bg-indigo-500/10', border: 'border-indigo-500/20', text: 'text-indigo-400', badge: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30' },
+        orange: { bg: 'bg-orange-500/10', border: 'border-orange-500/20', text: 'text-orange-400', badge: 'bg-orange-500/15 text-orange-300 border-orange-500/30' },
+        red: { bg: 'bg-red-500/10', border: 'border-red-500/20', text: 'text-red-400', badge: 'bg-red-500/15 text-red-300 border-red-500/30' },
+        violet: { bg: 'bg-violet-500/10', border: 'border-violet-500/20', text: 'text-violet-400', badge: 'bg-violet-500/15 text-violet-300 border-violet-500/30' },
         emerald: { bg: 'bg-emerald-500/10', border: 'border-emerald-500/20', text: 'text-emerald-400', badge: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30' },
-        pink:    { bg: 'bg-pink-500/10', border: 'border-pink-500/20', text: 'text-pink-400', badge: 'bg-pink-500/15 text-pink-300 border-pink-500/30' },
-        rose:    { bg: 'bg-rose-500/10', border: 'border-rose-500/20', text: 'text-rose-400', badge: 'bg-rose-500/15 text-rose-300 border-rose-500/30' },
-        amber:   { bg: 'bg-amber-500/10', border: 'border-amber-500/20', text: 'text-amber-400', badge: 'bg-amber-500/15 text-amber-300 border-amber-500/30' },
+        pink: { bg: 'bg-pink-500/10', border: 'border-pink-500/20', text: 'text-pink-400', badge: 'bg-pink-500/15 text-pink-300 border-pink-500/30' },
+        rose: { bg: 'bg-rose-500/10', border: 'border-rose-500/20', text: 'text-rose-400', badge: 'bg-rose-500/15 text-rose-300 border-rose-500/30' },
+        amber: { bg: 'bg-amber-500/10', border: 'border-amber-500/20', text: 'text-amber-400', badge: 'bg-amber-500/15 text-amber-300 border-amber-500/30' },
     };
 
     const catColorMap: Record<string, string> = {

@@ -126,7 +126,7 @@ export function AIAssistant() {
     };
 
     return (
-        <div className="flex flex-col h-[calc(100vh-200px)] max-w-4xl mx-auto">
+        <div className="flex flex-col h-[calc(100dvh-200px)] md:h-[calc(100vh-200px)] max-w-4xl mx-auto">
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-white/10">
                 <div className="flex items-center gap-3">
