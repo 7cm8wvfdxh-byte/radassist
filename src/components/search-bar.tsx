@@ -260,7 +260,10 @@ export const SearchBar = React.memo(function SearchBar({
                     {didYouMean.map((suggestion, i) => (
                         <button
                             key={suggestion}
-                            onClick={() => handleSelect(suggestion)}
+                            onMouseDown={(e) => {
+                                e.preventDefault();
+                                handleSelect(suggestion);
+                            }}
                             className="text-xs text-indigo-400 hover:text-indigo-300 underline underline-offset-2 mx-1 transition-colors font-medium"
                             type="button"
                         >
@@ -300,7 +303,10 @@ export const SearchBar = React.memo(function SearchBar({
                         {suggestions.map((suggestion, index) => (
                             <button
                                 key={`${suggestion.type}-${suggestion.text}-${index}`}
-                                onClick={() => handleSelect(suggestion.text)}
+                                onMouseDown={(e) => {
+                                    e.preventDefault(); // Click'i ve blur'u engellemek için
+                                    handleSelect(suggestion.text);
+                                }}
                                 onMouseEnter={() => setSelectedIndex(index)}
                                 className={cn(
                                     "flex items-center gap-3 w-full px-4 py-2.5 text-left transition-all duration-150",
@@ -318,11 +324,11 @@ export const SearchBar = React.memo(function SearchBar({
                                     selectedIndex === index && "scale-110",
                                     suggestion.type === "pathology" ? "bg-indigo-500/15 text-indigo-400"
                                         : suggestion.type === "case" ? "bg-emerald-500/15 text-emerald-400"
-                                        : suggestion.type === "lexicon" ? "bg-amber-500/15 text-amber-400"
-                                        : suggestion.type === "announcement" ? "bg-rose-500/15 text-rose-400"
-                                        : suggestion.type === "term" ? "bg-cyan-500/15 text-cyan-400"
-                                        : suggestion.type === "trending" ? "bg-orange-500/15 text-orange-400"
-                                        : "bg-slate-500/15 text-slate-400"
+                                            : suggestion.type === "lexicon" ? "bg-amber-500/15 text-amber-400"
+                                                : suggestion.type === "announcement" ? "bg-rose-500/15 text-rose-400"
+                                                    : suggestion.type === "term" ? "bg-cyan-500/15 text-cyan-400"
+                                                        : suggestion.type === "trending" ? "bg-orange-500/15 text-orange-400"
+                                                            : "bg-slate-500/15 text-slate-400"
                                 )}>
                                     {suggestion.type === "recent" ? (
                                         <Clock className="w-3.5 h-3.5" />
