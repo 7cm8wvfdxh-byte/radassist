@@ -233,8 +233,8 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Front Content */}
-                    <div className="p-5 flex-1 flex flex-col min-h-0">
-                        <div className="flex justify-between items-start mb-2">
+                    <div className="p-5 flex-1 flex flex-col min-h-0 overflow-y-auto overscroll-contain touch-pan-y scrollbar-thin scrollbar-thumb-zinc-700">
+                        <div className="flex justify-between items-start mb-2 shrink-0">
                             <h3 className="text-xl font-bold text-white leading-tight pr-4">{displayName}</h3>
                             <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider shrink-0">
                                 <RotateCw className="w-3 h-3 group-hover/flip:rotate-180 transition-transform duration-500" />
@@ -270,7 +270,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         )}
 
                         {/* Tabs */}
-                        <div className="flex flex-wrap gap-2 mb-4 border-b border-white/5 pb-2">
+                        <div className="flex flex-wrap gap-2 mb-4 border-b border-white/5 pb-2 shrink-0">
                             <button
                                 role="tab"
                                 aria-selected={activeTab === 'summary'}
@@ -313,8 +313,8 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             })}
                         </div>
 
-                        {/* Scrollable Content Area */}
-                        <div className="flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-700 min-h-0">
+                        {/* Content Area */}
+                        <div className="flex-1 mt-1 pr-1 pb-2">
                             {activeTab === 'summary' ? (
                                 <ul className="space-y-2">
                                     {displayKeyPoints.slice(0, 4).map((kp, i) => ( // Show up to 4 key points
@@ -371,7 +371,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Back Content */}
-                    <div className="p-6 flex-1 overflow-y-auto space-y-6">
+                    <div className="p-6 flex-1 overflow-y-auto overscroll-contain touch-pan-y scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6">
 
                         {/* WHY? Section */}
                         {displayMechanism && (
