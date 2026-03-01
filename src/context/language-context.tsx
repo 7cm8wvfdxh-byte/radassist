@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback } from "react";
 
 export type Language = "tr" | "en";
 
@@ -36,11 +36,7 @@ const tr: Record<string, string> = {
     // Learning Modes
     "mode.grid": "Kart Görünümü",
     "mode.list": "Liste Görünümü",
-    "mode.quiz": "Quiz Modu",
-    "mode.case": "Vaka Çalışması",
-    "mode.diagnosis": "Tanı Sihirbazı",
     "mode.ai": "AI Asistan",
-    "mode.swipe": "Swipe Modu",
     "mode.toolbox": "Alet Çantası",
 
     // Organs
@@ -61,6 +57,9 @@ const tr: Record<string, string> = {
     "pathology.gallery": "Galeri",
     "pathology.addFavorite": "Favorilere Ekle",
     "pathology.removeFavorite": "Favorilerden Çıkar",
+    "detailed_view": "Detaylı",
+    "quick_view": "Özet",
+    "mechanism": "Mekanizma",
 
     // Community/Forum
     "forum.title": "RadRoom",
@@ -109,32 +108,12 @@ const tr: Record<string, string> = {
     "auth.hasAccount": "Zaten hesabınız var mı?",
     "auth.forgotPassword": "Şifremi unuttum",
 
-    // AI Assistant
-    "ai.title": "AI Asistan",
-    "ai.subtitle": "Radyoloji sorularınızı sorun",
-    "ai.placeholder": "Sorunuzu yazın...",
-    "ai.quickPrompts": "Hızlı Sorular",
-    "ai.thinking": "Düşünüyor...",
-
-    // Quiz Mode
-    "quiz.title": "Quiz Modu",
-    "quiz.score": "Puan",
-    "quiz.streak": "Seri",
-    "quiz.question": "Bu görüntüde hangi patoloji var?",
-    "quiz.correct": "Doğru!",
-    "quiz.incorrect": "Yanlış!",
-    "quiz.next": "Sonraki Soru",
-
-    // Diagnosis Wizard
-    "diagnosis.title": "Tanı Sihirbazı",
-    "diagnosis.selectOrgan": "Organ Seçin",
-    "diagnosis.selectModality": "Modalite Seçin",
-    "diagnosis.selectFindings": "Bulguları Seçin",
-    "diagnosis.results": "Olası Tanılar",
-    "diagnosis.highProbability": "Yüksek Olasılık",
-    "diagnosis.mediumProbability": "Orta Olasılık",
-    "diagnosis.lowProbability": "Düşük Olasılık",
-    "diagnosis.generateReport": "Rapor Oluştur",
+    // Pathology Search Assistant
+    "ai.title": "Patoloji Arama",
+    "ai.subtitle": "9 organ veritabanında arama yapın",
+    "ai.placeholder": "Hastalık adı veya bulgu yazın...",
+    "ai.quickPrompts": "Hızlı Aramalar",
+    "ai.thinking": "Aranıyor...",
 
     // Toolbox
     "toolbox.title": "Alet Çantası",
@@ -165,8 +144,6 @@ const tr: Record<string, string> = {
 
     // Hero Section
     "hero.aiPowered": "Yapay Zeka Destekli Radyoloji",
-    "hero.dailyCard": "Günün Kartı",
-    "hero.cardMode": "Kart Modu",
 
     // View Modes
     "view.grid": "Izgara",
@@ -180,6 +157,93 @@ const tr: Record<string, string> = {
     "search.allModules": "Tüm modüllerde (Beyin, Omurga, Karaciğer, Meme, MSK...) ara...",
     "search.inModule": "patolojisi ara...",
     "search.searchAllModules": "Tüm Modüllerde Ara",
+    "search.placeholder": "Patoloji, bulgu veya sekans ara...",
+    "search.clear": "Temizle",
+    "search.resultsFound": "sonuç bulundu",
+    "search.noResults": "Sonuç bulunamadı",
+    "search.didYouMean": "Bunu mu demek istediniz?",
+    "search.recentSearches": "Son Aramalar",
+    "search.clearAll": "Temizle",
+    "search.navigate": "gezin",
+    "search.select": "seç",
+    "search.close": "kapat",
+    "search.caseStudy": "Vaka",
+    "search.finding": "Bulgu",
+    "search.announcement": "Duyuru",
+
+    // Auth pages
+    "auth.welcomeBack": "Tekrar Hoşgeldiniz",
+    "auth.welcomeBackSubtitle": "Kişiselleştirilmiş radyoloji asistanınıza erişmek için giriş yapın.",
+    "auth.joinUs": "Aramıza Katılın",
+    "auth.joinUsSubtitle": "Binlerce vaka, hesaplayıcı ve yapay zeka desteğiyle öğrenme sürecinizi hızlandırın.",
+    "auth.emailRequired": "Lütfen önce e-posta adresinizi girin.",
+    "auth.resetFailed": "Şifre sıfırlama e-postası gönderilemedi.",
+    "auth.unexpectedError": "Beklenmeyen bir hata oluştu.",
+    "auth.loginError": "Giriş yapılırken bir hata oluştu.",
+    "auth.resetSent": "Sıfırlama e-postası gönderildi!",
+    "auth.heroTitle1": "Radyolojik Tanıda",
+    "auth.heroTitle2": "Yapay Zeka Gücü",
+    "auth.heroSubtitle": "Binlerce patoloji, gelişmiş hesaplayıcılar ve akıllı asistan ile nöbetleriniz artık daha güvenli.",
+
+    // Announcements
+    "announcements.title": "Duyurular & Etkinlikler",
+    "announcements.subtitle": "Radyoloji gündemini ve yaklaşan organizasyonları takip edin.",
+    "announcements.congress": "Kongre",
+    "announcements.seminar": "Seminer / Webinar",
+    "announcements.news": "Haber / Makale",
+    "announcements.update": "Sistem Güncellemesi",
+    "announcements.announcement": "Duyuru",
+    "announcements.all": "Tümü",
+    "announcements.viewDetails": "Detayları Gör",
+    "announcements.noAnnouncements": "Bu kategoride şu an aktif bir duyuru bulunmuyor.",
+
+    // Forum / Community
+    "forum.anonymous": "Anonim",
+    "forum.admin": "YÖNETİCİ",
+    "forum.deletePost": "Gönderiyi Sil",
+    "forum.deletePostAdmin": "Gönderiyi Sil (Admin)",
+    "forum.deleteComment": "Yorumu Sil (Admin)",
+    "forum.notFound": "Gönderi bulunamadı.",
+    "forum.loginToLike": "Beğenmek için giriş yapmalısınız.",
+    "forum.backToForum": "Foruma Dön",
+    "forum.createError": "Gönderi oluşturulamadı. Lütfen tekrar deneyin.",
+    "forum.unexpectedError": "Beklenmeyen bir hata oluştu.",
+    "forum.deleteConfirm": "Bu gönderiyi silmek istediğinizden emin misiniz?",
+    "forum.deleteFailed": "Gönderi silinemedi.",
+    "forum.deleteCommentConfirm": "Bu yorumu silmek istediğinizden emin misiniz?",
+
+    // AI Assistant
+    "ai.welcomeTitle": "Patoloji Arama Asistanı",
+    "ai.welcomeText": "9 organ sistemindeki patoloji veritabanından arama yapabilirsiniz. Hastalık adı, bulgu veya anahtar kelime yazın.",
+    "ai.error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "ai.clearChat": "Sohbeti temizle",
+    "ai.disclaimer": "Yanıtlar veritabanı aramasına dayalıdır ve bilgilendirme amaçlıdır. Kesin tanı için klinik korelasyon gereklidir.",
+
+    // Search Enhancements
+    "search.shortcutHint": "Hızlı arama için",
+    "search.shortcutKey": "tuşuna basın",
+    "search.chip.emergency": "Acil",
+    "search.chip.mass": "Kitle",
+    "search.chip.t2hyper": "T2 Hiper",
+    "search.chip.contrast": "Kontrast+",
+    "search.chip.calcification": "Kalsifikasyon",
+    "search.chip.cyst": "Kist",
+    "search.emptyTitle": "Aradığınızı Bulun",
+    "search.emptySubtitle": "Patoloji adı, bulgu veya radyolojik terim yazarak arama yapın",
+    "search.emptyHint1": "Halk dili kullanabilirsiniz: \"parlak\", \"koyu\", \"kitle\"",
+    "search.emptyHint2": "Modalite belirtin: \"MR'da hiperintens\", \"BT'de hiperdens\"",
+    "search.emptyHint3": "Eş anlamlılar otomatik genişletilir",
+    "search.searching": "Aranıyor...",
+    "search.resultsSingular": "sonuç bulundu",
+    "search.scrollMore": "kaydır",
+    "search.tryGlobal": "Tüm modüllerde aramayı deneyin",
+    "search.noResultsHint": "Farklı bir terim veya eş anlamlı deneyin",
+    "search.trending": "Popüler Aramalar",
+    "search.advancedHint1": "Hariç tutmak için: kitle -benign",
+    "search.advancedHint2": "Alan filtresi: organ:beyin kitle",
+    "search.advancedHint3": "Yazım düzeltme otomatik çalışır",
+    "search.phonetic": "Düzeltme",
+    "search.filterByOrgan": "Organa göre filtrele",
 };
 
 // English translations
@@ -205,11 +269,7 @@ const en: Record<string, string> = {
     // Learning Modes
     "mode.grid": "Grid View",
     "mode.list": "List View",
-    "mode.quiz": "Quiz Mode",
-    "mode.case": "Case Study",
-    "mode.diagnosis": "Diagnosis Wizard",
     "mode.ai": "AI Assistant",
-    "mode.swipe": "Swipe Mode",
     "mode.toolbox": "Toolbox",
 
     // Organs
@@ -230,6 +290,9 @@ const en: Record<string, string> = {
     "pathology.gallery": "Gallery",
     "pathology.addFavorite": "Add to Favorites",
     "pathology.removeFavorite": "Remove from Favorites",
+    "detailed_view": "Details",
+    "quick_view": "Summary",
+    "mechanism": "Mechanism",
 
     // Community/Forum
     "forum.title": "RadRoom",
@@ -278,32 +341,12 @@ const en: Record<string, string> = {
     "auth.hasAccount": "Already have an account?",
     "auth.forgotPassword": "Forgot password",
 
-    // AI Assistant
-    "ai.title": "AI Assistant",
-    "ai.subtitle": "Ask your radiology questions",
-    "ai.placeholder": "Type your question...",
-    "ai.quickPrompts": "Quick Prompts",
-    "ai.thinking": "Thinking...",
-
-    // Quiz Mode
-    "quiz.title": "Quiz Mode",
-    "quiz.score": "Score",
-    "quiz.streak": "Streak",
-    "quiz.question": "What pathology is shown in this image?",
-    "quiz.correct": "Correct!",
-    "quiz.incorrect": "Incorrect!",
-    "quiz.next": "Next Question",
-
-    // Diagnosis Wizard
-    "diagnosis.title": "Diagnosis Wizard",
-    "diagnosis.selectOrgan": "Select Organ",
-    "diagnosis.selectModality": "Select Modality",
-    "diagnosis.selectFindings": "Select Findings",
-    "diagnosis.results": "Possible Diagnoses",
-    "diagnosis.highProbability": "High Probability",
-    "diagnosis.mediumProbability": "Medium Probability",
-    "diagnosis.lowProbability": "Low Probability",
-    "diagnosis.generateReport": "Generate Report",
+    // Pathology Search Assistant
+    "ai.title": "Pathology Search",
+    "ai.subtitle": "Search across 9 organ databases",
+    "ai.placeholder": "Type a disease name or finding...",
+    "ai.quickPrompts": "Quick Searches",
+    "ai.thinking": "Searching...",
 
     // Toolbox
     "toolbox.title": "Toolbox",
@@ -334,8 +377,6 @@ const en: Record<string, string> = {
 
     // Hero Section
     "hero.aiPowered": "AI-Powered Radiology",
-    "hero.dailyCard": "Daily Card",
-    "hero.cardMode": "Card Mode",
 
     // View Modes
     "view.grid": "Grid",
@@ -349,21 +390,103 @@ const en: Record<string, string> = {
     "search.allModules": "Search all modules (Brain, Spine, Liver, Breast, MSK...)",
     "search.inModule": "Search pathology...",
     "search.searchAllModules": "Search All Modules",
+    "search.placeholder": "Search pathology, finding, or sequence...",
+    "search.clear": "Clear",
+    "search.resultsFound": "results found",
+    "search.noResults": "No results found",
+    "search.didYouMean": "Did you mean?",
+    "search.recentSearches": "Recent Searches",
+    "search.clearAll": "Clear",
+    "search.navigate": "navigate",
+    "search.select": "select",
+    "search.close": "close",
+    "search.caseStudy": "Case",
+    "search.finding": "Finding",
+    "search.announcement": "Announcement",
+
+    // Auth pages
+    "auth.welcomeBack": "Welcome Back",
+    "auth.welcomeBackSubtitle": "Sign in to access your personalized radiology assistant.",
+    "auth.joinUs": "Join Us",
+    "auth.joinUsSubtitle": "Accelerate your learning with thousands of cases, calculators, and AI support.",
+    "auth.emailRequired": "Please enter your email first.",
+    "auth.resetFailed": "Could not send password reset email.",
+    "auth.unexpectedError": "An unexpected error occurred.",
+    "auth.loginError": "An error occurred while logging in.",
+    "auth.resetSent": "Reset email sent!",
+    "auth.heroTitle1": "AI Power in",
+    "auth.heroTitle2": "Radiological Diagnosis",
+    "auth.heroSubtitle": "Your shifts are now safer with thousands of pathologies, advanced calculators, and a smart assistant.",
+
+    // Announcements
+    "announcements.title": "Announcements & Events",
+    "announcements.subtitle": "Follow the radiology agenda and upcoming events.",
+    "announcements.congress": "Congress",
+    "announcements.seminar": "Seminar / Webinar",
+    "announcements.news": "News / Article",
+    "announcements.update": "System Update",
+    "announcements.announcement": "Announcement",
+    "announcements.all": "All",
+    "announcements.viewDetails": "View Details",
+    "announcements.noAnnouncements": "No active announcements in this category.",
+
+    // Forum / Community
+    "forum.anonymous": "Anonymous",
+    "forum.admin": "ADMIN",
+    "forum.deletePost": "Delete Post",
+    "forum.deletePostAdmin": "Delete Post (Admin)",
+    "forum.deleteComment": "Delete Comment (Admin)",
+    "forum.notFound": "Post not found.",
+    "forum.loginToLike": "You must log in to like.",
+    "forum.backToForum": "Back to Forum",
+    "forum.createError": "Could not create post. Please try again.",
+    "forum.unexpectedError": "An unexpected error occurred.",
+    "forum.deleteConfirm": "Are you sure you want to delete this post?",
+    "forum.deleteFailed": "Could not delete post.",
+    "forum.deleteCommentConfirm": "Are you sure you want to delete this comment?",
+
+    // AI Assistant
+    "ai.welcomeTitle": "Pathology Search Assistant",
+    "ai.welcomeText": "Search across 9 organ system pathology databases. Type a disease name, finding, or keyword.",
+    "ai.error": "An error occurred. Please try again.",
+    "ai.clearChat": "Clear chat",
+    "ai.disclaimer": "Responses are based on database search and are for informational purposes only. Clinical correlation is required for definitive diagnosis.",
+
+    // Search Enhancements
+    "search.shortcutHint": "Quick search with",
+    "search.shortcutKey": "key",
+    "search.chip.emergency": "Emergency",
+    "search.chip.mass": "Mass",
+    "search.chip.t2hyper": "T2 Hyper",
+    "search.chip.contrast": "Contrast+",
+    "search.chip.calcification": "Calcification",
+    "search.chip.cyst": "Cyst",
+    "search.emptyTitle": "Find What You Need",
+    "search.emptySubtitle": "Search by pathology name, finding, or radiological term",
+    "search.emptyHint1": "Use colloquial terms: \"bright\", \"dark\", \"mass\"",
+    "search.emptyHint2": "Specify modality: \"hyperintense on MRI\", \"hyperdense on CT\"",
+    "search.emptyHint3": "Synonyms are automatically expanded",
+    "search.searching": "Searching...",
+    "search.resultsSingular": "result found",
+    "search.scrollMore": "scroll",
+    "search.tryGlobal": "Try searching all modules",
+    "search.noResultsHint": "Try a different term or synonym",
+    "search.trending": "Trending Searches",
+    "search.advancedHint1": "Exclude terms: mass -benign",
+    "search.advancedHint2": "Field filter: organ:brain mass",
+    "search.advancedHint3": "Typo correction works automatically",
+    "search.phonetic": "Correction",
+    "search.filterByOrgan": "Filter by organ",
 };
 
 const translations: Record<Language, Record<string, string>> = { tr, en };
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-    const [language, setLanguageState] = useState<Language>("tr");
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const saved = localStorage.getItem("radassist-language") as Language;
-            if (saved && (saved === "tr" || saved === "en")) {
-                setLanguageState(saved);
-            }
-        }
-    }, []);
+    const [language, setLanguageState] = useState<Language>(() => {
+        if (typeof window === 'undefined') return "tr";
+        const saved = localStorage.getItem("radassist-language") as Language;
+        return (saved === "tr" || saved === "en") ? saved : "tr";
+    });
 
     const setLanguage = useCallback((lang: Language) => {
         setLanguageState(lang);

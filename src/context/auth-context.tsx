@@ -10,6 +10,7 @@ export interface User {
     name: string;
     email: string;
     specialty: string;
+    is_admin: boolean;
 }
 
 interface AuthResult {
@@ -62,27 +63,62 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const fetchProfile = async (supabaseUser: SupabaseUser) => {
         try {
+            console.log('=== PROFILE DEBUG ===');
+            console.log('Auth user ID:', supabaseUser.id);
+            console.log('Auth user email:', supabaseUser.email);
+
+            // First try by ID
             const { data, error } = await supabase
                 .from('profiles')
                 .select('*')
                 .eq('id', supabaseUser.id)
-                .single();
+                .maybeSingle();
 
-            if (error) {
-                console.error('Error fetching profile:', error);
-                // Fallback if profile doesn't exist yet
+            console.log('Query by ID result:', { data, error });
+
+            // If not found by ID, try by email
+            let profileData = data;
+            if (!profileData && supabaseUser.email) {
+                console.log('Profile not found by ID, trying by email...');
+                const { data: emailData, error: emailError } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .eq('email', supabaseUser.email)
+                    .maybeSingle();
+
+                console.log('Query by email result:', { data: emailData, error: emailError });
+
+                if (emailData) {
+                    profileData = emailData;
+                    // Fix the ID mismatch - update profile to use correct auth ID
+                    console.log('Fixing ID mismatch: profile.id =', emailData.id, '-> auth.id =', supabaseUser.id);
+                    await supabase
+                        .from('profiles')
+                        .update({ id: supabaseUser.id })
+                        .eq('email', supabaseUser.email);
+                }
+            }
+
+            if (profileData) {
+                console.log('Profile found:', JSON.stringify(profileData));
+                const isAdmin = profileData.is_admin === true || profileData.is_admin === 'true' || profileData.is_admin === 1;
+                console.log('is_admin:', profileData.is_admin, 'type:', typeof profileData.is_admin, 'resolved:', isAdmin);
+                setUser({
+                    id: supabaseUser.id,
+                    email: supabaseUser.email!,
+                    name: profileData.name,
+                    specialty: profileData.specialty,
+                    is_admin: isAdmin
+                });
+            } else {
+                console.warn('No profile found at all. Using fallback from user_metadata.');
+                // Fallback if profile doesn't exist
                 setUser({
                     id: supabaseUser.id,
                     email: supabaseUser.email!,
                     name: supabaseUser.user_metadata.name || 'Kullanıcı',
-                    specialty: supabaseUser.user_metadata.specialty || 'Radyoloji'
-                });
-            } else if (data) {
-                setUser({
-                    id: data.id,
-                    email: supabaseUser.email!,
-                    name: data.name,
-                    specialty: data.specialty
+                    specialty: supabaseUser.user_metadata.specialty || 'Radyoloji',
+                    is_admin: false
                 });
             }
         } catch (error) {
@@ -114,7 +150,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             }
 
             return { success: true };
-        } catch (e) {
+        } catch {
             return { success: false, error: "Beklenmeyen bir hata oluştu." };
         }
     }, []);
@@ -151,7 +187,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                         id: authData.user.id,
                         name,
                         specialty,
-                        email
+                        email,
+                        is_admin: false
                     });
 
                 if (profileError) {
@@ -163,7 +200,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             }
 
             return { success: true };
-        } catch (e) {
+        } catch {
             return { success: false, error: "Beklenmeyen bir hata oluştu." };
         }
     }, []);

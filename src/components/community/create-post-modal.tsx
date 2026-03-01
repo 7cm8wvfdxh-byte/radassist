@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Send, Tag, HelpCircle, FileText } from "lucide-react";
+import { X, Send, Tag, FileText } from "lucide-react";
 import { useAuth } from "@/context/auth-context";
 import { useForum } from "@/context/forum-context";
 import { useLanguage } from "@/context/language-context";
@@ -55,12 +55,12 @@ export function CreatePostModal({ isOpen, onClose }: CreatePostModalProps) {
                 setSelectedTags([]);
                 onClose();
             } else {
-                setError(result.error || "Gönderi oluşturulamadı. Lütfen tekrar deneyin.");
+                setError(result.error || t("forum.createError"));
             }
         } catch (err) {
             console.error("Error in handleSubmit:", err);
             setIsSubmitting(false);
-            setError("Beklenmeyen bir hata oluştu.");
+            setError(t("forum.unexpectedError"));
         }
     };
 

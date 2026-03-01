@@ -2,41 +2,57 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/auth-context";
 import { supabase } from "@/lib/supabase";
-import { Mail, Lock, ArrowRight, Loader2, AlertCircle } from "lucide-react";
+import { Mail, Lock, ArrowRight, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/language-context";
 
 export function LoginForm() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
+    const { login } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [resetSent, setResetSent] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+
+    const handleForgotPassword = async () => {
+        if (!email.trim()) {
+            setError(t("auth.emailRequired"));
+            return;
+        }
+        try {
+            const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
+                redirectTo: `${window.location.origin}/login`,
+            });
+            if (resetError) {
+                setError(t("auth.resetFailed"));
+            } else {
+                setResetSent(true);
+                setError("");
+            }
+        } catch {
+            setError(t("auth.unexpectedError"));
+        }
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
         setError("");
 
-        try {
-            const { error } = await supabase.auth.signInWithPassword({
-                email,
-                password,
-            });
+        const result = await login(email, password);
 
-            if (error) throw error;
-
-            // Success
+        if (result.success) {
             router.push("/");
-            router.refresh(); // Refresh to update auth context
-        } catch (err: any) {
-            setError(err.message || "Giriş yapılırken bir hata oluştu.");
-        } finally {
-            setIsLoading(false);
+        } else {
+            setError(result.error || t("auth.loginError"));
         }
+
+        setIsLoading(false);
     };
 
     return (
@@ -80,7 +96,16 @@ export function LoginForm() {
             </div>
 
             <div className="flex items-center justify-end text-sm">
-                <Link href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors">{t("auth.forgotPassword")}</Link>
+                {resetSent ? (
+                    <span className="flex items-center gap-1 text-green-400 text-xs">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        {t("auth.resetSent")}
+                    </span>
+                ) : (
+                    <button type="button" onClick={handleForgotPassword} className="text-cyan-400 hover:text-cyan-300 transition-colors">
+                        {t("auth.forgotPassword")}
+                    </button>
+                )}
             </div>
 
             <button

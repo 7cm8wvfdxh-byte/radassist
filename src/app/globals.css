@@ -28,6 +28,8 @@
   /* 3D Flip Utilities */
   .perspective-1000 {
     perspective: 1000px;
+    /* Prevent perspective from creating a new stacking context that blocks scroll */
+    -webkit-transform-style: flat;
   }
 
   .transform-style-3d {
@@ -36,14 +38,36 @@
 
   .backface-hidden {
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    /* Flatten children's 3D context so overflow-y-auto scroll works on mobile */
+    transform-style: flat;
+    -webkit-transform-style: flat;
   }
 
   .rotate-y-180 {
     transform: rotateY(180deg);
   }
 
+  /* Scrollbar styling for mobile */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+  }
+}
 
-  /* 3D Cube Classes Removed */
+/* Mobile touch scrolling improvements */
+@media (max-width: 640px) {
+  .backface-hidden {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* Aurora Animation */
@@ -62,4 +86,45 @@
     radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.1) 0px, transparent 50%),
     radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
   animation: aurora 60s linear infinite;
+}
+
+/* Improved focus visibility */
+:focus-visible {
+  outline: 2px solid rgb(99 102 241);
+  outline-offset: 2px;
+}
+
+/* Better contrast for zinc-600 text on dark backgrounds */
+.text-contrast-fix {
+  color: rgb(161 161 170); /* zinc-400 instead of zinc-600 */
+}
+
+/* Search bar pulse animation on focus */
+@keyframes search-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.1), 0 0 40px rgba(99, 102, 241, 0.05); }
+  50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.15), 0 0 60px rgba(99, 102, 241, 0.1); }
+}
+
+.search-glow-active {
+  animation: search-glow 3s ease-in-out infinite;
+}
+
+/* Smooth scroll for filter chips */
+.scroll-smooth {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for filter chips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Tabular numbers for result count animation */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }

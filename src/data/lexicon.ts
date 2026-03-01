@@ -94,4 +94,32 @@ export const MRI_FINDINGS: FindingOption[] = [
     { id: "ct_polo_mint_sign", label: "Polo Mint Sign (Damar İçi Defekt)", category: "Şekil/Kenar", weight: 10 }, // PE
     { id: "ct_crazy_paving", label: "Crazy Paving (Kaldırım Taşı)", category: "Diğer", weight: 7 }, // COVID/Proteinosis
     { id: "ct_cavitation", label: "Kavitasyon (Hava İçeren Boşluk)", category: "Eko/Dansite/Sinyal", weight: 8 }, // TB/Apse/Ca
+
+    // --- MSK (Kas-İskelet) ---
+    { id: "mri_tendon_rupture", label: "Tendon Rüptürü / Bütünlük Kaybı", category: "Şekil/Kenar", weight: 10 },
+    { id: "mri_joint_effusion", label: "Eklem Efüzyonu (T2 Hiper Sıvı)", category: "Eko/Dansite/Sinyal", weight: 6 },
+    { id: "mri_meniscus_tear", label: "Menisküs Sinyal Artışı / Yırtık", category: "Eko/Dansite/Sinyal", weight: 9 },
+    { id: "mri_bone_marrow_edema", label: "Kemik İliği Ödemi (T2 Hiper)", category: "Eko/Dansite/Sinyal", weight: 7 },
+    { id: "mri_labrum_detach", label: "Labrum Ayrılması (Bankart vb.)", category: "Şekil/Kenar", weight: 9 },
+    { id: "usg_tendon_defect", label: "Tendonda Anekoik Defekt (USG)", category: "Şekil/Kenar", weight: 9 },
+
+    // --- GI (Gastrointestinal) ---
+    { id: "ct_fat_stranding", label: "Periton/Yağ Kirlenmesi (Fat Stranding)", category: "Diğer", weight: 7 },
+    { id: "ct_bowel_wall_thick", label: "Bağırsak Duvarı Kalınlaşması", category: "Şekil/Kenar", weight: 7 },
+    { id: "ct_appendix_dilated", label: "Apendiks Genişlemesi (>6mm)", category: "Şekil/Kenar", weight: 10 },
+    { id: "ct_free_air", label: "Serbest İntraperitoneal Hava (Perforasyon)", category: "Diğer", weight: 10 },
+    { id: "ct_bowel_dilated", label: "Bağırsak Dilatasyonu (İleus)", category: "Şekil/Kenar", weight: 8 },
+    { id: "usg_non_compressible", label: "Bası ile Sönmeyen Tübüler Yapı (USG)", category: "Diğer", weight: 9 },
+
+    // --- Breast (Meme) ---
+    { id: "usg_irregular_margin", label: "Düzensiz / Spiküle Kenar (USG)", category: "Şekil/Kenar", weight: 9 },
+    { id: "usg_posterior_shadow_breast", label: "Posterior Akustik Gölgeleme (Meme)", category: "Diğer", weight: 8 },
+    { id: "mri_breast_enhance_rapid", label: "Hızlı Kontrast Tutulumu + Washout (MR)", category: "Kontrastlanma", weight: 9 },
+    { id: "mri_breast_non_mass", label: "Non-Mass Enhancement (NME)", category: "Kontrastlanma", weight: 7 },
+
+    // --- Gynecology (Jinekoloji) ---
+    { id: "usg_ground_glass_cyst", label: "Buzlu Cam İçerikli Over Kisti (USG)", category: "Eko/Dansite/Sinyal", weight: 10 },
+    { id: "usg_ovarian_solid", label: "Over'de Solid Komponente / Papiller Projeksiyon", category: "Şekil/Kenar", weight: 9 },
+    { id: "mri_pelvic_mass", label: "Pelvik Kitle (MRI)", category: "Şekil/Kenar", weight: 7 },
+    { id: "usg_uterine_mass", label: "Uterus Kitlesi (Myom/Polip)", category: "Şekil/Kenar", weight: 8 },
 ];
