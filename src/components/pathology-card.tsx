@@ -5,7 +5,7 @@ import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/context/language-context";
 import {
-    Check, X, Star, RotateCw, ChevronDown,
+    Check, X, Star, RotateCw,
     Sparkles, Brain, Lightbulb, Activity, Layers, Scan, Radiation, Zap, FileText,
     Flame, Target, Award, Stethoscope
 } from 'lucide-react';
@@ -97,27 +97,6 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
 
     const [activeTab, setActiveTab] = useState<TabType>("summary");
     const [activeImage, setActiveImage] = useState<number | null>(null);
-    const frontContentRef = React.useRef<HTMLDivElement>(null);
-    const [showScrollHint, setShowScrollHint] = useState(false);
-
-    // Detect if front content overflows and needs scrolling
-    React.useEffect(() => {
-        const el = frontContentRef.current;
-        if (!el) return;
-        const check = () => {
-            setShowScrollHint(el.scrollHeight > el.clientHeight + el.scrollTop + 8);
-        };
-        check();
-        el.addEventListener('scroll', check, { passive: true });
-        const ro = new ResizeObserver(check);
-        ro.observe(el);
-        return () => { el.removeEventListener('scroll', check); ro.disconnect(); };
-    }, [activeTab]);
-
-    const handleScrollDown = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        frontContentRef.current?.scrollBy({ top: 150, behavior: 'smooth' });
-    };
 
     // Back-face field names that should trigger auto-flip
     const BACK_FACE_FIELDS = new Set(["etiology", "mechanism", "clinicalPearl", "goldStandard"]);
@@ -227,10 +206,8 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         )}
                     </div>
 
-                    {/* Front Content Wrapper */}
-                    <div className="flex-1 min-h-0 relative">
-                    {/* Scrollable Content */}
-                    <div ref={frontContentRef} className="p-3 sm:p-5 absolute inset-0 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-700" style={{ WebkitOverflowScrolling: 'touch' }}>
+                    {/* Front Content */}
+                    <div className="p-3 sm:p-5 flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-700" style={{ WebkitOverflowScrolling: 'touch' }}>
                         <div className="flex justify-between items-start mb-2">
                             <h3 className="text-base sm:text-xl font-bold text-white leading-tight pr-4">{displayName}</h3>
                             <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider shrink-0">
@@ -346,19 +323,6 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                 </div>
                             )}
                         </div>
-                    </div>
-
-                    {/* Scroll down indicator button */}
-                    {showScrollHint && (
-                        <button
-                            onClick={handleScrollDown}
-                            className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1 px-3 py-1.5 bg-cyan-500/90 hover:bg-cyan-400 text-white text-[10px] font-bold uppercase tracking-wider rounded-full shadow-lg shadow-cyan-900/40 backdrop-blur-sm transition-all animate-bounce"
-                            aria-label={isEn ? "Scroll down" : "Aşağı kaydır"}
-                        >
-                            <ChevronDown className="w-3 h-3" />
-                            {isEn ? "More" : "Devamı"}
-                        </button>
-                    )}
                     </div>
 
                     {/* Bottom Action Hint */}
