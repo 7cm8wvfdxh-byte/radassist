@@ -66,6 +66,14 @@
   .overscroll-contain {
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  /* Isolate scrollable areas from 3D transform context on mobile */
+  .backface-hidden > .overflow-y-auto,
+  .backface-hidden > div > .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
 }
 

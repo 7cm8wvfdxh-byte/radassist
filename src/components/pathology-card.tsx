@@ -207,7 +207,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Front Content */}
-                    <div className="p-3 sm:p-5 flex-1 flex flex-col min-h-0 overflow-hidden">
+                    <div className="p-3 sm:p-5 flex-1 min-h-0 overflow-y-auto overscroll-contain scrollbar-thin scrollbar-thumb-zinc-700" style={{ WebkitOverflowScrolling: 'touch' }}>
                         <div className="flex justify-between items-start mb-2">
                             <h3 className="text-base sm:text-xl font-bold text-white leading-tight pr-4">{displayName}</h3>
                             <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider shrink-0">
@@ -287,8 +287,8 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             })}
                         </div>
 
-                        {/* Scrollable Content Area */}
-                        <div id={`tabpanel-${data.id}-${activeTab}`} role="tabpanel" className="flex-1 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-700 min-h-0 overscroll-contain" style={{ WebkitOverflowScrolling: 'touch', transform: 'translateZ(0)' }}>
+                        {/* Content Area */}
+                        <div id={`tabpanel-${data.id}-${activeTab}`} role="tabpanel" className="pr-1">
                             {activeTab === 'summary' ? (
                                 <ul className="space-y-2">
                                     {displayKeyPoints.slice(0, 4).map((kp, i) => ( // Show up to 4 key points
@@ -345,7 +345,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Back Content */}
-                    <div className="p-4 sm:p-6 flex-1 overflow-y-auto space-y-5 overscroll-contain" style={{ WebkitOverflowScrolling: 'touch', transform: 'translateZ(0)' }}>
+                    <div className="p-4 sm:p-6 flex-1 overflow-y-auto space-y-5 overscroll-contain scrollbar-thin scrollbar-thumb-zinc-700" style={{ WebkitOverflowScrolling: 'touch' }}>
 
                         {/* WHY? Section */}
                         {displayMechanism && (
