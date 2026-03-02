@@ -17,6 +17,7 @@ export function PostCard({ post, compact = false }: PostCardProps) {
     const { toggleLike, deletePost } = useForum();
     const { user } = useAuth();
     const { t, language } = useLanguage();
+    const [showCopied, setShowCopied] = React.useState(false);
     const date = new Date(post.created_at).toLocaleDateString(language === 'tr' ? "tr-TR" : "en-US", { month: 'short', day: 'numeric' });
 
     const handleDelete = async (e: React.MouseEvent) => {
@@ -110,8 +111,24 @@ export function PostCard({ post, compact = false }: PostCardProps) {
                         <Eye className="w-3.5 h-3.5" aria-hidden="true" />
                         <span>{post.view_count}</span>
                     </div>
-                    <button className="hover:text-white transition-colors">
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            const url = `${window.location.origin}/community/${post.id}`;
+                            navigator.clipboard.writeText(url).then(() => {
+                                setShowCopied(true);
+                                setTimeout(() => setShowCopied(false), 2000);
+                            });
+                        }}
+                        className="hover:text-white transition-colors relative"
+                        aria-label={t("forum.sharePost")}
+                    >
                         <Share2 className="w-3.5 h-3.5" aria-hidden="true" />
+                        {showCopied && (
+                            <span className="absolute -top-8 right-0 px-2 py-1 bg-cyan-600 text-white text-[10px] font-medium rounded-md whitespace-nowrap animate-in fade-in slide-in-from-bottom-1">
+                                {t("forum.linkCopied")}
+                            </span>
+                        )}
                     </button>
                 </div>
             </div>
