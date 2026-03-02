@@ -211,6 +211,15 @@ const tr: Record<string, string> = {
     "forum.deleteConfirm": "Bu gönderiyi silmek istediğinizden emin misiniz?",
     "forum.deleteFailed": "Gönderi silinemedi.",
     "forum.deleteCommentConfirm": "Bu yorumu silmek istediğinizden emin misiniz?",
+    "forum.sortNewest": "En Yeni",
+    "forum.sortPopular": "En Popüler",
+    "forum.sortDiscussed": "En Çok Tartışılan",
+    "forum.totalPosts": "Gönderi",
+    "forum.totalMembers": "Üye",
+    "forum.activeToday": "Bugün Aktif",
+    "forum.communityStats": "Topluluk",
+    "forum.linkCopied": "Bağlantı kopyalandı!",
+    "forum.sharePost": "Gönderiyi Paylaş",
 
     // AI Assistant
     "ai.welcomeTitle": "Patoloji Arama Asistanı",
@@ -444,6 +453,15 @@ const en: Record<string, string> = {
     "forum.deleteConfirm": "Are you sure you want to delete this post?",
     "forum.deleteFailed": "Could not delete post.",
     "forum.deleteCommentConfirm": "Are you sure you want to delete this comment?",
+    "forum.sortNewest": "Newest",
+    "forum.sortPopular": "Most Popular",
+    "forum.sortDiscussed": "Most Discussed",
+    "forum.totalPosts": "Posts",
+    "forum.totalMembers": "Members",
+    "forum.activeToday": "Active Today",
+    "forum.communityStats": "Community",
+    "forum.linkCopied": "Link copied!",
+    "forum.sharePost": "Share Post",
 
     // AI Assistant
     "ai.welcomeTitle": "Pathology Search Assistant",

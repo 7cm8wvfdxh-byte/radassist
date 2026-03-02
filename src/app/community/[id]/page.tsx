@@ -18,6 +18,7 @@ export default function PostDetailPage() {
     const [post, setPost] = useState<Post | undefined>(undefined);
     const [commentText, setCommentText] = useState("");
     const [isLoading, setIsLoading] = useState(true);
+    const [showCopied, setShowCopied] = useState(false);
 
     useEffect(() => {
         async function loadPost() {
@@ -147,8 +148,23 @@ export default function PostDetailPage() {
                                 <span className="font-bold">{post.comments?.length || 0} {t("forum.comments")}</span>
                             </button>
                         </div>
-                        <button className="p-2 text-zinc-500 hover:text-white transition-colors">
+                        <button
+                            onClick={() => {
+                                const url = window.location.href;
+                                navigator.clipboard.writeText(url).then(() => {
+                                    setShowCopied(true);
+                                    setTimeout(() => setShowCopied(false), 2000);
+                                });
+                            }}
+                            className="p-2 text-zinc-500 hover:text-white transition-colors relative"
+                            aria-label={t("forum.sharePost")}
+                        >
                             <Share2 className="w-5 h-5" />
+                            {showCopied && (
+                                <span className="absolute -top-8 right-0 px-2 py-1 bg-cyan-600 text-white text-xs font-medium rounded-md whitespace-nowrap animate-in fade-in slide-in-from-bottom-1">
+                                    {t("forum.linkCopied")}
+                                </span>
+                            )}
                         </button>
                     </div>
                 </div>
