@@ -24,6 +24,7 @@ export interface PreMedicationProtocol {
     id: string;
     name: string;
     indication: string;
+    type: 'elective' | 'emergency';
     regimen: string[];
     notes?: string;
 }
@@ -208,6 +209,7 @@ export const PREMEDICATION_PROTOCOLS: PreMedicationProtocol[] = [
         id: "elective_13h",
         name: "Elektif Premedikasyon (13 Saat Protokolü)",
         indication: "Planlı kontrastlı BT/MR, önceki kontrast reaksiyon öyküsü olan hasta.",
+        type: "elective",
         regimen: [
             "Prednisone 50 mg PO — Çekimden 13 saat önce",
             "Prednisone 50 mg PO — Çekimden 7 saat önce",
@@ -219,6 +221,7 @@ export const PREMEDICATION_PROTOCOLS: PreMedicationProtocol[] = [
         id: "emergency_5h",
         name: "Acil Premedikasyon (5 Saat Protokolü)",
         indication: "Acil kontrastlı çekim gereken, kontrast alerjisi öyküsü olan hasta.",
+        type: "emergency",
         regimen: [
             "Metilprednizolon 40 mg IV — Hemen",
             "Metilprednizolon 40 mg IV — Çekimden 4 saat önce",
@@ -230,6 +233,7 @@ export const PREMEDICATION_PROTOCOLS: PreMedicationProtocol[] = [
         id: "breakthrough_reaction",
         name: "Breakthrough Reaksiyon Protokolü",
         indication: "Premedikasyona rağmen reaksiyon gelişen hasta (tekrar çekim gerektiğinde).",
+        type: "emergency",
         regimen: [
             "Farklı kontrast ajanı kullan (marka değiştir)",
             "Standart 13 saat premedikasyon uygula",
