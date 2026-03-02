@@ -50,6 +50,7 @@ import Link from "next/link"; // Need Link for navigation
 import { LogIn, LogOut, User, Bell, ShieldCheck } from "lucide-react"; // Icons
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { AdminNotifications } from "@/components/admin-notifications";
+import { useAppStore } from "@/store/useAppStore";
 
 // Alan adı formatı - arama sonucu bağlam göstergesi
 function formatFieldName(fieldName: string, lang: string): string {
@@ -80,43 +81,19 @@ function formatFieldName(fieldName: string, lang: string): string {
 export default function Home() {
   const { user, logout } = useAuth();
   const { language, t } = useLanguage();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [favorites, setFavorites] = useState<string[]>(() => {
-    if (typeof window === 'undefined') return [];
-    try {
-      const stored = localStorage.getItem("radassist-favorites");
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) return parsed;
-      }
-    } catch { /* ignore */ }
-    return [];
-  });
-  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-  const [viewMode, setViewMode] = useState<"grid" | "list" | "ai" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy">(() => {
-    if (typeof window === 'undefined') return "grid";
-    try {
-      const savedView = localStorage.getItem("radassist-view-mode");
-      const validModes = ["grid", "list", "ai", "toolbox", "report", "compare", "emergency", "stats", "anatomy"];
-      if (savedView && validModes.includes(savedView)) {
-        return savedView as "grid" | "list" | "ai" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy";
-      }
-    } catch { /* ignore */ }
-    return "grid";
-  });
-  const [activeModule, setActiveModule] = useState<"brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk" | "gi" | "gyn">(() => {
-    if (typeof window === 'undefined') return "brain";
-    try {
-      const savedModule = localStorage.getItem("radassist-module");
-      const validModules = ["brain", "spine", "liver", "kidney", "lung", "breast", "msk", "gi", "gyn"];
-      if (savedModule && validModules.includes(savedModule)) {
-        return savedModule as "brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk" | "gi" | "gyn";
-      }
-    } catch { /* ignore */ }
-    return "brain";
-  });
+
+  const {
+    searchQuery, setSearchQuery,
+    favorites, toggleFavorite,
+    showFavoritesOnly, setShowFavoritesOnly,
+    viewMode, setViewMode,
+    activeModule, setActiveModule,
+    toolboxTab, setToolboxTab,
+    searchGlobal, setSearchGlobal,
+    activeOrganFilter, setActiveOrganFilter
+  } = useAppStore();
+
   const [selectedPathology, setSelectedPathology] = useState<Pathology | null>(null);
-  const [toolboxTab, setToolboxTab] = useState<'ruler' | 'calc' | 'rads' | 'templates' | 'protocols' | 'signs' | 'ddx' | 'contrast' | 'artifacts' | 'glossary' | 'sequences'>('ruler');
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Mark as loaded after client hydration (intentional setState-in-effect for hydration detection)
@@ -124,19 +101,6 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsLoaded(true);
   }, []);
-
-  // Toggle favorite handler
-  const toggleFavorite = (id: string) => {
-    const newFavorites = favorites.includes(id)
-      ? favorites.filter(fav => fav !== id)
-      : [...favorites, id];
-
-    setFavorites(newFavorites);
-    localStorage.setItem("radassist-favorites", JSON.stringify(newFavorites));
-  };
-
-  const [searchGlobal, setSearchGlobal] = useState(false); // Global search toggle
-  const [activeOrganFilter, setActiveOrganFilter] = useState<string | null>(null); // Organ filtre chip
 
   // Defer the search query to avoid blocking UI during heavy search computation
   const deferredSearchQuery = useDeferredValue(searchQuery);
@@ -321,16 +285,16 @@ export default function Home() {
               const Icon = item.icon;
               const isActive = viewMode === 'toolbox' && toolboxTab === item.key;
               const colorMap: Record<string, { active: string; hover: string; icon: string }> = {
-                cyan:    { active: 'bg-cyan-600 text-white shadow-lg shadow-cyan-500/20', hover: 'hover:bg-cyan-500/10 hover:text-cyan-300', icon: 'text-cyan-400' },
-                purple:  { active: 'bg-purple-600 text-white shadow-lg shadow-purple-500/20', hover: 'hover:bg-purple-500/10 hover:text-purple-300', icon: 'text-purple-400' },
+                cyan: { active: 'bg-cyan-600 text-white shadow-lg shadow-cyan-500/20', hover: 'hover:bg-cyan-500/10 hover:text-cyan-300', icon: 'text-cyan-400' },
+                purple: { active: 'bg-purple-600 text-white shadow-lg shadow-purple-500/20', hover: 'hover:bg-purple-500/10 hover:text-purple-300', icon: 'text-purple-400' },
                 emerald: { active: 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/20', hover: 'hover:bg-emerald-500/10 hover:text-emerald-300', icon: 'text-emerald-400' },
-                sky:     { active: 'bg-sky-600 text-white shadow-lg shadow-sky-500/20', hover: 'hover:bg-sky-500/10 hover:text-sky-300', icon: 'text-sky-400' },
-                amber:   { active: 'bg-amber-600 text-white shadow-lg shadow-amber-500/20', hover: 'hover:bg-amber-500/10 hover:text-amber-300', icon: 'text-amber-400' },
-                rose:    { active: 'bg-rose-600 text-white shadow-lg shadow-rose-500/20', hover: 'hover:bg-rose-500/10 hover:text-rose-300', icon: 'text-rose-400' },
-                orange:  { active: 'bg-orange-600 text-white shadow-lg shadow-orange-500/20', hover: 'hover:bg-orange-500/10 hover:text-orange-300', icon: 'text-orange-400' },
-                blue:    { active: 'bg-blue-600 text-white shadow-lg shadow-blue-500/20', hover: 'hover:bg-blue-500/10 hover:text-blue-300', icon: 'text-blue-400' },
-                yellow:  { active: 'bg-yellow-600 text-white shadow-lg shadow-yellow-500/20', hover: 'hover:bg-yellow-500/10 hover:text-yellow-300', icon: 'text-yellow-400' },
-                teal:    { active: 'bg-teal-600 text-white shadow-lg shadow-teal-500/20', hover: 'hover:bg-teal-500/10 hover:text-teal-300', icon: 'text-teal-400' },
+                sky: { active: 'bg-sky-600 text-white shadow-lg shadow-sky-500/20', hover: 'hover:bg-sky-500/10 hover:text-sky-300', icon: 'text-sky-400' },
+                amber: { active: 'bg-amber-600 text-white shadow-lg shadow-amber-500/20', hover: 'hover:bg-amber-500/10 hover:text-amber-300', icon: 'text-amber-400' },
+                rose: { active: 'bg-rose-600 text-white shadow-lg shadow-rose-500/20', hover: 'hover:bg-rose-500/10 hover:text-rose-300', icon: 'text-rose-400' },
+                orange: { active: 'bg-orange-600 text-white shadow-lg shadow-orange-500/20', hover: 'hover:bg-orange-500/10 hover:text-orange-300', icon: 'text-orange-400' },
+                blue: { active: 'bg-blue-600 text-white shadow-lg shadow-blue-500/20', hover: 'hover:bg-blue-500/10 hover:text-blue-300', icon: 'text-blue-400' },
+                yellow: { active: 'bg-yellow-600 text-white shadow-lg shadow-yellow-500/20', hover: 'hover:bg-yellow-500/10 hover:text-yellow-300', icon: 'text-yellow-400' },
+                teal: { active: 'bg-teal-600 text-white shadow-lg shadow-teal-500/20', hover: 'hover:bg-teal-500/10 hover:text-teal-300', icon: 'text-teal-400' },
                 fuchsia: { active: 'bg-fuchsia-600 text-white shadow-lg shadow-fuchsia-500/20', hover: 'hover:bg-fuchsia-500/10 hover:text-fuchsia-300', icon: 'text-fuchsia-400' },
               };
               const colors = colorMap[item.color];
@@ -369,12 +333,12 @@ export default function Home() {
               const Icon = item.icon;
               const isActive = viewMode === item.mode;
               const modeColorMap: Record<string, { active: string; hover: string; icon: string }> = {
-                red:    { active: 'bg-red-600 text-white shadow-lg shadow-red-500/20', hover: 'hover:bg-red-500/10 hover:text-red-300', icon: 'text-red-400' },
-                blue:   { active: 'bg-blue-600 text-white shadow-lg shadow-blue-500/20', hover: 'hover:bg-blue-500/10 hover:text-blue-300', icon: 'text-blue-400' },
+                red: { active: 'bg-red-600 text-white shadow-lg shadow-red-500/20', hover: 'hover:bg-red-500/10 hover:text-red-300', icon: 'text-red-400' },
+                blue: { active: 'bg-blue-600 text-white shadow-lg shadow-blue-500/20', hover: 'hover:bg-blue-500/10 hover:text-blue-300', icon: 'text-blue-400' },
                 purple: { active: 'bg-purple-600 text-white shadow-lg shadow-purple-500/20', hover: 'hover:bg-purple-500/10 hover:text-purple-300', icon: 'text-purple-400' },
                 violet: { active: 'bg-violet-600 text-white shadow-lg shadow-violet-500/20', hover: 'hover:bg-violet-500/10 hover:text-violet-300', icon: 'text-violet-400' },
                 yellow: { active: 'bg-yellow-600 text-white shadow-lg shadow-yellow-500/20', hover: 'hover:bg-yellow-500/10 hover:text-yellow-300', icon: 'text-yellow-400' },
-                green:  { active: 'bg-green-600 text-white shadow-lg shadow-green-500/20', hover: 'hover:bg-green-500/10 hover:text-green-300', icon: 'text-green-400' },
+                green: { active: 'bg-green-600 text-white shadow-lg shadow-green-500/20', hover: 'hover:bg-green-500/10 hover:text-green-300', icon: 'text-green-400' },
               };
               const colors = modeColorMap[item.color];
               return (
@@ -716,9 +680,9 @@ export default function Home() {
                       key={chip.labelKey}
                       onClick={() => {
                         if (searchQuery.toLowerCase().includes(chip.query)) {
-                          setSearchQuery(prev => prev.replace(chip.query, "").trim());
+                          setSearchQuery(searchQuery.replace(chip.query, "").trim());
                         } else {
-                          setSearchQuery(prev => (prev + " " + chip.query).trim());
+                          setSearchQuery((searchQuery + " " + chip.query).trim());
                         }
                       }}
                       className={cn(
@@ -839,88 +803,88 @@ export default function Home() {
         ) : (
           viewMode === "grid" ? (
             <div className={searchQuery !== deferredSearchQuery ? "opacity-70 transition-opacity" : "transition-opacity"}>
-            {/* Search context strip */}
-            {searchQuery.trim() && searchResults.length > 0 && (
-              <div className="flex flex-wrap items-center gap-2 mb-4 px-1 animate-in fade-in duration-300">
-                <span className="text-xs text-slate-500">
-                  {language === 'tr' ? 'Eşleşme:' : 'Matched by:'}
-                </span>
-                {searchResults.some(r => r.matchType === "exact") && (
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-green-500/15 text-green-400 border border-green-500/20">
-                    {language === 'tr' ? 'Tam eşleşme' : 'Exact match'}
+              {/* Search context strip */}
+              {searchQuery.trim() && searchResults.length > 0 && (
+                <div className="flex flex-wrap items-center gap-2 mb-4 px-1 animate-in fade-in duration-300">
+                  <span className="text-xs text-slate-500">
+                    {language === 'tr' ? 'Eşleşme:' : 'Matched by:'}
                   </span>
-                )}
-                {searchResults.some(r => r.matchType === "synonym") && (
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/15 text-blue-400 border border-blue-500/20">
-                    {language === 'tr' ? 'Eş anlamlı' : 'Synonym'}
-                  </span>
-                )}
-                {searchResults.some(r => r.matchType === "fuzzy") && (
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/20">
-                    {language === 'tr' ? 'Yakın eşleşme' : 'Fuzzy match'}
-                  </span>
-                )}
-                {searchResults.length > 0 && searchResults[0].matchedFields.length > 0 && (
-                  <span className="text-[10px] text-slate-600 ml-2">
-                    {language === 'tr' ? 'En iyi eşleşme:' : 'Best match:'}{' '}
-                    <span className="text-slate-400">
-                      {formatFieldName(searchResults[0].matchedFields[0].fieldName, language)}
+                  {searchResults.some(r => r.matchType === "exact") && (
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-green-500/15 text-green-400 border border-green-500/20">
+                      {language === 'tr' ? 'Tam eşleşme' : 'Exact match'}
                     </span>
-                  </span>
-                )}
-              </div>
-            )}
-
-            {/* Organ filtre chip'leri */}
-            {searchQuery.trim() && organFilters.length > 1 && (
-              <div className="flex flex-wrap items-center gap-2 mb-4 px-1 animate-in fade-in duration-200">
-                <span className="text-[10px] text-slate-600 font-medium uppercase tracking-wider">
-                  {language === 'tr' ? 'Filtre:' : 'Filter:'}
-                </span>
-                <button
-                  onClick={() => setActiveOrganFilter(null)}
-                  className={cn(
-                    "px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all",
-                    !activeOrganFilter
-                      ? "bg-indigo-500/20 text-indigo-400 border-indigo-500/30"
-                      : "bg-white/5 text-slate-500 border-white/10 hover:text-slate-300"
                   )}
-                >
-                  {language === 'tr' ? 'Tümü' : 'All'} ({filteredPathologies.length})
-                </button>
-                {organFilters.map(of => (
+                  {searchResults.some(r => r.matchType === "synonym") && (
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/15 text-blue-400 border border-blue-500/20">
+                      {language === 'tr' ? 'Eş anlamlı' : 'Synonym'}
+                    </span>
+                  )}
+                  {searchResults.some(r => r.matchType === "fuzzy") && (
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/20">
+                      {language === 'tr' ? 'Yakın eşleşme' : 'Fuzzy match'}
+                    </span>
+                  )}
+                  {searchResults.length > 0 && searchResults[0].matchedFields.length > 0 && (
+                    <span className="text-[10px] text-slate-600 ml-2">
+                      {language === 'tr' ? 'En iyi eşleşme:' : 'Best match:'}{' '}
+                      <span className="text-slate-400">
+                        {formatFieldName(searchResults[0].matchedFields[0].fieldName, language)}
+                      </span>
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {/* Organ filtre chip'leri */}
+              {searchQuery.trim() && organFilters.length > 1 && (
+                <div className="flex flex-wrap items-center gap-2 mb-4 px-1 animate-in fade-in duration-200">
+                  <span className="text-[10px] text-slate-600 font-medium uppercase tracking-wider">
+                    {language === 'tr' ? 'Filtre:' : 'Filter:'}
+                  </span>
                   <button
-                    key={of.organ}
-                    onClick={() => setActiveOrganFilter(activeOrganFilter === of.organ ? null : of.organ)}
+                    onClick={() => setActiveOrganFilter(null)}
                     className={cn(
                       "px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all",
-                      activeOrganFilter === of.organ
+                      !activeOrganFilter
                         ? "bg-indigo-500/20 text-indigo-400 border-indigo-500/30"
                         : "bg-white/5 text-slate-500 border-white/10 hover:text-slate-300"
                     )}
                   >
-                    {of.organ} ({of.count})
+                    {language === 'tr' ? 'Tümü' : 'All'} ({filteredPathologies.length})
                   </button>
-                ))}
-              </div>
-            )}
+                  {organFilters.map(of => (
+                    <button
+                      key={of.organ}
+                      onClick={() => setActiveOrganFilter(activeOrganFilter === of.organ ? null : of.organ)}
+                      className={cn(
+                        "px-2.5 py-1 rounded-lg text-[10px] font-bold border transition-all",
+                        activeOrganFilter === of.organ
+                          ? "bg-indigo-500/20 text-indigo-400 border-indigo-500/30"
+                          : "bg-white/5 text-slate-500 border-white/10 hover:text-slate-300"
+                      )}
+                    >
+                      {of.organ} ({of.count})
+                    </button>
+                  ))}
+                </div>
+              )}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 items-start animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
-              {(activeOrganFilter ? filteredPathologies.filter(p => (p.organ || 'Diğer') === activeOrganFilter) : filteredPathologies).map((pathology) => {
-                const sr = searchResultMap.get(pathology.id);
-                return (
-                  <PathologyCard
-                    key={pathology.id}
-                    data={pathology}
-                    isFavorite={favorites.includes(pathology.id)}
-                    onToggleFavorite={() => toggleFavorite(pathology.id)}
-                    highlightQuery={searchQuery}
-                    matchContext={sr?.matchedFields}
-                    matchType={sr?.matchType}
-                  />
-                );
-              })}
-            </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 items-start animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
+                {(activeOrganFilter ? filteredPathologies.filter(p => (p.organ || 'Diğer') === activeOrganFilter) : filteredPathologies).map((pathology) => {
+                  const sr = searchResultMap.get(pathology.id);
+                  return (
+                    <PathologyCard
+                      key={pathology.id}
+                      data={pathology}
+                      isFavorite={favorites.includes(pathology.id)}
+                      onToggleFavorite={() => toggleFavorite(pathology.id)}
+                      highlightQuery={searchQuery}
+                      matchContext={sr?.matchedFields}
+                      matchType={sr?.matchType}
+                    />
+                  );
+                })}
+              </div>
             </div>
           ) : (
             <div className={cn("max-w-4xl mx-auto flex flex-col gap-2 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300", searchQuery !== deferredSearchQuery && "opacity-70")}>

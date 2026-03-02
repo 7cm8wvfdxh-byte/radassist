@@ -64,9 +64,10 @@
 }
 
 /* Mobile touch scrolling improvements */
-@media (max-width: 640px) {
-  .backface-hidden {
+@layer utilities {
+  .scroll-touch-fix {
     -webkit-overflow-scrolling: touch;
+    transform: translateZ(0); /* Safari preserve-3d child scroll bug fix */
   }
 }
 

@@ -233,7 +233,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Front Content */}
-                    <div className="p-5 flex-1 flex flex-col min-h-0 overflow-y-auto overscroll-contain touch-pan-y scrollbar-thin scrollbar-thumb-zinc-700">
+                    <div className="p-5 flex-1 flex flex-col min-h-0 overflow-y-auto scroll-touch-fix scrollbar-thin scrollbar-thumb-zinc-700">
                         <div className="flex justify-between items-start mb-2 shrink-0">
                             <h3 className="text-xl font-bold text-white leading-tight pr-4">{displayName}</h3>
                             <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider shrink-0">
@@ -371,7 +371,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Back Content */}
-                    <div className="p-6 flex-1 overflow-y-auto overscroll-contain touch-pan-y scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6">
+                    <div className="p-6 flex-1 overflow-y-auto scroll-touch-fix scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6">
 
                         {/* WHY? Section */}
                         {displayMechanism && (
