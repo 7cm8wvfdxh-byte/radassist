@@ -157,7 +157,8 @@ export default function CommunityPage() {
                         <div className="relative flex-1">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                             <input
-                                type="text"
+                                type="search"
+                                aria-label={t("forum.search")}
                                 placeholder={t("forum.search")}
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -167,6 +168,7 @@ export default function CommunityPage() {
                         <AdminNotifications />
                         <button
                             onClick={() => setIsModalOpen(true)}
+                            aria-label={t("forum.newPost")}
                             className="flex items-center gap-2 px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl font-bold shadow-lg shadow-cyan-500/20 transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
                         >
                             <Plus className="w-4 h-4" />

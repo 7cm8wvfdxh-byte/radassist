@@ -123,6 +123,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
 
     const [activeTab, setActiveTab] = useState<TabType>("summary");
     const [activeImage, setActiveImage] = useState<number | null>(null);
+    const [imgError, setImgError] = useState(false);
 
     // Back-face field names that should trigger auto-flip
     const BACK_FACE_FIELDS = new Set(["etiology", "mechanism", "clinicalPearl", "goldStandard"]);
@@ -150,6 +151,11 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
         const targetIndex = data.gallery.findIndex(img => query.includes(img.modality.toLowerCase()) || img.caption.toLowerCase().includes(query));
         if (targetIndex !== -1) setActiveImage(targetIndex);
     }, [highlightQuery, data.gallery]);
+
+    // Reset image error when active image changes
+    React.useEffect(() => {
+        setImgError(false);
+    }, [activeImage]);
 
     // Category Color Mapping
     const getCategoryStyles = (cat: string) => {
@@ -188,7 +194,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                 <div className="absolute inset-0 backface-hidden w-full h-full bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-xl">
                     {/* Header Image Area */}
                     <div className="relative h-36 sm:h-48 w-full bg-black shrink-0">
-                        {data.gallery && data.gallery.length > 0 ? (
+                        {data.gallery && data.gallery.length > 0 && !imgError ? (
                             <Image
                                 src={data.gallery[activeImage ?? 0].url}
                                 alt={`${displayName} - ${data.gallery?.[activeImage ?? 0]?.caption || ''} (${data.gallery?.[activeImage ?? 0]?.modality || ''})`}
@@ -196,10 +202,12 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 loading="lazy"
                                 className="object-cover opacity-80 group-hover/card:opacity-100 transition-opacity"
+                                onError={() => setImgError(true)}
                             />
                         ) : (
-                            <div className="flex items-center justify-center h-full text-zinc-600 bg-zinc-800">
+                            <div className="flex flex-col items-center justify-center h-full text-zinc-600 bg-zinc-800 gap-2">
                                 <Activity className="w-10 h-10 opacity-20" aria-hidden="true" />
+                                {imgError && <span className="text-[10px] text-zinc-600">{isEn ? "Image unavailable" : "Goruntu kullanilamıyor"}</span>}
                             </div>
                         )}
 
@@ -284,7 +292,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         )}
 
                         {/* Pinned: Tabs */}
-                        <div className="flex flex-wrap gap-2 mx-5 mb-2 border-b border-white/5 pb-2 shrink-0">
+                        <div role="tablist" aria-label={isEn ? "Imaging modalities" : "Goruntuleme modaliteleri"} className="flex flex-wrap gap-2 mx-5 mb-2 border-b border-white/5 pb-2 shrink-0">
                             <button
                                 role="tab"
                                 aria-selected={activeTab === 'summary'}

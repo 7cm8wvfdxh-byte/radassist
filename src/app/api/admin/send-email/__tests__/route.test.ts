@@ -49,6 +49,7 @@ describe('Send Email API Route', () => {
 
     it('zorunlu alanlar eksik olduğunda 400 döndürmeli', async () => {
         process.env.INTERNAL_API_SECRET = 'test-secret';
+        process.env.ADMIN_EMAIL = 'test@example.com';
         process.env.RESEND_API_KEY = 'fake-resend-key';
 
         const { POST } = await import('../route');
@@ -66,11 +67,12 @@ describe('Send Email API Route', () => {
         const response = await POST(req);
         expect(response.status).toBe(400);
         const data = await response.json();
-        expect(data.error).toContain('type, title ve message');
+        expect(data.error).toContain('type, title, and message');
     });
 
     it('geçersiz JSON gövdesinde 400 döndürmeli', async () => {
         process.env.INTERNAL_API_SECRET = 'test-secret';
+        process.env.ADMIN_EMAIL = 'test@example.com';
         process.env.RESEND_API_KEY = 'fake-resend-key';
 
         const { POST } = await import('../route');

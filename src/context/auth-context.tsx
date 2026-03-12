@@ -103,8 +103,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 setUser({
                     id: supabaseUser.id,
                     email: supabaseUser.email!,
-                    name: supabaseUser.user_metadata.name || 'Kullanıcı',
-                    specialty: supabaseUser.user_metadata.specialty || 'Radyoloji',
+                    name: supabaseUser.user_metadata.name || 'User',
+                    specialty: supabaseUser.user_metadata.specialty || 'Radiology',
                     is_admin: false
                 });
             }
