@@ -232,19 +232,22 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         )}
                     </div>
 
-                    {/* Front Content */}
-                    <div className="p-5 flex-1 flex flex-col min-h-0 overflow-y-auto scroll-touch-fix scrollbar-thin scrollbar-thumb-zinc-700">
-                        <div className="flex justify-between items-start mb-2 shrink-0">
-                            <h3 className="text-xl font-bold text-white leading-tight pr-4">{displayName}</h3>
-                            <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider shrink-0">
-                                <RotateCw className="w-3 h-3 group-hover/flip:rotate-180 transition-transform duration-500" />
-                                {t("detailed_view")}
-                            </button>
+                    {/* Front Content — pinned header + tabs, scrollable body */}
+                    <div className="flex-1 flex flex-col min-h-0">
+                        {/* Pinned: Name + Flip Button */}
+                        <div className="px-5 pt-5 pb-2 shrink-0">
+                            <div className="flex justify-between items-start">
+                                <h3 className="text-xl font-bold text-white leading-tight pr-4">{displayName}</h3>
+                                <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider shrink-0">
+                                    <RotateCw className="w-3 h-3 group-hover/flip:rotate-180 transition-transform duration-500" />
+                                    {t("detailed_view")}
+                                </button>
+                            </div>
                         </div>
 
-                        {/* Search Match Context */}
+                        {/* Pinned: Search Match Context */}
                         {matchContext && matchContext.length > 0 && highlightQuery && (
-                            <div className="mb-3 p-2.5 rounded-xl bg-indigo-500/5 border border-indigo-500/15 animate-in fade-in duration-300">
+                            <div className="mx-5 mb-2 p-2.5 rounded-xl bg-indigo-500/5 border border-indigo-500/15 animate-in fade-in duration-300 shrink-0">
                                 <div className="flex items-center gap-1.5 mb-1.5">
                                     <div className={cn(
                                         "w-1.5 h-1.5 rounded-full",
@@ -269,8 +272,8 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             </div>
                         )}
 
-                        {/* Tabs */}
-                        <div className="flex flex-wrap gap-2 mb-4 border-b border-white/5 pb-2 shrink-0">
+                        {/* Pinned: Tabs */}
+                        <div className="flex flex-wrap gap-2 mx-5 mb-2 border-b border-white/5 pb-2 shrink-0">
                             <button
                                 role="tab"
                                 aria-selected={activeTab === 'summary'}
@@ -313,20 +316,19 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             })}
                         </div>
 
-                        {/* Content Area */}
-                        <div className="flex-1 mt-1 pr-1 pb-2">
+                        {/* Scrollable Content Area — only this part scrolls */}
+                        <div className="flex-1 min-h-0 overflow-y-auto scroll-touch-fix scrollbar-thin scrollbar-thumb-zinc-700 px-5 pb-3">
                             {activeTab === 'summary' ? (
                                 <ul className="space-y-2">
-                                    {displayKeyPoints.slice(0, 4).map((kp, i) => ( // Show up to 4 key points
+                                    {displayKeyPoints.map((kp, i) => (
                                         <li key={i} className="flex gap-2 text-sm text-zinc-400">
-                                            <span className="text-cyan-500 font-bold mt-1">•</span>
+                                            <span className="text-cyan-500 font-bold mt-1 shrink-0">•</span>
                                             <span className="leading-snug"><HighlightedText text={kp} query={highlightQuery} /></span>
                                         </li>
                                     ))}
                                 </ul>
                             ) : (
                                 <div className="space-y-3 text-sm text-zinc-400 animate-in fade-in duration-300">
-                                    {/* Handle Object content (e.g. CT phases) or String content */}
                                     {(() => {
                                         const content = (displayFindings as Record<string, unknown>)[activeTab];
                                         if (typeof content === 'string') {
@@ -371,7 +373,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Back Content */}
-                    <div className="p-6 flex-1 overflow-y-auto scroll-touch-fix scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6">
+                    <div className="p-6 flex-1 min-h-0 overflow-y-auto scroll-touch-fix scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6">
 
                         {/* WHY? Section */}
                         {displayMechanism && (
