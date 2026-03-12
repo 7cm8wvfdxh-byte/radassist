@@ -67,7 +67,12 @@
 @layer utilities {
   .scroll-touch-fix {
     -webkit-overflow-scrolling: touch;
-    transform: translateZ(0); /* Safari preserve-3d child scroll bug fix */
+    /* Use isolation instead of translateZ(0) — translateZ(0) creates a new
+       3D stacking context that BREAKS overflow scroll inside preserve-3d parents.
+       isolation: isolate creates a new stacking context without interfering with 3D. */
+    isolation: isolate;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
   }
 }
 
