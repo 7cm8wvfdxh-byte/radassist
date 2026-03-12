@@ -1,4 +1,5 @@
-const CACHE_NAME = 'radassist-v2';
+const CACHE_NAME = 'radassist-v3';
+const IMAGE_CACHE = 'radassist-images-v1';
 const STATIC_ASSETS = [
     '/',
     '/manifest.json',
@@ -16,28 +17,59 @@ self.addEventListener('install', (event) => {
 
 // Activate event — clean up old caches
 self.addEventListener('activate', (event) => {
+    const validCaches = [CACHE_NAME, IMAGE_CACHE];
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames
-                    .filter((name) => name !== CACHE_NAME)
+                    .filter((name) => !validCaches.includes(name))
                     .map((name) => caches.delete(name))
             );
         })
     );
     self.clients.claim();
+
+    // Notify clients about the update
+    self.clients.matchAll({ type: 'window' }).then(clients => {
+        clients.forEach(client => {
+            client.postMessage({ type: 'SW_UPDATED', version: CACHE_NAME });
+        });
+    });
 });
 
-// Fetch event — network first, fallback to cache
+// Fetch event — strategy varies by request type
 self.addEventListener('fetch', (event) => {
     // Skip non-GET requests
     if (event.request.method !== 'GET') return;
 
-    // Skip API calls and external URLs
     const url = new URL(event.request.url);
-    if (url.pathname.startsWith('/api/')) return;
+
+    // Skip external URLs
     if (url.origin !== self.location.origin) return;
 
+    // Skip API calls - always go to network
+    if (url.pathname.startsWith('/api/')) return;
+
+    // Image requests — stale-while-revalidate (cache first, update in background)
+    if (event.request.destination === 'image' || url.pathname.match(/\.(png|jpg|jpeg|webp|gif|svg|ico)$/)) {
+        event.respondWith(
+            caches.open(IMAGE_CACHE).then((cache) => {
+                return cache.match(event.request).then((cachedResponse) => {
+                    const fetchPromise = fetch(event.request).then((networkResponse) => {
+                        if (networkResponse.ok) {
+                            cache.put(event.request, networkResponse.clone());
+                        }
+                        return networkResponse;
+                    }).catch(() => cachedResponse || new Response('', { status: 404 }));
+
+                    return cachedResponse || fetchPromise;
+                });
+            })
+        );
+        return;
+    }
+
+    // JS/CSS/HTML — network first, fallback to cache
     event.respondWith(
         fetch(event.request)
             .then((response) => {
@@ -62,7 +94,7 @@ self.addEventListener('fetch', (event) => {
     );
 });
 
-// Push notification support (for future "daily case" feature)
+// Push notification support
 self.addEventListener('push', (event) => {
     if (!event.data) return;
     const data = event.data.json();

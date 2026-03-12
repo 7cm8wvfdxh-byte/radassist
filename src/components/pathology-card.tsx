@@ -170,7 +170,12 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     };
 
     return (
-        <div className="relative w-full h-[480px] sm:h-[550px] perspective-1000 group/card">
+        <div className="relative w-full h-[min(480px,72vh)] sm:h-[min(550px,75vh)] perspective-1000 group/card" role="region" aria-label={displayName}>
+
+            {/* Screen reader announcement for card flip */}
+            <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+                {isFlipped ? (isEn ? `${displayName}: showing detailed mechanism` : `${displayName}: detaylı mekanizma gösteriliyor`) : ''}
+            </div>
 
             {/* CARD CONTAINER */}
             <div
@@ -186,8 +191,10 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         {data.gallery && data.gallery.length > 0 ? (
                             <Image
                                 src={data.gallery[activeImage ?? 0].url}
-                                alt={`${displayName} - ${data.gallery?.[activeImage ?? 0]?.modality || ''}`}
+                                alt={`${displayName} - ${data.gallery?.[activeImage ?? 0]?.caption || ''} (${data.gallery?.[activeImage ?? 0]?.modality || ''})`}
                                 fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                loading="lazy"
                                 className="object-cover opacity-80 group-hover/card:opacity-100 transition-opacity"
                             />
                         ) : (
@@ -216,15 +223,15 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
 
                         {/* Image Gallery Indicators */}
                         {data.gallery && data.gallery.length > 1 && (
-                            <div className="absolute bottom-2 right-2 flex gap-1">
-                                {data.gallery.map((_, i) => (
+                            <div className="absolute bottom-2 right-2 flex gap-1.5">
+                                {data.gallery.map((img, i) => (
                                     <button
                                         key={i}
                                         onClick={(e) => { e.stopPropagation(); setActiveImage(i); }}
-                                        aria-label={`${isEn ? 'Image' : 'Görüntü'} ${i + 1} / ${data.gallery!.length}`}
+                                        aria-label={`${img.caption || (isEn ? 'Image' : 'Görüntü')} ${i + 1} / ${data.gallery!.length}`}
                                         className={cn(
-                                            "w-1.5 h-1.5 rounded-full transition-all",
-                                            (activeImage ?? 0) === i ? "bg-white w-3" : "bg-white/40 hover:bg-white/80"
+                                            "w-3 h-3 rounded-full transition-all p-0 min-w-[12px] min-h-[12px]",
+                                            (activeImage ?? 0) === i ? "bg-white scale-125" : "bg-white/40 hover:bg-white/80"
                                         )}
                                     />
                                 ))}
@@ -238,8 +245,12 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         <div className="px-5 pt-5 pb-2 shrink-0">
                             <div className="flex justify-between items-start">
                                 <h3 className="text-xl font-bold text-white leading-tight pr-4">{displayName}</h3>
-                                <button onClick={handleFlip} className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider shrink-0">
-                                    <RotateCw className="w-3 h-3 group-hover/flip:rotate-180 transition-transform duration-500" />
+                                <button
+                                    onClick={handleFlip}
+                                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleFlip(); } }}
+                                    className="text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 group/flip text-xs font-semibold uppercase tracking-wider shrink-0 py-1"
+                                >
+                                    <RotateCw className="w-3 h-3 group-hover/flip:rotate-180 transition-transform duration-500" aria-hidden="true" />
                                     {t("detailed_view")}
                                 </button>
                             </div>
@@ -280,10 +291,10 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                 aria-controls={`tabpanel-${data.id}-summary`}
                                 onClick={(e) => { e.stopPropagation(); setActiveTab('summary'); }}
                                 className={cn(
-                                    "flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg transition-all",
+                                    "flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 py-2.5 sm:py-1.5 rounded-lg transition-all min-h-[44px] sm:min-h-0",
                                     activeTab === 'summary'
                                         ? "bg-white/10 text-white border border-white/10"
-                                        : "text-zinc-500 hover:text-zinc-300 bg-transparent border border-transparent"
+                                        : "text-zinc-400 hover:text-zinc-200 bg-transparent border border-transparent"
                                 )}
                             >
                                 <FileText className="w-3.5 h-3.5" aria-hidden="true" />
@@ -303,10 +314,10 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                                         aria-controls={`tabpanel-${data.id}-${modality}`}
                                         onClick={(e) => { e.stopPropagation(); setActiveTab(modality); }}
                                         className={cn(
-                                            "flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg transition-all border",
+                                            "flex items-center gap-1.5 text-xs sm:text-sm font-bold px-3 py-2.5 sm:py-1.5 rounded-lg transition-all border min-h-[44px] sm:min-h-0",
                                             isActive
                                                 ? `${config.bg} ${config.color} shadow-sm`
-                                                : "border-transparent text-zinc-500 hover:text-zinc-300 bg-transparent"
+                                                : "border-transparent text-zinc-400 hover:text-zinc-200 bg-transparent"
                                         )}
                                     >
                                         <Icon className="w-3.5 h-3.5" aria-hidden="true" />

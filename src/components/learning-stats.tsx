@@ -209,7 +209,7 @@ export function LearningStats() {
                     <Clock className="w-4 h-4 text-zinc-500" />
                     Haftalık Aktivite
                 </h3>
-                <div className="flex items-end gap-2 h-24" role="img" aria-label="Weekly activity chart">
+                <div className="flex items-end gap-2 h-24" role="group" aria-label="Weekly activity chart">
                     {weeklyActivity.map(day => (
                         <div key={day.date} className="flex-1 flex flex-col items-center gap-1">
                             <div className="w-full relative" style={{ height: '80px' }}>

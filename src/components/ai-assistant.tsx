@@ -1,9 +1,44 @@
 'use client';
 
-import { useState, useRef, useEffect, FormEvent } from 'react';
+import React, { useState, useRef, useEffect, FormEvent } from 'react';
 import { Send, Search, User, Database, Loader2, Trash2 } from 'lucide-react';
-import DOMPurify from 'dompurify';
 import { useLanguage } from '@/context/language-context';
+
+/** Safely render markdown-like text as React elements instead of dangerouslySetInnerHTML */
+function SafeMarkdown({ content }: { content: string }) {
+    const lines = content.split('\n');
+    return (
+        <>
+            {lines.map((line, i) => {
+                // Replace **bold** with <strong>
+                const parts: React.ReactNode[] = [];
+                let lastIndex = 0;
+                const boldRegex = /\*\*(.*?)\*\*/g;
+                let match;
+                while ((match = boldRegex.exec(line)) !== null) {
+                    if (match.index > lastIndex) {
+                        parts.push(line.slice(lastIndex, match.index));
+                    }
+                    parts.push(<strong key={`${i}-${match.index}`}>{match[1]}</strong>);
+                    lastIndex = match.index + match[0].length;
+                }
+                if (lastIndex < line.length) {
+                    parts.push(line.slice(lastIndex));
+                }
+                // Handle bullet points
+                const isBullet = line.startsWith('- ');
+                const displayParts = isBullet ? [<React.Fragment key={`bullet-${i}`}>{'• '}{parts.length > 0 ? parts.slice(0) : line.slice(2)}</React.Fragment>] : parts.length > 0 ? parts : [line];
+
+                return (
+                    <React.Fragment key={i}>
+                        {i > 0 && <br />}
+                        {displayParts}
+                    </React.Fragment>
+                );
+            })}
+        </>
+    );
+}
 
 interface ChatMessage {
     id: string;
@@ -204,17 +239,7 @@ export function AIAssistant() {
                         >
                             <div className="prose prose-invert prose-sm max-w-none whitespace-pre-wrap">
                                 {message.role === 'assistant' ? (
-                                    <div
-                                        dangerouslySetInnerHTML={{
-                                            __html: DOMPurify.sanitize(
-                                                message.content
-                                                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                                    .replace(/\n/g, '<br />')
-                                                    .replace(/^- /gm, '• '),
-                                                { ALLOWED_TAGS: ['strong', 'br', 'em', 'b', 'i', 'p', 'span'] }
-                                            )
-                                        }}
-                                    />
+                                    <SafeMarkdown content={message.content} />
                                 ) : (
                                     message.content
                                 )}

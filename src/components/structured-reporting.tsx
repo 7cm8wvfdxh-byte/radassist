@@ -881,9 +881,10 @@ export function StructuredReporting() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 {config?.fields.map(field => (
                                     <div key={field.id}>
-                                        <label className="text-xs font-medium text-zinc-400">{field.label}</label>
+                                        <label htmlFor={`field-${field.id}`} className="text-xs font-medium text-zinc-400">{field.label}</label>
                                         {field.type === 'select' ? (
                                             <select
+                                                id={`field-${field.id}`}
                                                 value={fieldValues[field.id] || ''}
                                                 onChange={e => setFieldValues(prev => ({ ...prev, [field.id]: e.target.value }))}
                                                 className="w-full mt-1 px-3 py-2 rounded-lg bg-zinc-800/50 border border-zinc-700 text-zinc-200 text-sm focus:border-emerald-500/50 outline-none"
@@ -905,6 +906,7 @@ export function StructuredReporting() {
                                             </label>
                                         ) : field.type === 'textarea' ? (
                                             <textarea
+                                                id={`field-${field.id}`}
                                                 value={fieldValues[field.id] || ''}
                                                 onChange={e => setFieldValues(prev => ({ ...prev, [field.id]: e.target.value }))}
                                                 placeholder={field.placeholder}
@@ -913,6 +915,7 @@ export function StructuredReporting() {
                                             />
                                         ) : (
                                             <input
+                                                id={`field-${field.id}`}
                                                 type={field.type}
                                                 value={fieldValues[field.id] || field.defaultValue || ''}
                                                 onChange={e => setFieldValues(prev => ({ ...prev, [field.id]: e.target.value }))}

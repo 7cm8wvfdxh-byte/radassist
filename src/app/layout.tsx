@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/auth-context";
 import { LanguageProvider } from "@/context/language-context";
+import { ThemeProvider } from "@/context/theme-context";
 import { ForumProvider } from "@/context/forum-context";
 import { PwaInstallPrompt } from "@/components/pwa-install-prompt";
 
@@ -81,16 +82,18 @@ export default function RootLayout({
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-indigo-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">
           Skip to main content
         </a>
-        <LanguageProvider>
-          <AuthProvider>
-            <ForumProvider>
-              <main id="main-content">
-                {children}
-              </main>
-              <PwaInstallPrompt />
-            </ForumProvider>
-          </AuthProvider>
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <AuthProvider>
+              <ForumProvider>
+                <main id="main-content">
+                  {children}
+                </main>
+                <PwaInstallPrompt />
+              </ForumProvider>
+            </AuthProvider>
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

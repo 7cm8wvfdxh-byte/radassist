@@ -207,6 +207,7 @@ export const SearchBar = React.memo(function SearchBar({
                     aria-expanded={isDropdownVisible}
                     aria-haspopup="listbox"
                     aria-autocomplete="list"
+                    aria-controls="search-suggestions-dropdown"
                     aria-label={t("search.placeholder")}
                 />
 
@@ -238,7 +239,7 @@ export const SearchBar = React.memo(function SearchBar({
                             {t("search.searching")}
                         </span>
                     ) : animatedCount > 0 ? (
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-slate-400" role="status" aria-live="polite">
                             <span className="text-indigo-400 font-bold tabular-nums">{animatedCount}</span>
                             {" "}{t("search.resultsFound")}
                         </span>
@@ -280,6 +281,7 @@ export const SearchBar = React.memo(function SearchBar({
                     ref={dropdownRef}
                     className="absolute top-full left-0 right-0 z-50 mt-1 bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200"
                     role="listbox"
+                    id="search-suggestions-dropdown"
                 >
                     {/* Recent header */}
                     {hasRecentSuggestions && !value.trim() && (

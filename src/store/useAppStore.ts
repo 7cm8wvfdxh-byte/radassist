@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type ViewMode = "grid" | "list" | "ai" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy";
+export type ViewMode = "grid" | "list" | "ai" | "toolbox" | "report" | "compare" | "emergency" | "stats" | "anatomy" | "quiz";
 export type ActiveModule = "brain" | "spine" | "liver" | "kidney" | "lung" | "breast" | "msk" | "gi" | "gyn";
 export type ToolboxTab = 'ruler' | 'calc' | 'rads' | 'templates' | 'protocols' | 'signs' | 'ddx' | 'contrast' | 'artifacts' | 'glossary' | 'sequences';
 
