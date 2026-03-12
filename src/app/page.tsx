@@ -250,7 +250,14 @@ export default function Home() {
   }, [searchQuery]);
 
   // Prevent hydration mismatch by processing only after load
-  if (!isLoaded) return null;
+  if (!isLoaded) return (
+    <div className="min-h-screen bg-[#030712] flex items-center justify-center">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-10 h-10 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+        <span className="text-zinc-500 text-sm">RadAsist</span>
+      </div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-[#030712] relative aurora-bg selection:bg-indigo-500/30">
@@ -716,21 +723,21 @@ export default function Home() {
       <div className="max-w-[1600px] mx-auto px-3 sm:px-6 pb-24">
 
         {viewMode === "ai" ? (
-          <ErrorBoundary moduleName="AI Assistant"><AIAssistant /></ErrorBoundary>
+          <ErrorBoundary moduleName="AI Assistant" lang={language}><AIAssistant /></ErrorBoundary>
         ) : viewMode === "toolbox" ? (
-          <ErrorBoundary moduleName="Toolbox"><ToolboxMode activeTab={toolboxTab} onTabChange={setToolboxTab} /></ErrorBoundary>
+          <ErrorBoundary moduleName="Toolbox" lang={language}><ToolboxMode activeTab={toolboxTab} onTabChange={setToolboxTab} /></ErrorBoundary>
         ) : viewMode === "report" ? (
-          <ErrorBoundary moduleName="Reporting"><StructuredReporting /></ErrorBoundary>
+          <ErrorBoundary moduleName="Reporting" lang={language}><StructuredReporting /></ErrorBoundary>
         ) : viewMode === "compare" ? (
-          <ErrorBoundary moduleName="Compare"><ComparisonMode /></ErrorBoundary>
+          <ErrorBoundary moduleName="Compare" lang={language}><ComparisonMode /></ErrorBoundary>
         ) : viewMode === "emergency" ? (
-          <ErrorBoundary moduleName="Emergency"><EmergencyPanel /></ErrorBoundary>
+          <ErrorBoundary moduleName="Emergency" lang={language}><EmergencyPanel /></ErrorBoundary>
         ) : viewMode === "stats" ? (
-          <ErrorBoundary moduleName="Stats"><LearningStats /></ErrorBoundary>
+          <ErrorBoundary moduleName="Stats" lang={language}><LearningStats /></ErrorBoundary>
         ) : viewMode === "anatomy" ? (
-          <ErrorBoundary moduleName="Anatomy Atlas"><AnatomyAtlas /></ErrorBoundary>
+          <ErrorBoundary moduleName="Anatomy Atlas" lang={language}><AnatomyAtlas /></ErrorBoundary>
         ) : viewMode === "quiz" ? (
-          <ErrorBoundary moduleName="Quiz Mode"><QuizMode pathologies={allPathologies} /></ErrorBoundary>
+          <ErrorBoundary moduleName="Quiz Mode" lang={language}><QuizMode pathologies={allPathologies} /></ErrorBoundary>
         ) : filteredPathologies.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 sm:py-32 animate-in fade-in zoom-in duration-500">
             {/* Animated search illustration */}

@@ -103,6 +103,7 @@ export function AIAssistant() {
                         role: m.role,
                         content: m.content,
                     })),
+                    language,
                 }),
             });
 

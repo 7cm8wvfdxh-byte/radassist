@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'thnshn@icloud.com';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
 interface EmailPayload {
@@ -16,9 +16,8 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Yetkisiz.' }, { status: 403 });
     }
 
-    if (!RESEND_API_KEY) {
-        // Resend yapılandırılmamış, sessizce atla
-        return NextResponse.json({ skipped: true, reason: 'RESEND_API_KEY tanımlı değil.' });
+    if (!ADMIN_EMAIL || !RESEND_API_KEY) {
+        return NextResponse.json({ skipped: true, reason: 'Email configuration incomplete.' });
     }
 
     let body: EmailPayload;
