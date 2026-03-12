@@ -123,7 +123,7 @@ describe('PathologyCard', () => {
 
     it('should render gallery image', () => {
         render(<PathologyCard {...defaultProps} />);
-        const image = screen.getByAltText('Test Patoloji - MRI');
+        const image = screen.getByAltText('Test Patoloji - Test görüntü (MRI)');
         expect(image).toBeInTheDocument();
     });
 

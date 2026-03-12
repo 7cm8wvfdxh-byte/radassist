@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import { ForumProvider, useForum } from '../forum-context';
+import { LanguageProvider } from '../language-context';
 import { supabase } from '@/lib/supabase';
 
 function TestConsumer() {
@@ -35,9 +36,11 @@ describe('ForumContext', () => {
         vi.mocked(supabase.from).mockReturnValue(mockQuery as any);
 
         render(
-            <ForumProvider>
-                <TestConsumer />
-            </ForumProvider>
+            <LanguageProvider>
+                <ForumProvider>
+                    <TestConsumer />
+                </ForumProvider>
+            </LanguageProvider>
         );
 
         await waitFor(() => {
@@ -67,9 +70,11 @@ describe('ForumContext', () => {
         vi.mocked(supabase.from).mockReturnValue(mockQuery as any);
 
         render(
-            <ForumProvider>
-                <TestConsumer />
-            </ForumProvider>
+            <LanguageProvider>
+                <ForumProvider>
+                    <TestConsumer />
+                </ForumProvider>
+            </LanguageProvider>
         );
 
         await waitFor(() => {
@@ -85,9 +90,11 @@ describe('ForumContext', () => {
         vi.mocked(supabase.from).mockReturnValue(mockQuery as any);
 
         render(
-            <ForumProvider>
-                <TestConsumer />
-            </ForumProvider>
+            <LanguageProvider>
+                <ForumProvider>
+                    <TestConsumer />
+                </ForumProvider>
+            </LanguageProvider>
         );
 
         await waitFor(() => {
@@ -105,9 +112,11 @@ describe('ForumContext', () => {
         const user = (await import('@testing-library/user-event')).default.setup();
 
         render(
-            <ForumProvider>
-                <TestConsumer />
-            </ForumProvider>
+            <LanguageProvider>
+                <ForumProvider>
+                    <TestConsumer />
+                </ForumProvider>
+            </LanguageProvider>
         );
 
         await waitFor(() => {

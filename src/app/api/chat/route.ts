@@ -12,6 +12,22 @@ import { Pathology, ModalityFindings } from '@/types';
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
+// Simple in-memory rate limiter (per IP, resets on deploy)
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_WINDOW = 60_000; // 1 minute
+const RATE_LIMIT_MAX = 30; // max requests per window
+
+function isRateLimited(ip: string): boolean {
+    const now = Date.now();
+    const entry = rateLimitMap.get(ip);
+    if (!entry || now > entry.resetAt) {
+        rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW });
+        return false;
+    }
+    entry.count++;
+    return entry.count > RATE_LIMIT_MAX;
+}
+
 // Helper to simulate delay for "typing" effect
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -133,6 +149,15 @@ function getLocalizedDatabases(lang: 'tr' | 'en') {
 }
 
 export async function POST(req: Request) {
+    // Rate limiting
+    const ip = (req.headers.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0].trim();
+    if (isRateLimited(ip)) {
+        return new Response(
+            JSON.stringify({ error: 'Too many requests. Please try again later.' }),
+            { status: 429, headers: { 'Content-Type': 'application/json', 'Retry-After': '60' } }
+        );
+    }
+
     // Input validation
     let body: unknown;
     try {
