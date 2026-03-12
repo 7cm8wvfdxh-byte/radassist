@@ -29,18 +29,108 @@ const searchFindings = (findings: ModalityFindings | null | undefined, query: st
     });
 };
 
-// All organ databases with labels
-const ALL_DATABASES: { data: Pathology[]; label: string; icon: string }[] = [
-    { data: brainPathologies, label: 'Beyin', icon: '🧠' },
-    { data: spinePathologies, label: 'Omurga', icon: '🦴' },
-    { data: liverPathologies, label: 'Karaciğer', icon: '🟤' },
-    { data: kidneyPathologies, label: 'Böbrek', icon: '🫘' },
-    { data: lungPathologies, label: 'Akciğer', icon: '🫁' },
-    { data: breastPathologies, label: 'Meme', icon: '🩺' },
-    { data: mskPathologies, label: 'Kas-İskelet', icon: '💪' },
-    { data: gastroPathologies, label: 'GIS', icon: '🍽️' },
-    { data: gynecologyPathologies, label: 'Jinekoloji', icon: '♀️' },
+// Localized labels
+const i18n = {
+    tr: {
+        labels: ['Beyin', 'Omurga', 'Karaciğer', 'Böbrek', 'Akciğer', 'Meme', 'Kas-İskelet', 'GIS', 'Jinekoloji'],
+        mechanism: 'Mekanizma',
+        etiology: 'Etiyoloji',
+        imagingFindings: 'Görüntüleme Bulguları',
+        mriFindings: 'MR Bulguları',
+        ctFindings: 'BT Bulguları',
+        usgFindings: 'USG Bulguları',
+        mammoFindings: 'Mamografi Bulguları',
+        xrayFindings: 'X-Ray Bulguları',
+        petFindings: 'PET Bulguları',
+        nonContrast: 'Kontrastsız',
+        contrast: 'Kontrastlı',
+        ctAngio: 'BT Anjiyo',
+        boneWindow: 'Kemik Pencere',
+        perfusion: 'Perfüzyon',
+        spectroscopy: 'Spektroskopi',
+        dynamicT1C: 'Dinamik T1+K',
+        keyPoints: 'Önemli Noktalar',
+        clinicalPearl: 'Klinik İpucu',
+        goldStandard: 'Altın Standart',
+        ddx: 'Ayırıcı Tanı',
+        sourceNote: (cat: string) => `*(RadAsist: 9 organ veritabanından getirildi — ${cat} modülü)*`,
+        greeting: 'Merhaba! Ben RadAsist Patoloji Arama Asistanıyım. 👋',
+        greetingDesc: (count: number) => `**9 organ sistemi** ve **${count}+ patoloji** veritabanından bilgi sağlayabilirim:\n\n`,
+        pathologyCount: 'patoloji',
+        searchHint: 'Bir hastalık adı, bulgu veya tanı yazarak arama yapabilirsiniz.',
+        searchExamples: 'Örnek: "Glioblastom", "HCC", "Pulmoner Emboli", "Disk Hernisi", "Rotator Cuff"',
+        dbContent: 'RadAsist Veritabanı İçeriği',
+        notFound: (q: string) => `Veritabanında **"${q}"** ile ilgili bir kayıt bulunamadı.`,
+        notFoundHint: (count: number) => `${count}+ patoloji arasından arama yapabilirsiniz. Lütfen hastalık adı veya bulgu yazarak tekrar deneyin.`,
+        exampleQueries: 'Örnek sorgular',
+        examples: '- Glioblastom\n- Hepatosellüler karsinom\n- Pulmoner emboli\n- Menisküs yırtığı\n- Disk hernisi\n- Meme kanseri\n- Endometriozis\n- Apandisit',
+        invalidFormat: 'Geçersiz istek formatı.',
+        emptyMessages: 'Mesaj listesi boş veya geçersiz.',
+        emptyContent: 'Mesaj içeriği boş.',
+        greetingKeywords: ['merhaba', 'selam'],
+        listKeywords: ['listele', 'hangi', 'neler var'],
+    },
+    en: {
+        labels: ['Brain', 'Spine', 'Liver', 'Kidney', 'Lung', 'Breast', 'MSK', 'GI', 'Gynecology'],
+        mechanism: 'Mechanism',
+        etiology: 'Etiology',
+        imagingFindings: 'Imaging Findings',
+        mriFindings: 'MRI Findings',
+        ctFindings: 'CT Findings',
+        usgFindings: 'US Findings',
+        mammoFindings: 'Mammography Findings',
+        xrayFindings: 'X-Ray Findings',
+        petFindings: 'PET Findings',
+        nonContrast: 'Non-contrast',
+        contrast: 'Contrast',
+        ctAngio: 'CT Angiography',
+        boneWindow: 'Bone Window',
+        perfusion: 'Perfusion',
+        spectroscopy: 'Spectroscopy',
+        dynamicT1C: 'Dynamic T1+C',
+        keyPoints: 'Key Points',
+        clinicalPearl: 'Clinical Pearl',
+        goldStandard: 'Gold Standard',
+        ddx: 'Differential Diagnosis',
+        sourceNote: (cat: string) => `*(RadAsist: Retrieved from 9 organ databases — ${cat} module)*`,
+        greeting: 'Hello! I\'m the RadAsist Pathology Search Assistant. 👋',
+        greetingDesc: (count: number) => `I can provide information from **9 organ systems** and **${count}+ pathologies**:\n\n`,
+        pathologyCount: 'pathologies',
+        searchHint: 'Search by typing a disease name, finding, or diagnosis.',
+        searchExamples: 'Examples: "Glioblastoma", "HCC", "Pulmonary Embolism", "Disc Herniation", "Rotator Cuff"',
+        dbContent: 'RadAsist Database Contents',
+        notFound: (q: string) => `No results found for **"${q}"** in the database.`,
+        notFoundHint: (count: number) => `You can search among ${count}+ pathologies. Please try again with a disease name or finding.`,
+        exampleQueries: 'Example queries',
+        examples: '- Glioblastoma\n- Hepatocellular carcinoma\n- Pulmonary embolism\n- Meniscal tear\n- Disc herniation\n- Breast cancer\n- Endometriosis\n- Appendicitis',
+        invalidFormat: 'Invalid request format.',
+        emptyMessages: 'Message list is empty or invalid.',
+        emptyContent: 'Message content is empty.',
+        greetingKeywords: ['hello', 'hi'],
+        listKeywords: ['list', 'which', 'what'],
+    },
+};
+
+// All organ databases
+const ALL_DATABASES_RAW: { data: Pathology[]; icon: string }[] = [
+    { data: brainPathologies, icon: '🧠' },
+    { data: spinePathologies, icon: '🦴' },
+    { data: liverPathologies, icon: '🟤' },
+    { data: kidneyPathologies, icon: '🫘' },
+    { data: lungPathologies, icon: '🫁' },
+    { data: breastPathologies, icon: '🩺' },
+    { data: mskPathologies, icon: '💪' },
+    { data: gastroPathologies, icon: '🍽️' },
+    { data: gynecologyPathologies, icon: '♀️' },
 ];
+
+function getLocalizedDatabases(lang: 'tr' | 'en') {
+    const labels = i18n[lang].labels;
+    return ALL_DATABASES_RAW.map((db, idx) => ({
+        ...db,
+        label: labels[idx],
+    }));
+}
 
 export async function POST(req: Request) {
     // Input validation
@@ -49,16 +139,22 @@ export async function POST(req: Request) {
         body = await req.json();
     } catch {
         return new Response(
-            JSON.stringify({ error: 'Geçersiz istek formatı.' }),
+            JSON.stringify({ error: i18n.tr.invalidFormat }),
             { status: 400, headers: { 'Content-Type': 'application/json' } }
         );
     }
 
-    const { messages } = body as { messages?: Array<{ role: string; content: string }> };
+    const { messages, language: reqLang } = body as {
+        messages?: Array<{ role: string; content: string }>;
+        language?: string;
+    };
+    const lang: 'tr' | 'en' = reqLang === 'en' ? 'en' : 'tr';
+    const t = i18n[lang];
+    const ALL_DATABASES = getLocalizedDatabases(lang);
 
     if (!Array.isArray(messages) || messages.length === 0) {
         return new Response(
-            JSON.stringify({ error: 'Mesaj listesi boş veya geçersiz.' }),
+            JSON.stringify({ error: t.emptyMessages }),
             { status: 400, headers: { 'Content-Type': 'application/json' } }
         );
     }
@@ -66,7 +162,7 @@ export async function POST(req: Request) {
     const lastMessage = messages[messages.length - 1]?.content;
     if (typeof lastMessage !== 'string' || !lastMessage.trim()) {
         return new Response(
-            JSON.stringify({ error: 'Mesaj içeriği boş.' }),
+            JSON.stringify({ error: t.emptyContent }),
             { status: 400, headers: { 'Content-Type': 'application/json' } }
         );
     }
@@ -111,64 +207,72 @@ export async function POST(req: Request) {
         }
     }
 
+    // Helper for language-aware field access
+    const isEn = lang === 'en';
+    const getField = (tr: string | undefined, en: string | undefined) =>
+        isEn ? (en || tr || '') : (tr || '');
+
     // 3. GENERATE RESPONSE
     let responseText = "";
 
     if (foundPathology) {
-        responseText = `## ${icon} ${foundPathology.name} (${category})\n\n`;
+        const name = isEn ? (foundPathology.nameEn || foundPathology.name) : foundPathology.name;
+        responseText = `## ${icon} ${name} (${category})\n\n`;
 
         // Mechanism
-        if (foundPathology.mechanism) {
-            responseText += `**Mekanizma:** ${foundPathology.mechanism}\n\n`;
+        const mechanism = getField(foundPathology.mechanism, foundPathology.mechanismEn);
+        if (mechanism) {
+            responseText += `**${t.mechanism}:** ${mechanism}\n\n`;
         }
 
         // Etiology
-        if (foundPathology.etiology) {
-            responseText += `**Etiyoloji:** ${foundPathology.etiology}\n\n`;
+        const etiology = getField(foundPathology.etiology, foundPathology.etiologyEn);
+        if (etiology) {
+            responseText += `**${t.etiology}:** ${etiology}\n\n`;
         }
 
         // Format findings
         if (foundPathology.findings) {
-            responseText += `**Görüntüleme Bulguları:**\n`;
+            responseText += `**${t.imagingFindings}:**\n`;
             const f = foundPathology.findings as Record<string, Record<string, string | undefined>>;
 
             // MRI findings
             if (f.mri) {
-                responseText += `\n*MR Bulguları:*\n`;
+                responseText += `\n*${t.mriFindings}:*\n`;
                 if (f.mri.t1) responseText += `- **T1:** ${f.mri.t1}\n`;
                 if (f.mri.t2) responseText += `- **T2:** ${f.mri.t2}\n`;
                 if (f.mri.t2_flair) responseText += `- **FLAIR:** ${f.mri.t2_flair}\n`;
                 if (f.mri.dwi) responseText += `- **DWI:** ${f.mri.dwi}\n`;
                 if (f.mri.adc) responseText += `- **ADC:** ${f.mri.adc}\n`;
-                if (f.mri.t1_c) responseText += `- **T1+K:** ${f.mri.t1_c}\n`;
+                if (f.mri.t1_c) responseText += `- **T1+C:** ${f.mri.t1_c}\n`;
                 if (f.mri.swi) responseText += `- **SWI:** ${f.mri.swi}\n`;
                 if (f.mri.stir) responseText += `- **STIR:** ${f.mri.stir}\n`;
-                if (f.mri.perfusion) responseText += `- **Perfüzyon:** ${f.mri.perfusion}\n`;
-                if (f.mri.spectroscopy) responseText += `- **Spektroskopi:** ${f.mri.spectroscopy}\n`;
+                if (f.mri.perfusion) responseText += `- **${t.perfusion}:** ${f.mri.perfusion}\n`;
+                if (f.mri.spectroscopy) responseText += `- **${t.spectroscopy}:** ${f.mri.spectroscopy}\n`;
                 if (f.mri.mra) responseText += `- **MRA:** ${f.mri.mra}\n`;
-                if (f.mri.t1_c_dynamic) responseText += `- **Dinamik T1+K:** ${f.mri.t1_c_dynamic}\n`;
+                if (f.mri.t1_c_dynamic) responseText += `- **${t.dynamicT1C}:** ${f.mri.t1_c_dynamic}\n`;
             }
 
             // CT findings
             if (f.ct) {
-                responseText += `\n*BT Bulguları:*\n`;
-                if (f.ct.non_contrast) responseText += `- **Kontrastsız:** ${f.ct.non_contrast}\n`;
-                if (f.ct.contrast) responseText += `- **Kontrastlı:** ${f.ct.contrast}\n`;
-                if (f.ct.cta) responseText += `- **BT Anjiyo:** ${f.ct.cta}\n`;
-                if (f.ct.bone_window) responseText += `- **Kemik Pencere:** ${f.ct.bone_window}\n`;
+                responseText += `\n*${t.ctFindings}:*\n`;
+                if (f.ct.non_contrast) responseText += `- **${t.nonContrast}:** ${f.ct.non_contrast}\n`;
+                if (f.ct.contrast) responseText += `- **${t.contrast}:** ${f.ct.contrast}\n`;
+                if (f.ct.cta) responseText += `- **${t.ctAngio}:** ${f.ct.cta}\n`;
+                if (f.ct.bone_window) responseText += `- **${t.boneWindow}:** ${f.ct.bone_window}\n`;
             }
 
             // USG findings
             if (f.ultrasound || f.usg) {
                 const usg = f.ultrasound || f.usg;
-                responseText += `\n*USG Bulguları:*\n`;
+                responseText += `\n*${t.usgFindings}:*\n`;
                 if (usg?.description) responseText += `- ${usg.description}\n`;
                 if ((usg as Record<string, string>)?.doppler) responseText += `- **Doppler:** ${(usg as Record<string, string>).doppler}\n`;
             }
 
             // Mammography
             if (f.mammography) {
-                responseText += `\n*Mamografi Bulguları:*\n`;
+                responseText += `\n*${t.mammoFindings}:*\n`;
                 if (f.mammography.description) responseText += `- ${f.mammography.description}\n`;
                 if (f.mammography.cc_view) responseText += `- **CC:** ${f.mammography.cc_view}\n`;
                 if (f.mammography.mlo_view) responseText += `- **MLO:** ${f.mammography.mlo_view}\n`;
@@ -176,66 +280,75 @@ export async function POST(req: Request) {
 
             // X-Ray
             if (f.xray) {
-                responseText += `\n*X-Ray Bulguları:*\n`;
+                responseText += `\n*${t.xrayFindings}:*\n`;
                 if (f.xray.description) responseText += `- ${f.xray.description}\n`;
             }
 
             // PET
             if (f.pet) {
-                responseText += `\n*PET Bulguları:*\n`;
+                responseText += `\n*${t.petFindings}:*\n`;
                 if (f.pet.description) responseText += `- ${f.pet.description}\n`;
                 if (f.pet.suv_max) responseText += `- **SUV Max:** ${f.pet.suv_max}\n`;
             }
         }
 
         // Key Points
-        if (foundPathology.keyPoints && foundPathology.keyPoints.length > 0) {
-            responseText += `\n**Önemli Noktalar:**\n`;
-            foundPathology.keyPoints.forEach(kp => responseText += `- ${kp}\n`);
+        const keyPoints = isEn ? (foundPathology.keyPointsEn || foundPathology.keyPoints) : foundPathology.keyPoints;
+        if (keyPoints && keyPoints.length > 0) {
+            responseText += `\n**${t.keyPoints}:**\n`;
+            keyPoints.forEach(kp => responseText += `- ${kp}\n`);
         }
 
         // Clinical Pearl
-        if (foundPathology.clinicalPearl) {
-            responseText += `\n**Klinik İpucu:** ${foundPathology.clinicalPearl}\n`;
+        const clinicalPearl = getField(foundPathology.clinicalPearl, foundPathology.clinicalPearlEn);
+        if (clinicalPearl) {
+            responseText += `\n**${t.clinicalPearl}:** ${clinicalPearl}\n`;
         }
 
         // Gold Standard
-        if (foundPathology.goldStandard) {
-            responseText += `\n**Altın Standart:** ${foundPathology.goldStandard}\n`;
+        const goldStandard = getField(foundPathology.goldStandard, foundPathology.goldStandardEn);
+        if (goldStandard) {
+            responseText += `\n**${t.goldStandard}:** ${goldStandard}\n`;
         }
 
         // Differential Diagnosis
         if (foundPathology.differentialDiagnosis && foundPathology.differentialDiagnosis.length > 0) {
-            responseText += `\n**Ayırıcı Tanı:**\n`;
+            responseText += `\n**${t.ddx}:**\n`;
             foundPathology.differentialDiagnosis.forEach(dd => responseText += `- ${dd}\n`);
         }
 
-        responseText += `\n\n*(RadAsist: 9 organ veritabanından getirildi — ${category} modülü)*`;
+        responseText += `\n\n${t.sourceNote(category)}`;
 
     } else {
         // List all available pathologies count
         const totalCount = ALL_DATABASES.reduce((sum, db) => sum + db.data.length, 0);
 
-        if (query.includes('merhaba') || query.includes('selam') || query.includes('hello') || query.includes('hi')) {
-            responseText = `Merhaba! Ben RadAsist Patoloji Arama Asistanıyım. 👋\n\n`;
-            responseText += `**9 organ sistemi** ve **${totalCount}+ patoloji** veritabanından bilgi sağlayabilirim:\n\n`;
+        const allGreetings = [...i18n.tr.greetingKeywords, ...i18n.en.greetingKeywords];
+        const allListKeywords = [...i18n.tr.listKeywords, ...i18n.en.listKeywords];
+
+        if (allGreetings.some(kw => query.includes(kw))) {
+            responseText = `${t.greeting}\n\n`;
+            responseText += t.greetingDesc(totalCount);
             ALL_DATABASES.forEach(db => {
-                responseText += `${db.icon} **${db.label}** — ${db.data.length} patoloji\n`;
+                responseText += `${db.icon} **${db.label}** — ${db.data.length} ${t.pathologyCount}\n`;
             });
-            responseText += `\nBir hastalık adı, bulgu veya tanı yazarak arama yapabilirsiniz.\n`;
-            responseText += `Örnek: "Glioblastom", "HCC", "Pulmoner Emboli", "Disk Hernisi", "Rotator Cuff"`;
-        } else if (query.includes('listele') || query.includes('hangi') || query.includes('neler var')) {
-            responseText = `**RadAsist Veritabanı İçeriği:**\n\n`;
+            responseText += `\n${t.searchHint}\n`;
+            responseText += t.searchExamples;
+        } else if (allListKeywords.some(kw => query.includes(kw))) {
+            responseText = `**${t.dbContent}:**\n\n`;
             ALL_DATABASES.forEach(db => {
                 responseText += `${db.icon} **${db.label}:**\n`;
-                db.data.forEach(p => responseText += `  - ${p.name}\n`);
+                db.data.forEach(p => {
+                    const name = isEn ? (p.nameEn || p.name) : p.name;
+                    responseText += `  - ${name}\n`;
+                });
                 responseText += `\n`;
             });
         } else {
-            responseText = `Veritabanında **"${trimmedMessage}"** ile ilgili bir kayıt bulunamadı.\n\n`;
-            responseText += `${totalCount}+ patoloji arasından arama yapabilirsiniz. Lütfen hastalık adı veya bulgu yazarak tekrar deneyin.\n\n`;
-            responseText += `**Örnek sorgular:**\n`;
-            responseText += `- Glioblastom\n- Hepatosellüler karsinom\n- Pulmoner emboli\n- Menisküs yırtığı\n- Disk hernisi\n- Meme kanseri\n- Endometriozis\n- Apandisit`;
+            responseText = `${t.notFound(trimmedMessage)}\n\n`;
+            responseText += `${t.notFoundHint(totalCount)}\n\n`;
+            responseText += `**${t.exampleQueries}:**\n`;
+            responseText += t.examples;
         }
     }
 

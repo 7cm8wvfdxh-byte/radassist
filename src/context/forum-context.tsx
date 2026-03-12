@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { supabase } from "@/lib/supabase";
 import { User } from "./auth-context";
+import { useLanguage } from "./language-context";
 
 export interface Comment {
     id: string;
@@ -86,10 +87,37 @@ interface ForumContextType {
 
 const ForumContext = createContext<ForumContextType | undefined>(undefined);
 
+const forumErrors = {
+    tr: {
+        fetchFailed: "Gönderiler yüklenirken bir hata oluştu. Lütfen tekrar deneyin.",
+        unexpected: "Beklenmeyen bir hata oluştu.",
+        createFailed: "Gönderi oluşturulamadı",
+        commentFailed: "Yorum eklenirken bir hata oluştu.",
+        likeFailed: "Beğeni eklenirken bir hata oluştu.",
+        likeCheckFailed: "Beğeni durumu kontrol edilirken hata oluştu.",
+        unlikeFailed: "Beğeni kaldırılırken bir hata oluştu.",
+        deleteFailed: "Gönderi silinemedi",
+        deleteCommentFailed: "Yorum silinemedi",
+    },
+    en: {
+        fetchFailed: "Failed to load posts. Please try again.",
+        unexpected: "An unexpected error occurred.",
+        createFailed: "Failed to create post",
+        commentFailed: "Failed to add comment.",
+        likeFailed: "Failed to add like.",
+        likeCheckFailed: "Failed to check like status.",
+        unlikeFailed: "Failed to remove like.",
+        deleteFailed: "Failed to delete post",
+        deleteCommentFailed: "Failed to delete comment",
+    },
+};
+
 export function ForumProvider({ children }: { children: React.ReactNode }) {
+    const { language } = useLanguage();
     const [posts, setPosts] = useState<Post[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const fe = forumErrors[language];
 
     const clearError = useCallback(() => setError(null), []);
 
@@ -107,7 +135,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                 .order('created_at', { ascending: false });
 
             if (fetchError) {
-                setError("Gönderiler yüklenirken bir hata oluştu. Lütfen tekrar deneyin.");
+                setError(fe.fetchFailed);
             } else if (data) {
                 const formattedPosts: Post[] = data.map((p: RawPostData) => ({
                     ...p,
@@ -117,11 +145,11 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                 setPosts(formattedPosts);
             }
         } catch {
-            setError("Beklenmeyen bir hata oluştu.");
+            setError(fe.unexpected);
         } finally {
             setIsLoading(false);
         }
-    }, []);
+    }, [fe]);
 
     useEffect(() => {
         fetchPosts();
@@ -152,7 +180,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                 .select();
 
             if (insertError) {
-                const errorMessage = `Gönderi oluşturulamadı: ${insertError.message}`;
+                const errorMessage = `${fe.createFailed}: ${insertError.message}`;
                 setError(errorMessage);
                 return { success: false, error: errorMessage };
             }
@@ -160,9 +188,8 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
             await fetchPosts();
             return { success: true };
         } catch {
-            const errorMessage = "Beklenmeyen bir hata oluştu.";
-            setError(errorMessage);
-            return { success: false, error: errorMessage };
+            setError(fe.unexpected);
+            return { success: false, error: fe.unexpected };
         }
     };
 
@@ -177,13 +204,12 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                 });
 
             if (insertError) {
-                const errorMessage = "Yorum eklenirken bir hata oluştu.";
-                return { success: false, error: errorMessage };
+                return { success: false, error: fe.commentFailed };
             }
 
             return { success: true };
         } catch {
-            return { success: false, error: "Beklenmeyen bir hata oluştu." };
+            return { success: false, error: fe.unexpected };
         }
     };
 
@@ -222,12 +248,12 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                         if (updateError) {
                             // Revert optimistic update
                             await fetchPosts();
-                            return { success: false, error: "Beğeni eklenirken bir hata oluştu." };
+                            return { success: false, error: fe.likeFailed };
                         }
                     }
                     return { success: true };
                 }
-                return { success: false, error: "Beğeni durumu kontrol edilirken hata oluştu." };
+                return { success: false, error: fe.likeCheckFailed };
             }
 
             if (existingLike) {
@@ -238,7 +264,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                     .eq('id', existingLike.id);
 
                 if (deleteError) {
-                    return { success: false, error: "Beğeni kaldırılırken bir hata oluştu." };
+                    return { success: false, error: fe.unlikeFailed };
                 }
 
                 // Fetch fresh count, then decrement
@@ -265,7 +291,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
                     .insert({ post_id: postId, user_id: userId });
 
                 if (insertError) {
-                    return { success: false, error: "Beğeni eklenirken bir hata oluştu." };
+                    return { success: false, error: fe.likeFailed };
                 }
 
                 // Fetch fresh count, then increment
@@ -289,7 +315,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
 
             return { success: true };
         } catch {
-            return { success: false, error: "Beklenmeyen bir hata oluştu." };
+            return { success: false, error: fe.unexpected };
         }
     };
 
@@ -307,7 +333,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
             const { error: deleteError } = await supabase.from('posts').delete().eq('id', postId);
             if (deleteError) {
                 console.error('Post delete error:', deleteError);
-                return { success: false, error: "Gönderi silinemedi: " + deleteError.message };
+                return { success: false, error: `${fe.deleteFailed}: ${deleteError.message}` };
             }
 
             // Update local state immediately
@@ -315,7 +341,7 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
             return { success: true };
         } catch (err) {
             console.error('deletePost unexpected error:', err);
-            return { success: false, error: "Beklenmeyen bir hata oluştu." };
+            return { success: false, error: fe.unexpected };
         }
     };
 
@@ -324,12 +350,12 @@ export function ForumProvider({ children }: { children: React.ReactNode }) {
             const { error: deleteError } = await supabase.from('comments').delete().eq('id', commentId);
             if (deleteError) {
                 console.error('Comment delete error:', deleteError);
-                return { success: false, error: "Yorum silinemedi: " + deleteError.message };
+                return { success: false, error: `${fe.deleteCommentFailed}: ${deleteError.message}` };
             }
             return { success: true };
         } catch (err) {
             console.error('deleteComment unexpected error:', err);
-            return { success: false, error: "Beklenmeyen bir hata oluştu." };
+            return { success: false, error: fe.unexpected };
         }
     };
 
