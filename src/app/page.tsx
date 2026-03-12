@@ -27,6 +27,9 @@ const LearningStats = dynamic(() => import("@/components/learning-stats").then(m
 const AnatomyAtlas = dynamic(() => import("@/components/anatomy-atlas").then(mod => ({ default: mod.AnatomyAtlas })), {
   loading: () => <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" /></div>,
 });
+const QuizMode = dynamic(() => import("@/components/quiz-mode").then(mod => ({ default: mod.QuizMode })), {
+  loading: () => <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-2 border-amber-500 border-t-transparent rounded-full animate-spin" /></div>,
+});
 import { brainPathologies } from "@/data/brain-pathologies";
 import { spinePathologies } from "@/data/spine-pathologies";
 import { liverPathologies } from "@/data/liver-pathologies";
@@ -42,7 +45,8 @@ import { caseStudies } from "@/data/case-studies";
 import { USG_FINDINGS, CT_FINDINGS, MRI_FINDINGS } from "@/data/lexicon";
 import { announcements } from "@/data/announcements";
 import { Pathology } from "@/types";
-import { cn } from "@/lib/utils"; // Ensure cn is imported
+import { cn } from "@/lib/utils";
+import { ErrorBoundary } from "@/components/error-boundary";
 import { performScoredSearch, getDidYouMeanSuggestions, addRecentSearch, SearchResult, getOrganFilters, OrganFilterResult } from "@/lib/search-utils";
 import { useAuth } from "@/context/auth-context";
 import { useLanguage } from "@/context/language-context";
@@ -329,6 +333,7 @@ export default function Home() {
               { mode: 'compare' as const, icon: GitCompare, label: language === 'tr' ? 'Karşılaştırma' : 'Compare', shortLabel: language === 'tr' ? 'Karşıl.' : 'Comp', color: 'violet' },
               { mode: 'stats' as const, icon: BarChart3, label: language === 'tr' ? 'İstatistikler' : 'Stats', shortLabel: language === 'tr' ? 'İstat.' : 'Stats', color: 'yellow' },
               { mode: 'anatomy' as const, icon: BookOpen, label: language === 'tr' ? 'Anatomi Atlası' : 'Anatomy Atlas', shortLabel: language === 'tr' ? 'Anatomi' : 'Anatomy', color: 'green' },
+              { mode: 'quiz' as const, icon: Zap, label: language === 'tr' ? 'Sınav Modu' : 'Quiz Mode', shortLabel: language === 'tr' ? 'Sınav' : 'Quiz', color: 'orange' },
             ]).map(item => {
               const Icon = item.icon;
               const isActive = viewMode === item.mode;
@@ -339,6 +344,7 @@ export default function Home() {
                 violet: { active: 'bg-violet-600 text-white shadow-lg shadow-violet-500/20', hover: 'hover:bg-violet-500/10 hover:text-violet-300', icon: 'text-violet-400' },
                 yellow: { active: 'bg-yellow-600 text-white shadow-lg shadow-yellow-500/20', hover: 'hover:bg-yellow-500/10 hover:text-yellow-300', icon: 'text-yellow-400' },
                 green: { active: 'bg-green-600 text-white shadow-lg shadow-green-500/20', hover: 'hover:bg-green-500/10 hover:text-green-300', icon: 'text-green-400' },
+                orange: { active: 'bg-orange-600 text-white shadow-lg shadow-orange-500/20', hover: 'hover:bg-orange-500/10 hover:text-orange-300', icon: 'text-orange-400' },
               };
               const colors = modeColorMap[item.color];
               return (
@@ -480,7 +486,7 @@ export default function Home() {
         <div className="w-full max-w-3xl relative z-20 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
 
           {/* Module Selector - 5 Organs */}
-          {viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && (
+          {viewMode !== "ai" && viewMode !== "toolbox" && viewMode !== "report" && viewMode !== "compare" && viewMode !== "emergency" && viewMode !== "stats" && viewMode !== "anatomy" && viewMode !== "quiz" && (
             <div className="flex justify-center mb-8">
               <div className="flex flex-wrap justify-center gap-1 p-1 bg-slate-900/50 backdrop-blur-md border border-white/10 rounded-2xl relative max-w-full overflow-x-auto">
                 <button
@@ -710,19 +716,21 @@ export default function Home() {
       <div className="max-w-[1600px] mx-auto px-3 sm:px-6 pb-24">
 
         {viewMode === "ai" ? (
-          <AIAssistant />
+          <ErrorBoundary moduleName="AI Assistant"><AIAssistant /></ErrorBoundary>
         ) : viewMode === "toolbox" ? (
-          <ToolboxMode activeTab={toolboxTab} onTabChange={setToolboxTab} />
+          <ErrorBoundary moduleName="Toolbox"><ToolboxMode activeTab={toolboxTab} onTabChange={setToolboxTab} /></ErrorBoundary>
         ) : viewMode === "report" ? (
-          <StructuredReporting />
+          <ErrorBoundary moduleName="Reporting"><StructuredReporting /></ErrorBoundary>
         ) : viewMode === "compare" ? (
-          <ComparisonMode />
+          <ErrorBoundary moduleName="Compare"><ComparisonMode /></ErrorBoundary>
         ) : viewMode === "emergency" ? (
-          <EmergencyPanel />
+          <ErrorBoundary moduleName="Emergency"><EmergencyPanel /></ErrorBoundary>
         ) : viewMode === "stats" ? (
-          <LearningStats />
+          <ErrorBoundary moduleName="Stats"><LearningStats /></ErrorBoundary>
         ) : viewMode === "anatomy" ? (
-          <AnatomyAtlas />
+          <ErrorBoundary moduleName="Anatomy Atlas"><AnatomyAtlas /></ErrorBoundary>
+        ) : viewMode === "quiz" ? (
+          <ErrorBoundary moduleName="Quiz Mode"><QuizMode pathologies={allPathologies} /></ErrorBoundary>
         ) : filteredPathologies.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 sm:py-32 animate-in fade-in zoom-in duration-500">
             {/* Animated search illustration */}

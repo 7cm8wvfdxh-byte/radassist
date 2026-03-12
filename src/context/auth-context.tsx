@@ -63,35 +63,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const fetchProfile = async (supabaseUser: SupabaseUser) => {
         try {
-            console.log('=== PROFILE DEBUG ===');
-            console.log('Auth user ID:', supabaseUser.id);
-            console.log('Auth user email:', supabaseUser.email);
-
             // First try by ID
-            const { data, error } = await supabase
+            const { data } = await supabase
                 .from('profiles')
                 .select('*')
                 .eq('id', supabaseUser.id)
                 .maybeSingle();
 
-            console.log('Query by ID result:', { data, error });
-
             // If not found by ID, try by email
             let profileData = data;
             if (!profileData && supabaseUser.email) {
-                console.log('Profile not found by ID, trying by email...');
-                const { data: emailData, error: emailError } = await supabase
+                const { data: emailData } = await supabase
                     .from('profiles')
                     .select('*')
                     .eq('email', supabaseUser.email)
                     .maybeSingle();
 
-                console.log('Query by email result:', { data: emailData, error: emailError });
-
                 if (emailData) {
                     profileData = emailData;
                     // Fix the ID mismatch - update profile to use correct auth ID
-                    console.log('Fixing ID mismatch: profile.id =', emailData.id, '-> auth.id =', supabaseUser.id);
                     await supabase
                         .from('profiles')
                         .update({ id: supabaseUser.id })
@@ -100,9 +90,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             }
 
             if (profileData) {
-                console.log('Profile found:', JSON.stringify(profileData));
-                const isAdmin = profileData.is_admin === true || profileData.is_admin === 'true' || profileData.is_admin === 1;
-                console.log('is_admin:', profileData.is_admin, 'type:', typeof profileData.is_admin, 'resolved:', isAdmin);
+                const isAdmin = Boolean(profileData.is_admin);
                 setUser({
                     id: supabaseUser.id,
                     email: supabaseUser.email!,
@@ -111,7 +99,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     is_admin: isAdmin
                 });
             } else {
-                console.warn('No profile found at all. Using fallback from user_metadata.');
                 // Fallback if profile doesn't exist
                 setUser({
                     id: supabaseUser.id,
@@ -121,8 +108,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     is_admin: false
                 });
             }
-        } catch (error) {
-            console.error("Profile fetch error", error);
+        } catch {
+            // Profile fetch failed silently - user will see fallback state
         } finally {
             setIsLoading(false);
         }
@@ -192,7 +179,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     });
 
                 if (profileError) {
-                    console.error("Profile creation error:", profileError);
                     // Don't fail registration, profile will be created from user_metadata
                 }
 

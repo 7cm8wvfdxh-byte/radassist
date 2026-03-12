@@ -87,7 +87,7 @@ export function PwaInstallPrompt() {
     if (!showPrompt) return null;
 
     return (
-        <div className="fixed bottom-4 left-4 right-4 z-[100] animate-in slide-in-from-bottom-5 duration-500" role="dialog" aria-labelledby="pwa-prompt-title">
+        <div className="fixed bottom-4 left-4 right-4 z-[100] animate-in slide-in-from-bottom-5 duration-500" role="dialog" aria-modal="true" aria-labelledby="pwa-prompt-title">
             <div className="bg-zinc-900/90 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-2xl relative">
                 <button
                     onClick={handleDismiss}
@@ -130,7 +130,7 @@ export function PwaInstallPrompt() {
                 </div>
 
                 {/* Triangle pointer */}
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-zinc-900/90 rotate-45 border-r border-b border-white/10" />
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-zinc-900/90 rotate-45 border-r border-b border-white/10" aria-hidden="true" />
             </div>
         </div>
     );
