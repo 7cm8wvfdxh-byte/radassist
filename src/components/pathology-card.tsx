@@ -1,5 +1,5 @@
 import { expandQueryTokens } from "@/lib/search-utils";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
@@ -129,42 +129,51 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     const frontScrollRef = useRef<HTMLDivElement>(null);
     const backScrollRef = useRef<HTMLDivElement>(null);
 
-    // Lock body scroll while touch is inside a card scroll container (iOS fix)
-    useEffect(() => {
-        const refs = [frontScrollRef, backScrollRef];
-        const controllers: AbortController[] = [];
+    // iOS Safari fix: prevent page scroll when touching inside a scrollable card area.
+    // Uses non-passive touchmove with preventDefault() to block body/page scroll,
+    // while the card's own overflow-y: scroll continues to work natively.
+    const attachTouchLock = useCallback((el: HTMLDivElement | null) => {
+        if (!el) return;
 
-        for (const ref of refs) {
-            const el = ref.current;
-            if (!el) continue;
+        let startY = 0;
 
-            const ctrl = new AbortController();
-            controllers.push(ctrl);
+        const onTouchStart = (e: TouchEvent) => {
+            startY = e.touches[0].clientY;
+        };
 
-            let startY = 0;
+        const onTouchMove = (e: TouchEvent) => {
+            if (el.scrollHeight <= el.clientHeight + 1) return; // not scrollable
 
-            el.addEventListener('touchstart', (e) => {
-                startY = e.touches[0].clientY;
-                // If scrollable, lock body scroll
-                if (el.scrollHeight > el.clientHeight + 1) {
-                    document.body.style.overflow = 'hidden';
-                }
-            }, { passive: true, signal: ctrl.signal });
+            const currentY = e.touches[0].clientY;
+            const deltaY = startY - currentY; // positive = scrolling down
 
-            el.addEventListener('touchend', () => {
-                document.body.style.overflow = '';
-            }, { passive: true, signal: ctrl.signal });
+            const atTop = el.scrollTop <= 0 && deltaY < 0;
+            const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1 && deltaY > 0;
 
-            el.addEventListener('touchcancel', () => {
-                document.body.style.overflow = '';
-            }, { passive: true, signal: ctrl.signal });
-        }
+            // If inner element can scroll in this direction, block page scroll
+            if (!atTop && !atBottom) {
+                e.preventDefault();
+            }
+        };
+
+        el.addEventListener('touchstart', onTouchStart, { passive: true });
+        // MUST be non-passive so preventDefault() works
+        el.addEventListener('touchmove', onTouchMove, { passive: false });
 
         return () => {
-            controllers.forEach(c => c.abort());
-            document.body.style.overflow = '';
+            el.removeEventListener('touchstart', onTouchStart);
+            el.removeEventListener('touchmove', onTouchMove);
         };
     }, []);
+
+    useEffect(() => {
+        const cleanupFront = attachTouchLock(frontScrollRef.current);
+        const cleanupBack = attachTouchLock(backScrollRef.current);
+        return () => {
+            cleanupFront?.();
+            cleanupBack?.();
+        };
+    }, [attachTouchLock]);
 
     // Back-face field names that should trigger auto-flip
     const BACK_FACE_FIELDS = new Set(["etiology", "mechanism", "clinicalPearl", "goldStandard"]);
@@ -377,7 +386,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         </div>
 
                         {/* Scrollable Content Area — only this part scrolls */}
-                        <div ref={frontScrollRef} className="flex-1 min-h-0 overflow-y-auto scroll-touch-fix scrollbar-thin scrollbar-thumb-zinc-700 px-5 pb-3">
+                        <div ref={frontScrollRef} className="flex-1 min-h-0 overflow-y-scroll scroll-touch-fix scrollbar-thin scrollbar-thumb-zinc-700 px-5 pb-3">
                             {activeTab === 'summary' ? (
                                 <ul className="space-y-2">
                                     {displayKeyPoints.map((kp, i) => (
@@ -433,7 +442,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Back Content */}
-                    <div ref={backScrollRef} className="p-6 flex-1 min-h-0 overflow-y-auto scroll-touch-fix scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6">
+                    <div ref={backScrollRef} className="p-6 flex-1 min-h-0 overflow-y-scroll scroll-touch-fix scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6">
 
                         {/* WHY? Section */}
                         {displayMechanism && (

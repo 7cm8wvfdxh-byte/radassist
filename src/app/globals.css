@@ -162,8 +162,9 @@ html.light .aurora-bg {
   border-width: 0;
 }
 
-/* Prevent horizontal overflow on mobile */
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
-}
+/* Prevent horizontal overflow on mobile.
+   IMPORTANT: Do NOT set overflow-x on html/body directly — on iOS Safari,
+   setting overflow on one axis forces the other to 'auto', creating an
+   implicit scroll container. This breaks nested overflow-y scroll inside
+   cards when the page itself is not scrollable. Instead, clip overflow
+   on a wrapper div (see layout.tsx #scroll-root). */

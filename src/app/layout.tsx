@@ -96,19 +96,21 @@ export default function RootLayout({
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-indigo-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">
           Skip to main content
         </a>
-        <ThemeProvider>
-          <LanguageProvider>
-            <HtmlLangSync />
-            <AuthProvider>
-              <ForumProvider>
-                <main id="main-content">
-                  {children}
-                </main>
-                <PwaInstallPrompt />
-              </ForumProvider>
-            </AuthProvider>
-          </LanguageProvider>
-        </ThemeProvider>
+        <div id="scroll-root" className="overflow-x-hidden min-h-screen">
+          <ThemeProvider>
+            <LanguageProvider>
+              <HtmlLangSync />
+              <AuthProvider>
+                <ForumProvider>
+                  <main id="main-content">
+                    {children}
+                  </main>
+                  <PwaInstallPrompt />
+                </ForumProvider>
+              </AuthProvider>
+            </LanguageProvider>
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );
