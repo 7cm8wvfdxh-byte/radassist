@@ -162,25 +162,6 @@ html.light .aurora-bg {
   border-width: 0;
 }
 
-/* iOS Safari scroll fix — lock html & body, route ALL scrolling through #scroll-root.
-   Setting overflow: hidden on BOTH axes is safe (the iOS bug only triggers when you
-   set overflow on ONE axis, which forces the other to 'auto'). With both locked,
-   there is no implicit scroll container on html/body, so touch events route correctly
-   to the first real scroll container (#scroll-root) and its descendants. */
-html {
-  height: 100dvh;
-  height: -webkit-fill-available; /* fallback for older iOS */
-  overflow: hidden;
-}
-
-body {
-  height: 100%;
-  overflow: hidden;
-}
-
-#scroll-root {
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  overscroll-behavior: none;
-}
+/* Clip horizontal overflow on a wrapper div (not html/body).
+   On iOS Safari, setting overflow on html/body can create implicit scroll
+   containers that interfere with nested scroll. #scroll-root handles it. */
