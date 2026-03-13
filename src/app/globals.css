@@ -67,10 +67,14 @@
 @layer utilities {
   .scroll-touch-fix {
     -webkit-overflow-scrolling: touch;
-    /* Use isolation instead of translateZ(0) — translateZ(0) creates a new
-       3D stacking context that BREAKS overflow scroll inside preserve-3d parents.
-       isolation: isolate creates a new stacking context without interfering with 3D. */
-    isolation: isolate;
+    /* Explicitly tell the browser: this element handles vertical scroll */
+    touch-action: pan-y;
+    /* Prevent scroll chaining — when inner scroll reaches boundary, do NOT scroll parent/page */
+    overscroll-behavior-y: contain;
+    /* Force own compositing layer — safe because parent .backface-hidden
+       already resets to transform-style: flat, so this won't break 3D */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 }
 

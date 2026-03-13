@@ -1,5 +1,5 @@
 import { expandQueryTokens } from "@/lib/search-utils";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
@@ -124,6 +124,47 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     const [activeTab, setActiveTab] = useState<TabType>("summary");
     const [activeImage, setActiveImage] = useState<number | null>(null);
     const [imgError, setImgError] = useState(false);
+
+    // Refs for scroll containers (front + back faces)
+    const frontScrollRef = useRef<HTMLDivElement>(null);
+    const backScrollRef = useRef<HTMLDivElement>(null);
+
+    // Lock body scroll while touch is inside a card scroll container (iOS fix)
+    useEffect(() => {
+        const refs = [frontScrollRef, backScrollRef];
+        const controllers: AbortController[] = [];
+
+        for (const ref of refs) {
+            const el = ref.current;
+            if (!el) continue;
+
+            const ctrl = new AbortController();
+            controllers.push(ctrl);
+
+            let startY = 0;
+
+            el.addEventListener('touchstart', (e) => {
+                startY = e.touches[0].clientY;
+                // If scrollable, lock body scroll
+                if (el.scrollHeight > el.clientHeight + 1) {
+                    document.body.style.overflow = 'hidden';
+                }
+            }, { passive: true, signal: ctrl.signal });
+
+            el.addEventListener('touchend', () => {
+                document.body.style.overflow = '';
+            }, { passive: true, signal: ctrl.signal });
+
+            el.addEventListener('touchcancel', () => {
+                document.body.style.overflow = '';
+            }, { passive: true, signal: ctrl.signal });
+        }
+
+        return () => {
+            controllers.forEach(c => c.abort());
+            document.body.style.overflow = '';
+        };
+    }, []);
 
     // Back-face field names that should trigger auto-flip
     const BACK_FACE_FIELDS = new Set(["etiology", "mechanism", "clinicalPearl", "goldStandard"]);
@@ -336,7 +377,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         </div>
 
                         {/* Scrollable Content Area — only this part scrolls */}
-                        <div className="flex-1 min-h-0 overflow-y-auto scroll-touch-fix scrollbar-thin scrollbar-thumb-zinc-700 px-5 pb-3">
+                        <div ref={frontScrollRef} className="flex-1 min-h-0 overflow-y-auto scroll-touch-fix scrollbar-thin scrollbar-thumb-zinc-700 px-5 pb-3">
                             {activeTab === 'summary' ? (
                                 <ul className="space-y-2">
                                     {displayKeyPoints.map((kp, i) => (
@@ -392,7 +433,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                     </div>
 
                     {/* Back Content */}
-                    <div className="p-6 flex-1 min-h-0 overflow-y-auto scroll-touch-fix scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6">
+                    <div ref={backScrollRef} className="p-6 flex-1 min-h-0 overflow-y-auto scroll-touch-fix scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6">
 
                         {/* WHY? Section */}
                         {displayMechanism && (
