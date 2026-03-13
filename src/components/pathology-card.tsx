@@ -329,8 +329,8 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             })}
                         </div>
 
-                        {/* Scrollable Content Area — overflow-y-scroll (not auto) forces iOS to recognise as scrollable even when page is static */}
-                        <div className="flex-1 min-h-0 overflow-y-scroll scrollbar-thin scrollbar-thumb-zinc-700 px-5 pb-3" style={{ WebkitOverflowScrolling: 'touch' }}>
+                        {/* Scrollable Content Area — translateZ(0) gives own compositing layer for reliable iOS scroll */}
+                        <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-700 px-5 pb-3" style={{ transform: 'translateZ(0)', overscrollBehavior: 'none' }}>
                             {activeTab === 'summary' ? (
                                 <ul className="space-y-2">
                                     {displayKeyPoints.map((kp, i) => (
@@ -387,8 +387,8 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         </button>
                     </div>
 
-                    {/* Back Content — overflow-y-scroll (not auto) forces iOS to recognise as scrollable even when page is static */}
-                    <div className="p-6 flex-1 min-h-0 overflow-y-scroll scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6" style={{ WebkitOverflowScrolling: 'touch' }}>
+                    {/* Back Content — translateZ(0) gives own compositing layer for reliable iOS scroll */}
+                    <div className="p-6 flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6" style={{ transform: 'translateZ(0)', overscrollBehavior: 'none' }}>
 
                         {/* WHY? Section */}
                         {displayMechanism && (
