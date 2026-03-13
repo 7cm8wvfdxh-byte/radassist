@@ -1,5 +1,5 @@
 import { expandQueryTokens } from "@/lib/search-utils";
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Pathology } from "@/types";
 import { cn } from "@/lib/utils";
@@ -125,56 +125,6 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     const [activeImage, setActiveImage] = useState<number | null>(null);
     const [imgError, setImgError] = useState(false);
 
-    // Refs for scroll containers (front + back faces)
-    const frontScrollRef = useRef<HTMLDivElement>(null);
-    const backScrollRef = useRef<HTMLDivElement>(null);
-
-    // iOS Safari fix: prevent page scroll when touching inside a scrollable card area.
-    // Uses non-passive touchmove with preventDefault() to block body/page scroll,
-    // while the card's own overflow-y: scroll continues to work natively.
-    const attachTouchLock = useCallback((el: HTMLDivElement | null) => {
-        if (!el) return;
-
-        let startY = 0;
-
-        const onTouchStart = (e: TouchEvent) => {
-            startY = e.touches[0].clientY;
-        };
-
-        const onTouchMove = (e: TouchEvent) => {
-            if (el.scrollHeight <= el.clientHeight + 1) return; // not scrollable
-
-            const currentY = e.touches[0].clientY;
-            const deltaY = startY - currentY; // positive = scrolling down
-
-            const atTop = el.scrollTop <= 0 && deltaY < 0;
-            const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1 && deltaY > 0;
-
-            // If inner element can scroll in this direction, block page scroll
-            if (!atTop && !atBottom) {
-                e.preventDefault();
-            }
-        };
-
-        el.addEventListener('touchstart', onTouchStart, { passive: true });
-        // MUST be non-passive so preventDefault() works
-        el.addEventListener('touchmove', onTouchMove, { passive: false });
-
-        return () => {
-            el.removeEventListener('touchstart', onTouchStart);
-            el.removeEventListener('touchmove', onTouchMove);
-        };
-    }, []);
-
-    useEffect(() => {
-        const cleanupFront = attachTouchLock(frontScrollRef.current);
-        const cleanupBack = attachTouchLock(backScrollRef.current);
-        return () => {
-            cleanupFront?.();
-            cleanupBack?.();
-        };
-    }, [attachTouchLock]);
-
     // Back-face field names that should trigger auto-flip
     const BACK_FACE_FIELDS = new Set(["etiology", "mechanism", "clinicalPearl", "goldStandard"]);
     const isBackFaceField = (fieldName: string) =>
@@ -226,22 +176,16 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
     };
 
     return (
-        <div className="relative w-full h-[min(480px,72vh)] sm:h-[min(550px,75vh)] perspective-1000 group/card" role="region" aria-label={displayName}>
+        <div className="relative w-full h-[min(480px,72vh)] sm:h-[min(550px,75vh)] group/card" role="region" aria-label={displayName}>
 
             {/* Screen reader announcement for card flip */}
             <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">
                 {isFlipped ? (isEn ? `${displayName}: showing detailed mechanism` : `${displayName}: detaylı mekanizma gösteriliyor`) : ''}
             </div>
 
-            {/* CARD CONTAINER */}
-            <div
-                className={cn(
-                    "relative w-full h-full transition-all duration-700 transform-style-3d",
-                    isFlipped ? "rotate-y-180" : ""
-                )}
-            >
-                {/* --- FRONT FACE --- */}
-                <div className="absolute inset-0 backface-hidden w-full h-full bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-xl">
+            {/* --- FRONT FACE --- conditionally rendered, no 3D transforms */}
+            {!isFlipped && (
+                <div className="absolute inset-0 w-full h-full bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-xl animate-in fade-in duration-300">
                     {/* Header Image Area */}
                     <div className="relative h-36 sm:h-48 w-full bg-black shrink-0">
                         {data.gallery && data.gallery.length > 0 && !imgError ? (
@@ -385,8 +329,8 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                             })}
                         </div>
 
-                        {/* Scrollable Content Area — only this part scrolls */}
-                        <div ref={frontScrollRef} className="flex-1 min-h-0 overflow-y-scroll scroll-touch-fix scrollbar-thin scrollbar-thumb-zinc-700 px-5 pb-3">
+                        {/* Scrollable Content Area — translateZ(0) gives own compositing layer for reliable iOS scroll */}
+                        <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-700 px-5 pb-3" style={{ transform: 'translateZ(0)', overscrollBehavior: 'none' }}>
                             {activeTab === 'summary' ? (
                                 <ul className="space-y-2">
                                     {displayKeyPoints.map((kp, i) => (
@@ -427,9 +371,11 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         {isEn ? "Flip card for detailed pathophysiology & mechanism ↻" : "Detaylı patofizyoloji ve mekanizma için kartı çevirin ↻"}
                     </div>
                 </div>
+            )}
 
-                {/* --- BACK FACE (THE REVEAL) --- */}
-                <div className="absolute inset-0 backface-hidden rotate-y-180 w-full h-full bg-gradient-to-br from-zinc-900 to-black border border-cyan-500/30 rounded-3xl overflow-hidden flex flex-col shadow-2xl shadow-cyan-900/10">
+            {/* --- BACK FACE --- conditionally rendered, no 3D transforms */}
+            {isFlipped && (
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-zinc-900 to-black border border-cyan-500/30 rounded-3xl overflow-hidden flex flex-col shadow-2xl shadow-cyan-900/10 animate-in fade-in duration-300">
                     {/* Back Header */}
                     <div className="p-5 border-b border-white/10 flex justify-between items-center bg-cyan-950/10">
                         <div className="flex items-center gap-2 text-cyan-400">
@@ -441,8 +387,8 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         </button>
                     </div>
 
-                    {/* Back Content */}
-                    <div ref={backScrollRef} className="p-6 flex-1 min-h-0 overflow-y-scroll scroll-touch-fix scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6">
+                    {/* Back Content — translateZ(0) gives own compositing layer for reliable iOS scroll */}
+                    <div className="p-6 flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-cyan-900/50 space-y-6" style={{ transform: 'translateZ(0)', overscrollBehavior: 'none' }}>
 
                         {/* WHY? Section */}
                         {displayMechanism && (
@@ -540,7 +486,7 @@ export function PathologyCard({ data, isFavorite = false, onToggleFavorite, high
                         </button>
                     </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 }
