@@ -96,7 +96,11 @@ export default function RootLayout({
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-indigo-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-medium">
           Skip to main content
         </a>
-        <div id="scroll-root" className="overflow-x-hidden min-h-screen">
+        {/* min-h-[calc(100vh+1px)] forces iOS Safari to treat page as scrollable,
+            which enables touch-event routing to nested overflow-y-scroll containers
+            even when content fits the viewport. Without this, iOS blocks inner scroll
+            when the page itself is "static". */}
+        <div id="scroll-root" className="overflow-x-hidden min-h-[calc(100vh+1px)]">
           <ThemeProvider>
             <LanguageProvider>
               <HtmlLangSync />
