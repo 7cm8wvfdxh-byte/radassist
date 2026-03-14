@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useDeferredValue } from "react";
+import { useState, useMemo, useEffect, useDeferredValue, useTransition, useCallback } from "react";
 import { SearchBar } from "@/components/search-bar";
 import { PathologyCard } from "@/components/pathology-card";
 import { PathologyListItem } from "@/components/pathology-list-item";
@@ -99,6 +99,10 @@ export default function Home() {
 
   const [selectedPathology, setSelectedPathology] = useState<Pathology | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [, startTransition] = useTransition();
+
+  // Local input value for instant responsiveness (fixes INP)
+  const [inputValue, setInputValue] = useState(searchQuery);
 
   // Mark as loaded after client hydration (intentional setState-in-effect for hydration detection)
   useEffect(() => {
@@ -108,6 +112,11 @@ export default function Home() {
 
   // Defer the search query to avoid blocking UI during heavy search computation
   const deferredSearchQuery = useDeferredValue(searchQuery);
+
+  // Sync inputValue when searchQuery changes externally (e.g. from suggestion click)
+  useEffect(() => {
+    setInputValue(searchQuery);
+  }, [searchQuery]);
 
   // Tüm patolojileri birleştir (öneri sistemi için)
   const allPathologies = useMemo(() => [
@@ -650,9 +659,14 @@ export default function Home() {
             <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300"></div>
             <div className="relative bg-black/60 backdrop-blur-xl rounded-2xl ring-1 ring-white/10 group-focus-within:ring-indigo-500/30 shadow-2xl group-focus-within:shadow-indigo-500/10 flex flex-col transition-all duration-300">
               <SearchBar
-                value={searchQuery}
+                value={inputValue}
                 onChange={(v) => {
-                  setSearchQuery(v);
+                  // Immediate: update input display (no INP lag)
+                  setInputValue(v);
+                  // Deferred: update search query via transition (heavy computation)
+                  startTransition(() => {
+                    setSearchQuery(v);
+                  });
                   if (!v.trim()) setActiveOrganFilter(null);
                   if (v.trim() && viewMode !== "grid" && viewMode !== "list") {
                     setViewMode("grid");
@@ -662,8 +676,8 @@ export default function Home() {
                 placeholder={t("search.placeholder")}
                 pathologies={allPathologies}
                 didYouMean={didYouMeanSuggestions}
-                isSearching={searchQuery !== deferredSearchQuery && searchQuery.trim().length > 0}
-                resultCount={searchQuery.trim() ? filteredPathologies.length : undefined}
+                isSearching={inputValue !== deferredSearchQuery && inputValue.trim().length > 0}
+                resultCount={inputValue.trim() ? filteredPathologies.length : undefined}
                 extraSources={extraSearchSources}
               />
 
