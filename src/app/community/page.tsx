@@ -10,14 +10,32 @@ import { NotificationBell } from "@/components/community/notification-bell";
 import { Search, Plus, TrendingUp, MessageCircle, Clock, Flame, MessagesSquare, Users, FileText, Activity, Bookmark, Pin, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { AdminNotifications } from "@/components/admin-notifications";
 
 type SortMode = "newest" | "popular" | "discussed";
 
 export default function CommunityPage() {
     const { posts, isLoading, hasMore, loadMore, bookmarkedIds } = useForum();
-    const { user } = useAuth();
+    const { user, isLoading: authLoading } = useAuth();
     const { t } = useLanguage();
+    const router = useRouter();
+
+    // Redirect to login if not authenticated
+    useEffect(() => {
+        if (!authLoading && !user) {
+            router.push("/login?redirect=/community");
+        }
+    }, [authLoading, user, router]);
+
+    // Show nothing while checking auth
+    if (authLoading || !user) {
+        return (
+            <div className="min-h-screen bg-black flex items-center justify-center">
+                <Loader2 className="w-8 h-8 text-cyan-400 animate-spin" />
+            </div>
+        );
+    }
     const [filter, setFilter] = useState("all");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
