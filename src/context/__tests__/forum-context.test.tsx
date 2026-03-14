@@ -31,7 +31,8 @@ describe('ForumContext', () => {
     it('başlangıçta loading true, sonra false olmalı', async () => {
         const mockQuery = {
             select: vi.fn().mockReturnThis(),
-            order: vi.fn().mockResolvedValue({ data: [], error: null }),
+            order: vi.fn().mockReturnThis(),
+            range: vi.fn().mockResolvedValue({ data: [], error: null }),
         };
         vi.mocked(supabase.from).mockReturnValue(mockQuery as any);
 
@@ -65,7 +66,8 @@ describe('ForumContext', () => {
 
         const mockQuery = {
             select: vi.fn().mockReturnThis(),
-            order: vi.fn().mockResolvedValue({ data: mockPosts, error: null }),
+            order: vi.fn().mockReturnThis(),
+            range: vi.fn().mockResolvedValue({ data: mockPosts, error: null }),
         };
         vi.mocked(supabase.from).mockReturnValue(mockQuery as any);
 
@@ -85,7 +87,8 @@ describe('ForumContext', () => {
     it('hata durumunu yönetmeli', async () => {
         const mockQuery = {
             select: vi.fn().mockReturnThis(),
-            order: vi.fn().mockResolvedValue({ data: null, error: { message: 'DB error' } }),
+            order: vi.fn().mockReturnThis(),
+            range: vi.fn().mockResolvedValue({ data: null, error: { message: 'DB error' } }),
         };
         vi.mocked(supabase.from).mockReturnValue(mockQuery as any);
 
@@ -105,7 +108,8 @@ describe('ForumContext', () => {
     it('clearError hata mesajını temizlemeli', async () => {
         const mockQuery = {
             select: vi.fn().mockReturnThis(),
-            order: vi.fn().mockResolvedValue({ data: null, error: { message: 'DB error' } }),
+            order: vi.fn().mockReturnThis(),
+            range: vi.fn().mockResolvedValue({ data: null, error: { message: 'DB error' } }),
         };
         vi.mocked(supabase.from).mockReturnValue(mockQuery as any);
 

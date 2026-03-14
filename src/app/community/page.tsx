@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect, useCallback } from "react";
 import { useForum } from "@/context/forum-context";
+import { useAuth } from "@/context/auth-context";
 import { useLanguage } from "@/context/language-context";
 import { PostCard } from "@/components/community/post-card";
 import { CreatePostModal } from "@/components/community/create-post-modal";
-import { Search, Plus, TrendingUp, MessageCircle, Clock, Flame, MessagesSquare, Users, FileText, Activity } from "lucide-react";
+import { NotificationBell } from "@/components/community/notification-bell";
+import { Search, Plus, TrendingUp, MessageCircle, Clock, Flame, MessagesSquare, Users, FileText, Activity, Bookmark, Pin, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { AdminNotifications } from "@/components/admin-notifications";
@@ -13,62 +15,78 @@ import { AdminNotifications } from "@/components/admin-notifications";
 type SortMode = "newest" | "popular" | "discussed";
 
 export default function CommunityPage() {
-    const { posts, isLoading } = useForum();
+    const { posts, isLoading, hasMore, loadMore, bookmarkedIds } = useForum();
+    const { user } = useAuth();
     const { t } = useLanguage();
     const [filter, setFilter] = useState("all");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [sortMode, setSortMode] = useState<SortMode>("newest");
+    const [showBookmarks, setShowBookmarks] = useState(false);
+    const loaderRef = useRef<HTMLDivElement>(null);
+    const [loadingMore, setLoadingMore] = useState(false);
 
-    // Dynamic trending tags from actual posts
+    // Infinite scroll via IntersectionObserver
+    const handleObserver = useCallback((entries: IntersectionObserverEntry[]) => {
+        if (entries[0].isIntersecting && hasMore && !isLoading) {
+            setLoadingMore(true);
+            loadMore();
+            setTimeout(() => setLoadingMore(false), 1000);
+        }
+    }, [hasMore, isLoading, loadMore]);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(handleObserver, { threshold: 0.1 });
+        if (loaderRef.current) observer.observe(loaderRef.current);
+        return () => observer.disconnect();
+    }, [handleObserver]);
+
+    // Pinned posts (always shown at top)
+    const pinnedPosts = useMemo(() => posts.filter(p => p.is_pinned), [posts]);
+
+    // Dynamic trending tags
     const trendingTags = useMemo(() => {
         const tagCount: Record<string, number> = {};
-        posts.forEach(post => {
-            post.tags.forEach(tag => {
-                tagCount[tag] = (tagCount[tag] || 0) + 1;
-            });
-        });
-        return Object.entries(tagCount)
-            .sort((a, b) => b[1] - a[1])
-            .slice(0, 6)
-            .map(([tag]) => tag);
+        posts.forEach(post => { post.tags.forEach(tag => { tagCount[tag] = (tagCount[tag] || 0) + 1; }); });
+        return Object.entries(tagCount).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([tag]) => tag);
     }, [posts]);
 
     // Community stats
     const stats = useMemo(() => {
         const uniqueAuthors = new Set(posts.map(p => p.author_id));
         const totalComments = posts.reduce((sum, p) => sum + (p.comments?.length || 0), 0);
-        return {
-            totalPosts: posts.length,
-            totalMembers: uniqueAuthors.size,
-            totalComments,
-        };
+        return { totalPosts: posts.length, totalMembers: uniqueAuthors.size, totalComments };
     }, [posts]);
 
     // Filter and sort posts
     const filteredPosts = useMemo(() => {
         let result = posts.filter(post => {
+            if (showBookmarks && !bookmarkedIds.has(post.id)) return false;
             const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 post.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
             const matchesFilter = filter === "all" || post.tags.includes(filter);
             return matchesSearch && matchesFilter;
         });
 
+        // Separate pinned from regular for sorting
+        const pinned = result.filter(p => p.is_pinned);
+        const regular = result.filter(p => !p.is_pinned);
+
         switch (sortMode) {
             case "popular":
-                result = [...result].sort((a, b) => b.likes - a.likes);
+                regular.sort((a, b) => b.likes - a.likes);
                 break;
             case "discussed":
-                result = [...result].sort((a, b) => (b.comments?.length || 0) - (a.comments?.length || 0));
+                regular.sort((a, b) => (b.comments?.length || 0) - (a.comments?.length || 0));
                 break;
             case "newest":
             default:
-                result = [...result].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+                regular.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
                 break;
         }
 
-        return result;
-    }, [posts, searchQuery, filter, sortMode]);
+        return [...pinned, ...regular];
+    }, [posts, searchQuery, filter, sortMode, showBookmarks, bookmarkedIds]);
 
     const categories = ["All", "Brain", "Spine", "Liver", "Kidney", "Lung", "Breast", "Gastro", "Gynecology"];
 
@@ -84,9 +102,8 @@ export default function CommunityPage() {
 
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
 
-                {/* Left Sidebar - Navigation & Filters (Desktop) */}
+                {/* Left Sidebar */}
                 <div className="hidden lg:block w-64 space-y-8 sticky top-8 h-fit">
-
                     <div className="space-y-4">
                         <Link href="/" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors mb-6">
                             {t("nav.backToHome")}
@@ -96,20 +113,31 @@ export default function CommunityPage() {
                             <h3 className="text-sm font-bold text-zinc-500 uppercase tracking-wider mb-4 px-2">{t("forum.categories")}</h3>
                             <div className="space-y-1">
                                 {categories.map(cat => (
-                                    <button
-                                        key={cat}
-                                        onClick={() => setFilter(cat === "All" ? "all" : cat)}
+                                    <button key={cat}
+                                        onClick={() => { setFilter(cat === "All" ? "all" : cat); setShowBookmarks(false); }}
                                         className={cn(
                                             "w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center justify-between group",
-                                            filter === (cat === "All" ? "all" : cat)
+                                            filter === (cat === "All" ? "all" : cat) && !showBookmarks
                                                 ? "bg-cyan-500/10 text-cyan-400"
                                                 : "text-zinc-400 hover:bg-white/5 hover:text-white"
-                                        )}
-                                    >
+                                        )}>
                                         {cat === "All" ? t("forum.allPosts") : cat}
-                                        {filter === (cat === "All" ? "all" : cat) && <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />}
+                                        {filter === (cat === "All" ? "all" : cat) && !showBookmarks && <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />}
                                     </button>
                                 ))}
+
+                                {/* Bookmarks filter */}
+                                {user && (
+                                    <button
+                                        onClick={() => { setShowBookmarks(!showBookmarks); if (!showBookmarks) setFilter("all"); }}
+                                        className={cn(
+                                            "w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 mt-2 border-t border-white/5 pt-3",
+                                            showBookmarks ? "bg-amber-500/10 text-amber-400" : "text-zinc-400 hover:bg-white/5 hover:text-white"
+                                        )}>
+                                        <Bookmark className={cn("w-4 h-4", showBookmarks && "fill-amber-400")} />
+                                        {t("forum.bookmarks")}
+                                    </button>
+                                )}
                             </div>
                         </div>
 
@@ -153,7 +181,7 @@ export default function CommunityPage() {
                 <div className="flex-1 space-y-6">
 
                     {/* Header / Search */}
-                    <div className="flex items-center gap-4 bg-zinc-900/80 backdrop-blur-md sticky top-0 z-40 p-4 rounded-2xl border border-white/5 shadow-lg">
+                    <div className="flex items-center gap-3 bg-zinc-900/80 backdrop-blur-md sticky top-0 z-40 p-4 rounded-2xl border border-white/5 shadow-lg">
                         <div className="relative flex-1">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                             <input
@@ -165,6 +193,7 @@ export default function CommunityPage() {
                                 className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                             />
                         </div>
+                        <NotificationBell />
                         <AdminNotifications />
                         <button
                             onClick={() => setIsModalOpen(true)}
@@ -180,35 +209,42 @@ export default function CommunityPage() {
                     <div className="lg:hidden overflow-x-auto no-scrollbar -mx-1">
                         <div className="flex gap-2 px-1 pb-2">
                             {categories.map(cat => (
-                                <button
-                                    key={cat}
-                                    onClick={() => setFilter(cat === "All" ? "all" : cat)}
+                                <button key={cat}
+                                    onClick={() => { setFilter(cat === "All" ? "all" : cat); setShowBookmarks(false); }}
                                     className={cn(
                                         "px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap border transition-all",
-                                        filter === (cat === "All" ? "all" : cat)
+                                        filter === (cat === "All" ? "all" : cat) && !showBookmarks
                                             ? "bg-cyan-500/15 text-cyan-400 border-cyan-500/30"
                                             : "bg-white/5 text-zinc-400 border-white/5 hover:bg-white/10"
-                                    )}
-                                >
+                                    )}>
                                     {cat === "All" ? t("forum.allPosts") : cat}
                                 </button>
                             ))}
+                            {user && (
+                                <button
+                                    onClick={() => { setShowBookmarks(!showBookmarks); if (!showBookmarks) setFilter("all"); }}
+                                    className={cn(
+                                        "px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap border transition-all flex items-center gap-1",
+                                        showBookmarks
+                                            ? "bg-amber-500/15 text-amber-400 border-amber-500/30"
+                                            : "bg-white/5 text-zinc-400 border-white/5 hover:bg-white/10"
+                                    )}>
+                                    <Bookmark className="w-3 h-3" /> {t("forum.bookmarks")}
+                                </button>
+                            )}
                         </div>
                     </div>
 
                     {/* Sort Tabs */}
                     <div className="flex items-center gap-1 bg-zinc-900/50 p-1 rounded-xl border border-white/5">
                         {sortTabs.map(tab => (
-                            <button
-                                key={tab.key}
-                                onClick={() => setSortMode(tab.key)}
+                            <button key={tab.key} onClick={() => setSortMode(tab.key)}
                                 className={cn(
                                     "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all flex-1 justify-center",
                                     sortMode === tab.key
                                         ? "bg-white/10 text-white shadow-sm"
                                         : "text-zinc-500 hover:text-zinc-300 hover:bg-white/5"
-                                )}
-                            >
+                                )}>
                                 {tab.icon}
                                 <span className="hidden sm:inline">{tab.label}</span>
                             </button>
@@ -218,7 +254,6 @@ export default function CommunityPage() {
                     {/* Posts List */}
                     <div className="space-y-4">
                         {isLoading ? (
-                            // Loading Skeleton
                             Array.from({ length: 3 }).map((_, i) => (
                                 <div key={i} className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 animate-pulse">
                                     <div className="flex items-center gap-2 mb-4">
@@ -243,9 +278,23 @@ export default function CommunityPage() {
                                 </div>
                             ))
                         ) : filteredPosts.length > 0 ? (
-                            filteredPosts.map(post => (
-                                <PostCard key={post.id} post={post} />
-                            ))
+                            <>
+                                {filteredPosts.map(post => (
+                                    <PostCard key={post.id} post={post} />
+                                ))}
+
+                                {/* Infinite scroll loader */}
+                                <div ref={loaderRef} className="flex justify-center py-6">
+                                    {loadingMore && hasMore ? (
+                                        <div className="flex items-center gap-2 text-zinc-500 text-sm">
+                                            <Loader2 className="w-4 h-4 animate-spin" />
+                                            {t("forum.loadMore")}
+                                        </div>
+                                    ) : !hasMore ? (
+                                        <p className="text-zinc-600 text-xs">{t("forum.noMore")}</p>
+                                    ) : null}
+                                </div>
+                            </>
                         ) : (
                             <div className="text-center py-20 bg-white/5 rounded-3xl border border-white/5 border-dashed">
                                 <MessageCircle className="w-12 h-12 text-zinc-600 mx-auto mb-4" />
@@ -256,14 +305,12 @@ export default function CommunityPage() {
                     </div>
                 </div>
 
-                {/* Right Sidebar - Trending / Info */}
+                {/* Right Sidebar */}
                 <div className="hidden xl:block w-72 space-y-6 sticky top-8 h-fit">
                     <div className="bg-gradient-to-br from-indigo-600/20 to-purple-600/20 rounded-2xl p-6 border border-white/10 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/20 blur-[50px]" />
                         <h3 className="text-lg font-bold text-white mb-2 relative z-10">{t("forum.welcome")} 👋</h3>
-                        <p className="text-sm text-zinc-400 relative z-10">
-                            {t("forum.welcomeText")}
-                        </p>
+                        <p className="text-sm text-zinc-400 relative z-10">{t("forum.welcomeText")}</p>
                     </div>
 
                     <div className="bg-zinc-900/50 rounded-2xl p-5 border border-white/5">
@@ -274,19 +321,14 @@ export default function CommunityPage() {
                         <div className="flex flex-wrap gap-2">
                             {trendingTags.length > 0 ? (
                                 trendingTags.map(tag => (
-                                    <button
-                                        key={tag}
-                                        onClick={() => {
-                                            setFilter(tag);
-                                            setSearchQuery("");
-                                        }}
+                                    <button key={tag}
+                                        onClick={() => { setFilter(tag); setSearchQuery(""); setShowBookmarks(false); }}
                                         className={cn(
                                             "px-2.5 py-1 rounded-md text-xs cursor-pointer transition-colors",
                                             filter === tag
                                                 ? "bg-cyan-500/15 text-cyan-400 border border-cyan-500/30"
                                                 : "bg-white/5 hover:bg-white/10 text-zinc-400"
-                                        )}
-                                    >
+                                        )}>
                                         #{tag}
                                     </button>
                                 ))
